@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RootLayout"
+    android:orientation="vertical"
+    android:paddingBottom="8dip"
+    android:paddingLeft="16dip"
+    android:paddingRight="16dip"
+    android:paddingTop="8dip">
+
+    <LinearLayout 
+        android:id="@+id/screen_yard_buyship_info_name_row"
+        android:layout_alignParentTop="true"
+        style="@style/ScreenRow" >
+
+        <TextView
+            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/screen_yard_buyship_info_name" />
+
+        <TextView
+            android:id="@+id/screen_yard_buyship_info_name"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout 
+        android:id="@+id/screen_yard_buyship_info_size_row"
+        android:layout_below="@id/screen_yard_buyship_info_name_row"
+        style="@style/ScreenRow" >
+
+        <TextView
+            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/screen_yard_buyship_info_size" />
+
+        <TextView
+            android:id="@+id/screen_yard_buyship_info_size"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/screen_yard_buyship_info_cargo_row"
+        android:layout_below="@id/screen_yard_buyship_info_size_row"
+         style="@style/ScreenRow" >
+
+        <TextView
+            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/screen_yard_buyship_info_cargo" />
+
+        <TextView
+            android:id="@+id/screen_yard_buyship_info_cargo"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/screen_yard_buyship_info_range_row"
+        android:layout_below="@id/screen_yard_buyship_info_cargo_row" style="@style/ScreenRow" >
+
+        <TextView
+            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/screen_yard_buyship_info_range" />
+
+        <TextView
+            android:id="@+id/screen_yard_buyship_info_range"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/screen_yard_buyship_info_hull_row"
+        android:layout_below="@id/screen_yard_buyship_info_range_row" style="@style/ScreenRow" >
+
+        <TextView
+            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/screen_yard_buyship_info_hull" />
+
+        <TextView
+            android:id="@+id/screen_yard_buyship_info_hull"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/screen_yard_buyship_info_bottom"
+        android:layout_below="@id/screen_yard_buyship_info_hull_row"
+        style="@style/ScreenRow"
+        android:gravity="center" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="9"
+            android:orientation="vertical" >
+
+            <TextView
+                style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="@string/screen_yard_buyship_info_weapon" />
+
+            <TextView
+                style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="@string/screen_yard_buyship_info_shield" />
+
+            <TextView
+                style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="@string/screen_yard_buyship_info_gadget" />
+
+            <TextView
+                style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="@string/screen_yard_buyship_info_crew" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/screen_yard_buyship_info_weapon"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <TextView
+                android:id="@+id/screen_yard_buyship_info_shield"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <TextView
+                android:id="@+id/screen_yard_buyship_info_gadget"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <TextView
+                android:id="@+id/screen_yard_buyship_info_crew"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/screen_yard_buyship_info_image"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="7"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/screen_yard_buyship_info_image"
+            android:scaleType="centerInside" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,19 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    
+    <dimen name="action_button_minsize">38dp</dimen>
+    
+    <dimen name="action_bar_button_marginTop_palm">6.5dp</dimen>
+    <dimen name="action_bar_button_marginBottom_palm">3.5dp</dimen>
+    
+    <dimen name="line_width">1dp</dimen>
+    <dimen name="corner_radius">6dp</dimen>
+    <dimen name="button_minsize">30dp</dimen>
+    
+    <dimen name="alert_dialog_title_height">64dip</dimen>
+    
+    <dimen name="alert_dialog_button_bar_height">48dp</dimen>
+</resources>

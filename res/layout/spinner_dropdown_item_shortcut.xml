@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="?android:attr/spinnerDropDownItemStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/spinner_shortcut"
+        android:layout_width="wrap_content"
+        android:layout_height="?attr/dropdownListPreferredItemHeight"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textAppearance="?attr/actionMenuTextAppearance"
+        android:typeface="monospace" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="?attr/dropdownListPreferredItemHeight"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="@string/dialog_shortcut_spacer" />
+
+    <TextView
+        android:id="@+id/spinner_text"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/dropdownListPreferredItemHeight"
+        android:gravity="left|center_vertical"
+        android:singleLine="true" />
+
+</LinearLayout>

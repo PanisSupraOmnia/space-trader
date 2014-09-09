@@ -1,0 +1,26 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!--     <color name="button_selected_palm">#ff319ace</color>
+    <color name="window_title_palm">#ff00319c</color>
+    <color name="dialog_title_palm">#ff00309c</color>
+    <color name="dialog_tint_palm">#ff003063</color> -->
+    <color name="button_selected_palm">#ff330099</color>
+    
+    <color name="stroke_light">#99333333</color>
+    <color name="stroke_dark">#99cccccc</color>
+    <color name="stroke_palm">#ff000000</color>
+    
+    <color name="btn_default_disabled_focused_holo">#1fffffff</color>
+    <color name="btn_default_disabled_holo">#26acacac</color>
+    <color name="btn_default_focused_holo">#6633b5e5</color>
+    <color name="btn_default_normal_holo">#66acacac</color>
+    <color name="btn_default_pressed_holo">#9933b5e5</color>
+    <!-- <color name="btn_default_pressed_holo">#e033b5e5</color> -->
+    
+    <color name="btn_default_disabled_focused_palm">#ffffffff</color>
+    <color name="btn_default_disabled_palm">#ffffffff</color>
+    <color name="btn_default_focused_palm">#ff330099</color>
+    <color name="btn_default_normal_palm">#ffffffff</color>
+    <color name="btn_default_pressed_palm">#ff330099</color>
+    
+</resources>

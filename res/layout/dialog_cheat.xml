@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="8dip"
+    android:paddingLeft="16dip"
+    android:paddingRight="16dip"
+    android:paddingTop="8dip" >
+
+    <LinearLayout
+        style="@style/ScreenRow"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/dialog_cheat_credits" />
+
+        <EditText
+            android:id="@+id/dialog_cheat_credits"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:maxLength="8" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/ScreenRow"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/dialog_cheat_debt" />
+
+        <EditText
+            android:id="@+id/dialog_cheat_debt"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:maxLength="8" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/ScreenRow"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/dialog_cheat_reputation" />
+
+        <EditText
+            android:id="@+id/dialog_cheat_reputation"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:maxLength="4" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/ScreenRow"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/dialog_cheat_record" />
+
+        <EditText
+            android:id="@+id/dialog_cheat_record"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:maxLength="4" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                style="@style/ScreenRow"
+                android:orientation="horizontal" >
+
+                <CheckBox
+                    android:id="@+id/dialog_cheat_negative"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/dialog_cheat_negative" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/ScreenRow"
+                android:orientation="horizontal" >
+
+                <CheckBox
+                    android:id="@+id/dialog_cheat_lightning"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/shield_lightning" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/ScreenRow"
+                android:orientation="horizontal" >
+
+                <CheckBox
+                    android:id="@+id/dialog_cheat_fuelcompactor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/gadget_fuelcompactor" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/ScreenRow"
+                android:orientation="horizontal" >
+
+                <CheckBox
+                    android:id="@+id/dialog_cheat_morgan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/weapon_morgan" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                style="@style/ScreenRow"
+                android:orientation="horizontal" >
+
+                <CheckBox
+                    android:id="@+id/dialog_cheat_moon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/dialog_cheat_moon" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/ScreenRow"
+                android:orientation="horizontal" >
+
+                <CheckBox
+                    android:id="@+id/dialog_cheat_singularity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/dialog_cheat_singularity" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/ScreenRow"
+                android:orientation="horizontal" >
+
+                <CheckBox
+                    android:id="@+id/dialog_cheat_hull"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/dialog_cheat_hull" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

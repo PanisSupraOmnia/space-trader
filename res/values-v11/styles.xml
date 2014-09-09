@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ActivityTheme.Base.Light" parent="@style/Theme.Light_ab">
+        <item name="android:actionButtonStyle">@style/ActionButtonStyle.Light</item>
+        <item name="actionButtonStyle">@style/ActionButtonStyle.Light</item>
+        <item name="android:actionOverflowButtonStyle">@style/ActionOverflowButtonStyle.Light</item>
+        <item name="actionOverflowButtonStyle">@style/ActionOverflowButtonStyle.Light</item>
+        <item name="android:actionMenuTextAppearance">@style/ActionButtonText</item>
+        <item name="actionMenuTextAppearance">@style/ActionButtonText</item>   
+        <item name="actionBarWidgetTheme">@style/ActionBarWidgetTheme.Light</item>
+        <item name="android:actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Light</item>
+        <item name="actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Light</item>
+    </style>
+
+    <style name="ActivityTheme.Base.Dark" parent="@style/Theme.Dark_ab">
+        <item name="android:actionButtonStyle">@style/ActionButtonStyle.Dark</item>
+        <item name="actionButtonStyle">@style/ActionButtonStyle.Dark</item>
+        <item name="android:actionOverflowButtonStyle">@style/ActionOverflowButtonStyle.Dark</item>
+        <item name="actionOverflowButtonStyle">@style/ActionOverflowButtonStyle.Dark</item>
+        <item name="android:actionMenuTextAppearance">@style/ActionButtonText</item>
+        <item name="actionMenuTextAppearance">@style/ActionButtonText</item>      
+        <item name="actionBarWidgetTheme">@style/ActionBarWidgetTheme.Dark</item>
+        <item name="android:actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Dark</item>
+        <item name="actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Dark</item>
+    </style>
+
+    <style name="ActivityTheme.Base.Palm" parent="@style/Theme.Palm_ab">
+        <item name="android:actionButtonStyle">@style/ActionButtonStyle.Palm</item>
+        <item name="actionButtonStyle">@style/ActionButtonStyle.Palm</item>
+        <item name="android:actionOverflowButtonStyle">@style/ActionOverflowButtonStyle.Palm</item>
+        <item name="actionOverflowButtonStyle">@style/ActionOverflowButtonStyle.Palm</item>
+        <item name="android:actionMenuTextAppearance">@style/ActionButtonText</item>
+        <item name="actionMenuTextAppearance">@style/ActionButtonText</item> 
+        <item name="actionBarWidgetTheme">@style/ActionBarWidgetTheme.Palm</item>
+        <item name="android:actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Palm</item>
+        <item name="actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Palm</item>
+        <item name="android:actionModeCloseDrawable">@drawable/ic_action_navigation_accept_palm</item>
+        <item name="actionModeCloseDrawable">@drawable/ic_action_navigation_accept_palm</item>
+        
+        <item name="android:actionBarStyle">@style/ActionBarStyle.Palm</item>
+        <item name="actionBarStyle">@style/ActionBarStyle.Palm</item>
+        <item name="android:actionDropDownStyle">@style/ActionDropDownStyle.Palm</item>
+        <item name="actionDropDownStyle">@style/ActionDropDownStyle.Palm</item>
+        <item name="android:popupMenuStyle">@style/PopupMenuStyle.Palm</item>
+        <item name="popupMenuStyle">@style/PopupMenuStyle.Palm</item>
+        <item name="android:dropDownListViewStyle">@style/ListViewDropDownStyle.Palm</item>
+        <item name="dropDownListViewStyle">@style/ListViewDropDownStyle.Palm</item>
+        <item name="android:titleTextStyle">@style/TitleText.Palm</item>
+        <item name="titleTextStyle">@style/TitleText.Palm</item> 
+        <item name="android:listChoiceBackgroundIndicator">@drawable/list_selector_palm</item> 
+        <item name="listChoiceBackgroundIndicator">@drawable/list_selector_palm</item>
+        <item name="android:selectableItemBackground">@drawable/item_background_palm</item>
+        <item name="selectableItemBackground">@drawable/item_background_palm</item>
+        <item name="actionBarDivider">@null</item>
+        <item name="android:textAppearanceLargePopupMenu">@style/PopupMenuText.Palm</item>
+        <item name="textAppearanceLargePopupMenu">@style/PopupMenuText.Palm</item>
+        <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownStyle.Palm</item>
+        <item name="spinnerDropDownItemStyle">@style/SpinnerDropDownStyle.Palm</item>
+        <item name="android:dividerHorizontal">@null</item>
+        <item name="dividerHorizontal">@null</item>
+        
+        <item name="android:alertDialogTheme">@style/AlertDialogTheme.Palm</item>
+        <item name="android:dialogTheme">@style/DialogTheme.Palm</item>
+    </style>
+    
+    <style name="ActionBarStyle.Palm" parent="@style/ActionBar.Transparent.Palm_ab">
+        <item name="android:background">@drawable/cab_background_top_palm_ab</item>
+        <item name="background">@drawable/cab_background_top_palm_ab</item>
+        <item name="android:titleTextStyle">@style/TitleText.Palm</item>
+        <item name="titleTextStyle">@style/TitleText.Palm</item>
+    </style>
+    
+    <style name="DialogTheme.Palm" parent="@android:style/Theme.Holo.Light.Dialog">
+        <item name="android:windowBackground">@drawable/dialog_full_palm</item>
+        <item name="android:windowTitleStyle">@style/DialogWindowTitle.Palm</item>
+        <item name="android:borderlessButtonStyle">@style/DialogButtonStyle.Palm</item>
+        <item name="android:buttonBarStyle">@style/ButtonBarStyle.Palm</item>
+        <item name="android:dividerHorizontal">@null</item>
+        <item name="dividerHorizontal">@null</item>
+    </style>
+    
+    <style name="DialogWindowTitle.Palm" parent="@android:style/Theme.Holo.Light">
+        <item name="android:textAppearance">@style/TextAppearance.DialogWindowTitle.Palm</item>
+        <item name="android:gravity">center</item>
+    </style>
+    
+    <style name="TextAppearance.MenuItem.Palm" parent="TextAppearance.Widget.AppCompat.ExpandedMenu.Item">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="DialogButtonStyle.Palm" parent="@android:style/Widget.Holo.Light.Button.Small">
+        <item name="android:textColor">@color/primary_text_palm</item>
+        <item name="android:background">?attr/roundedButtonDrawable</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginRight">8dp</item>
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+    </style>
+    
+    <style name="ButtonBarStyle.Palm" parent="@android:style/Holo.Light.ButtonBar.AlertDialog">
+        <item name="android:divider">@null</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+    </style>
+    
+    <style name="AlertDialogTheme.Palm" parent="@style/DialogTheme.Palm">
+        <item name="android:alertDialogStyle">@style/AlertDialog.Palm</item>
+        <item name="android:windowBackground">@android:color/transparent</item>	
+        <item name="android:windowTitleStyle">@style/DialogWindowTitle.Palm</item>
+    </style>
+    
+    <style name="TextView.Light" parent="@android:style/Widget.Holo.Light.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
+    
+    <style name="TextView.Dark" parent="@android:style/Widget.Holo.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
+    
+    <style name="TextView.Palm" parent="@android:style/Widget.Holo.Light.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
+</resources>

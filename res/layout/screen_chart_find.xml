@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RootLayout"
+    android:paddingBottom="8dip"
+    android:paddingLeft="16dip"
+    android:paddingRight="16dip"
+    android:paddingTop="8dip">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="false"
+        android:text="@string/screen_chart_find_query" />
+
+    <LinearLayout
+        style="@style/ScreenRow"
+        android:gravity="center"
+        android:weightSum="2" >
+        
+        <view
+            android:id="@+id/screen_chart_find_value"
+            style="?android:attr/autoCompleteTextViewStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:scrollHorizontally="true"
+            class="com.brucelet.spacetrader.ChartFindDialog$ChartFindView"
+            android:maxLength="20" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/ScreenRow"
+        android:gravity="center" >
+
+        <CheckBox
+            android:id="@+id/screen_chart_find_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/screen_chart_find_track" />
+    </LinearLayout>
+
+</LinearLayout>
