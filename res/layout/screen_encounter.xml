@@ -145,24 +145,32 @@
                 android:id="@+id/screen_encounter_button1"
                 style="?attr/buttonStyleRounded" android:layout_height="wrap_content"
                 android:layout_width="0dp"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
                 android:layout_weight="1" />
 
             <Button
                 android:id="@+id/screen_encounter_button2"
                 style="?attr/buttonStyleRounded" android:layout_height="wrap_content"
                 android:layout_width="0dp"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
                 android:layout_weight="1" />
 
             <Button
                 android:id="@+id/screen_encounter_button3"
                 style="?attr/buttonStyleRounded" android:layout_height="wrap_content"
                 android:layout_width="0dp"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
                 android:layout_weight="1" />
 
             <Button
                 android:id="@+id/screen_encounter_button4"
                 style="?attr/buttonStyleRounded" android:layout_height="wrap_content"
                 android:layout_width="0dp"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
                 android:layout_weight="1" />
         </LinearLayout>
 
@@ -191,6 +199,8 @@
                 style="?attr/buttonStyleRounded" android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_weight="1.25"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
                 android:text="@string/encounterbutton_surrender" />
 
             <RelativeLayout
@@ -198,7 +208,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="0dp"
                 android:layout_marginLeft="1dp"
-                android:layout_marginRight="1dp"
+                android:layout_marginRight="0dp"
                 android:layout_marginTop="0dp"
                 android:layout_weight=".75" >
 
@@ -224,7 +234,8 @@
                     android:paddingLeft="0dp"
                     android:paddingRight="0dp"
                     android:paddingTop="0dp"
-                    android:text="@string/encounterbutton_interrupt" />
+                    android:text="@string/encounterbutton_interrupt"
+                    android:ellipsize="none" />
 
             </RelativeLayout>
         </LinearLayout>

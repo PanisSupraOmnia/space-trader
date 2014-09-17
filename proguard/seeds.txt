@@ -10889,8 +10889,6 @@ com.brucelet.spacetrader.ChartFindDialog: void onBuildDialog(com.brucelet.spacet
 com.brucelet.spacetrader.ChartFindDialog: void onClickPositiveButton()
 com.brucelet.spacetrader.ChartFindDialog: void onClickNegativeButton()
 com.brucelet.spacetrader.ChartFindDialog: int getHelpTextResId()
-com.brucelet.spacetrader.ChartFindDialog$ChartFindView
-com.brucelet.spacetrader.ChartFindDialog$ChartFindView: ChartFindDialog$ChartFindView(android.content.Context,android.util.AttributeSet)
 com.brucelet.spacetrader.ChartScreen
 com.brucelet.spacetrader.ChartScreen: com.brucelet.spacetrader.ChartScreen newInstance()
 com.brucelet.spacetrader.ChartScreen: ChartScreen()
@@ -11084,6 +11082,8 @@ com.brucelet.spacetrader.MainActivity: com.brucelet.spacetrader.datatypes.GameSt
 com.brucelet.spacetrader.MainActivity: void clearBackStack()
 com.brucelet.spacetrader.MainActivity: void showDialogFragment(com.brucelet.spacetrader.BaseDialog)
 com.brucelet.spacetrader.MainActivity: void startMenuActionMode()
+com.brucelet.spacetrader.MainActivity: android.widget.PopupMenu initializeDropdownHoneycomb(android.view.View,int)
+com.brucelet.spacetrader.MainActivity: android.support.v7.widget.PopupMenu initializeDropdownCompat(android.view.View,int)
 com.brucelet.spacetrader.MainActivity: boolean finishMenuActionMode()
 com.brucelet.spacetrader.MainActivity: com.brucelet.spacetrader.BaseScreen getCurrentScreen()
 com.brucelet.spacetrader.MainActivity: com.brucelet.spacetrader.enumtypes.ScreenType getCurrentScreenType()
@@ -11109,12 +11109,28 @@ com.brucelet.spacetrader.MainActivity: void access$2(com.brucelet.spacetrader.Ma
 com.brucelet.spacetrader.MainActivity: void access$3(com.brucelet.spacetrader.MainActivity,android.content.SharedPreferences)
 com.brucelet.spacetrader.MainActivity: void access$4(com.brucelet.spacetrader.MainActivity,java.lang.String)
 com.brucelet.spacetrader.MainActivity: void access$5(com.brucelet.spacetrader.MainActivity)
-com.brucelet.spacetrader.MainActivity: boolean access$6(com.brucelet.spacetrader.MainActivity)
+com.brucelet.spacetrader.MainActivity: android.widget.PopupMenu access$6(com.brucelet.spacetrader.MainActivity,android.view.View,int)
+com.brucelet.spacetrader.MainActivity: android.support.v7.widget.PopupMenu access$7(com.brucelet.spacetrader.MainActivity,android.view.View,int)
+com.brucelet.spacetrader.MainActivity: boolean access$8(com.brucelet.spacetrader.MainActivity)
 com.brucelet.spacetrader.MainActivity: int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$ScreenType()
 com.brucelet.spacetrader.MainActivity$1
 com.brucelet.spacetrader.MainActivity$1: com.brucelet.spacetrader.MainActivity this$0
 com.brucelet.spacetrader.MainActivity$1: MainActivity$1(com.brucelet.spacetrader.MainActivity)
 com.brucelet.spacetrader.MainActivity$1: void onClick(android.view.View)
+com.brucelet.spacetrader.MainActivity$10
+com.brucelet.spacetrader.MainActivity$10: com.brucelet.spacetrader.MainActivity this$0
+com.brucelet.spacetrader.MainActivity$10: android.support.v7.widget.PopupMenu val$dropdown
+com.brucelet.spacetrader.MainActivity$10: MainActivity$10(com.brucelet.spacetrader.MainActivity,android.support.v7.widget.PopupMenu)
+com.brucelet.spacetrader.MainActivity$10: void onClick(android.view.View)
+com.brucelet.spacetrader.MainActivity$11
+com.brucelet.spacetrader.MainActivity$11: com.brucelet.spacetrader.MainActivity this$0
+com.brucelet.spacetrader.MainActivity$11: MainActivity$11(com.brucelet.spacetrader.MainActivity)
+com.brucelet.spacetrader.MainActivity$11: void onConfirm()
+com.brucelet.spacetrader.MainActivity$12
+com.brucelet.spacetrader.MainActivity$12: com.brucelet.spacetrader.MainActivity this$0
+com.brucelet.spacetrader.MainActivity$12: java.lang.Exception val$e
+com.brucelet.spacetrader.MainActivity$12: MainActivity$12(com.brucelet.spacetrader.MainActivity,java.lang.Exception)
+com.brucelet.spacetrader.MainActivity$12: void onCancel()
 com.brucelet.spacetrader.MainActivity$2
 com.brucelet.spacetrader.MainActivity$2: com.brucelet.spacetrader.MainActivity this$0
 com.brucelet.spacetrader.MainActivity$2: MainActivity$2(com.brucelet.spacetrader.MainActivity)
@@ -11154,30 +11170,15 @@ com.brucelet.spacetrader.MainActivity$7: boolean onPrepareActionMode(android.sup
 com.brucelet.spacetrader.MainActivity$7: void onDestroyActionMode(android.support.v7.view.ActionMode)
 com.brucelet.spacetrader.MainActivity$7: boolean onCreateActionMode(android.support.v7.view.ActionMode,android.view.Menu)
 com.brucelet.spacetrader.MainActivity$7: boolean onActionItemClicked(android.support.v7.view.ActionMode,android.view.MenuItem)
-com.brucelet.spacetrader.MainActivity$7$1
-com.brucelet.spacetrader.MainActivity$7$1: com.brucelet.spacetrader.MainActivity$7 this$1
-com.brucelet.spacetrader.MainActivity$7$1: android.support.v7.widget.PopupMenu val$commandDropdown
-com.brucelet.spacetrader.MainActivity$7$1: MainActivity$7$1(com.brucelet.spacetrader.MainActivity$7,android.support.v7.widget.PopupMenu)
-com.brucelet.spacetrader.MainActivity$7$1: void onClick(android.view.View)
-com.brucelet.spacetrader.MainActivity$7$2
-com.brucelet.spacetrader.MainActivity$7$2: com.brucelet.spacetrader.MainActivity$7 this$1
-com.brucelet.spacetrader.MainActivity$7$2: android.support.v7.widget.PopupMenu val$gameDropdown
-com.brucelet.spacetrader.MainActivity$7$2: MainActivity$7$2(com.brucelet.spacetrader.MainActivity$7,android.support.v7.widget.PopupMenu)
-com.brucelet.spacetrader.MainActivity$7$2: void onClick(android.view.View)
-com.brucelet.spacetrader.MainActivity$7$3
-com.brucelet.spacetrader.MainActivity$7$3: com.brucelet.spacetrader.MainActivity$7 this$1
-com.brucelet.spacetrader.MainActivity$7$3: android.support.v7.widget.PopupMenu val$helpDropdown
-com.brucelet.spacetrader.MainActivity$7$3: MainActivity$7$3(com.brucelet.spacetrader.MainActivity$7,android.support.v7.widget.PopupMenu)
-com.brucelet.spacetrader.MainActivity$7$3: void onClick(android.view.View)
 com.brucelet.spacetrader.MainActivity$8
 com.brucelet.spacetrader.MainActivity$8: com.brucelet.spacetrader.MainActivity this$0
 com.brucelet.spacetrader.MainActivity$8: MainActivity$8(com.brucelet.spacetrader.MainActivity)
-com.brucelet.spacetrader.MainActivity$8: void onConfirm()
+com.brucelet.spacetrader.MainActivity$8: boolean onMenuItemClick(android.view.MenuItem)
 com.brucelet.spacetrader.MainActivity$9
 com.brucelet.spacetrader.MainActivity$9: com.brucelet.spacetrader.MainActivity this$0
-com.brucelet.spacetrader.MainActivity$9: java.lang.Exception val$e
-com.brucelet.spacetrader.MainActivity$9: MainActivity$9(com.brucelet.spacetrader.MainActivity,java.lang.Exception)
-com.brucelet.spacetrader.MainActivity$9: void onCancel()
+com.brucelet.spacetrader.MainActivity$9: android.widget.PopupMenu val$dropdown
+com.brucelet.spacetrader.MainActivity$9: MainActivity$9(com.brucelet.spacetrader.MainActivity,android.widget.PopupMenu)
+com.brucelet.spacetrader.MainActivity$9: void onClick(android.view.View)
 com.brucelet.spacetrader.NewGameDialog
 com.brucelet.spacetrader.NewGameDialog: java.util.List CLICKABLE_IDS
 com.brucelet.spacetrader.NewGameDialog: void <clinit>()
@@ -11335,6 +11336,7 @@ com.brucelet.spacetrader.R$attr: int actionOverflowButtonStyle
 com.brucelet.spacetrader.R$attr: int actionProviderClass
 com.brucelet.spacetrader.R$attr: int actionViewClass
 com.brucelet.spacetrader.R$attr: int activityChooserViewStyle
+com.brucelet.spacetrader.R$attr: int alertDialogButtonBarStyle
 com.brucelet.spacetrader.R$attr: int alertDialogButtonStyle
 com.brucelet.spacetrader.R$attr: int alertDialogStyle
 com.brucelet.spacetrader.R$attr: int background
@@ -11383,6 +11385,7 @@ com.brucelet.spacetrader.R$attr: int panelMenuListTheme
 com.brucelet.spacetrader.R$attr: int panelMenuListWidth
 com.brucelet.spacetrader.R$attr: int popupMenuStyle
 com.brucelet.spacetrader.R$attr: int popupPromptView
+com.brucelet.spacetrader.R$attr: int pressableTextColor
 com.brucelet.spacetrader.R$attr: int progressBarPadding
 com.brucelet.spacetrader.R$attr: int progressBarStyle
 com.brucelet.spacetrader.R$attr: int prompt
@@ -11418,7 +11421,6 @@ com.brucelet.spacetrader.R$attr: int textAppearanceSearchResultSubtitle
 com.brucelet.spacetrader.R$attr: int textAppearanceSearchResultTitle
 com.brucelet.spacetrader.R$attr: int textAppearanceSmallPopupMenu
 com.brucelet.spacetrader.R$attr: int textColorSearchUrl
-com.brucelet.spacetrader.R$attr: int textColorWarpPrices
 com.brucelet.spacetrader.R$attr: int textViewStyleHeader
 com.brucelet.spacetrader.R$attr: int title
 com.brucelet.spacetrader.R$attr: int titleTextStyle
@@ -11488,6 +11490,7 @@ com.brucelet.spacetrader.R$dimen: int activity_vertical_margin
 com.brucelet.spacetrader.R$dimen: int alert_dialog_button_bar_height
 com.brucelet.spacetrader.R$dimen: int alert_dialog_title_height
 com.brucelet.spacetrader.R$dimen: int button_minsize
+com.brucelet.spacetrader.R$dimen: int button_padding
 com.brucelet.spacetrader.R$dimen: int corner_radius
 com.brucelet.spacetrader.R$dimen: int dialog_fixed_height_major
 com.brucelet.spacetrader.R$dimen: int dialog_fixed_height_minor
@@ -11505,6 +11508,7 @@ com.brucelet.spacetrader.R$drawable: int ab_bottom_solid_palm_ab
 com.brucelet.spacetrader.R$drawable: int ab_solid_dark_ab
 com.brucelet.spacetrader.R$drawable: int ab_solid_light_ab
 com.brucelet.spacetrader.R$drawable: int ab_solid_palm_ab
+com.brucelet.spacetrader.R$drawable: int ab_solid_palm_cab
 com.brucelet.spacetrader.R$drawable: int ab_solid_palm_dab
 com.brucelet.spacetrader.R$drawable: int ab_stacked_solid_dark_ab
 com.brucelet.spacetrader.R$drawable: int ab_stacked_solid_light_ab
@@ -12322,44 +12326,44 @@ com.brucelet.spacetrader.R$id: int screen_blank
 com.brucelet.spacetrader.R$id: int screen_buy
 com.brucelet.spacetrader.R$id: int screen_buy_bays
 com.brucelet.spacetrader.R$id: int screen_buy_credits
-com.brucelet.spacetrader.R$id: int screen_buy_firearms
 com.brucelet.spacetrader.R$id: int screen_buy_firearms_amount
+com.brucelet.spacetrader.R$id: int screen_buy_firearms_label
 com.brucelet.spacetrader.R$id: int screen_buy_firearms_max
 com.brucelet.spacetrader.R$id: int screen_buy_firearms_price
-com.brucelet.spacetrader.R$id: int screen_buy_food
 com.brucelet.spacetrader.R$id: int screen_buy_food_amount
+com.brucelet.spacetrader.R$id: int screen_buy_food_label
 com.brucelet.spacetrader.R$id: int screen_buy_food_max
 com.brucelet.spacetrader.R$id: int screen_buy_food_price
-com.brucelet.spacetrader.R$id: int screen_buy_furs
 com.brucelet.spacetrader.R$id: int screen_buy_furs_amount
+com.brucelet.spacetrader.R$id: int screen_buy_furs_label
 com.brucelet.spacetrader.R$id: int screen_buy_furs_max
 com.brucelet.spacetrader.R$id: int screen_buy_furs_price
-com.brucelet.spacetrader.R$id: int screen_buy_games
 com.brucelet.spacetrader.R$id: int screen_buy_games_amount
+com.brucelet.spacetrader.R$id: int screen_buy_games_label
 com.brucelet.spacetrader.R$id: int screen_buy_games_max
 com.brucelet.spacetrader.R$id: int screen_buy_games_price
-com.brucelet.spacetrader.R$id: int screen_buy_machinery
 com.brucelet.spacetrader.R$id: int screen_buy_machinery_amount
+com.brucelet.spacetrader.R$id: int screen_buy_machinery_label
 com.brucelet.spacetrader.R$id: int screen_buy_machinery_max
 com.brucelet.spacetrader.R$id: int screen_buy_machinery_price
-com.brucelet.spacetrader.R$id: int screen_buy_medicine
 com.brucelet.spacetrader.R$id: int screen_buy_medicine_amount
+com.brucelet.spacetrader.R$id: int screen_buy_medicine_label
 com.brucelet.spacetrader.R$id: int screen_buy_medicine_max
 com.brucelet.spacetrader.R$id: int screen_buy_medicine_price
-com.brucelet.spacetrader.R$id: int screen_buy_narcotics
 com.brucelet.spacetrader.R$id: int screen_buy_narcotics_amount
+com.brucelet.spacetrader.R$id: int screen_buy_narcotics_label
 com.brucelet.spacetrader.R$id: int screen_buy_narcotics_max
 com.brucelet.spacetrader.R$id: int screen_buy_narcotics_price
-com.brucelet.spacetrader.R$id: int screen_buy_ore
 com.brucelet.spacetrader.R$id: int screen_buy_ore_amount
+com.brucelet.spacetrader.R$id: int screen_buy_ore_label
 com.brucelet.spacetrader.R$id: int screen_buy_ore_max
 com.brucelet.spacetrader.R$id: int screen_buy_ore_price
-com.brucelet.spacetrader.R$id: int screen_buy_robots
 com.brucelet.spacetrader.R$id: int screen_buy_robots_amount
+com.brucelet.spacetrader.R$id: int screen_buy_robots_label
 com.brucelet.spacetrader.R$id: int screen_buy_robots_max
 com.brucelet.spacetrader.R$id: int screen_buy_robots_price
-com.brucelet.spacetrader.R$id: int screen_buy_water
 com.brucelet.spacetrader.R$id: int screen_buy_water_amount
+com.brucelet.spacetrader.R$id: int screen_buy_water_label
 com.brucelet.spacetrader.R$id: int screen_buy_water_max
 com.brucelet.spacetrader.R$id: int screen_buy_water_price
 com.brucelet.spacetrader.R$id: int screen_buyeq
@@ -12468,6 +12472,7 @@ com.brucelet.spacetrader.R$id: int screen_personnel
 com.brucelet.spacetrader.R$id: int screen_personnel_credits
 com.brucelet.spacetrader.R$id: int screen_personnel_merc1
 com.brucelet.spacetrader.R$id: int screen_personnel_merc1_empty
+com.brucelet.spacetrader.R$id: int screen_personnel_merc1_empty_layout
 com.brucelet.spacetrader.R$id: int screen_personnel_merc1_engineer
 com.brucelet.spacetrader.R$id: int screen_personnel_merc1_fighter
 com.brucelet.spacetrader.R$id: int screen_personnel_merc1_fire
@@ -12478,6 +12483,7 @@ com.brucelet.spacetrader.R$id: int screen_personnel_merc1_stats
 com.brucelet.spacetrader.R$id: int screen_personnel_merc1_trader
 com.brucelet.spacetrader.R$id: int screen_personnel_merc2
 com.brucelet.spacetrader.R$id: int screen_personnel_merc2_empty
+com.brucelet.spacetrader.R$id: int screen_personnel_merc2_empty_layout
 com.brucelet.spacetrader.R$id: int screen_personnel_merc2_engineer
 com.brucelet.spacetrader.R$id: int screen_personnel_merc2_fighter
 com.brucelet.spacetrader.R$id: int screen_personnel_merc2_fire
@@ -12488,6 +12494,7 @@ com.brucelet.spacetrader.R$id: int screen_personnel_merc2_stats
 com.brucelet.spacetrader.R$id: int screen_personnel_merc2_trader
 com.brucelet.spacetrader.R$id: int screen_personnel_merc3
 com.brucelet.spacetrader.R$id: int screen_personnel_merc3_empty
+com.brucelet.spacetrader.R$id: int screen_personnel_merc3_empty_layout
 com.brucelet.spacetrader.R$id: int screen_personnel_merc3_engineer
 com.brucelet.spacetrader.R$id: int screen_personnel_merc3_fighter
 com.brucelet.spacetrader.R$id: int screen_personnel_merc3_hire
@@ -12499,52 +12506,42 @@ com.brucelet.spacetrader.R$id: int screen_personnel_merc3_trader
 com.brucelet.spacetrader.R$id: int screen_sell
 com.brucelet.spacetrader.R$id: int screen_sell_bays
 com.brucelet.spacetrader.R$id: int screen_sell_credits
-com.brucelet.spacetrader.R$id: int screen_sell_firearms
 com.brucelet.spacetrader.R$id: int screen_sell_firearms_all
 com.brucelet.spacetrader.R$id: int screen_sell_firearms_amount
 com.brucelet.spacetrader.R$id: int screen_sell_firearms_label
 com.brucelet.spacetrader.R$id: int screen_sell_firearms_price
-com.brucelet.spacetrader.R$id: int screen_sell_food
 com.brucelet.spacetrader.R$id: int screen_sell_food_all
 com.brucelet.spacetrader.R$id: int screen_sell_food_amount
 com.brucelet.spacetrader.R$id: int screen_sell_food_label
 com.brucelet.spacetrader.R$id: int screen_sell_food_price
-com.brucelet.spacetrader.R$id: int screen_sell_furs
 com.brucelet.spacetrader.R$id: int screen_sell_furs_all
 com.brucelet.spacetrader.R$id: int screen_sell_furs_amount
 com.brucelet.spacetrader.R$id: int screen_sell_furs_label
 com.brucelet.spacetrader.R$id: int screen_sell_furs_price
-com.brucelet.spacetrader.R$id: int screen_sell_games
 com.brucelet.spacetrader.R$id: int screen_sell_games_all
 com.brucelet.spacetrader.R$id: int screen_sell_games_amount
 com.brucelet.spacetrader.R$id: int screen_sell_games_label
 com.brucelet.spacetrader.R$id: int screen_sell_games_price
-com.brucelet.spacetrader.R$id: int screen_sell_machinery
 com.brucelet.spacetrader.R$id: int screen_sell_machinery_all
 com.brucelet.spacetrader.R$id: int screen_sell_machinery_amount
 com.brucelet.spacetrader.R$id: int screen_sell_machinery_label
 com.brucelet.spacetrader.R$id: int screen_sell_machinery_price
-com.brucelet.spacetrader.R$id: int screen_sell_medicine
 com.brucelet.spacetrader.R$id: int screen_sell_medicine_all
 com.brucelet.spacetrader.R$id: int screen_sell_medicine_amount
 com.brucelet.spacetrader.R$id: int screen_sell_medicine_label
 com.brucelet.spacetrader.R$id: int screen_sell_medicine_price
-com.brucelet.spacetrader.R$id: int screen_sell_narcotics
 com.brucelet.spacetrader.R$id: int screen_sell_narcotics_all
 com.brucelet.spacetrader.R$id: int screen_sell_narcotics_amount
 com.brucelet.spacetrader.R$id: int screen_sell_narcotics_label
 com.brucelet.spacetrader.R$id: int screen_sell_narcotics_price
-com.brucelet.spacetrader.R$id: int screen_sell_ore
 com.brucelet.spacetrader.R$id: int screen_sell_ore_all
 com.brucelet.spacetrader.R$id: int screen_sell_ore_amount
 com.brucelet.spacetrader.R$id: int screen_sell_ore_label
 com.brucelet.spacetrader.R$id: int screen_sell_ore_price
-com.brucelet.spacetrader.R$id: int screen_sell_robots
 com.brucelet.spacetrader.R$id: int screen_sell_robots_all
 com.brucelet.spacetrader.R$id: int screen_sell_robots_amount
 com.brucelet.spacetrader.R$id: int screen_sell_robots_label
 com.brucelet.spacetrader.R$id: int screen_sell_robots_price
-com.brucelet.spacetrader.R$id: int screen_sell_water
 com.brucelet.spacetrader.R$id: int screen_sell_water_all
 com.brucelet.spacetrader.R$id: int screen_sell_water_amount
 com.brucelet.spacetrader.R$id: int screen_sell_water_label
@@ -12565,6 +12562,7 @@ com.brucelet.spacetrader.R$id: int screen_selleq_gadget3_button
 com.brucelet.spacetrader.R$id: int screen_selleq_gadget3_price
 com.brucelet.spacetrader.R$id: int screen_selleq_gadget3_type
 com.brucelet.spacetrader.R$id: int screen_selleq_gadget_empty
+com.brucelet.spacetrader.R$id: int screen_selleq_gadget_notempty
 com.brucelet.spacetrader.R$id: int screen_selleq_shield
 com.brucelet.spacetrader.R$id: int screen_selleq_shield1
 com.brucelet.spacetrader.R$id: int screen_selleq_shield1_button
@@ -12579,6 +12577,7 @@ com.brucelet.spacetrader.R$id: int screen_selleq_shield3_button
 com.brucelet.spacetrader.R$id: int screen_selleq_shield3_price
 com.brucelet.spacetrader.R$id: int screen_selleq_shield3_type
 com.brucelet.spacetrader.R$id: int screen_selleq_shield_empty
+com.brucelet.spacetrader.R$id: int screen_selleq_shield_notempty
 com.brucelet.spacetrader.R$id: int screen_selleq_weapon
 com.brucelet.spacetrader.R$id: int screen_selleq_weapon1
 com.brucelet.spacetrader.R$id: int screen_selleq_weapon1_button
@@ -12593,6 +12592,7 @@ com.brucelet.spacetrader.R$id: int screen_selleq_weapon3_button
 com.brucelet.spacetrader.R$id: int screen_selleq_weapon3_price
 com.brucelet.spacetrader.R$id: int screen_selleq_weapon3_type
 com.brucelet.spacetrader.R$id: int screen_selleq_weapon_empty
+com.brucelet.spacetrader.R$id: int screen_selleq_weapon_notempty
 com.brucelet.spacetrader.R$id: int screen_status
 com.brucelet.spacetrader.R$id: int screen_status_back_button
 com.brucelet.spacetrader.R$id: int screen_status_buttons
@@ -12667,6 +12667,7 @@ com.brucelet.spacetrader.R$id: int screen_warp_avgprices
 com.brucelet.spacetrader.R$id: int screen_warp_avgprices_bays
 com.brucelet.spacetrader.R$id: int screen_warp_avgprices_credits
 com.brucelet.spacetrader.R$id: int screen_warp_avgprices_diffbutton
+com.brucelet.spacetrader.R$id: int screen_warp_avgprices_diffbutton_row
 com.brucelet.spacetrader.R$id: int screen_warp_avgprices_firearms_label
 com.brucelet.spacetrader.R$id: int screen_warp_avgprices_firearms_price
 com.brucelet.spacetrader.R$id: int screen_warp_avgprices_food_label
@@ -12724,32 +12725,25 @@ com.brucelet.spacetrader.R$id: int screen_warp_warpview
 com.brucelet.spacetrader.R$id: int screen_yard
 com.brucelet.spacetrader.R$id: int screen_yard_buypod
 com.brucelet.spacetrader.R$id: int screen_yard_buyship
-com.brucelet.spacetrader.R$id: int screen_yard_buyship_beetle
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_beetle_buy
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_beetle_info
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_beetle_price
-com.brucelet.spacetrader.R$id: int screen_yard_buyship_bumblebee
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_bumblebee_buy
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_bumblebee_info
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_bumblebee_price
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_credits
-com.brucelet.spacetrader.R$id: int screen_yard_buyship_firefly
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_firefly_buy
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_firefly_info
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_firefly_price
-com.brucelet.spacetrader.R$id: int screen_yard_buyship_flea
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_flea_buy
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_flea_info
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_flea_price
-com.brucelet.spacetrader.R$id: int screen_yard_buyship_gnat
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_gnat_buy
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_gnat_info
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_gnat_price
-com.brucelet.spacetrader.R$id: int screen_yard_buyship_grasshopper
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_grasshopper_buy
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_grasshopper_info
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_grasshopper_price
-com.brucelet.spacetrader.R$id: int screen_yard_buyship_hornet
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_hornet_buy
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_hornet_info
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_hornet_price
@@ -12769,15 +12763,12 @@ com.brucelet.spacetrader.R$id: int screen_yard_buyship_info_shield
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_info_size
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_info_size_row
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_info_weapon
-com.brucelet.spacetrader.R$id: int screen_yard_buyship_mosquito
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_mosquito_buy
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_mosquito_info
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_mosquito_price
-com.brucelet.spacetrader.R$id: int screen_yard_buyship_termite
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_termite_buy
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_termite_info
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_termite_price
-com.brucelet.spacetrader.R$id: int screen_yard_buyship_wasp
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_wasp_buy
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_wasp_info
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_wasp_price
@@ -12854,6 +12845,7 @@ com.brucelet.spacetrader.R$layout: int abc_simple_decor
 com.brucelet.spacetrader.R$layout: int activity_documentation
 com.brucelet.spacetrader.R$layout: int activity_main
 com.brucelet.spacetrader.R$layout: int activity_main2
+com.brucelet.spacetrader.R$layout: int autocomplete_dropdown_item
 com.brucelet.spacetrader.R$layout: int button_encounter_help
 com.brucelet.spacetrader.R$layout: int dialog_about
 com.brucelet.spacetrader.R$layout: int dialog_cheat
@@ -14376,7 +14368,9 @@ com.brucelet.spacetrader.R$style: int ActionButton_CloseMode_Palm_ab
 com.brucelet.spacetrader.R$style: int ActionButtonStyle_Dark
 com.brucelet.spacetrader.R$style: int ActionButtonStyle_Light
 com.brucelet.spacetrader.R$style: int ActionButtonStyle_Palm
-com.brucelet.spacetrader.R$style: int ActionButtonText
+com.brucelet.spacetrader.R$style: int ActionButtonText_Dark
+com.brucelet.spacetrader.R$style: int ActionButtonText_Light
+com.brucelet.spacetrader.R$style: int ActionButtonText_Palm
 com.brucelet.spacetrader.R$style: int ActionDropDownStyle_Palm
 com.brucelet.spacetrader.R$style: int ActionModeCloseButtonStyle_Dark
 com.brucelet.spacetrader.R$style: int ActionModeCloseButtonStyle_Light
@@ -14412,6 +14406,9 @@ com.brucelet.spacetrader.R$style: int Button_Rounded_Palm
 com.brucelet.spacetrader.R$style: int Button_Square_Dark
 com.brucelet.spacetrader.R$style: int Button_Square_Light
 com.brucelet.spacetrader.R$style: int Button_Square_Palm
+com.brucelet.spacetrader.R$style: int ButtonBar_AlertDialog_Dark
+com.brucelet.spacetrader.R$style: int ButtonBar_AlertDialog_Light
+com.brucelet.spacetrader.R$style: int ButtonBar_AlertDialog_Palm
 com.brucelet.spacetrader.R$style: int ButtonBarStyle_Palm
 com.brucelet.spacetrader.R$style: int ButtonDark_ACWidgets
 com.brucelet.spacetrader.R$style: int ButtonLight_ACWidgets
@@ -14552,6 +14549,7 @@ com.brucelet.spacetrader.R$style: int Theme_Dark_ab_Widget
 com.brucelet.spacetrader.R$style: int Theme_Light_ab
 com.brucelet.spacetrader.R$style: int Theme_Light_ab_Widget
 com.brucelet.spacetrader.R$style: int Theme_Palm_ab
+com.brucelet.spacetrader.R$style: int Theme_Palm_ab_Widget
 com.brucelet.spacetrader.R$style: int TitleText_Default
 com.brucelet.spacetrader.R$style: int TitleText_Palm
 com.brucelet.spacetrader.R$style: int Widget_AppCompat_ActionBar

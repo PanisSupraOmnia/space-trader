@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="ActivityTheme.Base.Light" parent="@style/Theme.Light_ab">
         <item name="android:actionButtonStyle">@style/ActionButtonStyle.Light</item>
         <item name="actionButtonStyle">@style/ActionButtonStyle.Light</item>
         <item name="android:actionOverflowButtonStyle">@style/ActionOverflowButtonStyle.Light</item>
         <item name="actionOverflowButtonStyle">@style/ActionOverflowButtonStyle.Light</item>
-        <item name="android:actionMenuTextAppearance">@style/ActionButtonText</item>
-        <item name="actionMenuTextAppearance">@style/ActionButtonText</item>
+        <item name="android:actionMenuTextAppearance">@style/ActionButtonText.Light</item>
+        <item name="actionMenuTextAppearance">@style/ActionButtonText.Light</item>
         <item name="android:actionBarWidgetTheme">@style/ActionBarWidgetTheme.Light</item>
         <item name="actionBarWidgetTheme">@style/ActionBarWidgetTheme.Light</item>
         <item name="android:actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Light</item>
@@ -19,8 +19,8 @@
         <item name="actionButtonStyle">@style/ActionButtonStyle.Dark</item>
         <item name="android:actionOverflowButtonStyle">@style/ActionOverflowButtonStyle.Dark</item>
         <item name="actionOverflowButtonStyle">@style/ActionOverflowButtonStyle.Dark</item>
-        <item name="android:actionMenuTextAppearance">@style/ActionButtonText</item>
-        <item name="actionMenuTextAppearance">@style/ActionButtonText</item>
+        <item name="android:actionMenuTextAppearance">@style/ActionButtonText.Dark</item>
+        <item name="actionMenuTextAppearance">@style/ActionButtonText.Dark</item>
         <item name="android:actionBarWidgetTheme">@style/ActionBarWidgetTheme.Dark</item>
         <item name="actionBarWidgetTheme">@style/ActionBarWidgetTheme.Dark</item>
         <item name="android:actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Dark</item>
@@ -32,8 +32,8 @@
         <item name="actionButtonStyle">@style/ActionButtonStyle.Palm</item>
         <item name="android:actionOverflowButtonStyle">@style/ActionOverflowButtonStyle.Palm</item>
         <item name="actionOverflowButtonStyle">@style/ActionOverflowButtonStyle.Palm</item>
-        <item name="android:actionMenuTextAppearance">@style/ActionButtonText</item>
-        <item name="actionMenuTextAppearance">@style/ActionButtonText</item>
+        <item name="android:actionMenuTextAppearance">@style/ActionButtonText.Palm</item>
+        <item name="actionMenuTextAppearance">@style/ActionButtonText.Palm</item>
         <item name="android:actionBarWidgetTheme">@style/ActionBarWidgetTheme.Palm</item>
         <item name="actionBarWidgetTheme">@style/ActionBarWidgetTheme.Palm</item>
         <item name="android:actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Palm</item>
@@ -72,6 +72,8 @@
         <item name="android:listDivider">@drawable/horizontal_divider_palm</item>
         <item name="android:textAppearanceListItem">@style/PopupMenuText.Palm</item>
         <item name="textAppearanceListItem">@style/PopupMenuText.Palm</item>
+        <item name="android:textColor">@color/primary_text_palm</item>
+        <item name="android:overScrollMode">never</item>
     </style>
 
     <style name="EditText.Palm" parent="@style/EditTextPalm_ACWidgets">
@@ -79,6 +81,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:singleLine">true</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:textColor">@android:color/black</item>
         <item name="android:textCursorDrawable">@drawable/text_cursor_palm</item>
     </style>
 
@@ -87,6 +90,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:singleLine">true</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:textColor">@android:color/black</item>
         <item name="android:popupBackground">@drawable/abc_menu_dropdown_panel_palm</item>
         <item name="android:dropDownSelector">@drawable/list_selector_palm</item>
         <item name="android:textCursorDrawable">@drawable/text_cursor_palm</item>

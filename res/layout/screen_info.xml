@@ -164,16 +164,20 @@
             android:layout_height="wrap_content"
             android:layout_weight="3"
             style="?attr/buttonStyleRounded"
-            android:text="@string/screen_info_news" />
+            android:text="@string/screen_info_news"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"  />
 
         <Button
             android:id="@+id/screen_info_merc"
             android:layout_width="0dp"
-            android:layout_weight="8"
+            android:layout_weight="10"
             android:layout_height="wrap_content"
             style="?attr/buttonStyleRounded"
             android:text="@string/screen_info_merc"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp" />
 
         <Button
             android:id="@+id/screen_info_special"
@@ -182,7 +186,9 @@
             android:layout_height="wrap_content"
             style="?attr/buttonStyleRounded"
             android:text="@string/screen_info_special"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp" />
     </LinearLayout>
 
 </LinearLayout>

@@ -7,7 +7,6 @@
     <attr name="roundedButtonDrawable" format="reference" />
     <attr name="squareButtonDrawable" format="reference" />
     <attr name="strokeColor" format="color|reference" />
-    <attr name="textColorWarpPrices" format="color|reference" />
     <attr name="leftArrow" format="reference" />
     <attr name="rightArrow" format="reference" />
     <attr name="infoIconDialog" format="reference" />
@@ -18,8 +17,10 @@
     <attr name="buttonStyleRounded" format="reference" />
     <attr name="buttonStyleSquare" format="reference" />
 	<attr name="dialogDividerColor" format="color|reference" />
+	<attr name="pressableTextColor" format="color|reference" />
 	
 	<attr name="alertDialogStyle" format="reference" />
+	<attr name="alertDialogButtonBarStyle" format="reference" />
 	<attr name="alertDialogButtonStyle" format="reference" />
     
 </resources>

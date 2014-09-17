@@ -29,8 +29,7 @@
         <item name="android:actionModeBackground">@drawable/cab_background_top_palm_ab</item>
         <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_palm_ab</item>
         <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Palm_ab</item>
-
-        <!-- Widgets from palm_acwidgets -->
+        
         <item name="android:editTextBackground">@drawable/palm_acwidgets_edit_text_holo_light</item>
         <item name="android:textColorHighlight">#99330099</item>
         <item name="android:textSelectHandleLeft">@drawable/palm_acwidgets_text_select_handle_left</item>
@@ -45,7 +44,8 @@
         <item name="android:progressBarStyleHorizontal">@style/ProgressBarPalm_ACWidgets</item>
         <item name="android:listChoiceBackgroundIndicator">@drawable/palm_acwidgets_list_selector_holo_light</item>
         <item name="android:activatedBackgroundIndicator">@drawable/palm_acwidgets_activated_background_holo_light</item>
-
+        
+        
     </style>
 
     <style name="ActionBar.Solid.Palm_ab" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
@@ -58,6 +58,12 @@
     <style name="ActionBar.Transparent.Palm_ab" parent="@style/Widget.AppCompat.Light.ActionBar">
         <item name="android:background">@drawable/ab_transparent_palm_ab</item>
         <item name="android:progressBarStyle">@style/ProgressBar.Palm_ab</item>
+    </style>
+    
+    <!-- this style is only referenced in a Light.DarkActionBar based theme -->
+    <style name="Theme.Palm_ab.Widget" parent="@style/Theme.AppCompat">
+        <item name="android:popupMenuStyle">@style/PopupMenu.Palm_ab</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.Palm_ab</item>
     </style>
 
 </resources>

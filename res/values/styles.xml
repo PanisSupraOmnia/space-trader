@@ -18,7 +18,7 @@
     <style name="ActivityTheme.Base.Light" parent="@style/Theme.Light_ab">
         <item name="actionButtonStyle">@style/ActionButtonStyle.Light</item>
         <item name="actionOverflowButtonStyle">@style/ActionOverflowButtonStyle.Light</item>
-        <item name="actionMenuTextAppearance">@style/ActionButtonText</item>
+        <item name="actionMenuTextAppearance">@style/ActionButtonText.Light</item>
         <item name="actionBarWidgetTheme">@style/ActionBarWidgetTheme.Light</item>
         <item name="actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Light</item>
     </style>
@@ -26,7 +26,7 @@
     <style name="ActivityTheme.Base.Dark" parent="@style/Theme.Dark_ab">
         <item name="actionButtonStyle">@style/ActionButtonStyle.Dark</item>
         <item name="actionOverflowButtonStyle">@style/ActionOverflowButtonStyle.Dark</item>
-        <item name="actionMenuTextAppearance">@style/ActionButtonText</item>
+        <item name="actionMenuTextAppearance">@style/ActionButtonText.Dark</item>
         <item name="actionBarWidgetTheme">@style/ActionBarWidgetTheme.Dark</item>
         <item name="actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Dark</item>
     </style>
@@ -34,7 +34,7 @@
     <style name="ActivityTheme.Base.Palm" parent="@style/Theme.Palm_ab">
         <item name="actionButtonStyle">@style/ActionButtonStyle.Palm</item>
         <item name="actionOverflowButtonStyle">@style/ActionOverflowButtonStyle.Palm</item>
-        <item name="actionMenuTextAppearance">@style/ActionButtonText</item>
+        <item name="actionMenuTextAppearance">@style/ActionButtonText.Palm</item>
         <item name="actionBarWidgetTheme">@style/ActionBarWidgetTheme.Palm</item>
         <item name="actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Palm</item>
         
@@ -59,7 +59,6 @@
         <item name="roundedButtonDrawable">@drawable/btn_rounded_holo_light</item>
         <item name="squareButtonDrawable">@drawable/btn_square_holo_light</item>
         <item name="strokeColor">@color/stroke_light</item>
-        <item name="textColorWarpPrices">?android:attr/textColorPrimary</item>
         <item name="leftArrow">@drawable/arrow_left_black</item>
         <item name="rightArrow">@drawable/arrow_right_black</item>>
         <item name="infoIconEncounter">@drawable/info_holo_light</item>
@@ -67,7 +66,9 @@
         <item name="dialogTitleTextStyle">@style/TextAppearance.DialogWindowTitle.Light</item>
         <item name="actionBarTitleBackground">?attr/selectableItemBackground</item>
         <item name="dialogDividerColor">@color/light_acwidgets_color</item>
+        <item name="pressableTextColor">?android:textColorPrimary</item>
         <item name="alertDialogStyle">@style/AlertDialog.Light</item>
+        <item name="alertDialogButtonBarStyle">@style/ButtonBar.AlertDialog.Light</item>
         <item name="alertDialogButtonStyle">@style/Button.AlertDialog.Light</item>
         
         <item name="android:textViewStyle">@style/TextView.Light</item>
@@ -83,7 +84,6 @@
         <item name="roundedButtonDrawable">@drawable/btn_rounded_holo_dark</item>
         <item name="squareButtonDrawable">@drawable/btn_square_holo_dark</item>
         <item name="strokeColor">@color/stroke_dark</item>
-        <item name="textColorWarpPrices">?android:attr/textColorPrimary</item>
         <item name="leftArrow">@drawable/arrow_left_white</item>
         <item name="rightArrow">@drawable/arrow_right_white</item>
         <item name="infoIconEncounter">@drawable/info_holo_dark</item>
@@ -91,7 +91,9 @@
         <item name="dialogTitleTextStyle">@style/TextAppearance.DialogWindowTitle.Dark</item>
         <item name="actionBarTitleBackground">?attr/selectableItemBackground</item>
         <item name="dialogDividerColor">@color/dark_acwidgets_color</item>
+        <item name="pressableTextColor">?android:textColorPrimary</item>
         <item name="alertDialogStyle">@style/AlertDialog.Dark</item>
+        <item name="alertDialogButtonBarStyle">@style/ButtonBar.AlertDialog.Dark</item>
         <item name="alertDialogButtonStyle">@style/Button.AlertDialog.Dark</item>
         
         <item name="android:textViewStyle">@style/TextView.Dark</item>
@@ -104,12 +106,11 @@
     
     <style name="ActivityTheme.Palm" parent="ActivityTheme.Base.Palm">        
         <item name="actionBarSpinnerTextStyle">@style/TitleText.Palm</item>
-        <item name="actionBarBackgroundDropdown">@drawable/ab_transparent_palm_ab</item>
+        <item name="actionBarBackgroundDropdown">@drawable/ab_solid_palm_cab</item>
         <item name="actionBarBackgroundTitle">@drawable/ab_solid_palm_dab</item>
         <item name="roundedButtonDrawable">@drawable/btn_rounded_palm</item>
         <item name="squareButtonDrawable">@drawable/btn_square_palm</item>
         <item name="strokeColor">@color/stroke_palm</item>
-        <item name="textColorWarpPrices">@android:color/black</item>
         <item name="leftArrow">@drawable/arrow_left_palm</item>
         <item name="rightArrow">@drawable/arrow_right_palm</item>
         <item name="infoIconEncounter">@drawable/info_white</item>
@@ -117,7 +118,9 @@
         <item name="dialogTitleTextStyle">@style/TextAppearance.DialogWindowTitle.Palm</item>
         <item name="actionBarTitleBackground">@drawable/ab_solid_palm_dab</item>
         <item name="dialogDividerColor">@color/palm_acwidgets_color</item>
+        <item name="pressableTextColor">@color/primary_text_palm</item>
         <item name="alertDialogStyle">@style/AlertDialog.Palm</item>
+        <item name="alertDialogButtonBarStyle">@style/ButtonBar.AlertDialog.Palm</item>
         <item name="alertDialogButtonStyle">@style/Button.AlertDialog.Palm</item>
         
         <item name="android:textViewStyle">@style/TextView.Palm</item>
@@ -127,8 +130,6 @@
         <item name="buttonStyleRounded">@style/Button.Rounded.Palm</item>
         <item name="buttonStyleSquare">@style/Button.Square.Palm</item>
         
-        <item name="android:textColorPrimary">@color/primary_text_palm</item>
-        <item name="android:textColorPrimaryDisableOnly">@color/primary_text_palm</item>
         <item name="android:windowBackground">@android:color/white</item>
         <item name="android:panelBackground">@drawable/menu_hardkey_panel_border_palm</item>
         <item name="android:horizontalDivider">@drawable/horizontal_divider_palm</item>
@@ -225,15 +226,15 @@
     </style>
     
     <style name="ActionBarWidgetTheme.Light" parent="ActivityTheme.Light">
-        <item name="android:textAppearance">@style/ActionButtonText</item>
+        <item name="android:textAppearance">@style/ActionButtonText.Light</item>
     </style>
     
     <style name="ActionBarWidgetTheme.Dark" parent="ActivityTheme.Dark">
-        <item name="android:textAppearance">@style/ActionButtonText</item>
+        <item name="android:textAppearance">@style/ActionButtonText.Dark</item>
     </style>
     
     <style name="ActionBarWidgetTheme.Palm" parent="ActivityTheme.Palm">
-        <item name="android:textAppearance">@style/ActionButtonText</item>
+        <item name="android:textAppearance">@style/ActionButtonText.Palm</item>
         <item name="android:divider">@null</item>
     </style>
     
@@ -279,25 +280,52 @@
         <item name="android:divider">@android:color/transparent</item>
     </style>
     
+    <style name="ButtonBar.AlertDialog.Light" parent="">
+        <item name="showDividers">middle</item>
+    </style>
+    
+    <style name="ButtonBar.AlertDialog.Dark" parent="">
+        <item name="showDividers">middle</item>        
+    </style>
+    
+    <style name="ButtonBar.AlertDialog.Palm" parent="">
+        <item name="showDividers">middle</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:layout_marginRight">4dp</item>
+    </style>
+    
     <style name="Button.AlertDialog.Light" parent="@style/Button.Square.Light">
         <item name="android:background">@drawable/light_acwidgets_list_selector_holo_light</item>
         <item name="android:textColor">@android:color/black</item>
+        <item name="android:minHeight">@dimen/alert_dialog_button_bar_height</item>
     </style>
     
     <style name="Button.AlertDialog.Dark" parent="@style/Button.Square.Dark">
         <item name="android:background">@drawable/dark_acwidgets_list_selector_holo_dark</item>
         <item name="android:textColor">@android:color/white</item>
+        <item name="android:minHeight">@dimen/alert_dialog_button_bar_height</item>
     </style>
     
     <style name="Button.AlertDialog.Palm" parent="@style/Button.Rounded.Palm">
-        <item name="android:layout_marginLeft">8dp</item>
-        <item name="android:layout_marginRight">8dp</item>
+        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:layout_marginRight">4dp</item>
         <item name="android:layout_marginBottom">8dp</item>
         <item name="android:textColor">@color/primary_text_palm</item>
+        <item name="android:minHeight">36dp</item>
     </style>
     
-    <style name="ActionButtonText" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu">
+    <style name="ActionButtonText.Light" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu">
         <item name="android:typeface">monospace</item>
+    </style>
+    
+    <style name="ActionButtonText.Dark" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu">
+        <item name="android:typeface">monospace</item>
+    </style>
+    
+    <style name="ActionButtonText.Palm" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu">
+        <item name="android:typeface">monospace</item>
+        <item name="android:textColor">@color/primary_text_palm</item>
     </style>
     
     <style name="ActionBarStyle.Palm" parent="@style/ActionBar.Transparent.Palm_ab">
@@ -307,19 +335,18 @@
     </style>
     
     <style name="SpinnerStyle.Palm" parent="@style/SpinnerPalm_ACWidgets">
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textColor">@color/primary_text_palm</item>
         <item name="android:background">@drawable/spinner_background_palm</item>
         <item name="android:dropDownSelector">@drawable/list_selector_palm</item>
         <item name="android:popupBackground">@drawable/abc_menu_dropdown_panel_palm</item>
     </style>
     
     <style name="SpinnerDropDownStyle.Palm" parent="@style/SpinnerDropDownItemPalm_ACWidgets">
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textColor">@color/primary_text_palm</item>
     </style>
     
-
     <style name="ActionDropDownStyle.Palm" parent="@style/DropDownNav.Palm_ab">
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textColor">@color/primary_text_palm</item>
         <item name="android:textStyle">normal</item>
         <item name="android:dropDownSelector">@drawable/list_selector_palm</item>
     </style>
@@ -329,16 +356,20 @@
     </style>
     
     <style name="PopupMenuText.Palm" parent="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large" >
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textColor">@color/primary_text_palm</item>
     </style>
     
     <style name="ListViewStyle.Palm" parent="@style/ListViewPalm_ACWidgets" >
         <item name="android:listSelector">@drawable/list_selector_palm</item>
         <item name="textAppearanceListItem">@style/PopupMenuText.Palm</item>
+        <item name="android:textColor">@color/primary_text_palm</item>
+        <item name="android:fadingEdge">none</item>
     </style>
     
     <style name="ListViewDropDownStyle.Palm" parent="@style/DropDownListView.Palm_ab">
         <item name="android:listSelector">@drawable/list_selector_palm</item>
+        <item name="android:textColor">@color/primary_text_palm</item>
+        <item name="android:fadingEdge">none</item>
     </style>
     
     <style name="TitleText.Default" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
@@ -363,6 +394,8 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">22sp</item>
     </style>
+    
+    
         
     <style name="RootLayout">
         <item name="android:layout_width">match_parent</item>
@@ -430,10 +463,10 @@
         <item name="android:background">?attr/roundedButtonDrawable</item>
         <item name="android:minWidth">@dimen/button_minsize</item>
         <item name="android:minHeight">@dimen/button_minsize</item>
-        <item name="android:paddingLeft">5dp</item>
-        <item name="android:paddingRight">5dp</item>
-        <item name="android:paddingTop">5dp</item>
-        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingLeft">@dimen/button_padding</item>
+        <item name="android:paddingRight">@dimen/button_padding</item>
+        <item name="android:paddingTop">@dimen/button_padding</item>
+        <item name="android:paddingBottom">@dimen/button_padding</item>
         <item name="android:layout_marginLeft">1dp</item>
         <item name="android:layout_marginRight">1dp</item>
         <item name="android:layout_marginTop">1dp</item>
@@ -484,10 +517,10 @@
         <item name="android:background">?attr/roundedButtonDrawable</item>
         <item name="android:minWidth">@dimen/button_minsize</item>
         <item name="android:minHeight">@dimen/button_minsize</item>
-        <item name="android:paddingLeft">5dp</item>
-        <item name="android:paddingRight">5dp</item>
-        <item name="android:paddingTop">5dp</item>
-        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingLeft">@dimen/button_padding</item>
+        <item name="android:paddingRight">@dimen/button_padding</item>
+        <item name="android:paddingTop">@dimen/button_padding</item>
+        <item name="android:paddingBottom">@dimen/button_padding</item>
         <item name="android:layout_marginLeft">1dp</item>
         <item name="android:layout_marginRight">1dp</item>
         <item name="android:layout_marginTop">1dp</item>
@@ -537,14 +570,14 @@
     <style name="Button.Rounded.Palm" parent="@style/ButtonPalm_ACWidgets">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textColor">@color/primary_text_palm</item>
         <item name="android:background">?attr/roundedButtonDrawable</item>
         <item name="android:minWidth">@dimen/button_minsize</item>
         <item name="android:minHeight">@dimen/button_minsize</item>
-        <item name="android:paddingLeft">5dp</item>
-        <item name="android:paddingRight">5dp</item>
-        <item name="android:paddingTop">5dp</item>
-        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingLeft">@dimen/button_padding</item>
+        <item name="android:paddingRight">@dimen/button_padding</item>
+        <item name="android:paddingTop">@dimen/button_padding</item>
+        <item name="android:paddingBottom">@dimen/button_padding</item>
         <item name="android:layout_marginLeft">1dp</item>
         <item name="android:layout_marginRight">1dp</item>
         <item name="android:layout_marginTop">1dp</item>

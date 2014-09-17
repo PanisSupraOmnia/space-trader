@@ -13,20 +13,25 @@
         android:gravity="center"
         android:singleLine="true"
         android:textAppearance="?attr/actionMenuTextAppearance"
-        android:typeface="monospace" />
+        android:typeface="monospace"
+        android:textColor="?attr/pressableTextColor" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="?attr/dropdownListPreferredItemHeight"
         android:gravity="center"
         android:singleLine="true"
-        android:text="@string/dialog_shortcut_spacer" />
+        android:text="@string/dialog_shortcut_spacer"
+        android:textColor="?attr/pressableTextColor"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp" />
 
     <TextView
         android:id="@+id/spinner_text"
         android:layout_width="match_parent"
         android:layout_height="?attr/dropdownListPreferredItemHeight"
         android:gravity="left|center_vertical"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:textColor="?attr/pressableTextColor" />
 
 </LinearLayout>

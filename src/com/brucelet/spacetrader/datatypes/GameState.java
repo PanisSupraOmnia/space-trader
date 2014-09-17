@@ -2538,7 +2538,8 @@ public class GameState {
 		BaseScreen screen = mGameManager.findScreenById(R.id.screen_selleq);
 		if (screen == null || screen.getView() == null) return;
 		
-		((ViewFlipper) screen.getView().findViewById(R.id.screen_selleq_weapon)).setDisplayedChild(ship.weapon[0] == null? 0 : 1);		
+		screen.setViewVisibilityById(R.id.screen_selleq_weapon_empty, ship.weapon[0] == null);
+		screen.setViewVisibilityById(R.id.screen_selleq_weapon_notempty, ship.weapon[0] != null);
 		
 		for (int i=0; i<ship.weapon.length; ++i)
 		{
@@ -2554,7 +2555,8 @@ public class GameState {
 			screen.setViewTextById(SellEqScreen.WEAPON_PRICE_IDS.get(i), R.string.format_credits, ship.weapon[i].sellPrice());
 		}
 
-		((ViewFlipper) screen.getView().findViewById(R.id.screen_selleq_shield)).setDisplayedChild(ship.shield[0] == null? 0 : 1);
+		screen.setViewVisibilityById(R.id.screen_selleq_shield_empty, ship.shield[0] == null);
+		screen.setViewVisibilityById(R.id.screen_selleq_shield_notempty, ship.shield[0] != null);
 
 		for (int i=0; i<ship.shield.length; ++i)
 		{
@@ -2569,8 +2571,9 @@ public class GameState {
 			screen.setViewTextById(SellEqScreen.SHIELD_PRICE_IDS.get(i), R.string.format_credits, ship.shield[i].sellPrice());
 		}
 
-		((ViewFlipper) screen.getView().findViewById(R.id.screen_selleq_gadget)).setDisplayedChild(ship.gadget[0] == null? 0 : 1);
-
+		screen.setViewVisibilityById(R.id.screen_selleq_gadget_empty, ship.gadget[0] == null);
+		screen.setViewVisibilityById(R.id.screen_selleq_gadget_notempty, ship.gadget[0] != null);
+		
 		for (int i=0; i<ship.gadget.length; ++i)
 		{
 			screen.setViewVisibilityById(SellEqScreen.GADGET_IDS.get(i), ship.gadget[i] != null);
@@ -3658,7 +3661,15 @@ public class GameState {
 					description += getResources().getString(R.string.screen_encounter_description_commandernoescape, opponentType);
 				}
 
-				screen.setViewTextById(R.id.screen_encounter_description, description);
+				TextView textView = (TextView) screen.getView().findViewById(R.id.screen_encounter_description);
+				textView.setText(description);
+				int l = textView.getLineCount();
+				if (l > 2 || l <= 0) {
+					android.util.Log.d("Encounter description","Too many lines! Converting '\n' to ' '");
+					description = description.replace('\n', ' ');
+					android.util.Log.d("Encounter description","description="+description);
+					textView.setText(description);
+				}
 				
 				encounterDisplayNextAction(false);
 				
@@ -6764,23 +6775,30 @@ public class GameState {
 			else
 				screen.setViewTextById(R.id.screen_personnel_merc1_empty, R.string.screen_personnel_wild);
 			
-			((ViewFlipper) screen.getView().findViewById(R.id.screen_personnel_merc1)).setDisplayedChild(0);
+			screen.setViewVisibilityById(R.id.screen_personnel_merc1_empty_layout, true);
+			screen.setViewVisibilityById(R.id.screen_personnel_merc1_stats, false);
 		}
 		
 		else if (ship.type.crewQuarters <= 1)
 		{
 			screen.setViewTextById(R.id.screen_personnel_merc1_empty, R.string.screen_personnel_noquarters);
-			((ViewFlipper) screen.getView().findViewById(R.id.screen_personnel_merc1)).setDisplayedChild(0);
+			
+			screen.setViewVisibilityById(R.id.screen_personnel_merc1_empty_layout, true);
+			screen.setViewVisibilityById(R.id.screen_personnel_merc1_stats, false);
 		}
 		
 		else if (ship.crew[1] == null)
 		{
 			screen.setViewTextById(R.id.screen_personnel_merc1_empty, R.string.screen_personnel_vacancy);
-			((ViewFlipper) screen.getView().findViewById(R.id.screen_personnel_merc1)).setDisplayedChild(0);
+			
+			screen.setViewVisibilityById(R.id.screen_personnel_merc1_empty_layout, true);
+			screen.setViewVisibilityById(R.id.screen_personnel_merc1_stats, false);
 		}
 		
 		else {
-			((ViewFlipper) screen.getView().findViewById(R.id.screen_personnel_merc1)).setDisplayedChild(1);
+			screen.setViewVisibilityById(R.id.screen_personnel_merc1_empty_layout, false);
+			screen.setViewVisibilityById(R.id.screen_personnel_merc1_stats, true);
+			
 			screen.setViewTextById(R.id.screen_personnel_merc1_name, ship.crew[1].name);
 			screen.setViewTextById(R.id.screen_personnel_merc1_price, R.string.format_dailycost, ship.crew[1].hirePrice());
 			screen.setViewTextById(R.id.screen_personnel_merc1_pilot, R.string.screen_personnel_pilot, ship.crew[1].pilot());
@@ -6797,24 +6815,31 @@ public class GameState {
 				screen.setViewTextById(R.id.screen_personnel_merc2_empty, R.string.screen_personnel_jarek);
 			else
 				screen.setViewTextById(R.id.screen_personnel_merc2_empty, R.string.screen_personnel_wild);
-			
-			((ViewFlipper) screen.getView().findViewById(R.id.screen_personnel_merc2)).setDisplayedChild(0);
+
+			screen.setViewVisibilityById(R.id.screen_personnel_merc2_empty_layout, true);
+			screen.setViewVisibilityById(R.id.screen_personnel_merc2_stats, false);
 		}
 		
 		else if (ship.type.crewQuarters <= 2)
 		{
 			screen.setViewTextById(R.id.screen_personnel_merc2_empty, R.string.screen_personnel_noquarters);
-			((ViewFlipper) screen.getView().findViewById(R.id.screen_personnel_merc2)).setDisplayedChild(0);
+			
+			screen.setViewVisibilityById(R.id.screen_personnel_merc2_empty_layout, true);
+			screen.setViewVisibilityById(R.id.screen_personnel_merc2_stats, false);
 		}
 		
 		else if (ship.crew[2] == null)
 		{
 			screen.setViewTextById(R.id.screen_personnel_merc2_empty, R.string.screen_personnel_vacancy);
-			((ViewFlipper) screen.getView().findViewById(R.id.screen_personnel_merc2)).setDisplayedChild(0);
+			
+			screen.setViewVisibilityById(R.id.screen_personnel_merc2_empty_layout, true);
+			screen.setViewVisibilityById(R.id.screen_personnel_merc2_stats, false);
 		}
 		
 		else {
-			((ViewFlipper) screen.getView().findViewById(R.id.screen_personnel_merc2)).setDisplayedChild(1);
+			screen.setViewVisibilityById(R.id.screen_personnel_merc2_empty_layout, false);
+			screen.setViewVisibilityById(R.id.screen_personnel_merc2_stats, true);
+			
 			screen.setViewTextById(R.id.screen_personnel_merc2_name, ship.crew[2].name);
 			screen.setViewTextById(R.id.screen_personnel_merc2_price, R.string.format_dailycost, ship.crew[2].hirePrice());
 			screen.setViewTextById(R.id.screen_personnel_merc2_pilot, R.string.screen_personnel_pilot, ship.crew[2].pilot());
@@ -6826,11 +6851,14 @@ public class GameState {
 		CrewMember forHire = getForHire();
 		if (forHire == null)
 		{
-			((ViewFlipper) screen.getView().findViewById(R.id.screen_personnel_merc3)).setDisplayedChild(0);
+			screen.setViewVisibilityById(R.id.screen_personnel_merc3_empty_layout, true);
+			screen.setViewVisibilityById(R.id.screen_personnel_merc3_stats, false);
 		}
 		else
 		{	
-			((ViewFlipper) screen.getView().findViewById(R.id.screen_personnel_merc3)).setDisplayedChild(1);
+			screen.setViewVisibilityById(R.id.screen_personnel_merc3_empty_layout, false);
+			screen.setViewVisibilityById(R.id.screen_personnel_merc3_stats, true);
+			
 			screen.setViewTextById(R.id.screen_personnel_merc3_name, forHire.name);
 			screen.setViewTextById(R.id.screen_personnel_merc3_price, R.string.format_dailycost, forHire.hirePrice());
 			screen.setViewTextById(R.id.screen_personnel_merc3_pilot, R.string.screen_personnel_pilot, forHire.pilot());
@@ -7907,7 +7935,7 @@ public class GameState {
 		if (dialog == null || dialog.getView() == null) return;
 //		BaseDialog dialog = mGameManager.findDialogByClass(WarpPopupDialog.class);
 //		((ViewFlipper) dialog.getDialog().findViewById(R.id.screen_warp_viewflipper)).setDisplayedChild(1);	
-		dialog.setViewVisibilityById(R.id.screen_warp_avgprices_credits, developerMode, false);
+		dialog.setViewVisibilityById(R.id.screen_warp_avgprices_lowerspacer, developerMode, false);
 		dialog.setViewTextById(R.id.screen_warp_avgprices_credits, R.string.format_cash, credits);
 		
 //		dialog.getDialog().setTitle(R.string.screen_warp_avgprices);
@@ -7970,6 +7998,7 @@ public class GameState {
 			((TextView) page.findViewById(R.id.screen_warp_avgprices_resources)).setText(system.specialResources.toXmlString(getResources()));
 		else
 			((TextView) page.findViewById(R.id.screen_warp_avgprices_resources)).setText(R.string.specialresources_unknown);
+		
 		((TextView) page.findViewById(R.id.screen_warp_avgprices_name)).setText(system.name);
 
 		for (TradeItem item : TradeItem.values())
@@ -7991,6 +8020,7 @@ public class GameState {
 			{
 				((TextView) page.findViewById(WarpPricesScreen.PRICE_IDS.get(item))).setText(getResources().getString(formatId, priceText));
 			}
+
 		}
 	}
 	

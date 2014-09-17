@@ -1661,11 +1661,10 @@ android.support.v4.widget.ListPopupWindowCompat$KitKatListPopupWindowImpl
 android.support.v4.widget.ListPopupWindowCompat$ListPopupWindowImpl
 android.support.v4.widget.ListPopupWindowCompatKitKat
 android.support.v4.widget.ListViewAutoScrollHelper
-android.support.v4.widget.PopupMenuCompat
-android.support.v4.widget.PopupMenuCompat$BasePopupMenuImpl
-android.support.v4.widget.PopupMenuCompat$KitKatPopupMenuImpl
-android.support.v4.widget.PopupMenuCompat$PopupMenuImpl
-android.support.v4.widget.PopupMenuCompatKitKat
+android.support.v4.widget.PopupMenuCompat:
+    66:68:private PopupMenuCompat()
+android.support.v4.widget.PopupMenuCompatKitKat:
+    25:25:PopupMenuCompatKitKat()
 android.support.v4.widget.ResourceCursorAdapter:
     54:57:public ResourceCursorAdapter(android.content.Context,int,android.database.Cursor)
     93:96:public ResourceCursorAdapter(android.content.Context,int,android.database.Cursor,int)
@@ -2551,45 +2550,45 @@ android.support.v7.widget.SuggestionsAdapter:
 com.brucelet.spacetrader.BackupAgent:
     private static final java.lang.String sTag
 com.brucelet.spacetrader.BankScreen:
-    18:18:public static com.brucelet.spacetrader.BankScreen newInstance()
-    55:55:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
+    38:38:public static com.brucelet.spacetrader.BankScreen newInstance()
+    75:75:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.BaseDialog$Builder:
-    551:552:public com.brucelet.spacetrader.BaseDialog$Builder setPositiveButton(java.lang.CharSequence)
-    561:562:public com.brucelet.spacetrader.BaseDialog$Builder setNeutralButton(java.lang.CharSequence)
-    571:572:public com.brucelet.spacetrader.BaseDialog$Builder setNegativeButton(java.lang.CharSequence)
+    571:572:public com.brucelet.spacetrader.BaseDialog$Builder setPositiveButton(java.lang.CharSequence)
+    581:582:public com.brucelet.spacetrader.BaseDialog$Builder setNeutralButton(java.lang.CharSequence)
+    591:592:public com.brucelet.spacetrader.BaseDialog$Builder setNegativeButton(java.lang.CharSequence)
 com.brucelet.spacetrader.BaseScreen:
-    110:110:public void setAdapter(com.brucelet.spacetrader.ScreenPagerAdapter)
+    130:130:public void setAdapter(com.brucelet.spacetrader.ScreenPagerAdapter)
     public abstract com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.BuildConfig
 com.brucelet.spacetrader.BuyEqScreen:
-    51:51:public static com.brucelet.spacetrader.BuyEqScreen newInstance()
-    89:89:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
+    71:71:public static com.brucelet.spacetrader.BuyEqScreen newInstance()
+    109:109:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.BuyScreen:
-    64:64:public static com.brucelet.spacetrader.BuyScreen newInstance()
-    103:103:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
+    84:84:public static com.brucelet.spacetrader.BuyScreen newInstance()
+    123:123:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.BuyShipScreen:
-    64:64:public static com.brucelet.spacetrader.BuyShipScreen newInstance()
-    99:99:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
+    84:84:public static com.brucelet.spacetrader.BuyShipScreen newInstance()
+    119:119:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.ChartScreen:
-    31:31:public static com.brucelet.spacetrader.ChartScreen newInstance()
-    116:116:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
+    51:51:public static com.brucelet.spacetrader.ChartScreen newInstance()
+    136:136:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.ConvenienceMethods
 com.brucelet.spacetrader.EncounterScreen:
-    66:66:public static com.brucelet.spacetrader.EncounterScreen newInstance()
-    133:133:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
+    86:86:public static com.brucelet.spacetrader.EncounterScreen newInstance()
+    153:153:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.EndOfGameScreen:
-    13:13:public static com.brucelet.spacetrader.EndOfGameScreen newInstance()
-    44:44:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
+    33:33:public static com.brucelet.spacetrader.EndOfGameScreen newInstance()
+    64:64:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.InfoScreen:
-    18:19:public static com.brucelet.spacetrader.InfoScreen newInstance()
-    63:63:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
+    38:39:public static com.brucelet.spacetrader.InfoScreen newInstance()
+    83:83:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.MainActivity:
     public static final java.lang.String GAME_1
     public static final java.lang.String GAME_2
     static final java.lang.String SAVEFILE
 com.brucelet.spacetrader.PersonnelScreen:
-    18:18:public static com.brucelet.spacetrader.PersonnelScreen newInstance()
-    56:56:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
+    38:38:public static com.brucelet.spacetrader.PersonnelScreen newInstance()
+    76:76:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.R
 com.brucelet.spacetrader.R$anim
 com.brucelet.spacetrader.R$array
@@ -2608,50 +2607,50 @@ com.brucelet.spacetrader.R$style
 com.brucelet.spacetrader.R$styleable
 com.brucelet.spacetrader.ScreenPagerAdapter
 com.brucelet.spacetrader.SellEqScreen:
-    113:113:public static com.brucelet.spacetrader.SellEqScreen newInstance()
-    160:160:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
+    133:133:public static com.brucelet.spacetrader.SellEqScreen newInstance()
+    180:180:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.SellScreen:
-    78:78:public static com.brucelet.spacetrader.SellScreen newInstance()
-    117:117:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
+    98:98:public static com.brucelet.spacetrader.SellScreen newInstance()
+    137:137:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.SimpleDialog:
-    42:47:public static com.brucelet.spacetrader.SimpleDialog newInstance(java.lang.CharSequence,java.lang.CharSequence,int,com.brucelet.spacetrader.OnConfirmListener)
-    59:63:public static com.brucelet.spacetrader.SimpleDialog newInstance(java.lang.CharSequence,java.lang.CharSequence,int)
+    62:67:public static com.brucelet.spacetrader.SimpleDialog newInstance(java.lang.CharSequence,java.lang.CharSequence,int,com.brucelet.spacetrader.OnConfirmListener)
+    79:83:public static com.brucelet.spacetrader.SimpleDialog newInstance(java.lang.CharSequence,java.lang.CharSequence,int)
 com.brucelet.spacetrader.StatusCargoScreen:
-    19:20:public static com.brucelet.spacetrader.StatusCargoScreen newInstance()
-    59:59:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
+    39:40:public static com.brucelet.spacetrader.StatusCargoScreen newInstance()
+    79:79:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.StatusQuestsScreen:
-    19:20:public static com.brucelet.spacetrader.StatusQuestsScreen newInstance()
-    59:59:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
+    39:40:public static com.brucelet.spacetrader.StatusQuestsScreen newInstance()
+    79:79:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.StatusScreen:
-    26:26:public static com.brucelet.spacetrader.StatusScreen newInstance()
-    68:68:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
+    46:46:public static com.brucelet.spacetrader.StatusScreen newInstance()
+    88:88:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.StatusShipScreen:
-    45:46:public static com.brucelet.spacetrader.StatusShipScreen newInstance()
-    85:85:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
+    65:66:public static com.brucelet.spacetrader.StatusShipScreen newInstance()
+    105:105:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.TitleScreen:
-    14:14:public static com.brucelet.spacetrader.TitleScreen newInstance()
-    49:49:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
+    34:34:public static com.brucelet.spacetrader.TitleScreen newInstance()
+    69:69:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.WarpPricesScreen:
-    65:68:public static com.brucelet.spacetrader.WarpPricesScreen newInstance()
-    120:120:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
-    138:138:protected int getSpacerHeight()
+    85:88:public static com.brucelet.spacetrader.WarpPricesScreen newInstance()
+    140:140:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
+    158:158:protected int getSpacerHeight()
 com.brucelet.spacetrader.WarpScreen:
-    30:30:public static com.brucelet.spacetrader.WarpScreen newInstance()
-    109:109:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
+    50:50:public static com.brucelet.spacetrader.WarpScreen newInstance()
+    129:129:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.WarpSubScreen:
     protected abstract int getSpacerHeight()
-    89:90:public void notifyAdapterChanged()
+    109:110:public void notifyAdapterChanged()
 com.brucelet.spacetrader.WarpSystemPagerAdapter:
     public static final int POSITION_CURRENT
     public static final int POSITION_PREV
     public static final int POSITION_NEXT
 com.brucelet.spacetrader.WarpTargetScreen:
-    31:34:public static com.brucelet.spacetrader.WarpTargetScreen newInstance()
-    77:77:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
-    92:92:protected int getSpacerHeight()
+    51:54:public static com.brucelet.spacetrader.WarpTargetScreen newInstance()
+    97:97:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
+    112:112:protected int getSpacerHeight()
 com.brucelet.spacetrader.YardScreen:
-    21:21:public static com.brucelet.spacetrader.YardScreen newInstance()
-    58:58:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
+    41:41:public static com.brucelet.spacetrader.YardScreen newInstance()
+    78:78:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.datatypes.GameState:
     private static final int DEBTWARNING
     private static final int DEBTTOOLARGE
@@ -2700,12 +2699,12 @@ com.brucelet.spacetrader.enumtypes.DifficultyLevel:
 com.brucelet.spacetrader.enumtypes.Encounter:
     public abstract java.lang.String name()
 com.brucelet.spacetrader.enumtypes.Gadget:
-    52:52:public com.brucelet.spacetrader.enumtypes.TechLevel techLevel()
+    72:72:public com.brucelet.spacetrader.enumtypes.TechLevel techLevel()
 com.brucelet.spacetrader.enumtypes.Incrementable:
     public abstract java.lang.Object next()
     public abstract java.lang.Object prev()
 com.brucelet.spacetrader.enumtypes.Incrementable$Impl:
-    7:7:public Incrementable$Impl()
+    27:27:public Incrementable$Impl()
 com.brucelet.spacetrader.enumtypes.PoliceRecord:
     public static final int ATTACKPOLICESCORE
     public static final int KILLPOLICESCORE
@@ -2723,17 +2722,17 @@ com.brucelet.spacetrader.enumtypes.Purchasable:
     public abstract int sellPrice()
     public abstract com.brucelet.spacetrader.enumtypes.TechLevel techLevel()
 com.brucelet.spacetrader.enumtypes.Purchasable$Impl:
-    9:9:private Purchasable$Impl()
+    29:29:private Purchasable$Impl()
 com.brucelet.spacetrader.enumtypes.ScreenType:
-    57:57:public static final com.brucelet.spacetrader.enumtypes.ScreenType[] dockedValues()
+    77:77:public static final com.brucelet.spacetrader.enumtypes.ScreenType[] dockedValues()
 com.brucelet.spacetrader.enumtypes.Shield:
-    45:45:public java.lang.String toXmlPluralString(int,android.content.res.Resources)
-    60:60:public com.brucelet.spacetrader.enumtypes.TechLevel techLevel()
+    65:65:public java.lang.String toXmlPluralString(int,android.content.res.Resources)
+    80:80:public com.brucelet.spacetrader.enumtypes.TechLevel techLevel()
 com.brucelet.spacetrader.enumtypes.ShipType:
-    125:125:public int sellPrice()
-    130:130:public com.brucelet.spacetrader.enumtypes.TechLevel techLevel()
+    145:145:public int sellPrice()
+    150:150:public com.brucelet.spacetrader.enumtypes.TechLevel techLevel()
 com.brucelet.spacetrader.enumtypes.Weapon:
-    47:47:public java.lang.String toXmlPluralString(int,android.content.res.Resources)
-    62:62:public com.brucelet.spacetrader.enumtypes.TechLevel techLevel()
+    67:67:public java.lang.String toXmlPluralString(int,android.content.res.Resources)
+    82:82:public com.brucelet.spacetrader.enumtypes.TechLevel techLevel()
 com.brucelet.spacetrader.enumtypes.XmlString$Plural
 com.brucelet.spacetrader.widget.EncounterHelpActionProvider

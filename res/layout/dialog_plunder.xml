@@ -6,8 +6,8 @@
     android:paddingBottom="8dip"
     android:paddingLeft="16dip"
     android:paddingRight="16dip"
-    android:paddingTop="8dip">
-
+    android:paddingTop="8dip" >
+    
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -20,20 +20,22 @@
 
             <Button
                 android:id="@+id/dialog_plunder_water_amount"
-                style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                style="?attr/buttonStyleSquare"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="2" />
 
             <TextView
-                android:layout_height="wrap_content"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:text="@string/tradeitem_water" />
 
             <Button
                 android:id="@+id/dialog_plunder_water_all"
-                style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                style="?attr/buttonStyleSquare"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:text="@string/generic_all" />
         </LinearLayout>
@@ -44,20 +46,22 @@
 
             <Button
                 android:id="@+id/dialog_plunder_furs_amount"
-                style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                style="?attr/buttonStyleSquare"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="2" />
 
             <TextView
-                android:layout_height="wrap_content"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:text="@string/tradeitem_furs" />
 
             <Button
                 android:id="@+id/dialog_plunder_furs_all"
-                style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                style="?attr/buttonStyleSquare"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:text="@string/generic_all" />
         </LinearLayout>
@@ -68,20 +72,22 @@
 
             <Button
                 android:id="@+id/dialog_plunder_food_amount"
-                style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                style="?attr/buttonStyleSquare"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="2" />
 
             <TextView
-                android:layout_height="wrap_content"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:text="@string/tradeitem_food" />
 
             <Button
                 android:id="@+id/dialog_plunder_food_all"
-                style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                style="?attr/buttonStyleSquare"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:text="@string/generic_all" />
         </LinearLayout>
@@ -92,20 +98,22 @@
 
             <Button
                 android:id="@+id/dialog_plunder_ore_amount"
-                style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                style="?attr/buttonStyleSquare"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="2" />
 
             <TextView
-                android:layout_height="wrap_content"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:text="@string/tradeitem_ore" />
 
             <Button
                 android:id="@+id/dialog_plunder_ore_all"
-                style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                style="?attr/buttonStyleSquare"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:text="@string/generic_all" />
         </LinearLayout>
@@ -116,20 +124,22 @@
 
             <Button
                 android:id="@+id/dialog_plunder_games_amount"
-                style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                style="?attr/buttonStyleSquare"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="2" />
 
             <TextView
-                android:layout_height="wrap_content"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:text="@string/tradeitem_games" />
 
             <Button
                 android:id="@+id/dialog_plunder_games_all"
-                style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                style="?attr/buttonStyleSquare"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:text="@string/generic_all" />
         </LinearLayout>
@@ -140,20 +150,22 @@
 
             <Button
                 android:id="@+id/dialog_plunder_firearms_amount"
-                style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                style="?attr/buttonStyleSquare"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="2" />
 
             <TextView
-                android:layout_height="wrap_content"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:text="@string/tradeitem_firearms" />
 
             <Button
                 android:id="@+id/dialog_plunder_firearms_all"
-                style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                style="?attr/buttonStyleSquare"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:text="@string/generic_all" />
         </LinearLayout>
@@ -164,20 +176,22 @@
 
             <Button
                 android:id="@+id/dialog_plunder_medicine_amount"
-                style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                style="?attr/buttonStyleSquare"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="2" />
 
             <TextView
-                android:layout_height="wrap_content"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:text="@string/tradeitem_medicine" />
 
             <Button
                 android:id="@+id/dialog_plunder_medicine_all"
-                style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                style="?attr/buttonStyleSquare"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:text="@string/generic_all" />
         </LinearLayout>
@@ -188,20 +202,22 @@
 
             <Button
                 android:id="@+id/dialog_plunder_machinery_amount"
-                style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                style="?attr/buttonStyleSquare"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="2" />
 
             <TextView
-                android:layout_height="wrap_content"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:text="@string/tradeitem_machinery" />
 
             <Button
                 android:id="@+id/dialog_plunder_machinery_all"
-                style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                style="?attr/buttonStyleSquare"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:text="@string/generic_all" />
         </LinearLayout>
@@ -212,20 +228,22 @@
 
             <Button
                 android:id="@+id/dialog_plunder_narcotics_amount"
-                style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                style="?attr/buttonStyleSquare"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="2" />
 
             <TextView
-                android:layout_height="wrap_content"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:text="@string/tradeitem_narcotics" />
 
             <Button
                 android:id="@+id/dialog_plunder_narcotics_all"
-                style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                style="?attr/buttonStyleSquare"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:text="@string/generic_all" />
         </LinearLayout>
@@ -236,20 +254,22 @@
 
             <Button
                 android:id="@+id/dialog_plunder_robots_amount"
-                style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                style="?attr/buttonStyleSquare"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="2" />
 
             <TextView
-                android:layout_height="wrap_content"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:text="@string/tradeitem_robots" />
 
             <Button
                 android:id="@+id/dialog_plunder_robots_all"
-                style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                style="?attr/buttonStyleSquare"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:text="@string/generic_all" />
         </LinearLayout>
@@ -265,8 +285,8 @@
 
         <TextView
             android:id="@+id/dialog_plunder_bays"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:gravity="left"
             android:minLines="2"
@@ -275,13 +295,15 @@
 
         <Button
             android:id="@+id/dialog_plunder_dump"
-            style="?attr/buttonStyleRounded" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            style="?attr/buttonStyleRounded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
+            android:gravity="center"
             android:paddingLeft="4dp"
             android:paddingRight="4dp"
-            android:gravity="center"
             android:text="@string/generic_dump" />
     </RelativeLayout>
 

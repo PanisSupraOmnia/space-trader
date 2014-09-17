@@ -4,7 +4,7 @@
     android:paddingBottom="8dip"
     android:paddingLeft="16dip"
     android:paddingRight="16dip"
-    android:paddingTop="8dip">
+    android:paddingTop="8dip" >
 
     <TextView
         android:layout_width="wrap_content"
@@ -16,8 +16,9 @@
         style="@style/ScreenRow"
         android:gravity="center"
         android:weightSum="2" >
-        
-        <view
+
+        <!--
+             <view
             android:id="@+id/screen_chart_find_value"
             style="?android:attr/autoCompleteTextViewStyle"
             android:layout_width="0dp"
@@ -27,7 +28,16 @@
             android:scrollHorizontally="true"
             class="com.brucelet.spacetrader.ChartFindDialog$ChartFindView"
             android:maxLength="20" />
+        -->
 
+        <AutoCompleteTextView
+            android:id="@+id/screen_chart_find_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:maxLength="20"
+            android:maxLines="1"
+            android:scrollHorizontally="true" />
     </LinearLayout>
 
     <LinearLayout

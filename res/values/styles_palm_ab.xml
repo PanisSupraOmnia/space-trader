@@ -29,8 +29,7 @@
         <item name="actionModeBackground">@drawable/cab_background_top_palm_ab</item>
         <item name="actionModeSplitBackground">@drawable/cab_background_bottom_palm_ab</item>
         <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Palm_ab</item>
-
-        <!-- Widgets from palm_acwidgets -->
+        
         <item name="android:editTextStyle">@style/EditTextPalm_ACWidgets</item>
         <item name="android:textColorHighlight">#99330099</item>
         <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewPalm_ACWidgets</item>
@@ -45,6 +44,7 @@
         <item name="android:listViewWhiteStyle">@style/ListViewPalm_ACWidgets.White</item>
         <item name="android:spinnerItemStyle">@style/SpinnerItemPalm_ACWidgets</item>
 
+        
     </style>
 
     <style name="ActionBar.Solid.Palm_ab" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
@@ -85,4 +85,10 @@
         <item name="android:background">@drawable/btn_cab_done_palm_ab</item>
     </style>
     
+    <!-- this style is only referenced in a Light.DarkActionBar based theme -->
+    <style name="Theme.Palm_ab.Widget" parent="@style/Theme.AppCompat">
+        <item name="popupMenuStyle">@style/PopupMenu.Palm_ab</item>
+        <item name="dropDownListViewStyle">@style/DropDownListView.Palm_ab</item>
+    </style>
+
 </resources>

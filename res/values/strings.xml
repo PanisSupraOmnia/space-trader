@@ -943,7 +943,6 @@
         \nThe Address Book button takes you to the Sell Cargo screen.
         \nThe To-Do List button takes you to the Ship Yard screen.
         \nThe Memo Pad button takes you to the Short Range chart.-->
-        \n
         \n\"Scroll systems with vol. keys\" will enable use of the volume buttons to scroll through systems on the Galactic Chart, Target System, and Average Price List screens.
         \n
         \n\"Prev. screen with back button\" will enable use of the back button to return to the previously-viewed screen while docked, rather than exiting the game.
@@ -1015,7 +1014,7 @@
     <string name="help_shipdestroyed">The game is over, alas.</string>
     <string name="help_youescaped">You continue your flight towards the target system.</string>
     <string name="help_opponentescaped">Your opponent has flown. You can\'t destroy him any longer, or try to plunder him.</string>
-    <string name="help_retire">If you retire, the game ends. You sell your ship and everything on it, and remain in the current system for the rest of your days. If applicable, your total worth will be entered in the high score table.</string>
+    <string name="help_retire">If you retire, the game ends. You sell your ship and everything on it, and remain in the current system for the rest of your days. If applicable, your total worth will be entered in the high  table.</string>
     <string name="help_bounty">Destroying a pirate ship awards you bounty money. The height of the sum depends on the type of ship destroyed. The reward is automatically added to your cash.</string>
     <string name="help_plunder">You are allowed to plunder your opponent\'s cargo to your heart\'s content. Just steal whatever is to your liking. This works exactly as the Buy Cargo option when you are docked, except that you don\'t have to pay anything. You are, of course, limited to the amount your own cargo bays can hold. If you holds are already full, you can jettison selections from your cargo into space by tapping the Dump button. Tap the Done button when you are finished.</string>
     <string name="help_notenoughbays">You should sell enough goods so that you have enough empty cargo bays available.</string>

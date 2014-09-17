@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ListViewStyle.Palm" parent="@style/ListViewPalm_ACWidgets">
+        <item name="android:listSelector">@drawable/list_selector_palm</item>
+        <item name="textAppearanceListItem">@style/PopupMenuText.Palm</item>
+        <item name="android:textColor">@color/primary_text_palm</item>
+        <item name="android:overScrollMode">never</item>
+    </style>
+
+    <style name="ListViewDropDownStyle.Palm" parent="@style/DropDownListView.Palm_ab">
+        <item name="android:listSelector">@drawable/list_selector_palm</item>
+        <item name="android:textColor">@color/primary_text_palm</item>
+        <item name="android:overScrollMode">never</item>
+    </style>
+
+</resources>

@@ -1828,6 +1828,17 @@ android.support.v4.widget.EdgeEffectCompatIcs -> android.support.v4.widget.EdgeE
     boolean onPull(java.lang.Object,float) -> onPull
     boolean onRelease(java.lang.Object) -> onRelease
     boolean draw(java.lang.Object,android.graphics.Canvas) -> draw
+android.support.v4.widget.PopupMenuCompat -> android.support.v4.widget.PopupMenuCompat:
+    android.support.v4.widget.PopupMenuCompat$PopupMenuImpl IMPL -> IMPL
+    android.view.View$OnTouchListener getDragToOpenListener(java.lang.Object) -> getDragToOpenListener
+android.support.v4.widget.PopupMenuCompat$BasePopupMenuImpl -> android.support.v4.widget.PopupMenuCompat$BasePopupMenuImpl:
+    android.view.View$OnTouchListener getDragToOpenListener(java.lang.Object) -> getDragToOpenListener
+android.support.v4.widget.PopupMenuCompat$KitKatPopupMenuImpl -> android.support.v4.widget.PopupMenuCompat$KitKatPopupMenuImpl:
+    android.view.View$OnTouchListener getDragToOpenListener(java.lang.Object) -> getDragToOpenListener
+android.support.v4.widget.PopupMenuCompat$PopupMenuImpl -> android.support.v4.widget.PopupMenuCompat$PopupMenuImpl:
+    android.view.View$OnTouchListener getDragToOpenListener(java.lang.Object) -> getDragToOpenListener
+android.support.v4.widget.PopupMenuCompatKitKat -> android.support.v4.widget.PopupMenuCompatKitKat:
+    android.view.View$OnTouchListener getDragToOpenListener(java.lang.Object) -> getDragToOpenListener
 android.support.v4.widget.ResourceCursorAdapter -> android.support.v4.widget.ResourceCursorAdapter:
     int mLayout -> mLayout
     int mDropDownLayout -> mDropDownLayout
@@ -4736,7 +4747,6 @@ com.brucelet.spacetrader.ChartFindDialog -> com.brucelet.spacetrader.ChartFindDi
     void onClickPositiveButton() -> onClickPositiveButton
     void onClickNegativeButton() -> onClickNegativeButton
     int getHelpTextResId() -> getHelpTextResId
-com.brucelet.spacetrader.ChartFindDialog$ChartFindView -> com.brucelet.spacetrader.ChartFindDialog$ChartFindView:
 com.brucelet.spacetrader.ChartScreen -> com.brucelet.spacetrader.ChartScreen:
     android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> onCreateView
     void onActivityCreated(android.os.Bundle) -> onActivityCreated
@@ -4891,6 +4901,8 @@ com.brucelet.spacetrader.MainActivity -> com.brucelet.spacetrader.MainActivity:
     void clearBackStack() -> clearBackStack
     void showDialogFragment(com.brucelet.spacetrader.BaseDialog) -> showDialogFragment
     void startMenuActionMode() -> startMenuActionMode
+    android.widget.PopupMenu initializeDropdownHoneycomb(android.view.View,int) -> initializeDropdownHoneycomb
+    android.support.v7.widget.PopupMenu initializeDropdownCompat(android.view.View,int) -> initializeDropdownCompat
     boolean finishMenuActionMode() -> finishMenuActionMode
     com.brucelet.spacetrader.BaseScreen getCurrentScreen() -> getCurrentScreen
     com.brucelet.spacetrader.enumtypes.ScreenType getCurrentScreenType() -> getCurrentScreenType
@@ -4916,11 +4928,24 @@ com.brucelet.spacetrader.MainActivity -> com.brucelet.spacetrader.MainActivity:
     void access$3(com.brucelet.spacetrader.MainActivity,android.content.SharedPreferences) -> access$3
     void access$4(com.brucelet.spacetrader.MainActivity,java.lang.String) -> access$4
     void access$5(com.brucelet.spacetrader.MainActivity) -> access$5
-    boolean access$6(com.brucelet.spacetrader.MainActivity) -> access$6
+    android.widget.PopupMenu access$6(com.brucelet.spacetrader.MainActivity,android.view.View,int) -> access$6
+    android.support.v7.widget.PopupMenu access$7(com.brucelet.spacetrader.MainActivity,android.view.View,int) -> access$7
+    boolean access$8(com.brucelet.spacetrader.MainActivity) -> access$8
     int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$ScreenType() -> $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$ScreenType
 com.brucelet.spacetrader.MainActivity$1 -> com.brucelet.spacetrader.MainActivity$1:
     com.brucelet.spacetrader.MainActivity this$0 -> this$0
     void onClick(android.view.View) -> onClick
+com.brucelet.spacetrader.MainActivity$10 -> com.brucelet.spacetrader.MainActivity$10:
+    com.brucelet.spacetrader.MainActivity this$0 -> this$0
+    android.support.v7.widget.PopupMenu val$dropdown -> val$dropdown
+    void onClick(android.view.View) -> onClick
+com.brucelet.spacetrader.MainActivity$11 -> com.brucelet.spacetrader.MainActivity$11:
+    com.brucelet.spacetrader.MainActivity this$0 -> this$0
+    void onConfirm() -> onConfirm
+com.brucelet.spacetrader.MainActivity$12 -> com.brucelet.spacetrader.MainActivity$12:
+    com.brucelet.spacetrader.MainActivity this$0 -> this$0
+    java.lang.Exception val$e -> val$e
+    void onCancel() -> onCancel
 com.brucelet.spacetrader.MainActivity$2 -> com.brucelet.spacetrader.MainActivity$2:
     com.brucelet.spacetrader.MainActivity this$0 -> this$0
     void onConfirm() -> onConfirm
@@ -4952,25 +4977,13 @@ com.brucelet.spacetrader.MainActivity$7 -> com.brucelet.spacetrader.MainActivity
     void onDestroyActionMode(android.support.v7.view.ActionMode) -> onDestroyActionMode
     boolean onCreateActionMode(android.support.v7.view.ActionMode,android.view.Menu) -> onCreateActionMode
     boolean onActionItemClicked(android.support.v7.view.ActionMode,android.view.MenuItem) -> onActionItemClicked
-com.brucelet.spacetrader.MainActivity$7$1 -> com.brucelet.spacetrader.MainActivity$7$1:
-    com.brucelet.spacetrader.MainActivity$7 this$1 -> this$1
-    android.support.v7.widget.PopupMenu val$commandDropdown -> val$commandDropdown
-    void onClick(android.view.View) -> onClick
-com.brucelet.spacetrader.MainActivity$7$2 -> com.brucelet.spacetrader.MainActivity$7$2:
-    com.brucelet.spacetrader.MainActivity$7 this$1 -> this$1
-    android.support.v7.widget.PopupMenu val$gameDropdown -> val$gameDropdown
-    void onClick(android.view.View) -> onClick
-com.brucelet.spacetrader.MainActivity$7$3 -> com.brucelet.spacetrader.MainActivity$7$3:
-    com.brucelet.spacetrader.MainActivity$7 this$1 -> this$1
-    android.support.v7.widget.PopupMenu val$helpDropdown -> val$helpDropdown
-    void onClick(android.view.View) -> onClick
 com.brucelet.spacetrader.MainActivity$8 -> com.brucelet.spacetrader.MainActivity$8:
     com.brucelet.spacetrader.MainActivity this$0 -> this$0
-    void onConfirm() -> onConfirm
+    boolean onMenuItemClick(android.view.MenuItem) -> onMenuItemClick
 com.brucelet.spacetrader.MainActivity$9 -> com.brucelet.spacetrader.MainActivity$9:
     com.brucelet.spacetrader.MainActivity this$0 -> this$0
-    java.lang.Exception val$e -> val$e
-    void onCancel() -> onCancel
+    android.widget.PopupMenu val$dropdown -> val$dropdown
+    void onClick(android.view.View) -> onClick
 com.brucelet.spacetrader.NewGameDialog -> com.brucelet.spacetrader.NewGameDialog:
     java.util.List CLICKABLE_IDS -> CLICKABLE_IDS
     com.brucelet.spacetrader.NewGameDialog newInstance() -> newInstance

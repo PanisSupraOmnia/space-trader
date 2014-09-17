@@ -2,8 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin">
 
@@ -17,7 +15,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="5"
             android:orientation="vertical" >
 
             <TextView
@@ -74,7 +72,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_weight="6"
             android:orientation="vertical" >
 
             <TextView
@@ -127,20 +125,20 @@
         android:baselineAligned="true"
         android:baselineAlignedChildIndex="1"
         android:orientation="horizontal"
-        android:weightSum="5" >
+        android:weightSum="11" >
 
         <TextView
             style="?attr/textViewStyleHeader"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="5"
             android:text="@string/screen_warp_target_cost" />
 
         <TextView
             android:id="@+id/screen_warp_target_cost"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.75" />
+            android:layout_weight="3" />
     </LinearLayout>
 
     <LinearLayout
@@ -150,26 +148,33 @@
         android:baselineAlignedChildIndex="0"
         android:gravity="right"
         android:orientation="horizontal"
-        android:weightSum="5" >
+        android:weightSum="11" >
 
         <Button
             android:id="@+id/screen_warp_target_cost_specific"
             style="?attr/buttonStyleRounded"
             android:layout_width="0dp"
+            android:layout_weight="3"
             android:layout_height="wrap_content"
-            android:layout_weight="1.25"
             android:onClick="pagerClick"
             android:text="@string/screen_warp_target_cost_specific" />
     </LinearLayout>
-
+    
     <TextView
         android:id="@+id/screen_warp_target_toofar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/screen_warp_target_cost_layout"
-        android:layout_gravity="right"
-        android:layout_marginBottom="0dp"
+        android:layout_alignParentBottom="false"
         android:text="@string/screen_warp_target_toofar"
         android:visibility="invisible" />
+    
+    <Button
+        android:baselineAligned="false"
+        style="?attr/buttonStyleRounded"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/screen_warp_target_toofar"
+        android:visibility="invisible"/>
 
 </RelativeLayout>

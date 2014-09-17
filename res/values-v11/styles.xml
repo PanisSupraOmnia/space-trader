@@ -5,8 +5,8 @@
         <item name="actionButtonStyle">@style/ActionButtonStyle.Light</item>
         <item name="android:actionOverflowButtonStyle">@style/ActionOverflowButtonStyle.Light</item>
         <item name="actionOverflowButtonStyle">@style/ActionOverflowButtonStyle.Light</item>
-        <item name="android:actionMenuTextAppearance">@style/ActionButtonText</item>
-        <item name="actionMenuTextAppearance">@style/ActionButtonText</item>   
+        <item name="android:actionMenuTextAppearance">@style/ActionButtonText.Light</item>
+        <item name="actionMenuTextAppearance">@style/ActionButtonText.Light</item>   
         <item name="actionBarWidgetTheme">@style/ActionBarWidgetTheme.Light</item>
         <item name="android:actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Light</item>
         <item name="actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Light</item>
@@ -17,8 +17,8 @@
         <item name="actionButtonStyle">@style/ActionButtonStyle.Dark</item>
         <item name="android:actionOverflowButtonStyle">@style/ActionOverflowButtonStyle.Dark</item>
         <item name="actionOverflowButtonStyle">@style/ActionOverflowButtonStyle.Dark</item>
-        <item name="android:actionMenuTextAppearance">@style/ActionButtonText</item>
-        <item name="actionMenuTextAppearance">@style/ActionButtonText</item>      
+        <item name="android:actionMenuTextAppearance">@style/ActionButtonText.Dark</item>
+        <item name="actionMenuTextAppearance">@style/ActionButtonText.Dark</item>      
         <item name="actionBarWidgetTheme">@style/ActionBarWidgetTheme.Dark</item>
         <item name="android:actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Dark</item>
         <item name="actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Dark</item>
@@ -29,8 +29,8 @@
         <item name="actionButtonStyle">@style/ActionButtonStyle.Palm</item>
         <item name="android:actionOverflowButtonStyle">@style/ActionOverflowButtonStyle.Palm</item>
         <item name="actionOverflowButtonStyle">@style/ActionOverflowButtonStyle.Palm</item>
-        <item name="android:actionMenuTextAppearance">@style/ActionButtonText</item>
-        <item name="actionMenuTextAppearance">@style/ActionButtonText</item> 
+        <item name="android:actionMenuTextAppearance">@style/ActionButtonText.Palm</item>
+        <item name="actionMenuTextAppearance">@style/ActionButtonText.Palm</item> 
         <item name="actionBarWidgetTheme">@style/ActionBarWidgetTheme.Palm</item>
         <item name="android:actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Palm</item>
         <item name="actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Palm</item>

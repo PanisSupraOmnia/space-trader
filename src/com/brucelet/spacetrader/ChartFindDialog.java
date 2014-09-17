@@ -20,13 +20,9 @@
  */
 package com.brucelet.spacetrader;
 
-
-
-
-
 import android.app.AlertDialog;
-import android.content.Context;
-import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
@@ -42,7 +38,17 @@ public class ChartFindDialog extends BaseDialog {
 	public void onBuildDialog(Builder builder) {
 		builder.setTitle(R.string.screen_chart_find_title);
 		builder.setPositiveButton(R.string.generic_ok).setNegativeButton(R.string.generic_cancel);
-		builder.setView(R.layout.screen_chart_find);
+		
+		View view = LayoutInflater.from(getActivity()).inflate(R.layout.screen_chart_find, null);
+		AutoCompleteTextView input = (AutoCompleteTextView) view.findViewById(R.id.screen_chart_find_value);
+		String[] names = getResources().getStringArray(R.array.solar_system_name);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+				getActivity(), 
+				R.layout.autocomplete_dropdown_item, 
+				names);
+		input.setAdapter(adapter);
+		
+		builder.setView(view);
 	}
 		
 	@Override
@@ -53,20 +59,6 @@ public class ChartFindDialog extends BaseDialog {
 	@Override
 	public void onClickNegativeButton() {
 		dismiss();
-	}
-	
-	public static class ChartFindView extends AutoCompleteTextView {
-
-		public ChartFindView(Context context, AttributeSet attrs) {
-			super(context, attrs);
-
-			String[] names = getResources().getStringArray(R.array.solar_system_name);
-			ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-					context, 
-					android.R.layout.simple_list_item_1, 
-					names);
-			setAdapter(adapter);
-		}
 	}
 
 	@Override

@@ -32,17 +32,21 @@ import java.io.OutputStreamWriter;
 import java.util.LinkedList;
 import java.util.Map;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.ListPopupWindowCompat;
+import android.support.v4.widget.PopupMenuCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.view.ActionMode;
@@ -56,9 +60,15 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.ListPopupWindow;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.brucelet.spacetrader.datatypes.GameState;
@@ -849,12 +859,17 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 //		final boolean showCommand = ScreenPagerAdapter.DOCKED_SCREEN_LIST.contains(findScreenById(getCurrentScreenId()).getType());
 		
 		mActionMode = startSupportActionMode(new ActionMode.Callback() {
-
+//			private ListPopupWindow commandDropdown;
+			
+			@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 			@Override
 			public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
 				android.util.Log.d("Menu Item Click","Preparing MenuSpinnerActionProvider");
 				// Do nothing
 				return false;
+				
+//				if (commandDropdown != null) commandDropdown.show();
+//				return true;
 			}
 
 			@Override
@@ -863,6 +878,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 				// Do nothing
 			}
 
+			@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 			@Override
 			public boolean onCreateActionMode(ActionMode mode, Menu menu) {
 				android.util.Log.d("Menu Item Click","Creating MenuSpinnerActionProvider");
@@ -875,10 +891,10 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 //				TypedValue tv = new TypedValue();
 //				TypedArray ta;
 								
-				// TODO: Convert these PopupMenus to PopupWindows (with ListViews? or something else...) so shortcut character views can be added.
+				// TODO: Convert these PopupMenus to ListPopupWindows
 				if (showCommand) {			
 //					// This big commented block is a first pass at using ListPopupWindow instead of PopupMenu. It's difficult to get the dropdown to behave correctly,
-//					// specifically to set the correct width (wrap_content wraps to the anchor view) and to appear/disappear at the proper location. 
+//					// specifically to set the correct width (wrap_content wraps to the anchor view) and to appear/disappear at the proper location when displayed immediately 
 //					final ScreenType[] screens = ScreenType.dropdownValues();
 //					ListAdapter adapter = new BaseAdapter() {
 //						
@@ -907,14 +923,18 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 //						public int getCount() {
 //							return screens.length;
 //						}
+//
 //					};
 //					final ListPopupWindow commandDropdown = new ListPopupWindow(MainActivity.this);
+////					commandDropdown = new ListPopupWindow(MainActivity.this);
 //					commandDropdown.setAdapter(adapter);
 //					commandDropdown.setAnchorView(command);
 //					
 //					
-//					getTheme().resolveAttribute(R.attr.panelMenuListWidth, tv, true);
-//					commandDropdown.setContentWidth((int) (tv.getDimension(getResources().getDisplayMetrics()) + 0.5));
+////					getTheme().resolveAttribute(R.attr.panelMenuListWidth, tv, true);
+////					commandDropdown.setContentWidth((int) (tv.getDimension(getResources().getDisplayMetrics()) + 0.5));
+////					commandDropdown.setContentWidth(ListPopupWindow.WRAP_CONTENT);
+////					commandDropdown.setWidth(ListPopupWindow.WRAP_CONTENT);
 //					commandDropdown.setOnItemClickListener(new ListView.OnItemClickListener() {
 //
 //						@Override
@@ -937,55 +957,76 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 //							}
 //						}
 //					});
-////					commandDropdown.showAsDropDown(command);
+//					command.setOnTouchListener(ListPopupWindowCompat.createDragToOpenListener(commandDropdown, command));
+//					commandDropdown.show();
 					
-					final PopupMenu commandDropdown = new PopupMenu(MainActivity.this, command);
-					commandDropdown.inflate(R.menu.command);
-					commandDropdown.setOnMenuItemClickListener(MainActivity.this);
-					command.setOnClickListener(new OnClickListener() {
-						
-						@Override
-						public void onClick(View v) {
-							commandDropdown.show();
-						}
-					});
-					commandDropdown.show();
+					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+						initializeDropdownHoneycomb(command, R.menu.command).show();
+					} else {
+						initializeDropdownCompat(command, R.menu.command).show();
+					}
 				} else {
 					command.setVisibility(View.GONE);
 				}
 				
-				final PopupMenu gameDropdown = new PopupMenu(MainActivity.this, game);
-				
-				gameDropdown.inflate(R.menu.game);
-				if (!getGameState().developerMode()) gameDropdown.getMenu().removeGroup(R.id.menu_group_extra);	// Dev options eg call keyboard for testing.
-				if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT && !hasWriteExternalPermission()) {
-					gameDropdown.getMenu().removeItem(R.id.menu_savegame);
-				}
-//				if (!findScreenById(getCurrentScreenId()).getType().docked) {
-				if (!getCurrentScreenType().docked) {
-//				if (!ScreenPagerAdapter.DOCKED_SCREEN_LIST.contains(findScreenById(getCurrentScreenId()).getType())) {
-					gameDropdown.getMenu().removeItem(R.id.menu_retire);
-				}
-				gameDropdown.setOnMenuItemClickListener(MainActivity.this);
-				game.setOnClickListener(new OnClickListener() {
-					
-					@Override
-					public void onClick(View v) {
-						gameDropdown.show();
+				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+					android.widget.PopupMenu gameDropdown = initializeDropdownHoneycomb(game, R.menu.game);
+					if (!getGameState().developerMode()) gameDropdown.getMenu().removeGroup(R.id.menu_group_extra);	// Dev options eg call keyboard for testing.
+					if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT && !hasWriteExternalPermission()) {
+						gameDropdown.getMenu().removeItem(R.id.menu_savegame);
 					}
-				});
-//				if (!showCommand) gameDropdown.show();	// TODO is this desired behavior?
-				
-				final PopupMenu helpDropdown = new PopupMenu(MainActivity.this, help);
-				helpDropdown.inflate(R.menu.help);
-				helpDropdown.setOnMenuItemClickListener(MainActivity.this);
-				help.setOnClickListener(new OnClickListener() {
-					
-					@Override
-					public void onClick(View v) {
-						helpDropdown.show();
+					if (!getCurrentScreenType().docked) {
+//						if (!ScreenPagerAdapter.DOCKED_SCREEN_LIST.contains(findScreenById(getCurrentScreenId()).getType())) {
+						gameDropdown.getMenu().removeItem(R.id.menu_retire);
 					}
-				});
+//					if (!showCommand) gameDropdown.show();	// TODO is this desired behavior?
+					
+					initializeDropdownHoneycomb(help, R.menu.help);
+				} else {
+					PopupMenu gameDropdown = initializeDropdownCompat(game, R.menu.game);
+					if (!getGameState().developerMode()) gameDropdown.getMenu().removeGroup(R.id.menu_group_extra);	// Dev options eg call keyboard for testing.
+					if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT && !hasWriteExternalPermission()) {
+						gameDropdown.getMenu().removeItem(R.id.menu_savegame);
+					}
+					if (!getCurrentScreenType().docked) {
+//						if (!ScreenPagerAdapter.DOCKED_SCREEN_LIST.contains(findScreenById(getCurrentScreenId()).getType())) {
+						gameDropdown.getMenu().removeItem(R.id.menu_retire);
+					}
+					
+					initializeDropdownCompat(help, R.menu.help);
+				}
+//				final PopupMenu gameDropdown = new PopupMenu(MainActivity.this, game);
+//				
+//				gameDropdown.inflate(R.menu.game);
+//				if (!getGameState().developerMode()) gameDropdown.getMenu().removeGroup(R.id.menu_group_extra);	// Dev options eg call keyboard for testing.
+//				if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT && !hasWriteExternalPermission()) {
+//					gameDropdown.getMenu().removeItem(R.id.menu_savegame);
+//				}
+////				if (!findScreenById(getCurrentScreenId()).getType().docked) {
+//				if (!getCurrentScreenType().docked) {
+////				if (!ScreenPagerAdapter.DOCKED_SCREEN_LIST.contains(findScreenById(getCurrentScreenId()).getType())) {
+//					gameDropdown.getMenu().removeItem(R.id.menu_retire);
+//				}
+//				gameDropdown.setOnMenuItemClickListener(MainActivity.this);
+//				game.setOnClickListener(new OnClickListener() {
+//					
+//					@Override
+//					public void onClick(View v) {
+//						gameDropdown.show();
+//					}
+//				});
+////				if (!showCommand) gameDropdown.show();	// TODO is this desired behavior?
+//				
+//				final PopupMenu helpDropdown = new PopupMenu(MainActivity.this, help);
+//				helpDropdown.inflate(R.menu.help);
+//				helpDropdown.setOnMenuItemClickListener(MainActivity.this);
+//				help.setOnClickListener(new OnClickListener() {
+//					
+//					@Override
+//					public void onClick(View v) {
+//						helpDropdown.show();
+//					}
+//				});
 				
 				mode.setCustomView(view);
 				
@@ -1010,6 +1051,48 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 				return false;
 			}
 		});
+	}
+
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	private android.widget.PopupMenu initializeDropdownHoneycomb(View anchor, int menuRes) {
+		final android.widget.PopupMenu dropdown = new android.widget.PopupMenu(MainActivity.this, anchor);
+//		dropdown.inflate(menuRes); // API 14
+		dropdown.getMenuInflater().inflate(menuRes, dropdown.getMenu());
+
+		// Anon inner class instead of making Activity implement both OnMenuItemClickListener interfaces so that Activity doesn't need to be tagged as API 11+.
+		dropdown.setOnMenuItemClickListener(new android.widget.PopupMenu.OnMenuItemClickListener() {
+
+			@Override
+			public boolean onMenuItemClick(MenuItem item) {
+				return MainActivity.this.onMenuItemClick(item);
+			}
+		});
+		anchor.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				dropdown.show();
+			}
+		});
+		OnTouchListener listener = PopupMenuCompat.getDragToOpenListener(dropdown);
+		if (listener != null) anchor.setOnTouchListener(listener);
+		
+		return dropdown;
+	}
+
+	private PopupMenu initializeDropdownCompat(View anchor, int menuRes) {
+		final PopupMenu dropdown = new PopupMenu(MainActivity.this, anchor);
+		dropdown.inflate(menuRes);
+		dropdown.setOnMenuItemClickListener(MainActivity.this);
+		anchor.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				dropdown.show();
+			}
+		});
+		
+		return dropdown;
 	}
 	
 	boolean finishMenuActionMode() {
@@ -1157,9 +1240,9 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 //		next.onRefreshScreen();
 		mCurrentScreen = type;
 		
-//		supportInvalidateOptionsMenu();
-		if (prevType == null || !type.docked || !prevType.docked) supportInvalidateOptionsMenu();
-		else mTitleText.setText(type.titleId);	// If we don't recreate menu than we must update title here instead.
+		supportInvalidateOptionsMenu();
+//		if (prevType == null || !type.docked || !prevType.docked) supportInvalidateOptionsMenu();
+//		else mTitleText.setText(type.titleId);	// If we don't recreate menu than we must update title here instead.
 		
 		return next;
 	}

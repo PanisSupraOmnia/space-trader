@@ -21,8 +21,8 @@
     android:id="@+id/parentPanel"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="8dip"
-    android:layout_marginStart="8dip"
+    android:layout_marginLeft="8dip"
+    android:layout_marginRight="8dip"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -35,17 +35,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginEnd="16dip"
             android:layout_marginLeft="16dip"
             android:layout_marginRight="16dip"
-            android:layout_marginStart="16dip"
             android:minHeight="@dimen/alert_dialog_title_height" >
 
             <ImageButton
                 android:id="@+id/alertHelp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:background="@null"
@@ -58,9 +55,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@id/alertHelp"
-                android:layout_toStartOf="@id/alertHelp"
                 android:ellipsize="end"
-                android:gravity="left|center_vertical"
+                android:gravity="start|center_vertical"
                 android:singleLine="true"
                 android:textAppearance="?attr/dialogTitleTextStyle" />
         </RelativeLayout>
@@ -89,17 +85,22 @@
         android:id="@+id/buttonPanel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:baselineAligned="false"
         android:divider="?android:attr/dividerHorizontal"
         android:dividerPadding="0dip"
+        android:gravity="bottom"
         android:minHeight="@dimen/alert_dialog_button_bar_height"
         android:orientation="vertical"
         android:showDividers="beginning" >
 
         <LinearLayout
-	        android:id="@+id/buttons"
+            android:id="@+id/buttons"
+            style="?attr/alertDialogButtonBarStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
             android:divider="?android:attr/dividerVertical"
+            android:gravity="bottom"
             android:layoutDirection="locale"
             android:measureWithLargestChild="true"
             android:orientation="horizontal"
@@ -110,10 +111,9 @@
                 style="?alertDialogButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
+                android:layout_gravity="start|bottom"
                 android:layout_weight="1"
                 android:maxLines="2"
-                android:minHeight="@dimen/alert_dialog_button_bar_height"
                 android:textSize="14sp"
                 android:visibility="gone" />
 
@@ -122,10 +122,9 @@
                 style="?alertDialogButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center_horizontal|bottom"
                 android:layout_weight="1"
                 android:maxLines="2"
-                android:minHeight="@dimen/alert_dialog_button_bar_height"
                 android:textSize="14sp"
                 android:visibility="gone" />
 
@@ -134,10 +133,9 @@
                 style="?alertDialogButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
+                android:layout_gravity="end|bottom"
                 android:layout_weight="1"
                 android:maxLines="2"
-                android:minHeight="@dimen/alert_dialog_button_bar_height"
                 android:textSize="14sp"
                 android:visibility="gone" />
         </LinearLayout>

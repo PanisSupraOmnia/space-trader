@@ -6,16 +6,34 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin" >
 
-    <ViewFlipper 
-            android:id="@+id/screen_selleq_weapon"
-            style="@style/RootLayout" >
-
-        <TextView
-            android:id="@+id/screen_selleq_weapon_empty"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="@string/screen_selleq_noweapons" />
+    <RelativeLayout
+        android:id="@+id/screen_selleq_weapon"
+        style="@style/RootLayout" >
 
         <LinearLayout
+            android:id="@+id/screen_selleq_weapon_empty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal" >
+
+            <Button
+                style="?attr/buttonStyleSquare"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:text="@string/generic_sell"
+                android:visibility="invisible" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:text="@string/screen_selleq_noweapons" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/screen_selleq_weapon_notempty"
             style="@style/RootLayout"
             android:orientation="vertical" >
 
@@ -25,21 +43,22 @@
 
                 <Button
                     android:id="@+id/screen_selleq_weapon1_button"
-                    style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                    style="?attr/buttonStyleSquare"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1.4"
                     android:text="@string/generic_sell" />
 
                 <TextView
                     android:id="@+id/screen_selleq_weapon1_type"
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="5" />
 
                 <TextView
                     android:id="@+id/screen_selleq_weapon1_price"
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:gravity="right"
                     android:text="@string/format_credits" />
@@ -51,21 +70,22 @@
 
                 <Button
                     android:id="@+id/screen_selleq_weapon2_button"
-                    style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                    style="?attr/buttonStyleSquare"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1.4"
                     android:text="@string/generic_sell" />
 
                 <TextView
                     android:id="@+id/screen_selleq_weapon2_type"
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="5" />
 
                 <TextView
                     android:id="@+id/screen_selleq_weapon2_price"
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:gravity="right"
                     android:text="@string/format_credits" />
@@ -77,39 +97,62 @@
 
                 <Button
                     android:id="@+id/screen_selleq_weapon3_button"
-                    style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                    style="?attr/buttonStyleSquare"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1.4"
                     android:text="@string/generic_sell" />
 
                 <TextView
                     android:id="@+id/screen_selleq_weapon3_type"
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="5" />
 
                 <TextView
                     android:id="@+id/screen_selleq_weapon3_price"
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:gravity="right"
                     android:text="@string/format_credits" />
             </LinearLayout>
         </LinearLayout>
-    </ViewFlipper>
+    </RelativeLayout>
 
-    <View style="@style/HorizontalBar" android:layout_marginTop="1dp" android:layout_marginBottom="1dp"/>
+    <View
+        style="@style/HorizontalBar"
+        android:layout_marginBottom="1dp"
+        android:layout_marginTop="1dp" />
 
-    <ViewFlipper
-            android:id="@+id/screen_selleq_shield" style="@style/RootLayout" >
-
-        <TextView
-            android:id="@+id/screen_selleq_shield_empty"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="@string/screen_selleq_noshields" />
+    <RelativeLayout
+        android:id="@+id/screen_selleq_shield"
+        style="@style/RootLayout" >
 
         <LinearLayout
+            android:id="@+id/screen_selleq_shield_empty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal" >
+
+            <Button
+                style="?attr/buttonStyleSquare"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:text="@string/generic_sell"
+                android:visibility="invisible" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:text="@string/screen_selleq_noshields" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/screen_selleq_shield_notempty"
             style="@style/RootLayout"
             android:orientation="vertical" >
 
@@ -119,21 +162,22 @@
 
                 <Button
                     android:id="@+id/screen_selleq_shield1_button"
-                    style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                    style="?attr/buttonStyleSquare"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1.4"
                     android:text="@string/generic_sell" />
 
                 <TextView
                     android:id="@+id/screen_selleq_shield1_type"
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="5" />
 
                 <TextView
                     android:id="@+id/screen_selleq_shield1_price"
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:gravity="right"
                     android:text="@string/format_credits" />
@@ -145,21 +189,22 @@
 
                 <Button
                     android:id="@+id/screen_selleq_shield2_button"
-                    style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                    style="?attr/buttonStyleSquare"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1.4"
                     android:text="@string/generic_sell" />
 
                 <TextView
                     android:id="@+id/screen_selleq_shield2_type"
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="5" />
 
                 <TextView
                     android:id="@+id/screen_selleq_shield2_price"
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:gravity="right"
                     android:text="@string/format_credits" />
@@ -171,39 +216,62 @@
 
                 <Button
                     android:id="@+id/screen_selleq_shield3_button"
-                    style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                    style="?attr/buttonStyleSquare"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1.4"
                     android:text="@string/generic_sell" />
 
                 <TextView
                     android:id="@+id/screen_selleq_shield3_type"
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="5" />
 
                 <TextView
                     android:id="@+id/screen_selleq_shield3_price"
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:gravity="right"
                     android:text="@string/format_credits" />
             </LinearLayout>
         </LinearLayout>
-    </ViewFlipper>
+    </RelativeLayout>
 
-    <View style="@style/HorizontalBar" android:layout_marginTop="1dp" android:layout_marginBottom="1dp"/>
+    <View
+        style="@style/HorizontalBar"
+        android:layout_marginBottom="1dp"
+        android:layout_marginTop="1dp" />
 
-    <ViewFlipper
-            android:id="@+id/screen_selleq_gadget" style="@style/RootLayout" >
-
-        <TextView
-            android:id="@+id/screen_selleq_gadget_empty"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="@string/screen_selleq_nogadgets" />
+    <RelativeLayout
+        android:id="@+id/screen_selleq_gadget"
+        style="@style/RootLayout" >
 
         <LinearLayout
+            android:id="@+id/screen_selleq_gadget_empty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal" >
+
+            <Button
+                style="?attr/buttonStyleSquare"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:text="@string/generic_sell"
+                android:visibility="invisible" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:text="@string/screen_selleq_nogadgets" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/screen_selleq_gadget_notempty"
             style="@style/RootLayout"
             android:orientation="vertical" >
 
@@ -213,21 +281,22 @@
 
                 <Button
                     android:id="@+id/screen_selleq_gadget1_button"
-                    style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                    style="?attr/buttonStyleSquare"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1.4"
                     android:text="@string/generic_sell" />
 
                 <TextView
                     android:id="@+id/screen_selleq_gadget1_type"
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="5" />
 
                 <TextView
                     android:id="@+id/screen_selleq_gadget1_price"
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:gravity="right"
                     android:text="@string/format_credits" />
@@ -239,21 +308,22 @@
 
                 <Button
                     android:id="@+id/screen_selleq_gadget2_button"
-                    style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                    style="?attr/buttonStyleSquare"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1.4"
                     android:text="@string/generic_sell" />
 
                 <TextView
                     android:id="@+id/screen_selleq_gadget2_type"
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="5" />
 
                 <TextView
                     android:id="@+id/screen_selleq_gadget2_price"
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:gravity="right"
                     android:text="@string/format_credits" />
@@ -265,31 +335,33 @@
 
                 <Button
                     android:id="@+id/screen_selleq_gadget3_button"
-                    style="?attr/buttonStyleSquare" android:layout_height="wrap_content"
+                    style="?attr/buttonStyleSquare"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1.4"
                     android:text="@string/generic_sell" />
 
                 <TextView
                     android:id="@+id/screen_selleq_gadget3_type"
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="5" />
 
                 <TextView
                     android:id="@+id/screen_selleq_gadget3_price"
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:gravity="right"
                     android:text="@string/format_credits" />
             </LinearLayout>
         </LinearLayout>
-    </ViewFlipper>
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/screen_selleq_credits"
-        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:gravity="right"
         android:text="@string/format_cash" />
