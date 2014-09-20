@@ -59,7 +59,6 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.ViewFlipper;
 
 import com.brucelet.spacetrader.BaseDialog;
 import com.brucelet.spacetrader.BaseDialog.Builder;
@@ -929,7 +928,7 @@ public class GameState {
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_volumescroll)).setChecked(volumeScroll);
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_recallscreens)).setChecked(recallScreens);
 		
-		dialog.setViewVisibilityById(R.id.dialog_options_developermode_layout, MainActivity.DEVELOPER_MODE);
+		dialog.setViewVisibilityById(R.id.dialog_options_developermode, MainActivity.DEVELOPER_MODE);
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_developermode)).setChecked(developerMode);
 		
 		
@@ -1458,7 +1457,7 @@ public class GameState {
 				mGameManager.showDialogFragment(SimpleDialog.newInstance(
 						R.string.screen_yard_buyship_notavailable_title, 
 						R.string.screen_yard_buyship_notavailable_message, 
-						R.string.help_itemnotsold)); // XXX NB Not quite sure if the help text here is correct, but that's ok because the dialog shouldn't ever appear anyway since the button won't be drawn.
+						R.string.help_itemnotsold)); // NB Not quite sure if the help text here is correct, but that's ok because the dialog shouldn't ever appear anyway since the button won't be drawn.
 			else if ((shipPrice.get(selectedShipType) >= 0) &&
 					(debt > 0))
 				mGameManager.showDialogFragment(SimpleDialog.newInstance(
@@ -9955,7 +9954,7 @@ public class GameState {
 //			SolarSystem curSystem = curSystem();
 			
 			randomQuestSystems = ((CheckBox)dialog.getDialog().findViewById(R.id.dialog_newgame_randomsystems)).isChecked();
-			startNewGame();// NB in original this happens before dialog displays instead of on dismissal. TODO restore that way of doing things?
+			startNewGame();// NB in original this happens before dialog displays instead of on dismissal. We don't do that here for historical reasons and also so we can read in randomQuestsSystems before generating galaxy.
 
 //			mercenary[0] = new CrewMember(commander().name, pilot, fighter, trader, engineer, this);
 //			mercenary[0].setSystem(curSystem);

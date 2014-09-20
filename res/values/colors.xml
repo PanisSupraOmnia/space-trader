@@ -23,4 +23,6 @@
     <color name="btn_default_normal_palm">#ffffffff</color>
     <color name="btn_default_pressed_palm">#ff330099</color>
     
+    <color name="doc_background">#ffa9be8e</color>
+    
 </resources>

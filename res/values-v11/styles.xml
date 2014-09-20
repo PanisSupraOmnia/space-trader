@@ -58,9 +58,8 @@
         <item name="spinnerDropDownItemStyle">@style/SpinnerDropDownStyle.Palm</item>
         <item name="android:dividerHorizontal">@null</item>
         <item name="dividerHorizontal">@null</item>
-        
-        <item name="android:alertDialogTheme">@style/AlertDialogTheme.Palm</item>
-        <item name="android:dialogTheme">@style/DialogTheme.Palm</item>
+        <item name="android:homeAsUpIndicator">@drawable/abc_ic_ab_back_palm</item>
+        <item name="homeAsUpIndicator">@drawable/abc_ic_ab_back_palm</item>
     </style>
     
     <style name="ActionBarStyle.Palm" parent="@style/ActionBar.Transparent.Palm_ab">
@@ -70,45 +69,9 @@
         <item name="titleTextStyle">@style/TitleText.Palm</item>
     </style>
     
-    <style name="DialogTheme.Palm" parent="@android:style/Theme.Holo.Light.Dialog">
-        <item name="android:windowBackground">@drawable/dialog_full_palm</item>
-        <item name="android:windowTitleStyle">@style/DialogWindowTitle.Palm</item>
-        <item name="android:borderlessButtonStyle">@style/DialogButtonStyle.Palm</item>
-        <item name="android:buttonBarStyle">@style/ButtonBarStyle.Palm</item>
-        <item name="android:dividerHorizontal">@null</item>
-        <item name="dividerHorizontal">@null</item>
-    </style>
-    
-    <style name="DialogWindowTitle.Palm" parent="@android:style/Theme.Holo.Light">
-        <item name="android:textAppearance">@style/TextAppearance.DialogWindowTitle.Palm</item>
-        <item name="android:gravity">center</item>
-    </style>
-    
-    <style name="TextAppearance.MenuItem.Palm" parent="TextAppearance.Widget.AppCompat.ExpandedMenu.Item">
-        <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">22sp</item>
-    </style>
-
-    <style name="DialogButtonStyle.Palm" parent="@android:style/Widget.Holo.Light.Button.Small">
-        <item name="android:textColor">@color/primary_text_palm</item>
-        <item name="android:background">?attr/roundedButtonDrawable</item>
-        <item name="android:layout_marginLeft">8dp</item>
-        <item name="android:layout_marginRight">8dp</item>
-        <item name="android:textAppearance">?android:textAppearanceMedium</item>
-    </style>
-    
-    <style name="ButtonBarStyle.Palm" parent="@android:style/Holo.Light.ButtonBar.AlertDialog">
-        <item name="android:divider">@null</item>
-        <item name="android:paddingTop">0dp</item>
-        <item name="android:paddingBottom">8dp</item>
-        <item name="android:paddingLeft">8dp</item>
-        <item name="android:paddingRight">8dp</item>
-    </style>
-    
-    <style name="AlertDialogTheme.Palm" parent="@style/DialogTheme.Palm">
-        <item name="android:alertDialogStyle">@style/AlertDialog.Palm</item>
-        <item name="android:windowBackground">@android:color/transparent</item>	
-        <item name="android:windowTitleStyle">@style/DialogWindowTitle.Palm</item>
+    <style name="ScrollView.Palm" parent="@android:style/Widget.Holo.Light.ScrollView">
+        <item name="android:fadingEdge">none</item>
+        <item name="android:overScrollMode">never</item>
     </style>
     
     <style name="TextView.Light" parent="@android:style/Widget.Holo.Light.TextView">

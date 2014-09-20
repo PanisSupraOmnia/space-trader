@@ -11457,6 +11457,7 @@ com.brucelet.spacetrader.R$color: int btn_default_pressed_holo
 com.brucelet.spacetrader.R$color: int btn_default_pressed_palm
 com.brucelet.spacetrader.R$color: int button_selected_palm
 com.brucelet.spacetrader.R$color: int dark_acwidgets_color
+com.brucelet.spacetrader.R$color: int doc_background
 com.brucelet.spacetrader.R$color: int light_acwidgets_color
 com.brucelet.spacetrader.R$color: int palm_acwidgets_color
 com.brucelet.spacetrader.R$color: int primary_text_palm
@@ -11539,6 +11540,7 @@ com.brucelet.spacetrader.R$drawable: int abc_cab_background_top_holo_dark
 com.brucelet.spacetrader.R$drawable: int abc_cab_background_top_holo_light
 com.brucelet.spacetrader.R$drawable: int abc_ic_ab_back_holo_dark
 com.brucelet.spacetrader.R$drawable: int abc_ic_ab_back_holo_light
+com.brucelet.spacetrader.R$drawable: int abc_ic_ab_back_palm
 com.brucelet.spacetrader.R$drawable: int abc_ic_cab_done_holo_dark
 com.brucelet.spacetrader.R$drawable: int abc_ic_cab_done_holo_light
 com.brucelet.spacetrader.R$drawable: int abc_ic_clear
@@ -11760,7 +11762,6 @@ com.brucelet.spacetrader.R$drawable: int dialog_bottom_palm
 com.brucelet.spacetrader.R$drawable: int dialog_full_holo_dark
 com.brucelet.spacetrader.R$drawable: int dialog_full_holo_light
 com.brucelet.spacetrader.R$drawable: int dialog_full_palm
-com.brucelet.spacetrader.R$drawable: int dialog_middle_holo
 com.brucelet.spacetrader.R$drawable: int dialog_middle_holo_dark
 com.brucelet.spacetrader.R$drawable: int dialog_middle_holo_light
 com.brucelet.spacetrader.R$drawable: int dialog_middle_palm
@@ -12152,7 +12153,6 @@ com.brucelet.spacetrader.R$id: int dialog_newgame_pilotpicker_plus
 com.brucelet.spacetrader.R$id: int dialog_newgame_pilotpicker_value
 com.brucelet.spacetrader.R$id: int dialog_newgame_points_row
 com.brucelet.spacetrader.R$id: int dialog_newgame_randomsystems
-com.brucelet.spacetrader.R$id: int dialog_newgame_randomsystems_row
 com.brucelet.spacetrader.R$id: int dialog_newgame_totalpoints
 com.brucelet.spacetrader.R$id: int dialog_newgame_traderpicker
 com.brucelet.spacetrader.R$id: int dialog_newgame_traderpicker_minus
@@ -12169,7 +12169,6 @@ com.brucelet.spacetrader.R$id: int dialog_options_chartinfo
 com.brucelet.spacetrader.R$id: int dialog_options_contattack
 com.brucelet.spacetrader.R$id: int dialog_options_contattflee
 com.brucelet.spacetrader.R$id: int dialog_options_developermode
-com.brucelet.spacetrader.R$id: int dialog_options_developermode_layout
 com.brucelet.spacetrader.R$id: int dialog_options_encounterstyle
 com.brucelet.spacetrader.R$id: int dialog_options_encounterstyle_both
 com.brucelet.spacetrader.R$id: int dialog_options_encounterstyle_graphical
@@ -14388,7 +14387,6 @@ com.brucelet.spacetrader.R$style: int ActivityTheme_Palm
 com.brucelet.spacetrader.R$style: int AlertDialog_Dark
 com.brucelet.spacetrader.R$style: int AlertDialog_Light
 com.brucelet.spacetrader.R$style: int AlertDialog_Palm
-com.brucelet.spacetrader.R$style: int AlertDialogTheme_Palm
 com.brucelet.spacetrader.R$style: int AppBaseTheme
 com.brucelet.spacetrader.R$style: int AppTheme
 com.brucelet.spacetrader.R$style: int AutoCompleteTextView_Dark
@@ -14409,17 +14407,17 @@ com.brucelet.spacetrader.R$style: int Button_Square_Palm
 com.brucelet.spacetrader.R$style: int ButtonBar_AlertDialog_Dark
 com.brucelet.spacetrader.R$style: int ButtonBar_AlertDialog_Light
 com.brucelet.spacetrader.R$style: int ButtonBar_AlertDialog_Palm
-com.brucelet.spacetrader.R$style: int ButtonBarStyle_Palm
 com.brucelet.spacetrader.R$style: int ButtonDark_ACWidgets
 com.brucelet.spacetrader.R$style: int ButtonLight_ACWidgets
 com.brucelet.spacetrader.R$style: int ButtonPalm_ACWidgets
+com.brucelet.spacetrader.R$style: int CheckBox_Dark
+com.brucelet.spacetrader.R$style: int CheckBox_Light
+com.brucelet.spacetrader.R$style: int CheckBox_Palm
 com.brucelet.spacetrader.R$style: int CheckBoxDark_ACWidgets
 com.brucelet.spacetrader.R$style: int CheckBoxLight_ACWidgets
 com.brucelet.spacetrader.R$style: int CheckBoxPalm_ACWidgets
 com.brucelet.spacetrader.R$style: int Dark_ACWidgets
 com.brucelet.spacetrader.R$style: int DialogButtonStyle_Palm
-com.brucelet.spacetrader.R$style: int DialogTheme_Palm
-com.brucelet.spacetrader.R$style: int DialogWindowTitle_Palm
 com.brucelet.spacetrader.R$style: int DropDownListView_Dark_ab
 com.brucelet.spacetrader.R$style: int DropDownListView_Light_ab
 com.brucelet.spacetrader.R$style: int DropDownListView_Palm_ab
@@ -14457,11 +14455,15 @@ com.brucelet.spacetrader.R$style: int ProgressBar_Palm_ab
 com.brucelet.spacetrader.R$style: int ProgressBarDark_ACWidgets
 com.brucelet.spacetrader.R$style: int ProgressBarLight_ACWidgets
 com.brucelet.spacetrader.R$style: int ProgressBarPalm_ACWidgets
+com.brucelet.spacetrader.R$style: int RadioButton_Dark
+com.brucelet.spacetrader.R$style: int RadioButton_Light
+com.brucelet.spacetrader.R$style: int RadioButton_Palm
 com.brucelet.spacetrader.R$style: int RadioButtonDark_ACWidgets
 com.brucelet.spacetrader.R$style: int RadioButtonLight_ACWidgets
 com.brucelet.spacetrader.R$style: int RadioButtonPalm_ACWidgets
 com.brucelet.spacetrader.R$style: int RootLayout
 com.brucelet.spacetrader.R$style: int ScreenRow
+com.brucelet.spacetrader.R$style: int ScrollView_Palm
 com.brucelet.spacetrader.R$style: int SpinnerDark_ACWidgets
 com.brucelet.spacetrader.R$style: int SpinnerDropDownItemDark_ACWidgets
 com.brucelet.spacetrader.R$style: int SpinnerDropDownItemLight_ACWidgets
@@ -14515,7 +14517,6 @@ com.brucelet.spacetrader.R$style: int TextAppearance_AppCompat_Widget_PopupMenu_
 com.brucelet.spacetrader.R$style: int TextAppearance_DialogWindowTitle_Dark
 com.brucelet.spacetrader.R$style: int TextAppearance_DialogWindowTitle_Light
 com.brucelet.spacetrader.R$style: int TextAppearance_DialogWindowTitle_Palm
-com.brucelet.spacetrader.R$style: int TextAppearance_MenuItem_Palm
 com.brucelet.spacetrader.R$style: int TextAppearance_Widget_AppCompat_Base_ExpandedMenu_Item
 com.brucelet.spacetrader.R$style: int TextAppearance_Widget_AppCompat_ExpandedMenu_Item
 com.brucelet.spacetrader.R$style: int TextView_Dark
@@ -14550,7 +14551,8 @@ com.brucelet.spacetrader.R$style: int Theme_Light_ab
 com.brucelet.spacetrader.R$style: int Theme_Light_ab_Widget
 com.brucelet.spacetrader.R$style: int Theme_Palm_ab
 com.brucelet.spacetrader.R$style: int Theme_Palm_ab_Widget
-com.brucelet.spacetrader.R$style: int TitleText_Default
+com.brucelet.spacetrader.R$style: int TitleText_Dark
+com.brucelet.spacetrader.R$style: int TitleText_Light
 com.brucelet.spacetrader.R$style: int TitleText_Palm
 com.brucelet.spacetrader.R$style: int Widget_AppCompat_ActionBar
 com.brucelet.spacetrader.R$style: int Widget_AppCompat_ActionBar_Solid

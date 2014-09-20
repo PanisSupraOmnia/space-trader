@@ -21,6 +21,7 @@
         <item name="actionMenuTextAppearance">@style/ActionButtonText.Light</item>
         <item name="actionBarWidgetTheme">@style/ActionBarWidgetTheme.Light</item>
         <item name="actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Light</item>
+        
     </style>
 
     <style name="ActivityTheme.Base.Dark" parent="@style/Theme.Dark_ab">
@@ -51,11 +52,12 @@
         <item name="spinnerDropDownItemStyle">@style/SpinnerDropDownStyle.Palm</item>
         <item name="dividerHorizontal">@drawable/horizontal_divider_palm</item>
         <item name="actionModeCloseDrawable">@drawable/ic_action_navigation_accept_palm</item>
+        <item name="homeAsUpIndicator">@drawable/abc_ic_ab_back_palm</item>
     </style>
     
     
     <style name="ActivityTheme.Light" parent="ActivityTheme.Base.Light">        
-        <item name="actionBarSpinnerTextStyle">@style/TitleText.Default</item>
+        <item name="actionBarSpinnerTextStyle">@style/TitleText.Light</item>
         <item name="roundedButtonDrawable">@drawable/btn_rounded_holo_light</item>
         <item name="squareButtonDrawable">@drawable/btn_square_holo_light</item>
         <item name="strokeColor">@color/stroke_light</item>
@@ -77,10 +79,13 @@
         <item name="textViewStyleHeader">@style/TextView.Header.Light</item>
         <item name="buttonStyleRounded">@style/Button.Rounded.Light</item>
         <item name="buttonStyleSquare">@style/Button.Square.Light</item>
+        
+        <item name="android:checkboxStyle">@style/CheckBox.Light</item>
+        <item name="android:radioButtonStyle">@style/RadioButton.Light</item>
     </style>
     
     <style name="ActivityTheme.Dark" parent="ActivityTheme.Base.Dark">        
-        <item name="actionBarSpinnerTextStyle">@style/TitleText.Default</item>
+        <item name="actionBarSpinnerTextStyle">@style/TitleText.Dark</item>
         <item name="roundedButtonDrawable">@drawable/btn_rounded_holo_dark</item>
         <item name="squareButtonDrawable">@drawable/btn_square_holo_dark</item>
         <item name="strokeColor">@color/stroke_dark</item>
@@ -102,6 +107,9 @@
         <item name="textViewStyleHeader">@style/TextView.Header.Dark</item>
         <item name="buttonStyleRounded">@style/Button.Rounded.Dark</item>
         <item name="buttonStyleSquare">@style/Button.Square.Dark</item>
+        
+        <item name="android:checkboxStyle">@style/CheckBox.Dark</item>
+        <item name="android:radioButtonStyle">@style/RadioButton.Dark</item>
     </style>
     
     <style name="ActivityTheme.Palm" parent="ActivityTheme.Base.Palm">        
@@ -130,12 +138,16 @@
         <item name="buttonStyleRounded">@style/Button.Rounded.Palm</item>
         <item name="buttonStyleSquare">@style/Button.Square.Palm</item>
         
+        <item name="android:checkboxStyle">@style/CheckBox.Palm</item>
+        <item name="android:radioButtonStyle">@style/RadioButton.Palm</item>
+        
         <item name="android:windowBackground">@android:color/white</item>
         <item name="android:panelBackground">@drawable/menu_hardkey_panel_border_palm</item>
         <item name="android:horizontalDivider">@drawable/horizontal_divider_palm</item>
         <item name="android:listViewStyle">@style/ListViewStyle.Palm</item>
         <item name="android:divider">@drawable/horizontal_divider_palm</item>
         <item name="android:spinnerStyle">@style/SpinnerStyle.Palm</item>
+        <item name="android:scrollViewStyle">@style/ScrollView.Palm</item>
         
         <item name="android:listDivider">@null</item>
         <item name="android:listSelector">@drawable/list_selector_palm</item>
@@ -291,8 +303,8 @@
     <style name="ButtonBar.AlertDialog.Palm" parent="">
         <item name="showDividers">middle</item>
         <item name="android:layout_marginTop">0dp</item>
-        <item name="android:layout_marginLeft">4dp</item>
-        <item name="android:layout_marginRight">4dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
     </style>
     
     <style name="Button.AlertDialog.Light" parent="@style/Button.Square.Light">
@@ -308,8 +320,8 @@
     </style>
     
     <style name="Button.AlertDialog.Palm" parent="@style/Button.Rounded.Palm">
-        <item name="android:layout_marginLeft">4dp</item>
-        <item name="android:layout_marginRight">4dp</item>
+        <item name="android:layout_marginLeft">1dp</item>
+        <item name="android:layout_marginRight">1dp</item>
         <item name="android:layout_marginBottom">8dp</item>
         <item name="android:textColor">@color/primary_text_palm</item>
         <item name="android:minHeight">36dp</item>
@@ -326,6 +338,30 @@
     <style name="ActionButtonText.Palm" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu">
         <item name="android:typeface">monospace</item>
         <item name="android:textColor">@color/primary_text_palm</item>
+    </style>
+    
+    <style name="CheckBox.Light" parent="@style/CheckBoxLight_ACWidgets">
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+    </style>
+    
+    <style name="CheckBox.Dark" parent="@style/CheckBoxDark_ACWidgets">
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+    </style>
+    
+    <style name="CheckBox.Palm" parent="@style/CheckBoxPalm_ACWidgets">
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+    </style>
+    
+    <style name="RadioButton.Light" parent="@style/RadioButtonLight_ACWidgets">
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+    </style>
+    
+    <style name="RadioButton.Dark" parent="@style/RadioButtonDark_ACWidgets">
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+    </style>
+    
+    <style name="RadioButton.Palm" parent="@style/RadioButtonPalm_ACWidgets">
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
     </style>
     
     <style name="ActionBarStyle.Palm" parent="@style/ActionBar.Transparent.Palm_ab">
@@ -372,9 +408,18 @@
         <item name="android:fadingEdge">none</item>
     </style>
     
-    <style name="TitleText.Default" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+    <style name="ScrollView.Palm" parent="@android:style/Widget.ScrollView">
+        <item name="android:fadingEdge">none</item>
+    </style>
+    
+    <style name="TitleText.Light" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:ellipsize">none</item>
     </style>
+    
+    <style name="TitleText.Dark" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:ellipsize">none</item>
+    </style>
+    
     <style name="TitleText.Palm" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:ellipsize">none</item>
         <item name="android:textColor">@android:color/white</item>
@@ -394,7 +439,6 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">22sp</item>
     </style>
-    
     
         
     <style name="RootLayout">
@@ -565,6 +609,7 @@
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
         <item name="android:textColor">@android:color/black</item>
         <item name="android:dropDownSelector">@drawable/list_selector_palm</item>
+        <item name="android:fadingEdge">none</item>
     </style>
 
     <style name="Button.Rounded.Palm" parent="@style/ButtonPalm_ACWidgets">

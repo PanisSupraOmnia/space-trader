@@ -63,8 +63,8 @@
         <item name="spinnerDropDownItemStyle">@style/SpinnerDropDownStyle.Palm</item>
         <item name="android:dividerHorizontal">@null</item>
         <item name="dividerHorizontal">@null</item>
-        <item name="android:alertDialogTheme">@style/AlertDialogTheme.Palm</item>
-        <item name="android:dialogTheme">@style/DialogTheme.Palm</item>
+        <item name="android:homeAsUpIndicator">@drawable/abc_ic_ab_back_palm</item>
+        <item name="homeAsUpIndicator">@drawable/abc_ic_ab_back_palm</item>
     </style>
 
     <style name="ListViewStyle.Palm" parent="@style/ListViewPalm_ACWidgets">
@@ -72,7 +72,8 @@
         <item name="android:listDivider">@drawable/horizontal_divider_palm</item>
         <item name="android:textAppearanceListItem">@style/PopupMenuText.Palm</item>
         <item name="textAppearanceListItem">@style/PopupMenuText.Palm</item>
-        <item name="android:textColor">@color/primary_text_palm</item>
+        <item name="android:textColor">@color/primary_text_palm
+        <item name="android:fadingEdge">none</item></item>
         <item name="android:overScrollMode">never</item>
     </style>
 
@@ -94,6 +95,8 @@
         <item name="android:popupBackground">@drawable/abc_menu_dropdown_panel_palm</item>
         <item name="android:dropDownSelector">@drawable/list_selector_palm</item>
         <item name="android:textCursorDrawable">@drawable/text_cursor_palm</item>
+        <item name="android:fadingEdge">none</item>
+        <item name="android:overScrollMode">never</item>
     </style>
         
     <style name="TextAppearance.DialogWindowTitle.Light" parent="@android:style/TextAppearance.Holo.DialogWindowTitle">

@@ -17,19 +17,6 @@
         android:gravity="center"
         android:weightSum="2" >
 
-        <!--
-             <view
-            android:id="@+id/screen_chart_find_value"
-            style="?android:attr/autoCompleteTextViewStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:maxLines="1"
-            android:scrollHorizontally="true"
-            class="com.brucelet.spacetrader.ChartFindDialog$ChartFindView"
-            android:maxLength="20" />
-        -->
-
         <AutoCompleteTextView
             android:id="@+id/screen_chart_find_value"
             android:layout_width="0dp"
@@ -40,20 +27,12 @@
             android:scrollHorizontally="true" />
     </LinearLayout>
 
-    <LinearLayout
-        style="@style/ScreenRow"
-        android:gravity="center" >
-
-        <CheckBox
-            android:id="@+id/screen_chart_find_check"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/screen_chart_find_track" />
-    </LinearLayout>
+    <CheckBox
+        android:id="@+id/screen_chart_find_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:checked="true"
+        android:text="@string/screen_chart_find_track" />
 
 </LinearLayout>

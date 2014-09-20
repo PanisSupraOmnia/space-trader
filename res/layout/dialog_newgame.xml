@@ -257,22 +257,13 @@
             android:layout_weight="3" />
     </LinearLayout>
 
-    <LinearLayout
+    <CheckBox
+        android:id="@+id/dialog_newgame_randomsystems"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/dialog_newgame_engineerpicker"
-        android:id="@+id/dialog_newgame_randomsystems_row"
-        style="@style/ScreenRow"
-        android:gravity="center" >
-
-        <CheckBox
-            android:id="@+id/dialog_newgame_randomsystems"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/dialog_newgame_randomsystems" />
-    </LinearLayout>
+        android:layout_gravity="center_horizontal"
+        android:checked="false"
+        android:text="@string/dialog_newgame_randomsystems" />
 
 </RelativeLayout>

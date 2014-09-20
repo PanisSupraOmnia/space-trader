@@ -653,8 +653,8 @@
     <string name="dialog_options_volumescroll">Scroll systems with vol. keys</string>
     <string name="dialog_options_recallscreens">Prev. screen with back button</string>
     <string name="dialog_options_encounterstyle">Encounter Style:</string>
-    <string name="dialog_options_encounterstyle_textual">Textual</string>
-    <string name="dialog_options_encounterstyle_graphical">Graphical</string>
+    <string name="dialog_options_encounterstyle_textual">Text</string>
+    <string name="dialog_options_encounterstyle_graphical">Graphics</string>
     <string name="dialog_options_encounterstyle_both">Both</string>
     <string name="dialog_options_theme">Set Application Theme:</string>
     <string name="dialog_options_theme_light">Light</string>
@@ -1014,7 +1014,7 @@
     <string name="help_shipdestroyed">The game is over, alas.</string>
     <string name="help_youescaped">You continue your flight towards the target system.</string>
     <string name="help_opponentescaped">Your opponent has flown. You can\'t destroy him any longer, or try to plunder him.</string>
-    <string name="help_retire">If you retire, the game ends. You sell your ship and everything on it, and remain in the current system for the rest of your days. If applicable, your total worth will be entered in the high  table.</string>
+    <string name="help_retire">If you retire, the game ends. You sell your ship and everything on it, and remain in the current system for the rest of your days. If applicable, your total worth will be entered in the high score table.</string>
     <string name="help_bounty">Destroying a pirate ship awards you bounty money. The height of the sum depends on the type of ship destroyed. The reward is automatically added to your cash.</string>
     <string name="help_plunder">You are allowed to plunder your opponent\'s cargo to your heart\'s content. Just steal whatever is to your liking. This works exactly as the Buy Cargo option when you are docked, except that you don\'t have to pay anything. You are, of course, limited to the amount your own cargo bays can hold. If you holds are already full, you can jettison selections from your cargo into space by tapping the Dump button. Tap the Done button when you are finished.</string>
     <string name="help_notenoughbays">You should sell enough goods so that you have enough empty cargo bays available.</string>
@@ -1085,13 +1085,20 @@
         \nIf you fly a ship with extra crew quarters, you can hire mercenaries. These travel with you, for a certain sum of credits per day. The net effect of having a mercenary on board is that if the mercenary is better in a certain skill than you are, he will take over the tasks for which that skill is needed. So, if you are lacking a certain skill, a mercenary can compensate for that.
         \n
         \nAnother way to increase certain skills is to buy gadgets. Especially, a navigating system increases your pilot skill, an auto-repair system increases your engineer skill, and a targeting system increases your fighter skill.</string>
-    <string name="help_acknowledgements">This Android version of \"Space Trader\" was created by me, Russell Wolf, between September 2013 and May 2014.
+    <string name="help_acknowledgements">This Android version of \"Space Trader\" was created by me, Russell Wolf, beginning in late 2013 and finishing in September 2014.
         \n
         \nI wrote this using the Android Development Tools plugin for Eclipse. Nearly the entirety of the game logic was ported directly from the original Palm OS source code, although numerous things needed to be structured differently on Android than on Palm. I also occasionally consulted the source of Jay French\'s Space Trader for Windows port.
         \n
         \nI made an effort to keep the look and feel of the Android version as true to the original as possible. While I did include some minor enhancements and bugfixes, hopefully it feels very familiar to anyone who remembers the Palm version.
         \n
-        \nI am extremely grateful to Pieter Spronck for the creation of the original Space Trader for Palm OS.
+        \nI am grateful to my beta testers, who included:
+        \nJustin Ardini
+        \nWilliam Cheung
+        \nMike Hopps
+        \nCam Tenny
+        \nBryant Wolf
+        \n
+        \nAnd of course, a very special thanks goes out to Pieter Spronck, for the creation of the original Space Trader for Palm OS.
         \n
         \n
         \n
@@ -1154,7 +1161,7 @@
         \n
         \nFinally, I wish to thank all people who sent their comments to me since the first release of the game. Many of your suggestions have been incorporated in the game, and made it a lot better. Suggestions I haven\'t used, I have at least stored to inspire me when creating sequel game. Unfortunately, my life is so busy now that I have very little time to respond to emails, or even read them.
         \n
-        \nAn extensive FAQ for the game is available at the Space Trader home page at http://www.spronck.net/picoverse/spacetrader.</string>
+        \nAn extensive FAQ for the game is available at the Space Trader home page at http://ticc.uvt.nl/~pspronck/spacetrader/STFrames.html.</string>
     <string name="help_firststeps">Here I will describe the steps you will undertake the first days as a trader:
         \n
         \nYou start by docking on some system. The specifics of that system are shown on the System Information screen. Take special note of any special resources the system might have. These influence the price you have to pay for certain goods. For instance, a system which has rich soil, usually sells food cheap, while a relatively lifeless system has little fauna and therefore expensive furs.

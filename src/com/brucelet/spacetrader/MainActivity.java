@@ -38,14 +38,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
-import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.widget.ListPopupWindowCompat;
 import android.support.v4.widget.PopupMenuCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -61,14 +59,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
-import android.widget.ListPopupWindow;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.brucelet.spacetrader.datatypes.GameState;
@@ -255,7 +248,6 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 		android.util.Log.d("onCreate()", "setContentView() called");
 //		setContentView(R.layout.activity_main);
 		setContentView(R.layout.activity_main2);
-//		setContentView(R.layout.activity_main3);
 		
 		final ScreenType[] screens = ScreenType.dropdownValues();
 		mShortcutKeys = new char[screens.length];
@@ -854,9 +846,13 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 	}
 	
 	private void startMenuActionMode() {
+
+		if (getCurrentScreenType() == ScreenType.ENCOUNTER) getGameState().clearButtonAction();
+		
 //		final boolean showCommand = findScreenById(getCurrentScreenId()).getType().docked;
 		final boolean showCommand = getCurrentScreenType().docked;
 //		final boolean showCommand = ScreenPagerAdapter.DOCKED_SCREEN_LIST.contains(findScreenById(getCurrentScreenId()).getType());
+		
 		
 		mActionMode = startSupportActionMode(new ActionMode.Callback() {
 //			private ListPopupWindow commandDropdown;
@@ -995,51 +991,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 					
 					initializeDropdownCompat(help, R.menu.help);
 				}
-//				final PopupMenu gameDropdown = new PopupMenu(MainActivity.this, game);
-//				
-//				gameDropdown.inflate(R.menu.game);
-//				if (!getGameState().developerMode()) gameDropdown.getMenu().removeGroup(R.id.menu_group_extra);	// Dev options eg call keyboard for testing.
-//				if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT && !hasWriteExternalPermission()) {
-//					gameDropdown.getMenu().removeItem(R.id.menu_savegame);
-//				}
-////				if (!findScreenById(getCurrentScreenId()).getType().docked) {
-//				if (!getCurrentScreenType().docked) {
-////				if (!ScreenPagerAdapter.DOCKED_SCREEN_LIST.contains(findScreenById(getCurrentScreenId()).getType())) {
-//					gameDropdown.getMenu().removeItem(R.id.menu_retire);
-//				}
-//				gameDropdown.setOnMenuItemClickListener(MainActivity.this);
-//				game.setOnClickListener(new OnClickListener() {
-//					
-//					@Override
-//					public void onClick(View v) {
-//						gameDropdown.show();
-//					}
-//				});
-////				if (!showCommand) gameDropdown.show();	// TODO is this desired behavior?
-//				
-//				final PopupMenu helpDropdown = new PopupMenu(MainActivity.this, help);
-//				helpDropdown.inflate(R.menu.help);
-//				helpDropdown.setOnMenuItemClickListener(MainActivity.this);
-//				help.setOnClickListener(new OnClickListener() {
-//					
-//					@Override
-//					public void onClick(View v) {
-//						helpDropdown.show();
-//					}
-//				});
-				
 				mode.setCustomView(view);
-				
-//				MenuItem item;
-//				item = menu.add(R.string.menu_command);
-//				MenuItemCompat.setShowAsAction(item, MenuItemCompat.SHOW_AS_ACTION_ALWAYS);
-//				MenuItemCompat.setActionProvider(item, new MenuSpinnerActionProvider(getSupportActionBarContext(), MenuSpinnerActionProvider.TYPE_COMMAND));
-//				item = menu.add(R.string.menu_game);
-//				MenuItemCompat.setShowAsAction(item, MenuItemCompat.SHOW_AS_ACTION_ALWAYS);
-//				MenuItemCompat.setActionProvider(item, new MenuSpinnerActionProvider(getSupportActionBarContext(), MenuSpinnerActionProvider.TYPE_GAME));
-//				item = menu.add(R.string.menu_help);
-//				MenuItemCompat.setShowAsAction(item, MenuItemCompat.SHOW_AS_ACTION_ALWAYS);
-//				MenuItemCompat.setActionProvider(item, new MenuSpinnerActionProvider(getSupportActionBarContext(), MenuSpinnerActionProvider.TYPE_HELP));
 
 				return true;
 			}

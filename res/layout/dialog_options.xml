@@ -10,7 +10,8 @@
         android:paddingBottom="8dip"
         android:paddingLeft="8dip"
         android:paddingRight="8dip"
-        android:paddingTop="8dip" >
+        android:paddingTop="8dip"
+        android:gravity="left|top" >
 
         <TextView
             android:layout_width="wrap_content"
@@ -28,145 +29,66 @@
             <CheckBox
                 android:id="@+id/dialog_options_ignore_police"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dialog_options_ignore_police" />
+                android:text="@string/dialog_options_ignore_police"/>
 
             <CheckBox
                 android:id="@+id/dialog_options_ignore_pirates"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dialog_options_ignore_pirates" />
+                android:text="@string/dialog_options_ignore_pirates"  />
 
             <CheckBox
                 android:id="@+id/dialog_options_ignore_traders"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dialog_options_ignore_traders" />
+                android:text="@string/dialog_options_ignore_traders"  />
         </LinearLayout>
+        
+        <CheckBox
+            android:id="@+id/dialog_options_ignore_dealing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_options_ignore_dealing" />
+        
+        <CheckBox
+            android:id="@+id/dialog_options_fulltank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_options_fulltank" />
+        
+        <CheckBox
+            android:id="@+id/dialog_options_fullhull"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_options_fullhull" />
+        
+        <CheckBox
+            android:id="@+id/dialog_options_warpcosts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_options_warpcosts" />
+        
+        <CheckBox
+            android:id="@+id/dialog_options_chartinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_options_chartinfo" />
+        
+        <CheckBox
+            android:id="@+id/dialog_options_contattack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_options_contattack" />
+        
+        <CheckBox
+            android:id="@+id/dialog_options_contattflee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_options_contattflee" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|left" >
+        
 
-            <CheckBox
-                android:id="@+id/dialog_options_ignore_dealing"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dialog_options_ignore_dealing" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|left" >
-
-            <CheckBox
-                android:id="@+id/dialog_options_fulltank"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dialog_options_fulltank" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|left" >
-
-            <CheckBox
-                android:id="@+id/dialog_options_fullhull"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dialog_options_fullhull" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|left" >
-
-            <CheckBox
-                android:id="@+id/dialog_options_warpcosts"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dialog_options_warpcosts" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|left" >
-
-            <CheckBox
-                android:id="@+id/dialog_options_chartinfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dialog_options_chartinfo" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|left" >
-
-            <CheckBox
-                android:id="@+id/dialog_options_contattack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dialog_options_contattack" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|left" >
-
-            <CheckBox
-                android:id="@+id/dialog_options_contattflee"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dialog_options_contattflee" />
-        </LinearLayout>
 
         <LinearLayout
         android:paddingLeft="8dip"
@@ -188,86 +110,37 @@
                 android:inputType="number"
                 android:maxLength="2" />
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|left" >
-
-            <CheckBox
-                android:id="@+id/dialog_options_news"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dialog_options_news" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|left" >
-
-            <CheckBox
-                android:id="@+id/dialog_options_volumescroll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dialog_options_volumescroll" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|left" >
-
-            <CheckBox
-                android:id="@+id/dialog_options_recallscreens"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dialog_options_recallscreens" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|left" >
-
-            <CheckBox
-                android:id="@+id/dialog_options_range"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dialog_options_range" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|left" >
-
-            <CheckBox
-                android:id="@+id/dialog_options_track"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dialog_options_track" />
-        </LinearLayout>
+        
+        
+        <CheckBox
+            android:id="@+id/dialog_options_news"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_options_news" />
+        
+        <CheckBox
+            android:id="@+id/dialog_options_volumescroll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_options_volumescroll" />
+        
+        <CheckBox
+            android:id="@+id/dialog_options_recallscreens"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_options_recallscreens" />
+        
+        <CheckBox
+            android:id="@+id/dialog_options_range"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_options_range" />
+        
+        <CheckBox
+            android:id="@+id/dialog_options_track"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_options_track" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -302,54 +175,25 @@
                 android:layout_height="wrap_content"
                 android:text="@string/dialog_options_encounterstyle_both"  />
         </RadioGroup>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|left" >
-
-            <CheckBox
-                android:id="@+id/dialog_options_loans"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dialog_options_loans" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|left" >
-
-            <CheckBox
-                android:id="@+id/dialog_options_shareprefs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dialog_options_shareprefs" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|left" >
-
-            <CheckBox
-                android:id="@+id/dialog_options_identify"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dialog_options_identify" />
-        </LinearLayout>
+        
+        
+        <CheckBox
+            android:id="@+id/dialog_options_loans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_options_loans" />
+        
+        <CheckBox
+            android:id="@+id/dialog_options_shareprefs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_options_shareprefs" />
+        
+        <CheckBox
+            android:id="@+id/dialog_options_identify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_options_identify" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -385,23 +229,12 @@
                 android:text="@string/dialog_options_theme_palm"/>
         </RadioGroup>
 
-        <LinearLayout
-            android:id="@+id/dialog_options_developermode_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|left"
-            android:visibility="gone" >
-
-            <CheckBox
-                android:id="@+id/dialog_options_developermode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dialog_options_developermode" />
-        </LinearLayout>
+        <CheckBox
+            android:id="@+id/dialog_options_developermode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_options_developermode" />
+        
     </LinearLayout>
 
 </ScrollView>
