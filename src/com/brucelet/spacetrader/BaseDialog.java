@@ -243,6 +243,10 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 		return dialog;
 	}
 	
+	public void setTitle(CharSequence title) {
+		((TextView)getDialog().findViewById(R.id.alertTitle)).setText(title);
+	}
+	
 //	@Override
 //	public final Dialog onCreateDialog(Bundle savedInstanceState) {
 //		android.util.Log.d("BaseDialog", "Creating dialog "+this.getClass().getName());

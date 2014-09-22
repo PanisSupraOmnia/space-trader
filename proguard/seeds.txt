@@ -10757,6 +10757,7 @@ com.brucelet.spacetrader.BaseDialog: void onDismiss(android.content.DialogInterf
 com.brucelet.spacetrader.BaseDialog: void onCancel(android.content.DialogInterface)
 com.brucelet.spacetrader.BaseDialog: void onResume()
 com.brucelet.spacetrader.BaseDialog: android.app.Dialog onCreateDialog(android.os.Bundle)
+com.brucelet.spacetrader.BaseDialog: void setTitle(java.lang.CharSequence)
 com.brucelet.spacetrader.BaseDialog: com.brucelet.spacetrader.MainActivity getGameManager()
 com.brucelet.spacetrader.BaseDialog: com.brucelet.spacetrader.datatypes.GameState getGameState()
 com.brucelet.spacetrader.BaseDialog: void setViewTextById(int,int)
@@ -12906,6 +12907,7 @@ com.brucelet.spacetrader.R$menu: int main
 com.brucelet.spacetrader.R$menu: int shortcuts
 com.brucelet.spacetrader.R$menu: R$menu()
 com.brucelet.spacetrader.R$plurals
+com.brucelet.spacetrader.R$plurals: int dialog_highscores_description
 com.brucelet.spacetrader.R$plurals: int format_days
 com.brucelet.spacetrader.R$plurals: int screen_encounter_description_initial
 com.brucelet.spacetrader.R$plurals: int screen_status_cargo_reactorfuel
@@ -12998,7 +13000,6 @@ com.brucelet.spacetrader.R$string: int dialog_help_title
 com.brucelet.spacetrader.R$string: int dialog_highscores_1
 com.brucelet.spacetrader.R$string: int dialog_highscores_2
 com.brucelet.spacetrader.R$string: int dialog_highscores_3
-com.brucelet.spacetrader.R$string: int dialog_highscores_description
 com.brucelet.spacetrader.R$string: int dialog_highscores_empty
 com.brucelet.spacetrader.R$string: int dialog_highscores_percent
 com.brucelet.spacetrader.R$string: int dialog_highscores_title
@@ -15959,47 +15960,6 @@ com.brucelet.spacetrader.enumtypes.ActivityLevel: ActivityLevel(java.lang.String
 com.brucelet.spacetrader.enumtypes.ActivityLevel: java.lang.String toXmlString(android.content.res.Resources)
 com.brucelet.spacetrader.enumtypes.ActivityLevel: com.brucelet.spacetrader.enumtypes.ActivityLevel[] values()
 com.brucelet.spacetrader.enumtypes.ActivityLevel: com.brucelet.spacetrader.enumtypes.ActivityLevel valueOf(java.lang.String)
-com.brucelet.spacetrader.enumtypes.DialogType
-com.brucelet.spacetrader.enumtypes.DialogType: DialogType()
-com.brucelet.spacetrader.enumtypes.DialogType$Confirm
-com.brucelet.spacetrader.enumtypes.DialogType$Confirm: com.brucelet.spacetrader.enumtypes.DialogType$Confirm DERP
-com.brucelet.spacetrader.enumtypes.DialogType$Confirm: int titleId
-com.brucelet.spacetrader.enumtypes.DialogType$Confirm: int messageId
-com.brucelet.spacetrader.enumtypes.DialogType$Confirm: int positiveId
-com.brucelet.spacetrader.enumtypes.DialogType$Confirm: int negativeId
-com.brucelet.spacetrader.enumtypes.DialogType$Confirm: int helpId
-com.brucelet.spacetrader.enumtypes.DialogType$Confirm: com.brucelet.spacetrader.enumtypes.DialogType$Confirm[] ENUM$VALUES
-com.brucelet.spacetrader.enumtypes.DialogType$Confirm: void <clinit>()
-com.brucelet.spacetrader.enumtypes.DialogType$Confirm: DialogType$Confirm(java.lang.String,int,int,int,int)
-com.brucelet.spacetrader.enumtypes.DialogType$Confirm: DialogType$Confirm(java.lang.String,int,int,int,int,int,int)
-com.brucelet.spacetrader.enumtypes.DialogType$Confirm: com.brucelet.spacetrader.enumtypes.DialogType$Confirm[] values()
-com.brucelet.spacetrader.enumtypes.DialogType$Confirm: com.brucelet.spacetrader.enumtypes.DialogType$Confirm valueOf(java.lang.String)
-com.brucelet.spacetrader.enumtypes.DialogType$Input
-com.brucelet.spacetrader.enumtypes.DialogType$Input: com.brucelet.spacetrader.enumtypes.DialogType$Input GETLOAN
-com.brucelet.spacetrader.enumtypes.DialogType$Input: com.brucelet.spacetrader.enumtypes.DialogType$Input PAYBACK
-com.brucelet.spacetrader.enumtypes.DialogType$Input: int titleId
-com.brucelet.spacetrader.enumtypes.DialogType$Input: int messageId
-com.brucelet.spacetrader.enumtypes.DialogType$Input: int positiveId
-com.brucelet.spacetrader.enumtypes.DialogType$Input: int neutralId
-com.brucelet.spacetrader.enumtypes.DialogType$Input: int negativeId
-com.brucelet.spacetrader.enumtypes.DialogType$Input: int helpId
-com.brucelet.spacetrader.enumtypes.DialogType$Input: com.brucelet.spacetrader.enumtypes.DialogType$Input[] ENUM$VALUES
-com.brucelet.spacetrader.enumtypes.DialogType$Input: void <clinit>()
-com.brucelet.spacetrader.enumtypes.DialogType$Input: DialogType$Input(java.lang.String,int,int,int,int,int,int,int)
-com.brucelet.spacetrader.enumtypes.DialogType$Input: com.brucelet.spacetrader.enumtypes.DialogType$Input[] values()
-com.brucelet.spacetrader.enumtypes.DialogType$Input: com.brucelet.spacetrader.enumtypes.DialogType$Input valueOf(java.lang.String)
-com.brucelet.spacetrader.enumtypes.DialogType$Simple
-com.brucelet.spacetrader.enumtypes.DialogType$Simple: com.brucelet.spacetrader.enumtypes.DialogType$Simple DERP
-com.brucelet.spacetrader.enumtypes.DialogType$Simple: int titleId
-com.brucelet.spacetrader.enumtypes.DialogType$Simple: int messageId
-com.brucelet.spacetrader.enumtypes.DialogType$Simple: int buttonId
-com.brucelet.spacetrader.enumtypes.DialogType$Simple: int helpId
-com.brucelet.spacetrader.enumtypes.DialogType$Simple: com.brucelet.spacetrader.enumtypes.DialogType$Simple[] ENUM$VALUES
-com.brucelet.spacetrader.enumtypes.DialogType$Simple: void <clinit>()
-com.brucelet.spacetrader.enumtypes.DialogType$Simple: DialogType$Simple(java.lang.String,int,int,int,int)
-com.brucelet.spacetrader.enumtypes.DialogType$Simple: DialogType$Simple(java.lang.String,int,int,int,int,int)
-com.brucelet.spacetrader.enumtypes.DialogType$Simple: com.brucelet.spacetrader.enumtypes.DialogType$Simple[] values()
-com.brucelet.spacetrader.enumtypes.DialogType$Simple: com.brucelet.spacetrader.enumtypes.DialogType$Simple valueOf(java.lang.String)
 com.brucelet.spacetrader.enumtypes.DifficultyLevel
 com.brucelet.spacetrader.enumtypes.DifficultyLevel: com.brucelet.spacetrader.enumtypes.DifficultyLevel BEGINNER
 com.brucelet.spacetrader.enumtypes.DifficultyLevel: com.brucelet.spacetrader.enumtypes.DifficultyLevel EASY

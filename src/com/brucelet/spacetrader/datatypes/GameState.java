@@ -52,7 +52,6 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -1088,6 +1087,17 @@ public class GameState {
 		screen.setViewTextById(R.id.screen_bank_ins_cost, R.string.format_dailycost, insuranceMoney());
 
 		screen.setViewTextById(R.id.screen_bank_credits, R.string.format_cash, credits);
+		
+//		// Screenshot override
+//		screen.setViewVisibilityById(R.id.screen_bank_loan_pay, false);
+//		screen.setViewTextById(R.id.screen_bank_ins_buy, R.string.screen_bank_ins_buy);
+//		screen.setViewTextById(R.id.screen_bank_loan_debt, R.string.format_credits, 0);
+//		screen.setViewTextById(R.id.screen_bank_loan_max, R.string.format_credits, 25000);
+//		screen.setViewTextById(R.id.screen_bank_ins_ship, R.string.format_credits, 44908);		
+//		screen.setViewTextById(R.id.screen_bank_ins_noclaim, R.string.format_percent, 0);
+//		screen.setViewTextById(R.id.screen_bank_ins_cost, R.string.format_dailycost, 0);
+//		screen.setViewTextById(R.id.screen_bank_credits, R.string.format_cash, 389304);
+		
 	}
 	
 	// *************************************************************************
@@ -1251,6 +1261,31 @@ public class GameState {
 			drawItem( gadget );
 
 		screen.setViewTextById(R.id.screen_buyeq_credits, R.string.format_cash, credits);
+		
+//		// Screenshot override
+//		screen.setViewVisibilityById(BuyEqScreen.BUTTON_IDS.get(Weapon.PULSE), true);
+//		screen.setViewTextById(BuyEqScreen.PRICE_IDS.get(Weapon.PULSE), R.string.format_credits, 1800);
+//		screen.setViewVisibilityById(BuyEqScreen.BUTTON_IDS.get(Weapon.BEAM), true);
+//		screen.setViewTextById(BuyEqScreen.PRICE_IDS.get(Weapon.BEAM), R.string.format_credits, 11250);
+//		screen.setViewVisibilityById(BuyEqScreen.BUTTON_IDS.get(Weapon.MILITARY), false);
+//		screen.setViewTextById(BuyEqScreen.PRICE_IDS.get(Weapon.MILITARY), R.string.generic_notsold);
+//		screen.setViewVisibilityById(BuyEqScreen.BUTTON_IDS.get(Shield.ENERGY), true);
+//		screen.setViewTextById(BuyEqScreen.PRICE_IDS.get(Shield.ENERGY), R.string.format_credits, 4500);
+//		screen.setViewVisibilityById(BuyEqScreen.BUTTON_IDS.get(Shield.REFLECTIVE), true);
+//		screen.setViewTextById(BuyEqScreen.PRICE_IDS.get(Shield.REFLECTIVE), R.string.format_credits, 18000);
+//		screen.setViewVisibilityById(BuyEqScreen.BUTTON_IDS.get(Gadget.EXTRABAYS), true);
+//		screen.setViewTextById(BuyEqScreen.PRICE_IDS.get(Gadget.EXTRABAYS), R.string.format_credits, 2250);
+//		screen.setViewVisibilityById(BuyEqScreen.BUTTON_IDS.get(Gadget.AUTOREPAIRSYSTEM), true);
+//		screen.setViewTextById(BuyEqScreen.PRICE_IDS.get(Gadget.AUTOREPAIRSYSTEM), R.string.format_credits, 6750);
+//		screen.setViewVisibilityById(BuyEqScreen.BUTTON_IDS.get(Gadget.NAVIGATINGSYSTEM), true);
+//		screen.setViewTextById(BuyEqScreen.PRICE_IDS.get(Gadget.NAVIGATINGSYSTEM), R.string.format_credits, 13500);
+//		screen.setViewVisibilityById(BuyEqScreen.BUTTON_IDS.get(Gadget.TARGETINGSYSTEM), true);
+//		screen.setViewTextById(BuyEqScreen.PRICE_IDS.get(Gadget.TARGETINGSYSTEM), R.string.format_credits, 22500);
+//		screen.setViewVisibilityById(BuyEqScreen.BUTTON_IDS.get(Gadget.CLOAKINGDEVICE), false);
+//		screen.setViewTextById(BuyEqScreen.PRICE_IDS.get(Gadget.CLOAKINGDEVICE), R.string.generic_notsold);
+//		screen.setViewTextById(R.id.screen_buyeq_credits, R.string.format_cash, 378511);
+
+		
 	}
 
 	// *************************************************************************
@@ -1407,7 +1442,31 @@ public class GameState {
 		{
 			mGameManager.showDialogFragment(SimpleDialog.newInstance(R.string.screen_yard_buyship_tribbles_title, R.string.screen_yard_buyship_tribbles_message, R.string.help_shipnotworthmuch));
 			tribbleMessage = true;
-		}		
+		}	
+		
+//		// Screenshot override
+//		dialog.setViewVisibilityById(BuyShipScreen.BUY_IDS.get(ShipType.FLEA), true);
+//		dialog.setViewVisibilityById(BuyShipScreen.BUY_IDS.get(ShipType.GNAT), true);
+//		dialog.setViewVisibilityById(BuyShipScreen.BUY_IDS.get(ShipType.FIREFLY), true);
+//		dialog.setViewVisibilityById(BuyShipScreen.BUY_IDS.get(ShipType.MOSQUITO), true);
+//		dialog.setViewVisibilityById(BuyShipScreen.BUY_IDS.get(ShipType.BUMBLEBEE), false);
+//		dialog.setViewVisibilityById(BuyShipScreen.BUY_IDS.get(ShipType.BEETLE), true);
+//		dialog.setViewVisibilityById(BuyShipScreen.BUY_IDS.get(ShipType.HORNET), true);
+//		dialog.setViewVisibilityById(BuyShipScreen.BUY_IDS.get(ShipType.GRASSHOPPER), true);
+//		dialog.setViewVisibilityById(BuyShipScreen.BUY_IDS.get(ShipType.TERMITE), false);
+//		dialog.setViewVisibilityById(BuyShipScreen.BUY_IDS.get(ShipType.WASP), false);
+//		dialog.setViewTextById(BuyShipScreen.PRICE_IDS.get(ShipType.FLEA), R.string.format_credits, -43200);
+//		dialog.setViewTextById(BuyShipScreen.PRICE_IDS.get(ShipType.GNAT), R.string.format_credits, -36000);
+//		dialog.setViewTextById(BuyShipScreen.PRICE_IDS.get(ShipType.FIREFLY), R.string.format_credits, -22500);
+//		dialog.setViewTextById(BuyShipScreen.PRICE_IDS.get(ShipType.MOSQUITO), R.string.format_credits, -18000);
+//		dialog.setViewTextById(BuyShipScreen.PRICE_IDS.get(ShipType.BUMBLEBEE), R.string.screen_yard_buyship_gotone);
+//		dialog.setViewTextById(BuyShipScreen.PRICE_IDS.get(ShipType.BEETLE), R.string.format_credits, 27000);
+//		dialog.setViewTextById(BuyShipScreen.PRICE_IDS.get(ShipType.HORNET), R.string.format_credits, 45000);
+//		dialog.setViewTextById(BuyShipScreen.PRICE_IDS.get(ShipType.GRASSHOPPER), R.string.format_credits, 90000);
+//		dialog.setViewTextById(BuyShipScreen.PRICE_IDS.get(ShipType.TERMITE), R.string.generic_notsold);
+//		dialog.setViewTextById(BuyShipScreen.PRICE_IDS.get(ShipType.WASP), R.string.generic_notsold);
+//		dialog.setViewTextById(R.id.screen_yard_buyship_credits, R.string.format_cash, 378511);
+		
 	}
 
 	// *************************************************************************
@@ -2118,6 +2177,37 @@ public class GameState {
 		screen.setViewTextById(R.id.screen_buy_bays, R.string.format_bays, ship.filledCargoBays(), ship.totalCargoBays());
 		screen.setViewTextById(R.id.screen_buy_credits, R.string.format_cash, credits);
 
+//		// Screenshot override
+//		for (TradeItem item : TradeItem.values())
+//		{
+//			screen.setViewVisibilityById(BuyScreen.AMOUNT_IDS.get(item), true);
+//			screen.setViewVisibilityById(BuyScreen.MAX_IDS.get(item), true);
+//		}
+//		screen.setViewTextById(BuyScreen.AMOUNT_IDS.get(TradeItem.WATER), R.string.format_number, 18);
+//		screen.setViewTextById(BuyScreen.AMOUNT_IDS.get(TradeItem.FURS), R.string.format_number, 1);
+//		screen.setViewTextById(BuyScreen.AMOUNT_IDS.get(TradeItem.FOOD), R.string.format_number, 40);
+//		screen.setViewTextById(BuyScreen.AMOUNT_IDS.get(TradeItem.ORE), R.string.format_number, 39);
+//		screen.setViewTextById(BuyScreen.AMOUNT_IDS.get(TradeItem.GAMES), R.string.format_number, 10);
+//		screen.setViewTextById(BuyScreen.AMOUNT_IDS.get(TradeItem.FIREARMS), R.string.format_number, 24);
+//		screen.setViewTextById(BuyScreen.AMOUNT_IDS.get(TradeItem.MEDICINE), R.string.format_number, 47);
+//		screen.setViewTextById(BuyScreen.AMOUNT_IDS.get(TradeItem.MACHINERY), R.string.format_number, 15);
+//		screen.setViewVisibilityById(BuyScreen.AMOUNT_IDS.get(TradeItem.NARCOTICS), false);
+//		screen.setViewVisibilityById(BuyScreen.MAX_IDS.get(TradeItem.NARCOTICS), false);
+//		screen.setViewTextById(BuyScreen.AMOUNT_IDS.get(TradeItem.ROBOTS), R.string.format_number, 9);
+//		screen.setViewTextById(BuyScreen.PRICE_IDS.get(TradeItem.WATER), R.string.format_credits, 46);
+//		screen.setViewTextById(BuyScreen.PRICE_IDS.get(TradeItem.FURS), R.string.format_credits, 312);
+//		screen.setViewTextById(BuyScreen.PRICE_IDS.get(TradeItem.FOOD), R.string.format_credits, 99);
+//		screen.setViewTextById(BuyScreen.PRICE_IDS.get(TradeItem.ORE), R.string.format_credits, 474);
+//		screen.setViewTextById(BuyScreen.PRICE_IDS.get(TradeItem.GAMES), R.string.format_credits, 188);
+//		screen.setViewTextById(BuyScreen.PRICE_IDS.get(TradeItem.FIREARMS), R.string.format_credits, 738);
+//		screen.setViewTextById(BuyScreen.PRICE_IDS.get(TradeItem.MEDICINE), R.string.format_credits, 532);
+//		screen.setViewTextById(BuyScreen.PRICE_IDS.get(TradeItem.MACHINERY), R.string.format_credits, 970);
+//		screen.setViewTextById(BuyScreen.PRICE_IDS.get(TradeItem.NARCOTICS), R.string.generic_notsold);		
+//		screen.setViewTextById(BuyScreen.PRICE_IDS.get(TradeItem.ROBOTS), R.string.format_credits, 4075);
+//		screen.setViewTextById(R.id.screen_buy_bays, R.string.format_bays, 30,30);
+//		screen.setViewTextById(R.id.screen_buy_credits, R.string.format_cash, 197761);
+		
+
 	}
 
 	// *************************************************************************
@@ -2149,7 +2239,7 @@ public class GameState {
 		
 		for (TradeItem item : TradeItem.values())
 		{
-			Button amt = (Button) screen.getView().findViewById(SellScreen.AMOUNT_IDS.get(item));
+			View amt = screen.getView().findViewById(SellScreen.AMOUNT_IDS.get(item));
 			if (sellPrice.get(item) <= 0)
 			{
 				amt.setBackgroundResource(0);
@@ -2184,6 +2274,63 @@ public class GameState {
 
 		screen.setViewTextById(R.id.screen_sell_bays, R.string.format_bays, ship.filledCargoBays(), ship.totalCargoBays());
 		screen.setViewTextById(R.id.screen_sell_credits, R.string.format_cash, credits);
+		
+//		// Screenshot override
+//		TypedValue tv = new TypedValue();
+//		mGameManager.getTheme().resolveAttribute(R.attr.squareButtonDrawable, tv, true);
+//		screen.getView().findViewById(SellScreen.AMOUNT_IDS.get(TradeItem.WATER)).setBackgroundResource(tv.resourceId);
+//		screen.getView().findViewById(SellScreen.AMOUNT_IDS.get(TradeItem.FURS)).setBackgroundResource(tv.resourceId);
+//		screen.getView().findViewById(SellScreen.AMOUNT_IDS.get(TradeItem.FOOD)).setBackgroundResource(tv.resourceId);
+//		screen.getView().findViewById(SellScreen.AMOUNT_IDS.get(TradeItem.ORE)).setBackgroundResource(tv.resourceId);
+//		screen.getView().findViewById(SellScreen.AMOUNT_IDS.get(TradeItem.GAMES)).setBackgroundResource(tv.resourceId);
+//		screen.getView().findViewById(SellScreen.AMOUNT_IDS.get(TradeItem.FIREARMS)).setBackgroundResource(tv.resourceId);
+//		screen.getView().findViewById(SellScreen.AMOUNT_IDS.get(TradeItem.MEDICINE)).setBackgroundResource(tv.resourceId);
+//		screen.getView().findViewById(SellScreen.AMOUNT_IDS.get(TradeItem.MACHINERY)).setBackgroundResource(tv.resourceId);
+//		screen.getView().findViewById(SellScreen.AMOUNT_IDS.get(TradeItem.NARCOTICS)).setBackgroundResource(0);
+//		screen.getView().findViewById(SellScreen.AMOUNT_IDS.get(TradeItem.ROBOTS)).setBackgroundResource(tv.resourceId);
+//		screen.setViewTextById(SellScreen.ALL_IDS.get(TradeItem.WATER), R.string.generic_all);
+//		screen.setViewTextById(SellScreen.ALL_IDS.get(TradeItem.FURS), R.string.generic_all);
+//		screen.setViewTextById(SellScreen.ALL_IDS.get(TradeItem.FOOD), R.string.generic_all);
+//		screen.setViewTextById(SellScreen.ALL_IDS.get(TradeItem.ORE), R.string.generic_all);
+//		screen.setViewTextById(SellScreen.ALL_IDS.get(TradeItem.GAMES), R.string.generic_all);
+//		screen.setViewTextById(SellScreen.ALL_IDS.get(TradeItem.FIREARMS), R.string.generic_all);
+//		screen.setViewTextById(SellScreen.ALL_IDS.get(TradeItem.MEDICINE), R.string.generic_all);
+//		screen.setViewTextById(SellScreen.ALL_IDS.get(TradeItem.MACHINERY), R.string.generic_all);
+//		screen.setViewTextById(SellScreen.ALL_IDS.get(TradeItem.NARCOTICS), R.string.generic_dump);
+//		screen.setViewTextById(SellScreen.ALL_IDS.get(TradeItem.ROBOTS), R.string.generic_all);
+//		((TextView) screen.getView().findViewById(SellScreen.LABEL_IDS.get(TradeItem.WATER))).setTypeface( Typeface.DEFAULT_BOLD );
+//		((TextView) screen.getView().findViewById(SellScreen.LABEL_IDS.get(TradeItem.FURS))).setTypeface( Typeface.DEFAULT_BOLD );
+//		((TextView) screen.getView().findViewById(SellScreen.LABEL_IDS.get(TradeItem.FOOD))).setTypeface( Typeface.DEFAULT );
+//		((TextView) screen.getView().findViewById(SellScreen.LABEL_IDS.get(TradeItem.ORE))).setTypeface( Typeface.DEFAULT_BOLD );
+//		((TextView) screen.getView().findViewById(SellScreen.LABEL_IDS.get(TradeItem.GAMES))).setTypeface( Typeface.DEFAULT );
+//		((TextView) screen.getView().findViewById(SellScreen.LABEL_IDS.get(TradeItem.FIREARMS))).setTypeface( Typeface.DEFAULT );
+//		((TextView) screen.getView().findViewById(SellScreen.LABEL_IDS.get(TradeItem.MEDICINE))).setTypeface( Typeface.DEFAULT );
+//		((TextView) screen.getView().findViewById(SellScreen.LABEL_IDS.get(TradeItem.MACHINERY))).setTypeface( Typeface.DEFAULT );
+//		((TextView) screen.getView().findViewById(SellScreen.LABEL_IDS.get(TradeItem.NARCOTICS))).setTypeface( Typeface.DEFAULT );
+//		((TextView) screen.getView().findViewById(SellScreen.LABEL_IDS.get(TradeItem.ROBOTS))).setTypeface( Typeface.DEFAULT );
+//		screen.setViewTextById(SellScreen.PRICE_IDS.get(TradeItem.WATER), R.string.format_credits, 45);
+//		screen.setViewTextById(SellScreen.PRICE_IDS.get(TradeItem.FURS), R.string.format_credits, 303);
+//		screen.setViewTextById(SellScreen.PRICE_IDS.get(TradeItem.FOOD), R.string.format_credits, 97);
+//		screen.setViewTextById(SellScreen.PRICE_IDS.get(TradeItem.ORE), R.string.format_credits, 461);
+//		screen.setViewTextById(SellScreen.PRICE_IDS.get(TradeItem.GAMES), R.string.format_credits, 183);
+//		screen.setViewTextById(SellScreen.PRICE_IDS.get(TradeItem.FIREARMS), R.string.format_credits, 717);
+//		screen.setViewTextById(SellScreen.PRICE_IDS.get(TradeItem.MEDICINE), R.string.format_credits, 517);
+//		screen.setViewTextById(SellScreen.PRICE_IDS.get(TradeItem.MACHINERY), R.string.format_credits, 942);
+//		screen.setViewTextById(SellScreen.PRICE_IDS.get(TradeItem.NARCOTICS), R.string.generic_notrade);
+//		screen.setViewTextById(SellScreen.PRICE_IDS.get(TradeItem.ROBOTS), R.string.format_credits, 3957);
+//		screen.setViewTextById(SellScreen.AMOUNT_IDS.get(TradeItem.WATER), R.string.format_number, 19);
+//		screen.setViewTextById(SellScreen.AMOUNT_IDS.get(TradeItem.FURS), R.string.format_number, 1);
+//		screen.setViewTextById(SellScreen.AMOUNT_IDS.get(TradeItem.FOOD), R.string.format_number, 0);
+//		screen.setViewTextById(SellScreen.AMOUNT_IDS.get(TradeItem.ORE), R.string.format_number, 10);
+//		screen.setViewTextById(SellScreen.AMOUNT_IDS.get(TradeItem.GAMES), R.string.format_number, 0);
+//		screen.setViewTextById(SellScreen.AMOUNT_IDS.get(TradeItem.FIREARMS), R.string.format_number, 0);
+//		screen.setViewTextById(SellScreen.AMOUNT_IDS.get(TradeItem.MEDICINE), R.string.format_number, 0);
+//		screen.setViewTextById(SellScreen.AMOUNT_IDS.get(TradeItem.MACHINERY), R.string.format_number, 0);
+//		screen.setViewTextById(SellScreen.AMOUNT_IDS.get(TradeItem.NARCOTICS), R.string.format_number, 0);
+//		screen.setViewTextById(SellScreen.AMOUNT_IDS.get(TradeItem.ROBOTS), R.string.format_number, 0);
+//		screen.setViewTextById(R.id.screen_sell_bays, R.string.format_bays, 30, 30);
+//		screen.setViewTextById(R.id.screen_sell_credits, R.string.format_cash, 197761);
+		
 	}
 	
 	// *************************************************************************
@@ -2237,8 +2384,8 @@ public class GameState {
 	// *************************************************************************
 	public void showDumpCargo(  )
 	{
-		BaseDialog dialog = mGameManager.findDialogByClass(JettisonDialog.class)
-				;
+		BaseDialog dialog = mGameManager.findDialogByClass(JettisonDialog.class);
+		
 		for (TradeItem item : TradeItem.values())
 		{
 			dialog.setViewTextById(JettisonDialog.AMOUNT_IDS.get(item), R.string.format_number, ship.getCargo(item));
@@ -2628,6 +2775,21 @@ public class GameState {
 		
 		
 		cheatCounter = 0;
+		
+//		// Screenshot override
+//		screen.setViewTextById(R.id.screen_status_name, "Jameson");
+//		screen.setViewTextById(R.id.screen_status_pilot, R.string.format_skills, 10, 13);
+//		screen.setViewTextById(R.id.screen_status_fighter, R.string.format_skills, 8, 11);
+//		screen.setViewTextById(R.id.screen_status_trader, R.string.format_skills, 1, 10);
+//		screen.setViewTextById(R.id.screen_status_engineer, R.string.format_skills, 1, 9);
+//		screen.setViewTextById(R.id.screen_status_kills, R.string.format_number, 2);
+//		screen.setViewTextById(R.id.screen_status_police, PoliceRecord.LAWFUL);
+//		screen.setViewTextById(R.id.screen_status_rep, Reputation.HARMLESS);
+//		screen.setViewTextById(R.id.screen_status_diff, DifficultyLevel.NORMAL);
+//		screen.setViewTextById(R.id.screen_status_time, getResources().getQuantityString(R.plurals.format_days, 9, 9));
+//		screen.setViewTextById(R.id.screen_status_cash, R.string.format_credits, 202570);
+//		screen.setViewTextById(R.id.screen_status_debt, R.string.format_credits, 0);
+//		screen.setViewTextById(R.id.screen_status_worth, R.string.format_credits, 433195);
 	}
 	
 	// *************************************************************************
@@ -3406,6 +3568,107 @@ public class GameState {
 			final int id = EncounterScreen.TRIBBLES.get(getRandom(EncounterScreen.TRIBBLES.size()));
 			randomizeTribblePosition(id);
 		}
+		
+//		// Screenshot override
+//		screen.setViewVisibilityById(R.id.screen_encounter_playership_header, false, false);
+//		screen.setViewVisibilityById(R.id.screen_encounter_playership_type, false, false);
+//		screen.setViewVisibilityById(R.id.screen_encounter_playership_image, true);
+//		screen.setViewVisibilityById(R.id.screen_encounter_playership_shields, false, false);
+//		screen.setViewVisibilityById(R.id.screen_encounter_playership_hull, false, false);
+//		screen.setViewVisibilityById(R.id.screen_encounter_enemyship_header, false, false);
+//		screen.setViewVisibilityById(R.id.screen_encounter_enemyship_type, false, false);
+//		screen.setViewVisibilityById(R.id.screen_encounter_enemyship_image, true);
+//		screen.setViewVisibilityById(R.id.screen_encounter_enemyship_shields, false, false);
+//		screen.setViewVisibilityById(R.id.screen_encounter_enemyship_hull, false, false);
+//		((TextView) screen.getView().findViewById(R.id.screen_encounter_description)).setMinLines(2);
+//		((TextView) screen.getView().findViewById(R.id.screen_encounter_enemyaction)).setMinLines(2);
+//		
+//		ImageView shipView = (ImageView)screen.getView().findViewById(R.id.screen_encounter_playership_image);
+//		shipView.setImageResource(ShipType.GNAT.drawableId);
+//		LayerDrawable shipLayers = (LayerDrawable) shipView.getDrawable();
+//		Drawable shield = shipLayers.findDrawableByLayerId(R.id.drawable_shield);
+//		Drawable damage = shipLayers.findDrawableByLayerId(R.id.drawable_damage);
+//		damage.setLevel(4000);
+//		shield.setLevel(0);
+//		shipView = (ImageView)screen.getView().findViewById(R.id.screen_encounter_enemyship_image);
+//		shipView.setImageResource(ShipType.HORNET.drawableId);
+//		shipLayers = (LayerDrawable) shipView.getDrawable();
+//		shield = shipLayers.findDrawableByLayerId(R.id.drawable_shield);
+//		damage = shipLayers.findDrawableByLayerId(R.id.drawable_damage);
+//		damage.setLevel(0);
+//		shield.setLevel(7500);
+//		((ImageView) screen.getView().findViewById(R.id.screen_encounter_icon)).setImageResource(Opponent.PIRATE.iconId);
+//		screen.setViewVisibilityById(R.id.screen_encounter_button1, true);
+//		screen.setViewVisibilityById(R.id.screen_encounter_button2, true);
+//		screen.setViewVisibilityById(R.id.screen_encounter_button3, false);
+//		screen.setViewVisibilityById(R.id.screen_encounter_button4, false);
+//		screen.setViewVisibilityById(R.id.screen_encounter_surrender, true);
+//		screen.setViewVisibilityById(R.id.screen_encounter_continuous_interrupt, false);
+//		screen.setViewVisibilityById(R.id.screen_encounter_continuous_ticker, false);
+//		screen.setViewTextById(R.id.screen_encounter_button1, EncounterButton.ATTACK.toXmlString(getResources()));
+//		screen.setViewTextById(R.id.screen_encounter_button2, EncounterButton.FLEE.toXmlString(getResources()));
+//		String description = getResources().getQuantityString(R.plurals.screen_encounter_description_initial, 15, 15, getResources().getString(R.string.solarsystem_montor), Opponent.PIRATE.toXmlStringInit(getResources()), ShipType.HORNET.toXmlString(getResources()).toLowerCase(Locale.getDefault()));
+//		screen.setViewTextById(R.id.screen_encounter_description, description);
+//		screen.setViewTextById(R.id.screen_encounter_enemyaction, OpponentAction.ATTACK);
+//		
+//		ImageView shipView = (ImageView)screen.getView().findViewById(R.id.screen_encounter_playership_image);
+//		shipView.setImageResource(ShipType.GRASSHOPPER.drawableId);
+//		LayerDrawable shipLayers = (LayerDrawable) shipView.getDrawable();
+//		Drawable shield = shipLayers.findDrawableByLayerId(R.id.drawable_shield);
+//		Drawable damage = shipLayers.findDrawableByLayerId(R.id.drawable_damage);
+//		damage.setLevel(0);
+//		shield.setLevel(10000);
+//		shipView = (ImageView)screen.getView().findViewById(R.id.screen_encounter_enemyship_image);
+//		shipView.setImageResource(ShipType.WASP.drawableId);
+//		shipLayers = (LayerDrawable) shipView.getDrawable();
+//		shield = shipLayers.findDrawableByLayerId(R.id.drawable_shield);
+//		damage = shipLayers.findDrawableByLayerId(R.id.drawable_damage);
+//		damage.setLevel(0);
+//		shield.setLevel(8750);
+//		((ImageView) screen.getView().findViewById(R.id.screen_encounter_icon)).setImageResource(Opponent.POLICE.iconId);
+//		screen.setViewVisibilityById(R.id.screen_encounter_button1, true);
+//		screen.setViewVisibilityById(R.id.screen_encounter_button2, true);
+//		screen.setViewVisibilityById(R.id.screen_encounter_button3, true);
+//		screen.setViewVisibilityById(R.id.screen_encounter_button4, true);
+//		screen.setViewVisibilityById(R.id.screen_encounter_surrender, false);
+//		screen.setViewVisibilityById(R.id.screen_encounter_continuous_interrupt, false);
+//		screen.setViewVisibilityById(R.id.screen_encounter_continuous_ticker, false);
+//		screen.setViewTextById(R.id.screen_encounter_button1, EncounterButton.ATTACK.toXmlString(getResources()));
+//		screen.setViewTextById(R.id.screen_encounter_button2, EncounterButton.FLEE.toXmlString(getResources()));
+//		screen.setViewTextById(R.id.screen_encounter_button3, EncounterButton.SUBMIT.toXmlString(getResources()));
+//		screen.setViewTextById(R.id.screen_encounter_button4, EncounterButton.BRIBE.toXmlString(getResources()));
+//		String description = getResources().getQuantityString(R.plurals.screen_encounter_description_initial, 7, 7, getResources().getString(R.string.solarsystem_jarada), Opponent.POLICE.toXmlStringInit(getResources()), ShipType.WASP.toXmlString(getResources()).toLowerCase(Locale.getDefault()));
+//		screen.setViewTextById(R.id.screen_encounter_description, description);
+//		screen.setViewTextById(R.id.screen_encounter_enemyaction, OpponentAction.INSPECTION);
+//		
+//		ImageView shipView = (ImageView)screen.getView().findViewById(R.id.screen_encounter_playership_image);
+//		shipView.setImageResource(ShipType.BUMBLEBEE.drawableId);
+//		LayerDrawable shipLayers = (LayerDrawable) shipView.getDrawable();
+//		Drawable shield = shipLayers.findDrawableByLayerId(R.id.drawable_shield);
+//		Drawable damage = shipLayers.findDrawableByLayerId(R.id.drawable_damage);
+//		damage.setLevel(0);
+//		shield.setLevel(0);
+//		shipView = (ImageView)screen.getView().findViewById(R.id.screen_encounter_enemyship_image);
+//		shipView.setImageResource(ShipType.FLEA.drawableId);
+//		shipLayers = (LayerDrawable) shipView.getDrawable();
+//		shield = shipLayers.findDrawableByLayerId(R.id.drawable_shield);
+//		damage = shipLayers.findDrawableByLayerId(R.id.drawable_damage);
+//		damage.setLevel(0);
+//		shield.setLevel(0);
+//		((ImageView) screen.getView().findViewById(R.id.screen_encounter_icon)).setImageResource(Opponent.TRADER.iconId);
+//		screen.setViewVisibilityById(R.id.screen_encounter_button1, true);
+//		screen.setViewVisibilityById(R.id.screen_encounter_button2, true);
+//		screen.setViewVisibilityById(R.id.screen_encounter_button3, true);
+//		screen.setViewVisibilityById(R.id.screen_encounter_button4, false);
+//		screen.setViewVisibilityById(R.id.screen_encounter_surrender, false);
+//		screen.setViewVisibilityById(R.id.screen_encounter_continuous_interrupt, false);
+//		screen.setViewVisibilityById(R.id.screen_encounter_continuous_ticker, false);
+//		screen.setViewTextById(R.id.screen_encounter_button1, EncounterButton.ATTACK.toXmlString(getResources()));
+//		screen.setViewTextById(R.id.screen_encounter_button2, EncounterButton.IGNORE.toXmlString(getResources()));
+//		screen.setViewTextById(R.id.screen_encounter_button3, EncounterButton.TRADE.toXmlString(getResources()));
+//		String description = getResources().getQuantityString(R.plurals.screen_encounter_description_initial, 20, 20, getResources().getString(R.string.solarsystem_exo), Opponent.TRADER.toXmlStringInit(getResources()), ShipType.FLEA.toXmlString(getResources()).toLowerCase(Locale.getDefault()));
+//		screen.setViewTextById(R.id.screen_encounter_description, description);
+//		screen.setViewTextById(R.id.screen_encounter_enemyaction, OpponentAction.TRADE);
 	}
 
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -6176,6 +6439,23 @@ public class GameState {
 			screen.setViewTextById(R.id.screen_yard_buypod, R.string.screen_yard_cantaffordpod);
 		else
 			screen.setViewTextById(R.id.screen_yard_buypod, R.string.screen_yard_buypod);
+		
+//		// Screenshot override
+//		screen.setViewVisibilityById(R.id.screen_yard_fuelbutton, true);
+//		screen.setViewVisibilityById(R.id.screen_yard_fullfuelbutton, true);
+//		screen.setViewVisibilityById(R.id.screen_yard_repairbutton, true);
+//		screen.setViewVisibilityById(R.id.screen_yard_fullrepairbutton, true);
+//		screen.setViewTextById(R.id.screen_yard_shipsbutton, R.string.screen_yard_noshipsbutton);
+//		screen.setViewVisibilityById(R.id.screen_yard_podbutton, false);
+//		screen.setViewTextById(R.id.screen_yard_range, getResources().getQuantityString(R.plurals.screen_yard_range, 5, 5));
+//		screen.setViewTextById(R.id.screen_yard_tank, R.string.screen_yard_tank, 70);	
+//		screen.setViewTextById(R.id.screen_yard_hull, R.string.screen_yard_hull, 78);
+//		screen.setViewTextById(R.id.screen_yard_repair, R.string.screen_yard_repair, 22);
+//		screen.setViewTextById(R.id.screen_yard_ships, R.string.screen_yard_noships);
+//		screen.setViewTextById(R.id.screen_yard_credits, R.string.format_cash, 378304);
+//		screen.setViewTextById(R.id.screen_yard_buypod, R.string.screen_yard_havepod);
+		
+		
 	    
 
 	}
@@ -6867,6 +7147,29 @@ public class GameState {
 		}
 
 		screen.setViewTextById(R.id.screen_personnel_credits, R.string.format_cash, credits);
+		
+//		// Screenshot override
+//		screen.setViewVisibilityById(R.id.screen_personnel_merc1_empty_layout, false);
+//		screen.setViewVisibilityById(R.id.screen_personnel_merc1_stats, true);
+//		screen.setViewTextById(R.id.screen_personnel_merc1_name, R.string.mercenary_crystal);
+//		screen.setViewTextById(R.id.screen_personnel_merc1_price, R.string.format_dailycost, 72);
+//		screen.setViewTextById(R.id.screen_personnel_merc1_pilot, R.string.screen_personnel_pilot, 3);
+//		screen.setViewTextById(R.id.screen_personnel_merc1_fighter, R.string.screen_personnel_fighter, 5);
+//		screen.setViewTextById(R.id.screen_personnel_merc1_trader, R.string.screen_personnel_trader, 10);
+//		screen.setViewTextById(R.id.screen_personnel_merc1_engineer, R.string.screen_personnel_engineer, 6);		
+//		screen.setViewVisibilityById(R.id.screen_personnel_merc2_empty_layout, true);
+//		screen.setViewVisibilityById(R.id.screen_personnel_merc2_stats, false);
+//		screen.setViewTextById(R.id.screen_personnel_merc2_empty, R.string.screen_personnel_vacancy);
+//		screen.setViewVisibilityById(R.id.screen_personnel_merc3_empty_layout, false);
+//		screen.setViewVisibilityById(R.id.screen_personnel_merc3_stats, true);
+//		screen.setViewTextById(R.id.screen_personnel_merc3_name, R.string.mercenary_chiti);
+//		screen.setViewTextById(R.id.screen_personnel_merc3_price, R.string.format_dailycost, 78);
+//		screen.setViewTextById(R.id.screen_personnel_merc3_pilot, R.string.screen_personnel_pilot, 8);
+//		screen.setViewTextById(R.id.screen_personnel_merc3_fighter, R.string.screen_personnel_fighter, 6);
+//		screen.setViewTextById(R.id.screen_personnel_merc3_trader, R.string.screen_personnel_trader, 6);
+//		screen.setViewTextById(R.id.screen_personnel_merc3_engineer, R.string.screen_personnel_engineer, 6);
+//		screen.setViewTextById(R.id.screen_personnel_credits, R.string.format_cash, 202093);	
+		
 	}
 	
 	// *************************************************************************
@@ -7042,6 +7345,19 @@ public class GameState {
 		screen.setViewTextById(R.id.screen_info_traders, curSystem().politics().strengthTraders);
 		screen.setViewVisibilityById(R.id.screen_info_special, showSpecial);
 		screen.setViewVisibilityById(R.id.screen_info_merc, getForHire() != null);
+		
+//		// Screenshot override		
+//		screen.setViewTextById(R.id.screen_info_name, R.string.solarsystem_hades);
+//		screen.setViewTextById(R.id.screen_info_tech, TechLevel.PREAGRICULTURAL);
+//		screen.setViewTextById(R.id.screen_info_gov, Politics.FEUDAL);
+//		screen.setViewTextById(R.id.screen_info_resources, SpecialResources.MINERALRICH);
+//		screen.setViewTextById(R.id.screen_info_status, R.string.screen_info_status_default, Status.DROUGHT);
+//		screen.setViewTextById(R.id.screen_info_size, Size.LARGE);
+//		screen.setViewTextById(R.id.screen_info_police, ActivityLevel.MINIMAL);
+//		screen.setViewTextById(R.id.screen_info_pirates, ActivityLevel.ABUNDANT);
+//		screen.setViewVisibilityById(R.id.screen_info_special, false);
+//		screen.setViewVisibilityById(R.id.screen_info_merc, false);
+		
 
 	}
 
@@ -7203,7 +7519,7 @@ public class GameState {
 		// caught littering?
 		if  (isNewsEvent(NewsEvent.CAUGHTLITTERING))
 		{
-			displayHeadline(R.string.newsevent_caughtlittering, commander());
+			displayHeadline(R.string.newsevent_caughtlittering, commander().name);
 		}
 
 		
@@ -7256,6 +7572,19 @@ public class GameState {
 			}
 		}
 		
+//		// Screenshot override
+//		mGameManager.findScreenById(R.id.screen_info).setViewTextById(R.id.screen_info_gov, Politics.THEOCRACY);
+//		mGameManager.findScreenById(R.id.screen_info).setViewTextById(R.id.screen_info_tech, TechLevel.RENAISSANCE);
+//		mGameManager.findDialogByClass(NewspaperDialog.class).setTitle(getResources().getStringArray(R.array.masthead_theocracy)[0]);
+//		mGameManager.findDialogByClass(NewspaperDialog.class).setViewTextById(NewspaperDialog.HEADLINE_IDS.get(0), R.string.headline_local_war);
+//		mGameManager.findDialogByClass(NewspaperDialog.class).setViewTextById(NewspaperDialog.HEADLINE_IDS.get(1), String.format(getResources().getStringArray(R.array.headline_remote)[3], getResources().getString(R.string.headline_remote_cropfailure), getResources().getString(R.string.solarsystem_cestus)));
+//		mGameManager.findDialogByClass(NewspaperDialog.class).setViewTextById(NewspaperDialog.HEADLINE_IDS.get(2), String.format(getResources().getStringArray(R.array.headline_remote)[1], getResources().getString(R.string.headline_remote_drought), getResources().getString(R.string.solarsystem_hades)));
+//		mGameManager.findDialogByClass(NewspaperDialog.class).setViewTextById(NewspaperDialog.HEADLINE_IDS.get(3), String.format(getResources().getStringArray(R.array.headline_remote)[5], getResources().getString(R.string.headline_remote_war), getResources().getString(R.string.solarsystem_sol)));
+//		mGameManager.findDialogByClass(NewspaperDialog.class).setViewVisibilityById(NewspaperDialog.HEADLINE_IDS.get(0), true);
+//		mGameManager.findDialogByClass(NewspaperDialog.class).setViewVisibilityById(NewspaperDialog.HEADLINE_IDS.get(1), true);
+//		mGameManager.findDialogByClass(NewspaperDialog.class).setViewVisibilityById(NewspaperDialog.HEADLINE_IDS.get(2), true);
+//		mGameManager.findDialogByClass(NewspaperDialog.class).setViewVisibilityById(NewspaperDialog.HEADLINE_IDS.get(3), true);
+//		mGameManager.findDialogByClass(NewspaperDialog.class).setViewVisibilityById(NewspaperDialog.HEADLINE_IDS.get(4), false, false);
 
 	}
 
@@ -7792,6 +8121,11 @@ public class GameState {
 //		WarpSystemPagerAdapter adapter = ((WarpTargetScreen)dialog).getPagerAdapter();
 //		if (adapter == null) return;
 //		setAdapterSystems(adapter);
+		
+//		// Screenshot override
+//		dialog.setViewTextById(R.id.screen_warp_toggle, R.string.screen_warp_avgprices_button);
+//		dialog.setViewVisibilityById(R.id.screen_warp_warp, true);
+//		dialog.setViewVisibilityById(R.id.screen_warp_toggle, true);
 	}
 	
 	public void showExecuteWarpPage(SolarSystem system, View page) {
@@ -7856,6 +8190,17 @@ public class GameState {
 			page.findViewById(R.id.screen_warp_target_cost_specific).setVisibility(View.INVISIBLE);
 		}
 		
+//		// Screenshot override
+//		((TextView) page.findViewById(R.id.screen_warp_target_name)).setText(R.string.solarsystem_montor);
+//		((TextView) page.findViewById(R.id.screen_warp_target_tech)).setText(TechLevel.MEDIEVAL.toXmlString(getResources()));
+//		((TextView) page.findViewById(R.id.screen_warp_target_gov)).setText(Politics.ANARCHY.toXmlString(getResources()));
+//		((TextView) page.findViewById(R.id.screen_warp_target_size)).setText(Size.MEDIUM.toXmlString(getResources()));
+//		((TextView) page.findViewById(R.id.screen_warp_target_distance)).setText(getResources().getString(R.string.format_parsecs, 10));
+//		((TextView) page.findViewById(R.id.screen_warp_target_police)).setText(Politics.ANARCHY.strengthPolice.toXmlString(getResources()));
+//		((TextView) page.findViewById(R.id.screen_warp_target_pirates)).setText(Politics.ANARCHY.strengthPirates.toXmlString(getResources()));
+//		((TextView) page.findViewById(R.id.screen_warp_target_cost)).setText(getResources().getString(R.string.format_credits, 0));
+//		page.findViewById(R.id.screen_warp_target_toofar).setVisibility(View.INVISIBLE);
+//		page.findViewById(R.id.screen_warp_target_cost_specific).setVisibility(View.INVISIBLE);
 		
 	}
 
@@ -7982,6 +8327,14 @@ public class GameState {
 //		WarpSystemPagerAdapter adapter = ((WarpPricesScreen)dialog).getPagerAdapter();
 //		if (adapter == null) return;
 //		setAdapterSystems(adapter);
+		
+//		// Screenshot override
+//		dialog.setViewTextById(R.id.screen_warp_toggle, R.string.screen_warp_target_button);
+//		dialog.setViewTextById(R.id.screen_warp_avgprices_diffbutton, R.string.screen_warp_avgprices_abs);
+//		dialog.setViewTextById(R.id.screen_warp_avgprices_bays, R.string.format_bays, 1, 30);
+//		dialog.setViewTextById(R.id.screen_warp_avgprices_credits, R.string.format_cash, 378304);
+		
+		
 	}
 	
 	public void showAveragePricesPage(SolarSystem system, View page) {
@@ -8021,6 +8374,31 @@ public class GameState {
 			}
 
 		}
+		
+//		// Screenshot override
+//		((TextView) page.findViewById(R.id.screen_warp_avgprices_resources)).setText(R.string.specialresources_unknown);
+//		((TextView) page.findViewById(R.id.screen_warp_avgprices_name)).setText(R.string.solarsystem_exo);
+//		((TextView) page.findViewById(WarpPricesScreen.LABEL_IDS.get(TradeItem.WATER))).setTypeface(Typeface.DEFAULT);
+//		((TextView) page.findViewById(WarpPricesScreen.LABEL_IDS.get(TradeItem.FURS))).setTypeface(Typeface.DEFAULT);
+//		((TextView) page.findViewById(WarpPricesScreen.LABEL_IDS.get(TradeItem.FOOD))).setTypeface(Typeface.DEFAULT);
+//		((TextView) page.findViewById(WarpPricesScreen.LABEL_IDS.get(TradeItem.ORE))).setTypeface(Typeface.DEFAULT);
+//		((TextView) page.findViewById(WarpPricesScreen.LABEL_IDS.get(TradeItem.GAMES))).setTypeface(Typeface.DEFAULT_BOLD);
+//		((TextView) page.findViewById(WarpPricesScreen.LABEL_IDS.get(TradeItem.FIREARMS))).setTypeface(Typeface.DEFAULT);
+//		((TextView) page.findViewById(WarpPricesScreen.LABEL_IDS.get(TradeItem.MEDICINE))).setTypeface(Typeface.DEFAULT_BOLD);
+//		((TextView) page.findViewById(WarpPricesScreen.LABEL_IDS.get(TradeItem.MACHINERY))).setTypeface(Typeface.DEFAULT);
+//		((TextView) page.findViewById(WarpPricesScreen.LABEL_IDS.get(TradeItem.NARCOTICS))).setTypeface(Typeface.DEFAULT);
+//		((TextView) page.findViewById(WarpPricesScreen.LABEL_IDS.get(TradeItem.ROBOTS))).setTypeface(Typeface.DEFAULT);
+//		((TextView) page.findViewById(WarpPricesScreen.PRICE_IDS.get(TradeItem.WATER))).setText(getResources().getString(R.string.format_signedcredits, -10));
+//		((TextView) page.findViewById(WarpPricesScreen.PRICE_IDS.get(TradeItem.FURS))).setText(getResources().getString(R.string.format_signedcredits, -30));
+//		((TextView) page.findViewById(WarpPricesScreen.PRICE_IDS.get(TradeItem.FOOD))).setText(getResources().getString(R.string.format_signedcredits, -13));
+//		((TextView) page.findViewById(WarpPricesScreen.PRICE_IDS.get(TradeItem.ORE))).setText(R.string.screen_warp_avgprices_null);
+//		((TextView) page.findViewById(WarpPricesScreen.PRICE_IDS.get(TradeItem.GAMES))).setText(getResources().getString(R.string.format_signedcredits, +19));
+//		((TextView) page.findViewById(WarpPricesScreen.PRICE_IDS.get(TradeItem.FIREARMS))).setText(getResources().getString(R.string.format_signedcredits, -182));
+//		((TextView) page.findViewById(WarpPricesScreen.PRICE_IDS.get(TradeItem.MEDICINE))).setText(getResources().getString(R.string.format_signedcredits, +36));
+//		((TextView) page.findViewById(WarpPricesScreen.PRICE_IDS.get(TradeItem.MACHINERY))).setText(R.string.screen_warp_avgprices_null);
+//		((TextView) page.findViewById(WarpPricesScreen.PRICE_IDS.get(TradeItem.NARCOTICS))).setText(R.string.screen_warp_avgprices_null);
+//		((TextView) page.findViewById(WarpPricesScreen.PRICE_IDS.get(TradeItem.ROBOTS))).setText(R.string.screen_warp_avgprices_null);
+		
 	}
 	
 	// *************************************************************************
@@ -8412,9 +8790,25 @@ public class GameState {
 			int score = hScores[i].score;
 			dialog.setViewTextById(HighScoresDialog.PCT_IDS.get(i), R.string.dialog_highscores_percent, (score / 50), ((score%50) / 5));
 			
-			dialog.setViewTextById(HighScoresDialog.DESC_IDS.get(i), R.string.dialog_highscores_description, 
-					hScores[i].status, hScores[i].days, hScores[i].worth, hScores[i].difficulty.toXmlString(getResources()).toLowerCase(Locale.getDefault()));
+			String description = getResources().getQuantityString(R.plurals.dialog_highscores_description, hScores[i].days, 
+					hScores[i].status.toXmlString(getResources()), hScores[i].days, hScores[i].worth, hScores[i].difficulty.toXmlString(getResources()).toLowerCase(Locale.getDefault()));
+			dialog.setViewTextById(HighScoresDialog.DESC_IDS.get(i), description);
 		}
+		
+//		// Screenshot override
+//		dialog.setViewTextById(HighScoresDialog.NAME_IDS.get(0), R.string.name_commander);
+//		dialog.setViewTextById(HighScoresDialog.PCT_IDS.get(0), R.string.dialog_highscores_percent, 46, 9);
+//		dialog.setViewTextById(HighScoresDialog.DESC_IDS.get(0), getResources().getQuantityString(R.plurals.dialog_highscores_description, 17, 
+//				EndStatus.KILLED.toXmlString(getResources()), 17, 435468, DifficultyLevel.NORMAL.toXmlString(getResources()).toLowerCase(Locale.getDefault())));
+//		dialog.setViewTextById(HighScoresDialog.NAME_IDS.get(1), R.string.name_commander);
+//		dialog.setViewTextById(HighScoresDialog.PCT_IDS.get(1), R.string.dialog_highscores_percent, 35, 5);
+//		dialog.setViewTextById(HighScoresDialog.DESC_IDS.get(1), getResources().getQuantityString(R.plurals.dialog_highscores_description, 39, 
+//				EndStatus.RETIRED.toXmlString(getResources()), 39, 312055, DifficultyLevel.NORMAL.toXmlString(getResources()).toLowerCase(Locale.getDefault())));
+//		dialog.setViewTextById(HighScoresDialog.NAME_IDS.get(2), R.string.name_commander);
+//		dialog.setViewTextById(HighScoresDialog.PCT_IDS.get(2), R.string.dialog_highscores_percent, 1, 0);
+//		dialog.setViewTextById(HighScoresDialog.DESC_IDS.get(2), getResources().getQuantityString(R.plurals.dialog_highscores_description, 1, 
+//				EndStatus.RETIRED.toXmlString(getResources()), 1, 9974, DifficultyLevel.NORMAL.toXmlString(getResources()).toLowerCase(Locale.getDefault())));
+		
 	}	
 
 	
@@ -10185,7 +10579,7 @@ public class GameState {
 		initializePaints();
 
 		int cw = canvas.getWidth();
-		float scale = cw * 1f / (2.2f * MAXRANGE);
+		float scale = cw * 1f / 54;	// NB 54 is the width of the original screen in grid units
 		
 		// Centre of chart
 		float xs = cw/2;
@@ -10206,7 +10600,7 @@ public class GameState {
 				float dX = (ARROW_LENGTH*RADIUS * (curSystem().x() - trackedSystem.x())*scale / drawDistToTracked);
 				float dY = (ARROW_LENGTH*RADIUS * (curSystem().y() - trackedSystem.y())*scale / drawDistToTracked);
 				float dY3 = -(ARROW_WIDTH*RADIUS * (curSystem().x() - trackedSystem.x())*scale / drawDistToTracked);
-				float dX3 =  (ARROW_WIDTH*RADIUS * (curSystem().y ()- trackedSystem.y())*scale / drawDistToTracked);
+				float dX3 =  (ARROW_WIDTH*RADIUS * (curSystem().y() - trackedSystem.y())*scale / drawDistToTracked);
 				
 				canvas.drawLine(
 						(+dX3) + cw/2,
@@ -10278,6 +10672,125 @@ public class GameState {
 		}
 		else
 			screen.setViewVisibilityById(R.id.screen_warp_tracked, false);
+		
+
+//		// Screenshot override
+//		float x=cw/2, y=cw/2;
+//		canvas.drawCircle(x, y, 15*scale, chartStroke);
+//		canvas.drawLine(x, y-SEL_CROSS*RADIUS, x, y+SEL_CROSS*RADIUS, chartStroke);
+//		canvas.drawLine(x-SEL_CROSS*RADIUS, y, x+SEL_CROSS*RADIUS, y, chartStroke);
+//		canvas.drawText(getResources().getString(R.string.solarsystem_courteney), x, y - TEXT_OFFSET*scale, chartText);
+//		x=cw/2+-15*scale; 
+//		y=cw/2+1*scale;
+//		canvas.drawText(getResources().getString(R.string.solarsystem_andevian), x, y - TEXT_OFFSET*scale, chartText);
+//		x=cw/2+-16*scale; 
+//		y=cw/2+8*scale;
+//		canvas.drawText(getResources().getString(R.string.solarsystem_davlos), x, y - TEXT_OFFSET*scale, chartText);
+//		x=cw/2+-9*scale; 
+//		y=cw/2+-8*scale;
+//		canvas.drawText(getResources().getString(R.string.solarsystem_sol), x, y - TEXT_OFFSET*scale, chartText);
+//		x=cw/2+-3*scale; 
+//		y=cw/2+-12*scale;
+//		canvas.drawText(getResources().getString(R.string.solarsystem_jarada), x, y - TEXT_OFFSET*scale, chartText);
+//		x=cw/2+-15*scale; 
+//		y=cw/2+-16*scale;
+//		canvas.drawText(getResources().getString(R.string.solarsystem_korma), x, y - TEXT_OFFSET*scale, chartText);
+//		x=cw/2+-19*scale; 
+//		y=cw/2+-8*scale;
+//		canvas.drawText(getResources().getString(R.string.solarsystem_montor), x, y - TEXT_OFFSET*scale, chartText);
+//		x=cw/2+-13*scale; 
+//		y=cw/2+18*scale;
+//		canvas.drawText(getResources().getString(R.string.solarsystem_festen), x, y - TEXT_OFFSET*scale, chartText);
+//		x=cw/2+2*scale; 
+//		y=cw/2+13*scale;
+//		canvas.drawText(getResources().getString(R.string.solarsystem_cestus), x, y - TEXT_OFFSET*scale, chartText);
+//		x=cw/2+10*scale; 
+//		y=cw/2+7*scale;
+//		canvas.drawText(getResources().getString(R.string.solarsystem_hades), x, y - TEXT_OFFSET*scale, chartText);
+//		x=cw/2+19*scale; 
+//		y=cw/2+16*scale;
+//		canvas.drawText(getResources().getString(R.string.solarsystem_drema), x, y - TEXT_OFFSET*scale, chartText);
+//		x=cw/2+5*scale; 
+//		y=cw/2+-5*scale;
+//		canvas.drawText(getResources().getString(R.string.solarsystem_exo), x, y - TEXT_OFFSET*scale, chartText);
+//		x=cw/2+14*scale; 
+//		y=cw/2+-11*scale;
+//		canvas.drawText(getResources().getString(R.string.solarsystem_xerxes), x, y - TEXT_OFFSET*scale, chartText);
+//		x=cw/2+9*scale; 
+//		y=cw/2+-16*scale;
+//		canvas.drawText(getResources().getString(R.string.solarsystem_tarchannen), x, y - TEXT_OFFSET*scale, chartText);
+//		x=cw/2+20*scale; 
+//		y=cw/2+-20*scale;
+//		canvas.drawText(getResources().getString(R.string.solarsystem_iralius), x, y - TEXT_OFFSET*scale, chartText);
+//		x=cw/2;
+//		y=cw/2;
+//		Drawable d = getResources().getDrawable(R.drawable.warpsystemv);
+//		d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
+//		d.draw(canvas);
+//		x=cw/2+-15*scale; 
+//		y=cw/2+1*scale;
+//		d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
+//		d.draw(canvas);
+//		x=cw/2+-16*scale; 
+//		y=cw/2+8*scale;
+//		d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
+//		d.draw(canvas);
+//		x=cw/2+-9*scale; 
+//		y=cw/2+-8*scale;
+//		d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
+//		d.draw(canvas);
+//		x=cw/2+-3*scale; 
+//		y=cw/2+-12*scale;
+//		d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
+//		d.draw(canvas);
+//		x=cw/2+-15*scale; 
+//		y=cw/2+-16*scale;
+//		d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
+//		d.draw(canvas);
+//		x=cw/2+-19*scale; 
+//		y=cw/2+-8*scale;
+//		d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
+//		d.draw(canvas);
+//		d = getResources().getDrawable(R.drawable.warpsystem);
+//		x=cw/2+-13*scale; 
+//		y=cw/2+18*scale;
+//		d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
+//		d.draw(canvas);
+//		x=cw/2+2*scale; 
+//		y=cw/2+13*scale;
+//		d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
+//		d.draw(canvas);
+//		x=cw/2+10*scale; 
+//		y=cw/2+7*scale;
+//		d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
+//		d.draw(canvas);
+//		x=cw/2+19*scale; 
+//		y=cw/2+16*scale;
+//		d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
+//		d.draw(canvas);
+//		x=cw/2+5*scale; 
+//		y=cw/2+-5*scale;
+//		d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
+//		d.draw(canvas);
+//		x=cw/2+14*scale; 
+//		y=cw/2+-11*scale;
+//		d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
+//		d.draw(canvas);
+//		x=cw/2+9*scale; 
+//		y=cw/2+-16*scale;
+//		d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
+//		d.draw(canvas);
+//		x=cw/2+20*scale; 
+//		y=cw/2+-20*scale;
+//		d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
+//		d.draw(canvas);
+//		d = getResources().getDrawable(R.drawable.warpsystemw);
+//		x=cw/2+-15*scale + WORMHOLE_OFFSET*RADIUS; 
+//		y=cw/2+1*scale;
+//		d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
+//		d.draw(canvas);
+		
+		
 	}
 	
 	public void showGalaxy()
@@ -10419,6 +10932,145 @@ public class GameState {
 	    }
 	    
 		screen.setViewVisibilityById(R.id.screen_chart_jump, canSuperWarp);
+		
+//		// Screenshot override
+//		canvas.drawCircle((10f - GALAXYWIDTH/2)*scale + cw/2, (67f - GALAXYHEIGHT/2)*scale + ch/2, 15f*scale, chartStroke);
+//		canvas.drawLine((18f - GALAXYWIDTH/2)*scale + cw/2,(58f - GALAXYHEIGHT/2)*scale - SEL_OUTER*RADIUS + ch/2,(18f - GALAXYWIDTH/2)*scale + cw/2,(58f - GALAXYHEIGHT/2)*scale + SEL_OUTER*RADIUS + ch/2,chartStroke);
+//		canvas.drawLine((18f - GALAXYWIDTH/2)*scale - SEL_OUTER*RADIUS + cw/2,(58f - GALAXYHEIGHT/2)*scale + ch/2,(18f - GALAXYWIDTH/2)*scale + SEL_OUTER*RADIUS + cw/2,(58f - GALAXYHEIGHT/2)*scale + ch/2,chartStroke);
+//		float x,y;
+//		Drawable d;
+//		d = getResources().getDrawable(R.drawable.chartsystemv);
+//		x=10;y=67;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=22;y=83;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=14;y=82;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=18;y=74;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=28;y=74;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=21;y=90;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=16;y=97;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		d = getResources().getDrawable(R.drawable.chartsystem);
+//		x=22;y=21;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=73;y=22;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=75;y=87;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=119;y=24;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=123;y=86;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=18;y=58;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=2;y=93;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=8;y=92;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=24;y=100;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=2;y=73;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=22;y=66;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=27;y=46;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=15;y=45;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=7;y=41;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=28;y=39;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=13;y=32;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=3;y=27;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=10;y=24;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=17;y=26;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=30;y=25;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=32;y=15;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=8;y=11;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=19;y=10;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=30;y=6;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=35;y=1;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=40;y=10;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=40;y=24;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=36;y=51;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=49;y=3;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=50;y=14;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=48;y=37;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=47;y=46;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=53;y=30;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=60;y=10;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=61;y=20;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=61;y=35;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=69;y=3;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=71;y=10;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=69;y=28;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=67;y=41;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=78;y=16;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=80;y=29;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=78;y=36;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=86;y=1;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=86;y=14;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=86;y=38;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=93;y=7;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=94;y=29;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=102;y=11;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=104;y=32;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=99;y=41;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=109;y=10;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=111;y=24;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=114;y=31;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=117;y=15;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=124;y=6;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=128;y=20;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=126;y=36;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=131;y=1;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=132;y=28;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=140;y=17;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=142;y=28;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=143;y=37;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=34;y=70;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=37;y=82;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=39;y=95;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=39;y=104;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=42;y=77;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=44;y=57;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=46;y=66;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=47;y=89;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=51;y=58;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=51;y=71;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=56;y=98;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=57;y=62;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=59;y=55;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=62;y=71;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=63;y=84;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=66;y=51;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=68;y=79;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=69;y=63;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=73;y=54;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=80;y=50;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=85;y=55;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=86;y=75;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=107;y=49;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=71;y=95;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=74;y=102;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=79;y=80;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=80;y=94;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=85;y=102;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=90;y=84;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=90;y=95;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=95;y=68;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=97;y=93;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=98;y=75;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=103;y=87;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=104;y=67;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=105;y=74;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=108;y=94;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=112;y=85;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=114;y=60;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=114;y=73;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=116;y=92;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=124;y=101;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=125;y=57;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=131;y=61;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=131;y=79;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=134;y=93;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=135;y=85;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=139;y=71;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=147;y=87;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		d = getResources().getDrawable(R.drawable.chartsystemw);
+//		x=22;y=83;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 + WORMHOLE_OFFSET*RADIUS - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + WORMHOLE_OFFSET*RADIUS + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=22;y=21;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 + WORMHOLE_OFFSET*RADIUS - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + WORMHOLE_OFFSET*RADIUS + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=73;y=22;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 + WORMHOLE_OFFSET*RADIUS - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + WORMHOLE_OFFSET*RADIUS + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=75;y=87;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 + WORMHOLE_OFFSET*RADIUS - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + WORMHOLE_OFFSET*RADIUS + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=119;y=24;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 + WORMHOLE_OFFSET*RADIUS - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + WORMHOLE_OFFSET*RADIUS + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		x=123;y=86;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 + WORMHOLE_OFFSET*RADIUS - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + WORMHOLE_OFFSET*RADIUS + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
+//		screen.setViewTextById(R.id.screen_chart_systemname,R.string.solarsystem_ventax);
+//		screen.setViewTextById(R.id.screen_chart_distance, R.string.format_parsecs, 13); 
+//		screen.setViewTextById(R.id.screen_chart_description, R.string.screen_chart_description, Size.HUGE, TechLevel.MEDIEVAL, Politics.FEUDAL);
+//		screen.setViewVisibilityById(R.id.screen_chart_jump, false);
 
 	}
 
@@ -10435,7 +11087,7 @@ public class GameState {
 		if (screen == null || screen.getView() == null) return false;
 		
 		int cw = screen.getView().findViewById(R.id.screen_warp_warpview).getWidth();
-		float scale = cw * 1f / (2.2f * MAXRANGE);
+		float scale = cw * 1f / 54; // NB 54 is the width of the original screen in grid units
 		SolarSystem oldSystem = warpSystem;
 		
 		boolean isWormhole = false;

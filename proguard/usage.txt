@@ -2552,10 +2552,12 @@ com.brucelet.spacetrader.BackupAgent:
 com.brucelet.spacetrader.BankScreen:
     38:38:public static com.brucelet.spacetrader.BankScreen newInstance()
     75:75:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
+com.brucelet.spacetrader.BaseDialog:
+    247:248:public void setTitle(java.lang.CharSequence)
 com.brucelet.spacetrader.BaseDialog$Builder:
-    571:572:public com.brucelet.spacetrader.BaseDialog$Builder setPositiveButton(java.lang.CharSequence)
-    581:582:public com.brucelet.spacetrader.BaseDialog$Builder setNeutralButton(java.lang.CharSequence)
-    591:592:public com.brucelet.spacetrader.BaseDialog$Builder setNegativeButton(java.lang.CharSequence)
+    575:576:public com.brucelet.spacetrader.BaseDialog$Builder setPositiveButton(java.lang.CharSequence)
+    585:586:public com.brucelet.spacetrader.BaseDialog$Builder setNeutralButton(java.lang.CharSequence)
+    595:596:public com.brucelet.spacetrader.BaseDialog$Builder setNegativeButton(java.lang.CharSequence)
 com.brucelet.spacetrader.BaseScreen:
     130:130:public void setAdapter(com.brucelet.spacetrader.ScreenPagerAdapter)
     public abstract com.brucelet.spacetrader.enumtypes.ScreenType getType()
@@ -2689,10 +2691,6 @@ com.brucelet.spacetrader.datatypes.Ship:
     private static final int SKILLBONUS
     private static final int CLOAKBONUS
     protected static final int UPGRADEDHULL
-com.brucelet.spacetrader.enumtypes.DialogType
-com.brucelet.spacetrader.enumtypes.DialogType$Confirm
-com.brucelet.spacetrader.enumtypes.DialogType$Input
-com.brucelet.spacetrader.enumtypes.DialogType$Simple
 com.brucelet.spacetrader.enumtypes.DifficultyLevel:
     1:1:public bridge synthetic java.lang.Object next()
     1:1:public bridge synthetic java.lang.Object prev()

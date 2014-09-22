@@ -14,7 +14,10 @@
         android:orientation="horizontal" >
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="4dp"
             android:text="@string/dialog_highscores_1" />
 
         <LinearLayout
@@ -28,23 +31,24 @@
 
                 <TextView
                     android:id="@+id/dialog_highscores_1_name"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true" />
 
                 <TextView
                     android:id="@+id/dialog_highscores_1_percent"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="@string/format_percent" />
             </RelativeLayout>
 
             <TextView
                 android:id="@+id/dialog_highscores_1_description"
-                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:minLines="2"
-                android:singleLine="false"
-                android:text="@string/dialog_highscores_description" />
+                android:singleLine="false" />
         </LinearLayout>
     </LinearLayout>
 
@@ -54,7 +58,10 @@
         android:orientation="horizontal" >
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="4dp"
             android:text="@string/dialog_highscores_2" />
 
         <LinearLayout
@@ -68,23 +75,24 @@
 
                 <TextView
                     android:id="@+id/dialog_highscores_2_name"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true" />
 
                 <TextView
                     android:id="@+id/dialog_highscores_2_percent"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="@string/format_percent" />
             </RelativeLayout>
 
             <TextView
                 android:id="@+id/dialog_highscores_2_description"
-                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:minLines="2"
-                android:singleLine="false"
-                android:text="@string/dialog_highscores_description" />
+                android:singleLine="false" />
         </LinearLayout>
     </LinearLayout>
 
@@ -94,7 +102,10 @@
         android:orientation="horizontal" >
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="4dp"
             android:text="@string/dialog_highscores_3" />
 
         <LinearLayout
@@ -108,23 +119,24 @@
 
                 <TextView
                     android:id="@+id/dialog_highscores_3_name"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true" />
 
                 <TextView
                     android:id="@+id/dialog_highscores_3_percent"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="@string/format_percent" />
             </RelativeLayout>
 
             <TextView
                 android:id="@+id/dialog_highscores_3_description"
-                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:minLines="2"
-                android:singleLine="false"
-                android:text="@string/dialog_highscores_description" />
+                android:singleLine="false" />
         </LinearLayout>
     </LinearLayout>
 

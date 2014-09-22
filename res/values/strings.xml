@@ -684,7 +684,10 @@
     <string name="dialog_highscores_2">2.</string>
     <string name="dialog_highscores_3">3.</string>
     <string name="dialog_highscores_percent">%1$d.%2$d%%</string>
-    <string name="dialog_highscores_description">%1$s in %2$d days. Worth %3$d credits on %4$s level.</string>
+    <plurals name="dialog_highscores_description">
+        <item quantity="one">%1$s in %2$d day. Worth %3$d credits on %4$s level.</item>
+        <item quantity="other">%1$s in %2$d days. Worth %3$d credits on %4$s level.</item>
+    </plurals>
     <string name="dialog_highscores_empty">Empty</string>
     <string name="dialog_clearscores_title">Clear High Scores</string>
     <string name="dialog_clearscores_message">Are you sure you want to clear the high score table?</string>
