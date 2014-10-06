@@ -12,6 +12,10 @@
 
 # Add any project specific keep options here:
 
+-printmapping out.map
+
+-keepattributes SourceFile,LineNumberTable
+
 -keepnames class * {
 	*;
 }

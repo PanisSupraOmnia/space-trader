@@ -50,6 +50,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.PopupMenu.OnMenuItemClickListener;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -130,7 +131,7 @@ import com.brucelet.spacetrader.enumtypes.ThemeType;
  */
 public class MainActivity extends ActionBarActivity implements /*OnNavigationListener,*/ OnMenuItemClickListener//, OnPageChangeListener //, GameManager 
 {
-	static { android.util.Log.w("SpaceTrader", "Space Trader for Android"); }
+	static { Log.w(GameState.LOG_TAG, "Space Trader for Android"); }
 	
 	// Proguard run flag. As written, didntRunProguard will always be true. However proguard settings assume no side
 	// effects from doesntRunInProguard() and so strip the function call out so that didntRunProguard is left as false.
@@ -139,7 +140,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 	private static void doesntRunInProguard() {	didntRunProguard = true; }
 	static { doesntRunInProguard(); }
 	public static final boolean DEVELOPER_MODE = didntRunProguard;
-	static { if (DEVELOPER_MODE) android.util.Log.w("SpaceTrader", "Developer Mode is active"); }
+	static { if (DEVELOPER_MODE) Log.w(GameState.LOG_TAG, "Developer Mode is active"); }
 		
 	private static final int[] SHORTCUT_IDS = {
 		R.id.menu_shortcut1,
@@ -148,29 +149,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 		R.id.menu_shortcut4,
 	};
 	private char[] mShortcutKeys;
-//	private final int[] mMenuShortcuts = {
-//			0,				// default shortcut 1 = Buy Cargo
-//			1,				// default shortcut 2 = Sell Cargo
-//			2,				// default shortcut 3 = Shipyard
-//			10,				// default shortcut 4 = Short Range Warp
-//			};
-	
-	
-//	// NB this must stay in sync with the string array resources @array/screen_list and @array/shortcut_list
-//	private final Class<?>[] mScreenList = {
-//			BuyScreen.class,
-//			SellScreen.class,
-//			YardScreen.class,
-//			BuyEqScreen.class,
-//			SellEqScreen.class,
-//			PersonnelScreen.class,
-//			BankScreen.class,
-//			InfoScreen.class,
-//			StatusScreen.class,
-//			ChartScreen.class,
-//			WarpScreen.class,
-//	};
-	
+
 	// NB using LinkedList as a Deque, but Deque interface doesn't exist on android until API 9 so we must specify type as LinkedList for addFirst() and removeFirst() methods.
 //	private final LinkedList<Integer> mBackStack = new LinkedList<Integer>();
 	private final LinkedList<ScreenType> mBackStack = new LinkedList<>();
@@ -218,7 +197,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 //		if (view == null || !view.isShown()) {
 //			view = (root==null? findViewById(id) : root.findViewById(id));
 //			mViewCache.put(id, view);
-//			android.util.Log.d("ViewCache", "Adding view "+getResources().getResourceEntryName(id)+" to cache");
+//			Log.d("ViewCache", "Adding view "+getResources().getResourceEntryName(id)+" to cache");
 //		}
 //		return view;
 //	}
@@ -228,24 +207,24 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 		super.onCreate(savedInstanceState);
 		
 		mCurrentGame = getPreferences(MODE_PRIVATE).getString("currentGame", GAME_1);
-		android.util.Log.d("onCreate()", "Current game is "+mCurrentGame);
+		Log.d("onCreate()", "Current game is "+mCurrentGame);
 				
 		ThemeType theme;
 		if (getIntent().hasExtra("theme")) {
-			android.util.Log.d("onCreate()", "Setting theme from intent extra");
+			Log.d("onCreate()", "Setting theme from intent extra");
 			int themeIndex = getIntent().getIntExtra("theme", 0);
 			if (themeIndex < 0 || themeIndex >= ThemeType.values().length) themeIndex = 0;
 			theme = ThemeType.values()[themeIndex];
 			mWelcomeShown = true;
 		} else {
-			android.util.Log.d("onCreate()", "Setting theme from saved preferences");
+			Log.d("onCreate()", "Setting theme from saved preferences");
 			theme = getThemeType();
 		}
 		setTheme(theme.resId);
-		android.util.Log.d("onCreate()", "Setting theme "+getResources().getResourceName(theme.resId));
+		Log.d("onCreate()", "Setting theme "+getResources().getResourceName(theme.resId));
 		getSharedPreferences(mCurrentGame, MODE_PRIVATE).edit().putInt("theme", theme.ordinal()).commit();
 
-		android.util.Log.d("onCreate()", "setContentView() called");
+		Log.d("onCreate()", "setContentView() called");
 //		setContentView(R.layout.activity_main);
 		setContentView(R.layout.activity_main2);
 		
@@ -324,7 +303,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 		
 //		setCurrentScreen(R.id.screen_title);
 
-		android.util.Log.d("onCreate()", "Finished");
+		Log.d("onCreate()", "Finished");
 	}
 	
 //	@Override
@@ -337,7 +316,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 //	@Override
 	public void setNewTheme(ThemeType theme) {
 
-		android.util.Log.d("setNewTheme()", "Setting new theme "+getResources().getResourceName(theme.resId));
+		Log.d("setNewTheme()", "Setting new theme "+getResources().getResourceName(theme.resId));
 		
 		finish();
 		Intent intent = new Intent(this, getClass());
@@ -501,18 +480,18 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 		}
 		
 ////		if (getViewFlipper().getVisibility() != View.VISIBLE) {
-////			android.util.Log.d("onCreateOptionsMenu()", "Closing loading screen");
+////			Log.d("onCreateOptionsMenu()", "Closing loading screen");
 ////			findViewById(R.id.loading).setVisibility(View.GONE);
 ////			getViewFlipper().setVisibility(View.VISIBLE);
 ////		}
 //		if (getFragmentContainer().getVisibility() != View.VISIBLE) {
-//			android.util.Log.d("onCreateOptionsMenu()", "Closing loading screen");
+//			Log.d("onCreateOptionsMenu()", "Closing loading screen");
 //			findViewById(R.id.loading).setVisibility(View.GONE);
 //			getFragmentContainer().setVisibility(View.VISIBLE);
 //		}
 				
 		boolean out = super.onCreateOptionsMenu(menu);
-		android.util.Log.d("onCreateOptionsMenu()","Options menu (re-)created!");
+		Log.d("onCreateOptionsMenu()","Options menu (re-)created!");
 		return out;
 	}
 	
@@ -570,15 +549,19 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 	public boolean onOptionsItemSelectedWithId(int id) {
 		finishMenuActionMode();
 		
-		android.util.Log.d("","Selecting menu item with id "+getResources().getResourceEntryName(id));
+		Log.d("","Selecting menu item with id "+getResources().getResourceEntryName(id));
 		
 		switch (id) {
 		case R.id.menu_keyboard:
-			// XXX for occasional debugging.
+			// NB developer mode only for debugging.
 			InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 			imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
 
 			return true;
+			
+		case R.id.menu_crash:
+			// NB developer mode only for debugging.
+			throw new Error("Intentional crash for stack trace debugging");
 
 		case R.id.menu_options:
 
@@ -755,7 +738,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		if (mActionMode != null) {
-			switch (event.getActionMasked()) {
+			switch (event.getActionMasked()) {	// NB getActionMasked() required API 8
 				case MotionEvent.ACTION_DOWN:
 				case MotionEvent.ACTION_POINTER_DOWN:
 					finishMenuActionMode();
@@ -777,7 +760,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 		if (mGameState.recallScreens() && mBackStack.size() > 0) {
 //			setCurrentScreen(mBackStack.removeFirst());
 			setCurrentScreenType(mBackStack.removeFirst());
-			android.util.Log.d("onBackPressed()", "Popping back stack. Remaining states: "+mBackStack.size());
+			Log.d("onBackPressed()", "Popping back stack. Remaining states: "+mBackStack.size());
 			mBackStack.removeFirst(); // setCurrentScreen will add a new layer, so pop it off.
 		} 
 		else {
@@ -816,14 +799,13 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 
 //	@Override
 	public void showDialogFragment(BaseDialog dialog) {
-//		dialog.setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogTheme);
 		
 		String tag = dialog.getClass().getName();
-		android.util.Log.d("showDialogFragment()", "Showing fragment "+tag);
+		Log.d("showDialogFragment()", "Showing fragment "+tag);
 		
 		
 		if (mShowingDialog) {
-			android.util.Log.d("showDialogFragment()", "Previous dialog display already in progress!");
+			Log.d("showDialogFragment()", "Previous dialog display already in progress!");
 			if (!mDialogQueue.contains(dialog)) mDialogQueue.addFirst(dialog);
 			return;
 		}
@@ -860,7 +842,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 			@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 			@Override
 			public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-				android.util.Log.d("Menu Item Click","Preparing MenuSpinnerActionProvider");
+				Log.d("Menu Item Click","Preparing MenuSpinnerActionProvider");
 				// Do nothing
 				return false;
 				
@@ -870,14 +852,14 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 
 			@Override
 			public void onDestroyActionMode(ActionMode mode) {
-				android.util.Log.d("Menu Item Click","Destroying MenuSpinnerActionProvider");
+				Log.d("Menu Item Click","Destroying MenuSpinnerActionProvider");
 				// Do nothing
 			}
 
 			@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 			@Override
 			public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-				android.util.Log.d("Menu Item Click","Creating MenuSpinnerActionProvider");
+				Log.d("Menu Item Click","Creating MenuSpinnerActionProvider");
 				
 				final View view = LayoutInflater.from(MainActivity.this).inflate(R.layout.menu_action_mode_spinners, null);
 				final Button command = (Button) view.findViewById(R.id.menu_command);
@@ -998,7 +980,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 
 			@Override
 			public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-				android.util.Log.d("Menu Item Click","Clicking MenuSpinnerActionProvider");
+				Log.d("Menu Item Click","Clicking MenuSpinnerActionProvider");
 				// Do nothing
 				return false;
 			}
@@ -1084,7 +1066,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 //		return getViewFlipper().getCurrentView().getId();
 //
 ////		int id = (int) mScreenPagerAdapter.getItemId(mViewPager.getCurrentItem());
-////		android.util.Log.d("getCurrentScreenId()", "Current screen id is "+getResources().getResourceName(id));
+////		Log.d("getCurrentScreenId()", "Current screen id is "+getResources().getResourceName(id));
 ////		return id;
 //	}
 	public ScreenType getCurrentScreenType() {
@@ -1099,7 +1081,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 
 ////	@Override
 //	public BaseScreen setCurrentScreen(int id) {
-//		android.util.Log.d("setCurrentScreen()","Setting screen "+getResources().getResourceEntryName(id));
+//		Log.d("setCurrentScreen()","Setting screen "+getResources().getResourceEntryName(id));
 //		
 ////		Debug.startMethodTracing("spacetrader");
 //		
@@ -1133,10 +1115,10 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 //		
 //		if (next.getTag() != null && prev.getTag() != null && !next.equals(prev)) {
 //			mBackStack.addFirst(prev.getId());
-//			android.util.Log.d("setCurrentScreen()", "Adding "+prev.getTag()+" to back stack. Total size is "+mBackStack.size());
+//			Log.d("setCurrentScreen()", "Adding "+prev.getTag()+" to back stack. Total size is "+mBackStack.size());
 //		} else if (!next.equals(prev)) {
 //			mBackStack.clear();
-//			android.util.Log.d("setCurrentScreen()", "Clearing back stack.");
+//			Log.d("setCurrentScreen()", "Clearing back stack.");
 //		}
 //		
 //		next.onShowScreen();
@@ -1157,7 +1139,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 //	}
 
 	public BaseScreen setCurrentScreenType(ScreenType type) {
-		android.util.Log.d("setCurrentScreen()","Setting screen "+type);
+		Log.i(GameState.LOG_TAG,"Showing screen: "+type.toXmlString(getResources()));
 		
 		ScreenType prevType = getCurrentScreenType();
 		if (/*prevType != prevType || */true) {
@@ -1182,10 +1164,10 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 
 		if (type != null && prevType != null && type.docked && prevType.docked && type != prevType) {
 			mBackStack.addFirst(prevType);
-			android.util.Log.d("setCurrentScreen()", "Adding "+prevType+" to back stack. Total size is "+mBackStack.size());
+			Log.d("setCurrentScreen()", "Adding "+prevType+" to back stack. Total size is "+mBackStack.size());
 		} else if (type != prevType) {
 			mBackStack.clear();
-			android.util.Log.d("setCurrentScreen()", "Clearing back stack.");
+			Log.d("setCurrentScreen()", "Clearing back stack.");
 		}
 		
 //		next.onShowScreen();
@@ -1314,7 +1296,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 	
 //	@Override
 //	public void onPageSelected(int position) {
-//		android.util.Log.i("onPageSelected", "Selecting page "+mScreenPagerAdapter.getPageTitle(position));
+//		Log.i(GameState.LOG_TAG, "Selecting page "+mScreenPagerAdapter.getPageTitle(position));
 //		
 //		if (mTitleView != null) mTitleView.setText(mScreenPagerAdapter.getPageTitle(position));
 ////		for (int i = 0, s = ScreenPagerAdapter.DROPDOWN_SCREEN_LIST.size(); i < s; i++) {
@@ -1377,7 +1359,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 	}
 	
 	private void loadState(SharedPreferences prefs) {
-		android.util.Log.d("loadState()","Begin loading state");
+		Log.d("loadState()","Begin loading state");
 		mGameState.loadState(prefs);
 		if (DEVELOPER_MODE) {
 
@@ -1424,19 +1406,19 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 		}
 
 		supportInvalidateOptionsMenu();
-		android.util.Log.d("loadState()","Finished loading state");
+		Log.d("loadState()","Finished loading state");
 	}
 
 //	@Override
 	void startClick() {
 		mClicking = true;
-//		android.util.Log.v("click","Start click");
+//		Log.v("click","Start click");
 	}
 
 //	@Override
 	void finishClick() {
 		mClicking = false;
-//		android.util.Log.v("click","Finish click");
+//		Log.v("click","Finish click");
 	}
 	
 //	@Override
@@ -1496,7 +1478,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 		saveState(prefs);
 		Map<String, ?> map = prefs.getAll();
 		
-		File file = new File(getExternalFilesDir(null), SAVEFILE);
+		File file = new File(getExternalFilesDir(null), SAVEFILE);	// NB getExternalFilesDir() required API 8
 		try {
 			FileOutputStream fos = new FileOutputStream(file);
 			OutputStreamWriter osw = new OutputStreamWriter(fos);
@@ -1527,7 +1509,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 		}
 		
 		SharedPreferences prefs = getSharedPreferences(mCurrentGame, MODE_PRIVATE);
-		File file = new File(getExternalFilesDir(null), SAVEFILE);
+		File file = new File(getExternalFilesDir(null), SAVEFILE);	// NB getExternalFilesDir() required API 8
 		
 		try {
 			SharedPreferences.Editor editor = prefs.edit();
@@ -1550,7 +1532,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 				} else if (String.class.getSimpleName().equals(type)) {
 					editor.putString(key, value);
 				} else {
-					android.util.Log.e("loadSnapshot()", "tokens[0] has invalid value "+tokens[0]);
+					Log.e(GameState.LOG_TAG, "tokens[0] has invalid value "+tokens[0]);
 					showDialogFragment(SimpleDialog.newInstance(R.string.dialog_cannotload_title, R.string.dialog_cannotload_message, R.string.help_cannotload));
 					br.close();
 					isr.close();

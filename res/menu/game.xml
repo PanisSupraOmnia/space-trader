@@ -56,6 +56,11 @@
             android:icon="@null"
             support:showAsAction="never"
             android:title="@string/menu_keyboard"/>
+        <item
+            android:id="@+id/menu_crash"
+            android:icon="@null"
+            support:showAsAction="never"
+            android:title="@string/menu_crash"/>
     </group>
 
 </menu>

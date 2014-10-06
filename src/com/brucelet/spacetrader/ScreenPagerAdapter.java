@@ -36,6 +36,7 @@ import com.brucelet.spacetrader.enumtypes.ScreenType;
  * one of the sections/tabs/pages.
  */
 public class ScreenPagerAdapter extends FragmentPagerAdapter {
+	
 	// Subsection of this type will be inserted at this index in the default spinner pages.
 	private int mSubsectionIndex;
 	private ScreenType mSubsectionType;
@@ -140,7 +141,7 @@ public class ScreenPagerAdapter extends FragmentPagerAdapter {
 	}
 
 	public void addSubsection(int position, ScreenType type) {
-		Log.i("addPage()", "Adding page "+mActivity.getString(type.titleId)+" at position "+position);
+		Log.d("addPage()", "Adding page "+mActivity.getString(type.titleId)+" at position "+position);
 		mSubsectionIndex = position;
 		mSubsectionType = type;
 		mShowDockedScreens = true;
@@ -157,7 +158,7 @@ public class ScreenPagerAdapter extends FragmentPagerAdapter {
 	}
 
 	public void reset() {
-		Log.i("reset()", "Resetting subsection");
+		Log.d("reset()", "Resetting subsection");
 		mSubsectionIndex = -1;
 		mSubsectionType = null;
 		mShowDockedScreens = true;

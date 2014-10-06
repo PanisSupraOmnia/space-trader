@@ -62,6 +62,7 @@
     <string name="menu_clearscores">Clear High Scores</string>
     <string name="menu_savegame">Snapshot</string>
     <string name="menu_keyboard">Show Keyboard</string>
+    <string name="menu_crash">Throw Error</string>
     <string name="menu_help_current">Help Current Screen</string>
     <string name="menu_help_helponmenu">Help On Menu</string>
     <string name="menu_help_howtoplay">How To Play</string>
@@ -1588,7 +1589,7 @@
         <item>Police Warning: %1$s Will Dock At %2$s!</item>
         <item>Notorious Criminal %1$s Sighted in %2$s!</item>
         <item>Locals Rally to Deny Spaceport Access to %1$s!</item>
-        <item>Terror Strikes Locals on Arrical of %1$s!</item>
+        <item>Terror Strikes Locals on Arrival of %1$s!</item>
     </string-array>
     <string-array name="headline_hero">
         <item>Locals Welcome Visiting Hero %1$s!</item>

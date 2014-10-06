@@ -48,6 +48,7 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -124,6 +125,8 @@ import com.brucelet.spacetrader.enumtypes.TradeItem;
 import com.brucelet.spacetrader.enumtypes.Weapon;
 
 public class GameState {
+
+	public static final String LOG_TAG = "Space Trader";
 
 	private static final Random rng = new Random();
 	private final MainActivity mGameManager;
@@ -927,7 +930,7 @@ public class GameState {
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_volumescroll)).setChecked(volumeScroll);
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_recallscreens)).setChecked(recallScreens);
 		
-		dialog.setViewVisibilityById(R.id.dialog_options_developermode, MainActivity.DEVELOPER_MODE);
+		dialog.setViewVisibilityById(R.id.dialog_options_developermode, MainActivity.DEVELOPER_MODE, false);
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_developermode)).setChecked(developerMode);
 		
 		
@@ -3047,7 +3050,7 @@ public class GameState {
 		{
 			ImageView shipView = (ImageView) screen.getView().findViewById(shipViewId);
 			
-			// Rotation of the enemy ship (not in original; handled through xml in API 11+)
+			// Rotation of the enemy ship (NB not in original; handled through xml in API 11+)
 			if (!commandersShip && Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
 				
 				// Attempt to calculate how much the image is already scaled by the xml.
@@ -3064,7 +3067,7 @@ public class GameState {
 				
 
 				if (sx == 0 || sy == 0)  {
-					android.util.Log.w("showShip()", "Compatibility ship rotation failure. Will re-try in 100ms");
+					Log.w(GameState.LOG_TAG, "Compatibility ship rotation failure. Will re-try in 100ms");
 					shipView.postDelayed(new Runnable() {
 						
 						@Override
@@ -3752,7 +3755,7 @@ public class GameState {
 		new EncounterButtonTask().execute(button);
 		
 		if (EncounterScreen.TRIBBLES.contains(buttonId)) {
-			android.util.Log.d("tribble", "click");
+			Log.d("tribble", "click");
     		mGameManager.showDialogFragment(SimpleDialog.newInstance(
     				R.string.screen_encounter_squeek_title, 
     				R.string.screen_encounter_squeek_message,
@@ -3761,7 +3764,7 @@ public class GameState {
 						
 						@Override
 						public void onConfirm() {
-							android.util.Log.d("tribble", "dismiss");
+							Log.d("tribble", "dismiss");
 							randomizeTribblePosition(buttonId);
 						}
 					}));
@@ -3927,9 +3930,9 @@ public class GameState {
 				textView.setText(description);
 				int l = textView.getLineCount();
 				if (l > 2 || l <= 0) {
-					android.util.Log.d("Encounter description","Too many lines! Converting '\n' to ' '");
+					Log.d("Encounter description","Too many lines! Converting '\n' to ' '");
 					description = description.replace('\n', ' ');
-					android.util.Log.d("Encounter description","description="+description);
+					Log.d("Encounter description","description="+description);
 					textView.setText(description);
 				}
 				
@@ -4273,7 +4276,7 @@ public class GameState {
 		    	{				
 		    		final TradeItem item = getRandomTradeableItem (opponent, true);
 
-			    	android.util.Log.d("Trade bug", "Item is "+item);
+			    	Log.d("Trade bug", "Item is "+item);
 		    		int price = buyPrice.get(item);
 		    		if (item == TradeItem.NARCOTICS || item == TradeItem.FIREARMS)
 		    		{
@@ -7464,7 +7467,9 @@ public class GameState {
 			{
 				// NB Unlike original, we need to sub in specific system names for variable quest systems.
 				// Otherwise the enum and string resources handle all the text.
-				if (event.hasArgs) {
+				if (event == NewsEvent.CAUGHTLITTERING) {
+					// Handled later because this appears after other stories
+				} else if (event.hasArgs) {
 					SolarSystem system;					
 					switch (event) {
 					case FLYMELINA:
@@ -8338,14 +8343,6 @@ public class GameState {
 	}
 	
 	public void showAveragePricesPage(SolarSystem system, View page) {
-		
-		android.util.Log.d("GameState.showAveragePricesPage","Drawing page for "+system);
-		
-		if (page == null) {
-			android.util.Log.e("GameState.showAveragePricesPage","null root view!");
-			return;
-		}
-		
 		if (system.visited())
 			((TextView) page.findViewById(R.id.screen_warp_avgprices_resources)).setText(system.specialResources.toXmlString(getResources()));
 		else
@@ -9035,17 +9032,17 @@ public class GameState {
 				}
 			}
 
-			android.util.Log.d("Quest Systems", "Classic Acamar is now "+solarSystem[acamar].name);
-			android.util.Log.d("Quest Systems", "Classic Baratas is now "+solarSystem[baratas].name);
-			android.util.Log.d("Quest Systems", "Classic Daled is now "+solarSystem[daled].name);
-			android.util.Log.d("Quest Systems", "Classic Devidia is now "+solarSystem[devidia].name);
-			android.util.Log.d("Quest Systems", "Classic Gemulon is now "+solarSystem[gemulon].name);
-			android.util.Log.d("Quest Systems", "Classic Japori is now "+solarSystem[japori].name);
-			android.util.Log.d("Quest Systems", "Classic Kravat is now "+solarSystem[kravat].name);
-			android.util.Log.d("Quest Systems", "Classic Melina is now "+solarSystem[melina].name);
-			android.util.Log.d("Quest Systems", "Classic Nix is now "+solarSystem[nix].name);
-			android.util.Log.d("Quest Systems", "Classic Regulas is now "+solarSystem[regulas].name);
-			android.util.Log.d("Quest Systems", "Classic Zalkon is now "+solarSystem[zalkon].name);
+			Log.d("Quest Systems", "Classic Acamar is now "+solarSystem[acamar].name);
+			Log.d("Quest Systems", "Classic Baratas is now "+solarSystem[baratas].name);
+			Log.d("Quest Systems", "Classic Daled is now "+solarSystem[daled].name);
+			Log.d("Quest Systems", "Classic Devidia is now "+solarSystem[devidia].name);
+			Log.d("Quest Systems", "Classic Gemulon is now "+solarSystem[gemulon].name);
+			Log.d("Quest Systems", "Classic Japori is now "+solarSystem[japori].name);
+			Log.d("Quest Systems", "Classic Kravat is now "+solarSystem[kravat].name);
+			Log.d("Quest Systems", "Classic Melina is now "+solarSystem[melina].name);
+			Log.d("Quest Systems", "Classic Nix is now "+solarSystem[nix].name);
+			Log.d("Quest Systems", "Classic Regulas is now "+solarSystem[regulas].name);
+			Log.d("Quest Systems", "Classic Zalkon is now "+solarSystem[zalkon].name);
 		} else {
 			// This sets quest systems as in the original palm version
 			for (int i = 0; i < solarSystem.length; i++) {
@@ -9166,7 +9163,7 @@ public class GameState {
 			{
 				freeWormhole = true;
 				wormhole[wh].setSpecial(SpecialEvent.SCARABDESTROYED);
-				android.util.Log.d("startNewGame()", "Setting special event "+getResources().getString(SpecialEvent.SCARABDESTROYED.titleId)+" at "+solarSystem[wh].name);
+				Log.d("startNewGame()", "Setting special event "+getResources().getString(SpecialEvent.SCARABDESTROYED.titleId)+" at "+solarSystem[wh].name);
 			}
 		}
 		{
@@ -9187,7 +9184,7 @@ public class GameState {
 			{
 				solarSystem[k].setSpecial(SpecialEvent.GETREACTOR);
 				solarSystem[nix].setSpecial(SpecialEvent.REACTORDELIVERED);
-				android.util.Log.d("startNewGame()", "Setting special event "+getResources().getString(SpecialEvent.GETREACTOR.titleId)+" at "+solarSystem[k].name);
+				Log.d("startNewGame()", "Setting special event "+getResources().getString(SpecialEvent.GETREACTOR.titleId)+" at "+solarSystem[k].name);
 			}
 		}
 		boolean noArtifact = false;
@@ -9200,7 +9197,7 @@ public class GameState {
 						d != gemulon && d != daled)
 				{
 					solarSystem[d].setSpecial(SpecialEvent.ARTIFACTDELIVERY);
-					android.util.Log.d("startNewGame()", "Setting special event "+getResources().getString(SpecialEvent.ARTIFACTDELIVERY.titleId)+" at "+solarSystem[d].name);
+					Log.d("startNewGame()", "Setting special event "+getResources().getString(SpecialEvent.ARTIFACTDELIVERY.titleId)+" at "+solarSystem[d].name);
 					break;
 				}
 				++i;
@@ -9225,7 +9222,7 @@ public class GameState {
 			{
 				solarSystem[k].setSpecial(SpecialEvent.ALIENINVASION);
 				solarSystem[gemulon].setSpecial(SpecialEvent.GEMULONRESCUED);
-				android.util.Log.d("startNewGame()", "Setting special event "+getResources().getString(SpecialEvent.ALIENINVASION.titleId)+" at "+solarSystem[k].name);
+				Log.d("startNewGame()", "Setting special event "+getResources().getString(SpecialEvent.ALIENINVASION.titleId)+" at "+solarSystem[k].name);
 			}
 		}
 		{
@@ -9244,7 +9241,7 @@ public class GameState {
 			{
 				solarSystem[k].setSpecial(SpecialEvent.EXPERIMENT);
 				solarSystem[daled].setSpecial(SpecialEvent.EXPERIMENTSTOPPED);
-				android.util.Log.d("startNewGame()", "Setting special event "+getResources().getString(SpecialEvent.EXPERIMENT.titleId)+" at "+solarSystem[k].name);
+				Log.d("startNewGame()", "Setting special event "+getResources().getString(SpecialEvent.EXPERIMENT.titleId)+" at "+solarSystem[k].name);
 			}
 		}
 		// NB Unlike original, we're looping though everything here. This is ok because we're only doing stuff if occurrence > 0.
@@ -9261,7 +9258,7 @@ public class GameState {
 					{
 						if (freeWormhole || event != SpecialEvent.SCARAB) {
 							solarSystem[d].setSpecial(event);
-							android.util.Log.d("startNewGame()", "Setting special event "+getResources().getString(event.titleId)+" at "+solarSystem[d].name);
+							Log.d("startNewGame()", "Setting special event "+getResources().getString(event.titleId)+" at "+solarSystem[d].name);
 						}
 						redo = false;
 					}
@@ -10440,7 +10437,7 @@ public class GameState {
 			{
 				if (WarpPricesScreen.LABEL_IDS.get(item) == buttonId || WarpPricesScreen.PRICE_IDS.get(item) == buttonId)
 				{
-					android.util.Log.d("averagePricesFormHandleEvent()","Clicked on "+item.toXmlString(getResources()));
+					Log.d("averagePricesFormHandleEvent()","Clicked on "+item.toXmlString(getResources()));
 					getAmountToBuy(item);
 					return;
 				}
@@ -10570,7 +10567,7 @@ public class GameState {
 		if (screen == null || screen.getView() == null) return;
 		
 		final float RADIUS = 8 * getResources().getDisplayMetrics().density;
-		final float SEL_CROSS = 1.75f;
+		final float SEL_CROSS = 1.5f;
 		final int TEXT_OFFSET = 2;
 		final float WORMHOLE_OFFSET = 2.5f;
 		final float ARROW_WIDTH = 1f;
@@ -11471,7 +11468,7 @@ public class GameState {
 //		else if ("Special".contentEquals(findSystem)) {
 //			for (SolarSystem system : solarSystem) {
 //				if (system.special() != null) {
-//					android.util.Log.d("Special", system.name+".special() = "+system.special().toString());
+//					Log.d("Special", system.name+".special() = "+system.special().toString());
 //				}
 //			}
 //		}
@@ -11497,33 +11494,33 @@ public class GameState {
 //			}
 //
 //
-//			android.util.Log.d("Dragonfly", "Dragonfly quest debugging");
-//			android.util.Log.d("Dragonfly", " Quest is at stage "+dragonflyStatus);
-//			android.util.Log.d("Dragonfly", " Quest begins at "+(steps[0] == null? "null" : steps[0]));
-//			android.util.Log.d("Dragonfly", " First stop at "+(steps[1] == null? "null" : steps[1]));
-//			android.util.Log.d("Dragonfly", " Second stop at "+(steps[2] == null? "null" : steps[2]));
-//			android.util.Log.d("Dragonfly", " Third stop at "+(steps[3] == null? "null" : steps[3]));
-//			android.util.Log.d("Dragonfly", " Final stop at "+(steps[4] == null? "null" : steps[4]));
+//			Log.d("Dragonfly", "Dragonfly quest debugging");
+//			Log.d("Dragonfly", " Quest is at stage "+dragonflyStatus);
+//			Log.d("Dragonfly", " Quest begins at "+(steps[0] == null? "null" : steps[0]));
+//			Log.d("Dragonfly", " First stop at "+(steps[1] == null? "null" : steps[1]));
+//			Log.d("Dragonfly", " Second stop at "+(steps[2] == null? "null" : steps[2]));
+//			Log.d("Dragonfly", " Third stop at "+(steps[3] == null? "null" : steps[3]));
+//			Log.d("Dragonfly", " Final stop at "+(steps[4] == null? "null" : steps[4]));
 //			if (steps[4] != null && steps[4].special() == SpecialEvent.INSTALLLIGHTNINGSHIELD)
-//				android.util.Log.d("Dragonfly", "Lightning Shield install is available");
+//				Log.d("Dragonfly", "Lightning Shield install is available");
 //
 //		}
 //		
 //		else if ("Systems".contentEquals(findSystem)) {
-//			android.util.Log.d("Quest Systems", "Classic Acamar is now "+solarSystem[acamar].name);
-//			android.util.Log.d("Quest Systems", "Classic Baratas is now "+solarSystem[baratas].name);
-//			android.util.Log.d("Quest Systems", "Classic Daled is now "+solarSystem[daled].name);
-//			android.util.Log.d("Quest Systems", "Classic Devidia is now "+solarSystem[devidia].name);
-//			android.util.Log.d("Quest Systems", "Classic Gemulon is now "+solarSystem[gemulon].name);
-//			android.util.Log.d("Quest Systems", "Classic Japori is now "+solarSystem[japori].name);
-//			android.util.Log.d("Quest Systems", "Classic Kravat is now "+solarSystem[kravat].name);
-//			android.util.Log.d("Quest Systems", "Classic Melina is now "+solarSystem[melina].name);
-//			android.util.Log.d("Quest Systems", "Classic Nix is now "+solarSystem[nix].name);
-//			android.util.Log.d("Quest Systems", "Classic Og is now "+solarSystem[og].name);
-//			android.util.Log.d("Quest Systems", "Classic Regulas is now "+solarSystem[regulas].name);
-//			android.util.Log.d("Quest Systems", "Classic Sol is now "+solarSystem[sol].name);
-//			android.util.Log.d("Quest Systems", "Classic Utopia is now "+solarSystem[utopia].name);
-//			android.util.Log.d("Quest Systems", "Classic Zalkon is now "+solarSystem[zalkon].name);
+//			Log.d("Quest Systems", "Classic Acamar is now "+solarSystem[acamar].name);
+//			Log.d("Quest Systems", "Classic Baratas is now "+solarSystem[baratas].name);
+//			Log.d("Quest Systems", "Classic Daled is now "+solarSystem[daled].name);
+//			Log.d("Quest Systems", "Classic Devidia is now "+solarSystem[devidia].name);
+//			Log.d("Quest Systems", "Classic Gemulon is now "+solarSystem[gemulon].name);
+//			Log.d("Quest Systems", "Classic Japori is now "+solarSystem[japori].name);
+//			Log.d("Quest Systems", "Classic Kravat is now "+solarSystem[kravat].name);
+//			Log.d("Quest Systems", "Classic Melina is now "+solarSystem[melina].name);
+//			Log.d("Quest Systems", "Classic Nix is now "+solarSystem[nix].name);
+//			Log.d("Quest Systems", "Classic Og is now "+solarSystem[og].name);
+//			Log.d("Quest Systems", "Classic Regulas is now "+solarSystem[regulas].name);
+//			Log.d("Quest Systems", "Classic Sol is now "+solarSystem[sol].name);
+//			Log.d("Quest Systems", "Classic Utopia is now "+solarSystem[utopia].name);
+//			Log.d("Quest Systems", "Classic Zalkon is now "+solarSystem[zalkon].name);
 //		}
 		
 		

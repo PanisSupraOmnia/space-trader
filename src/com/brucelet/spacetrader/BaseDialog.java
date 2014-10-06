@@ -29,6 +29,7 @@ import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,29 +46,6 @@ import com.brucelet.spacetrader.datatypes.GameState;
 import com.brucelet.spacetrader.enumtypes.XmlString;
 
 public abstract class BaseDialog extends DialogFragment implements ConvenienceMethods, OnClickListener {
-//	private Button mNegative;
-//	private Button mNeutral;
-//	private Button mPositive;
-//	
-//	protected final Button getButton(int which) {
-//		Button b;
-//		switch (which) {
-//		case AlertDialog.BUTTON_POSITIVE:
-//			b = mPositive;
-//			break;
-//		case AlertDialog.BUTTON_NEUTRAL:
-//			b = mNeutral;
-//			break;
-//		case AlertDialog.BUTTON_NEGATIVE:
-//			b = mNegative;
-//			break;
-//		default:
-//			throw new IllegalArgumentException("Illegal button requested");
-//		}
-//		if (b == null) throw new NullPointerException("Null button requested.");
-//		
-//		return b;
-//	}
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -82,8 +60,7 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {		
 		View root = inflater.inflate(R.layout.dialog_layout, container, false);
-		
-		
+				
 		TypedValue tv = new TypedValue();
 		TypedArray ta;
 
@@ -227,7 +204,7 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 			
 			@Override
 			public void onShow(DialogInterface dialog) {
-				android.util.Log.d("onShow()", "Dialog "+this+" is showing.");
+				Log.d("onShow()", "Dialog "+this+" is showing.");
 				getGameManager().reportDialogShown();
 			}
 		});
@@ -249,7 +226,7 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 	
 //	@Override
 //	public final Dialog onCreateDialog(Bundle savedInstanceState) {
-//		android.util.Log.d("BaseDialog", "Creating dialog "+this.getClass().getName());
+//		Log.d("BaseDialog", "Creating dialog "+this.getClass().getName());
 //
 ////		Builder builder = new Builder(new ContextThemeWrapper(getActivity(), R.style.DialogTheme));
 //		Builder builder = new Builder(getActivity());
@@ -285,7 +262,7 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 //
 //			@Override
 //			public void onShow(DialogInterface dialog) {
-//				android.util.Log.d("onShow()", "Dialog "+this+" is showing.");
+//				Log.d("onShow()", "Dialog "+this+" is showing.");
 //				getGameManager().reportDialogShown();
 //				
 //				Button mPositive = d.getButton(AlertDialog.BUTTON_POSITIVE);
@@ -552,7 +529,7 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 //	}
 	
 	public static class Builder {
-		private final Context mContext;	// XXX should dereference at some point? Or is it ok because Builder is short-lived?
+		private final Context mContext;
 		private CharSequence mMessage;
 		private CharSequence mTitle;
 		private CharSequence mPositiveButton;

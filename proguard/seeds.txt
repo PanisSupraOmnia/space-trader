@@ -12272,6 +12272,7 @@ com.brucelet.spacetrader.R$id: int loading
 com.brucelet.spacetrader.R$id: int loading_text
 com.brucelet.spacetrader.R$id: int menu_clearscores
 com.brucelet.spacetrader.R$id: int menu_command
+com.brucelet.spacetrader.R$id: int menu_crash
 com.brucelet.spacetrader.R$id: int menu_game
 com.brucelet.spacetrader.R$id: int menu_group_command
 com.brucelet.spacetrader.R$id: int menu_group_extra
@@ -13452,6 +13453,7 @@ com.brucelet.spacetrader.R$string: int help_youreindebt
 com.brucelet.spacetrader.R$string: int loading
 com.brucelet.spacetrader.R$string: int menu_clearscores
 com.brucelet.spacetrader.R$string: int menu_command
+com.brucelet.spacetrader.R$string: int menu_crash
 com.brucelet.spacetrader.R$string: int menu_game
 com.brucelet.spacetrader.R$string: int menu_help
 com.brucelet.spacetrader.R$string: int menu_help_about
@@ -15045,6 +15047,7 @@ com.brucelet.spacetrader.datatypes.CrewMember: void decreaseSkill(com.brucelet.s
 com.brucelet.spacetrader.datatypes.CrewMember: void initializeSkills()
 com.brucelet.spacetrader.datatypes.CrewMember: int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$Skill()
 com.brucelet.spacetrader.datatypes.GameState
+com.brucelet.spacetrader.datatypes.GameState: java.lang.String LOG_TAG
 com.brucelet.spacetrader.datatypes.GameState: java.util.Random rng
 com.brucelet.spacetrader.datatypes.GameState: com.brucelet.spacetrader.MainActivity mGameManager
 com.brucelet.spacetrader.datatypes.GameState: int DEBTWARNING

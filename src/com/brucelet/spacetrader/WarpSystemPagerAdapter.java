@@ -68,20 +68,7 @@ public abstract class WarpSystemPagerAdapter extends PagerAdapter {
 		setSystem(next, POSITION_NEXT);
 		notifyDataSetChanged();
 	}
-	
-//	public void scrollSystems(SolarSystem newSystem, boolean back) {
-//		if (!back) {
-//			mNextView = mCurrentView;
-//			mCurrentView = mPrevView;
-//			setNewSystem(newSystem, mPrevView);
-//		} else {
-//			mPrevView = mCurrentView;
-//			mCurrentView = mNextView;
-//			setNewSystem(newSystem, mNextView);
-//		}
-//		notifyDataSetChanged();
-//	}
-	
+		
 	@Override
 	public Object instantiateItem(ViewGroup container, int position) {
 
@@ -100,67 +87,7 @@ public abstract class WarpSystemPagerAdapter extends PagerAdapter {
 			throw new IllegalArgumentException("Invalid position "+position);
 		}
 		return view;
-		
-//		View view = null;
-//		
-//		if (getCount() == 1) {
-//			view = mCurrentView;
-//		} else {
-//			switch (position) {
-//			case POSITION_CURRENT:
-//				view = mCurrentView;
-//				break;
-//			case POSITION_PREV:
-//				view = mPrevView;
-//				break;
-//			case POSITION_NEXT:
-//				view = mNextView;
-//				break;
-//			}
-//		}
-//
-//		if (view == null) {
-//			return null;
-////			view = initializeSystemView(LayoutInflater.from(container.getContext()), position);
-////			if (getCount() == 1) {
-////				mCurrentView = view;
-////			} else {
-////				switch (position) {
-////				case POSITION_CURRENT:
-////					mCurrentView = view;
-////					break;
-////				case POSITION_PREV:
-////					mPrevView = view;
-////					break;
-////				case POSITION_NEXT:
-////					mNextView = view;
-////					break;
-////				}
-////			}
-//		}
-//		
-//		Log.e("herp", "a");
-//		if (container.equals(view.getParent())) {
-//			Log.e("herp", "a1");
-//			return view;
-//		}
-//
-//		Log.e("herp", "b");
-//		if (view.getParent() != null) {
-//			Log.e("herp", "b1");
-//			((ViewGroup) view.getParent()).removeView(view);
-//		}
-//
-//		Log.e("herp", "c");
-//		container.addView(view, position);
-//
-//		Log.e("herp", "d");
-//		return view;
 	}
-	
-//	public void forceInstantiateCurrentView(ViewGroup container, int position) {
-//		mCurrentView = (View) instantiateItem(container, position);
-//	}
 
 	@Override
 	public int getCount() {

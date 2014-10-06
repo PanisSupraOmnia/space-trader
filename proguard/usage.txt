@@ -2553,11 +2553,11 @@ com.brucelet.spacetrader.BankScreen:
     38:38:public static com.brucelet.spacetrader.BankScreen newInstance()
     75:75:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.BaseDialog:
-    247:248:public void setTitle(java.lang.CharSequence)
+    224:225:public void setTitle(java.lang.CharSequence)
 com.brucelet.spacetrader.BaseDialog$Builder:
-    575:576:public com.brucelet.spacetrader.BaseDialog$Builder setPositiveButton(java.lang.CharSequence)
-    585:586:public com.brucelet.spacetrader.BaseDialog$Builder setNeutralButton(java.lang.CharSequence)
-    595:596:public com.brucelet.spacetrader.BaseDialog$Builder setNegativeButton(java.lang.CharSequence)
+    552:553:public com.brucelet.spacetrader.BaseDialog$Builder setPositiveButton(java.lang.CharSequence)
+    562:563:public com.brucelet.spacetrader.BaseDialog$Builder setNeutralButton(java.lang.CharSequence)
+    572:573:public com.brucelet.spacetrader.BaseDialog$Builder setNegativeButton(java.lang.CharSequence)
 com.brucelet.spacetrader.BaseScreen:
     130:130:public void setAdapter(com.brucelet.spacetrader.ScreenPagerAdapter)
     public abstract com.brucelet.spacetrader.enumtypes.ScreenType getType()
@@ -2654,6 +2654,7 @@ com.brucelet.spacetrader.YardScreen:
     41:41:public static com.brucelet.spacetrader.YardScreen newInstance()
     78:78:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.datatypes.GameState:
+    public static final java.lang.String LOG_TAG
     private static final int DEBTWARNING
     private static final int DEBTTOOLARGE
     public static final int GALAXYWIDTH
