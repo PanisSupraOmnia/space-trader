@@ -4748,19 +4748,19 @@ com.brucelet.spacetrader.ChartFindDialog -> com.brucelet.spacetrader.ChartFindDi
     61:62:void onClickNegativeButton() -> onClickNegativeButton
     66:66:int getHelpTextResId() -> getHelpTextResId
 com.brucelet.spacetrader.ChartScreen -> com.brucelet.spacetrader.ChartScreen:
-    62:62:android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> onCreateView
-    67:74:void onActivityCreated(android.os.Bundle) -> onActivityCreated
-    77:77:com.brucelet.spacetrader.ChartScreen$ChartView getChartView() -> getChartView
-    82:83:void onShowScreen() -> onShowScreen
-    87:88:void onRefreshScreen() -> onRefreshScreen
-    92:93:void onSingleClick(android.view.View) -> onSingleClick
-    131:131:int getHelpTextResId() -> getHelpTextResId
+    64:64:android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> onCreateView
+    69:76:void onActivityCreated(android.os.Bundle) -> onActivityCreated
+    79:79:com.brucelet.spacetrader.ChartScreen$ChartView getChartView() -> getChartView
+    84:85:void onShowScreen() -> onShowScreen
+    89:90:void onRefreshScreen() -> onRefreshScreen
+    94:95:void onSingleClick(android.view.View) -> onSingleClick
+    138:138:int getHelpTextResId() -> getHelpTextResId
 com.brucelet.spacetrader.ChartScreen$ChartView -> com.brucelet.spacetrader.ChartScreen$ChartView:
     com.brucelet.spacetrader.ChartScreen mFragment -> mFragment
-    104:108:void onMeasure(int,int) -> onMeasure
-    112:114:void onDraw(android.graphics.Canvas) -> onDraw
-    118:123:boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
-    96:96:void access$0(com.brucelet.spacetrader.ChartScreen$ChartView,com.brucelet.spacetrader.ChartScreen) -> access$0
+    106:110:void onMeasure(int,int) -> onMeasure
+    114:116:void onDraw(android.graphics.Canvas) -> onDraw
+    121:131:boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
+    98:98:void access$0(com.brucelet.spacetrader.ChartScreen$ChartView,com.brucelet.spacetrader.ChartScreen) -> access$0
 com.brucelet.spacetrader.CheatDialog -> com.brucelet.spacetrader.CheatDialog:
     26:26:com.brucelet.spacetrader.CheatDialog newInstance() -> newInstance
     33:35:void onBuildDialog(com.brucelet.spacetrader.BaseDialog$Builder) -> onBuildDialog
@@ -5074,15 +5074,15 @@ com.brucelet.spacetrader.ShortcutDialog -> com.brucelet.spacetrader.ShortcutDial
     int[] SPINNER_IDS -> SPINNER_IDS
     62:63:com.brucelet.spacetrader.ShortcutDialog newInstance() -> newInstance
     72:73:void onCreate(android.os.Bundle) -> onCreate
-    78:114:void onRefreshDialog() -> onRefreshDialog
-    118:122:void onBuildDialog(com.brucelet.spacetrader.BaseDialog$Builder) -> onBuildDialog
-    126:134:void onClickPositiveButton() -> onClickPositiveButton
-    138:138:int getHelpTextResId() -> getHelpTextResId
+    78:113:void onRefreshDialog() -> onRefreshDialog
+    117:121:void onBuildDialog(com.brucelet.spacetrader.BaseDialog$Builder) -> onBuildDialog
+    125:133:void onClickPositiveButton() -> onClickPositiveButton
+    137:137:int getHelpTextResId() -> getHelpTextResId
 com.brucelet.spacetrader.ShortcutDialog$1 -> com.brucelet.spacetrader.ShortcutDialog$1:
     com.brucelet.spacetrader.ShortcutDialog this$0 -> this$0
     com.brucelet.spacetrader.enumtypes.ScreenType[] val$screens -> val$screens
-    85:99:android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
-    104:104:android.view.View getDropDownView(int,android.view.View,android.view.ViewGroup) -> getDropDownView
+    85:98:android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+    103:103:android.view.View getDropDownView(int,android.view.View,android.view.ViewGroup) -> getDropDownView
 com.brucelet.spacetrader.SimpleDialog -> com.brucelet.spacetrader.SimpleDialog:
     int mTitleId -> mTitleId
     int mMessageId -> mMessageId
@@ -5378,387 +5378,389 @@ com.brucelet.spacetrader.datatypes.GameState -> com.brucelet.spacetrader.datatyp
     int seedX -> seedX
     int seedY -> seedY
     int headlineCount -> headlineCount
+    boolean downOnChartSystem -> downOnChartSystem
+    boolean moveOnChartSystem -> moveOnChartSystem
     int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$Opponent -> $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$Opponent
     int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$ThemeType -> $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$ThemeType
     int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$SpecialEvent -> $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$SpecialEvent
     int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$Skill -> $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$Skill
     int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$NewsEvent -> $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$NewsEvent
     int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$Encounter$VeryRare -> $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$Encounter$VeryRare
-    332:355:void initializePaints() -> initializePaints
-    362:503:void saveState(android.content.SharedPreferences$Editor) -> saveState
-    506:725:void loadState(android.content.SharedPreferences) -> loadState
-    728:728:android.content.res.Resources getResources() -> getResources
-    732:732:com.brucelet.spacetrader.OnConfirmListener newUnlocker(java.util.concurrent.CountDownLatch) -> newUnlocker
-    741:741:java.util.concurrent.CountDownLatch newLatch() -> newLatch
-    750:754:void lock(java.util.concurrent.CountDownLatch) -> lock
-    757:758:void copyPreference(android.content.SharedPreferences,android.content.SharedPreferences$Editor,java.lang.String,int) -> copyPreference
-    760:761:void copyPreference(android.content.SharedPreferences,android.content.SharedPreferences$Editor,java.lang.String,boolean) -> copyPreference
-    764:791:void copyPrefs(android.content.SharedPreferences,android.content.SharedPreferences$Editor) -> copyPrefs
-    794:794:java.lang.String nameCommander() -> nameCommander
-    798:798:boolean recallScreens() -> recallScreens
-    801:801:boolean volumeScroll() -> volumeScroll
-    804:804:boolean identifyStartup() -> identifyStartup
-    808:818:int getShortcut(int) -> getShortcut
-    822:836:void setShortcut(int,int) -> setShortcut
-    841:841:boolean developerMode() -> developerMode
-    853:853:int min(int,int) -> min
-    854:854:int max(int,int) -> max
-    857:860:int getRandom(int) -> getRandom
-    865:865:java.lang.Object getRandom(java.lang.Object[]) -> getRandom
-    868:868:java.lang.Object getRandom(java.lang.Object[],int) -> getRandom
-    871:874:java.lang.Object getRandom(java.lang.Object[],int,int) -> getRandom
-    877:877:int abs(int) -> abs
-    878:878:int sqr(int) -> sqr
-    879:879:com.brucelet.spacetrader.datatypes.CrewMember commander() -> commander
-    880:880:com.brucelet.spacetrader.datatypes.SolarSystem curSystem() -> curSystem
-    886:890:void switchToNew(java.lang.String) -> switchToNew
-    896:953:void showOptions() -> showOptions
-    957:1027:void dismissOptions() -> dismissOptions
-    1037:1037:int maxLoan() -> maxLoan
-    1048:1051:void getLoan(int) -> getLoan
-    1061:1065:void payBack(int) -> payBack
-    1072:1104:void showBank() -> showBank
-    1111:1213:void bankFormHandleEvent(int) -> bankFormHandleEvent
-    1223:1232:void drawItem(com.brucelet.spacetrader.enumtypes.Purchasable) -> drawItem
-    1237:1292:void drawBuyEquipmentForm() -> drawBuyEquipmentForm
-    1299:1351:void buyEquipmentFormHandleEvent(int) -> buyEquipmentFormHandleEvent
-    1364:1370:void createShip(com.brucelet.spacetrader.enumtypes.ShipType) -> createShip
-    1378:1386:void buyShip(com.brucelet.spacetrader.enumtypes.ShipType) -> buyShip
-    1394:1407:void determineShipPrices() -> determineShipPrices
-    1414:1419:void createFlea() -> createFlea
-    1424:1473:void drawBuyShipForm() -> drawBuyShipForm
-    1480:1496:void buyShipFormHandleEvent(int) -> buyShipFormHandleEvent
-    1864:1955:void getAmountToSell(com.brucelet.spacetrader.enumtypes.TradeItem,com.brucelet.spacetrader.enumtypes.SellOperation) -> getAmountToSell
-    1963:1987:boolean hasTradeableItems(com.brucelet.spacetrader.datatypes.Ship,boolean) -> hasTradeableItems
-    1996:2055:com.brucelet.spacetrader.enumtypes.TradeItem getRandomTradeableItem(com.brucelet.spacetrader.datatypes.Ship,boolean) -> getRandomTradeableItem
-    2066:2112:void getAmountToBuy(com.brucelet.spacetrader.enumtypes.TradeItem) -> getAmountToBuy
-    2117:2123:void drawPlunderForm() -> drawPlunderForm
-    2131:2160:void plunderFormHandleEvent(int) -> plunderFormHandleEvent
-    2165:2214:void drawBuyCargoForm() -> drawBuyCargoForm
-    2222:2236:void buyCargoFormHandleEvent(int) -> buyCargoFormHandleEvent
-    2240:2337:void drawSellCargoForm() -> drawSellCargoForm
-    2345:2382:void sellCargoFormHandleEvent(int) -> sellCargoFormHandleEvent
-    2390:2398:void showDumpCargo() -> showDumpCargo
-    2406:2447:void discardCargoFormHandleEvent(int) -> discardCargoFormHandleEvent
-    2456:2475:void plunderCargo(com.brucelet.spacetrader.enumtypes.TradeItem,int) -> plunderCargo
-    2483:2506:void getAmountToPlunder(com.brucelet.spacetrader.enumtypes.TradeItem) -> getAmountToPlunder
-    2516:2557:void buyCargo(com.brucelet.spacetrader.enumtypes.TradeItem,int) -> buyCargo
-    2567:2641:void sellCargo(com.brucelet.spacetrader.enumtypes.TradeItem,int,com.brucelet.spacetrader.enumtypes.SellOperation) -> sellCargo
-    2650:2680:void buyItem(int,com.brucelet.spacetrader.enumtypes.Purchasable[],int,java.lang.String,com.brucelet.spacetrader.enumtypes.Purchasable) -> buyItem
-    2687:2740:void drawSellEquipment() -> drawSellEquipment
-    2750:2796:void showCommanderStatus() -> showCommanderStatus
-    2803:2838:void commanderStatusFormHandleEvent(int) -> commanderStatusFormHandleEvent
-    2842:2861:void showCheatDialog() -> showCheatDialog
-    2865:2931:void cheatDialogDismiss() -> cheatDialogDismiss
-    2942:2971:void encounterButtons() -> encounterButtons
-    2981:2992:void encounterDisplayNextAction(boolean) -> encounterDisplayNextAction
-    3000:3111:void showShip(com.brucelet.spacetrader.datatypes.Ship,boolean) -> showShip
-    3119:3129:void encounterDisplayShips() -> encounterDisplayShips
-    3137:3138:void escapeWithPod() -> escapeWithPod
-    3301:3302:void arrested() -> arrested
-    3519:3675:void drawEncounterForm() -> drawEncounterForm
-    3679:3716:void randomizeTribblePosition(int) -> randomizeTribblePosition
-    3723:3772:void encounterFormHandleEvent(int) -> encounterFormHandleEvent
-    3785:3794:void clearButtonAction() -> clearButtonAction
-    5704:5714:void buyFuel(int) -> buyFuel
-    5725:5725:int sqrt(int) -> sqrt
-    5733:5733:int sqrDistance(com.brucelet.spacetrader.datatypes.SolarSystem,com.brucelet.spacetrader.datatypes.SolarSystem) -> sqrDistance
-    5741:5741:int realDistance(com.brucelet.spacetrader.datatypes.SolarSystem,com.brucelet.spacetrader.datatypes.SolarSystem) -> realDistance
-    5758:5762:int getRandom2(int) -> getRandom2
-    5767:5773:int rand() -> rand
-    5778:5787:void randSeed(int,int) -> randSeed
-    5802:5802:int currentWorth() -> currentWorth
-    5811:5822:void payInterest() -> payInterest
-    5830:5874:void drawSpecialCargoForm() -> drawSpecialCargoForm
-    5879:5892:void specialCargoFormHandleEvent(int) -> specialCargoFormHandleEvent
-    5901:5946:int openQuests() -> openQuests
-    5951:6047:void drawQuestsForm() -> drawQuestsForm
-    6052:6065:void questsFormHandleEvent(int) -> questsFormHandleEvent
-    6075:6149:void sellEquipmentFormHandleEvent(int) -> sellEquipmentFormHandleEvent
-    6157:6275:void drawCurrentShipForm() -> drawCurrentShipForm
-    6284:6297:void currentShipFormHandleEvent(int) -> currentShipFormHandleEvent
-    6305:6319:void drawShiptypeInfoForm() -> drawShiptypeInfoForm
-    6329:6352:void getAmountForRepairs() -> getAmountForRepairs
-    6359:6382:void getAmountForFuel() -> getAmountForFuel
-    6391:6464:void showShipYard() -> showShipYard
-    6470:6481:void buyRepairs(int) -> buyRepairs
-    6489:6531:void shipYardFormHandleEvent(int) -> shipYardFormHandleEvent
-    6542:6561:void recalculateBuyPrices(com.brucelet.spacetrader.datatypes.SolarSystem) -> recalculateBuyPrices
-    6568:6570:void recalculateSellPrices() -> recalculateSellPrices
-    6576:6576:int randomSkill() -> randomSkill
-    6587:6641:void drawSpecialEventForm(com.brucelet.spacetrader.BaseDialog$Builder) -> drawSpecialEventForm
-    6645:7013:void specialEventFormHandleEvent(int) -> specialEventFormHandleEvent
-    7024:7036:com.brucelet.spacetrader.datatypes.CrewMember getForHire() -> getForHire
-    7045:7176:void drawPersonnelRoster() -> drawPersonnelRoster
-    7183:7185:void addNewsEvent(com.brucelet.spacetrader.enumtypes.NewsEvent) -> addNewsEvent
-    7194:7206:void replaceNewsEvent(com.brucelet.spacetrader.enumtypes.NewsEvent,com.brucelet.spacetrader.enumtypes.NewsEvent) -> replaceNewsEvent
-    7213:7214:void resetNewsEvents() -> resetNewsEvents
-    7221:7224:com.brucelet.spacetrader.enumtypes.NewsEvent latestNewsEvent() -> latestNewsEvent
-    7233:7238:boolean isNewsEvent(com.brucelet.spacetrader.enumtypes.NewsEvent) -> isNewsEvent
-    7246:7365:void drawSystemInformationForm() -> drawSystemInformationForm
-    7373:7417:void systemInformationFormHandleEvent(int) -> systemInformationFormHandleEvent
-    7421:7425:void displayHeadline(int,java.lang.Object[]) -> displayHeadline
-    7427:7431:void displayHeadline(java.lang.String,java.lang.Object[]) -> displayHeadline
-    7434:7442:java.lang.String newspaperTitle() -> newspaperTitle
-    7447:7594:void drawNewspaperForm() -> drawNewspaperForm
-    7603:7660:void personnelRosterFormHandleEvent(int) -> personnelRosterFormHandleEvent
-    7662:7665:void personnelRosterRedraw(int) -> personnelRosterRedraw
-    7675:7678:int insuranceMoney() -> insuranceMoney
-    7689:7724:int standardPrice(com.brucelet.spacetrader.enumtypes.TradeItem,com.brucelet.spacetrader.enumtypes.Size,com.brucelet.spacetrader.enumtypes.TechLevel,com.brucelet.spacetrader.enumtypes.Politics,com.brucelet.spacetrader.enumtypes.SpecialResources) -> standardPrice
-    7732:7738:int mercenaryMoney() -> mercenaryMoney
-    7746:7749:int wormholeTax(com.brucelet.spacetrader.datatypes.SolarSystem,com.brucelet.spacetrader.datatypes.SolarSystem) -> wormholeTax
-    7758:7762:void initHighScores() -> initHighScores
-    7771:7844:void endOfGame() -> endOfGame
-    7849:7851:void showEndGameScreen(com.brucelet.spacetrader.enumtypes.EndStatus) -> showEndGameScreen
-    7855:7858:void drawEndGameScreen() -> drawEndGameScreen
-    7866:7903:void determinePrices(com.brucelet.spacetrader.datatypes.SolarSystem) -> determinePrices
-    7913:8051:boolean doWarp(boolean) -> doWarp
-    8059:8134:void showExecuteWarp() -> showExecuteWarp
-    8137:8210:void showExecuteWarpPage(com.brucelet.spacetrader.datatypes.SolarSystem,android.view.View) -> showExecuteWarpPage
-    8217:8236:void newCommanderDrawSkills() -> newCommanderDrawSkills
-    8243:8268:com.brucelet.spacetrader.datatypes.SolarSystem nextSystemWithinRange(com.brucelet.spacetrader.datatypes.SolarSystem,boolean) -> nextSystemWithinRange
-    8272:8274:void scrollWarpSystem(boolean) -> scrollWarpSystem
-    8281:8343:void showAveragePrices() -> showAveragePrices
-    8346:8399:void showAveragePricesPage(com.brucelet.spacetrader.datatypes.SolarSystem,android.view.View) -> showAveragePricesPage
-    8407:8750:void generateOpponent(com.brucelet.spacetrader.enumtypes.Opponent) -> generateOpponent
-    8757:8759:int toSpend() -> toSpend
-    8768:8769:void viewHighScores() -> viewHighScores
-    8773:8809:void showHighScores() -> showHighScores
-    8819:9353:void startNewGame() -> startNewGame
-    9362:9414:void incDays(int) -> incDays
-    9421:9895:void travel() -> travel
-    10229:10251:boolean wormholeExists(com.brucelet.spacetrader.datatypes.SolarSystem,com.brucelet.spacetrader.datatypes.SolarSystem) -> wormholeExists
-    10260:10269:void arrival() -> arrival
-    10277:10287:int getFirstEmptySlot(int,java.lang.Object[]) -> getFirstEmptySlot
-    10291:10304:void showNewGameDialog() -> showNewGameDialog
-    10311:10424:void newCommanderFormHandleEvent(int) -> newCommanderFormHandleEvent
-    10433:10482:void averagePricesFormHandleEvent(int) -> averagePricesFormHandleEvent
-    10492:10528:void executeWarpFormHandleEvent(int) -> executeWarpFormHandleEvent
-    10533:10554:void showSpecificationForm() -> showSpecificationForm
-    10566:10791:void drawShortRange(android.graphics.Canvas) -> drawShortRange
-    10795:10797:void showGalaxy() -> showGalaxy
-    10804:11072:void drawGalaxy(android.graphics.Canvas) -> drawGalaxy
-    11079:11161:boolean warpFormHandleEvent(float,float) -> warpFormHandleEvent
-    11171:11208:void galacticChartFormHandleEvent(int) -> galacticChartFormHandleEvent
-    11213:11326:boolean galacticChartFormHandleEvent(float,float) -> galacticChartFormHandleEvent
-    11331:11343:void showCheatConfirm(com.brucelet.spacetrader.OnConfirmListener) -> showCheatConfirm
-    11347:11556:void findDialogHandleEvent(int) -> findDialogHandleEvent
-    11560:11571:void showVeryRareCheat() -> showVeryRareCheat
-    11575:11601:void veryRareCheatHandleEvent() -> veryRareCheatHandleEvent
-    11605:11665:void showQuestsCheat() -> showQuestsCheat
-    11673:11704:boolean scrollSystem(boolean) -> scrollSystem
-    11710:11748:void buildHelpDialog(int,com.brucelet.spacetrader.BaseDialog$Builder) -> buildHelpDialog
-    11753:11759:void setAdapterSystems(com.brucelet.spacetrader.WarpSystemPagerAdapter) -> setAdapterSystems
-    3797:3797:void access$0(com.brucelet.spacetrader.datatypes.GameState,com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask) -> access$0
-    3797:3797:com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask access$1(com.brucelet.spacetrader.datatypes.GameState) -> access$1
-    132:132:com.brucelet.spacetrader.MainActivity access$2(com.brucelet.spacetrader.datatypes.GameState) -> access$2
-    727:727:android.content.res.Resources access$3(com.brucelet.spacetrader.datatypes.GameState) -> access$3
-    740:740:java.util.concurrent.CountDownLatch access$4() -> access$4
-    731:731:com.brucelet.spacetrader.OnConfirmListener access$5(java.util.concurrent.CountDownLatch) -> access$5
-    748:748:void access$6(java.util.concurrent.CountDownLatch) -> access$6
-    744:744:void access$7(java.util.concurrent.CountDownLatch) -> access$7
-    1376:1376:void access$8(com.brucelet.spacetrader.datatypes.GameState,com.brucelet.spacetrader.enumtypes.ShipType) -> access$8
-    9358:9358:void access$9(com.brucelet.spacetrader.datatypes.GameState,int) -> access$9
-    1412:1412:void access$10(com.brucelet.spacetrader.datatypes.GameState) -> access$10
-    3117:3117:void access$11(com.brucelet.spacetrader.datatypes.GameState) -> access$11
-    9419:9419:void access$12(com.brucelet.spacetrader.datatypes.GameState) -> access$12
-    2977:2977:void access$13(com.brucelet.spacetrader.datatypes.GameState,boolean) -> access$13
-    3798:3798:android.os.Handler access$14(com.brucelet.spacetrader.datatypes.GameState) -> access$14
-    3799:3799:java.lang.Runnable access$15(com.brucelet.spacetrader.datatypes.GameState) -> access$15
-    3796:3796:void access$16(com.brucelet.spacetrader.datatypes.GameState,boolean) -> access$16
-    3299:3299:void access$17(com.brucelet.spacetrader.datatypes.GameState) -> access$17
-    279:279:void access$18(com.brucelet.spacetrader.datatypes.GameState,int) -> access$18
-    280:280:void access$19(com.brucelet.spacetrader.datatypes.GameState,boolean) -> access$19
-    281:281:void access$20(com.brucelet.spacetrader.datatypes.GameState,boolean) -> access$20
-    3135:3135:void access$21(com.brucelet.spacetrader.datatypes.GameState) -> access$21
-    6468:6468:void access$22(com.brucelet.spacetrader.datatypes.GameState,int) -> access$22
-    10275:10275:int access$23(int,java.lang.Object[]) -> access$23
-    127:127:int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$Opponent() -> $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$Opponent
-    127:127:int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$ThemeType() -> $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$ThemeType
-    2998:2998:void access$26(com.brucelet.spacetrader.datatypes.GameState,com.brucelet.spacetrader.datatypes.Ship,boolean) -> access$26
-    3678:3678:void access$27(com.brucelet.spacetrader.datatypes.GameState,int) -> access$27
-    127:127:int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$SpecialEvent() -> $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$SpecialEvent
-    127:127:int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$Skill() -> $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$Skill
-    127:127:int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$NewsEvent() -> $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$NewsEvent
-    7661:7661:void access$31(com.brucelet.spacetrader.datatypes.GameState,int) -> access$31
-    127:127:int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$Encounter$VeryRare() -> $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$Encounter$VeryRare
+    333:356:void initializePaints() -> initializePaints
+    363:504:void saveState(android.content.SharedPreferences$Editor) -> saveState
+    507:726:void loadState(android.content.SharedPreferences) -> loadState
+    729:729:android.content.res.Resources getResources() -> getResources
+    733:733:com.brucelet.spacetrader.OnConfirmListener newUnlocker(java.util.concurrent.CountDownLatch) -> newUnlocker
+    742:742:java.util.concurrent.CountDownLatch newLatch() -> newLatch
+    751:755:void lock(java.util.concurrent.CountDownLatch) -> lock
+    758:759:void copyPreference(android.content.SharedPreferences,android.content.SharedPreferences$Editor,java.lang.String,int) -> copyPreference
+    761:762:void copyPreference(android.content.SharedPreferences,android.content.SharedPreferences$Editor,java.lang.String,boolean) -> copyPreference
+    765:792:void copyPrefs(android.content.SharedPreferences,android.content.SharedPreferences$Editor) -> copyPrefs
+    795:795:java.lang.String nameCommander() -> nameCommander
+    799:799:boolean recallScreens() -> recallScreens
+    802:802:boolean volumeScroll() -> volumeScroll
+    805:805:boolean identifyStartup() -> identifyStartup
+    809:819:int getShortcut(int) -> getShortcut
+    823:837:void setShortcut(int,int) -> setShortcut
+    842:842:boolean developerMode() -> developerMode
+    854:854:int min(int,int) -> min
+    855:855:int max(int,int) -> max
+    858:861:int getRandom(int) -> getRandom
+    866:866:java.lang.Object getRandom(java.lang.Object[]) -> getRandom
+    869:869:java.lang.Object getRandom(java.lang.Object[],int) -> getRandom
+    872:875:java.lang.Object getRandom(java.lang.Object[],int,int) -> getRandom
+    878:878:int abs(int) -> abs
+    879:879:int sqr(int) -> sqr
+    880:880:com.brucelet.spacetrader.datatypes.CrewMember commander() -> commander
+    881:881:com.brucelet.spacetrader.datatypes.SolarSystem curSystem() -> curSystem
+    887:891:void switchToNew(java.lang.String) -> switchToNew
+    897:954:void showOptions() -> showOptions
+    958:1028:void dismissOptions() -> dismissOptions
+    1038:1038:int maxLoan() -> maxLoan
+    1049:1052:void getLoan(int) -> getLoan
+    1062:1066:void payBack(int) -> payBack
+    1073:1105:void showBank() -> showBank
+    1112:1214:void bankFormHandleEvent(int) -> bankFormHandleEvent
+    1224:1233:void drawItem(com.brucelet.spacetrader.enumtypes.Purchasable) -> drawItem
+    1238:1293:void drawBuyEquipmentForm() -> drawBuyEquipmentForm
+    1300:1352:void buyEquipmentFormHandleEvent(int) -> buyEquipmentFormHandleEvent
+    1365:1371:void createShip(com.brucelet.spacetrader.enumtypes.ShipType) -> createShip
+    1379:1387:void buyShip(com.brucelet.spacetrader.enumtypes.ShipType) -> buyShip
+    1395:1408:void determineShipPrices() -> determineShipPrices
+    1415:1420:void createFlea() -> createFlea
+    1425:1474:void drawBuyShipForm() -> drawBuyShipForm
+    1481:1497:void buyShipFormHandleEvent(int) -> buyShipFormHandleEvent
+    1865:1956:void getAmountToSell(com.brucelet.spacetrader.enumtypes.TradeItem,com.brucelet.spacetrader.enumtypes.SellOperation) -> getAmountToSell
+    1964:1988:boolean hasTradeableItems(com.brucelet.spacetrader.datatypes.Ship,boolean) -> hasTradeableItems
+    1997:2056:com.brucelet.spacetrader.enumtypes.TradeItem getRandomTradeableItem(com.brucelet.spacetrader.datatypes.Ship,boolean) -> getRandomTradeableItem
+    2067:2113:void getAmountToBuy(com.brucelet.spacetrader.enumtypes.TradeItem) -> getAmountToBuy
+    2118:2124:void drawPlunderForm() -> drawPlunderForm
+    2132:2161:void plunderFormHandleEvent(int) -> plunderFormHandleEvent
+    2166:2215:void drawBuyCargoForm() -> drawBuyCargoForm
+    2223:2237:void buyCargoFormHandleEvent(int) -> buyCargoFormHandleEvent
+    2241:2338:void drawSellCargoForm() -> drawSellCargoForm
+    2346:2383:void sellCargoFormHandleEvent(int) -> sellCargoFormHandleEvent
+    2391:2399:void showDumpCargo() -> showDumpCargo
+    2407:2448:void discardCargoFormHandleEvent(int) -> discardCargoFormHandleEvent
+    2457:2476:void plunderCargo(com.brucelet.spacetrader.enumtypes.TradeItem,int) -> plunderCargo
+    2484:2507:void getAmountToPlunder(com.brucelet.spacetrader.enumtypes.TradeItem) -> getAmountToPlunder
+    2517:2558:void buyCargo(com.brucelet.spacetrader.enumtypes.TradeItem,int) -> buyCargo
+    2568:2642:void sellCargo(com.brucelet.spacetrader.enumtypes.TradeItem,int,com.brucelet.spacetrader.enumtypes.SellOperation) -> sellCargo
+    2651:2681:void buyItem(int,com.brucelet.spacetrader.enumtypes.Purchasable[],int,java.lang.String,com.brucelet.spacetrader.enumtypes.Purchasable) -> buyItem
+    2688:2741:void drawSellEquipment() -> drawSellEquipment
+    2751:2797:void showCommanderStatus() -> showCommanderStatus
+    2804:2839:void commanderStatusFormHandleEvent(int) -> commanderStatusFormHandleEvent
+    2843:2862:void showCheatDialog() -> showCheatDialog
+    2866:2932:void cheatDialogDismiss() -> cheatDialogDismiss
+    2943:2972:void encounterButtons() -> encounterButtons
+    2982:2993:void encounterDisplayNextAction(boolean) -> encounterDisplayNextAction
+    3001:3112:void showShip(com.brucelet.spacetrader.datatypes.Ship,boolean) -> showShip
+    3120:3130:void encounterDisplayShips() -> encounterDisplayShips
+    3138:3139:void escapeWithPod() -> escapeWithPod
+    3302:3303:void arrested() -> arrested
+    3520:3676:void drawEncounterForm() -> drawEncounterForm
+    3680:3717:void randomizeTribblePosition(int) -> randomizeTribblePosition
+    3724:3773:void encounterFormHandleEvent(int) -> encounterFormHandleEvent
+    3786:3795:void clearButtonAction() -> clearButtonAction
+    5702:5712:void buyFuel(int) -> buyFuel
+    5723:5723:int sqrt(int) -> sqrt
+    5731:5731:int sqrDistance(com.brucelet.spacetrader.datatypes.SolarSystem,com.brucelet.spacetrader.datatypes.SolarSystem) -> sqrDistance
+    5739:5739:int realDistance(com.brucelet.spacetrader.datatypes.SolarSystem,com.brucelet.spacetrader.datatypes.SolarSystem) -> realDistance
+    5756:5760:int getRandom2(int) -> getRandom2
+    5765:5771:int rand() -> rand
+    5776:5785:void randSeed(int,int) -> randSeed
+    5800:5800:int currentWorth() -> currentWorth
+    5809:5820:void payInterest() -> payInterest
+    5828:5872:void drawSpecialCargoForm() -> drawSpecialCargoForm
+    5877:5890:void specialCargoFormHandleEvent(int) -> specialCargoFormHandleEvent
+    5899:5944:int openQuests() -> openQuests
+    5949:6045:void drawQuestsForm() -> drawQuestsForm
+    6050:6063:void questsFormHandleEvent(int) -> questsFormHandleEvent
+    6073:6147:void sellEquipmentFormHandleEvent(int) -> sellEquipmentFormHandleEvent
+    6155:6273:void drawCurrentShipForm() -> drawCurrentShipForm
+    6282:6295:void currentShipFormHandleEvent(int) -> currentShipFormHandleEvent
+    6303:6317:void drawShiptypeInfoForm() -> drawShiptypeInfoForm
+    6327:6350:void getAmountForRepairs() -> getAmountForRepairs
+    6357:6380:void getAmountForFuel() -> getAmountForFuel
+    6389:6462:void showShipYard() -> showShipYard
+    6468:6479:void buyRepairs(int) -> buyRepairs
+    6487:6529:void shipYardFormHandleEvent(int) -> shipYardFormHandleEvent
+    6540:6559:void recalculateBuyPrices(com.brucelet.spacetrader.datatypes.SolarSystem) -> recalculateBuyPrices
+    6566:6568:void recalculateSellPrices() -> recalculateSellPrices
+    6574:6574:int randomSkill() -> randomSkill
+    6585:6639:void drawSpecialEventForm(com.brucelet.spacetrader.BaseDialog$Builder) -> drawSpecialEventForm
+    6643:7011:void specialEventFormHandleEvent(int) -> specialEventFormHandleEvent
+    7022:7034:com.brucelet.spacetrader.datatypes.CrewMember getForHire() -> getForHire
+    7043:7174:void drawPersonnelRoster() -> drawPersonnelRoster
+    7181:7183:void addNewsEvent(com.brucelet.spacetrader.enumtypes.NewsEvent) -> addNewsEvent
+    7192:7204:void replaceNewsEvent(com.brucelet.spacetrader.enumtypes.NewsEvent,com.brucelet.spacetrader.enumtypes.NewsEvent) -> replaceNewsEvent
+    7211:7212:void resetNewsEvents() -> resetNewsEvents
+    7219:7222:com.brucelet.spacetrader.enumtypes.NewsEvent latestNewsEvent() -> latestNewsEvent
+    7231:7236:boolean isNewsEvent(com.brucelet.spacetrader.enumtypes.NewsEvent) -> isNewsEvent
+    7244:7363:void drawSystemInformationForm() -> drawSystemInformationForm
+    7371:7415:void systemInformationFormHandleEvent(int) -> systemInformationFormHandleEvent
+    7419:7423:void displayHeadline(int,java.lang.Object[]) -> displayHeadline
+    7425:7429:void displayHeadline(java.lang.String,java.lang.Object[]) -> displayHeadline
+    7432:7440:java.lang.String newspaperTitle() -> newspaperTitle
+    7445:7592:void drawNewspaperForm() -> drawNewspaperForm
+    7601:7658:void personnelRosterFormHandleEvent(int) -> personnelRosterFormHandleEvent
+    7660:7663:void personnelRosterRedraw(int) -> personnelRosterRedraw
+    7673:7676:int insuranceMoney() -> insuranceMoney
+    7687:7722:int standardPrice(com.brucelet.spacetrader.enumtypes.TradeItem,com.brucelet.spacetrader.enumtypes.Size,com.brucelet.spacetrader.enumtypes.TechLevel,com.brucelet.spacetrader.enumtypes.Politics,com.brucelet.spacetrader.enumtypes.SpecialResources) -> standardPrice
+    7730:7736:int mercenaryMoney() -> mercenaryMoney
+    7744:7747:int wormholeTax(com.brucelet.spacetrader.datatypes.SolarSystem,com.brucelet.spacetrader.datatypes.SolarSystem) -> wormholeTax
+    7756:7760:void initHighScores() -> initHighScores
+    7769:7842:void endOfGame() -> endOfGame
+    7847:7849:void showEndGameScreen(com.brucelet.spacetrader.enumtypes.EndStatus) -> showEndGameScreen
+    7853:7856:void drawEndGameScreen() -> drawEndGameScreen
+    7864:7901:void determinePrices(com.brucelet.spacetrader.datatypes.SolarSystem) -> determinePrices
+    7911:8049:boolean doWarp(boolean) -> doWarp
+    8057:8132:void showExecuteWarp() -> showExecuteWarp
+    8135:8208:void showExecuteWarpPage(com.brucelet.spacetrader.datatypes.SolarSystem,android.view.View) -> showExecuteWarpPage
+    8215:8234:void newCommanderDrawSkills() -> newCommanderDrawSkills
+    8241:8266:com.brucelet.spacetrader.datatypes.SolarSystem nextSystemWithinRange(com.brucelet.spacetrader.datatypes.SolarSystem,boolean) -> nextSystemWithinRange
+    8270:8272:void scrollWarpSystem(boolean) -> scrollWarpSystem
+    8279:8341:void showAveragePrices() -> showAveragePrices
+    8344:8397:void showAveragePricesPage(com.brucelet.spacetrader.datatypes.SolarSystem,android.view.View) -> showAveragePricesPage
+    8405:8748:void generateOpponent(com.brucelet.spacetrader.enumtypes.Opponent) -> generateOpponent
+    8755:8757:int toSpend() -> toSpend
+    8766:8767:void viewHighScores() -> viewHighScores
+    8771:8807:void showHighScores() -> showHighScores
+    8817:9351:void startNewGame() -> startNewGame
+    9360:9412:void incDays(int) -> incDays
+    9419:9893:void travel() -> travel
+    10227:10249:boolean wormholeExists(com.brucelet.spacetrader.datatypes.SolarSystem,com.brucelet.spacetrader.datatypes.SolarSystem) -> wormholeExists
+    10258:10267:void arrival() -> arrival
+    10275:10285:int getFirstEmptySlot(int,java.lang.Object[]) -> getFirstEmptySlot
+    10289:10302:void showNewGameDialog() -> showNewGameDialog
+    10309:10422:void newCommanderFormHandleEvent(int) -> newCommanderFormHandleEvent
+    10431:10480:void averagePricesFormHandleEvent(int) -> averagePricesFormHandleEvent
+    10490:10526:void executeWarpFormHandleEvent(int) -> executeWarpFormHandleEvent
+    10531:10552:void showSpecificationForm() -> showSpecificationForm
+    10564:10789:void drawShortRange(android.graphics.Canvas) -> drawShortRange
+    10793:10795:void showGalaxy() -> showGalaxy
+    10802:11070:void drawGalaxy(android.graphics.Canvas) -> drawGalaxy
+    11077:11159:boolean warpFormHandleEvent(float,float) -> warpFormHandleEvent
+    11169:11206:void galacticChartFormHandleEvent(int) -> galacticChartFormHandleEvent
+    11215:11342:boolean galacticChartFormHandleEvent(float,float,int) -> galacticChartFormHandleEvent
+    11347:11359:void showCheatConfirm(com.brucelet.spacetrader.OnConfirmListener) -> showCheatConfirm
+    11363:11512:void findDialogHandleEvent(int) -> findDialogHandleEvent
+    11516:11527:void showVeryRareCheat() -> showVeryRareCheat
+    11531:11557:void veryRareCheatHandleEvent() -> veryRareCheatHandleEvent
+    11561:11621:void showQuestsCheat() -> showQuestsCheat
+    11629:11660:boolean scrollSystem(boolean) -> scrollSystem
+    11666:11704:void buildHelpDialog(int,com.brucelet.spacetrader.BaseDialog$Builder) -> buildHelpDialog
+    11709:11715:void setAdapterSystems(com.brucelet.spacetrader.WarpSystemPagerAdapter) -> setAdapterSystems
+    3798:3798:void access$0(com.brucelet.spacetrader.datatypes.GameState,com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask) -> access$0
+    3798:3798:com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask access$1(com.brucelet.spacetrader.datatypes.GameState) -> access$1
+    133:133:com.brucelet.spacetrader.MainActivity access$2(com.brucelet.spacetrader.datatypes.GameState) -> access$2
+    728:728:android.content.res.Resources access$3(com.brucelet.spacetrader.datatypes.GameState) -> access$3
+    741:741:java.util.concurrent.CountDownLatch access$4() -> access$4
+    732:732:com.brucelet.spacetrader.OnConfirmListener access$5(java.util.concurrent.CountDownLatch) -> access$5
+    749:749:void access$6(java.util.concurrent.CountDownLatch) -> access$6
+    745:745:void access$7(java.util.concurrent.CountDownLatch) -> access$7
+    1377:1377:void access$8(com.brucelet.spacetrader.datatypes.GameState,com.brucelet.spacetrader.enumtypes.ShipType) -> access$8
+    9356:9356:void access$9(com.brucelet.spacetrader.datatypes.GameState,int) -> access$9
+    1413:1413:void access$10(com.brucelet.spacetrader.datatypes.GameState) -> access$10
+    3118:3118:void access$11(com.brucelet.spacetrader.datatypes.GameState) -> access$11
+    9417:9417:void access$12(com.brucelet.spacetrader.datatypes.GameState) -> access$12
+    2978:2978:void access$13(com.brucelet.spacetrader.datatypes.GameState,boolean) -> access$13
+    3799:3799:android.os.Handler access$14(com.brucelet.spacetrader.datatypes.GameState) -> access$14
+    3800:3800:java.lang.Runnable access$15(com.brucelet.spacetrader.datatypes.GameState) -> access$15
+    3797:3797:void access$16(com.brucelet.spacetrader.datatypes.GameState,boolean) -> access$16
+    3300:3300:void access$17(com.brucelet.spacetrader.datatypes.GameState) -> access$17
+    280:280:void access$18(com.brucelet.spacetrader.datatypes.GameState,int) -> access$18
+    281:281:void access$19(com.brucelet.spacetrader.datatypes.GameState,boolean) -> access$19
+    282:282:void access$20(com.brucelet.spacetrader.datatypes.GameState,boolean) -> access$20
+    3136:3136:void access$21(com.brucelet.spacetrader.datatypes.GameState) -> access$21
+    6466:6466:void access$22(com.brucelet.spacetrader.datatypes.GameState,int) -> access$22
+    10273:10273:int access$23(int,java.lang.Object[]) -> access$23
+    128:128:int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$Opponent() -> $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$Opponent
+    128:128:int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$ThemeType() -> $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$ThemeType
+    2999:2999:void access$26(com.brucelet.spacetrader.datatypes.GameState,com.brucelet.spacetrader.datatypes.Ship,boolean) -> access$26
+    3679:3679:void access$27(com.brucelet.spacetrader.datatypes.GameState,int) -> access$27
+    128:128:int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$SpecialEvent() -> $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$SpecialEvent
+    128:128:int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$Skill() -> $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$Skill
+    128:128:int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$NewsEvent() -> $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$NewsEvent
+    7659:7659:void access$31(com.brucelet.spacetrader.datatypes.GameState,int) -> access$31
+    128:128:int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$Encounter$VeryRare() -> $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$Encounter$VeryRare
 com.brucelet.spacetrader.datatypes.GameState$1 -> com.brucelet.spacetrader.datatypes.GameState$1:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    3802:3809:void run() -> run
+    3803:3810:void run() -> run
 com.brucelet.spacetrader.datatypes.GameState$10 -> com.brucelet.spacetrader.datatypes.GameState$10:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
     com.brucelet.spacetrader.enumtypes.TradeItem val$item -> val$item
     com.brucelet.spacetrader.enumtypes.SellOperation val$operation -> val$operation
-    1950:1951:void onClickNeutralButton() -> onClickNeutralButton
+    1951:1952:void onClickNeutralButton() -> onClickNeutralButton
 com.brucelet.spacetrader.datatypes.GameState$11 -> com.brucelet.spacetrader.datatypes.GameState$11:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
     com.brucelet.spacetrader.enumtypes.TradeItem val$item -> val$item
-    2086:2087:void onClickPositiveButton(int) -> onClickPositiveButton
+    2087:2088:void onClickPositiveButton(int) -> onClickPositiveButton
 com.brucelet.spacetrader.datatypes.GameState$12 -> com.brucelet.spacetrader.datatypes.GameState$12:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
     com.brucelet.spacetrader.enumtypes.TradeItem val$item -> val$item
-    2093:2094:void onClickNeutralButton() -> onClickNeutralButton
+    2094:2095:void onClickNeutralButton() -> onClickNeutralButton
 com.brucelet.spacetrader.datatypes.GameState$13 -> com.brucelet.spacetrader.datatypes.GameState$13:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
     com.brucelet.spacetrader.enumtypes.TradeItem val$fItem -> val$fItem
-    2430:2431:void onConfirm() -> onConfirm
+    2431:2432:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$14 -> com.brucelet.spacetrader.datatypes.GameState$14:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
     com.brucelet.spacetrader.enumtypes.TradeItem val$item -> val$item
-    2494:2495:void onClickPositiveButton(int) -> onClickPositiveButton
+    2495:2496:void onClickPositiveButton(int) -> onClickPositiveButton
 com.brucelet.spacetrader.datatypes.GameState$15 -> com.brucelet.spacetrader.datatypes.GameState$15:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
     com.brucelet.spacetrader.enumtypes.TradeItem val$item -> val$item
-    2501:2502:void onClickNeutralButton() -> onClickNeutralButton
+    2502:2503:void onClickNeutralButton() -> onClickNeutralButton
 com.brucelet.spacetrader.datatypes.GameState$16 -> com.brucelet.spacetrader.datatypes.GameState$16:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
     com.brucelet.spacetrader.enumtypes.TradeItem val$item -> val$item
     int val$amount -> val$amount
     com.brucelet.spacetrader.enumtypes.SellOperation val$operation -> val$operation
-    2598:2599:void onConfirm() -> onConfirm
+    2599:2600:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$17 -> com.brucelet.spacetrader.datatypes.GameState$17:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
     com.brucelet.spacetrader.enumtypes.Purchasable[] val$item -> val$item
     int val$firstEmptySlot -> val$firstEmptySlot
     com.brucelet.spacetrader.enumtypes.Purchasable val$itemIndex -> val$itemIndex
     int val$price -> val$price
-    2669:2673:void onConfirm() -> onConfirm
+    2670:2674:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$18 -> com.brucelet.spacetrader.datatypes.GameState$18:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    3075:3076:void run() -> run
+    3076:3077:void run() -> run
 com.brucelet.spacetrader.datatypes.GameState$19 -> com.brucelet.spacetrader.datatypes.GameState$19:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
     int val$tribbleId -> val$tribbleId
-    3693:3694:void run() -> run
+    3694:3695:void run() -> run
 com.brucelet.spacetrader.datatypes.GameState$2 -> com.brucelet.spacetrader.datatypes.GameState$2:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    3814:3818:void run() -> run
+    3815:3819:void run() -> run
 com.brucelet.spacetrader.datatypes.GameState$20 -> com.brucelet.spacetrader.datatypes.GameState$20:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
     int val$buttonId -> val$buttonId
-    3767:3769:void onConfirm() -> onConfirm
+    3768:3770:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$21 -> com.brucelet.spacetrader.datatypes.GameState$21:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
     int val$buttonId -> val$buttonId
-    6083:6146:void onConfirm() -> onConfirm
+    6081:6144:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$22 -> com.brucelet.spacetrader.datatypes.GameState$22:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    6339:6343:void onClickPositiveButton(int) -> onClickPositiveButton
+    6337:6341:void onClickPositiveButton(int) -> onClickPositiveButton
 com.brucelet.spacetrader.datatypes.GameState$23 -> com.brucelet.spacetrader.datatypes.GameState$23:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    6348:6350:void onClickNeutralButton() -> onClickNeutralButton
+    6346:6348:void onClickNeutralButton() -> onClickNeutralButton
 com.brucelet.spacetrader.datatypes.GameState$24 -> com.brucelet.spacetrader.datatypes.GameState$24:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    6369:6373:void onClickPositiveButton(int) -> onClickPositiveButton
+    6367:6371:void onClickPositiveButton(int) -> onClickPositiveButton
 com.brucelet.spacetrader.datatypes.GameState$25 -> com.brucelet.spacetrader.datatypes.GameState$25:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    6378:6380:void onClickNeutralButton() -> onClickNeutralButton
+    6376:6378:void onClickNeutralButton() -> onClickNeutralButton
 com.brucelet.spacetrader.datatypes.GameState$26 -> com.brucelet.spacetrader.datatypes.GameState$26:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    6524:6527:void onConfirm() -> onConfirm
+    6522:6525:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$27 -> com.brucelet.spacetrader.datatypes.GameState$27:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    6683:6697:void onConfirm() -> onConfirm
-    6679:6679:com.brucelet.spacetrader.datatypes.GameState access$0(com.brucelet.spacetrader.datatypes.GameState$27) -> access$0
+    6681:6695:void onConfirm() -> onConfirm
+    6677:6677:com.brucelet.spacetrader.datatypes.GameState access$0(com.brucelet.spacetrader.datatypes.GameState$27) -> access$0
 com.brucelet.spacetrader.datatypes.GameState$27$1 -> com.brucelet.spacetrader.datatypes.GameState$27$1:
     com.brucelet.spacetrader.datatypes.GameState$27 this$1 -> this$1
-    6691:6693:void onConfirm() -> onConfirm
+    6689:6691:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$28 -> com.brucelet.spacetrader.datatypes.GameState$28:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
     int val$price -> val$price
-    7395:7401:void onConfirm() -> onConfirm
+    7393:7399:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$29 -> com.brucelet.spacetrader.datatypes.GameState$29:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
     int val$oldTraderSkill -> val$oldTraderSkill
-    7615:7618:void onConfirm() -> onConfirm
+    7613:7616:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$3 -> com.brucelet.spacetrader.datatypes.GameState$3:
     java.util.concurrent.CountDownLatch val$latch -> val$latch
-    735:736:void onConfirm() -> onConfirm
+    736:737:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$30 -> com.brucelet.spacetrader.datatypes.GameState$30:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
     int val$oldTraderSkill -> val$oldTraderSkill
-    7633:7635:void onConfirm() -> onConfirm
+    7631:7633:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$31 -> com.brucelet.spacetrader.datatypes.GameState$31:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
     boolean val$fScored -> val$fScored
-    7830:7834:void onConfirm() -> onConfirm
+    7828:7832:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$32 -> com.brucelet.spacetrader.datatypes.GameState$32:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    7927:7933:void onConfirm() -> onConfirm
+    7925:7931:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$33 -> com.brucelet.spacetrader.datatypes.GameState$33:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
     int val$amount -> val$amount
-    9381:9383:void onConfirm() -> onConfirm
+    9379:9381:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$34 -> com.brucelet.spacetrader.datatypes.GameState$34:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    9444:9446:void onConfirm() -> onConfirm
+    9442:9444:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$35 -> com.brucelet.spacetrader.datatypes.GameState$35:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    11195:11198:void onConfirm() -> onConfirm
+    11193:11196:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$36 -> com.brucelet.spacetrader.datatypes.GameState$36:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
     com.brucelet.spacetrader.ChartScreen val$screen -> val$screen
-    11276:11278:void onConfirm() -> onConfirm
+    11283:11285:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$37 -> com.brucelet.spacetrader.datatypes.GameState$37:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
     com.brucelet.spacetrader.datatypes.SolarSystem val$fSystem -> val$fSystem
     com.brucelet.spacetrader.ChartScreen val$screen -> val$screen
-    11295:11297:void onConfirm() -> onConfirm
+    11302:11304:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$38 -> com.brucelet.spacetrader.datatypes.GameState$38:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
     com.brucelet.spacetrader.datatypes.SolarSystem val$fSystem -> val$fSystem
     com.brucelet.spacetrader.ChartScreen val$screen -> val$screen
-    11312:11314:void onConfirm() -> onConfirm
+    11319:11321:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$39 -> com.brucelet.spacetrader.datatypes.GameState$39:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    11366:11368:void onConfirm() -> onConfirm
+    11382:11384:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$4 -> com.brucelet.spacetrader.datatypes.GameState$4:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    1129:1131:void onClickPositiveButton(int) -> onClickPositiveButton
+    1130:1132:void onClickPositiveButton(int) -> onClickPositiveButton
 com.brucelet.spacetrader.datatypes.GameState$40 -> com.brucelet.spacetrader.datatypes.GameState$40:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    11376:11378:void onConfirm() -> onConfirm
+    11392:11394:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$41 -> com.brucelet.spacetrader.datatypes.GameState$41:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    11386:11388:void onConfirm() -> onConfirm
+    11402:11404:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$42 -> com.brucelet.spacetrader.datatypes.GameState$42:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
     java.lang.CharSequence val$findSystem -> val$findSystem
     java.lang.String[] val$systemnames -> val$systemnames
-    11396:11421:void onConfirm() -> onConfirm
+    11412:11437:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$43 -> com.brucelet.spacetrader.datatypes.GameState$43:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    11429:11431:void onConfirm() -> onConfirm
+    11445:11447:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$44 -> com.brucelet.spacetrader.datatypes.GameState$44:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    11440:11444:void onConfirm() -> onConfirm
+    11456:11460:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$5 -> com.brucelet.spacetrader.datatypes.GameState$5:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    1136:1138:void onClickNeutralButton() -> onClickNeutralButton
+    1137:1139:void onClickNeutralButton() -> onClickNeutralButton
 com.brucelet.spacetrader.datatypes.GameState$6 -> com.brucelet.spacetrader.datatypes.GameState$6:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    1167:1169:void onClickPositiveButton(int) -> onClickPositiveButton
+    1168:1170:void onClickPositiveButton(int) -> onClickPositiveButton
 com.brucelet.spacetrader.datatypes.GameState$7 -> com.brucelet.spacetrader.datatypes.GameState$7:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    1174:1176:void onClickNeutralButton() -> onClickNeutralButton
+    1175:1177:void onClickNeutralButton() -> onClickNeutralButton
 com.brucelet.spacetrader.datatypes.GameState$8 -> com.brucelet.spacetrader.datatypes.GameState$8:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    1204:1207:void onConfirm() -> onConfirm
+    1205:1208:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$9 -> com.brucelet.spacetrader.datatypes.GameState$9:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
     com.brucelet.spacetrader.enumtypes.TradeItem val$item -> val$item
     com.brucelet.spacetrader.enumtypes.SellOperation val$operation -> val$operation
-    1943:1944:void onClickPositiveButton(int) -> onClickPositiveButton
+    1944:1945:void onClickPositiveButton(int) -> onClickPositiveButton
 com.brucelet.spacetrader.datatypes.GameState$ArrestedTask -> com.brucelet.spacetrader.datatypes.GameState$ArrestedTask:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    3310:3501:java.lang.Void doInBackground(java.lang.Void[]) -> doInBackground
-    3507:3512:void onPostExecute(java.lang.Void) -> onPostExecute
+    3311:3502:java.lang.Void doInBackground(java.lang.Void[]) -> doInBackground
+    3508:3513:void onPostExecute(java.lang.Void) -> onPostExecute
     1:1:void onPostExecute(java.lang.Object) -> onPostExecute
     1:1:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
 com.brucelet.spacetrader.datatypes.GameState$ArrivalTask -> com.brucelet.spacetrader.datatypes.GameState$ArrivalTask:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    9901:10206:java.lang.Void doInBackground(java.lang.Integer[]) -> doInBackground
-    10211:10216:void onPostExecute(java.lang.Void) -> onPostExecute
+    9899:10204:java.lang.Void doInBackground(java.lang.Integer[]) -> doInBackground
+    10209:10214:void onPostExecute(java.lang.Void) -> onPostExecute
     1:1:void onPostExecute(java.lang.Object) -> onPostExecute
     1:1:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
 com.brucelet.spacetrader.datatypes.GameState$BuyShipTask -> com.brucelet.spacetrader.datatypes.GameState$BuyShipTask:
@@ -5770,51 +5772,51 @@ com.brucelet.spacetrader.datatypes.GameState$BuyShipTask -> com.brucelet.spacetr
     boolean addCompactor -> addCompactor
     boolean addMorganLaser -> addMorganLaser
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    1509:1844:java.lang.Void doInBackground(java.lang.Void[]) -> doInBackground
-    1849:1850:void onPostExecute(java.lang.Void) -> onPostExecute
+    1510:1845:java.lang.Void doInBackground(java.lang.Void[]) -> doInBackground
+    1850:1851:void onPostExecute(java.lang.Void) -> onPostExecute
     1:1:void onPostExecute(java.lang.Object) -> onPostExecute
     1:1:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-    1503:1503:void access$2(com.brucelet.spacetrader.datatypes.GameState$BuyShipTask,boolean) -> access$2
-    1499:1499:int access$3(com.brucelet.spacetrader.datatypes.GameState$BuyShipTask) -> access$3
-    1499:1499:void access$4(com.brucelet.spacetrader.datatypes.GameState$BuyShipTask,int) -> access$4
-    1504:1504:void access$5(com.brucelet.spacetrader.datatypes.GameState$BuyShipTask,boolean) -> access$5
-    1505:1505:void access$6(com.brucelet.spacetrader.datatypes.GameState$BuyShipTask,boolean) -> access$6
-    1498:1498:com.brucelet.spacetrader.datatypes.GameState access$8(com.brucelet.spacetrader.datatypes.GameState$BuyShipTask) -> access$8
+    1504:1504:void access$2(com.brucelet.spacetrader.datatypes.GameState$BuyShipTask,boolean) -> access$2
+    1500:1500:int access$3(com.brucelet.spacetrader.datatypes.GameState$BuyShipTask) -> access$3
+    1500:1500:void access$4(com.brucelet.spacetrader.datatypes.GameState$BuyShipTask,int) -> access$4
+    1505:1505:void access$5(com.brucelet.spacetrader.datatypes.GameState$BuyShipTask,boolean) -> access$5
+    1506:1506:void access$6(com.brucelet.spacetrader.datatypes.GameState$BuyShipTask,boolean) -> access$6
+    1499:1499:com.brucelet.spacetrader.datatypes.GameState access$8(com.brucelet.spacetrader.datatypes.GameState$BuyShipTask) -> access$8
 com.brucelet.spacetrader.datatypes.GameState$BuyShipTask$1 -> com.brucelet.spacetrader.datatypes.GameState$BuyShipTask$1:
     com.brucelet.spacetrader.datatypes.GameState$BuyShipTask this$1 -> this$1
     java.util.concurrent.CountDownLatch val$latch -> val$latch
-    1668:1671:void onConfirm() -> onConfirm
+    1669:1672:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$BuyShipTask$2 -> com.brucelet.spacetrader.datatypes.GameState$BuyShipTask$2:
     com.brucelet.spacetrader.datatypes.GameState$BuyShipTask this$1 -> this$1
     java.util.concurrent.CountDownLatch val$latch -> val$latch
-    1677:1678:void onCancel() -> onCancel
+    1678:1679:void onCancel() -> onCancel
 com.brucelet.spacetrader.datatypes.GameState$BuyShipTask$3 -> com.brucelet.spacetrader.datatypes.GameState$BuyShipTask$3:
     com.brucelet.spacetrader.datatypes.GameState$BuyShipTask this$1 -> this$1
     java.util.concurrent.CountDownLatch val$latch -> val$latch
-    1711:1714:void onConfirm() -> onConfirm
+    1712:1715:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$BuyShipTask$4 -> com.brucelet.spacetrader.datatypes.GameState$BuyShipTask$4:
     com.brucelet.spacetrader.datatypes.GameState$BuyShipTask this$1 -> this$1
     java.util.concurrent.CountDownLatch val$latch -> val$latch
-    1720:1721:void onCancel() -> onCancel
+    1721:1722:void onCancel() -> onCancel
 com.brucelet.spacetrader.datatypes.GameState$BuyShipTask$5 -> com.brucelet.spacetrader.datatypes.GameState$BuyShipTask$5:
     com.brucelet.spacetrader.datatypes.GameState$BuyShipTask this$1 -> this$1
     java.util.concurrent.CountDownLatch val$latch -> val$latch
-    1754:1757:void onConfirm() -> onConfirm
+    1755:1758:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$BuyShipTask$6 -> com.brucelet.spacetrader.datatypes.GameState$BuyShipTask$6:
     com.brucelet.spacetrader.datatypes.GameState$BuyShipTask this$1 -> this$1
     java.util.concurrent.CountDownLatch val$latch -> val$latch
-    1763:1764:void onCancel() -> onCancel
+    1764:1765:void onCancel() -> onCancel
 com.brucelet.spacetrader.datatypes.GameState$BuyShipTask$7 -> com.brucelet.spacetrader.datatypes.GameState$BuyShipTask$7:
     com.brucelet.spacetrader.datatypes.GameState$BuyShipTask this$1 -> this$1
     boolean val$fAddCompactor -> val$fAddCompactor
     boolean val$fAddLightning -> val$fAddLightning
     boolean val$fAddMorganLaser -> val$fAddMorganLaser
     java.util.concurrent.CountDownLatch val$latch -> val$latch
-    1818:1829:void onConfirm() -> onConfirm
+    1819:1830:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$BuyShipTask$8 -> com.brucelet.spacetrader.datatypes.GameState$BuyShipTask$8:
     com.brucelet.spacetrader.datatypes.GameState$BuyShipTask this$1 -> this$1
     java.util.concurrent.CountDownLatch val$latch -> val$latch
-    1835:1836:void onCancel() -> onCancel
+    1836:1837:void onCancel() -> onCancel
 com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask -> com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask:
     boolean commanderFlees -> commanderFlees
     boolean stop -> stop
@@ -5822,106 +5824,106 @@ com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask -> com.brucelet
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
     int[] $SWITCH_TABLE$com$brucelet$spacetrader$datatypes$GameState$Result -> $SWITCH_TABLE$com$brucelet$spacetrader$datatypes$GameState$Result
     int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$NewsEvent -> $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$NewsEvent
-    3836:3836:com.brucelet.spacetrader.OnCancelListener newStopper(java.util.concurrent.CountDownLatch) -> newStopper
-    3847:3852:com.brucelet.spacetrader.datatypes.GameState$Result doInBackground(com.brucelet.spacetrader.enumtypes.EncounterButton[]) -> doInBackground
-    3857:3858:void onProgressUpdate(java.lang.Void[]) -> onProgressUpdate
-    3871:3956:void onPostExecute(com.brucelet.spacetrader.datatypes.GameState$Result) -> onPostExecute
-    3962:5113:com.brucelet.spacetrader.datatypes.GameState$Result doEncounterButton(com.brucelet.spacetrader.enumtypes.EncounterButton) -> doEncounterButton
-    5121:5132:void sellInOrbit(com.brucelet.spacetrader.enumtypes.TradeItem,int,int,java.util.concurrent.CountDownLatch) -> sellInOrbit
-    5136:5147:void buyInOrbit(com.brucelet.spacetrader.enumtypes.TradeItem,int,int,java.util.concurrent.CountDownLatch) -> buyInOrbit
-    5160:5221:void scoop() -> scoop
-    5225:5240:void scoop2(com.brucelet.spacetrader.enumtypes.TradeItem,java.util.concurrent.CountDownLatch) -> scoop2
-    5250:5338:boolean executeAttack(com.brucelet.spacetrader.datatypes.Ship,com.brucelet.spacetrader.datatypes.Ship,boolean,boolean) -> executeAttack
-    5347:5690:boolean executeAction(boolean) -> executeAction
+    3837:3837:com.brucelet.spacetrader.OnCancelListener newStopper(java.util.concurrent.CountDownLatch) -> newStopper
+    3848:3853:com.brucelet.spacetrader.datatypes.GameState$Result doInBackground(com.brucelet.spacetrader.enumtypes.EncounterButton[]) -> doInBackground
+    3858:3859:void onProgressUpdate(java.lang.Void[]) -> onProgressUpdate
+    3872:3957:void onPostExecute(com.brucelet.spacetrader.datatypes.GameState$Result) -> onPostExecute
+    3960:5111:com.brucelet.spacetrader.datatypes.GameState$Result doEncounterButton(com.brucelet.spacetrader.enumtypes.EncounterButton) -> doEncounterButton
+    5119:5130:void sellInOrbit(com.brucelet.spacetrader.enumtypes.TradeItem,int,int,java.util.concurrent.CountDownLatch) -> sellInOrbit
+    5134:5145:void buyInOrbit(com.brucelet.spacetrader.enumtypes.TradeItem,int,int,java.util.concurrent.CountDownLatch) -> buyInOrbit
+    5158:5219:void scoop() -> scoop
+    5223:5238:void scoop2(com.brucelet.spacetrader.enumtypes.TradeItem,java.util.concurrent.CountDownLatch) -> scoop2
+    5248:5336:boolean executeAttack(com.brucelet.spacetrader.datatypes.Ship,com.brucelet.spacetrader.datatypes.Ship,boolean,boolean) -> executeAttack
+    5345:5688:boolean executeAction(boolean) -> executeAction
     1:1:void onPostExecute(java.lang.Object) -> onPostExecute
     1:1:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
     1:1:void onProgressUpdate(java.lang.Object[]) -> onProgressUpdate
-    3830:3830:void access$4(com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask,boolean) -> access$4
-    3821:3821:int[] $SWITCH_TABLE$com$brucelet$spacetrader$datatypes$GameState$Result() -> $SWITCH_TABLE$com$brucelet$spacetrader$datatypes$GameState$Result
-    5119:5119:void access$6(com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask,com.brucelet.spacetrader.enumtypes.TradeItem,int,int,java.util.concurrent.CountDownLatch) -> access$6
-    5135:5135:void access$7(com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask,com.brucelet.spacetrader.enumtypes.TradeItem,int,int,java.util.concurrent.CountDownLatch) -> access$7
-    5224:5224:void access$8(com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask,com.brucelet.spacetrader.enumtypes.TradeItem,java.util.concurrent.CountDownLatch) -> access$8
-    3821:3821:int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$NewsEvent() -> $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$NewsEvent
-    3821:3821:com.brucelet.spacetrader.datatypes.GameState access$10(com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask) -> access$10
+    3831:3831:void access$4(com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask,boolean) -> access$4
+    3822:3822:int[] $SWITCH_TABLE$com$brucelet$spacetrader$datatypes$GameState$Result() -> $SWITCH_TABLE$com$brucelet$spacetrader$datatypes$GameState$Result
+    5117:5117:void access$6(com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask,com.brucelet.spacetrader.enumtypes.TradeItem,int,int,java.util.concurrent.CountDownLatch) -> access$6
+    5133:5133:void access$7(com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask,com.brucelet.spacetrader.enumtypes.TradeItem,int,int,java.util.concurrent.CountDownLatch) -> access$7
+    5222:5222:void access$8(com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask,com.brucelet.spacetrader.enumtypes.TradeItem,java.util.concurrent.CountDownLatch) -> access$8
+    3822:3822:int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$NewsEvent() -> $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$NewsEvent
+    3822:3822:com.brucelet.spacetrader.datatypes.GameState access$10(com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask) -> access$10
 com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$1 -> com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$1:
     com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask this$1 -> this$1
     java.util.concurrent.CountDownLatch val$latch -> val$latch
-    3839:3841:void onCancel() -> onCancel
+    3840:3842:void onCancel() -> onCancel
 com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$10 -> com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$10:
     com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask this$1 -> this$1
     java.util.concurrent.CountDownLatch val$latch -> val$latch
-    5103:5105:void onConfirm() -> onConfirm
+    5101:5103:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$11 -> com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$11:
     com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask this$1 -> this$1
     com.brucelet.spacetrader.enumtypes.TradeItem val$item -> val$item
     java.util.concurrent.CountDownLatch val$latch -> val$latch
-    5182:5215:void onConfirm() -> onConfirm
-    5177:5177:com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask access$0(com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$11) -> access$0
+    5180:5213:void onConfirm() -> onConfirm
+    5175:5175:com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask access$0(com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$11) -> access$0
 com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$11$1 -> com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$11$1:
     com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$11 this$2 -> this$2
     com.brucelet.spacetrader.enumtypes.TradeItem val$item -> val$item
     java.util.concurrent.CountDownLatch val$latch -> val$latch
-    5194:5203:void onConfirm() -> onConfirm
-    5190:5190:com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$11 access$0(com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$11$1) -> access$0
+    5192:5201:void onConfirm() -> onConfirm
+    5188:5188:com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$11 access$0(com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$11$1) -> access$0
 com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$11$1$1 -> com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$11$1$1:
     com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$11$1 this$3 -> this$3
     com.brucelet.spacetrader.enumtypes.TradeItem val$item -> val$item
     java.util.concurrent.CountDownLatch val$latch -> val$latch
-    5199:5200:void onConfirm() -> onConfirm
+    5197:5198:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$11$2 -> com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$11$2:
     com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$11 this$2 -> this$2
     com.brucelet.spacetrader.enumtypes.TradeItem val$item -> val$item
     java.util.concurrent.CountDownLatch val$latch -> val$latch
-    5209:5210:void onCancel() -> onCancel
+    5207:5208:void onCancel() -> onCancel
 com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$12 -> com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$12:
     com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask this$1 -> this$1
     java.util.concurrent.CountDownLatch val$latch -> val$latch
-    5237:5238:void onConfirm() -> onConfirm
+    5235:5236:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$2 -> com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$2:
     com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask this$1 -> this$1
     com.brucelet.spacetrader.enumtypes.TradeItem val$item -> val$item
     int val$fPrice -> val$fPrice
     java.util.concurrent.CountDownLatch val$latch -> val$latch
-    4249:4251:void onClickPositiveButton(int) -> onClickPositiveButton
+    4247:4249:void onClickPositiveButton(int) -> onClickPositiveButton
 com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$3 -> com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$3:
     com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask this$1 -> this$1
     com.brucelet.spacetrader.enumtypes.TradeItem val$item -> val$item
     int val$fPrice -> val$fPrice
     java.util.concurrent.CountDownLatch val$latch -> val$latch
-    4257:4259:void onClickNeutralButton() -> onClickNeutralButton
+    4255:4257:void onClickNeutralButton() -> onClickNeutralButton
 com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$4 -> com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$4:
     com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask this$1 -> this$1
     java.util.concurrent.CountDownLatch val$latch -> val$latch
-    4265:4266:void onClickNegativeButton() -> onClickNegativeButton
+    4263:4264:void onClickNegativeButton() -> onClickNegativeButton
 com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$5 -> com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$5:
     com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask this$1 -> this$1
     com.brucelet.spacetrader.enumtypes.TradeItem val$item -> val$item
     int val$fPrice -> val$fPrice
     java.util.concurrent.CountDownLatch val$latch -> val$latch
-    4318:4320:void onClickPositiveButton(int) -> onClickPositiveButton
+    4316:4318:void onClickPositiveButton(int) -> onClickPositiveButton
 com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$6 -> com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$6:
     com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask this$1 -> this$1
     com.brucelet.spacetrader.enumtypes.TradeItem val$item -> val$item
     int val$fPrice -> val$fPrice
     java.util.concurrent.CountDownLatch val$latch -> val$latch
-    4326:4328:void onClickNeutralButton() -> onClickNeutralButton
+    4324:4326:void onClickNeutralButton() -> onClickNeutralButton
 com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$7 -> com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$7:
     com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask this$1 -> this$1
     java.util.concurrent.CountDownLatch val$latch -> val$latch
-    4334:4335:void onClickNegativeButton() -> onClickNegativeButton
+    4332:4333:void onClickNegativeButton() -> onClickNegativeButton
 com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$8 -> com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$8:
     com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask this$1 -> this$1
     int val$fBribe -> val$fBribe
     java.util.concurrent.CountDownLatch val$latch -> val$latch
-    4717:4730:void onConfirm() -> onConfirm
+    4715:4728:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$9 -> com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask$9:
     com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask this$1 -> this$1
     java.util.concurrent.CountDownLatch val$latch -> val$latch
-    5079:5084:void onConfirm() -> onConfirm
+    5077:5082:void onConfirm() -> onConfirm
 com.brucelet.spacetrader.datatypes.GameState$EscapePodTask -> com.brucelet.spacetrader.datatypes.GameState$EscapePodTask:
     com.brucelet.spacetrader.datatypes.GameState this$0 -> this$0
-    3146:3282:java.lang.Void doInBackground(java.lang.Void[]) -> doInBackground
-    3287:3292:void onPostExecute(java.lang.Void) -> onPostExecute
+    3147:3283:java.lang.Void doInBackground(java.lang.Void[]) -> doInBackground
+    3288:3293:void onPostExecute(java.lang.Void) -> onPostExecute
     1:1:void onPostExecute(java.lang.Object) -> onPostExecute
     1:1:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
 com.brucelet.spacetrader.datatypes.GameState$Result -> com.brucelet.spacetrader.datatypes.GameState$Result:

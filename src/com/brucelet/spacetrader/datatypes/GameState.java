@@ -51,6 +51,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -3827,7 +3828,7 @@ public class GameState {
 		
 		private boolean commanderFlees;
 		
-		private boolean stop;
+		private volatile boolean stop;
 //		private volatile boolean redrawButtons;
 		
 		private Encounter prevEncounterType;
@@ -3930,7 +3931,7 @@ public class GameState {
 				textView.setText(description);
 				int l = textView.getLineCount();
 				if (l > 2 || l <= 0) {
-					Log.d("Encounter description","Too many lines! Converting '\n' to ' '");
+					Log.d("Encounter description","Too many lines! Converting '\\n' to ' '");
 					description = description.replace('\n', ' ');
 					Log.d("Encounter description","description="+description);
 					textView.setText(description);
@@ -3956,9 +3957,6 @@ public class GameState {
 		}
 		
 		private Result doEncounterButton(EncounterButton action) {
-			// XXX TODO line-by-line audit of this method to verify that no important game logic has been deleted.
-			// NB autoRun logic and screen refreshes are of interest.
-			
 			stop = false;
 //			redrawButtons = false;
 			
@@ -7579,7 +7577,7 @@ public class GameState {
 		
 //		// Screenshot override
 //		mGameManager.findScreenById(R.id.screen_info).setViewTextById(R.id.screen_info_gov, Politics.THEOCRACY);
-//		mGameManager.findScreenById(R.id.screen_info).setViewTextById(R.id.screen_info_tech, TechLevel.RENAISSANCE);
+//		mGameManager.findScreenById(R.id.screen_info).setViewTextById(R.id.screen_info_tech, TechLevel.AGRICULTURAL);
 //		mGameManager.findDialogByClass(NewspaperDialog.class).setTitle(getResources().getStringArray(R.array.masthead_theocracy)[0]);
 //		mGameManager.findDialogByClass(NewspaperDialog.class).setViewTextById(NewspaperDialog.HEADLINE_IDS.get(0), R.string.headline_local_war);
 //		mGameManager.findDialogByClass(NewspaperDialog.class).setViewTextById(NewspaperDialog.HEADLINE_IDS.get(1), String.format(getResources().getStringArray(R.array.headline_remote)[3], getResources().getString(R.string.headline_remote_cropfailure), getResources().getString(R.string.solarsystem_cestus)));
@@ -11207,9 +11205,17 @@ public class GameState {
 		}
 	}	
 
+	// Booleans to track whether we've dragged to change the galactic chart system.
+	private boolean downOnChartSystem = false;
+	private boolean moveOnChartSystem = false;
+	
 	// Separate function for touch events takes in coordinates instead of a button.
-	public boolean galacticChartFormHandleEvent(float x, float y)
+	public boolean galacticChartFormHandleEvent(float x, float y, int action)
 	{
+		boolean up = action == MotionEvent.ACTION_UP;
+		boolean down = action == MotionEvent.ACTION_DOWN;
+		boolean move = action == MotionEvent.ACTION_MOVE;
+		
 		final float RADIUS = 4f * getResources().getDisplayMetrics().density;
 		final float SEL_RADIUS_FACTOR = 4f;
 		final float WORMHOLE_OFFSET = 2f;
@@ -11261,9 +11267,10 @@ public class GameState {
 		}
 
 		final SolarSystem fSystem = system;
+		boolean showDialogs = (up && downOnChartSystem && moveOnChartSystem);
 		if (fSystem != null)
 		{
-			if (fSystem == trackedSystem)
+			if (showDialogs && fSystem == trackedSystem)
 			{
 				mGameManager.showDialogFragment(ConfirmDialog.newInstance(
 						R.string.screen_chart_track_title, 
@@ -11280,7 +11287,7 @@ public class GameState {
 				null, 
 				fSystem));
 			}
-			else if (fSystem == galacticChartSystem && !galacticChartWormhole)
+			else if (showDialogs && fSystem == galacticChartSystem && !galacticChartWormhole)
 			{
 				if (trackedSystem == null)
 				{
@@ -11317,6 +11324,15 @@ public class GameState {
 					trackedSystem,
 					fSystem));
 				}
+			}
+
+			if (down) {
+				downOnChartSystem = (fSystem == galacticChartSystem && !galacticChartWormhole);
+				moveOnChartSystem = downOnChartSystem;
+			} else if (move) {
+				moveOnChartSystem = (downOnChartSystem && moveOnChartSystem && fSystem == galacticChartSystem && !galacticChartWormhole);
+			} else if (up) {
+				downOnChartSystem = moveOnChartSystem = false;
 			}
 			galacticChartSystem = fSystem;
 			galacticChartWormhole = false;
@@ -11462,68 +11478,6 @@ public class GameState {
 						null));
 			}
 		}
-		
-//		// NB a few new cheats here which address debug needs I've had at some point or another while doing this version.
-//		// These all print to LogCat so they will be invisible to most users.
-//		else if ("Special".contentEquals(findSystem)) {
-//			for (SolarSystem system : solarSystem) {
-//				if (system.special() != null) {
-//					Log.d("Special", system.name+".special() = "+system.special().toString());
-//				}
-//			}
-//		}
-//
-//		else if ("Dragonfly".contentEquals(findSystem)) {
-//			SolarSystem[] steps = new SolarSystem[5];
-//			for (SolarSystem system : solarSystem) {
-//				if (system.special() == SpecialEvent.DRAGONFLY) {
-//					steps[0] = system;
-//				}
-//				if (system.special() == SpecialEvent.FLYBARATAS) {
-//					steps[1] = system;
-//				}
-//				if (system.special() == SpecialEvent.FLYMELINA) {
-//					steps[2] = system;
-//				}
-//				if (system.special() == SpecialEvent.FLYREGULAS) {
-//					steps[3] = system;
-//				}
-//				if (system.special() == SpecialEvent.DRAGONFLYDESTROYED || system.special() == SpecialEvent.INSTALLLIGHTNINGSHIELD) {
-//					steps[4] = system;
-//				}
-//			}
-//
-//
-//			Log.d("Dragonfly", "Dragonfly quest debugging");
-//			Log.d("Dragonfly", " Quest is at stage "+dragonflyStatus);
-//			Log.d("Dragonfly", " Quest begins at "+(steps[0] == null? "null" : steps[0]));
-//			Log.d("Dragonfly", " First stop at "+(steps[1] == null? "null" : steps[1]));
-//			Log.d("Dragonfly", " Second stop at "+(steps[2] == null? "null" : steps[2]));
-//			Log.d("Dragonfly", " Third stop at "+(steps[3] == null? "null" : steps[3]));
-//			Log.d("Dragonfly", " Final stop at "+(steps[4] == null? "null" : steps[4]));
-//			if (steps[4] != null && steps[4].special() == SpecialEvent.INSTALLLIGHTNINGSHIELD)
-//				Log.d("Dragonfly", "Lightning Shield install is available");
-//
-//		}
-//		
-//		else if ("Systems".contentEquals(findSystem)) {
-//			Log.d("Quest Systems", "Classic Acamar is now "+solarSystem[acamar].name);
-//			Log.d("Quest Systems", "Classic Baratas is now "+solarSystem[baratas].name);
-//			Log.d("Quest Systems", "Classic Daled is now "+solarSystem[daled].name);
-//			Log.d("Quest Systems", "Classic Devidia is now "+solarSystem[devidia].name);
-//			Log.d("Quest Systems", "Classic Gemulon is now "+solarSystem[gemulon].name);
-//			Log.d("Quest Systems", "Classic Japori is now "+solarSystem[japori].name);
-//			Log.d("Quest Systems", "Classic Kravat is now "+solarSystem[kravat].name);
-//			Log.d("Quest Systems", "Classic Melina is now "+solarSystem[melina].name);
-//			Log.d("Quest Systems", "Classic Nix is now "+solarSystem[nix].name);
-//			Log.d("Quest Systems", "Classic Og is now "+solarSystem[og].name);
-//			Log.d("Quest Systems", "Classic Regulas is now "+solarSystem[regulas].name);
-//			Log.d("Quest Systems", "Classic Sol is now "+solarSystem[sol].name);
-//			Log.d("Quest Systems", "Classic Utopia is now "+solarSystem[utopia].name);
-//			Log.d("Quest Systems", "Classic Zalkon is now "+solarSystem[zalkon].name);
-//		}
-		
-		
 		else
 		{
 			String findName = "";
@@ -11549,6 +11503,8 @@ public class GameState {
 			{
 				trackedSystem = galacticChartSystem;
 			}
+			
+			galacticChartWormhole = false;
 		}
 		
 		mGameManager.findScreenById(R.id.screen_chart).onRefreshScreen();

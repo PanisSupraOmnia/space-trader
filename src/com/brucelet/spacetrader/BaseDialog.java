@@ -628,31 +628,6 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 			return this;
 		}
 		
-//		private void create(View dialog) {
-//			// Title panel.
-//			((TextView)dialog.findViewById(R.id.alertTitle)).setText(mTitle);
-//			
-//			// Content panel. This might be message or custom view.
-//			((FrameLayout)dialog.findViewById(R.id.content)).addView(mView);
-//
-//			// Button panel
-//			if (mPositiveButton != null && mPositiveButton.length() > 0) {
-//				Button pos = (Button) dialog.findViewById(R.id.button1);
-//				pos.setVisibility(View.VISIBLE);
-//				pos.setText(mPositiveButton);
-//			}
-//			if (mNegativeButton != null && mNegativeButton.length() > 0) {
-//				Button neg = (Button) dialog.findViewById(R.id.button2);
-//				neg.setVisibility(View.VISIBLE);
-//				neg.setText(mNegativeButton);
-//			}
-//			if (mNeutralButton != null && mNeutralButton.length() > 0) {
-//				Button neu = (Button) dialog.findViewById(R.id.button3);
-//				neu.setVisibility(View.VISIBLE);
-//				neu.setText(mNeutralButton);
-//			}
-//		}
-		
 	}
 
 }

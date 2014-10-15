@@ -92,7 +92,6 @@ public class ShortcutDialog extends BaseDialog {
 				//put the data in it
 				TextView text1 = (TextView) row.findViewById(R.id.spinner_shortcut);
 				text1.setText(screens[position].shortcutId);
-				text1.setTypeface(Typeface.MONOSPACE);	// NB For some reason this isn't working in XML since converting to HoloEverywhere, so do it here 
 				TextView text2 = (TextView) row.findViewById(R.id.spinner_text);
 				text2.setText(screens[position].titleId);
 

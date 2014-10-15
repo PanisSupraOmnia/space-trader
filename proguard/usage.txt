@@ -2572,8 +2572,8 @@ com.brucelet.spacetrader.BuyShipScreen:
     84:84:public static com.brucelet.spacetrader.BuyShipScreen newInstance()
     119:119:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.ChartScreen:
-    51:51:public static com.brucelet.spacetrader.ChartScreen newInstance()
-    136:136:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
+    53:53:public static com.brucelet.spacetrader.ChartScreen newInstance()
+    143:143:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.ConvenienceMethods
 com.brucelet.spacetrader.EncounterScreen:
     86:86:public static com.brucelet.spacetrader.EncounterScreen newInstance()

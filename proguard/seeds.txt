@@ -15214,6 +15214,8 @@ com.brucelet.spacetrader.datatypes.GameState: int DEFSEEDY
 com.brucelet.spacetrader.datatypes.GameState: int seedX
 com.brucelet.spacetrader.datatypes.GameState: int seedY
 com.brucelet.spacetrader.datatypes.GameState: int headlineCount
+com.brucelet.spacetrader.datatypes.GameState: boolean downOnChartSystem
+com.brucelet.spacetrader.datatypes.GameState: boolean moveOnChartSystem
 com.brucelet.spacetrader.datatypes.GameState: int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$Opponent
 com.brucelet.spacetrader.datatypes.GameState: int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$ThemeType
 com.brucelet.spacetrader.datatypes.GameState: int[] $SWITCH_TABLE$com$brucelet$spacetrader$enumtypes$SpecialEvent
@@ -15379,7 +15381,7 @@ com.brucelet.spacetrader.datatypes.GameState: void showGalaxy()
 com.brucelet.spacetrader.datatypes.GameState: void drawGalaxy(android.graphics.Canvas)
 com.brucelet.spacetrader.datatypes.GameState: boolean warpFormHandleEvent(float,float)
 com.brucelet.spacetrader.datatypes.GameState: void galacticChartFormHandleEvent(int)
-com.brucelet.spacetrader.datatypes.GameState: boolean galacticChartFormHandleEvent(float,float)
+com.brucelet.spacetrader.datatypes.GameState: boolean galacticChartFormHandleEvent(float,float,int)
 com.brucelet.spacetrader.datatypes.GameState: void showCheatConfirm(com.brucelet.spacetrader.OnConfirmListener)
 com.brucelet.spacetrader.datatypes.GameState: void findDialogHandleEvent(int)
 com.brucelet.spacetrader.datatypes.GameState: void showVeryRareCheat()

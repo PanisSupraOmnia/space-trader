@@ -20,10 +20,12 @@
  */
 package com.brucelet.spacetrader;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -113,15 +115,20 @@ public class ChartScreen extends BaseScreen {
 					
 		}
 
+		@SuppressLint("NewApi")
 		@Override
 		public boolean onTouchEvent(MotionEvent event) {
 			switch (event.getActionMasked()) {	// NB getActionMasked() required API 8
+			case MotionEvent.ACTION_MOVE:
 			case MotionEvent.ACTION_DOWN:
-			case MotionEvent.ACTION_POINTER_DOWN:
-				return mFragment.getGameState().galacticChartFormHandleEvent(event.getX(), event.getY());
+			case MotionEvent.ACTION_UP:
+				break;
 			default:
 				return false;
 			}
+			
+			mFragment.getGameState().galacticChartFormHandleEvent(event.getX(), event.getY(), event.getActionMasked());
+			return true;
 		}
 		
 	}
