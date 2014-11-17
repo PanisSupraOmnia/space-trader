@@ -20,6 +20,9 @@
  */
 package com.brucelet.spacetrader;
 
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+
 
 public class ShipInfoDialog extends BaseDialog {
 	
@@ -31,7 +34,7 @@ public class ShipInfoDialog extends BaseDialog {
 	public ShipInfoDialog() {}
 	
 	@Override
-	public void onBuildDialog(Builder builder) {
+	public final void onBuildDialog(Builder builder, LayoutInflater inflater, ViewGroup parent) {
 		builder
 		.setTitle(R.string.screen_yard_buyship_info)
 		.setView(R.layout.screen_yard_buyship_info)

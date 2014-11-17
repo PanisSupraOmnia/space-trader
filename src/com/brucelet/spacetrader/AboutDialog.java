@@ -20,7 +20,14 @@
  */
 package com.brucelet.spacetrader;
 
+import android.content.Intent;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.net.Uri;
+import android.text.method.LinkMovementMethod;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 public class AboutDialog extends BaseDialog {
@@ -33,11 +40,23 @@ public class AboutDialog extends BaseDialog {
 	public AboutDialog() {}
 	
 	@Override
-	public final void onBuildDialog(Builder builder) {
+	public final void onBuildDialog(Builder builder, LayoutInflater inflater, ViewGroup parent) {
+		View view = inflater.inflate(R.layout.dialog_about, parent, false);
+		
+		// Link the play store button, or hide it if we don't have the store installed.
+		Intent intent = new Intent(Intent.ACTION_VIEW);
+		intent.setData(Uri.parse("market://details?id=com.example.android"));
+		if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+			((TextView) view.findViewById(R.id.dialog_about_store)).setMovementMethod(LinkMovementMethod.getInstance());
+		} else {
+			view.findViewById(R.id.dialog_about_store).setVisibility(View.GONE);
+		}
+
 		builder.setTitle(R.string.dialog_about);
-		builder.setView(R.layout.dialog_about);
+		builder.setView(view);
 		builder.setPositiveButton(R.string.generic_ok);
 	}
+
 	
 	@Override
 	public void onRefreshDialog() {

@@ -26,7 +26,9 @@ import java.util.List;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass. Activities that
@@ -74,7 +76,7 @@ public class NewGameDialog extends BaseDialog implements OnSingleClickListener {
 	}
 	
 	@Override
-	public void onBuildDialog(Builder builder) {
+	public final void onBuildDialog(Builder builder, LayoutInflater inflater, ViewGroup parent) {
 		builder
 		.setTitle(R.string.dialog_newgame)
 		.setView(R.layout.dialog_newgame)

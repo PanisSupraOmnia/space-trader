@@ -4,7 +4,6 @@
     style="?android:attr/spinnerDropDownItemStyle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:minHeight="@dimen/abc_action_bar_default_height"
     android:layout_alignParentLeft="true"
     android:ellipsize="end"
     android:singleLine="true" />

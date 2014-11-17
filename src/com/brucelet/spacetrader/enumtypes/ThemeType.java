@@ -23,16 +23,18 @@ package com.brucelet.spacetrader.enumtypes;
 import com.brucelet.spacetrader.R;
 
 public enum ThemeType {
-	LIGHT ( R.style.ActivityTheme_Light, true  ),
-	DARK  ( R.style.ActivityTheme_Dark,  false ),
-	PALM  ( R.style.ActivityTheme_Palm,  true  ),
+	HOLO_LIGHT     ( R.style.ActivityTheme_Light,          false ),
+	HOLO_DARK      ( R.style.ActivityTheme_Dark,           false ),
+	HOLO_PALM      ( R.style.ActivityTheme_Palm,           false ),
+	MATERIAL_LIGHT ( R.style.ActivityTheme_Material_Light, true  ),
+	MATERIAL_DARK  ( R.style.ActivityTheme_Material_Dark,  true  ),
 	;
 	
 	public final int resId;
-	public final boolean isLightTheme;
+	public final boolean isMaterialTheme;
 	
-	ThemeType(int resId, boolean isLightTheme) {
+	ThemeType(int resId, boolean isMaterialTheme) {
 		this.resId = resId;
-		this.isLightTheme = isLightTheme;
+		this.isMaterialTheme = isMaterialTheme;
 	}
 }

@@ -16,37 +16,37 @@
         android:paddingRight="8dip"
         android:text="@string/dialog_veryrarecheat_happened" />
 
-    <CheckBox
+    <CheckBox android:textAppearance="?android:textAppearanceMedium"
         android:id="@+id/dialog_veryrarecheat_happened_ahab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dialog_veryrarecheat_happened_ahab" />
 
-    <CheckBox
+    <CheckBox android:textAppearance="?android:textAppearanceMedium"
         android:id="@+id/dialog_veryrarecheat_happened_huie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dialog_veryrarecheat_happened_huie" />
 
-    <CheckBox
+    <CheckBox android:textAppearance="?android:textAppearanceMedium"
         android:id="@+id/dialog_veryrarecheat_happened_conrad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dialog_veryrarecheat_happened_conrad" />
 
-    <CheckBox
+    <CheckBox android:textAppearance="?android:textAppearanceMedium"
         android:id="@+id/dialog_veryrarecheat_happened_goodtonic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dialog_veryrarecheat_happened_goodtonic" />
 
-    <CheckBox
+    <CheckBox android:textAppearance="?android:textAppearanceMedium"
         android:id="@+id/dialog_veryrarecheat_happened_badtonic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dialog_veryrarecheat_happened_badtonic" />
 
-    <CheckBox
+    <CheckBox android:textAppearance="?android:textAppearanceMedium"
         android:id="@+id/dialog_veryrarecheat_happened_marie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

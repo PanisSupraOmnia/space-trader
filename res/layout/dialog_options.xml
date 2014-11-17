@@ -7,11 +7,11 @@
         style="@style/RootLayout"
         android:descendantFocusability="beforeDescendants"
         android:focusableInTouchMode="true"
+        android:gravity="left|top"
         android:paddingBottom="8dip"
         android:paddingLeft="8dip"
         android:paddingRight="8dip"
-        android:paddingTop="8dip"
-        android:gravity="left|top" >
+        android:paddingTop="8dip" >
 
         <TextView
             android:layout_width="wrap_content"
@@ -30,72 +30,81 @@
                 android:id="@+id/dialog_options_ignore_police"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dialog_options_ignore_police"/>
+                android:text="@string/dialog_options_ignore_police"
+                android:textAppearance="?android:textAppearanceMedium" />
 
             <CheckBox
                 android:id="@+id/dialog_options_ignore_pirates"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dialog_options_ignore_pirates"  />
+                android:text="@string/dialog_options_ignore_pirates"
+                android:textAppearance="?android:textAppearanceMedium" />
 
             <CheckBox
                 android:id="@+id/dialog_options_ignore_traders"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dialog_options_ignore_traders"  />
+                android:text="@string/dialog_options_ignore_traders"
+                android:textAppearance="?android:textAppearanceMedium" />
         </LinearLayout>
-        
+
         <CheckBox
             android:id="@+id/dialog_options_ignore_dealing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dialog_options_ignore_dealing" />
-        
+            android:text="@string/dialog_options_ignore_dealing"
+            android:textAppearance="?android:textAppearanceMedium" />
+
         <CheckBox
             android:id="@+id/dialog_options_fulltank"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dialog_options_fulltank" />
-        
+            android:text="@string/dialog_options_fulltank"
+            android:textAppearance="?android:textAppearanceMedium" />
+
         <CheckBox
             android:id="@+id/dialog_options_fullhull"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dialog_options_fullhull" />
-        
+            android:text="@string/dialog_options_fullhull"
+            android:textAppearance="?android:textAppearanceMedium" />
+
         <CheckBox
             android:id="@+id/dialog_options_warpcosts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dialog_options_warpcosts" />
-        
+            android:text="@string/dialog_options_warpcosts"
+            android:textAppearance="?android:textAppearanceMedium" />
+
         <CheckBox
             android:id="@+id/dialog_options_chartinfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dialog_options_chartinfo" />
-        
+            android:text="@string/dialog_options_chartinfo"
+            android:textAppearance="?android:textAppearanceMedium" />
+
         <CheckBox
             android:id="@+id/dialog_options_contattack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dialog_options_contattack" />
-        
+            android:text="@string/dialog_options_contattack"
+            android:textAppearance="?android:textAppearanceMedium" />
+
         <CheckBox
             android:id="@+id/dialog_options_contattflee"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dialog_options_contattflee" />
-
-        
-
+            android:text="@string/dialog_options_contattflee"
+            android:textAppearance="?android:textAppearanceMedium" />
 
         <LinearLayout
-        android:paddingLeft="8dip"
-        android:paddingRight="8dip"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_vertical|left" >
+            android:gravity="left"
+            android:paddingLeft="8dip"
+            android:paddingRight="8dip"
+            android:baselineAligned="true"
+            android:baselineAlignedChildIndex="0" >
 
             <TextView
                 android:layout_width="wrap_content"
@@ -104,43 +113,48 @@
 
             <EditText
                 android:id="@+id/dialog_options_bays"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:ems="2"
                 android:inputType="number"
                 android:maxLength="2" />
         </LinearLayout>
-        
-        
+
         <CheckBox
             android:id="@+id/dialog_options_news"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dialog_options_news" />
-        
+            android:text="@string/dialog_options_news"
+            android:textAppearance="?android:textAppearanceMedium" />
+
         <CheckBox
             android:id="@+id/dialog_options_volumescroll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dialog_options_volumescroll" />
-        
+            android:text="@string/dialog_options_volumescroll"
+            android:textAppearance="?android:textAppearanceMedium" />
+
         <CheckBox
             android:id="@+id/dialog_options_recallscreens"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dialog_options_recallscreens" />
-        
+            android:text="@string/dialog_options_recallscreens"
+            android:textAppearance="?android:textAppearanceMedium" />
+
         <CheckBox
             android:id="@+id/dialog_options_range"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dialog_options_range" />
-        
+            android:text="@string/dialog_options_range"
+            android:textAppearance="?android:textAppearanceMedium" />
+
         <CheckBox
             android:id="@+id/dialog_options_track"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dialog_options_track" />
+            android:text="@string/dialog_options_track"
+            android:textAppearance="?android:textAppearanceMedium" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -161,39 +175,44 @@
                 android:id="@+id/dialog_options_encounterstyle_textual"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dialog_options_encounterstyle_textual" />
+                android:text="@string/dialog_options_encounterstyle_textual"
+                android:textAppearance="?android:textAppearanceMedium" />
 
             <RadioButton
                 android:id="@+id/dialog_options_encounterstyle_graphical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dialog_options_encounterstyle_graphical"  />
+                android:text="@string/dialog_options_encounterstyle_graphical"
+                android:textAppearance="?android:textAppearanceMedium" />
 
             <RadioButton
                 android:id="@+id/dialog_options_encounterstyle_both"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dialog_options_encounterstyle_both"  />
+                android:text="@string/dialog_options_encounterstyle_both"
+                android:textAppearance="?android:textAppearanceMedium" />
         </RadioGroup>
-        
-        
+
         <CheckBox
             android:id="@+id/dialog_options_loans"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dialog_options_loans" />
-        
+            android:text="@string/dialog_options_loans"
+            android:textAppearance="?android:textAppearanceMedium" />
+
         <CheckBox
             android:id="@+id/dialog_options_shareprefs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dialog_options_shareprefs" />
-        
+            android:text="@string/dialog_options_shareprefs"
+            android:textAppearance="?android:textAppearanceMedium" />
+
         <CheckBox
             android:id="@+id/dialog_options_identify"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dialog_options_identify" />
+            android:text="@string/dialog_options_identify"
+            android:textAppearance="?android:textAppearanceMedium" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -208,33 +227,51 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical|left"
-            android:orientation="horizontal" >
+            android:orientation="vertical"
+            android:paddingLeft="16dp" >
 
             <RadioButton
                 android:id="@+id/dialog_options_theme_light"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" 
-                android:text="@string/dialog_options_theme_light" />
+                android:layout_height="wrap_content"
+                android:text="@string/dialog_options_theme_light"
+                android:textAppearance="?android:textAppearanceMedium" />
 
             <RadioButton
                 android:id="@+id/dialog_options_theme_dark"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" 
-                android:text="@string/dialog_options_theme_dark" />
+                android:layout_height="wrap_content"
+                android:text="@string/dialog_options_theme_dark"
+                android:textAppearance="?android:textAppearanceMedium" />
 
             <RadioButton
                 android:id="@+id/dialog_options_theme_palm"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" 
-                android:text="@string/dialog_options_theme_palm"/>
+                android:layout_height="wrap_content"
+                android:text="@string/dialog_options_theme_palm"
+                android:textAppearance="?android:textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/dialog_options_theme_material_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dialog_options_theme_material_light"
+                android:textAppearance="?android:textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/dialog_options_theme_material_dark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dialog_options_theme_material_dark"
+                android:textAppearance="?android:textAppearanceMedium" />
         </RadioGroup>
 
         <CheckBox
             android:id="@+id/dialog_options_developermode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dialog_options_developermode" />
-        
+            android:text="@string/dialog_options_developermode"
+            android:textAppearance="?android:textAppearanceMedium" />
     </LinearLayout>
 
 </ScrollView>

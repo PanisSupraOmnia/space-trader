@@ -4,14 +4,14 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     
-    <dimen name="action_button_minsize">38dp</dimen>
+    <dimen name="action_button_minsize">36dp</dimen>
     
-    <dimen name="action_bar_button_marginTop_palm">6.5dp</dimen>
-    <dimen name="action_bar_button_marginBottom_palm">3.5dp</dimen>
+    <dimen name="action_bar_button_marginTop_palm">4dp</dimen>
+    <dimen name="action_bar_button_marginBottom_palm">-4dp</dimen>
     
     <dimen name="line_width">1dp</dimen>
     <dimen name="corner_radius">6dp</dimen>
-    <dimen name="button_minsize">30dp</dimen>
+    <dimen name="button_minsize">32dp</dimen>
     
     <dimen name="button_padding">5dp</dimen>
     

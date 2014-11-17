@@ -7,5 +7,7 @@
     android:minHeight="?attr/listPreferredItemHeightSmall"
     android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
     android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+    android:paddingLeft="?attr/listPreferredItemPaddingLeft"
+    android:paddingRight="?attr/listPreferredItemPaddingRight"
     android:textAppearance="?android:attr/textAppearanceMedium"
     android:textColor="?attr/pressableTextColor" />

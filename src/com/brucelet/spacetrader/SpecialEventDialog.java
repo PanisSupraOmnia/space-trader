@@ -20,6 +20,9 @@
  */
 package com.brucelet.spacetrader;
 
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+
 
 public class SpecialEventDialog extends BaseDialog {
 	
@@ -30,7 +33,7 @@ public class SpecialEventDialog extends BaseDialog {
 	public SpecialEventDialog() {}
 	
 	@Override
-	public final void onBuildDialog(BaseDialog.Builder builder) {
+	public final void onBuildDialog(Builder builder, LayoutInflater inflater, ViewGroup parent) {
 		getGameState().drawSpecialEventForm(builder);
 	}
 	

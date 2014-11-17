@@ -20,36 +20,49 @@
  */
 package com.brucelet.spacetrader;
 
-import android.content.res.TypedArray;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
+import android.view.View;
 import android.webkit.WebView;
 
-public class DocumentationActivity extends ActionBarActivity {
+import com.brucelet.spacetrader.enumtypes.ThemeType;
+
+public class DocumentationActivity extends ActionBarActivity implements View.OnClickListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		ThemeType themeType = (ThemeType) getIntent().getSerializableExtra("theme");
+		setTheme(themeType.resId);
 		super.onCreate(savedInstanceState);
-		
-		setTheme(getIntent().getIntExtra("theme", R.style.ActivityTheme_Light));
 		
 		setContentView(R.layout.activity_documentation);
 		
+		Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
+		setSupportActionBar(tb);
+
 		ActionBar ab = getSupportActionBar();
-		ab.setDisplayShowHomeEnabled(true);
-		ab.setDisplayHomeAsUpEnabled(true);
-		ab.setHomeButtonEnabled(true);
-		ab.setDisplayShowTitleEnabled(true);
-		
 		TypedValue tv = new TypedValue();
-		boolean changeBg = getTheme().resolveAttribute(R.attr.actionBarBackgroundTitle, tv, true);
-		if (changeBg) {
-			TypedArray ta = obtainStyledAttributes(tv.resourceId, new int[] {android.R.attr.background});
-			ta.getValue(0, tv);
+		if (getTheme().resolveAttribute(R.attr.actionBarBackgroundDefault, tv, true)) {
 			ab.setBackgroundDrawable(getResources().getDrawable(tv.resourceId));
-			ta.recycle();
+		}
+		if (themeType.isMaterialTheme && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+			// In Lollipop, use the platform up button so the ripple is masked correctly.
+			ab.setDisplayShowTitleEnabled(true);
+			ab.setDisplayHomeAsUpEnabled(true);
+			if (getTheme().resolveAttribute(R.attr.homeAsUpIndicator, tv, true)) {
+				ab.setHomeAsUpIndicator(tv.resourceId);
+			}
+		} else {
+			// Otherwise, use custom layout so that the selector color is correct.
+			ab.setCustomView(R.layout.ab_title_documentation);
+			View view = ab.getCustomView();
+			view.findViewById(R.id.up).setOnClickListener(this);
+			ab.setDisplayShowTitleEnabled(false);
+			ab.setDisplayShowCustomEnabled(true);
 		}
 		
 		getWebView().loadUrl("file:///android_asset/spacetrader.html");
@@ -67,5 +80,10 @@ public class DocumentationActivity extends ActionBarActivity {
 		} else {
 			super.onBackPressed();
 		}
+	}
+
+	@Override
+	public void onClick(View v) {
+		onSupportNavigateUp();
 	}
 }

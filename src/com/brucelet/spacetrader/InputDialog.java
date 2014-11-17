@@ -21,12 +21,17 @@
 package com.brucelet.spacetrader;
 
 
+import android.app.Activity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class InputDialog extends BaseDialog {
+public class InputDialog extends BaseDialog implements TextView.OnEditorActionListener {
 	private int mTitleId = -1;
 	private int mMessageId = -1;
 	private int mPositiveId = -1;
@@ -70,8 +75,8 @@ public class InputDialog extends BaseDialog {
 	public InputDialog() {}
 	
 	@Override
-	public final void onBuildDialog(Builder builder) {
-		View view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_input, null);
+	public final void onBuildDialog(Builder builder, LayoutInflater inflater, ViewGroup parent) {
+		View view = inflater.inflate(R.layout.dialog_input, parent, false);
 		builder.setView(view);
 		String message = "";
 		if (mArgs != null) {
@@ -85,8 +90,14 @@ public class InputDialog extends BaseDialog {
 		if (mNeutralId >= 0) builder.setNeutralButton(mNeutralId);
 		if (mNegativeId >= 0) builder.setNegativeButton(mNegativeId);
 		((TextView) view.findViewById(R.id.dialog_input_message)).setText(message);
-		
-		
+		((EditText) view.findViewById(R.id.dialog_input_value)).setOnEditorActionListener(this);
+	}
+	
+	@Override
+	public void onShowDialog() {
+		// Immediately request IMM so we're focused and see keyboard
+		InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+		imm.showSoftInput(getDialog().findViewById(R.id.dialog_input_value), 0);
 	}
 	
 	private CharSequence getInputText() {
@@ -100,8 +111,6 @@ public class InputDialog extends BaseDialog {
 		try {
 			value = Integer.parseInt(getInputText().toString());
 		} catch (NumberFormatException e) {
-//			// Do nothing. Allow user to correct input.
-//			return;
 			value = 0;
 		}
 		mPositiveListener.onClickPositiveButton(value);
@@ -137,6 +146,14 @@ public class InputDialog extends BaseDialog {
 	@Override
 	public int getHelpTextResId() {
 		return mHelpId;
+	}
+
+	@Override
+	public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+		if (actionId == EditorInfo.IME_ACTION_DONE) {
+			onClickPositiveButton();
+		}
+		return false;
 	}
 
 }

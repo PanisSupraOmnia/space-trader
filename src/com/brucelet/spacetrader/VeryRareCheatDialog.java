@@ -20,6 +20,9 @@
  */
 package com.brucelet.spacetrader;
 
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+
 public class VeryRareCheatDialog extends BaseDialog {
 
 	public static VeryRareCheatDialog newInstance() {
@@ -29,7 +32,7 @@ public class VeryRareCheatDialog extends BaseDialog {
 	public VeryRareCheatDialog() {}
 	
 	@Override
-	public void onBuildDialog(Builder builder) {
+	public final void onBuildDialog(Builder builder, LayoutInflater inflater, ViewGroup parent) {
 		builder.setTitle(R.string.dialog_veryrarecheat_title).setView(R.layout.dialog_veryrarecheat);
 		builder.setPositiveButton(R.string.generic_done);
 	}

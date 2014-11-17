@@ -20,6 +20,9 @@
  */
 package com.brucelet.spacetrader;
 
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+
 
 public class SimpleDialog extends BaseDialog {
 	private int mTitleId = -1;
@@ -86,7 +89,7 @@ public class SimpleDialog extends BaseDialog {
 	public SimpleDialog() {}
 	
 	@Override
-	public final void onBuildDialog(Builder builder) {
+	public final void onBuildDialog(Builder builder, LayoutInflater inflater, ViewGroup parent) {
 		builder.setPositiveButton(R.string.generic_ok);
 		if (mTitle != null && mTitle.length() > 0) builder.setTitle(mTitle);
 		if (mMessage != null && mMessage.length() > 0) builder.setMessage(mMessage);

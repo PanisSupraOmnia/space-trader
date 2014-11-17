@@ -344,7 +344,7 @@ public class GameState {
 		chartText.setTextAlign(Align.CENTER);
 		chartText.setAntiAlias(true);
 		
-		mGameManager.getTheme().resolveAttribute(android.R.attr.textAppearance, tv, true);
+		mGameManager.getTheme().resolveAttribute(android.R.attr.textAppearanceMedium, tv, true);
 		TypedArray ta = mGameManager.getTheme().obtainStyledAttributes(tv.resourceId, new int[] {android.R.attr.textSize});
 		ta.getValue(0, tv);
 		chartText.setTextSize(tv.getDimension(getResources().getDisplayMetrics()));
@@ -728,6 +728,17 @@ public class GameState {
 	private Resources getResources() {
 		return mGameManager.getResources();
 	}
+
+	private volatile boolean stop;
+	private OnCancelListener newStopper(final CountDownLatch latch) {
+		return new OnCancelListener() {
+			@Override
+			public void onCancel() {
+				stop = true; 
+				unlock(latch);
+			}
+		};
+	}
 	
 	private static OnConfirmListener newUnlocker(final CountDownLatch latch) {
 		return new OnConfirmListener() {
@@ -938,19 +949,31 @@ public class GameState {
 		ThemeType theme = mGameManager.getThemeType();
 		RadioGroup themeGroup = (RadioGroup) dialog.getDialog().findViewById(R.id.dialog_options_theme);
 		switch (theme) {
-		case PALM:
+		case HOLO_PALM:
 			themeGroup.check(R.id.dialog_options_theme_palm);
 			break;
-		case DARK:
+		case HOLO_DARK:
 			themeGroup.check(R.id.dialog_options_theme_dark);
 			break;
-		case LIGHT:
+		case HOLO_LIGHT:
 			themeGroup.check(R.id.dialog_options_theme_light);
+			break;
+		case MATERIAL_LIGHT:
+			themeGroup.check(R.id.dialog_options_theme_material_light);
+			break;
+		case MATERIAL_DARK:
+			themeGroup.check(R.id.dialog_options_theme_material_dark);
 			break;
 		default:
 			themeGroup.clearCheck();
 			break;
 		}
+		
+//		// On older devices, material themes look bad, so hide them.
+//		if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.GINGERBREAD_MR1 && !developerMode) {
+//			themeGroup.findViewById(R.id.dialog_options_theme_material_light).setVisibility(View.GONE);
+//			themeGroup.findViewById(R.id.dialog_options_theme_material_dark).setVisibility(View.GONE);
+//		}
 	}
 	
 	public void dismissOptions()
@@ -1009,14 +1032,20 @@ public class GameState {
 		ThemeType newTheme;
 		switch (rg.getCheckedRadioButtonId()) {
 		case R.id.dialog_options_theme_palm:
-			newTheme = ThemeType.PALM;
+			newTheme = ThemeType.HOLO_PALM;
 			break;
 		case R.id.dialog_options_theme_dark:
-			newTheme = ThemeType.DARK;
+			newTheme = ThemeType.HOLO_DARK;
 			break;
 		case R.id.dialog_options_theme_light:
 		default:
-			newTheme = ThemeType.LIGHT;
+			newTheme = ThemeType.HOLO_LIGHT;
+			break;
+		case R.id.dialog_options_theme_material_light:
+			newTheme = ThemeType.MATERIAL_LIGHT;
+			break;
+		case R.id.dialog_options_theme_material_dark:
+			newTheme = ThemeType.MATERIAL_DARK;
 			break;
 		}
 		
@@ -3691,6 +3720,7 @@ public class GameState {
 			tribble.postDelayed(new Runnable() {
 				@Override
 				public void run() {
+					Log.w(GameState.LOG_TAG, "Compatibility tribble position failure. Will re-try in 100ms");
 					randomizeTribblePosition(tribbleId);
 				}
 			}, 100);
@@ -3828,20 +3858,9 @@ public class GameState {
 		
 		private boolean commanderFlees;
 		
-		private volatile boolean stop;
 //		private volatile boolean redrawButtons;
 		
 		private Encounter prevEncounterType;
-		
-		private OnCancelListener newStopper(final CountDownLatch latch) {
-			return new OnCancelListener() {
-				@Override
-				public void onCancel() {
-					unlock(latch);
-					stop = true; 
-				}
-			};
-		}
 		
 		@Override
 		protected Result doInBackground(EncounterButton... params) {
@@ -10571,6 +10590,10 @@ public class GameState {
 		final float ARROW_WIDTH = 1f;
 		final float ARROW_LENGTH = 6.25f;
 		
+		final Drawable defaultDrawable = getResources().getDrawable(R.drawable.warpsystem);
+		final Drawable visitedDrawable = getResources().getDrawable(R.drawable.warpsystemv);
+		final Drawable wormholeDrawable = getResources().getDrawable(R.drawable.warpsystemw);
+		
 		initializePaints();
 
 		int cw = canvas.getWidth();
@@ -10632,7 +10655,7 @@ public class GameState {
 							canvas.drawLine(x, y-SEL_CROSS*RADIUS, x, y+SEL_CROSS*RADIUS, chartStroke);
 							canvas.drawLine(x-SEL_CROSS*RADIUS, y, x+SEL_CROSS*RADIUS, y, chartStroke);
 						}
-						Drawable d = getResources().getDrawable(system.visited()? R.drawable.warpsystemv : R.drawable.warpsystem);
+						Drawable d = system.visited()? visitedDrawable : defaultDrawable;
 						d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
 						d.draw(canvas);						
 						if (wormholeExists( system, null ))
@@ -10643,7 +10666,7 @@ public class GameState {
 								canvas.drawLine(x, y-SEL_CROSS*RADIUS, x, y+SEL_CROSS*RADIUS, chartStroke);
 								canvas.drawLine(x-SEL_CROSS*RADIUS, y, x+SEL_CROSS*RADIUS, y, chartStroke);
 							}
-							d = getResources().getDrawable(R.drawable.warpsystemw);
+							d = wormholeDrawable;
 							d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
 							d.draw(canvas);
 						}
@@ -10808,6 +10831,11 @@ public class GameState {
 		final float SEL_INNER = 1f;
 		final float WORMHOLE_OFFSET = 2f;
 		
+		// NB now caching these ahead of time to see if it helps occasional graphical glitches
+		final Drawable defaultDrawable = getResources().getDrawable(R.drawable.chartsystem);
+		final Drawable visitedDrawable = getResources().getDrawable(R.drawable.chartsystemv);
+		final Drawable wormholeDrawable = getResources().getDrawable(R.drawable.chartsystemw);
+		
 		initializePaints();
 
 		int cw = screen.getView().findViewById(R.id.screen_chart_chartview).getWidth();
@@ -10860,7 +10888,7 @@ public class GameState {
 			}
 			float x = (system.x() - GALAXYWIDTH/2)*scale + cw/2;
 			float y = (system.y() - GALAXYHEIGHT/2)*scale + ch/2;
-			Drawable d = getResources().getDrawable(system.visited()? R.drawable.chartsystemv : R.drawable.chartsystem);
+			Drawable d = system.visited()? visitedDrawable : defaultDrawable;
 			d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
 			d.draw(canvas);
 			
@@ -10899,7 +10927,7 @@ public class GameState {
 			if (wormholeExists( system, null )) 
 			{
 				x += WORMHOLE_OFFSET*RADIUS;
-				d = getResources().getDrawable(R.drawable.chartsystemw);
+				d = wormholeDrawable;
 				d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
 				d.draw(canvas);
 			}
@@ -11240,7 +11268,6 @@ public class GameState {
 			{
 				dist = d;
 				system = s;
-				break;
 			}
 		}
 
@@ -11379,7 +11406,7 @@ public class GameState {
 			showCheatConfirm(new OnConfirmListener() {
 						@Override
 						public void onConfirm() {
-							cheated = true;
+							if (!developerMode) cheated = true;
 							credits += 100000;
 						}
 					});
@@ -11389,7 +11416,7 @@ public class GameState {
 			showCheatConfirm(new OnConfirmListener() {
 				@Override
 				public void onConfirm() {
-					cheated = true;
+					if (!developerMode) cheated = true;
 					mGameManager.showDialogFragment(VeryRareCheatDialog.newInstance());
 				}
 			});
@@ -11399,7 +11426,7 @@ public class GameState {
 			showCheatConfirm(new OnConfirmListener() {
 				@Override
 				public void onConfirm() {
-					cheated = true;
+					if (!developerMode) cheated = true;
 					cheatCounter = 3;
 				}
 			});
@@ -11409,7 +11436,7 @@ public class GameState {
 			showCheatConfirm(new OnConfirmListener() {
 				@Override
 				public void onConfirm() {
-					cheated = true;
+					if (!developerMode) cheated = true;
 					
 					CharSequence findSystemSub = findSystem.subSequence(3, findSystem.length());
 					String findName = "";
@@ -11442,7 +11469,7 @@ public class GameState {
 			showCheatConfirm(new OnConfirmListener() {
 				@Override
 				public void onConfirm() {
-					cheated = true;
+					if (!developerMode) cheated = true;
 					mGameManager.showDialogFragment(QuestsCheatDialog.newInstance());
 				}
 			});
@@ -11662,7 +11689,7 @@ public class GameState {
 	
 	
 	// Help dialog building takes place here so it can see special system names
-	public void buildHelpDialog(int resId, Builder builder) {
+	public void buildHelpDialog(int resId, Builder builder, LayoutInflater inflater, ViewGroup parent) {
 		if (resId > 0) {
 			
 			String message;
@@ -11691,7 +11718,7 @@ public class GameState {
 				message = getResources().getString(resId);
 			}
 			
-			View view = LayoutInflater.from(mGameManager).inflate(R.layout.dialog_help, null);
+			View view = inflater.inflate(R.layout.dialog_help, parent, false);
 			((TextView) view.findViewById(R.id.dialog_help_message)).setText(message);
 			builder.setView(view);
 			

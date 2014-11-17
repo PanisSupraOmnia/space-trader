@@ -20,13 +20,21 @@
  */
 package com.brucelet.spacetrader;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.os.Build;
+import android.support.v7.widget.ListPopupWindow;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.TextView;
 
-public class ChartFindDialog extends BaseDialog {
+public class ChartFindDialog extends BaseDialog implements TextView.OnEditorActionListener {
 
 	public static ChartFindDialog newInstance() {
 		return new ChartFindDialog();
@@ -35,11 +43,11 @@ public class ChartFindDialog extends BaseDialog {
 	public ChartFindDialog() {}
 	
 	@Override
-	public void onBuildDialog(Builder builder) {
+	public final void onBuildDialog(Builder builder, LayoutInflater inflater, ViewGroup parent) {
 		builder.setTitle(R.string.screen_chart_find_title);
 		builder.setPositiveButton(R.string.generic_ok).setNegativeButton(R.string.generic_cancel);
 		
-		View view = LayoutInflater.from(getActivity()).inflate(R.layout.screen_chart_find, null);
+		View view = inflater.inflate(R.layout.screen_chart_find, parent, false);
 		AutoCompleteTextView input = (AutoCompleteTextView) view.findViewById(R.id.screen_chart_find_value);
 		String[] names = getResources().getStringArray(R.array.solar_system_name);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
@@ -47,8 +55,30 @@ public class ChartFindDialog extends BaseDialog {
 				R.layout.autocomplete_dropdown_item, 
 				names);
 		input.setAdapter(adapter);
+		input.setOnEditorActionListener(this);
+
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP && getGameManager().getThemeType().isMaterialTheme) {
+			// Material themes are setting bad dropdown background so manually copy from dummy view
+			ListPopupWindow dummy = new ListPopupWindow(getActivity());
+			input.setDropDownBackgroundDrawable(dummy.getBackground());
+		}
 		
 		builder.setView(view);
+	}
+
+	@Override
+	public void onShowDialog() {
+		View input = getDialog().findViewById(R.id.screen_chart_find_value);
+		
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP && getGameManager().getThemeType().isMaterialTheme) {
+			// NB AppCompat currently doesn't use Material style for AutoCompleteTextView, so manually copy background from a dummy EditText 
+			View dummy = getDialog().findViewById(R.id.screen_chart_find_dummy);
+			input.setBackgroundDrawable(dummy.getBackground());
+		}
+		
+		// Immediately request IMM so we're focused and see keyboard
+		InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+		imm.showSoftInput(input, 0);
 	}
 		
 	@Override
@@ -64,6 +94,14 @@ public class ChartFindDialog extends BaseDialog {
 	@Override
 	public int getHelpTextResId() {
 		return R.string.help_findsystem;
+	}
+
+	@Override
+	public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+		if (actionId == EditorInfo.IME_ACTION_DONE) {
+			onClickPositiveButton();
+		}
+		return false;
 	}
 
 }

@@ -24,8 +24,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Bundle;
+import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -115,10 +115,11 @@ public class ChartScreen extends BaseScreen {
 					
 		}
 
-		@SuppressLint("NewApi")
+		@SuppressLint("ClickableViewAccessibility")
 		@Override
 		public boolean onTouchEvent(MotionEvent event) {
-			switch (event.getActionMasked()) {	// NB getActionMasked() required API 8
+			int action = MotionEventCompat.getActionMasked(event);
+			switch (action) {
 			case MotionEvent.ACTION_MOVE:
 			case MotionEvent.ACTION_DOWN:
 			case MotionEvent.ACTION_UP:
@@ -127,7 +128,7 @@ public class ChartScreen extends BaseScreen {
 				return false;
 			}
 			
-			mFragment.getGameState().galacticChartFormHandleEvent(event.getX(), event.getY(), event.getActionMasked());
+			mFragment.getGameState().galacticChartFormHandleEvent(event.getX(), event.getY(), action);
 			return true;
 		}
 		

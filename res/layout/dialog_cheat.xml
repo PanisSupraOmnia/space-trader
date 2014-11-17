@@ -108,25 +108,25 @@
             android:gravity="left"
             android:orientation="vertical" >
 
-            <CheckBox
+            <CheckBox android:textAppearance="?android:textAppearanceMedium"
                 android:id="@+id/dialog_cheat_negative"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/dialog_cheat_negative" />
 
-            <CheckBox
+            <CheckBox android:textAppearance="?android:textAppearanceMedium"
                 android:id="@+id/dialog_cheat_lightning"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/shield_lightning" />
 
-            <CheckBox
+            <CheckBox android:textAppearance="?android:textAppearanceMedium"
                 android:id="@+id/dialog_cheat_fuelcompactor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/gadget_fuelcompactor" />
 
-            <CheckBox
+            <CheckBox android:textAppearance="?android:textAppearanceMedium"
                 android:id="@+id/dialog_cheat_morgan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -139,19 +139,19 @@
             android:gravity="left"
             android:orientation="vertical" >
 
-            <CheckBox
+            <CheckBox android:textAppearance="?android:textAppearanceMedium"
                 android:id="@+id/dialog_cheat_moon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/dialog_cheat_moon" />
 
-            <CheckBox
+            <CheckBox android:textAppearance="?android:textAppearanceMedium"
                 android:id="@+id/dialog_cheat_singularity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/dialog_cheat_singularity" />
 
-            <CheckBox
+            <CheckBox android:textAppearance="?android:textAppearanceMedium"
                 android:id="@+id/dialog_cheat_hull"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

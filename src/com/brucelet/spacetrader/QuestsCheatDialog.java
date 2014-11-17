@@ -20,6 +20,9 @@
  */
 package com.brucelet.spacetrader;
 
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+
 public class QuestsCheatDialog extends BaseDialog {
 
 	public static QuestsCheatDialog newInstance() {
@@ -29,7 +32,7 @@ public class QuestsCheatDialog extends BaseDialog {
 	public QuestsCheatDialog() {}
 	
 	@Override
-	public void onBuildDialog(Builder builder) {
+	public final void onBuildDialog(Builder builder, LayoutInflater inflater, ViewGroup parent) {
 		builder.setTitle(R.string.dialog_questscheat_title).setView(R.layout.dialog_questscheat);
 		builder.setPositiveButton(R.string.generic_ok);
 	}

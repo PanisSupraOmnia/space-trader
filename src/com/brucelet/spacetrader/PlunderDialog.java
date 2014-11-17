@@ -24,7 +24,9 @@ import java.util.Collections;
 import java.util.EnumMap;
 import java.util.Map;
 
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.brucelet.spacetrader.enumtypes.TradeItem;
 
@@ -70,7 +72,7 @@ public class PlunderDialog extends BaseDialog implements OnSingleClickListener {
 	public PlunderDialog() {}
 
 	@Override
-	public void onBuildDialog(Builder builder) {
+	public final void onBuildDialog(Builder builder, LayoutInflater inflater, ViewGroup parent) {
 		builder.setView(R.layout.dialog_plunder);
 		builder.setTitle(R.string.dialog_plunder_title);
 		builder.setPositiveButton(R.string.generic_done);

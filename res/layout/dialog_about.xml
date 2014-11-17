@@ -14,7 +14,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_launcher"
-        android:gravity="center_vertical|left"
+        android:drawableStart="@drawable/ic_launcher"
+        android:gravity="center_vertical|start"
         android:text="@string/dialog_about_title"
         android:textStyle="bold" />
 
@@ -53,5 +54,12 @@
         android:autoLink="web"
         android:singleLine="false"
         android:text="@string/dialog_about_url" />
+
+    <TextView
+        android:id="@+id/dialog_about_store"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="false"
+        android:text="@string/dialog_about_store" />
 
 </LinearLayout>

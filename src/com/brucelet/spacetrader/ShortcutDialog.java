@@ -92,6 +92,7 @@ public class ShortcutDialog extends BaseDialog {
 				//put the data in it
 				TextView text1 = (TextView) row.findViewById(R.id.spinner_shortcut);
 				text1.setText(screens[position].shortcutId);
+				text1.setTypeface(Typeface.MONOSPACE);
 				TextView text2 = (TextView) row.findViewById(R.id.spinner_text);
 				text2.setText(screens[position].titleId);
 
@@ -113,7 +114,7 @@ public class ShortcutDialog extends BaseDialog {
 	}
 
 	@Override
-	public void onBuildDialog(Builder builder) {
+	public final void onBuildDialog(Builder builder, LayoutInflater inflater, ViewGroup parent) {
 		builder
 		.setTitle(R.string.dialog_shortcut_title)
 		.setPositiveButton(R.string.generic_ok)

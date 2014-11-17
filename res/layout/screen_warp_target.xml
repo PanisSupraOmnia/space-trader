@@ -6,216 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingTop="@dimen/activity_vertical_margin" >
-
-        <!--
-                 <RelativeLayout
-                style="@style/RootLayout"
-                android:layout_height="wrap_content" >
-
-                <LinearLayout
-                    android:id="@+id/screen_warp_target_name_layout"
-                    style="@style/ScreenRow"
-                    android:layout_alignParentTop="true"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        style="?attr/textViewStyleHeader" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:layout_weight="2"
-                        android:text="@string/screen_info_name" />
-
-                    <TextView
-                        android:id="@+id/screen_warp_target_name"
-                        android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:layout_weight="3" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/screen_warp_target_size_layout"
-                    style="@style/ScreenRow"
-                    android:layout_below="@id/screen_warp_target_name_layout"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        style="?attr/textViewStyleHeader" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:layout_weight="2"
-                        android:text="@string/screen_info_size" />
-
-                    <TextView
-                        android:id="@+id/screen_warp_target_size"
-                        android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:layout_weight="3" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/screen_warp_target_tech_layout"
-                    style="@style/ScreenRow"
-                    android:layout_below="@id/screen_warp_target_size_layout"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        style="?attr/textViewStyleHeader" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:layout_weight="2"
-                        android:text="@string/screen_info_tech" />
-
-                    <TextView
-                        android:id="@+id/screen_warp_target_tech"
-                        android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:layout_weight="3" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/screen_warp_target_gov_layout"
-                    style="@style/ScreenRow"
-                    android:layout_below="@id/screen_warp_target_tech_layout"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        style="?attr/textViewStyleHeader" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:layout_weight="2"
-                        android:text="@string/screen_info_gov" />
-
-                    <TextView
-                        android:id="@+id/screen_warp_target_gov"
-                        android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:layout_weight="3" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/screen_warp_target_distance_layout"
-                    style="@style/ScreenRow"
-                    android:layout_below="@id/screen_warp_target_gov_layout"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        style="?attr/textViewStyleHeader" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:layout_weight="2"
-                        android:text="@string/screen_warp_target_distance" />
-
-                    <TextView
-                        android:id="@+id/screen_warp_target_distance"
-                        android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:layout_weight="3" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/screen_warp_target_police_layout"
-                    style="@style/ScreenRow"
-                    android:layout_below="@id/screen_warp_target_distance_layout"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        style="?attr/textViewStyleHeader" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:layout_weight="2"
-                        android:text="@string/screen_info_police" />
-
-                    <TextView
-                        android:id="@+id/screen_warp_target_police"
-                        android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:layout_weight="3" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/screen_warp_target_pirates_layout"
-                    style="@style/ScreenRow"
-                    android:layout_below="@id/screen_warp_target_police_layout"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        style="?attr/textViewStyleHeader" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:layout_weight="2"
-                        android:text="@string/screen_info_pirates" />
-
-                    <TextView
-                        android:id="@+id/screen_warp_target_pirates"
-                        android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:layout_weight="3" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/screen_warp_target_traders_layout"
-                    style="@style/ScreenRow"
-                    android:layout_below="@id/screen_warp_target_pirates_layout"
-                    android:orientation="horizontal"
-                    android:visibility="gone" >
-
-                    <TextView
-                        style="?attr/textViewStyleHeader" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:layout_weight="2"
-                        android:text="@string/screen_info_traders" />
-
-                    <TextView
-                        android:id="@+id/screen_warp_target_traders"
-                        android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:layout_weight="3" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/screen_warp_target_cost_layout"
-                    style="@style/ScreenRow"
-                    android:layout_below="@id/screen_warp_target_traders_layout"
-                    android:baselineAligned="true"
-                    android:baselineAlignedChildIndex="1"
-                    android:orientation="horizontal"
-                    android:weightSum="5" >
-
-                    <TextView
-                        style="?attr/textViewStyleHeader" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:layout_weight="2"
-                        android:text="@string/screen_warp_target_cost" />
-
-                    <TextView
-                        android:id="@+id/screen_warp_target_cost"
-                        android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:layout_weight="1.75" />
-                </LinearLayout>
-
-                <LinearLayout
-                    style="@style/ScreenRow"
-                    android:layout_alignBaseline="@id/screen_warp_target_cost_layout"
-                    android:baselineAligned="true"
-                    android:baselineAlignedChildIndex="0"
-                    android:gravity="right"
-                    android:orientation="horizontal"
-                    android:weightSum="5" >
-
-                    <Button
-                        android:id="@+id/screen_warp_target_cost_specific"
-                        style="?attr/buttonStyleRounded" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:layout_weight="1.25"
-                        android:text="@string/screen_warp_target_cost_specific" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/screen_warp_target_toofar"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:layout_below="@id/screen_warp_target_cost_layout"
-                    android:layout_gravity="right"
-                    android:layout_marginBottom="0dp"
-                    android:text="@string/screen_warp_target_toofar" />
-            </RelativeLayout>
-        -->
-
+        android:paddingBottom="@dimen/activity_vertical_margin">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
@@ -225,7 +16,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:paddingTop="@dimen/activity_vertical_margin"
                 android:visibility="invisible" >
+
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:visibility="gone" />
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" />
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" />
@@ -242,8 +35,10 @@
                 android:id="@+id/screen_warp_target_pager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                    android:layout_alignBottom="@id/screen_warp_target_pagerspacer"
-                    android:layout_alignTop="@id/screen_warp_target_pagerspacer" />
+                android:layout_alignBottom="@id/screen_warp_target_pagerspacer"
+                android:layout_alignTop="@id/screen_warp_target_pagerspacer"
+                android:paddingTop="@dimen/activity_vertical_margin" />
+
         </RelativeLayout>
         
         <include layout="@layout/screen_warp_subscreen_buttons" />

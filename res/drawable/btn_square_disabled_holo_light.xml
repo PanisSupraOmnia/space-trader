@@ -3,7 +3,7 @@
 
     <stroke
         android:width="@dimen/line_width"
-        android:color="@color/stroke_light" />
+        android:color="@color/stroke_holo_light" />
 
     <solid android:color="@color/btn_default_disabled_holo" />
 

@@ -21,6 +21,8 @@
 package com.brucelet.spacetrader;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass. Activities that
@@ -60,7 +62,7 @@ public class OptionsDialog extends BaseDialog {
 	}
 	
 	@Override
-	public void onBuildDialog(Builder builder) {
+	public final void onBuildDialog(Builder builder, LayoutInflater inflater, ViewGroup parent) {
 		builder
 		.setTitle(R.string.dialog_options_title)
 		.setPositiveButton(R.string.generic_done)

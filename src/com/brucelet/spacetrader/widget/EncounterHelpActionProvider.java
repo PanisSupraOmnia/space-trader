@@ -20,6 +20,7 @@
  */
 package com.brucelet.spacetrader.widget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.support.v4.view.ActionProvider;
@@ -35,7 +36,8 @@ public class EncounterHelpActionProvider extends ActionProvider implements View.
 	public EncounterHelpActionProvider(Context context) {
 		super(context);
 	}
-	
+
+	@SuppressLint("InflateParams")
 	@Override
 	public View onCreateActionView() {
 		View view = LayoutInflater.from(getContext()).inflate(R.layout.button_encounter_help, null);
@@ -45,8 +47,20 @@ public class EncounterHelpActionProvider extends ActionProvider implements View.
 
 	@Override
 	public void onClick(View v) {
-		// TODO Is there a cleaner way to do this?
-		((MainActivity) ((ContextWrapper) getContext()).getBaseContext()).showDialogFragment(HelpDialog.newInstance(R.string.help_encounter));
+//		// TODO Is there a cleaner way to do this?
+		
+		Context context = getContext();
+		while (context instanceof ContextWrapper) {
+			Context base = ((ContextWrapper) context).getBaseContext();
+			if (base.equals(context)) break; // Since I'm paranoid, make sure we don't get into an infinite loop.
+			context = base;
+			if (context instanceof MainActivity) break; // Don't go too far because Activity is a ContextWrapper 
+		}
+		if (context instanceof MainActivity) {
+			((MainActivity) context).showDialogFragment(HelpDialog.newInstance(R.string.help_encounter));
+		} else {
+			throw new IllegalStateException(context.getClass().getName());
+		}
 	}
 
 }

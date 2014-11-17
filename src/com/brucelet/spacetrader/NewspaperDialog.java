@@ -24,6 +24,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+
 public class NewspaperDialog extends BaseDialog {
 	public static final List<Integer> HEADLINE_IDS;
 	static {
@@ -43,7 +46,7 @@ public class NewspaperDialog extends BaseDialog {
 	public NewspaperDialog() {}
 	
 	@Override
-	public void onBuildDialog(BaseDialog.Builder builder) {
+	public final void onBuildDialog(Builder builder, LayoutInflater inflater, ViewGroup parent) {
 		builder.setTitle(getGameState().newspaperTitle());
 		builder.setView(R.layout.dialog_newspaper);
 		builder.setPositiveButton(R.string.generic_done);

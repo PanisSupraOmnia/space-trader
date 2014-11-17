@@ -20,13 +20,11 @@
  */
 package com.brucelet.spacetrader;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.TypedArray;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.util.Log;
@@ -38,8 +36,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.brucelet.spacetrader.datatypes.GameState;
@@ -55,12 +52,13 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 		setStyle(STYLE_NO_FRAME, 0);
 	}
 
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {		
+		// Override given LayoutInflater. This is necessary for styles to be applied correctly to dialogs.
+		inflater = LayoutInflater.from(getActivity());
+		
 		View root = inflater.inflate(R.layout.dialog_layout, container, false);
-				
 		TypedValue tv = new TypedValue();
 		TypedArray ta;
 
@@ -68,53 +66,101 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 		View contentPanel = root.findViewById(R.id.contentPanel);
 		View buttonPanel = root.findViewById(R.id.buttonPanel);
 
-		// Manually setting some things  from resources since we're not using real AlertDialogs
-		getActivity().getTheme().resolveAttribute(R.attr.alertDialogStyle, tv, true);
-		ta = getActivity().getTheme().obtainStyledAttributes(tv.resourceId, new int[] {android.R.attr.topBright, android.R.attr.centerBright, android.R.attr.bottomBright, android.R.attr.divider});
-		topPanel.setBackgroundResource(ta.getResourceId(0, 0));
-		contentPanel.setBackgroundResource(ta.getResourceId(1, 0));
-		buttonPanel.setBackgroundResource(ta.getResourceId(2, 0));
-
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-			((LinearLayout)buttonPanel).setDividerDrawable(getResources().getDrawable(ta.getResourceId(3,0)));
-			((LinearLayout)buttonPanel.findViewById(R.id.buttons)).setDividerDrawable(getResources().getDrawable(ta.getResourceId(3,0)));
-		}
+		// Manually setting backgrounds from resources since we're not using real AlertDialogs
+		getActivity().getTheme().resolveAttribute(R.attr.dialogStyle, tv, true);
+		ta = getActivity().getTheme().obtainStyledAttributes(tv.resourceId, R.styleable.dialog);
+		topPanel.setBackgroundResource(ta.getResourceId(R.styleable.dialog_top, 0));
+		contentPanel.setBackgroundResource(ta.getResourceId(R.styleable.dialog_middle, 0));
+		buttonPanel.setBackgroundResource(ta.getResourceId(R.styleable.dialog_bottom, 0));
+		ta.recycle();
 		
 		ViewGroup content = (ViewGroup) contentPanel.findViewById(R.id.content);
-		View message = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_message, content, false);
+		View message = inflater.inflate(R.layout.dialog_message, content, false);
 		
 		Builder builder = new Builder(getActivity());
 		builder.setView(message);
 		
-		onBuildDialog(builder);
+		onBuildDialog(builder, inflater, content);
 		((TextView)message.findViewById(R.id.dialog_message)).setText(builder.mMessage);
 		
 		// Title panel.
 		((TextView)root.findViewById(R.id.alertTitle)).setText(builder.mTitle);
 		
 		// Content panel. This might be message or custom view.
-		((FrameLayout)root.findViewById(R.id.content)).addView(builder.mView);
+		if (builder.mView == null) {
+			builder.mView = inflater.inflate(builder.mViewId, container, false);
+		}
+		content.addView(builder.mView);
 
 		// Button panel
-		Button pos = (Button) root.findViewById(R.id.button1);
-		Button neg = (Button) root.findViewById(R.id.button2);
-		Button neu = (Button) root.findViewById(R.id.button3);
-		if (builder.mPositiveButton != null && builder.mPositiveButton.length() > 0) {
+		Button pos = (Button) root.findViewById(R.id.positive);
+		Button neg = (Button) root.findViewById(R.id.negative);
+		Button neu = (Button) root.findViewById(R.id.neutral);
+		
+		boolean showPos = builder.mPositiveButton != null && builder.mPositiveButton.length() > 0;
+		boolean showNeg = builder.mNegativeButton != null && builder.mNegativeButton.length() > 0;
+		boolean showNeu = builder.mNeutralButton != null && builder.mNeutralButton.length() > 0;
+		
+		if (showPos && (showNeu || showNeg)) {
+			root.findViewById(R.id.dividerPositive).setVisibility(View.VISIBLE);
+		}
+		if (showNeg && showNeu) {
+			root.findViewById(R.id.dividerNegative).setVisibility(View.VISIBLE);
+		}
+		
+		if (showPos) {
 			pos.setVisibility(View.VISIBLE);
 			pos.setText(builder.mPositiveButton);
+			pos.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					if (getGameManager().isClicking()) return;
+					
+					getGameManager().startClick();
+					onClickPositiveButton();
+					getGameManager().finishClick();
+				}
+			});
 		}
-		if (builder.mNegativeButton != null && builder.mNegativeButton.length() > 0) {
+		if (showNeg) {
 			neg.setVisibility(View.VISIBLE);
 			neg.setText(builder.mNegativeButton);
+			neg.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					if (getGameManager().isClicking()) return;
+					
+					getGameManager().startClick();
+					onClickNegativeButton();
+					getGameManager().finishClick();
+				}
+			});
 		}
-		if (builder.mNeutralButton != null && builder.mNeutralButton.length() > 0) {
+		if (showNeu) {
 			neu.setVisibility(View.VISIBLE);
 			neu.setText(builder.mNeutralButton);
+			neu.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					if (getGameManager().isClicking()) return;
+					
+					getGameManager().startClick();
+					onClickNeutralButton();
+					getGameManager().finishClick();
+				}
+			});
 		}
-//		builder.create(root);
 		
-		View infoButton = root.findViewById(R.id.alertHelp);
+		ImageView infoButton = (ImageView) root.findViewById(R.id.alertHelp);
 		if (getHelpTextResId() > 0) {
+//			if (root.getContext().getTheme().resolveAttribute(R.attr.colorAccent, tv, true)) {
+//				Drawable icon = infoButton.getDrawable();
+//				DrawableCompat.setTint(icon, getResources().getColor(tv.resourceId));
+//				infoButton.setImageDrawable(icon);
+//			}
 			infoButton.setVisibility(View.VISIBLE);
 			infoButton.setOnClickListener(new OnClickListener() {
 				
@@ -130,42 +176,6 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 		} else {
 			infoButton.setVisibility(View.GONE);
 		}
-		
-		pos.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				if (getGameManager().isClicking()) return;
-				
-				getGameManager().startClick();
-				onClickPositiveButton();
-				getGameManager().finishClick();
-			}
-		});
-
-		neu.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				if (getGameManager().isClicking()) return;
-				
-				getGameManager().startClick();
-				onClickNeutralButton();
-				getGameManager().finishClick();
-			}
-		});
-
-		neg.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				if (getGameManager().isClicking()) return;
-				
-				getGameManager().startClick();
-				onClickNegativeButton();
-				getGameManager().finishClick();
-			}
-		});
 
 		return root;
 	}
@@ -194,6 +204,7 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 	@Override
 	public void onResume() {
 		super.onResume();
+		getGameManager().finishMenuActionMode();
 		onRefreshDialog();
 	}
 	
@@ -205,6 +216,7 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 			@Override
 			public void onShow(DialogInterface dialog) {
 				Log.d("onShow()", "Dialog "+this+" is showing.");
+				onShowDialog();
 				getGameManager().reportDialogShown();
 			}
 		});
@@ -380,8 +392,9 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 	}
 
 	// Hooks to be used by derived classes
+	public void onShowDialog() {}
 	public void onRefreshDialog() {}
-	public void onBuildDialog(Builder builder) {}
+	public void onBuildDialog(Builder builder, LayoutInflater inflater, ViewGroup parent) {}
 	public void onClickPositiveButton() { dismiss(); }
 	public void onClickNeutralButton() { dismiss(); }
 	public void onClickNegativeButton() { dismiss(); }
@@ -536,11 +549,10 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 		private CharSequence mNeutralButton;
 		private CharSequence mNegativeButton;
 		private View mView;
+		private int mViewId;
 		
-		@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 		private Builder(Context context) {
 			mContext = context;
-			
 		}
 		
 		public Builder setPositiveButton(int textId) {
@@ -597,12 +609,13 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 		
 		public Builder setView(View view) {
 			mView = view;
+			mViewId = 0;
 			return this;
 		}
 		
 		public Builder setView(int viewId) {
-			View view = LayoutInflater.from(mContext).inflate(viewId, null);
-			mView = view;
+			mViewId = viewId;
+			mView = null;
 			return this;
 		}
 		

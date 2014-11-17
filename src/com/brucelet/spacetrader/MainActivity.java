@@ -29,6 +29,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.lang.reflect.Field;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -37,19 +38,25 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.content.res.TypedArray;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.MotionEventCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.PopupMenuCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.PopupMenu.OnMenuItemClickListener;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.KeyEvent;
@@ -60,9 +67,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.view.ViewTreeObserver;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
+import android.widget.Space;
 import android.widget.TextView;
 
 import com.brucelet.spacetrader.datatypes.GameState;
@@ -115,9 +127,6 @@ import com.brucelet.spacetrader.enumtypes.ThemeType;
  *    - Disease updates
  *    - Customs Police Fix
  *    - Trade in orbit capacity
- *  - Code: Instance field visibility in datatypes package.
- *  - Code: Make sure that save/load functions correctly handle all fields.
- *    - Also consider transitioning to use of saveInstanceState Bundles to cut down lag (if it looks like it will help) 
  *  - Bug: There are instances where dialogs become blank when leaving and returning to app after long time. Look into fragment lifecycle to handle saving state better.
  *    - Use arguments in place of all instance fields? But how to handle listeners and arbitrarily-typed args? This may require a large change to remove anonymous inner class listeners
  *    - This looks ugly but is usually just a minor problem because user can close dialog and repeat whatever action originally spawned it.
@@ -129,7 +138,7 @@ import com.brucelet.spacetrader.enumtypes.ThemeType;
  * 
  * 
  */
-public class MainActivity extends ActionBarActivity implements /*OnNavigationListener,*/ OnMenuItemClickListener//, OnPageChangeListener //, GameManager 
+public class MainActivity extends ActionBarActivity implements OnMenuItemClickListener//, OnPageChangeListener 
 {
 	static { Log.w(GameState.LOG_TAG, "Space Trader for Android"); }
 	
@@ -155,7 +164,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 	private final LinkedList<ScreenType> mBackStack = new LinkedList<>();
 	private final LinkedList<BaseDialog> mDialogQueue = new LinkedList<>();
 	
-//	private TextView mActionBarSpinner;
+	private Toolbar mToolbar;
 	private View mTitleView;
 	private TextView mTitleText;
 	private ImageView mTitleIcon;
@@ -179,32 +188,13 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 	private ActionMode mActionMode;
 	
 //	private ViewFlipper mViewFlipper;
-//	private final SparseArray<BaseScreen> mScreenCache = new SparseArray<>();
 	
 //	private FrameLayout mFragmentContainer;
 	private ScreenType mCurrentScreen;
 	
 	
-//	// TODO think about whether something like this might speed up some view generation
-//	private static final SparseArray<View> mViewCache = new SparseArray<View>();
-//	
-//	public View findCachedViewById(int id) {
-//		return findCachedViewById(id, null);
-//	}
-//	public View findCachedViewById(int id, View root) {
-//		View view = mViewCache.get(id);
-//		
-//		if (view == null || !view.isShown()) {
-//			view = (root==null? findViewById(id) : root.findViewById(id));
-//			mViewCache.put(id, view);
-//			Log.d("ViewCache", "Adding view "+getResources().getResourceEntryName(id)+" to cache");
-//		}
-//		return view;
-//	}
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 		
 		mCurrentGame = getPreferences(MODE_PRIVATE).getString("currentGame", GAME_1);
 		Log.d("onCreate()", "Current game is "+mCurrentGame);
@@ -221,63 +211,22 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 			theme = getThemeType();
 		}
 		setTheme(theme.resId);
+		
 		Log.d("onCreate()", "Setting theme "+getResources().getResourceName(theme.resId));
 		getSharedPreferences(mCurrentGame, MODE_PRIVATE).edit().putInt("theme", theme.ordinal()).commit();
 
-		Log.d("onCreate()", "setContentView() called");
-//		setContentView(R.layout.activity_main);
-		setContentView(R.layout.activity_main2);
-		
-		final ScreenType[] screens = ScreenType.dropdownValues();
-		mShortcutKeys = new char[screens.length];
-		for (int i = 0; i < mShortcutKeys.length; i++) {
-			mShortcutKeys[i] = Character.toLowerCase(getResources().getString(screens[i].shortcutId).charAt(0));
-		}
 
-//		SpinnerAdapter adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item, new String[screens.length]) {
-//			
-//			@Override
-//			public View getDropDownView(int position, View row, ViewGroup parent)
-//			{   
-//				if(row == null)
-//				{
-//					//inflate your customlayout for the textview
-//					LayoutInflater inflater = getLayoutInflater();
-//					row = inflater.inflate(R.layout.spinner_dropdown_item_actionbar, parent, false);
-//				}
-//
-//				//put the data in it
-//				TextView text1 = (TextView) row.findViewById(R.id.spinner_shortcut);
-//				text1.setText(screens[position].shortcutId);
-//				TextView text2 = (TextView) row.findViewById(R.id.spinner_text);
-//				text2.setText(screens[position].titleId);
-//
-//				return row;
-//			}
-//
-//			@Override
-//			public View getView(int position, View row, ViewGroup parent)
-//			{   
-//				if (mActionBarSpinner == null) {
-//					mActionBarSpinner = (TextView) getLayoutInflater().inflate(R.layout.spinner_dropdown_title_actionbar, parent, false);
-//					
-//					TypedValue tv = new TypedValue();
-//					getTheme().resolveAttribute(R.attr.actionBarSpinnerTextStyle, tv, true);
-//					mActionBarSpinner.setTextAppearance(MainActivity.this, tv.data);
-//					
-//				}
-//				return mActionBarSpinner;
-//			}
-//		};
-//		getSupportActionBar().setListNavigationCallbacks(adapter, this);
+		super.onCreate(savedInstanceState);		
 		
-		ActionBar ab = getSupportActionBar();
-		mTitleView = LayoutInflater.from(getSupportActionBar().getThemedContext()).inflate(R.layout.ab_title, null);
+		
+		Log.d("onCreate()", "setContentView() called");
+		setContentView(R.layout.activity_main);
+		
+		mToolbar = (Toolbar) findViewById(R.id.toolbar);
+		mToolbar.inflateMenu(R.menu.shortcuts);
+		mTitleView = LayoutInflater.from(mToolbar.getContext()).inflate(R.layout.ab_title_main, mToolbar, false);
 		mTitleText = (TextView) mTitleView.findViewById(R.id.title);
 		mTitleIcon = (ImageView) mTitleView.findViewById(R.id.icon);
-		TypedValue tv = new TypedValue();
-		getTheme().resolveAttribute(R.attr.actionBarSpinnerTextStyle, tv, true);
-		mTitleText.setTextAppearance(MainActivity.this, tv.data);	// TODO get this working in xml instead of here
 		mTitleView.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -285,14 +234,48 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 				onOptionsItemSelectedWithId(v.getId());
 			}
 		});
-		ab.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+		mTitleIcon.setVisibility(View.GONE);
+		mToolbar.setContentInsetsAbsolute(0, 0);
+		mToolbar.addView(mTitleView);
+		Toolbar.LayoutParams tbParams = (Toolbar.LayoutParams) mTitleView.getLayoutParams();
+		tbParams.height = Toolbar.LayoutParams.MATCH_PARENT;
+		mTitleView.setLayoutParams(tbParams);
+		setSupportActionBar(mToolbar);
+		
+		ActionBar ab = getSupportActionBar();
 		ab.setDisplayShowHomeEnabled(false);
 		ab.setDisplayShowTitleEnabled(false);
-		ab.setDisplayShowCustomEnabled(true);
-		ab.setCustomView(mTitleView);
 		
-//		// Create the adapter that will return a fragment for each of the three
-//		// primary sections of the activity.
+		
+		final ScreenType[] screens = ScreenType.dropdownValues();
+		mShortcutKeys = new char[screens.length];
+		for (int i = 0; i < mShortcutKeys.length; i++) {
+			mShortcutKeys[i] = Character.toLowerCase(getResources().getString(screens[i].shortcutId).charAt(0));
+		}
+		
+//		ActionBar ab = getSupportActionBar();
+//		mTitleView = LayoutInflater.from(ab.getThemedContext()).inflate(R.layout.ab_title_main, null);
+//		mTitleText = (TextView) mTitleView.findViewById(R.id.title);
+//		mTitleIcon = (ImageView) mTitleView.findViewById(R.id.icon);
+////		TypedValue tv = new TypedValue();
+////		getTheme().resolveAttribute(R.attr.actionBarSpinnerTextStyle, tv, true);
+////		mTitleText.setTextAppearance(MainActivity.this, tv.data);	// TODO get this working in xml instead of here
+//		mTitleView.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				onOptionsItemSelectedWithId(v.getId());
+//			}
+//		});
+////		ab.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+//		ab.setDisplayShowHomeEnabled(false);
+//		ab.setDisplayShowTitleEnabled(false);
+//		ab.setDisplayShowCustomEnabled(true);
+//		ab.setCustomView(mTitleView);
+//		ViewGroup.LayoutParams params = mTitleView.getLayoutParams();
+//		params.height = ViewGroup.LayoutParams.MATCH_PARENT;
+//		mTitleView.setLayoutParams(params);
+		
 //		mScreenPagerAdapter = new ScreenPagerAdapter(this);
 //
 //		// Set up the ViewPager with the sections adapter.
@@ -409,11 +392,12 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 //			ab.setCustomView(mTitleView);
 			
 			
-			if (getTheme().resolveAttribute(R.attr.actionBarBackgroundDropdown, tv, true)) {
-				TypedArray ta = obtainStyledAttributes(tv.resourceId, new int[] {android.R.attr.background});
-				ta.getValue(0, tv);
-				ab.setBackgroundDrawable(getResources().getDrawable(tv.resourceId));
-				ta.recycle();
+			if (getTheme().resolveAttribute(R.attr.actionBarBackgroundDocked, tv, true)) {
+				if (tv.type >= TypedValue.TYPE_FIRST_COLOR_INT && tv.type <= TypedValue.TYPE_LAST_COLOR_INT) {
+					ab.setBackgroundDrawable(new ColorDrawable(tv.data));
+				} else {
+					ab.setBackgroundDrawable(getResources().getDrawable(tv.resourceId));
+				}
 			}
 			
 
@@ -444,11 +428,12 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 //			ab.setDisplayHomeAsUpEnabled(false);
 //			ab.setHomeButtonEnabled(false);
 			
-			if (getTheme().resolveAttribute(R.attr.actionBarBackgroundTitle, tv, true)) {
-				TypedArray ta = obtainStyledAttributes(tv.resourceId, new int[] {android.R.attr.background});
-				ta.getValue(0, tv);
-				ab.setBackgroundDrawable(getResources().getDrawable(tv.resourceId));
-				ta.recycle();
+			if (getTheme().resolveAttribute(R.attr.actionBarBackgroundDefault, tv, true)) {
+				if (tv.type >= TypedValue.TYPE_FIRST_COLOR_INT && tv.type <= TypedValue.TYPE_LAST_COLOR_INT) {
+					ab.setBackgroundDrawable(new ColorDrawable(tv.data));
+				} else {
+					ab.setBackgroundDrawable(getResources().getDrawable(tv.resourceId));
+				}
 			}
 
 //			if (getCurrentScreenId() == R.id.screen_encounter) {
@@ -461,7 +446,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 //				getMenuInflater().inflate(R.menu.encounter, menu);
 			} else {
 				mTitleText.setText(R.string.app_name);
-				mTitleIcon.setVisibility(View.VISIBLE);
+				mTitleIcon.setVisibility(getThemeType().isMaterialTheme? View.GONE : View.VISIBLE);
 //				ab.setTitle(R.string.app_name);
 //				ab.setDisplayShowHomeEnabled(true);
 				
@@ -547,7 +532,6 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 	}
 	
 	public boolean onOptionsItemSelectedWithId(int id) {
-		finishMenuActionMode();
 		
 		Log.d("","Selecting menu item with id "+getResources().getResourceEntryName(id));
 		
@@ -723,7 +707,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 		case R.id.menu_help_documentation:
 			// Show the documentation html file from the original game, in a webview
 			Intent intent = new Intent(this, DocumentationActivity.class);
-			intent.putExtra("theme", getThemeType().resId);
+			intent.putExtra("theme", getThemeType());
 			startActivity(intent);
 			return true;
 
@@ -738,7 +722,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		if (mActionMode != null) {
-			switch (event.getActionMasked()) {	// NB getActionMasked() required API 8
+			switch (MotionEventCompat.getActionMasked(event)) {
 				case MotionEvent.ACTION_DOWN:
 				case MotionEvent.ACTION_POINTER_DOWN:
 					finishMenuActionMode();
@@ -755,7 +739,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 
 	@Override
 	public void onBackPressed() {
-//		if (getSupportFragmentManager().getBackStackEntryCount() > 0) super.onBackPressed();
+		if (finishMenuActionMode()) return;
 		
 		if (mGameState.recallScreens() && mBackStack.size() > 0) {
 //			setCurrentScreen(mBackStack.removeFirst());
@@ -803,7 +787,6 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 		String tag = dialog.getClass().getName();
 		Log.d("showDialogFragment()", "Showing fragment "+tag);
 		
-		
 		if (mShowingDialog) {
 			Log.d("showDialogFragment()", "Previous dialog display already in progress!");
 			if (!mDialogQueue.contains(dialog)) mDialogQueue.addFirst(dialog);
@@ -827,22 +810,28 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 		dialog.show(fm, tag);
 	}
 	
+	@Override
+	public void onSupportActionModeFinished(ActionMode mode) {
+		mActionMode = null;
+	}
+	
 	private void startMenuActionMode() {
 
+		if (mActionMode != null) {
+			return;
+		}
+		
 		if (getCurrentScreenType() == ScreenType.ENCOUNTER) getGameState().clearButtonAction();
 		
 //		final boolean showCommand = findScreenById(getCurrentScreenId()).getType().docked;
 		final boolean showCommand = getCurrentScreenType().docked;
 //		final boolean showCommand = ScreenPagerAdapter.DOCKED_SCREEN_LIST.contains(findScreenById(getCurrentScreenId()).getType());
-		
-		
 		mActionMode = startSupportActionMode(new ActionMode.Callback() {
 //			private ListPopupWindow commandDropdown;
 			
-			@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 			@Override
 			public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-				Log.d("Menu Item Click","Preparing MenuSpinnerActionProvider");
+				Log.d("Menu Item Click","Preparing Menu ActionMode");
 				// Do nothing
 				return false;
 				
@@ -852,23 +841,29 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 
 			@Override
 			public void onDestroyActionMode(ActionMode mode) {
-				Log.d("Menu Item Click","Destroying MenuSpinnerActionProvider");
+				Log.d("Menu Item Click","Destroying Menu ActionMode");
 				// Do nothing
 			}
 
-			@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 			@Override
 			public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-				Log.d("Menu Item Click","Creating MenuSpinnerActionProvider");
-				
-				final View view = LayoutInflater.from(MainActivity.this).inflate(R.layout.menu_action_mode_spinners, null);
+				Log.d("Menu Item Click","Creating Menu ActionMode");
+				Context context = getSupportActionBar().getThemedContext();
+				View view = LayoutInflater.from(context).inflate(R.layout.menu_action_mode_dropdowns, null);
 				final Button command = (Button) view.findViewById(R.id.menu_command);
 				final Button game = (Button) view.findViewById(R.id.menu_game);
 				final Button help = (Button) view.findViewById(R.id.menu_help);
 
-//				TypedValue tv = new TypedValue();
-//				TypedArray ta;
-								
+				// NB Because we're using buttons that only look like spinners, AppCompat fails to set material style backgrounds correctly
+				// so we do so manually by stealing from dummy spinners
+				command.setBackgroundDrawable(view.findViewById(R.id.menu_dummy1).getBackground());
+				game.setBackgroundDrawable(view.findViewById(R.id.menu_dummy2).getBackground());
+				help.setBackgroundDrawable(view.findViewById(R.id.menu_dummy3).getBackground());
+
+				// Remove outlines which appear in lollipop because they're being drawn for buttons and these need to look like spinners
+				removeOutline(command, game, help);
+				
+				
 				// TODO: Convert these PopupMenus to ListPopupWindows
 				if (showCommand) {			
 //					// This big commented block is a first pass at using ListPopupWindow instead of PopupMenu. It's difficult to get the dropdown to behave correctly,
@@ -881,7 +876,6 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 //							View listItem = LayoutInflater.from(parent.getContext()).inflate(R.layout.spinner_dropdown_item_actionbar, parent, false);
 //							TextView text1 = (TextView) listItem.findViewById(R.id.spinner_shortcut);
 //							text1.setText(screens[position].shortcutId);
-//							text1.setTypeface(Typeface.MONOSPACE);
 //							TextView text2 = (TextView) listItem.findViewById(R.id.spinner_text);
 //							text2.setText(screens[position].titleId);
 //							return listItem;
@@ -912,7 +906,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 ////					getTheme().resolveAttribute(R.attr.panelMenuListWidth, tv, true);
 ////					commandDropdown.setContentWidth((int) (tv.getDimension(getResources().getDisplayMetrics()) + 0.5));
 ////					commandDropdown.setContentWidth(ListPopupWindow.WRAP_CONTENT);
-////					commandDropdown.setWidth(ListPopupWindow.WRAP_CONTENT);
+//					commandDropdown.setWidth(ListPopupWindow.MATCH_PARENT);
 //					commandDropdown.setOnItemClickListener(new ListView.OnItemClickListener() {
 //
 //						@Override
@@ -935,86 +929,55 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 //							}
 //						}
 //					});
-//					command.setOnTouchListener(ListPopupWindowCompat.createDragToOpenListener(commandDropdown, command));
-//					commandDropdown.show();
-					
-					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-						initializeDropdownHoneycomb(command, R.menu.command).show();
-					} else {
-						initializeDropdownCompat(command, R.menu.command).show();
-					}
+//					command.setOnTouchListener(commandDropdown.createDragToOpenListener(command));
+//					commandDropdown.postShow();
+
+					initializeDropdown(command, R.menu.command).show();
 				} else {
 					command.setVisibility(View.GONE);
 				}
-				
-				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-					android.widget.PopupMenu gameDropdown = initializeDropdownHoneycomb(game, R.menu.game);
-					if (!getGameState().developerMode()) gameDropdown.getMenu().removeGroup(R.id.menu_group_extra);	// Dev options eg call keyboard for testing.
-					if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT && !hasWriteExternalPermission()) {
-						gameDropdown.getMenu().removeItem(R.id.menu_savegame);
-					}
-					if (!getCurrentScreenType().docked) {
-//						if (!ScreenPagerAdapter.DOCKED_SCREEN_LIST.contains(findScreenById(getCurrentScreenId()).getType())) {
-						gameDropdown.getMenu().removeItem(R.id.menu_retire);
-					}
-//					if (!showCommand) gameDropdown.show();	// TODO is this desired behavior?
-					
-					initializeDropdownHoneycomb(help, R.menu.help);
-				} else {
-					PopupMenu gameDropdown = initializeDropdownCompat(game, R.menu.game);
-					if (!getGameState().developerMode()) gameDropdown.getMenu().removeGroup(R.id.menu_group_extra);	// Dev options eg call keyboard for testing.
-					if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT && !hasWriteExternalPermission()) {
-						gameDropdown.getMenu().removeItem(R.id.menu_savegame);
-					}
-					if (!getCurrentScreenType().docked) {
-//						if (!ScreenPagerAdapter.DOCKED_SCREEN_LIST.contains(findScreenById(getCurrentScreenId()).getType())) {
-						gameDropdown.getMenu().removeItem(R.id.menu_retire);
-					}
-					
-					initializeDropdownCompat(help, R.menu.help);
-				}
-				mode.setCustomView(view);
 
+				PopupMenu gameDropdown = initializeDropdown(game, R.menu.game);
+				if (!getGameState().developerMode()) gameDropdown.getMenu().removeGroup(R.id.menu_group_extra);	// Dev options eg call keyboard for testing.
+				if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT && !hasWriteExternalPermission()) {
+					gameDropdown.getMenu().removeItem(R.id.menu_savegame);
+				}
+				if (!getCurrentScreenType().docked) {
+					gameDropdown.getMenu().removeItem(R.id.menu_retire);
+				}
+//				if (!showCommand) gameDropdown.show();	// TODO is this desired behavior?
+
+				initializeDropdown(help, R.menu.help);
+
+				mode.setCustomView(view);
+				view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.abc_fade_in));
+				
+//				MenuItem dropdowns = menu.add("");
+//				MenuItemCompat.setActionView(dropdowns, view);
+				
 				return true;
 			}
 
 			@Override
 			public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-				Log.d("Menu Item Click","Clicking MenuSpinnerActionProvider");
+				Log.d("Menu Item Click","Clicking Menu ActionMode");
 				// Do nothing
 				return false;
 			}
 		});
 	}
-
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	private android.widget.PopupMenu initializeDropdownHoneycomb(View anchor, int menuRes) {
-		final android.widget.PopupMenu dropdown = new android.widget.PopupMenu(MainActivity.this, anchor);
-//		dropdown.inflate(menuRes); // API 14
-		dropdown.getMenuInflater().inflate(menuRes, dropdown.getMenu());
-
-		// Anon inner class instead of making Activity implement both OnMenuItemClickListener interfaces so that Activity doesn't need to be tagged as API 11+.
-		dropdown.setOnMenuItemClickListener(new android.widget.PopupMenu.OnMenuItemClickListener() {
-
-			@Override
-			public boolean onMenuItemClick(MenuItem item) {
-				return MainActivity.this.onMenuItemClick(item);
+	
+	@TargetApi(Build.VERSION_CODES.LOLLIPOP)
+	private void removeOutline(View... views) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+			for (View view : views) {
+				view.setOutlineProvider(null);
 			}
-		});
-		anchor.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				dropdown.show();
-			}
-		});
-		OnTouchListener listener = PopupMenuCompat.getDragToOpenListener(dropdown);
-		if (listener != null) anchor.setOnTouchListener(listener);
-		
-		return dropdown;
+		}
 	}
 
-	private PopupMenu initializeDropdownCompat(View anchor, int menuRes) {
+	private PopupMenu initializeDropdown(Button anchor, int menuRes) {
+
 		final PopupMenu dropdown = new PopupMenu(MainActivity.this, anchor);
 		dropdown.inflate(menuRes);
 		dropdown.setOnMenuItemClickListener(MainActivity.this);
@@ -1026,10 +989,14 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 			}
 		});
 		
+		OnTouchListener listener = dropdown.getDragToOpenListener();
+		if (listener != null) anchor.setOnTouchListener(listener);
+		
 		return dropdown;
 	}
 	
 	boolean finishMenuActionMode() {
+		Log.d("Menu Item Click","Finishing Menu ActionMode");
 		if (mActionMode != null) {
 			mActionMode.finish();
 			mActionMode = null;
@@ -1478,7 +1445,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 		saveState(prefs);
 		Map<String, ?> map = prefs.getAll();
 		
-		File file = new File(getExternalFilesDir(null), SAVEFILE);	// NB getExternalFilesDir() required API 8
+		File file = new File(ActivityCompat.getExternalFilesDirs(this, null)[0], SAVEFILE);
 		try {
 			FileOutputStream fos = new FileOutputStream(file);
 			OutputStreamWriter osw = new OutputStreamWriter(fos);
@@ -1509,7 +1476,7 @@ public class MainActivity extends ActionBarActivity implements /*OnNavigationLis
 		}
 		
 		SharedPreferences prefs = getSharedPreferences(mCurrentGame, MODE_PRIVATE);
-		File file = new File(getExternalFilesDir(null), SAVEFILE);	// NB getExternalFilesDir() required API 8
+		File file = new File(ActivityCompat.getExternalFilesDirs(this, null)[0], SAVEFILE);
 		
 		try {
 			SharedPreferences.Editor editor = prefs.edit();

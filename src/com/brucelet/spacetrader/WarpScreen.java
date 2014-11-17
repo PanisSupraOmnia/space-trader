@@ -23,6 +23,7 @@ package com.brucelet.spacetrader;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Bundle;
+import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -104,7 +105,7 @@ public class WarpScreen extends BaseScreen {
 
 		@Override
 		public boolean onTouchEvent(MotionEvent event) {
-			switch (event.getActionMasked()) {	// NB getActionMasked() required API 8
+			switch (MotionEventCompat.getActionMasked(event)) {
 			case MotionEvent.ACTION_DOWN:
 			case MotionEvent.ACTION_POINTER_DOWN:
 				return mFragment.getGameState().warpFormHandleEvent(event.getX(), event.getY());

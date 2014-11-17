@@ -21,6 +21,8 @@
 package com.brucelet.spacetrader;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 
 public class HelpDialog extends BaseDialog {
 
@@ -35,9 +37,9 @@ public class HelpDialog extends BaseDialog {
 	public HelpDialog() {}
 
 	@Override
-	public void onBuildDialog(Builder builder) {
+	public final void onBuildDialog(Builder builder, LayoutInflater inflater, ViewGroup parent) {
 		int resId = getArguments().getInt("resId");
-		getGameState().buildHelpDialog(resId, builder);
+		getGameState().buildHelpDialog(resId, builder, inflater, parent);
 	}
 	
 	public int getHelpTextResId() {

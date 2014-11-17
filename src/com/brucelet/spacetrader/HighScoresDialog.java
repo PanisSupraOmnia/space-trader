@@ -24,6 +24,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+
 public class HighScoresDialog extends BaseDialog {
 	public static final List<Integer> NAME_IDS;
 	static {
@@ -57,7 +60,7 @@ public class HighScoresDialog extends BaseDialog {
 	public HighScoresDialog() {}
 	
 	@Override
-	public void onBuildDialog(Builder builder) {
+	public final void onBuildDialog(Builder builder, LayoutInflater inflater, ViewGroup parent) {
 		builder.setTitle(R.string.dialog_highscores_title);
 		builder.setView(R.layout.dialog_highscores);
 		builder.setPositiveButton(R.string.generic_ok);
