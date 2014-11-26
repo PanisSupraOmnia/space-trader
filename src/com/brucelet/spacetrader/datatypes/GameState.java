@@ -325,7 +325,6 @@ public class GameState {
 	private static final int MAXSHIELDTYPE = Shield.buyableValues().length;
 	private static final int MAXGADGETTYPE = Gadget.buyableValues().length;
 	private static final int MAXRANGE = 20;
-	
 
 	private final Paint chartStroke = new Paint();
 	private final Paint chartText = new Paint();
@@ -2976,11 +2975,12 @@ public class GameState {
 		screen.setViewVisibilityById(R.id.screen_encounter_continuous_ticker, autoAttack || autoFlee);
 		if (autoAttack || autoFlee)
 		{
+			boolean l = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
 			attackIconStatus = !attackIconStatus;
 			if (attackIconStatus)
-				((ImageView) screen.getView().findViewById(R.id.screen_encounter_continuous_ticker)).setImageResource(R.drawable.continuous0);
+				((ImageView) screen.getView().findViewById(R.id.screen_encounter_continuous_ticker)).setImageResource(l? R.drawable.continuous0l : R.drawable.continuous0);
 			else
-				((ImageView) screen.getView().findViewById(R.id.screen_encounter_continuous_ticker)).setImageResource(R.drawable.continuous1);
+				((ImageView) screen.getView().findViewById(R.id.screen_encounter_continuous_ticker)).setImageResource(l? R.drawable.continuous1l : R.drawable.continuous1);
 		}
 		
 		// NB We treat surrender button differently from others because it's wider, so it gets a special layout.
@@ -3080,8 +3080,12 @@ public class GameState {
 		{
 			ImageView shipView = (ImageView) screen.getView().findViewById(shipViewId);
 			
-			// Rotation of the enemy ship (NB not in original; handled through xml in API 11+)
-			if (!commandersShip && Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
+			// Rotation of the enemy ship (NB not in original)
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+				shipRotationHoneycomb(shipView, commandersShip);
+			}
+			else if (!commandersShip)
+			{
 				
 				// Attempt to calculate how much the image is already scaled by the xml.
 				float l = shipView.getLeft();
@@ -3137,6 +3141,14 @@ public class GameState {
 				((ImageView) screen.getView().findViewById(R.id.screen_encounter_icon)).setImageResource(iconId);
 
 			}
+		}
+	}
+	
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	private void shipRotationHoneycomb(View shipView, boolean commandersShip) {
+		
+		if (!commandersShip ^ isRtl()) {
+			shipView.setRotation(180);
 		}
 	}
 
@@ -8256,6 +8268,7 @@ public class GameState {
 	// Determine next system withing range
 	// *************************************************************************
 	public SolarSystem nextSystemWithinRange( SolarSystem current, boolean back) {
+		
 		int i;
 		for (i = 0; i < solarSystem.length; i++) {
 			if (solarSystem[i] == current) break;
@@ -10590,9 +10603,10 @@ public class GameState {
 		final float ARROW_WIDTH = 1f;
 		final float ARROW_LENGTH = 6.25f;
 		
-		final Drawable defaultDrawable = getResources().getDrawable(R.drawable.warpsystem);
-		final Drawable visitedDrawable = getResources().getDrawable(R.drawable.warpsystemv);
-		final Drawable wormholeDrawable = getResources().getDrawable(R.drawable.warpsystemw);
+		boolean l = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
+		final Drawable defaultDrawable = getResources().getDrawable(l? R.drawable.warpsysteml : R.drawable.warpsystem);
+		final Drawable visitedDrawable = getResources().getDrawable(l? R.drawable.warpsystemvl : R.drawable.warpsystemv);
+		final Drawable wormholeDrawable = getResources().getDrawable(l? R.drawable.warpsystemwl : R.drawable.warpsystemw);
 		
 		initializePaints();
 
@@ -10832,9 +10846,10 @@ public class GameState {
 		final float WORMHOLE_OFFSET = 2f;
 		
 		// NB now caching these ahead of time to see if it helps occasional graphical glitches
-		final Drawable defaultDrawable = getResources().getDrawable(R.drawable.chartsystem);
-		final Drawable visitedDrawable = getResources().getDrawable(R.drawable.chartsystemv);
-		final Drawable wormholeDrawable = getResources().getDrawable(R.drawable.chartsystemw);
+		boolean l = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
+		final Drawable defaultDrawable = getResources().getDrawable(l? R.drawable.chartsysteml : R.drawable.chartsystem);
+		final Drawable visitedDrawable = getResources().getDrawable(l? R.drawable.chartsystemvl : R.drawable.chartsystemv);
+		final Drawable wormholeDrawable = getResources().getDrawable(l? R.drawable.chartsystemwl : R.drawable.chartsystemw);
 		
 		initializePaints();
 
@@ -11739,6 +11754,12 @@ public class GameState {
 			next = prev = warpSystem;
 		}
 		adapter.setSystems(warpSystem, prev, next);
+	}
+	
+
+	@TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+	private boolean isRtl() {
+		return Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
 	}
 
 }

@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="ActivityTheme.Base.Material.Light" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+    <style name="ActivityTheme.Base.Material.Light" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="actionBarTitleBackground">?selectableItemBackground</item>
+        <item name="statusBarPadding">0dp</item>
+        <item name="android:dialogTheme">@style/DialogTheme.Material.Light</item>
+    </style>
+
+    <style name="ActivityTheme.Base.Material.Dark" parent="Theme.AppCompat">
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="actionBarTitleBackground">?selectableItemBackground</item>
+        <item name="statusBarPadding">0dp</item>
+        <item name="android:dialogTheme">@style/DialogTheme.Material.Dark</item>
+    </style>
+    
+    <style name="ActionModeCloseButtonStyle.Base.Material.Light" parent="ActionModeCloseButtonStyle.Base.Material">
+        <item name="android:background">@drawable/item_background_borderless_material_light</item>
     </style>
     
     <style name="EditText.Material" parent="@style/Widget.AppCompat.EditText">

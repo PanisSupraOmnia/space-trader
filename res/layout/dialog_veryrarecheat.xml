@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="left"
+    android:gravity="start"
     android:orientation="vertical"
     android:paddingBottom="8dip"
     android:paddingLeft="8dip"
@@ -69,7 +69,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="right"
+            android:gravity="end"
             android:text="@string/dialog_veryrarecheat_chances_encounter" />
 
         <EditText
@@ -91,7 +91,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="right"
+            android:gravity="end"
             android:text="@string/dialog_veryrarecheat_chances_trade" />
 
         <EditText

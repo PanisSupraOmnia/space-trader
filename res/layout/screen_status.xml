@@ -8,13 +8,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start"
         android:orientation="vertical" >
 
         <Button
             android:id="@+id/screen_status_cheat"
             style="?attr/buttonStyleRounded" android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
             android:text="@string/screen_status_cheat" />
 
@@ -216,7 +217,7 @@
         android:id="@+id/screen_status_buttons"
         style="@style/ScreenRow"
         android:layout_below="@id/spacer"
-        android:gravity="left" >
+        android:gravity="start" >
 
         <Button
             android:id="@+id/screen_status_quests_button"

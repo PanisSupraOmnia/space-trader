@@ -32,7 +32,7 @@
             android:layout_toLeftOf="@id/alertHelp"
             android:layout_toStartOf="@id/alertHelp"
             android:ellipsize="end"
-            android:gravity="left|center_vertical"
+            android:gravity="start|center_vertical"
             android:singleLine="true"
             android:textAppearance="?attr/dialogTitleTextStyle" />
     </RelativeLayout>

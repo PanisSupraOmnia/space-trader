@@ -105,7 +105,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="left"
+            android:gravity="start"
             android:orientation="vertical" >
 
             <CheckBox android:textAppearance="?android:textAppearanceMedium"
@@ -136,7 +136,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="left"
+            android:gravity="start"
             android:orientation="vertical" >
 
             <CheckBox android:textAppearance="?android:textAppearanceMedium"

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:orientation="horizontal" >
+    android:orientation="horizontal">
 
     <Button
         android:id="@+id/menu_command"
@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:singleLine="true"
         android:text="@string/menu_command"
-        android:textAppearance="?attr/actionBarTitleTextStyle" />
+        android:textAppearance="?attr/actionModeSpinnerTextStyle" />
 
     <Button
         android:id="@+id/menu_game"
@@ -20,7 +20,7 @@
         android:layout_height="match_parent"
         android:singleLine="true"
         android:text="@string/menu_game"
-        android:textAppearance="?attr/actionBarTitleTextStyle" />
+        android:textAppearance="?attr/actionModeSpinnerTextStyle" />
 
     <Button
         android:id="@+id/menu_help"
@@ -29,7 +29,7 @@
         android:layout_height="match_parent"
         android:singleLine="true"
         android:text="@string/menu_help"
-        android:textAppearance="?attr/actionBarTitleTextStyle" />
+        android:textAppearance="?attr/actionModeSpinnerTextStyle" />
 
     <!-- These dummy spinners are used to get the correct background in material themes since we can't access the default spinner style. -->
     <Spinner

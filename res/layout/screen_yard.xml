@@ -9,14 +9,14 @@
     <TextView  
         android:id="@+id/screen_yard_range"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:gravity="left" />
+        android:layout_gravity="start"
+        android:gravity="start" />
     
     <TextView
         android:id="@+id/screen_yard_tank"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:gravity="left"
+        android:layout_gravity="start"
+        android:gravity="start"
         android:text="@string/screen_yard_tank" />
     
     <LinearLayout
@@ -35,15 +35,15 @@
     <TextView
         android:id="@+id/screen_yard_hull"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:gravity="left"
+        android:layout_gravity="start"
+        android:gravity="start"
         android:text="@string/screen_yard_hull" />
     
     <TextView
         android:id="@+id/screen_yard_repair"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:gravity="left"
+        android:layout_gravity="start"
+        android:gravity="start"
         android:text="@string/screen_yard_repair" />
     
     <LinearLayout style="@style/ScreenRow" >
@@ -62,36 +62,36 @@
     <TextView
         android:id="@+id/screen_yard_ships"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:gravity="left"
+        android:layout_gravity="start"
+        android:gravity="start"
         android:text="@string/screen_yard_ships" />
 
     <Button
         android:id="@+id/screen_yard_shipsbutton"
         style="?attr/buttonStyleRounded" android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:gravity="left"
+        android:layout_gravity="start"
+        android:gravity="start"
         android:text="@string/screen_yard_shipsbutton" />
     
     <TextView
         android:id="@+id/screen_yard_buypod"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:gravity="left"
+        android:layout_gravity="start"
+        android:gravity="start"
         android:text="@string/screen_yard_buypod" />
 
     <Button
         android:id="@+id/screen_yard_podbutton"
         style="?attr/buttonStyleRounded" android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:gravity="left"
+        android:layout_gravity="start"
+        android:gravity="start"
         android:text="@string/screen_yard_podbutton" />
     
     <TextView
         android:id="@+id/screen_yard_credits"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:gravity="right"
+        android:layout_gravity="end"
+        android:gravity="end"
         android:text="@string/format_cash" />
         
 </LinearLayout>

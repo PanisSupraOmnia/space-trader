@@ -8,8 +8,8 @@
 
     <TextView
         style="?attr/textViewStyleHeader" android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:gravity="left"
+        android:layout_gravity="start"
+        android:gravity="start"
         android:text="@string/screen_bank_loan" />
 
     <LinearLayout style="@style/ScreenRow" >
@@ -59,8 +59,8 @@
 
     <TextView
         style="?attr/textViewStyleHeader" android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:gravity="left"
+        android:layout_gravity="start"
+        android:gravity="start"
         android:text="@string/screen_bank_ins" />
 
     <LinearLayout style="@style/ScreenRow" >
@@ -114,15 +114,15 @@
     <Button
         android:id="@+id/screen_bank_ins_buy"
         style="?attr/buttonStyleRounded" android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:gravity="left"
+        android:layout_gravity="start"
+        android:gravity="start"
         android:text="@string/screen_bank_ins_buy" />
 
     <TextView
         android:id="@+id/screen_bank_credits"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:gravity="right"
+        android:layout_gravity="end"
+        android:gravity="end"
         android:text="@string/format_cash" />
 
 </LinearLayout>

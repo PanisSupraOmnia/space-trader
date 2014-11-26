@@ -331,6 +331,10 @@ android.support.v4.app.NotificationCompat$Action$WearableExtender
 android.support.v4.app.NotificationCompat$BigPictureStyle
 android.support.v4.app.NotificationCompat$BigTextStyle
 android.support.v4.app.NotificationCompat$Builder
+android.support.v4.app.NotificationCompat$CarExtender
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation$1
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation$Builder
 android.support.v4.app.NotificationCompat$Extender
 android.support.v4.app.NotificationCompat$InboxStyle
 android.support.v4.app.NotificationCompat$NotificationCompatImpl
@@ -351,6 +355,8 @@ android.support.v4.app.NotificationCompatApi21$Builder
 android.support.v4.app.NotificationCompatBase
 android.support.v4.app.NotificationCompatBase$Action
 android.support.v4.app.NotificationCompatBase$Action$Factory
+android.support.v4.app.NotificationCompatBase$UnreadConversation
+android.support.v4.app.NotificationCompatBase$UnreadConversation$Factory
 android.support.v4.app.NotificationCompatExtras
 android.support.v4.app.NotificationCompatGingerbread
 android.support.v4.app.NotificationCompatHoneycomb
@@ -558,10 +564,6 @@ android.support.v4.internal.view.SupportMenuItem:
     public static final int SHOW_AS_ACTION_ALWAYS
     public static final int SHOW_AS_ACTION_WITH_TEXT
     public static final int SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW
-    public abstract android.view.MenuItem setShowAsActionFlags(int)
-    public abstract android.support.v4.view.ActionProvider getSupportActionProvider()
-    public abstract boolean collapseActionView()
-    public abstract android.support.v4.internal.view.SupportMenuItem setSupportOnActionExpandListener(android.support.v4.view.MenuItemCompat$OnActionExpandListener)
 android.support.v4.media.MediaMetadataCompat:
     private static final java.lang.String TAG
     public static final java.lang.String METADATA_KEY_TITLE
@@ -897,7 +899,8 @@ android.support.v4.view.AccessibilityDelegateCompatJellyBean:
     30:32:AccessibilityDelegateCompatJellyBean()
 android.support.v4.view.ActionProvider:
     private static final java.lang.String TAG
-    78:80:public ActionProvider(android.content.Context)
+    86:86:public android.content.Context getContext()
+    145:148:public void refreshVisibility()
     217:220:public void subUiVisibilityChanged(boolean)
 android.support.v4.view.ActionProvider$SubUiVisibilityListener:
     public abstract void onSubUiVisibilityChanged(boolean)
@@ -2178,45 +2181,46 @@ android.support.v4.widget.DrawerLayout:
     private static final float TOUCH_SLOP_SENSITIVITY
     private java.lang.CharSequence mTitleLeft
     private java.lang.CharSequence mTitleRight
-    311:312:public DrawerLayout(android.content.Context)
-    315:316:public DrawerLayout(android.content.Context,android.util.AttributeSet)
-    319:349:public DrawerLayout(android.content.Context,android.util.AttributeSet,int)
-    357:361:public void setChildInsets(java.lang.Object,boolean)
-    377:387:public void setDrawerShadow(android.graphics.drawable.Drawable,int)
-    397:398:public void setDrawerShadow(int,int)
-    506:512:public void setDrawerLockMode(int,android.view.View)
-    523:530:public int getDrawerLockMode(int)
-    562:569:public void setDrawerTitle(int,java.lang.CharSequence)
-    581:588:public java.lang.CharSequence getDrawerTitle(int)
-    725:734:void moveDrawerToOffset(android.view.View,float)
-    1292:1298:public void openDrawer(int)
-    1332:1338:public void closeDrawer(int)
-    1351:1354:public boolean isDrawerOpen(android.view.View)
-    1367:1371:public boolean isDrawerOpen(int)
-    1398:1402:public boolean isDrawerVisible(int)
-    1457:1468:void cancelChildViewTouch()
-    86:86:static synthetic android.view.View access$200(android.support.v4.widget.DrawerLayout)
+    314:315:public DrawerLayout(android.content.Context)
+    318:319:public DrawerLayout(android.content.Context,android.util.AttributeSet)
+    322:352:public DrawerLayout(android.content.Context,android.util.AttributeSet,int)
+    360:364:public void setChildInsets(java.lang.Object,boolean)
+    380:390:public void setDrawerShadow(android.graphics.drawable.Drawable,int)
+    400:401:public void setDrawerShadow(int,int)
+    509:515:public void setDrawerLockMode(int,android.view.View)
+    526:533:public int getDrawerLockMode(int)
+    565:572:public void setDrawerTitle(int,java.lang.CharSequence)
+    584:591:public java.lang.CharSequence getDrawerTitle(int)
+    728:737:void moveDrawerToOffset(android.view.View,float)
+    1291:1297:public void openDrawer(int)
+    1331:1337:public void closeDrawer(int)
+    1350:1353:public boolean isDrawerOpen(android.view.View)
+    1366:1370:public boolean isDrawerOpen(int)
+    1397:1401:public boolean isDrawerVisible(int)
+    1456:1467:void cancelChildViewTouch()
+    86:86:static synthetic boolean access$200()
+    86:86:static synthetic android.view.View access$300(android.support.v4.widget.DrawerLayout)
 android.support.v4.widget.DrawerLayout$AccessibilityDelegate
 android.support.v4.widget.DrawerLayout$ChildAccessibilityDelegate:
     final synthetic android.support.v4.widget.DrawerLayout this$0
-    1907:1907:DrawerLayout$ChildAccessibilityDelegate(android.support.v4.widget.DrawerLayout)
+    1909:1909:DrawerLayout$ChildAccessibilityDelegate(android.support.v4.widget.DrawerLayout)
 android.support.v4.widget.DrawerLayout$DrawerLayoutCompatImpl:
     public abstract void configureApplyInsets(android.view.View)
 android.support.v4.widget.DrawerLayout$DrawerLayoutCompatImplApi21:
-    283:284:public void configureApplyInsets(android.view.View)
+    286:287:public void configureApplyInsets(android.view.View)
 android.support.v4.widget.DrawerLayout$DrawerLayoutCompatImplBase:
-    266:266:public void configureApplyInsets(android.view.View)
+    269:269:public void configureApplyInsets(android.view.View)
 android.support.v4.widget.DrawerLayout$EdgeGravity
 android.support.v4.widget.DrawerLayout$LayoutParams:
-    1786:1788:public DrawerLayout$LayoutParams(int,int,int)
+    1781:1783:public DrawerLayout$LayoutParams(int,int,int)
 android.support.v4.widget.DrawerLayout$LockMode
 android.support.v4.widget.DrawerLayout$SimpleDrawerListener
 android.support.v4.widget.DrawerLayout$State
 android.support.v4.widget.DrawerLayout$ViewDragCallback:
-    1610:1612:public DrawerLayout$ViewDragCallback(android.support.v4.widget.DrawerLayout,int)
-    1615:1616:public void setDragger(android.support.v4.widget.ViewDragHelper)
-    1695:1717:private void peekDrawer()
-    1600:1600:static synthetic void access$000(android.support.v4.widget.DrawerLayout$ViewDragCallback)
+    1605:1607:public DrawerLayout$ViewDragCallback(android.support.v4.widget.DrawerLayout,int)
+    1610:1611:public void setDragger(android.support.v4.widget.ViewDragHelper)
+    1690:1712:private void peekDrawer()
+    1595:1595:static synthetic void access$000(android.support.v4.widget.DrawerLayout$ViewDragCallback)
 android.support.v4.widget.DrawerLayout$ViewDragCallback$1
 android.support.v4.widget.DrawerLayoutCompatApi21:
     28:69:DrawerLayoutCompatApi21()
@@ -2246,8 +2250,6 @@ android.support.v4.widget.MaterialProgressDrawable
 android.support.v4.widget.MaterialProgressDrawable$1
 android.support.v4.widget.MaterialProgressDrawable$2
 android.support.v4.widget.MaterialProgressDrawable$3
-android.support.v4.widget.MaterialProgressDrawable$4
-android.support.v4.widget.MaterialProgressDrawable$5
 android.support.v4.widget.MaterialProgressDrawable$EndCurveInterpolator
 android.support.v4.widget.MaterialProgressDrawable$ProgressDrawableSize
 android.support.v4.widget.MaterialProgressDrawable$Ring
@@ -2506,34 +2508,30 @@ android.support.v7.app.ActionBarActivityDelegate:
     abstract void setSupportProgressBarIndeterminateVisibility(boolean)
     abstract void setSupportProgressBarIndeterminate(boolean)
     abstract void setSupportProgress(int)
-    218:218:final android.support.v4.app.ActionBarDrawerToggle$Delegate getDrawerToggleDelegate()
-    222:222:final android.support.v7.app.ActionBarDrawerToggle$Delegate getV7DrawerToggleDelegate()
+    228:228:final android.support.v4.app.ActionBarDrawerToggle$Delegate getDrawerToggleDelegate()
+    232:232:final android.support.v7.app.ActionBarDrawerToggle$Delegate getV7DrawerToggleDelegate()
     abstract int getHomeAsUpIndicatorAttrId()
-    231:243:final java.lang.String getUiOptionsFromMetadata()
+    241:253:final java.lang.String getUiOptionsFromMetadata()
 android.support.v7.app.ActionBarActivityDelegate$ActionBarDrawableToggleImpl
 android.support.v7.app.ActionBarActivityDelegateBase:
     private static final java.lang.String TAG
-    437:454:public boolean supportRequestWindowFeature(int)
-    686:688:void setSupportProgressBarVisibility(boolean)
-    692:694:void setSupportProgressBarIndeterminateVisibility(boolean)
-    698:700:void setSupportProgressBarIndeterminate(boolean)
-    704:705:void setSupportProgress(int)
-    709:709:int getHomeAsUpIndicatorAttrId()
-    775:811:private void updateProgressBars(int)
-    814:821:private void openPanel(int,android.view.KeyEvent)
-    920:927:private void showProgressBars(android.support.v7.internal.widget.ProgressBarCompat,android.support.v7.internal.widget.ProgressBarCompat)
-    931:937:private void hideProgressBars(android.support.v7.internal.widget.ProgressBarCompat,android.support.v7.internal.widget.ProgressBarCompat)
-    940:944:private android.support.v7.internal.widget.ProgressBarCompat getCircularProgressBar()
-    948:952:private android.support.v7.internal.widget.ProgressBarCompat getHorizontalProgressBar()
+    437:460:public boolean supportRequestWindowFeature(int)
+    692:692:void setSupportProgressBarVisibility(boolean)
+    697:697:void setSupportProgressBarIndeterminateVisibility(boolean)
+    702:702:void setSupportProgressBarIndeterminate(boolean)
+    707:707:void setSupportProgress(int)
+    711:711:int getHomeAsUpIndicatorAttrId()
+    774:781:private void openPanel(int,android.view.KeyEvent)
+    1280:1284:private void throwFeatureRequestIfSubDecorInstalled()
 android.support.v7.app.ActionBarActivityDelegateBase$PanelFeatureState:
     boolean wasLastOpen
     android.os.Bundle frozenMenuState
-    1518:1522:public void clearMenuPresenters()
-    1577:1586:android.os.Parcelable onSaveInstanceState()
-    1590:1597:void onRestoreInstanceState(android.os.Parcelable)
-    1600:1604:void applyFrozenState()
+    1448:1452:public void clearMenuPresenters()
+    1507:1516:android.os.Parcelable onSaveInstanceState()
+    1520:1527:void onRestoreInstanceState(android.os.Parcelable)
+    1530:1534:void applyFrozenState()
 android.support.v7.app.ActionBarActivityDelegateBase$PanelFeatureState$SavedState:
-    1606:1606:synthetic ActionBarActivityDelegateBase$PanelFeatureState$SavedState(android.support.v7.app.ActionBarActivityDelegateBase$1)
+    1536:1536:synthetic ActionBarActivityDelegateBase$PanelFeatureState$SavedState(android.support.v7.app.ActionBarActivityDelegateBase$1)
 android.support.v7.app.ActionBarDrawerToggle
 android.support.v7.app.ActionBarDrawerToggle$1
 android.support.v7.app.ActionBarDrawerToggle$Delegate
@@ -2562,13 +2560,13 @@ android.support.v7.appcompat.R$dimen:
 android.support.v7.appcompat.R$drawable:
     302:302:public R$drawable()
 android.support.v7.appcompat.R$id:
-    355:355:public R$id()
+    356:356:public R$id()
 android.support.v7.appcompat.R$integer:
-    422:422:public R$integer()
+    421:421:public R$integer()
 android.support.v7.appcompat.R$layout:
-    425:425:public R$layout()
+    424:424:public R$layout()
 android.support.v7.appcompat.R$string:
-    451:451:public R$string()
+    450:450:public R$string()
 android.support.v7.appcompat.R$style:
     468:468:public R$style()
 android.support.v7.appcompat.R$styleable:
@@ -2686,7 +2684,6 @@ android.support.v7.internal.app.WindowDecorActionBar:
     1347:1350:android.support.v7.internal.widget.TintManager getTintManager()
     75:75:static synthetic android.support.v7.internal.widget.ScrollingTabContainerView access$1300(android.support.v7.internal.app.WindowDecorActionBar)
 android.support.v7.internal.app.WindowDecorActionBar$ActionModeImpl:
-    960:960:public android.view.MenuInflater getMenuInflater()
     1079:1079:public void onCloseMenu(android.support.v7.internal.view.menu.MenuBuilder,boolean)
     1082:1091:public boolean onSubMenuSelected(android.support.v7.internal.view.menu.SubMenuBuilder)
     1095:1095:public void onCloseSubMenu(android.support.v7.internal.view.menu.SubMenuBuilder)
@@ -2696,7 +2693,6 @@ android.support.v7.internal.transition.ActionBarTransition:
     private static final int TRANSITION_DURATION
     25:25:public ActionBarTransition()
 android.support.v7.internal.view.StandaloneActionMode:
-    133:133:public android.view.MenuInflater getMenuInflater()
     141:141:public void onCloseMenu(android.support.v7.internal.view.menu.MenuBuilder,boolean)
     144:149:public boolean onSubMenuSelected(android.support.v7.internal.view.menu.SubMenuBuilder)
     153:153:public void onCloseSubMenu(android.support.v7.internal.view.menu.SubMenuBuilder)
@@ -2725,8 +2721,6 @@ android.support.v7.internal.view.menu.ActionMenuItem:
     private static final int ENABLED
     148:149:public android.support.v7.internal.view.menu.ActionMenuItem setExclusiveCheckable(boolean)
     216:225:public boolean invoke()
-    257:257:public android.support.v4.view.ActionProvider getSupportActionProvider()
-    294:294:public android.support.v4.internal.view.SupportMenuItem setSupportOnActionExpandListener(android.support.v4.view.MenuItemCompat$OnActionExpandListener)
 android.support.v7.internal.view.menu.ActionMenuItemView:
     private static final java.lang.String TAG
     private static final int MAX_ICON_SIZE
@@ -2780,20 +2774,19 @@ android.support.v7.internal.view.menu.MenuItemImpl:
     private static final int ENABLED
     private static final int IS_ACTION
     static final int NO_ICON
-    227:227:java.lang.Runnable getCallback()
-    231:232:public android.view.MenuItem setCallback(java.lang.Runnable)
-    703:704:public android.support.v4.internal.view.SupportMenuItem setSupportOnActionExpandListener(android.support.v4.view.MenuItemCompat$OnActionExpandListener)
+    228:228:java.lang.Runnable getCallback()
+    232:233:public android.view.MenuItem setCallback(java.lang.Runnable)
 android.support.v7.internal.view.menu.MenuItemWrapperICS:
     static final java.lang.String LOG_TAG
-    308:310:public android.support.v4.internal.view.SupportMenuItem setSupportOnActionExpandListener(android.support.v4.view.MenuItemCompat$OnActionExpandListener)
-android.support.v7.internal.view.menu.MenuItemWrapperICS$OnActionExpandListenerWrapper
+android.support.v7.internal.view.menu.MenuItemWrapperJB$ActionProviderWrapperJB:
+    68:69:public void refreshVisibility()
 android.support.v7.internal.view.menu.MenuPopupHelper:
     private static final java.lang.String TAG
-    79:80:public MenuPopupHelper(android.content.Context,android.support.v7.internal.view.menu.MenuBuilder)
-    246:246:public android.support.v7.internal.view.menu.MenuView getMenuView(android.view.ViewGroup)
-    316:316:public int getId()
-    321:321:public android.os.Parcelable onSaveInstanceState()
-    326:326:public void onRestoreInstanceState(android.os.Parcelable)
+    80:81:public MenuPopupHelper(android.content.Context,android.support.v7.internal.view.menu.MenuBuilder)
+    253:253:public android.support.v7.internal.view.menu.MenuView getMenuView(android.view.ViewGroup)
+    323:323:public int getId()
+    328:328:public android.os.Parcelable onSaveInstanceState()
+    333:333:public void onRestoreInstanceState(android.os.Parcelable)
 android.support.v7.internal.view.menu.MenuPresenter:
     public abstract android.support.v7.internal.view.menu.MenuView getMenuView(android.view.ViewGroup)
     public abstract void setCallback(android.support.v7.internal.view.menu.MenuPresenter$Callback)
@@ -2811,13 +2804,11 @@ android.support.v7.internal.view.menu.MenuView$ItemView:
     public abstract void setIcon(android.graphics.drawable.Drawable)
     public abstract boolean showsIcon()
 android.support.v7.internal.view.menu.MenuWrapperFactory:
-    30:31:private MenuWrapperFactory()
-    50:53:public static android.support.v4.internal.view.SupportMenu createSupportMenuWrapper(android.view.Menu)
+    32:33:private MenuWrapperFactory()
 android.support.v7.internal.view.menu.SubMenuBuilder:
     56:57:public void setShortcutsVisible(boolean)
 android.support.v7.internal.view.menu.SubMenuWrapperICS:
-    32:32:public android.view.SubMenu getWrappedObject()
-    25:25:public bridge synthetic java.lang.Object getWrappedObject()
+    30:30:public bridge synthetic java.lang.Object getWrappedObject()
 android.support.v7.internal.widget.AbsActionBarView:
     private static final int FADE_DURATION
     184:189:public void postShowOverflowMenu()
@@ -2933,18 +2924,6 @@ android.support.v7.internal.widget.ListViewCompat:
     57:58:public ListViewCompat(android.content.Context)
     61:62:public ListViewCompat(android.content.Context,android.util.AttributeSet)
     137:164:public int lookForSelectablePosition(int,boolean)
-android.support.v7.internal.widget.ProgressBarCompat:
-    private static final int MAX_LEVEL
-    private static final int ANIMATION_RESOLUTION
-    android.graphics.Bitmap mSampleTile
-    110:156:public ProgressBarCompat(android.content.Context,android.util.AttributeSet,int,int)
-    164:199:private android.graphics.drawable.Drawable tileify(android.graphics.drawable.Drawable,boolean)
-    213:227:private android.graphics.drawable.Drawable tileifyIndeterminate(android.graphics.drawable.Drawable)
-    243:254:private void initProgressBar()
-    262:262:public synchronized boolean isIndeterminate()
-    596:597:public final synchronized void incrementProgressBy(int)
-    607:608:public final synchronized void incrementSecondaryProgressBy(int)
-    658:659:public void setInterpolator(android.content.Context,int)
 android.support.v7.internal.widget.RtlSpacingHelper:
     public static final int UNDEFINED
 android.support.v7.internal.widget.ScrollingTabContainerView:
@@ -3018,7 +2997,7 @@ android.support.v7.internal.widget.TintManager:
 android.support.v7.internal.widget.TintRadioButton:
     38:39:public TintRadioButton(android.content.Context)
 android.support.v7.internal.widget.TintSpinner:
-    38:39:public TintSpinner(android.content.Context)
+    42:43:public TintSpinner(android.content.Context)
 android.support.v7.internal.widget.TintTypedArray:
     43:44:public static android.support.v7.internal.widget.TintTypedArray obtainStyledAttributes(android.content.Context,android.util.AttributeSet,int[])
     73:73:public int getIndexCount()
@@ -3061,7 +3040,6 @@ android.support.v7.internal.widget.ViewUtils:
     private static final java.lang.String TAG
     50:50:private ViewUtils()
 android.support.v7.view.ActionMode:
-    public abstract android.view.MenuInflater getMenuInflater()
     220:220:public boolean isUiFocusable()
 android.support.v7.widget.ActionMenuPresenter:
     private static final java.lang.String TAG
@@ -3107,44 +3085,44 @@ android.support.v7.widget.ListPopupWindow:
     public static final int INPUT_METHOD_NEEDED
     public static final int INPUT_METHOD_NOT_NEEDED
     203:204:public ListPopupWindow(android.content.Context,android.util.AttributeSet)
-    278:278:public int getPromptPosition()
-    301:301:public boolean isModal()
-    312:313:public void setForceIgnoreOutsideTouch(boolean)
-    327:328:public void setDropDownAlwaysVisible(boolean)
-    336:336:public boolean isDropDownAlwaysVisible()
-    350:351:public void setSoftInputMode(int)
-    360:360:public int getSoftInputMode()
-    369:370:public void setListSelector(android.graphics.drawable.Drawable)
-    394:395:public void setAnimationStyle(int)
-    403:403:public int getAnimationStyle()
-    429:429:public int getHorizontalOffset()
-    438:439:public void setHorizontalOffset(int)
-    445:448:public int getVerticalOffset()
-    457:459:public void setVerticalOffset(int)
-    475:475:public int getWidth()
-    508:508:public int getHeight()
-    517:518:public void setHeight(int)
-    539:540:public void setOnItemSelectedListener(android.widget.AdapterView$OnItemSelectedListener)
-    549:557:public void setPromptView(android.view.View)
-    563:564:public void postShow()
-    706:706:public int getInputMethodMode()
-    716:727:public void setSelection(int)
-    766:775:public boolean performItemClick(int)
-    782:785:public java.lang.Object getSelectedItem()
-    795:798:public int getSelectedItemPosition()
-    808:811:public long getSelectedItemId()
-    821:824:public android.view.View getSelectedView()
-    842:843:void setListItemExpandMax(int)
-    857:937:public boolean onKeyDown(int,android.view.KeyEvent)
-    951:960:public boolean onKeyUp(int,android.view.KeyEvent)
-    975:996:public boolean onKeyPreIme(int,android.view.KeyEvent)
-    1020:1020:public android.view.View$OnTouchListener createDragToOpenListener(android.view.View)
-    1752:1752:private static boolean isConfirmKey(int)
+    291:291:public int getPromptPosition()
+    314:314:public boolean isModal()
+    325:326:public void setForceIgnoreOutsideTouch(boolean)
+    340:341:public void setDropDownAlwaysVisible(boolean)
+    349:349:public boolean isDropDownAlwaysVisible()
+    363:364:public void setSoftInputMode(int)
+    373:373:public int getSoftInputMode()
+    382:383:public void setListSelector(android.graphics.drawable.Drawable)
+    407:408:public void setAnimationStyle(int)
+    416:416:public int getAnimationStyle()
+    442:442:public int getHorizontalOffset()
+    451:452:public void setHorizontalOffset(int)
+    458:461:public int getVerticalOffset()
+    470:472:public void setVerticalOffset(int)
+    488:488:public int getWidth()
+    521:521:public int getHeight()
+    530:531:public void setHeight(int)
+    552:553:public void setOnItemSelectedListener(android.widget.AdapterView$OnItemSelectedListener)
+    562:570:public void setPromptView(android.view.View)
+    576:577:public void postShow()
+    719:719:public int getInputMethodMode()
+    729:740:public void setSelection(int)
+    779:788:public boolean performItemClick(int)
+    795:798:public java.lang.Object getSelectedItem()
+    808:811:public int getSelectedItemPosition()
+    821:824:public long getSelectedItemId()
+    834:837:public android.view.View getSelectedView()
+    855:856:void setListItemExpandMax(int)
+    870:950:public boolean onKeyDown(int,android.view.KeyEvent)
+    964:973:public boolean onKeyUp(int,android.view.KeyEvent)
+    988:1009:public boolean onKeyPreIme(int,android.view.KeyEvent)
+    1033:1033:public android.view.View$OnTouchListener createDragToOpenListener(android.view.View)
+    1765:1765:private static boolean isConfirmKey(int)
 android.support.v7.widget.ListPopupWindow$1:
-    1020:1020:ListPopupWindow$1(android.support.v7.widget.ListPopupWindow,android.view.View)
+    1033:1033:ListPopupWindow$1(android.support.v7.widget.ListPopupWindow,android.view.View)
 android.support.v7.widget.PopupMenu:
-    194:195:public void setOnDismissListener(android.support.v7.widget.PopupMenu$OnDismissListener)
-    235:235:public void onCloseSubMenu(android.support.v7.internal.view.menu.SubMenuBuilder)
+    219:220:public void setOnDismissListener(android.support.v7.widget.PopupMenu$OnDismissListener)
+    260:260:public void onCloseSubMenu(android.support.v7.internal.view.menu.SubMenuBuilder)
 android.support.v7.widget.SearchView:
     private static final boolean DBG
     private static final java.lang.String LOG_TAG
@@ -3235,37 +3213,37 @@ android.support.v7.widget.SuggestionsAdapter:
     static final int REFINE_BY_ENTRY
     static final int REFINE_ALL
     static final int INVALID_INDEX
-    124:124:public int getQueryRefinement()
-    172:174:public void close()
+    126:126:public int getQueryRefinement()
+    174:176:public void close()
 android.support.v7.widget.SwitchCompat
 android.support.v7.widget.SwitchCompat$1
 android.support.v7.widget.Toolbar:
     private static final java.lang.String TAG
-    413:428:public boolean isTitleTruncated()
-    1697:1697:private static boolean isCustomView(android.view.View)
+    415:430:public boolean isTitleTruncated()
+    1700:1700:private static boolean isCustomView(android.view.View)
 android.support.v7.widget.Toolbar$ExpandedActionViewMenuPresenter:
-    1891:1891:public android.support.v7.internal.view.menu.MenuView getMenuView(android.view.ViewGroup)
-    1920:1920:public void setCallback(android.support.v7.internal.view.menu.MenuPresenter$Callback)
-    1985:1985:public int getId()
-    1990:1990:public android.os.Parcelable onSaveInstanceState()
-    1995:1995:public void onRestoreInstanceState(android.os.Parcelable)
+    1894:1894:public android.support.v7.internal.view.menu.MenuView getMenuView(android.view.ViewGroup)
+    1923:1923:public void setCallback(android.support.v7.internal.view.menu.MenuPresenter$Callback)
+    1988:1988:public int getId()
+    1993:1993:public android.os.Parcelable onSaveInstanceState()
+    1998:1998:public void onRestoreInstanceState(android.os.Parcelable)
 android.support.v7.widget.Toolbar$LayoutParams:
     static final int CUSTOM
     static final int SYSTEM
     static final int EXPANDED
-    1804:1806:public Toolbar$LayoutParams(int,int,int)
-    1809:1810:public Toolbar$LayoutParams(int)
+    1807:1809:public Toolbar$LayoutParams(int,int,int)
+    1812:1813:public Toolbar$LayoutParams(int)
 com.brucelet.spacetrader.BackupAgent:
     private static final java.lang.String sTag
 com.brucelet.spacetrader.BankScreen:
     38:38:public static com.brucelet.spacetrader.BankScreen newInstance()
     75:75:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.BaseDialog:
-    236:237:public void setTitle(java.lang.CharSequence)
+    243:244:public void setTitle(java.lang.CharSequence)
 com.brucelet.spacetrader.BaseDialog$Builder:
-    564:565:public com.brucelet.spacetrader.BaseDialog$Builder setPositiveButton(java.lang.CharSequence)
-    574:575:public com.brucelet.spacetrader.BaseDialog$Builder setNeutralButton(java.lang.CharSequence)
-    584:585:public com.brucelet.spacetrader.BaseDialog$Builder setNegativeButton(java.lang.CharSequence)
+    571:572:public com.brucelet.spacetrader.BaseDialog$Builder setPositiveButton(java.lang.CharSequence)
+    581:582:public com.brucelet.spacetrader.BaseDialog$Builder setNeutralButton(java.lang.CharSequence)
+    591:592:public com.brucelet.spacetrader.BaseDialog$Builder setNegativeButton(java.lang.CharSequence)
 com.brucelet.spacetrader.BaseScreen:
     130:130:public void setAdapter(com.brucelet.spacetrader.ScreenPagerAdapter)
     public abstract com.brucelet.spacetrader.enumtypes.ScreenType getType()
@@ -3316,7 +3294,7 @@ com.brucelet.spacetrader.R$plurals
 com.brucelet.spacetrader.R$string
 com.brucelet.spacetrader.R$style
 com.brucelet.spacetrader.R$styleable:
-    5397:5397:public R$styleable()
+    5456:5456:public R$styleable()
 com.brucelet.spacetrader.ScreenPagerAdapter
 com.brucelet.spacetrader.SellEqScreen:
     133:133:public static com.brucelet.spacetrader.SellEqScreen newInstance()
@@ -3347,8 +3325,8 @@ com.brucelet.spacetrader.WarpPricesScreen:
     140:140:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
     158:158:protected int getSpacerHeight()
 com.brucelet.spacetrader.WarpScreen:
-    51:51:public static com.brucelet.spacetrader.WarpScreen newInstance()
-    130:130:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
+    52:52:public static com.brucelet.spacetrader.WarpScreen newInstance()
+    132:132:public com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.WarpSubScreen:
     protected abstract int getSpacerHeight()
     109:110:public void notifyAdapterChanged()

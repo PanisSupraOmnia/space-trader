@@ -252,7 +252,7 @@
                 android:id="@+id/screen_yard_buyship_flea_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="end"
                 android:paddingBottom="@dimen/button_padding"
                 android:paddingTop="@dimen/button_padding" />
 
@@ -260,7 +260,7 @@
                 android:id="@+id/screen_yard_buyship_gnat_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="end"
                 android:paddingBottom="@dimen/button_padding"
                 android:paddingTop="@dimen/button_padding" />
 
@@ -268,7 +268,7 @@
                 android:id="@+id/screen_yard_buyship_firefly_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="end"
                 android:paddingBottom="@dimen/button_padding"
                 android:paddingTop="@dimen/button_padding" />
 
@@ -276,7 +276,7 @@
                 android:id="@+id/screen_yard_buyship_mosquito_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="end"
                 android:paddingBottom="@dimen/button_padding"
                 android:paddingTop="@dimen/button_padding" />
 
@@ -284,7 +284,7 @@
                 android:id="@+id/screen_yard_buyship_bumblebee_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="end"
                 android:paddingBottom="@dimen/button_padding"
                 android:paddingTop="@dimen/button_padding" />
 
@@ -292,7 +292,7 @@
                 android:id="@+id/screen_yard_buyship_beetle_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="end"
                 android:paddingBottom="@dimen/button_padding"
                 android:paddingTop="@dimen/button_padding" />
 
@@ -300,7 +300,7 @@
                 android:id="@+id/screen_yard_buyship_hornet_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="end"
                 android:paddingBottom="@dimen/button_padding"
                 android:paddingTop="@dimen/button_padding" />
 
@@ -308,7 +308,7 @@
                 android:id="@+id/screen_yard_buyship_grasshopper_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="end"
                 android:paddingBottom="@dimen/button_padding"
                 android:paddingTop="@dimen/button_padding" />
 
@@ -316,7 +316,7 @@
                 android:id="@+id/screen_yard_buyship_termite_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="end"
                 android:paddingBottom="@dimen/button_padding"
                 android:paddingTop="@dimen/button_padding" />
 
@@ -324,7 +324,7 @@
                 android:id="@+id/screen_yard_buyship_wasp_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="end"
                 android:paddingBottom="@dimen/button_padding"
                 android:paddingTop="@dimen/button_padding" />
         </LinearLayout>
@@ -334,7 +334,7 @@
         android:id="@+id/screen_yard_buyship_credits"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
+        android:layout_gravity="end"
         android:text="@string/format_cash" />
 
 </LinearLayout>

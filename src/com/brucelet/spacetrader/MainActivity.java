@@ -29,15 +29,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.lang.reflect.Field;
 import java.util.LinkedList;
 import java.util.Map;
 
 import android.annotation.TargetApi;
+import android.app.backup.BackupManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -46,11 +47,8 @@ import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.MotionEventCompat;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.widget.PopupMenuCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.view.ActionMode;
@@ -67,20 +65,18 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
-import android.view.ViewTreeObserver;
-import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.PopupWindow;
-import android.widget.Space;
 import android.widget.TextView;
 
 import com.brucelet.spacetrader.datatypes.GameState;
 import com.brucelet.spacetrader.enumtypes.EndStatus;
 import com.brucelet.spacetrader.enumtypes.ScreenType;
 import com.brucelet.spacetrader.enumtypes.ThemeType;
+import com.brucelet.spacetrader.widget.ShortcutButton;
 
 /*
  * Some random notes:
@@ -191,7 +187,6 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 	
 //	private FrameLayout mFragmentContainer;
 	private ScreenType mCurrentScreen;
-	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -403,13 +398,23 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 
 			ScreenType[] screens = ScreenType.dropdownValues();
 			for (int i = 0; i < SHORTCUT_IDS.length; i++) {
-				MenuItem item = menu.findItem(SHORTCUT_IDS[i]);
-				int screenIndex = getGameState().getShortcut(i+1);
-				String title = getResources().getString(screens[screenIndex].titleId);
-				String shortcut = getResources().getString(screens[screenIndex].shortcutId);
+				final MenuItem item = menu.findItem(SHORTCUT_IDS[i]);
+				final int screenIndex = getGameState().getShortcut(i+1);
+				final String title = getResources().getString(screens[screenIndex].titleId);
+				final String shortcut = getResources().getString(screens[screenIndex].shortcutId);
 				item.setTitle(title);
 				item.setTitleCondensed(shortcut);
 				item.setAlphabeticShortcut(shortcut.charAt(0));
+				final ShortcutButton button = (ShortcutButton) ((FrameLayout) MenuItemCompat.getActionView(item)).getChildAt(0);
+				button.setMenuItem(item);
+				button.setOnClickListener(new View.OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						onOptionsItemSelected(item);
+					}
+					
+				});
 			}
 
 //			if (mActionBarSpinner != null) {
@@ -848,7 +853,7 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 			@Override
 			public boolean onCreateActionMode(ActionMode mode, Menu menu) {
 				Log.d("Menu Item Click","Creating Menu ActionMode");
-				Context context = getSupportActionBar().getThemedContext();
+				Context context = MainActivity.this;//getSupportActionBar().getThemedContext();
 				View view = LayoutInflater.from(context).inflate(R.layout.menu_action_mode_dropdowns, null);
 				final Button command = (Button) view.findViewById(R.id.menu_command);
 				final Button game = (Button) view.findViewById(R.id.menu_game);
@@ -863,6 +868,12 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 				// Remove outlines which appear in lollipop because they're being drawn for buttons and these need to look like spinners
 				removeOutline(command, game, help);
 				
+				// Hacking around the fact that this isn't setting correctly from style
+				if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB && getThemeType() == ThemeType.MATERIAL_DARK) {
+					command.setTextColor(Color.WHITE);
+					game.setTextColor(Color.WHITE);
+					help.setTextColor(Color.WHITE);
+				}
 				
 				// TODO: Convert these PopupMenus to ListPopupWindows
 				if (showCommand) {			
@@ -1149,13 +1160,16 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 	}
 	
 	// The following 3 methods are hacks so I don't have to update other classes yet
+//	@Deprecated
 	public BaseScreen findScreenById(int id) {
 		if (getCurrentScreenType().fragmentId == id) return getCurrentScreen();
 		return null;
 	}
+//	@Deprecated
 	public int getCurrentScreenId() {
 		return getCurrentScreenType().fragmentId;
 	}
+//	@Deprecated
 	public BaseScreen setCurrentScreen(int id) {
 		for (ScreenType type : ScreenType.values()) {
 			if (type.fragmentId == id) return setCurrentScreenType(type);
@@ -1323,6 +1337,8 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 		mGameState.saveState(editor);
 		
 		editor.commit();
+		
+		new BackupManager(this).dataChanged();
 	}
 	
 	private void loadState(SharedPreferences prefs) {

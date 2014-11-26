@@ -27,7 +27,7 @@
             android:layout_width="0dp"
             android:layout_weight="3"
             android:text="@string/format_credits"
-            android:gravity="right" />
+            android:gravity="end" />
     </LinearLayout>
 
     <LinearLayout style="@style/ScreenRow" >
@@ -51,7 +51,7 @@
             android:layout_width="0dp"
             android:layout_weight="3"
             android:text="@string/format_credits"
-            android:gravity="right" />
+            android:gravity="end" />
     </LinearLayout>
 
     <LinearLayout style="@style/ScreenRow" >
@@ -75,7 +75,7 @@
             android:layout_width="0dp"
             android:layout_weight="3"
             android:text="@string/format_credits"
-            android:gravity="right" />
+            android:gravity="end" />
     </LinearLayout>
 
     <LinearLayout style="@style/ScreenRow" >
@@ -99,7 +99,7 @@
             android:layout_width="0dp"
             android:layout_weight="3"
             android:text="@string/format_credits"
-            android:gravity="right" />
+            android:gravity="end" />
     </LinearLayout>
 
     <LinearLayout style="@style/ScreenRow" >
@@ -123,7 +123,7 @@
             android:layout_width="0dp"
             android:layout_weight="3"
             android:text="@string/format_credits"
-            android:gravity="right" />
+            android:gravity="end" />
     </LinearLayout>
 
     <LinearLayout style="@style/ScreenRow" >
@@ -147,7 +147,7 @@
             android:layout_width="0dp"
             android:layout_weight="3"
             android:text="@string/format_credits"
-            android:gravity="right" />
+            android:gravity="end" />
     </LinearLayout>
 
     <LinearLayout style="@style/ScreenRow" >
@@ -171,7 +171,7 @@
             android:layout_width="0dp"
             android:layout_weight="3"
             android:text="@string/format_credits"
-            android:gravity="right" />
+            android:gravity="end" />
     </LinearLayout>
 
     <LinearLayout style="@style/ScreenRow" >
@@ -195,7 +195,7 @@
             android:layout_width="0dp"
             android:layout_weight="3"
             android:text="@string/format_credits"
-            android:gravity="right" />
+            android:gravity="end" />
     </LinearLayout>
 
     <LinearLayout style="@style/ScreenRow" >
@@ -219,7 +219,7 @@
             android:layout_width="0dp"
             android:layout_weight="3"
             android:text="@string/format_credits"
-            android:gravity="right" />
+            android:gravity="end" />
     </LinearLayout>
 
     <LinearLayout style="@style/ScreenRow" >
@@ -243,14 +243,14 @@
             android:layout_width="0dp"
             android:layout_weight="3"
             android:text="@string/format_credits"
-            android:gravity="right" />
+            android:gravity="end" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/screen_buyeq_credits"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:gravity="right"
+        android:layout_gravity="end"
+        android:gravity="end"
         android:text="@string/format_cash" />
 
 </LinearLayout>

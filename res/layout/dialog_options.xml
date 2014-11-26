@@ -7,7 +7,7 @@
         style="@style/RootLayout"
         android:descendantFocusability="beforeDescendants"
         android:focusableInTouchMode="true"
-        android:gravity="left|top"
+        android:gravity="start|top"
         android:paddingBottom="8dip"
         android:paddingLeft="8dip"
         android:paddingRight="8dip"
@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:layout_gravity="start"
             android:paddingLeft="8dip"
             android:paddingRight="8dip"
             android:text="@string/dialog_options_ignore" />
@@ -24,7 +24,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_vertical|left" >
+            android:gravity="center_vertical|start" >
 
             <CheckBox
                 android:id="@+id/dialog_options_ignore_police"
@@ -100,7 +100,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="left"
+            android:gravity="start"
             android:paddingLeft="8dip"
             android:paddingRight="8dip"
             android:baselineAligned="true"
@@ -159,7 +159,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:layout_gravity="start"
             android:paddingLeft="8dip"
             android:paddingRight="8dip"
             android:text="@string/dialog_options_encounterstyle" />
@@ -168,7 +168,7 @@
             android:id="@+id/dialog_options_encounterstyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_vertical|left"
+            android:gravity="center_vertical|start"
             android:orientation="horizontal" >
 
             <RadioButton
@@ -217,7 +217,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:layout_gravity="start"
             android:paddingLeft="8dip"
             android:paddingRight="8dip"
             android:text="@string/dialog_options_theme" />
@@ -226,9 +226,12 @@
             android:id="@+id/dialog_options_theme"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_vertical|left"
+            android:gravity="center_vertical|start"
             android:orientation="vertical"
-            android:paddingLeft="16dp" >
+            android:paddingLeft="16dp"
+            android:paddingStart="16dp"
+            android:paddingRight="0dp"
+            android:paddingEnd="0dp" >
 
             <RadioButton
                 android:id="@+id/dialog_options_theme_light"

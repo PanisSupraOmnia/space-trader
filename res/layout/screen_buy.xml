@@ -273,7 +273,7 @@
                 android:id="@+id/screen_buy_water_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="end"
                 android:paddingBottom="@dimen/button_padding"
                 android:paddingTop="@dimen/button_padding" />
 
@@ -281,7 +281,7 @@
                 android:id="@+id/screen_buy_furs_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="end"
                 android:paddingBottom="@dimen/button_padding"
                 android:paddingTop="@dimen/button_padding" />
 
@@ -289,7 +289,7 @@
                 android:id="@+id/screen_buy_food_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="end"
                 android:paddingBottom="@dimen/button_padding"
                 android:paddingTop="@dimen/button_padding" />
 
@@ -297,7 +297,7 @@
                 android:id="@+id/screen_buy_ore_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="end"
                 android:paddingBottom="@dimen/button_padding"
                 android:paddingTop="@dimen/button_padding" />
 
@@ -305,7 +305,7 @@
                 android:id="@+id/screen_buy_games_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="end"
                 android:paddingBottom="@dimen/button_padding"
                 android:paddingTop="@dimen/button_padding" />
 
@@ -313,7 +313,7 @@
                 android:id="@+id/screen_buy_firearms_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="end"
                 android:paddingBottom="@dimen/button_padding"
                 android:paddingTop="@dimen/button_padding" />
 
@@ -321,7 +321,7 @@
                 android:id="@+id/screen_buy_medicine_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="end"
                 android:paddingBottom="@dimen/button_padding"
                 android:paddingTop="@dimen/button_padding" />
 
@@ -329,7 +329,7 @@
                 android:id="@+id/screen_buy_machinery_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="end"
                 android:paddingBottom="@dimen/button_padding"
                 android:paddingTop="@dimen/button_padding" />
 
@@ -337,7 +337,7 @@
                 android:id="@+id/screen_buy_narcotics_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="end"
                 android:paddingBottom="@dimen/button_padding"
                 android:paddingTop="@dimen/button_padding" />
 
@@ -345,7 +345,7 @@
                 android:id="@+id/screen_buy_robots_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="end"
                 android:paddingBottom="@dimen/button_padding"
                 android:paddingTop="@dimen/button_padding" />
         </LinearLayout>
@@ -360,7 +360,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="left"
+            android:gravity="start"
             android:text="@string/format_bays" />
 
         <TextView
@@ -368,7 +368,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="right"
+            android:gravity="end"
             android:text="@string/format_cash" />
     </LinearLayout>
 

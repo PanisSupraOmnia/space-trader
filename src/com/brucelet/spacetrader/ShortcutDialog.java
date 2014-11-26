@@ -84,15 +84,13 @@ public class ShortcutDialog extends BaseDialog {
 			{   
 				if(row == null)
 				{
-					//inflate your customlayout for the textview
 					LayoutInflater inflater =(LayoutInflater) getActivity().getLayoutInflater();
 					row = inflater.inflate(R.layout.spinner_dropdown_item_shortcut, parent, false);
 				}
 
-				//put the data in it
 				TextView text1 = (TextView) row.findViewById(R.id.spinner_shortcut);
 				text1.setText(screens[position].shortcutId);
-				text1.setTypeface(Typeface.MONOSPACE);
+				text1.setTypeface(Typeface.MONOSPACE);	// NB Lollipop is not setting this from xml so we need this here. 
 				TextView text2 = (TextView) row.findViewById(R.id.spinner_text);
 				text2.setText(screens[position].titleId);
 

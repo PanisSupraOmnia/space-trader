@@ -1606,6 +1606,59 @@ android.support.v4.app.NotificationCompat$Builder: android.support.v4.app.Notifi
 android.support.v4.app.NotificationCompat$Builder: android.app.Notification getNotification()
 android.support.v4.app.NotificationCompat$Builder: android.app.Notification build()
 android.support.v4.app.NotificationCompat$Builder: java.lang.CharSequence limitCharSequenceLength(java.lang.CharSequence)
+android.support.v4.app.NotificationCompat$CarExtender
+android.support.v4.app.NotificationCompat$CarExtender: java.lang.String TAG
+android.support.v4.app.NotificationCompat$CarExtender: java.lang.String EXTRA_CAR_EXTENDER
+android.support.v4.app.NotificationCompat$CarExtender: java.lang.String EXTRA_LARGE_ICON
+android.support.v4.app.NotificationCompat$CarExtender: java.lang.String EXTRA_CONVERSATION
+android.support.v4.app.NotificationCompat$CarExtender: java.lang.String EXTRA_COLOR
+android.support.v4.app.NotificationCompat$CarExtender: android.graphics.Bitmap mLargeIcon
+android.support.v4.app.NotificationCompat$CarExtender: android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation mUnreadConversation
+android.support.v4.app.NotificationCompat$CarExtender: int mColor
+android.support.v4.app.NotificationCompat$CarExtender: NotificationCompat$CarExtender()
+android.support.v4.app.NotificationCompat$CarExtender: NotificationCompat$CarExtender(android.app.Notification)
+android.support.v4.app.NotificationCompat$CarExtender: android.support.v4.app.NotificationCompat$Builder extend(android.support.v4.app.NotificationCompat$Builder)
+android.support.v4.app.NotificationCompat$CarExtender: android.support.v4.app.NotificationCompat$CarExtender setColor(int)
+android.support.v4.app.NotificationCompat$CarExtender: int getColor()
+android.support.v4.app.NotificationCompat$CarExtender: android.support.v4.app.NotificationCompat$CarExtender setLargeIcon(android.graphics.Bitmap)
+android.support.v4.app.NotificationCompat$CarExtender: android.graphics.Bitmap getLargeIcon()
+android.support.v4.app.NotificationCompat$CarExtender: android.support.v4.app.NotificationCompat$CarExtender setUnreadConversation(android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation)
+android.support.v4.app.NotificationCompat$CarExtender: android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation getUnreadConversation()
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation: java.lang.String[] mMessages
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation: android.support.v4.app.RemoteInput mRemoteInput
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation: android.app.PendingIntent mReplyPendingIntent
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation: android.app.PendingIntent mReadPendingIntent
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation: java.lang.String[] mParticipants
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation: long mLatestTimestamp
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation: android.support.v4.app.NotificationCompatBase$UnreadConversation$Factory FACTORY
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation: NotificationCompat$CarExtender$UnreadConversation(java.lang.String[],android.support.v4.app.RemoteInput,android.app.PendingIntent,android.app.PendingIntent,java.lang.String[],long)
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation: java.lang.String[] getMessages()
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation: android.support.v4.app.RemoteInput getRemoteInput()
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation: android.app.PendingIntent getReplyPendingIntent()
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation: android.app.PendingIntent getReadPendingIntent()
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation: java.lang.String[] getParticipants()
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation: java.lang.String getParticipant()
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation: long getLatestTimestamp()
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation: android.support.v4.app.RemoteInputCompatBase$RemoteInput getRemoteInput()
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation: void <clinit>()
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation$1
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation$1: NotificationCompat$CarExtender$UnreadConversation$1()
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation$1: android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation build(java.lang.String[],android.support.v4.app.RemoteInputCompatBase$RemoteInput,android.app.PendingIntent,android.app.PendingIntent,java.lang.String[],long)
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation$1: android.support.v4.app.NotificationCompatBase$UnreadConversation build(java.lang.String[],android.support.v4.app.RemoteInputCompatBase$RemoteInput,android.app.PendingIntent,android.app.PendingIntent,java.lang.String[],long)
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation$Builder
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation$Builder: java.util.List mMessages
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation$Builder: java.lang.String mParticipant
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation$Builder: android.support.v4.app.RemoteInput mRemoteInput
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation$Builder: android.app.PendingIntent mReadPendingIntent
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation$Builder: android.app.PendingIntent mReplyPendingIntent
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation$Builder: long mLatestTimestamp
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation$Builder: NotificationCompat$CarExtender$UnreadConversation$Builder(java.lang.String)
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation$Builder: android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation$Builder addMessage(java.lang.String)
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation$Builder: android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation$Builder setReplyAction(android.app.PendingIntent,android.support.v4.app.RemoteInput)
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation$Builder: android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation$Builder setReadPendingIntent(android.app.PendingIntent)
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation$Builder: android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation$Builder setLatestTimestamp(long)
+android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation$Builder: android.support.v4.app.NotificationCompat$CarExtender$UnreadConversation build()
 android.support.v4.app.NotificationCompat$Extender
 android.support.v4.app.NotificationCompat$Extender: android.support.v4.app.NotificationCompat$Builder extend(android.support.v4.app.NotificationCompat$Builder)
 android.support.v4.app.NotificationCompat$InboxStyle
@@ -1627,6 +1680,8 @@ android.support.v4.app.NotificationCompat$NotificationCompatImpl: boolean getLoc
 android.support.v4.app.NotificationCompat$NotificationCompatImpl: java.lang.String getGroup(android.app.Notification)
 android.support.v4.app.NotificationCompat$NotificationCompatImpl: boolean isGroupSummary(android.app.Notification)
 android.support.v4.app.NotificationCompat$NotificationCompatImpl: java.lang.String getSortKey(android.app.Notification)
+android.support.v4.app.NotificationCompat$NotificationCompatImpl: android.os.Bundle getBundleForUnreadConversation(android.support.v4.app.NotificationCompatBase$UnreadConversation)
+android.support.v4.app.NotificationCompat$NotificationCompatImpl: android.support.v4.app.NotificationCompatBase$UnreadConversation getUnreadConversationFromBundle(android.os.Bundle,android.support.v4.app.NotificationCompatBase$UnreadConversation$Factory,android.support.v4.app.RemoteInputCompatBase$RemoteInput$Factory)
 android.support.v4.app.NotificationCompat$NotificationCompatImplApi20
 android.support.v4.app.NotificationCompat$NotificationCompatImplApi20: NotificationCompat$NotificationCompatImplApi20()
 android.support.v4.app.NotificationCompat$NotificationCompatImplApi20: android.app.Notification build(android.support.v4.app.NotificationCompat$Builder)
@@ -1641,6 +1696,8 @@ android.support.v4.app.NotificationCompat$NotificationCompatImplApi21
 android.support.v4.app.NotificationCompat$NotificationCompatImplApi21: NotificationCompat$NotificationCompatImplApi21()
 android.support.v4.app.NotificationCompat$NotificationCompatImplApi21: android.app.Notification build(android.support.v4.app.NotificationCompat$Builder)
 android.support.v4.app.NotificationCompat$NotificationCompatImplApi21: java.lang.String getCategory(android.app.Notification)
+android.support.v4.app.NotificationCompat$NotificationCompatImplApi21: android.os.Bundle getBundleForUnreadConversation(android.support.v4.app.NotificationCompatBase$UnreadConversation)
+android.support.v4.app.NotificationCompat$NotificationCompatImplApi21: android.support.v4.app.NotificationCompatBase$UnreadConversation getUnreadConversationFromBundle(android.os.Bundle,android.support.v4.app.NotificationCompatBase$UnreadConversation$Factory,android.support.v4.app.RemoteInputCompatBase$RemoteInput$Factory)
 android.support.v4.app.NotificationCompat$NotificationCompatImplBase
 android.support.v4.app.NotificationCompat$NotificationCompatImplBase: NotificationCompat$NotificationCompatImplBase()
 android.support.v4.app.NotificationCompat$NotificationCompatImplBase: android.app.Notification build(android.support.v4.app.NotificationCompat$Builder)
@@ -1654,6 +1711,8 @@ android.support.v4.app.NotificationCompat$NotificationCompatImplBase: boolean ge
 android.support.v4.app.NotificationCompat$NotificationCompatImplBase: java.lang.String getGroup(android.app.Notification)
 android.support.v4.app.NotificationCompat$NotificationCompatImplBase: boolean isGroupSummary(android.app.Notification)
 android.support.v4.app.NotificationCompat$NotificationCompatImplBase: java.lang.String getSortKey(android.app.Notification)
+android.support.v4.app.NotificationCompat$NotificationCompatImplBase: android.os.Bundle getBundleForUnreadConversation(android.support.v4.app.NotificationCompatBase$UnreadConversation)
+android.support.v4.app.NotificationCompat$NotificationCompatImplBase: android.support.v4.app.NotificationCompatBase$UnreadConversation getUnreadConversationFromBundle(android.os.Bundle,android.support.v4.app.NotificationCompatBase$UnreadConversation$Factory,android.support.v4.app.RemoteInputCompatBase$RemoteInput$Factory)
 android.support.v4.app.NotificationCompat$NotificationCompatImplGingerbread
 android.support.v4.app.NotificationCompat$NotificationCompatImplGingerbread: NotificationCompat$NotificationCompatImplGingerbread()
 android.support.v4.app.NotificationCompat$NotificationCompatImplGingerbread: android.app.Notification build(android.support.v4.app.NotificationCompat$Builder)
@@ -1803,8 +1862,20 @@ android.support.v4.app.NotificationCompatApi21: java.lang.String CATEGORY_SYSTEM
 android.support.v4.app.NotificationCompatApi21: java.lang.String CATEGORY_SERVICE
 android.support.v4.app.NotificationCompatApi21: java.lang.String CATEGORY_RECOMMENDATION
 android.support.v4.app.NotificationCompatApi21: java.lang.String CATEGORY_STATUS
+android.support.v4.app.NotificationCompatApi21: java.lang.String KEY_AUTHOR
+android.support.v4.app.NotificationCompatApi21: java.lang.String KEY_TEXT
+android.support.v4.app.NotificationCompatApi21: java.lang.String KEY_MESSAGES
+android.support.v4.app.NotificationCompatApi21: java.lang.String KEY_REMOTE_INPUT
+android.support.v4.app.NotificationCompatApi21: java.lang.String KEY_ON_REPLY
+android.support.v4.app.NotificationCompatApi21: java.lang.String KEY_ON_READ
+android.support.v4.app.NotificationCompatApi21: java.lang.String KEY_PARTICIPANTS
+android.support.v4.app.NotificationCompatApi21: java.lang.String KEY_TIMESTAMP
 android.support.v4.app.NotificationCompatApi21: NotificationCompatApi21()
 android.support.v4.app.NotificationCompatApi21: java.lang.String getCategory(android.app.Notification)
+android.support.v4.app.NotificationCompatApi21: android.os.Bundle getBundleForUnreadConversation(android.support.v4.app.NotificationCompatBase$UnreadConversation)
+android.support.v4.app.NotificationCompatApi21: android.support.v4.app.NotificationCompatBase$UnreadConversation getUnreadConversationFromBundle(android.os.Bundle,android.support.v4.app.NotificationCompatBase$UnreadConversation$Factory,android.support.v4.app.RemoteInputCompatBase$RemoteInput$Factory)
+android.support.v4.app.NotificationCompatApi21: android.app.RemoteInput fromCompatRemoteInput(android.support.v4.app.RemoteInputCompatBase$RemoteInput)
+android.support.v4.app.NotificationCompatApi21: android.support.v4.app.RemoteInputCompatBase$RemoteInput toCompatRemoteInput(android.app.RemoteInput,android.support.v4.app.RemoteInputCompatBase$RemoteInput$Factory)
 android.support.v4.app.NotificationCompatApi21$Builder
 android.support.v4.app.NotificationCompatApi21$Builder: android.app.Notification$Builder b
 android.support.v4.app.NotificationCompatApi21$Builder: NotificationCompatApi21$Builder(android.content.Context,android.app.Notification,java.lang.CharSequence,java.lang.CharSequence,java.lang.CharSequence,android.widget.RemoteViews,int,android.app.PendingIntent,android.app.PendingIntent,android.graphics.Bitmap,int,int,boolean,boolean,boolean,int,java.lang.CharSequence,boolean,java.lang.String,java.util.ArrayList,android.os.Bundle,int,int,android.app.Notification,java.lang.String,boolean,java.lang.String)
@@ -1823,6 +1894,17 @@ android.support.v4.app.NotificationCompatBase$Action: android.support.v4.app.Rem
 android.support.v4.app.NotificationCompatBase$Action$Factory
 android.support.v4.app.NotificationCompatBase$Action$Factory: android.support.v4.app.NotificationCompatBase$Action build(int,java.lang.CharSequence,android.app.PendingIntent,android.os.Bundle,android.support.v4.app.RemoteInputCompatBase$RemoteInput[])
 android.support.v4.app.NotificationCompatBase$Action$Factory: android.support.v4.app.NotificationCompatBase$Action[] newArray(int)
+android.support.v4.app.NotificationCompatBase$UnreadConversation
+android.support.v4.app.NotificationCompatBase$UnreadConversation: NotificationCompatBase$UnreadConversation()
+android.support.v4.app.NotificationCompatBase$UnreadConversation: java.lang.String[] getParticipants()
+android.support.v4.app.NotificationCompatBase$UnreadConversation: java.lang.String getParticipant()
+android.support.v4.app.NotificationCompatBase$UnreadConversation: java.lang.String[] getMessages()
+android.support.v4.app.NotificationCompatBase$UnreadConversation: android.support.v4.app.RemoteInputCompatBase$RemoteInput getRemoteInput()
+android.support.v4.app.NotificationCompatBase$UnreadConversation: android.app.PendingIntent getReplyPendingIntent()
+android.support.v4.app.NotificationCompatBase$UnreadConversation: android.app.PendingIntent getReadPendingIntent()
+android.support.v4.app.NotificationCompatBase$UnreadConversation: long getLatestTimestamp()
+android.support.v4.app.NotificationCompatBase$UnreadConversation$Factory
+android.support.v4.app.NotificationCompatBase$UnreadConversation$Factory: android.support.v4.app.NotificationCompatBase$UnreadConversation build(java.lang.String[],android.support.v4.app.RemoteInputCompatBase$RemoteInput,android.app.PendingIntent,android.app.PendingIntent,java.lang.String[],long)
 android.support.v4.app.NotificationCompatExtras
 android.support.v4.app.NotificationCompatExtras: java.lang.String EXTRA_LOCAL_ONLY
 android.support.v4.app.NotificationCompatExtras: java.lang.String EXTRA_GROUP_KEY
@@ -7570,6 +7652,7 @@ android.support.v4.widget.DrawerLayout: boolean ALLOW_EDGE_LOCK
 android.support.v4.widget.DrawerLayout: boolean CHILDREN_DISALLOW_INTERCEPT
 android.support.v4.widget.DrawerLayout: float TOUCH_SLOP_SENSITIVITY
 android.support.v4.widget.DrawerLayout: int[] LAYOUT_ATTRS
+android.support.v4.widget.DrawerLayout: boolean CAN_HIDE_DESCENDANTS
 android.support.v4.widget.DrawerLayout: android.support.v4.widget.DrawerLayout$ChildAccessibilityDelegate mChildAccessibilityDelegate
 android.support.v4.widget.DrawerLayout: int mMinDrawerMargin
 android.support.v4.widget.DrawerLayout: int mScrimColor
@@ -7615,6 +7698,7 @@ android.support.v4.widget.DrawerLayout: java.lang.CharSequence getDrawerTitle(in
 android.support.v4.widget.DrawerLayout: void updateDrawerState(int,int,android.view.View)
 android.support.v4.widget.DrawerLayout: void dispatchOnDrawerClosed(android.view.View)
 android.support.v4.widget.DrawerLayout: void dispatchOnDrawerOpened(android.view.View)
+android.support.v4.widget.DrawerLayout: void updateChildrenImportantForAccessibility(android.view.View,boolean)
 android.support.v4.widget.DrawerLayout: void dispatchOnDrawerSlide(android.view.View,float)
 android.support.v4.widget.DrawerLayout: void setDrawerViewOffset(android.view.View,float)
 android.support.v4.widget.DrawerLayout: float getDrawerViewOffset(android.view.View)
@@ -7666,8 +7750,9 @@ android.support.v4.widget.DrawerLayout: android.os.Parcelable onSaveInstanceStat
 android.support.v4.widget.DrawerLayout: void addView(android.view.View,int,android.view.ViewGroup$LayoutParams)
 android.support.v4.widget.DrawerLayout: boolean includeChildForAccessibility(android.view.View)
 android.support.v4.widget.DrawerLayout: int[] access$100()
-android.support.v4.widget.DrawerLayout: android.view.View access$200(android.support.v4.widget.DrawerLayout)
-android.support.v4.widget.DrawerLayout: boolean access$300(android.view.View)
+android.support.v4.widget.DrawerLayout: boolean access$200()
+android.support.v4.widget.DrawerLayout: android.view.View access$300(android.support.v4.widget.DrawerLayout)
+android.support.v4.widget.DrawerLayout: boolean access$400(android.view.View)
 android.support.v4.widget.DrawerLayout: void <clinit>()
 android.support.v4.widget.DrawerLayout$AccessibilityDelegate
 android.support.v4.widget.DrawerLayout$AccessibilityDelegate: android.graphics.Rect mTmpRect
@@ -7676,8 +7761,8 @@ android.support.v4.widget.DrawerLayout$AccessibilityDelegate: DrawerLayout$Acces
 android.support.v4.widget.DrawerLayout$AccessibilityDelegate: void onInitializeAccessibilityNodeInfo(android.view.View,android.support.v4.view.accessibility.AccessibilityNodeInfoCompat)
 android.support.v4.widget.DrawerLayout$AccessibilityDelegate: void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent)
 android.support.v4.widget.DrawerLayout$AccessibilityDelegate: boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent)
-android.support.v4.widget.DrawerLayout$AccessibilityDelegate: void addChildrenForAccessibility(android.support.v4.view.accessibility.AccessibilityNodeInfoCompat,android.view.ViewGroup)
 android.support.v4.widget.DrawerLayout$AccessibilityDelegate: boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent)
+android.support.v4.widget.DrawerLayout$AccessibilityDelegate: void addChildrenForAccessibility(android.support.v4.view.accessibility.AccessibilityNodeInfoCompat,android.view.ViewGroup)
 android.support.v4.widget.DrawerLayout$AccessibilityDelegate: void copyNodeInfoNoChildren(android.support.v4.view.accessibility.AccessibilityNodeInfoCompat,android.support.v4.view.accessibility.AccessibilityNodeInfoCompat)
 android.support.v4.widget.DrawerLayout$ChildAccessibilityDelegate
 android.support.v4.widget.DrawerLayout$ChildAccessibilityDelegate: android.support.v4.widget.DrawerLayout this$0
@@ -7930,7 +8015,7 @@ android.support.v4.widget.MaterialProgressDrawable: android.view.animation.Anima
 android.support.v4.widget.MaterialProgressDrawable: float mRotationCount
 android.support.v4.widget.MaterialProgressDrawable: double mWidth
 android.support.v4.widget.MaterialProgressDrawable: double mHeight
-android.support.v4.widget.MaterialProgressDrawable: android.view.animation.Animation mFinishAnimation
+android.support.v4.widget.MaterialProgressDrawable: boolean mFinishing
 android.support.v4.widget.MaterialProgressDrawable: android.graphics.drawable.Drawable$Callback mCallback
 android.support.v4.widget.MaterialProgressDrawable: MaterialProgressDrawable(android.content.Context,android.view.View)
 android.support.v4.widget.MaterialProgressDrawable: void setSizeParameters(double,double,double,double,float,float)
@@ -7953,13 +8038,13 @@ android.support.v4.widget.MaterialProgressDrawable: int getOpacity()
 android.support.v4.widget.MaterialProgressDrawable: boolean isRunning()
 android.support.v4.widget.MaterialProgressDrawable: void start()
 android.support.v4.widget.MaterialProgressDrawable: void stop()
+android.support.v4.widget.MaterialProgressDrawable: void applyFinishTranslation(float,android.support.v4.widget.MaterialProgressDrawable$Ring)
 android.support.v4.widget.MaterialProgressDrawable: void setupAnimators()
-android.support.v4.widget.MaterialProgressDrawable: android.view.animation.Animation access$200(android.support.v4.widget.MaterialProgressDrawable)
-android.support.v4.widget.MaterialProgressDrawable: android.view.View access$300(android.support.v4.widget.MaterialProgressDrawable)
+android.support.v4.widget.MaterialProgressDrawable: void access$200(android.support.v4.widget.MaterialProgressDrawable,float,android.support.v4.widget.MaterialProgressDrawable$Ring)
+android.support.v4.widget.MaterialProgressDrawable: android.view.animation.Interpolator access$300()
 android.support.v4.widget.MaterialProgressDrawable: android.view.animation.Interpolator access$400()
-android.support.v4.widget.MaterialProgressDrawable: android.view.animation.Interpolator access$500()
-android.support.v4.widget.MaterialProgressDrawable: float access$600(android.support.v4.widget.MaterialProgressDrawable)
-android.support.v4.widget.MaterialProgressDrawable: float access$602(android.support.v4.widget.MaterialProgressDrawable,float)
+android.support.v4.widget.MaterialProgressDrawable: float access$500(android.support.v4.widget.MaterialProgressDrawable)
+android.support.v4.widget.MaterialProgressDrawable: float access$502(android.support.v4.widget.MaterialProgressDrawable,float)
 android.support.v4.widget.MaterialProgressDrawable: void <clinit>()
 android.support.v4.widget.MaterialProgressDrawable$1
 android.support.v4.widget.MaterialProgressDrawable$1: android.support.v4.widget.MaterialProgressDrawable$Ring val$ring
@@ -7974,23 +8059,11 @@ android.support.v4.widget.MaterialProgressDrawable$2: void onAnimationStart(andr
 android.support.v4.widget.MaterialProgressDrawable$2: void onAnimationEnd(android.view.animation.Animation)
 android.support.v4.widget.MaterialProgressDrawable$2: void onAnimationRepeat(android.view.animation.Animation)
 android.support.v4.widget.MaterialProgressDrawable$3
-android.support.v4.widget.MaterialProgressDrawable$3: android.support.v4.widget.MaterialProgressDrawable$Ring val$ring
 android.support.v4.widget.MaterialProgressDrawable$3: android.support.v4.widget.MaterialProgressDrawable this$0
-android.support.v4.widget.MaterialProgressDrawable$3: MaterialProgressDrawable$3(android.support.v4.widget.MaterialProgressDrawable,android.support.v4.widget.MaterialProgressDrawable$Ring)
-android.support.v4.widget.MaterialProgressDrawable$3: void applyTransformation(float,android.view.animation.Transformation)
-android.support.v4.widget.MaterialProgressDrawable$4
-android.support.v4.widget.MaterialProgressDrawable$4: android.support.v4.widget.MaterialProgressDrawable$Ring val$ring
-android.support.v4.widget.MaterialProgressDrawable$4: android.support.v4.widget.MaterialProgressDrawable this$0
-android.support.v4.widget.MaterialProgressDrawable$4: MaterialProgressDrawable$4(android.support.v4.widget.MaterialProgressDrawable,android.support.v4.widget.MaterialProgressDrawable$Ring)
-android.support.v4.widget.MaterialProgressDrawable$4: void onAnimationStart(android.view.animation.Animation)
-android.support.v4.widget.MaterialProgressDrawable$4: void onAnimationEnd(android.view.animation.Animation)
-android.support.v4.widget.MaterialProgressDrawable$4: void onAnimationRepeat(android.view.animation.Animation)
-android.support.v4.widget.MaterialProgressDrawable$5
-android.support.v4.widget.MaterialProgressDrawable$5: android.support.v4.widget.MaterialProgressDrawable this$0
-android.support.v4.widget.MaterialProgressDrawable$5: MaterialProgressDrawable$5(android.support.v4.widget.MaterialProgressDrawable)
-android.support.v4.widget.MaterialProgressDrawable$5: void invalidateDrawable(android.graphics.drawable.Drawable)
-android.support.v4.widget.MaterialProgressDrawable$5: void scheduleDrawable(android.graphics.drawable.Drawable,java.lang.Runnable,long)
-android.support.v4.widget.MaterialProgressDrawable$5: void unscheduleDrawable(android.graphics.drawable.Drawable,java.lang.Runnable)
+android.support.v4.widget.MaterialProgressDrawable$3: MaterialProgressDrawable$3(android.support.v4.widget.MaterialProgressDrawable)
+android.support.v4.widget.MaterialProgressDrawable$3: void invalidateDrawable(android.graphics.drawable.Drawable)
+android.support.v4.widget.MaterialProgressDrawable$3: void scheduleDrawable(android.graphics.drawable.Drawable,java.lang.Runnable,long)
+android.support.v4.widget.MaterialProgressDrawable$3: void unscheduleDrawable(android.graphics.drawable.Drawable,java.lang.Runnable)
 android.support.v4.widget.MaterialProgressDrawable$EndCurveInterpolator
 android.support.v4.widget.MaterialProgressDrawable$EndCurveInterpolator: MaterialProgressDrawable$EndCurveInterpolator()
 android.support.v4.widget.MaterialProgressDrawable$EndCurveInterpolator: float getInterpolation(float)
@@ -9024,6 +9097,7 @@ android.support.v7.app.ActionBarActivityDelegate: android.support.v7.app.ActionB
 android.support.v7.app.ActionBarActivityDelegate: ActionBarActivityDelegate(android.support.v7.app.ActionBarActivity)
 android.support.v7.app.ActionBarActivityDelegate: android.support.v7.app.ActionBar createSupportActionBar()
 android.support.v7.app.ActionBarActivityDelegate: android.support.v7.app.ActionBar getSupportActionBar()
+android.support.v7.app.ActionBarActivityDelegate: android.support.v7.app.ActionBar peekSupportActionBar()
 android.support.v7.app.ActionBarActivityDelegate: void setSupportActionBar(android.support.v7.app.ActionBar)
 android.support.v7.app.ActionBarActivityDelegate: void setSupportActionBar(android.support.v7.widget.Toolbar)
 android.support.v7.app.ActionBarActivityDelegate: android.view.MenuInflater getMenuInflater()
@@ -9058,7 +9132,7 @@ android.support.v7.app.ActionBarActivityDelegate: int getHomeAsUpIndicatorAttrId
 android.support.v7.app.ActionBarActivityDelegate: void onContentChanged()
 android.support.v7.app.ActionBarActivityDelegate: java.lang.String getUiOptionsFromMetadata()
 android.support.v7.app.ActionBarActivityDelegate: android.content.Context getActionBarThemedContext()
-android.support.v7.app.ActionBarActivityDelegate: android.view.View createView(java.lang.String,android.util.AttributeSet)
+android.support.v7.app.ActionBarActivityDelegate: android.view.View createView(java.lang.String,android.content.Context,android.util.AttributeSet)
 android.support.v7.app.ActionBarActivityDelegate: android.support.v7.view.ActionMode startSupportActionModeFromWindow(android.support.v7.view.ActionMode$Callback)
 android.support.v7.app.ActionBarActivityDelegate: void setWindowCallback(android.support.v7.internal.app.WindowCallback)
 android.support.v7.app.ActionBarActivityDelegate: android.support.v7.internal.app.WindowCallback getWindowCallback()
@@ -9143,16 +9217,11 @@ android.support.v7.app.ActionBarActivityDelegateBase: void setSupportProgress(in
 android.support.v7.app.ActionBarActivityDelegateBase: int getHomeAsUpIndicatorAttrId()
 android.support.v7.app.ActionBarActivityDelegateBase: boolean onKeyShortcut(int,android.view.KeyEvent)
 android.support.v7.app.ActionBarActivityDelegateBase: boolean onKeyDown(int,android.view.KeyEvent)
-android.support.v7.app.ActionBarActivityDelegateBase: android.view.View createView(java.lang.String,android.util.AttributeSet)
-android.support.v7.app.ActionBarActivityDelegateBase: void updateProgressBars(int)
+android.support.v7.app.ActionBarActivityDelegateBase: android.view.View createView(java.lang.String,android.content.Context,android.util.AttributeSet)
 android.support.v7.app.ActionBarActivityDelegateBase: void openPanel(int,android.view.KeyEvent)
 android.support.v7.app.ActionBarActivityDelegateBase: void openPanel(android.support.v7.app.ActionBarActivityDelegateBase$PanelFeatureState,android.view.KeyEvent)
 android.support.v7.app.ActionBarActivityDelegateBase: void initializePanelDecor(android.support.v7.app.ActionBarActivityDelegateBase$PanelFeatureState)
 android.support.v7.app.ActionBarActivityDelegateBase: void reopenMenu(android.support.v7.internal.view.menu.MenuBuilder,boolean)
-android.support.v7.app.ActionBarActivityDelegateBase: void showProgressBars(android.support.v7.internal.widget.ProgressBarCompat,android.support.v7.internal.widget.ProgressBarCompat)
-android.support.v7.app.ActionBarActivityDelegateBase: void hideProgressBars(android.support.v7.internal.widget.ProgressBarCompat,android.support.v7.internal.widget.ProgressBarCompat)
-android.support.v7.app.ActionBarActivityDelegateBase: android.support.v7.internal.widget.ProgressBarCompat getCircularProgressBar()
-android.support.v7.app.ActionBarActivityDelegateBase: android.support.v7.internal.widget.ProgressBarCompat getHorizontalProgressBar()
 android.support.v7.app.ActionBarActivityDelegateBase: boolean initializePanelMenu(android.support.v7.app.ActionBarActivityDelegateBase$PanelFeatureState)
 android.support.v7.app.ActionBarActivityDelegateBase: boolean initializePanelContent(android.support.v7.app.ActionBarActivityDelegateBase$PanelFeatureState)
 android.support.v7.app.ActionBarActivityDelegateBase: boolean preparePanel(android.support.v7.app.ActionBarActivityDelegateBase$PanelFeatureState,android.view.KeyEvent)
@@ -9166,6 +9235,7 @@ android.support.v7.app.ActionBarActivityDelegateBase: void invalidatePanelMenu(i
 android.support.v7.app.ActionBarActivityDelegateBase: void doInvalidatePanelMenu(int)
 android.support.v7.app.ActionBarActivityDelegateBase: int updateStatusGuard(int)
 android.support.v7.app.ActionBarActivityDelegateBase: void ensureToolbarListMenuPresenter()
+android.support.v7.app.ActionBarActivityDelegateBase: void throwFeatureRequestIfSubDecorInstalled()
 android.support.v7.app.ActionBarActivityDelegateBase: int access$000(android.support.v7.app.ActionBarActivityDelegateBase)
 android.support.v7.app.ActionBarActivityDelegateBase: void access$100(android.support.v7.app.ActionBarActivityDelegateBase,int)
 android.support.v7.app.ActionBarActivityDelegateBase: boolean access$202(android.support.v7.app.ActionBarActivityDelegateBase,boolean)
@@ -9437,9 +9507,9 @@ android.support.v7.appcompat.R$attr: int backgroundStacked
 android.support.v7.appcompat.R$attr: int barSize
 android.support.v7.appcompat.R$attr: int buttonBarButtonStyle
 android.support.v7.appcompat.R$attr: int buttonBarStyle
-android.support.v7.appcompat.R$attr: int buttonGravity
 android.support.v7.appcompat.R$attr: int closeIcon
 android.support.v7.appcompat.R$attr: int closeItemLayout
+android.support.v7.appcompat.R$attr: int collapseContentDescription
 android.support.v7.appcompat.R$attr: int collapseIcon
 android.support.v7.appcompat.R$attr: int color
 android.support.v7.appcompat.R$attr: int colorAccent
@@ -9732,6 +9802,7 @@ android.support.v7.appcompat.R$drawable: int abc_textfield_default_mtrl_alpha
 android.support.v7.appcompat.R$drawable: int abc_textfield_search_activated_mtrl_alpha
 android.support.v7.appcompat.R$drawable: int abc_textfield_search_default_mtrl_alpha
 android.support.v7.appcompat.R$drawable: int abc_textfield_search_material
+android.support.v7.appcompat.R$drawable: int warpsystem2
 android.support.v7.appcompat.R$drawable: R$drawable()
 android.support.v7.appcompat.R$id
 android.support.v7.appcompat.R$id: int action_bar
@@ -9750,7 +9821,6 @@ android.support.v7.appcompat.R$id: int action_mode_close_button
 android.support.v7.appcompat.R$id: int activity_chooser_view_content
 android.support.v7.appcompat.R$id: int always
 android.support.v7.appcompat.R$id: int beginning
-android.support.v7.appcompat.R$id: int bottom
 android.support.v7.appcompat.R$id: int checkbox
 android.support.v7.appcompat.R$id: int collapseActionView
 android.support.v7.appcompat.R$id: int decor_content_parent
@@ -9794,7 +9864,6 @@ android.support.v7.appcompat.R$id: int split_action_bar
 android.support.v7.appcompat.R$id: int submit_area
 android.support.v7.appcompat.R$id: int tabMode
 android.support.v7.appcompat.R$id: int title
-android.support.v7.appcompat.R$id: int top
 android.support.v7.appcompat.R$id: int up
 android.support.v7.appcompat.R$id: int useLogo
 android.support.v7.appcompat.R$id: int withText
@@ -9845,6 +9914,7 @@ android.support.v7.appcompat.R$string: int abc_searchview_description_submit
 android.support.v7.appcompat.R$string: int abc_searchview_description_voice
 android.support.v7.appcompat.R$string: int abc_shareactionprovider_share_with
 android.support.v7.appcompat.R$string: int abc_shareactionprovider_share_with_application
+android.support.v7.appcompat.R$string: int abc_toolbar_collapse_description
 android.support.v7.appcompat.R$string: R$string()
 android.support.v7.appcompat.R$style
 android.support.v7.appcompat.R$style: int Base_TextAppearance_AppCompat
@@ -10321,7 +10391,7 @@ android.support.v7.appcompat.R$styleable: int Theme_windowFixedWidthMinor
 android.support.v7.appcompat.R$styleable: int[] Toolbar
 android.support.v7.appcompat.R$styleable: int Toolbar_android_gravity
 android.support.v7.appcompat.R$styleable: int Toolbar_android_minHeight
-android.support.v7.appcompat.R$styleable: int Toolbar_buttonGravity
+android.support.v7.appcompat.R$styleable: int Toolbar_collapseContentDescription
 android.support.v7.appcompat.R$styleable: int Toolbar_collapseIcon
 android.support.v7.appcompat.R$styleable: int Toolbar_contentInsetEnd
 android.support.v7.appcompat.R$styleable: int Toolbar_contentInsetLeft
@@ -10764,7 +10834,7 @@ android.support.v7.internal.view.StandaloneActionMode: void onCloseSubMenu(andro
 android.support.v7.internal.view.StandaloneActionMode: void onMenuModeChange(android.support.v7.internal.view.menu.MenuBuilder)
 android.support.v7.internal.view.StandaloneActionMode: boolean isUiFocusable()
 android.support.v7.internal.view.SupportActionModeWrapper
-android.support.v7.internal.view.SupportActionModeWrapper: android.view.MenuInflater mInflater
+android.support.v7.internal.view.SupportActionModeWrapper: android.content.Context mContext
 android.support.v7.internal.view.SupportActionModeWrapper: android.support.v7.view.ActionMode mWrappedObject
 android.support.v7.internal.view.SupportActionModeWrapper: SupportActionModeWrapper(android.content.Context,android.support.v7.view.ActionMode)
 android.support.v7.internal.view.SupportActionModeWrapper: java.lang.Object getTag()
@@ -10788,11 +10858,13 @@ android.support.v7.internal.view.SupportActionModeWrapper$CallbackWrapper
 android.support.v7.internal.view.SupportActionModeWrapper$CallbackWrapper: android.view.ActionMode$Callback mWrappedCallback
 android.support.v7.internal.view.SupportActionModeWrapper$CallbackWrapper: android.content.Context mContext
 android.support.v7.internal.view.SupportActionModeWrapper$CallbackWrapper: android.support.v4.util.SimpleArrayMap mActionModes
+android.support.v7.internal.view.SupportActionModeWrapper$CallbackWrapper: android.support.v4.util.SimpleArrayMap mMenus
 android.support.v7.internal.view.SupportActionModeWrapper$CallbackWrapper: SupportActionModeWrapper$CallbackWrapper(android.content.Context,android.view.ActionMode$Callback)
 android.support.v7.internal.view.SupportActionModeWrapper$CallbackWrapper: boolean onCreateActionMode(android.support.v7.view.ActionMode,android.view.Menu)
 android.support.v7.internal.view.SupportActionModeWrapper$CallbackWrapper: boolean onPrepareActionMode(android.support.v7.view.ActionMode,android.view.Menu)
 android.support.v7.internal.view.SupportActionModeWrapper$CallbackWrapper: boolean onActionItemClicked(android.support.v7.view.ActionMode,android.view.MenuItem)
 android.support.v7.internal.view.SupportActionModeWrapper$CallbackWrapper: void onDestroyActionMode(android.support.v7.view.ActionMode)
+android.support.v7.internal.view.SupportActionModeWrapper$CallbackWrapper: android.view.Menu getMenuWrapper(android.view.Menu)
 android.support.v7.internal.view.SupportActionModeWrapper$CallbackWrapper: android.view.ActionMode getActionModeWrapper(android.support.v7.view.ActionMode)
 android.support.v7.internal.view.SupportMenuInflater
 android.support.v7.internal.view.SupportMenuInflater: java.lang.String LOG_TAG
@@ -11050,10 +11122,11 @@ android.support.v7.internal.view.menu.BaseMenuPresenter: boolean collapseItemAct
 android.support.v7.internal.view.menu.BaseMenuPresenter: int getId()
 android.support.v7.internal.view.menu.BaseMenuPresenter: void setId(int)
 android.support.v7.internal.view.menu.BaseMenuWrapper
-android.support.v7.internal.view.menu.BaseMenuWrapper: java.util.HashMap mMenuItems
-android.support.v7.internal.view.menu.BaseMenuWrapper: java.util.HashMap mSubMenus
-android.support.v7.internal.view.menu.BaseMenuWrapper: BaseMenuWrapper(java.lang.Object)
-android.support.v7.internal.view.menu.BaseMenuWrapper: android.support.v4.internal.view.SupportMenuItem getMenuItemWrapper(android.view.MenuItem)
+android.support.v7.internal.view.menu.BaseMenuWrapper: android.content.Context mContext
+android.support.v7.internal.view.menu.BaseMenuWrapper: java.util.Map mMenuItems
+android.support.v7.internal.view.menu.BaseMenuWrapper: java.util.Map mSubMenus
+android.support.v7.internal.view.menu.BaseMenuWrapper: BaseMenuWrapper(android.content.Context,java.lang.Object)
+android.support.v7.internal.view.menu.BaseMenuWrapper: android.view.MenuItem getMenuItemWrapper(android.view.MenuItem)
 android.support.v7.internal.view.menu.BaseMenuWrapper: android.view.SubMenu getSubMenuWrapper(android.view.SubMenu)
 android.support.v7.internal.view.menu.BaseMenuWrapper: void internalClear()
 android.support.v7.internal.view.menu.BaseMenuWrapper: void internalRemoveGroup(int)
@@ -11408,11 +11481,8 @@ android.support.v7.internal.view.menu.MenuItemImpl$1: MenuItemImpl$1(android.sup
 android.support.v7.internal.view.menu.MenuItemImpl$1: void onActionProviderVisibilityChanged(boolean)
 android.support.v7.internal.view.menu.MenuItemWrapperICS
 android.support.v7.internal.view.menu.MenuItemWrapperICS: java.lang.String LOG_TAG
-android.support.v7.internal.view.menu.MenuItemWrapperICS: boolean mEmulateProviderVisibilityOverride
-android.support.v7.internal.view.menu.MenuItemWrapperICS: boolean mLastRequestVisible
 android.support.v7.internal.view.menu.MenuItemWrapperICS: java.lang.reflect.Method mSetExclusiveCheckableMethod
-android.support.v7.internal.view.menu.MenuItemWrapperICS: MenuItemWrapperICS(android.view.MenuItem,boolean)
-android.support.v7.internal.view.menu.MenuItemWrapperICS: MenuItemWrapperICS(android.view.MenuItem)
+android.support.v7.internal.view.menu.MenuItemWrapperICS: MenuItemWrapperICS(android.content.Context,android.support.v4.internal.view.SupportMenuItem)
 android.support.v7.internal.view.menu.MenuItemWrapperICS: int getItemId()
 android.support.v7.internal.view.menu.MenuItemWrapperICS: int getGroupId()
 android.support.v7.internal.view.menu.MenuItemWrapperICS: int getOrder()
@@ -11454,37 +11524,25 @@ android.support.v7.internal.view.menu.MenuItemWrapperICS: boolean expandActionVi
 android.support.v7.internal.view.menu.MenuItemWrapperICS: boolean collapseActionView()
 android.support.v7.internal.view.menu.MenuItemWrapperICS: boolean isActionViewExpanded()
 android.support.v7.internal.view.menu.MenuItemWrapperICS: android.view.MenuItem setOnActionExpandListener(android.view.MenuItem$OnActionExpandListener)
-android.support.v7.internal.view.menu.MenuItemWrapperICS: android.support.v4.internal.view.SupportMenuItem setSupportOnActionExpandListener(android.support.v4.view.MenuItemCompat$OnActionExpandListener)
-android.support.v7.internal.view.menu.MenuItemWrapperICS: android.support.v4.internal.view.SupportMenuItem setSupportActionProvider(android.support.v4.view.ActionProvider)
-android.support.v7.internal.view.menu.MenuItemWrapperICS: android.support.v4.view.ActionProvider getSupportActionProvider()
 android.support.v7.internal.view.menu.MenuItemWrapperICS: void setExclusiveCheckable(boolean)
-android.support.v7.internal.view.menu.MenuItemWrapperICS: android.support.v7.internal.view.menu.MenuItemWrapperICS$ActionProviderWrapper createActionProviderWrapper(android.support.v4.view.ActionProvider)
-android.support.v7.internal.view.menu.MenuItemWrapperICS: boolean checkActionProviderOverrideVisibility()
-android.support.v7.internal.view.menu.MenuItemWrapperICS: android.view.MenuItem wrappedSetVisible(boolean)
-android.support.v7.internal.view.menu.MenuItemWrapperICS: boolean access$000(android.support.v7.internal.view.menu.MenuItemWrapperICS)
-android.support.v7.internal.view.menu.MenuItemWrapperICS: boolean access$100(android.support.v7.internal.view.menu.MenuItemWrapperICS)
+android.support.v7.internal.view.menu.MenuItemWrapperICS: android.support.v7.internal.view.menu.MenuItemWrapperICS$ActionProviderWrapper createActionProviderWrapper(android.view.ActionProvider)
 android.support.v7.internal.view.menu.MenuItemWrapperICS$ActionProviderWrapper
-android.support.v7.internal.view.menu.MenuItemWrapperICS$ActionProviderWrapper: android.support.v4.view.ActionProvider mInner
+android.support.v7.internal.view.menu.MenuItemWrapperICS$ActionProviderWrapper: android.view.ActionProvider mInner
 android.support.v7.internal.view.menu.MenuItemWrapperICS$ActionProviderWrapper: android.support.v7.internal.view.menu.MenuItemWrapperICS this$0
-android.support.v7.internal.view.menu.MenuItemWrapperICS$ActionProviderWrapper: MenuItemWrapperICS$ActionProviderWrapper(android.support.v7.internal.view.menu.MenuItemWrapperICS,android.support.v4.view.ActionProvider)
+android.support.v7.internal.view.menu.MenuItemWrapperICS$ActionProviderWrapper: MenuItemWrapperICS$ActionProviderWrapper(android.support.v7.internal.view.menu.MenuItemWrapperICS,android.content.Context,android.view.ActionProvider)
 android.support.v7.internal.view.menu.MenuItemWrapperICS$ActionProviderWrapper: android.view.View onCreateActionView()
 android.support.v7.internal.view.menu.MenuItemWrapperICS$ActionProviderWrapper: boolean onPerformDefaultAction()
 android.support.v7.internal.view.menu.MenuItemWrapperICS$ActionProviderWrapper: boolean hasSubMenu()
 android.support.v7.internal.view.menu.MenuItemWrapperICS$ActionProviderWrapper: void onPrepareSubMenu(android.view.SubMenu)
-android.support.v7.internal.view.menu.MenuItemWrapperICS$ActionProviderWrapper$1
-android.support.v7.internal.view.menu.MenuItemWrapperICS$ActionProviderWrapper$1: android.support.v7.internal.view.menu.MenuItemWrapperICS val$this$0
-android.support.v7.internal.view.menu.MenuItemWrapperICS$ActionProviderWrapper$1: android.support.v7.internal.view.menu.MenuItemWrapperICS$ActionProviderWrapper this$1
-android.support.v7.internal.view.menu.MenuItemWrapperICS$ActionProviderWrapper$1: MenuItemWrapperICS$ActionProviderWrapper$1(android.support.v7.internal.view.menu.MenuItemWrapperICS$ActionProviderWrapper,android.support.v7.internal.view.menu.MenuItemWrapperICS)
-android.support.v7.internal.view.menu.MenuItemWrapperICS$ActionProviderWrapper$1: void onActionProviderVisibilityChanged(boolean)
 android.support.v7.internal.view.menu.MenuItemWrapperICS$CollapsibleActionViewWrapper
-android.support.v7.internal.view.menu.MenuItemWrapperICS$CollapsibleActionViewWrapper: android.support.v7.view.CollapsibleActionView mWrappedView
+android.support.v7.internal.view.menu.MenuItemWrapperICS$CollapsibleActionViewWrapper: android.view.CollapsibleActionView mWrappedView
 android.support.v7.internal.view.menu.MenuItemWrapperICS$CollapsibleActionViewWrapper: MenuItemWrapperICS$CollapsibleActionViewWrapper(android.view.View)
 android.support.v7.internal.view.menu.MenuItemWrapperICS$CollapsibleActionViewWrapper: void onActionViewExpanded()
 android.support.v7.internal.view.menu.MenuItemWrapperICS$CollapsibleActionViewWrapper: void onActionViewCollapsed()
 android.support.v7.internal.view.menu.MenuItemWrapperICS$CollapsibleActionViewWrapper: android.view.View getWrappedView()
 android.support.v7.internal.view.menu.MenuItemWrapperICS$OnActionExpandListenerWrapper
 android.support.v7.internal.view.menu.MenuItemWrapperICS$OnActionExpandListenerWrapper: android.support.v7.internal.view.menu.MenuItemWrapperICS this$0
-android.support.v7.internal.view.menu.MenuItemWrapperICS$OnActionExpandListenerWrapper: MenuItemWrapperICS$OnActionExpandListenerWrapper(android.support.v7.internal.view.menu.MenuItemWrapperICS,android.support.v4.view.MenuItemCompat$OnActionExpandListener)
+android.support.v7.internal.view.menu.MenuItemWrapperICS$OnActionExpandListenerWrapper: MenuItemWrapperICS$OnActionExpandListenerWrapper(android.support.v7.internal.view.menu.MenuItemWrapperICS,android.view.MenuItem$OnActionExpandListener)
 android.support.v7.internal.view.menu.MenuItemWrapperICS$OnActionExpandListenerWrapper: boolean onMenuItemActionExpand(android.view.MenuItem)
 android.support.v7.internal.view.menu.MenuItemWrapperICS$OnActionExpandListenerWrapper: boolean onMenuItemActionCollapse(android.view.MenuItem)
 android.support.v7.internal.view.menu.MenuItemWrapperICS$OnMenuItemClickListenerWrapper
@@ -11492,17 +11550,17 @@ android.support.v7.internal.view.menu.MenuItemWrapperICS$OnMenuItemClickListener
 android.support.v7.internal.view.menu.MenuItemWrapperICS$OnMenuItemClickListenerWrapper: MenuItemWrapperICS$OnMenuItemClickListenerWrapper(android.support.v7.internal.view.menu.MenuItemWrapperICS,android.view.MenuItem$OnMenuItemClickListener)
 android.support.v7.internal.view.menu.MenuItemWrapperICS$OnMenuItemClickListenerWrapper: boolean onMenuItemClick(android.view.MenuItem)
 android.support.v7.internal.view.menu.MenuItemWrapperJB
-android.support.v7.internal.view.menu.MenuItemWrapperJB: MenuItemWrapperJB(android.view.MenuItem)
-android.support.v7.internal.view.menu.MenuItemWrapperJB: android.support.v7.internal.view.menu.MenuItemWrapperICS$ActionProviderWrapper createActionProviderWrapper(android.support.v4.view.ActionProvider)
+android.support.v7.internal.view.menu.MenuItemWrapperJB: MenuItemWrapperJB(android.content.Context,android.support.v4.internal.view.SupportMenuItem)
+android.support.v7.internal.view.menu.MenuItemWrapperJB: android.support.v7.internal.view.menu.MenuItemWrapperICS$ActionProviderWrapper createActionProviderWrapper(android.view.ActionProvider)
 android.support.v7.internal.view.menu.MenuItemWrapperJB$ActionProviderWrapperJB
-android.support.v7.internal.view.menu.MenuItemWrapperJB$ActionProviderWrapperJB: android.view.ActionProvider$VisibilityListener mListener
+android.support.v7.internal.view.menu.MenuItemWrapperJB$ActionProviderWrapperJB: android.support.v4.view.ActionProvider$VisibilityListener mListener
 android.support.v7.internal.view.menu.MenuItemWrapperJB$ActionProviderWrapperJB: android.support.v7.internal.view.menu.MenuItemWrapperJB this$0
-android.support.v7.internal.view.menu.MenuItemWrapperJB$ActionProviderWrapperJB: MenuItemWrapperJB$ActionProviderWrapperJB(android.support.v7.internal.view.menu.MenuItemWrapperJB,android.support.v4.view.ActionProvider)
+android.support.v7.internal.view.menu.MenuItemWrapperJB$ActionProviderWrapperJB: MenuItemWrapperJB$ActionProviderWrapperJB(android.support.v7.internal.view.menu.MenuItemWrapperJB,android.content.Context,android.view.ActionProvider)
 android.support.v7.internal.view.menu.MenuItemWrapperJB$ActionProviderWrapperJB: android.view.View onCreateActionView(android.view.MenuItem)
 android.support.v7.internal.view.menu.MenuItemWrapperJB$ActionProviderWrapperJB: boolean overridesItemVisibility()
 android.support.v7.internal.view.menu.MenuItemWrapperJB$ActionProviderWrapperJB: boolean isVisible()
 android.support.v7.internal.view.menu.MenuItemWrapperJB$ActionProviderWrapperJB: void refreshVisibility()
-android.support.v7.internal.view.menu.MenuItemWrapperJB$ActionProviderWrapperJB: void setVisibilityListener(android.view.ActionProvider$VisibilityListener)
+android.support.v7.internal.view.menu.MenuItemWrapperJB$ActionProviderWrapperJB: void setVisibilityListener(android.support.v4.view.ActionProvider$VisibilityListener)
 android.support.v7.internal.view.menu.MenuItemWrapperJB$ActionProviderWrapperJB: void onActionProviderVisibilityChanged(boolean)
 android.support.v7.internal.view.menu.MenuPopupHelper
 android.support.v7.internal.view.menu.MenuPopupHelper: java.lang.String TAG
@@ -11514,6 +11572,7 @@ android.support.v7.internal.view.menu.MenuPopupHelper: android.support.v7.intern
 android.support.v7.internal.view.menu.MenuPopupHelper: boolean mOverflowOnly
 android.support.v7.internal.view.menu.MenuPopupHelper: int mPopupMaxWidth
 android.support.v7.internal.view.menu.MenuPopupHelper: int mPopupStyleAttr
+android.support.v7.internal.view.menu.MenuPopupHelper: int mPopupStyleRes
 android.support.v7.internal.view.menu.MenuPopupHelper: android.view.View mAnchorView
 android.support.v7.internal.view.menu.MenuPopupHelper: android.support.v7.widget.ListPopupWindow mPopup
 android.support.v7.internal.view.menu.MenuPopupHelper: android.view.ViewTreeObserver mTreeObserver
@@ -11526,6 +11585,7 @@ android.support.v7.internal.view.menu.MenuPopupHelper: int mDropDownGravity
 android.support.v7.internal.view.menu.MenuPopupHelper: MenuPopupHelper(android.content.Context,android.support.v7.internal.view.menu.MenuBuilder)
 android.support.v7.internal.view.menu.MenuPopupHelper: MenuPopupHelper(android.content.Context,android.support.v7.internal.view.menu.MenuBuilder,android.view.View)
 android.support.v7.internal.view.menu.MenuPopupHelper: MenuPopupHelper(android.content.Context,android.support.v7.internal.view.menu.MenuBuilder,android.view.View,boolean,int)
+android.support.v7.internal.view.menu.MenuPopupHelper: MenuPopupHelper(android.content.Context,android.support.v7.internal.view.menu.MenuBuilder,android.view.View,boolean,int,int)
 android.support.v7.internal.view.menu.MenuPopupHelper: void setAnchorView(android.view.View)
 android.support.v7.internal.view.menu.MenuPopupHelper: void setForceShowIcon(boolean)
 android.support.v7.internal.view.menu.MenuPopupHelper: void setGravity(int)
@@ -11600,13 +11660,11 @@ android.support.v7.internal.view.menu.MenuView$ItemView: boolean prefersCondense
 android.support.v7.internal.view.menu.MenuView$ItemView: boolean showsIcon()
 android.support.v7.internal.view.menu.MenuWrapperFactory
 android.support.v7.internal.view.menu.MenuWrapperFactory: MenuWrapperFactory()
-android.support.v7.internal.view.menu.MenuWrapperFactory: android.view.Menu createMenuWrapper(android.view.Menu)
-android.support.v7.internal.view.menu.MenuWrapperFactory: android.view.MenuItem createMenuItemWrapper(android.view.MenuItem)
-android.support.v7.internal.view.menu.MenuWrapperFactory: android.support.v4.internal.view.SupportMenu createSupportMenuWrapper(android.view.Menu)
-android.support.v7.internal.view.menu.MenuWrapperFactory: android.support.v4.internal.view.SupportSubMenu createSupportSubMenuWrapper(android.view.SubMenu)
-android.support.v7.internal.view.menu.MenuWrapperFactory: android.support.v4.internal.view.SupportMenuItem createSupportMenuItemWrapper(android.view.MenuItem)
+android.support.v7.internal.view.menu.MenuWrapperFactory: android.view.Menu wrapSupportMenu(android.content.Context,android.support.v4.internal.view.SupportMenu)
+android.support.v7.internal.view.menu.MenuWrapperFactory: android.view.MenuItem wrapSupportMenuItem(android.content.Context,android.support.v4.internal.view.SupportMenuItem)
+android.support.v7.internal.view.menu.MenuWrapperFactory: android.view.SubMenu wrapSupportSubMenu(android.content.Context,android.support.v4.internal.view.SupportSubMenu)
 android.support.v7.internal.view.menu.MenuWrapperICS
-android.support.v7.internal.view.menu.MenuWrapperICS: MenuWrapperICS(android.view.Menu)
+android.support.v7.internal.view.menu.MenuWrapperICS: MenuWrapperICS(android.content.Context,android.support.v4.internal.view.SupportMenu)
 android.support.v7.internal.view.menu.MenuWrapperICS: android.view.MenuItem add(java.lang.CharSequence)
 android.support.v7.internal.view.menu.MenuWrapperICS: android.view.MenuItem add(int)
 android.support.v7.internal.view.menu.MenuWrapperICS: android.view.MenuItem add(int,int,int,java.lang.CharSequence)
@@ -11655,8 +11713,8 @@ android.support.v7.internal.view.menu.SubMenuBuilder: boolean expandItemActionVi
 android.support.v7.internal.view.menu.SubMenuBuilder: boolean collapseItemActionView(android.support.v7.internal.view.menu.MenuItemImpl)
 android.support.v7.internal.view.menu.SubMenuBuilder: java.lang.String getActionViewStatesKey()
 android.support.v7.internal.view.menu.SubMenuWrapperICS
-android.support.v7.internal.view.menu.SubMenuWrapperICS: SubMenuWrapperICS(android.view.SubMenu)
-android.support.v7.internal.view.menu.SubMenuWrapperICS: android.view.SubMenu getWrappedObject()
+android.support.v7.internal.view.menu.SubMenuWrapperICS: SubMenuWrapperICS(android.content.Context,android.support.v4.internal.view.SupportSubMenu)
+android.support.v7.internal.view.menu.SubMenuWrapperICS: android.support.v4.internal.view.SupportSubMenu getWrappedObject()
 android.support.v7.internal.view.menu.SubMenuWrapperICS: android.view.SubMenu setHeaderTitle(int)
 android.support.v7.internal.view.menu.SubMenuWrapperICS: android.view.SubMenu setHeaderTitle(java.lang.CharSequence)
 android.support.v7.internal.view.menu.SubMenuWrapperICS: android.view.SubMenu setHeaderIcon(int)
@@ -12522,103 +12580,6 @@ android.support.v7.internal.widget.NativeActionModeAwareLayout: void setActionMo
 android.support.v7.internal.widget.NativeActionModeAwareLayout: android.view.ActionMode startActionModeForChild(android.view.View,android.view.ActionMode$Callback)
 android.support.v7.internal.widget.NativeActionModeAwareLayout$OnActionModeForChildListener
 android.support.v7.internal.widget.NativeActionModeAwareLayout$OnActionModeForChildListener: android.view.ActionMode startActionModeForChild(android.view.View,android.view.ActionMode$Callback)
-android.support.v7.internal.widget.ProgressBarCompat
-android.support.v7.internal.widget.ProgressBarCompat: int MAX_LEVEL
-android.support.v7.internal.widget.ProgressBarCompat: int ANIMATION_RESOLUTION
-android.support.v7.internal.widget.ProgressBarCompat: int[] android_R_styleable_ProgressBar
-android.support.v7.internal.widget.ProgressBarCompat: int mMinWidth
-android.support.v7.internal.widget.ProgressBarCompat: int mMaxWidth
-android.support.v7.internal.widget.ProgressBarCompat: int mMinHeight
-android.support.v7.internal.widget.ProgressBarCompat: int mMaxHeight
-android.support.v7.internal.widget.ProgressBarCompat: int mProgress
-android.support.v7.internal.widget.ProgressBarCompat: int mSecondaryProgress
-android.support.v7.internal.widget.ProgressBarCompat: int mMax
-android.support.v7.internal.widget.ProgressBarCompat: int mBehavior
-android.support.v7.internal.widget.ProgressBarCompat: int mDuration
-android.support.v7.internal.widget.ProgressBarCompat: boolean mIndeterminate
-android.support.v7.internal.widget.ProgressBarCompat: boolean mOnlyIndeterminate
-android.support.v7.internal.widget.ProgressBarCompat: android.view.animation.Transformation mTransformation
-android.support.v7.internal.widget.ProgressBarCompat: android.view.animation.AlphaAnimation mAnimation
-android.support.v7.internal.widget.ProgressBarCompat: android.graphics.drawable.Drawable mIndeterminateDrawable
-android.support.v7.internal.widget.ProgressBarCompat: android.graphics.drawable.Drawable mProgressDrawable
-android.support.v7.internal.widget.ProgressBarCompat: android.graphics.drawable.Drawable mCurrentDrawable
-android.support.v7.internal.widget.ProgressBarCompat: android.graphics.Bitmap mSampleTile
-android.support.v7.internal.widget.ProgressBarCompat: boolean mNoInvalidate
-android.support.v7.internal.widget.ProgressBarCompat: android.view.animation.Interpolator mInterpolator
-android.support.v7.internal.widget.ProgressBarCompat: android.support.v7.internal.widget.ProgressBarCompat$RefreshProgressRunnable mRefreshProgressRunnable
-android.support.v7.internal.widget.ProgressBarCompat: long mUiThreadId
-android.support.v7.internal.widget.ProgressBarCompat: boolean mShouldStartAnimationDrawable
-android.support.v7.internal.widget.ProgressBarCompat: long mLastDrawTime
-android.support.v7.internal.widget.ProgressBarCompat: boolean mInDrawing
-android.support.v7.internal.widget.ProgressBarCompat: ProgressBarCompat(android.content.Context,android.util.AttributeSet,int,int)
-android.support.v7.internal.widget.ProgressBarCompat: android.graphics.drawable.Drawable tileify(android.graphics.drawable.Drawable,boolean)
-android.support.v7.internal.widget.ProgressBarCompat: android.graphics.drawable.shapes.Shape getDrawableShape()
-android.support.v7.internal.widget.ProgressBarCompat: android.graphics.drawable.Drawable tileifyIndeterminate(android.graphics.drawable.Drawable)
-android.support.v7.internal.widget.ProgressBarCompat: void initProgressBar()
-android.support.v7.internal.widget.ProgressBarCompat: boolean isIndeterminate()
-android.support.v7.internal.widget.ProgressBarCompat: void setIndeterminate(boolean)
-android.support.v7.internal.widget.ProgressBarCompat: android.graphics.drawable.Drawable getIndeterminateDrawable()
-android.support.v7.internal.widget.ProgressBarCompat: void setIndeterminateDrawable(android.graphics.drawable.Drawable)
-android.support.v7.internal.widget.ProgressBarCompat: android.graphics.drawable.Drawable getProgressDrawable()
-android.support.v7.internal.widget.ProgressBarCompat: void setProgressDrawable(android.graphics.drawable.Drawable)
-android.support.v7.internal.widget.ProgressBarCompat: boolean verifyDrawable(android.graphics.drawable.Drawable)
-android.support.v7.internal.widget.ProgressBarCompat: void postInvalidate()
-android.support.v7.internal.widget.ProgressBarCompat: void doRefreshProgress(int,int,boolean,boolean)
-android.support.v7.internal.widget.ProgressBarCompat: void refreshProgress(int,int,boolean)
-android.support.v7.internal.widget.ProgressBarCompat: void setProgress(int)
-android.support.v7.internal.widget.ProgressBarCompat: void setProgress(int,boolean)
-android.support.v7.internal.widget.ProgressBarCompat: void setSecondaryProgress(int)
-android.support.v7.internal.widget.ProgressBarCompat: int getProgress()
-android.support.v7.internal.widget.ProgressBarCompat: int getSecondaryProgress()
-android.support.v7.internal.widget.ProgressBarCompat: int getMax()
-android.support.v7.internal.widget.ProgressBarCompat: void setMax(int)
-android.support.v7.internal.widget.ProgressBarCompat: void incrementProgressBy(int)
-android.support.v7.internal.widget.ProgressBarCompat: void incrementSecondaryProgressBy(int)
-android.support.v7.internal.widget.ProgressBarCompat: void startAnimation()
-android.support.v7.internal.widget.ProgressBarCompat: void stopAnimation()
-android.support.v7.internal.widget.ProgressBarCompat: void setInterpolator(android.content.Context,int)
-android.support.v7.internal.widget.ProgressBarCompat: void setInterpolator(android.view.animation.Interpolator)
-android.support.v7.internal.widget.ProgressBarCompat: android.view.animation.Interpolator getInterpolator()
-android.support.v7.internal.widget.ProgressBarCompat: void setVisibility(int)
-android.support.v7.internal.widget.ProgressBarCompat: void onVisibilityChanged(android.view.View,int)
-android.support.v7.internal.widget.ProgressBarCompat: void invalidateDrawable(android.graphics.drawable.Drawable)
-android.support.v7.internal.widget.ProgressBarCompat: void onSizeChanged(int,int,int,int)
-android.support.v7.internal.widget.ProgressBarCompat: void updateDrawableBounds(int,int)
-android.support.v7.internal.widget.ProgressBarCompat: void onDraw(android.graphics.Canvas)
-android.support.v7.internal.widget.ProgressBarCompat: void onMeasure(int,int)
-android.support.v7.internal.widget.ProgressBarCompat: void drawableStateChanged()
-android.support.v7.internal.widget.ProgressBarCompat: void updateDrawableState()
-android.support.v7.internal.widget.ProgressBarCompat: android.os.Parcelable onSaveInstanceState()
-android.support.v7.internal.widget.ProgressBarCompat: void onRestoreInstanceState(android.os.Parcelable)
-android.support.v7.internal.widget.ProgressBarCompat: void onAttachedToWindow()
-android.support.v7.internal.widget.ProgressBarCompat: void onDetachedFromWindow()
-android.support.v7.internal.widget.ProgressBarCompat: void access$000(android.support.v7.internal.widget.ProgressBarCompat,int,int,boolean,boolean)
-android.support.v7.internal.widget.ProgressBarCompat: android.support.v7.internal.widget.ProgressBarCompat$RefreshProgressRunnable access$102(android.support.v7.internal.widget.ProgressBarCompat,android.support.v7.internal.widget.ProgressBarCompat$RefreshProgressRunnable)
-android.support.v7.internal.widget.ProgressBarCompat: void <clinit>()
-android.support.v7.internal.widget.ProgressBarCompat$1
-android.support.v7.internal.widget.ProgressBarCompat$RefreshProgressRunnable
-android.support.v7.internal.widget.ProgressBarCompat$RefreshProgressRunnable: int mId
-android.support.v7.internal.widget.ProgressBarCompat$RefreshProgressRunnable: int mProgress
-android.support.v7.internal.widget.ProgressBarCompat$RefreshProgressRunnable: boolean mFromUser
-android.support.v7.internal.widget.ProgressBarCompat$RefreshProgressRunnable: android.support.v7.internal.widget.ProgressBarCompat this$0
-android.support.v7.internal.widget.ProgressBarCompat$RefreshProgressRunnable: ProgressBarCompat$RefreshProgressRunnable(android.support.v7.internal.widget.ProgressBarCompat,int,int,boolean)
-android.support.v7.internal.widget.ProgressBarCompat$RefreshProgressRunnable: void run()
-android.support.v7.internal.widget.ProgressBarCompat$RefreshProgressRunnable: void setup(int,int,boolean)
-android.support.v7.internal.widget.ProgressBarCompat$SavedState
-android.support.v7.internal.widget.ProgressBarCompat$SavedState: int progress
-android.support.v7.internal.widget.ProgressBarCompat$SavedState: int secondaryProgress
-android.support.v7.internal.widget.ProgressBarCompat$SavedState: android.os.Parcelable$Creator CREATOR
-android.support.v7.internal.widget.ProgressBarCompat$SavedState: ProgressBarCompat$SavedState(android.os.Parcelable)
-android.support.v7.internal.widget.ProgressBarCompat$SavedState: ProgressBarCompat$SavedState(android.os.Parcel)
-android.support.v7.internal.widget.ProgressBarCompat$SavedState: void writeToParcel(android.os.Parcel,int)
-android.support.v7.internal.widget.ProgressBarCompat$SavedState: ProgressBarCompat$SavedState(android.os.Parcel,android.support.v7.internal.widget.ProgressBarCompat$1)
-android.support.v7.internal.widget.ProgressBarCompat$SavedState: void <clinit>()
-android.support.v7.internal.widget.ProgressBarCompat$SavedState$1
-android.support.v7.internal.widget.ProgressBarCompat$SavedState$1: ProgressBarCompat$SavedState$1()
-android.support.v7.internal.widget.ProgressBarCompat$SavedState$1: android.support.v7.internal.widget.ProgressBarCompat$SavedState createFromParcel(android.os.Parcel)
-android.support.v7.internal.widget.ProgressBarCompat$SavedState$1: android.support.v7.internal.widget.ProgressBarCompat$SavedState[] newArray(int)
-android.support.v7.internal.widget.ProgressBarCompat$SavedState$1: java.lang.Object[] newArray(int)
-android.support.v7.internal.widget.ProgressBarCompat$SavedState$1: java.lang.Object createFromParcel(android.os.Parcel)
 android.support.v7.internal.widget.RtlSpacingHelper
 android.support.v7.internal.widget.RtlSpacingHelper: int UNDEFINED
 android.support.v7.internal.widget.RtlSpacingHelper: int mLeft
@@ -12962,6 +12923,7 @@ android.support.v7.internal.widget.TintSpinner: int[] TINT_ATTRS
 android.support.v7.internal.widget.TintSpinner: TintSpinner(android.content.Context)
 android.support.v7.internal.widget.TintSpinner: TintSpinner(android.content.Context,android.util.AttributeSet)
 android.support.v7.internal.widget.TintSpinner: TintSpinner(android.content.Context,android.util.AttributeSet,int)
+android.support.v7.internal.widget.TintSpinner: void setPopupBackgroundDrawableV11(android.widget.Spinner,android.graphics.drawable.Drawable)
 android.support.v7.internal.widget.TintSpinner: void <clinit>()
 android.support.v7.internal.widget.TintTypedArray
 android.support.v7.internal.widget.TintTypedArray: android.content.Context mContext
@@ -13506,6 +13468,7 @@ android.support.v7.widget.ListPopupWindow: int INPUT_METHOD_NOT_NEEDED
 android.support.v7.widget.ListPopupWindow: ListPopupWindow(android.content.Context)
 android.support.v7.widget.ListPopupWindow: ListPopupWindow(android.content.Context,android.util.AttributeSet)
 android.support.v7.widget.ListPopupWindow: ListPopupWindow(android.content.Context,android.util.AttributeSet,int)
+android.support.v7.widget.ListPopupWindow: ListPopupWindow(android.content.Context,android.util.AttributeSet,int,int)
 android.support.v7.widget.ListPopupWindow: void setAdapter(android.widget.ListAdapter)
 android.support.v7.widget.ListPopupWindow: void setPromptPosition(int)
 android.support.v7.widget.ListPopupWindow: int getPromptPosition()
@@ -13668,6 +13631,7 @@ android.support.v7.widget.PopupMenu: android.support.v7.widget.PopupMenu$OnDismi
 android.support.v7.widget.PopupMenu: android.view.View$OnTouchListener mDragListener
 android.support.v7.widget.PopupMenu: PopupMenu(android.content.Context,android.view.View)
 android.support.v7.widget.PopupMenu: PopupMenu(android.content.Context,android.view.View,int)
+android.support.v7.widget.PopupMenu: PopupMenu(android.content.Context,android.view.View,int,int,int)
 android.support.v7.widget.PopupMenu: android.view.View$OnTouchListener getDragToOpenListener()
 android.support.v7.widget.PopupMenu: android.view.Menu getMenu()
 android.support.v7.widget.PopupMenu: android.view.MenuInflater getMenuInflater()
@@ -13978,6 +13942,7 @@ android.support.v7.widget.SuggestionsAdapter: android.support.v7.widget.SearchVi
 android.support.v7.widget.SuggestionsAdapter: android.app.SearchableInfo mSearchable
 android.support.v7.widget.SuggestionsAdapter: android.content.Context mProviderContext
 android.support.v7.widget.SuggestionsAdapter: java.util.WeakHashMap mOutsideDrawablesCache
+android.support.v7.widget.SuggestionsAdapter: int mCommitIconResId
 android.support.v7.widget.SuggestionsAdapter: boolean mClosed
 android.support.v7.widget.SuggestionsAdapter: int mQueryRefinement
 android.support.v7.widget.SuggestionsAdapter: android.content.res.ColorStateList mUrlColor
@@ -14137,6 +14102,7 @@ android.support.v7.widget.Toolbar: android.widget.TextView mSubtitleTextView
 android.support.v7.widget.Toolbar: android.widget.ImageButton mNavButtonView
 android.support.v7.widget.Toolbar: android.widget.ImageView mLogoView
 android.support.v7.widget.Toolbar: android.graphics.drawable.Drawable mCollapseIcon
+android.support.v7.widget.Toolbar: java.lang.CharSequence mCollapseDescription
 android.support.v7.widget.Toolbar: android.widget.ImageButton mCollapseButtonView
 android.support.v7.widget.Toolbar: android.view.View mExpandedActionView
 android.support.v7.widget.Toolbar: android.content.Context mPopupContext
@@ -14360,7 +14326,6 @@ com.brucelet.spacetrader.BankScreen: int getHelpTextResId()
 com.brucelet.spacetrader.BankScreen: com.brucelet.spacetrader.enumtypes.ScreenType getType()
 com.brucelet.spacetrader.BaseDialog
 com.brucelet.spacetrader.BaseDialog: BaseDialog()
-com.brucelet.spacetrader.BaseDialog: void onCreate(android.os.Bundle)
 com.brucelet.spacetrader.BaseDialog: android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)
 com.brucelet.spacetrader.BaseDialog: void onAttach(android.app.Activity)
 com.brucelet.spacetrader.BaseDialog: void onDismiss(android.content.DialogInterface)
@@ -14741,13 +14706,18 @@ com.brucelet.spacetrader.MainActivity$1: MainActivity$1(com.brucelet.spacetrader
 com.brucelet.spacetrader.MainActivity$1: void onClick(android.view.View)
 com.brucelet.spacetrader.MainActivity$10
 com.brucelet.spacetrader.MainActivity$10: com.brucelet.spacetrader.MainActivity this$0
-com.brucelet.spacetrader.MainActivity$10: java.lang.Exception val$e
-com.brucelet.spacetrader.MainActivity$10: MainActivity$10(com.brucelet.spacetrader.MainActivity,java.lang.Exception)
-com.brucelet.spacetrader.MainActivity$10: void onCancel()
+com.brucelet.spacetrader.MainActivity$10: MainActivity$10(com.brucelet.spacetrader.MainActivity)
+com.brucelet.spacetrader.MainActivity$10: void onConfirm()
+com.brucelet.spacetrader.MainActivity$11
+com.brucelet.spacetrader.MainActivity$11: com.brucelet.spacetrader.MainActivity this$0
+com.brucelet.spacetrader.MainActivity$11: java.lang.Exception val$e
+com.brucelet.spacetrader.MainActivity$11: MainActivity$11(com.brucelet.spacetrader.MainActivity,java.lang.Exception)
+com.brucelet.spacetrader.MainActivity$11: void onCancel()
 com.brucelet.spacetrader.MainActivity$2
 com.brucelet.spacetrader.MainActivity$2: com.brucelet.spacetrader.MainActivity this$0
-com.brucelet.spacetrader.MainActivity$2: MainActivity$2(com.brucelet.spacetrader.MainActivity)
-com.brucelet.spacetrader.MainActivity$2: void onConfirm()
+com.brucelet.spacetrader.MainActivity$2: android.view.MenuItem val$item
+com.brucelet.spacetrader.MainActivity$2: MainActivity$2(com.brucelet.spacetrader.MainActivity,android.view.MenuItem)
+com.brucelet.spacetrader.MainActivity$2: void onClick(android.view.View)
 com.brucelet.spacetrader.MainActivity$3
 com.brucelet.spacetrader.MainActivity$3: com.brucelet.spacetrader.MainActivity this$0
 com.brucelet.spacetrader.MainActivity$3: MainActivity$3(com.brucelet.spacetrader.MainActivity)
@@ -14756,42 +14726,42 @@ com.brucelet.spacetrader.MainActivity$4
 com.brucelet.spacetrader.MainActivity$4: com.brucelet.spacetrader.MainActivity this$0
 com.brucelet.spacetrader.MainActivity$4: MainActivity$4(com.brucelet.spacetrader.MainActivity)
 com.brucelet.spacetrader.MainActivity$4: void onConfirm()
-com.brucelet.spacetrader.MainActivity$4: com.brucelet.spacetrader.MainActivity access$0(com.brucelet.spacetrader.MainActivity$4)
-com.brucelet.spacetrader.MainActivity$4$1
-com.brucelet.spacetrader.MainActivity$4$1: com.brucelet.spacetrader.MainActivity$4 this$1
-com.brucelet.spacetrader.MainActivity$4$1: java.lang.String val$otherGame
-com.brucelet.spacetrader.MainActivity$4$1: MainActivity$4$1(com.brucelet.spacetrader.MainActivity$4,java.lang.String)
-com.brucelet.spacetrader.MainActivity$4$1: void onConfirm()
 com.brucelet.spacetrader.MainActivity$5
 com.brucelet.spacetrader.MainActivity$5: com.brucelet.spacetrader.MainActivity this$0
 com.brucelet.spacetrader.MainActivity$5: MainActivity$5(com.brucelet.spacetrader.MainActivity)
 com.brucelet.spacetrader.MainActivity$5: void onConfirm()
+com.brucelet.spacetrader.MainActivity$5: com.brucelet.spacetrader.MainActivity access$0(com.brucelet.spacetrader.MainActivity$5)
+com.brucelet.spacetrader.MainActivity$5$1
+com.brucelet.spacetrader.MainActivity$5$1: com.brucelet.spacetrader.MainActivity$5 this$1
+com.brucelet.spacetrader.MainActivity$5$1: java.lang.String val$otherGame
+com.brucelet.spacetrader.MainActivity$5$1: MainActivity$5$1(com.brucelet.spacetrader.MainActivity$5,java.lang.String)
+com.brucelet.spacetrader.MainActivity$5$1: void onConfirm()
 com.brucelet.spacetrader.MainActivity$6
 com.brucelet.spacetrader.MainActivity$6: com.brucelet.spacetrader.MainActivity this$0
 com.brucelet.spacetrader.MainActivity$6: MainActivity$6(com.brucelet.spacetrader.MainActivity)
 com.brucelet.spacetrader.MainActivity$6: void onConfirm()
-com.brucelet.spacetrader.MainActivity$6: com.brucelet.spacetrader.MainActivity access$0(com.brucelet.spacetrader.MainActivity$6)
-com.brucelet.spacetrader.MainActivity$6$1
-com.brucelet.spacetrader.MainActivity$6$1: com.brucelet.spacetrader.MainActivity$6 this$1
-com.brucelet.spacetrader.MainActivity$6$1: MainActivity$6$1(com.brucelet.spacetrader.MainActivity$6)
-com.brucelet.spacetrader.MainActivity$6$1: void run()
 com.brucelet.spacetrader.MainActivity$7
 com.brucelet.spacetrader.MainActivity$7: com.brucelet.spacetrader.MainActivity this$0
-com.brucelet.spacetrader.MainActivity$7: boolean val$showCommand
-com.brucelet.spacetrader.MainActivity$7: MainActivity$7(com.brucelet.spacetrader.MainActivity,boolean)
-com.brucelet.spacetrader.MainActivity$7: boolean onPrepareActionMode(android.support.v7.view.ActionMode,android.view.Menu)
-com.brucelet.spacetrader.MainActivity$7: void onDestroyActionMode(android.support.v7.view.ActionMode)
-com.brucelet.spacetrader.MainActivity$7: boolean onCreateActionMode(android.support.v7.view.ActionMode,android.view.Menu)
-com.brucelet.spacetrader.MainActivity$7: boolean onActionItemClicked(android.support.v7.view.ActionMode,android.view.MenuItem)
+com.brucelet.spacetrader.MainActivity$7: MainActivity$7(com.brucelet.spacetrader.MainActivity)
+com.brucelet.spacetrader.MainActivity$7: void onConfirm()
+com.brucelet.spacetrader.MainActivity$7: com.brucelet.spacetrader.MainActivity access$0(com.brucelet.spacetrader.MainActivity$7)
+com.brucelet.spacetrader.MainActivity$7$1
+com.brucelet.spacetrader.MainActivity$7$1: com.brucelet.spacetrader.MainActivity$7 this$1
+com.brucelet.spacetrader.MainActivity$7$1: MainActivity$7$1(com.brucelet.spacetrader.MainActivity$7)
+com.brucelet.spacetrader.MainActivity$7$1: void run()
 com.brucelet.spacetrader.MainActivity$8
 com.brucelet.spacetrader.MainActivity$8: com.brucelet.spacetrader.MainActivity this$0
-com.brucelet.spacetrader.MainActivity$8: android.support.v7.widget.PopupMenu val$dropdown
-com.brucelet.spacetrader.MainActivity$8: MainActivity$8(com.brucelet.spacetrader.MainActivity,android.support.v7.widget.PopupMenu)
-com.brucelet.spacetrader.MainActivity$8: void onClick(android.view.View)
+com.brucelet.spacetrader.MainActivity$8: boolean val$showCommand
+com.brucelet.spacetrader.MainActivity$8: MainActivity$8(com.brucelet.spacetrader.MainActivity,boolean)
+com.brucelet.spacetrader.MainActivity$8: boolean onPrepareActionMode(android.support.v7.view.ActionMode,android.view.Menu)
+com.brucelet.spacetrader.MainActivity$8: void onDestroyActionMode(android.support.v7.view.ActionMode)
+com.brucelet.spacetrader.MainActivity$8: boolean onCreateActionMode(android.support.v7.view.ActionMode,android.view.Menu)
+com.brucelet.spacetrader.MainActivity$8: boolean onActionItemClicked(android.support.v7.view.ActionMode,android.view.MenuItem)
 com.brucelet.spacetrader.MainActivity$9
 com.brucelet.spacetrader.MainActivity$9: com.brucelet.spacetrader.MainActivity this$0
-com.brucelet.spacetrader.MainActivity$9: MainActivity$9(com.brucelet.spacetrader.MainActivity)
-com.brucelet.spacetrader.MainActivity$9: void onConfirm()
+com.brucelet.spacetrader.MainActivity$9: android.support.v7.widget.PopupMenu val$dropdown
+com.brucelet.spacetrader.MainActivity$9: MainActivity$9(com.brucelet.spacetrader.MainActivity,android.support.v7.widget.PopupMenu)
+com.brucelet.spacetrader.MainActivity$9: void onClick(android.view.View)
 com.brucelet.spacetrader.NewGameDialog
 com.brucelet.spacetrader.NewGameDialog: java.util.List CLICKABLE_IDS
 com.brucelet.spacetrader.NewGameDialog: void <clinit>()
@@ -14929,6 +14899,8 @@ com.brucelet.spacetrader.R$attr: int actionBarTheme
 com.brucelet.spacetrader.R$attr: int actionBarTitleBackground
 com.brucelet.spacetrader.R$attr: int actionBarTitleTextStyle
 com.brucelet.spacetrader.R$attr: int actionBarWidgetTheme
+com.brucelet.spacetrader.R$attr: int actionButtonMarginBottom
+com.brucelet.spacetrader.R$attr: int actionButtonMarginTop
 com.brucelet.spacetrader.R$attr: int actionButtonStyle
 com.brucelet.spacetrader.R$attr: int actionDropDownStyle
 com.brucelet.spacetrader.R$attr: int actionLayout
@@ -14944,6 +14916,7 @@ com.brucelet.spacetrader.R$attr: int actionModePasteDrawable
 com.brucelet.spacetrader.R$attr: int actionModePopupWindowStyle
 com.brucelet.spacetrader.R$attr: int actionModeSelectAllDrawable
 com.brucelet.spacetrader.R$attr: int actionModeShareDrawable
+com.brucelet.spacetrader.R$attr: int actionModeSpinnerTextStyle
 com.brucelet.spacetrader.R$attr: int actionModeSplitBackground
 com.brucelet.spacetrader.R$attr: int actionModeStyle
 com.brucelet.spacetrader.R$attr: int actionModeWebSearchDrawable
@@ -14959,11 +14932,11 @@ com.brucelet.spacetrader.R$attr: int barSize
 com.brucelet.spacetrader.R$attr: int bottom
 com.brucelet.spacetrader.R$attr: int buttonBarButtonStyle
 com.brucelet.spacetrader.R$attr: int buttonBarStyle
-com.brucelet.spacetrader.R$attr: int buttonGravity
 com.brucelet.spacetrader.R$attr: int buttonStyleRounded
 com.brucelet.spacetrader.R$attr: int buttonStyleSquare
 com.brucelet.spacetrader.R$attr: int closeIcon
 com.brucelet.spacetrader.R$attr: int closeItemLayout
+com.brucelet.spacetrader.R$attr: int collapseContentDescription
 com.brucelet.spacetrader.R$attr: int collapseIcon
 com.brucelet.spacetrader.R$attr: int color
 com.brucelet.spacetrader.R$attr: int colorAccent
@@ -14980,11 +14953,11 @@ com.brucelet.spacetrader.R$attr: int contentInsetLeft
 com.brucelet.spacetrader.R$attr: int contentInsetRight
 com.brucelet.spacetrader.R$attr: int contentInsetStart
 com.brucelet.spacetrader.R$attr: int customNavigationLayout
+com.brucelet.spacetrader.R$attr: int dialogBackgroundStyle
 com.brucelet.spacetrader.R$attr: int dialogButtonBarStyle
 com.brucelet.spacetrader.R$attr: int dialogButtonStyle
 com.brucelet.spacetrader.R$attr: int dialogDivider
 com.brucelet.spacetrader.R$attr: int dialogDividerColor
-com.brucelet.spacetrader.R$attr: int dialogStyle
 com.brucelet.spacetrader.R$attr: int dialogTitleTextStyle
 com.brucelet.spacetrader.R$attr: int disableChildrenWhenDisabled
 com.brucelet.spacetrader.R$attr: int displayOptions
@@ -14999,6 +14972,7 @@ com.brucelet.spacetrader.R$attr: int dropdownListPreferredItemHeight
 com.brucelet.spacetrader.R$attr: int editTextBackground
 com.brucelet.spacetrader.R$attr: int editTextColor
 com.brucelet.spacetrader.R$attr: int elevation
+com.brucelet.spacetrader.R$attr: int endArrow
 com.brucelet.spacetrader.R$attr: int expandActivityOverflowButtonDrawable
 com.brucelet.spacetrader.R$attr: int gapBetweenBars
 com.brucelet.spacetrader.R$attr: int goIcon
@@ -15015,7 +14989,6 @@ com.brucelet.spacetrader.R$attr: int initialActivityCount
 com.brucelet.spacetrader.R$attr: int isLightTheme
 com.brucelet.spacetrader.R$attr: int itemPadding
 com.brucelet.spacetrader.R$attr: int layout
-com.brucelet.spacetrader.R$attr: int leftArrow
 com.brucelet.spacetrader.R$attr: int listChoiceBackgroundIndicator
 com.brucelet.spacetrader.R$attr: int listPopupWindowStyle
 com.brucelet.spacetrader.R$attr: int listPreferredItemHeight
@@ -15048,7 +15021,6 @@ com.brucelet.spacetrader.R$attr: int progressBarStyle
 com.brucelet.spacetrader.R$attr: int prompt
 com.brucelet.spacetrader.R$attr: int queryBackground
 com.brucelet.spacetrader.R$attr: int queryHint
-com.brucelet.spacetrader.R$attr: int rightArrow
 com.brucelet.spacetrader.R$attr: int roundedButtonDrawable
 com.brucelet.spacetrader.R$attr: int searchIcon
 com.brucelet.spacetrader.R$attr: int searchViewStyle
@@ -15063,7 +15035,9 @@ com.brucelet.spacetrader.R$attr: int spinnerMode
 com.brucelet.spacetrader.R$attr: int spinnerStyle
 com.brucelet.spacetrader.R$attr: int splitTrack
 com.brucelet.spacetrader.R$attr: int squareButtonDrawable
+com.brucelet.spacetrader.R$attr: int startArrow
 com.brucelet.spacetrader.R$attr: int state_above_anchor
+com.brucelet.spacetrader.R$attr: int statusBarPadding
 com.brucelet.spacetrader.R$attr: int strokeColor
 com.brucelet.spacetrader.R$attr: int submitBackground
 com.brucelet.spacetrader.R$attr: int subtitle
@@ -15353,12 +15327,16 @@ com.brucelet.spacetrader.R$drawable: int abc_textfield_search_activated_mtrl_alp
 com.brucelet.spacetrader.R$drawable: int abc_textfield_search_default_mtrl_alpha
 com.brucelet.spacetrader.R$drawable: int abc_textfield_search_material
 com.brucelet.spacetrader.R$drawable: int alien
+com.brucelet.spacetrader.R$drawable: int arrow_end_black
+com.brucelet.spacetrader.R$drawable: int arrow_end_palm
+com.brucelet.spacetrader.R$drawable: int arrow_end_white
 com.brucelet.spacetrader.R$drawable: int arrow_left_black
-com.brucelet.spacetrader.R$drawable: int arrow_left_palm
 com.brucelet.spacetrader.R$drawable: int arrow_left_white
 com.brucelet.spacetrader.R$drawable: int arrow_right_black
-com.brucelet.spacetrader.R$drawable: int arrow_right_palm
 com.brucelet.spacetrader.R$drawable: int arrow_right_white
+com.brucelet.spacetrader.R$drawable: int arrow_start_black
+com.brucelet.spacetrader.R$drawable: int arrow_start_palm
+com.brucelet.spacetrader.R$drawable: int arrow_start_white
 com.brucelet.spacetrader.R$drawable: int beetle
 com.brucelet.spacetrader.R$drawable: int beetle_base
 com.brucelet.spacetrader.R$drawable: int beetle_damage
@@ -15453,10 +15431,15 @@ com.brucelet.spacetrader.R$drawable: int cab_background_top_dark_ab
 com.brucelet.spacetrader.R$drawable: int cab_background_top_light_ab
 com.brucelet.spacetrader.R$drawable: int cab_background_top_palm_ab
 com.brucelet.spacetrader.R$drawable: int chartsystem
+com.brucelet.spacetrader.R$drawable: int chartsysteml
 com.brucelet.spacetrader.R$drawable: int chartsystemv
+com.brucelet.spacetrader.R$drawable: int chartsystemvl
 com.brucelet.spacetrader.R$drawable: int chartsystemw
+com.brucelet.spacetrader.R$drawable: int chartsystemwl
 com.brucelet.spacetrader.R$drawable: int continuous0
+com.brucelet.spacetrader.R$drawable: int continuous0l
 com.brucelet.spacetrader.R$drawable: int continuous1
+com.brucelet.spacetrader.R$drawable: int continuous1l
 com.brucelet.spacetrader.R$drawable: int dark_acwidgets_activated_background_holo_dark
 com.brucelet.spacetrader.R$drawable: int dark_acwidgets_btn_check_holo_dark
 com.brucelet.spacetrader.R$drawable: int dark_acwidgets_btn_check_off_disabled_focused_holo_dark
@@ -15595,6 +15578,7 @@ com.brucelet.spacetrader.R$drawable: int info_unselected_holo_light
 com.brucelet.spacetrader.R$drawable: int info_unselected_material_green2
 com.brucelet.spacetrader.R$drawable: int info_unselected_white
 com.brucelet.spacetrader.R$drawable: int info_white
+com.brucelet.spacetrader.R$drawable: int item_background_borderless_material_light
 com.brucelet.spacetrader.R$drawable: int item_background_palm
 com.brucelet.spacetrader.R$drawable: int light_acwidgets_activated_background_holo_light
 com.brucelet.spacetrader.R$drawable: int light_acwidgets_btn_check_holo_light
@@ -15839,8 +15823,12 @@ com.brucelet.spacetrader.R$drawable: int text_cursor_palm
 com.brucelet.spacetrader.R$drawable: int title
 com.brucelet.spacetrader.R$drawable: int trader
 com.brucelet.spacetrader.R$drawable: int warpsystem
+com.brucelet.spacetrader.R$drawable: int warpsystem2
+com.brucelet.spacetrader.R$drawable: int warpsysteml
 com.brucelet.spacetrader.R$drawable: int warpsystemv
+com.brucelet.spacetrader.R$drawable: int warpsystemvl
 com.brucelet.spacetrader.R$drawable: int warpsystemw
+com.brucelet.spacetrader.R$drawable: int warpsystemwl
 com.brucelet.spacetrader.R$drawable: int wasp
 com.brucelet.spacetrader.R$drawable: int wasp_base
 com.brucelet.spacetrader.R$drawable: int wasp_damage
@@ -15867,7 +15855,6 @@ com.brucelet.spacetrader.R$id: int alertHelp
 com.brucelet.spacetrader.R$id: int alertTitle
 com.brucelet.spacetrader.R$id: int always
 com.brucelet.spacetrader.R$id: int beginning
-com.brucelet.spacetrader.R$id: int bottom
 com.brucelet.spacetrader.R$id: int buttonPanel
 com.brucelet.spacetrader.R$id: int buttons
 com.brucelet.spacetrader.R$id: int checkbox
@@ -16596,7 +16583,6 @@ com.brucelet.spacetrader.R$id: int tabMode
 com.brucelet.spacetrader.R$id: int title
 com.brucelet.spacetrader.R$id: int titleDivider
 com.brucelet.spacetrader.R$id: int toolbar
-com.brucelet.spacetrader.R$id: int top
 com.brucelet.spacetrader.R$id: int topPanel
 com.brucelet.spacetrader.R$id: int up
 com.brucelet.spacetrader.R$id: int useLogo
@@ -16633,6 +16619,7 @@ com.brucelet.spacetrader.R$layout: int abc_screen_toolbar
 com.brucelet.spacetrader.R$layout: int abc_search_dropdown_item_icons_2line
 com.brucelet.spacetrader.R$layout: int abc_search_view
 com.brucelet.spacetrader.R$layout: int abc_simple_dropdown_hint
+com.brucelet.spacetrader.R$layout: int action_button
 com.brucelet.spacetrader.R$layout: int activity_documentation
 com.brucelet.spacetrader.R$layout: int activity_main
 com.brucelet.spacetrader.R$layout: int autocomplete_dropdown_item
@@ -16732,6 +16719,7 @@ com.brucelet.spacetrader.R$string: int abc_searchview_description_submit
 com.brucelet.spacetrader.R$string: int abc_searchview_description_voice
 com.brucelet.spacetrader.R$string: int abc_shareactionprovider_share_with
 com.brucelet.spacetrader.R$string: int abc_shareactionprovider_share_with_application
+com.brucelet.spacetrader.R$string: int abc_toolbar_collapse_description
 com.brucelet.spacetrader.R$string: int activity_absent
 com.brucelet.spacetrader.R$string: int activity_abundant
 com.brucelet.spacetrader.R$string: int activity_few
@@ -18167,13 +18155,15 @@ com.brucelet.spacetrader.R$style: int ActionButton_CloseMode_Light_ab
 com.brucelet.spacetrader.R$style: int ActionButton_CloseMode_Palm_ab
 com.brucelet.spacetrader.R$style: int ActionButtonStyle_Dark
 com.brucelet.spacetrader.R$style: int ActionButtonStyle_Light
-com.brucelet.spacetrader.R$style: int ActionButtonStyle_Material_Dark
-com.brucelet.spacetrader.R$style: int ActionButtonStyle_Material_Light
+com.brucelet.spacetrader.R$style: int ActionButtonStyle_Material
 com.brucelet.spacetrader.R$style: int ActionButtonStyle_Palm
 com.brucelet.spacetrader.R$style: int ActionButtonText_Dark
 com.brucelet.spacetrader.R$style: int ActionButtonText_Light
 com.brucelet.spacetrader.R$style: int ActionButtonText_Palm
 com.brucelet.spacetrader.R$style: int ActionDropDownStyle_Palm
+com.brucelet.spacetrader.R$style: int ActionModeCloseButtonStyle_Base_Material
+com.brucelet.spacetrader.R$style: int ActionModeCloseButtonStyle_Base_Material_Dark
+com.brucelet.spacetrader.R$style: int ActionModeCloseButtonStyle_Base_Material_Light
 com.brucelet.spacetrader.R$style: int ActionModeCloseButtonStyle_Dark
 com.brucelet.spacetrader.R$style: int ActionModeCloseButtonStyle_Light
 com.brucelet.spacetrader.R$style: int ActionModeCloseButtonStyle_Material_Dark
@@ -18181,6 +18171,7 @@ com.brucelet.spacetrader.R$style: int ActionModeCloseButtonStyle_Material_Light
 com.brucelet.spacetrader.R$style: int ActionModeCloseButtonStyle_Palm
 com.brucelet.spacetrader.R$style: int ActivityTheme_Base_Dark
 com.brucelet.spacetrader.R$style: int ActivityTheme_Base_Light
+com.brucelet.spacetrader.R$style: int ActivityTheme_Base_Material_Dark
 com.brucelet.spacetrader.R$style: int ActivityTheme_Base_Material_Light
 com.brucelet.spacetrader.R$style: int ActivityTheme_Base_Palm
 com.brucelet.spacetrader.R$style: int ActivityTheme_Dark
@@ -18336,6 +18327,13 @@ com.brucelet.spacetrader.R$style: int Dialog_Dark
 com.brucelet.spacetrader.R$style: int Dialog_Light
 com.brucelet.spacetrader.R$style: int Dialog_Palm
 com.brucelet.spacetrader.R$style: int DialogButtonStyle_Palm
+com.brucelet.spacetrader.R$style: int DialogTheme_Base_Material_Dark
+com.brucelet.spacetrader.R$style: int DialogTheme_Base_Material_Light
+com.brucelet.spacetrader.R$style: int DialogTheme_Dark
+com.brucelet.spacetrader.R$style: int DialogTheme_Light
+com.brucelet.spacetrader.R$style: int DialogTheme_Material_Dark
+com.brucelet.spacetrader.R$style: int DialogTheme_Material_Light
+com.brucelet.spacetrader.R$style: int DialogTheme_Palm
 com.brucelet.spacetrader.R$style: int DropDownListView_Dark_ab
 com.brucelet.spacetrader.R$style: int DropDownListView_Light_ab
 com.brucelet.spacetrader.R$style: int DropDownListView_Palm_ab
@@ -18785,7 +18783,7 @@ com.brucelet.spacetrader.R$styleable: int Theme_windowFixedWidthMinor
 com.brucelet.spacetrader.R$styleable: int[] Toolbar
 com.brucelet.spacetrader.R$styleable: int Toolbar_android_gravity
 com.brucelet.spacetrader.R$styleable: int Toolbar_android_minHeight
-com.brucelet.spacetrader.R$styleable: int Toolbar_buttonGravity
+com.brucelet.spacetrader.R$styleable: int Toolbar_collapseContentDescription
 com.brucelet.spacetrader.R$styleable: int Toolbar_collapseIcon
 com.brucelet.spacetrader.R$styleable: int Toolbar_contentInsetEnd
 com.brucelet.spacetrader.R$styleable: int Toolbar_contentInsetLeft
@@ -19363,6 +19361,7 @@ com.brucelet.spacetrader.datatypes.GameState: void cheatDialogDismiss()
 com.brucelet.spacetrader.datatypes.GameState: void encounterButtons()
 com.brucelet.spacetrader.datatypes.GameState: void encounterDisplayNextAction(boolean)
 com.brucelet.spacetrader.datatypes.GameState: void showShip(com.brucelet.spacetrader.datatypes.Ship,boolean)
+com.brucelet.spacetrader.datatypes.GameState: void shipRotationHoneycomb(android.view.View,boolean)
 com.brucelet.spacetrader.datatypes.GameState: void encounterDisplayShips()
 com.brucelet.spacetrader.datatypes.GameState: void escapeWithPod()
 com.brucelet.spacetrader.datatypes.GameState: void arrested()
@@ -19459,6 +19458,7 @@ com.brucelet.spacetrader.datatypes.GameState: void showQuestsCheat()
 com.brucelet.spacetrader.datatypes.GameState: boolean scrollSystem(boolean)
 com.brucelet.spacetrader.datatypes.GameState: void buildHelpDialog(int,com.brucelet.spacetrader.BaseDialog$Builder,android.view.LayoutInflater,android.view.ViewGroup)
 com.brucelet.spacetrader.datatypes.GameState: void setAdapterSystems(com.brucelet.spacetrader.WarpSystemPagerAdapter)
+com.brucelet.spacetrader.datatypes.GameState: boolean isRtl()
 com.brucelet.spacetrader.datatypes.GameState: void access$0(com.brucelet.spacetrader.datatypes.GameState,com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask)
 com.brucelet.spacetrader.datatypes.GameState: com.brucelet.spacetrader.datatypes.GameState$EncounterButtonTask access$1(com.brucelet.spacetrader.datatypes.GameState)
 com.brucelet.spacetrader.datatypes.GameState: com.brucelet.spacetrader.MainActivity access$2(com.brucelet.spacetrader.datatypes.GameState)
@@ -20774,3 +20774,10 @@ com.brucelet.spacetrader.widget.EncounterHelpActionProvider: void onClick(androi
 com.brucelet.spacetrader.widget.FixedRatioImageView
 com.brucelet.spacetrader.widget.FixedRatioImageView: FixedRatioImageView(android.content.Context,android.util.AttributeSet)
 com.brucelet.spacetrader.widget.FixedRatioImageView: void onMeasure(int,int)
+com.brucelet.spacetrader.widget.ShortcutButton
+com.brucelet.spacetrader.widget.ShortcutButton: android.view.MenuItem mItem
+com.brucelet.spacetrader.widget.ShortcutButton: ShortcutButton(android.content.Context)
+com.brucelet.spacetrader.widget.ShortcutButton: ShortcutButton(android.content.Context,android.util.AttributeSet)
+com.brucelet.spacetrader.widget.ShortcutButton: ShortcutButton(android.content.Context,android.util.AttributeSet,int)
+com.brucelet.spacetrader.widget.ShortcutButton: void setMenuItem(android.view.MenuItem)
+com.brucelet.spacetrader.widget.ShortcutButton: boolean onLongClick(android.view.View)

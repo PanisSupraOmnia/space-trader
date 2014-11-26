@@ -25,10 +25,12 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.TypedArray;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -43,20 +45,15 @@ import com.brucelet.spacetrader.datatypes.GameState;
 import com.brucelet.spacetrader.enumtypes.XmlString;
 
 public abstract class BaseDialog extends DialogFragment implements ConvenienceMethods, OnClickListener {
-	
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-
-		// Set STYLE_NO_FRAME so that we can manually add consistent holo dialog backgrounds
-		setStyle(STYLE_NO_FRAME, 0);
-	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {		
+			Bundle savedInstanceState) {
+		
 		// Override given LayoutInflater. This is necessary for styles to be applied correctly to dialogs.
-		inflater = LayoutInflater.from(getActivity());
+		int theme = getTheme();
+		Context context = Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB && theme != 0? new ContextThemeWrapper(getActivity(), theme) : getActivity();
+		inflater = LayoutInflater.from(context);
 		
 		View root = inflater.inflate(R.layout.dialog_layout, container, false);
 		TypedValue tv = new TypedValue();
@@ -67,7 +64,7 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 		View buttonPanel = root.findViewById(R.id.buttonPanel);
 
 		// Manually setting backgrounds from resources since we're not using real AlertDialogs
-		getActivity().getTheme().resolveAttribute(R.attr.dialogStyle, tv, true);
+		getActivity().getTheme().resolveAttribute(R.attr.dialogBackgroundStyle, tv, true);
 		ta = getActivity().getTheme().obtainStyledAttributes(tv.resourceId, R.styleable.dialog);
 		topPanel.setBackgroundResource(ta.getResourceId(R.styleable.dialog_top, 0));
 		contentPanel.setBackgroundResource(ta.getResourceId(R.styleable.dialog_middle, 0));
@@ -210,6 +207,13 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 	
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
+		TypedValue tv = new TypedValue();
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB && getActivity().getTheme().resolveAttribute(android.R.attr.dialogTheme, tv, true)) {
+			setStyle(STYLE_NO_FRAME, tv.resourceId);
+		} else {
+			setStyle(STYLE_NO_FRAME, 0);
+		}
+		
 		Dialog dialog = super.onCreateDialog(savedInstanceState);
 		dialog.setOnShowListener(new DialogInterface.OnShowListener() { // NB OnShowListener requires API 8
 			
@@ -223,11 +227,14 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 		
 		// STYLE_NO_FRAME removes animation style so add it back in
 		Window window = dialog.getWindow();
-		window.getAttributes().windowAnimations = android.R.style.Animation_Dialog;
+		WindowManager.LayoutParams windowAttributes = window.getAttributes();
+		windowAttributes.windowAnimations = android.R.style.Animation_Dialog;
 		
 		// Also missing background dimming since not using standard AlertDialog so throw that up too
 		window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-		window.getAttributes().dimAmount = 0.6f; // NB Just hardcoding this right now although it might be technically more correct to grab it from style.
+		windowAttributes.dimAmount = 0.6f; // NB Just hardcoding this right now although it might be technically more correct to grab it from style.
+		
+		window.setAttributes(windowAttributes);
 		
 		return dialog;
 	}

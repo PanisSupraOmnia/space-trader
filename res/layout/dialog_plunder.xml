@@ -281,14 +281,17 @@
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical"
-        android:paddingLeft="10dp" >
+        android:paddingLeft="10dp"
+        android:paddingRight="0dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="0dp" >
 
         <TextView
             android:id="@+id/dialog_plunder_bays"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:gravity="left"
+            android:gravity="start"
             android:minLines="2"
             android:singleLine="false"
             android:text="@string/format_bays" />

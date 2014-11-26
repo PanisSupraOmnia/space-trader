@@ -15,6 +15,7 @@
         
         <item name="actionBarStyle">?android:actionBarStyle</item>
         <item name="selectableItemBackground">@drawable/light_acwidgets_list_selector_holo_light</item>
+        <item name="android:dialogTheme">@style/DialogTheme.Light</item>
     </style>
 
     <style name="ActivityTheme.Base.Dark" parent="@style/Theme.Dark_ab">
@@ -32,6 +33,7 @@
         
         <item name="actionBarStyle">?android:actionBarStyle</item>
         <item name="selectableItemBackground">@drawable/dark_acwidgets_list_selector_holo_dark</item>
+        <item name="android:dialogTheme">@style/DialogTheme.Dark</item>
     </style>
 
     <style name="ActivityTheme.Base.Palm" parent="@style/Theme.Palm_ab">
@@ -71,6 +73,49 @@
         
         <item name="actionModeBackground">?android:actionModeBackground</item>
         <item name="actionModeSplitBackground">?android:actionModeSplitBackground</item>
+        <item name="android:dialogTheme">@style/DialogTheme.Palm</item>
+    </style>
+    
+    <style name="DialogTheme.Light" parent="ActivityTheme.Light">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
+        
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowActionModeOverlay">true</item>
+    </style>
+    
+    <style name="DialogTheme.Dark" parent="ActivityTheme.Dark">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
+        
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowActionModeOverlay">true</item>
+    </style>
+    
+    <style name="DialogTheme.Palm" parent="ActivityTheme.Palm">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
+        
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        
+        <item name="android:actionButtonStyle">@style/ActionButtonStyle.Light</item>
+        <item name="actionButtonStyle">@style/ActionButtonStyle.Light</item>
     </style>
     
     <style name="ActionBarStyle.Palm" parent="@style/ActionBar.Transparent.Palm_ab">

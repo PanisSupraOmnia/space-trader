@@ -146,7 +146,7 @@
         android:layout_alignBaseline="@id/screen_warp_target_cost_layout"
         android:baselineAligned="true"
         android:baselineAlignedChildIndex="0"
-        android:gravity="right"
+        android:gravity="end"
         android:orientation="horizontal"
         android:weightSum="11" >
 

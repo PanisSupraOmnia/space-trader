@@ -75,21 +75,23 @@
         <item name="actionBarBackgroundDocked">@drawable/ab_solid_light_ab</item>
         <item name="actionBarBackgroundDefault">@drawable/ab_solid_light_ab</item>
         <item name="actionBarTitleTextStyle">@style/TitleText.Light</item>
+        <item name="actionModeSpinnerTextStyle">@style/TitleText.Light</item>
         <item name="roundedButtonDrawable">@drawable/btn_rounded_holo_light</item>
         <item name="squareButtonDrawable">@drawable/btn_square_holo_light</item>
         <item name="strokeColor">@color/stroke_holo_light</item>
-        <item name="leftArrow">@drawable/arrow_left_black</item>
-        <item name="rightArrow">@drawable/arrow_right_black</item>>
+        <item name="startArrow">@drawable/arrow_start_black</item>
+        <item name="endArrow">@drawable/arrow_end_black</item>>
         <item name="infoIconEncounter">@drawable/info_holo_light</item>
         <item name="infoIconDialog">@drawable/info_holo_blue</item>
         <item name="dialogTitleTextStyle">@style/TextAppearance.DialogWindowTitle.Light</item>
         <item name="actionBarTitleBackground">?selectableItemBackground</item>
         <item name="dialogDividerColor">@color/light_acwidgets_color</item>
         <item name="pressableTextColor">?android:textColorPrimary</item>
-        <item name="dialogStyle">@style/Dialog.Light</item>
+        <item name="dialogBackgroundStyle">@style/Dialog.Light</item>
         <item name="dialogButtonBarStyle">@style/ButtonBar.Dialog.Light</item>
         <item name="dialogButtonStyle">@style/Button.Dialog.Light</item>
         <item name="dialogDivider">@drawable/list_divider_holo_light</item>
+        <item name="statusBarPadding">0dp</item>
         
         <item name="android:textViewStyle">@style/TextView.Light</item>
         <item name="android:editTextStyle">@style/EditText.Light</item>
@@ -118,21 +120,23 @@
         <item name="actionBarBackgroundDocked">@drawable/ab_solid_dark_ab</item>
         <item name="actionBarBackgroundDefault">@drawable/ab_solid_dark_ab</item>
         <item name="actionBarTitleTextStyle">@style/TitleText.Dark</item>
+        <item name="actionModeSpinnerTextStyle">@style/TitleText.Dark</item>
         <item name="roundedButtonDrawable">@drawable/btn_rounded_holo_dark</item>
         <item name="squareButtonDrawable">@drawable/btn_square_holo_dark</item>
         <item name="strokeColor">@color/stroke_holo_dark</item>
-        <item name="leftArrow">@drawable/arrow_left_white</item>
-        <item name="rightArrow">@drawable/arrow_right_white</item>
+        <item name="startArrow">@drawable/arrow_start_white</item>
+        <item name="endArrow">@drawable/arrow_end_white</item>
         <item name="infoIconEncounter">@drawable/info_holo_dark</item>
         <item name="infoIconDialog">@drawable/info_holo_blue</item>
         <item name="dialogTitleTextStyle">@style/TextAppearance.DialogWindowTitle.Dark</item>
         <item name="actionBarTitleBackground">?selectableItemBackground</item>
         <item name="dialogDividerColor">@color/dark_acwidgets_color</item>
         <item name="pressableTextColor">?android:textColorPrimary</item>
-        <item name="dialogStyle">@style/Dialog.Dark</item>
+        <item name="dialogBackgroundStyle">@style/Dialog.Dark</item>
         <item name="dialogButtonBarStyle">@style/ButtonBar.Dialog.Dark</item>
         <item name="dialogButtonStyle">@style/Button.Dialog.Dark</item>
         <item name="dialogDivider">@drawable/list_divider_holo_dark</item>
+        <item name="statusBarPadding">0dp</item>
         
         <item name="android:textViewStyle">@style/TextView.Dark</item>
         <item name="android:editTextStyle">@style/EditText.Dark</item>
@@ -162,21 +166,26 @@
         <item name="actionBarBackgroundDocked">@drawable/ab_solid_palm_cab</item>
         <item name="actionBarBackgroundDefault">@drawable/ab_solid_palm_dab</item>
         <item name="actionBarTitleTextStyle">@style/TitleText.Palm</item>
+        <item name="actionModeSpinnerTextStyle">@style/TitleText.Palm</item>
         <item name="roundedButtonDrawable">@drawable/btn_rounded_palm</item>
         <item name="squareButtonDrawable">@drawable/btn_square_palm</item>
         <item name="strokeColor">@color/stroke_palm</item>
-        <item name="leftArrow">@drawable/arrow_left_palm</item>
-        <item name="rightArrow">@drawable/arrow_right_palm</item>
+        <item name="startArrow">@drawable/arrow_start_palm</item>
+        <item name="endArrow">@drawable/arrow_end_palm</item>
         <item name="infoIconEncounter">@drawable/info_white</item>
         <item name="infoIconDialog">@drawable/info_white</item>
         <item name="dialogTitleTextStyle">@style/TextAppearance.DialogWindowTitle.Palm</item>
         <item name="actionBarTitleBackground">@drawable/ab_solid_palm_dab</item>
         <item name="dialogDividerColor">@color/palm_acwidgets_color</item>
         <item name="pressableTextColor">@color/primary_text_palm</item>
-        <item name="dialogStyle">@style/Dialog.Palm</item>
+        <item name="dialogBackgroundStyle">@style/Dialog.Palm</item>
         <item name="dialogButtonBarStyle">@style/ButtonBar.Dialog.Palm</item>
         <item name="dialogButtonStyle">@style/Button.Dialog.Palm</item>
         <item name="dialogDivider">@android:color/transparent</item>
+        <item name="statusBarPadding">0dp</item>
+        
+        <item name="actionButtonMarginTop">@dimen/action_bar_button_marginTop_palm</item>
+        <item name="actionButtonMarginBottom">@dimen/action_bar_button_marginBottom_palm</item>
         
         <item name="android:textViewStyle">@style/TextView.Palm</item>
         <item name="android:editTextStyle">@style/EditText.Palm</item>
@@ -459,6 +468,7 @@
     </style>
     
     <style name="TitleText.Dark" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@android:color/white</item>
     </style>
     
     <style name="TitleText.Palm" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">

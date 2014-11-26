@@ -17,6 +17,7 @@
         
         <item name="actionBarStyle">?android:actionBarStyle</item>
         <item name="selectableItemBackground">@drawable/light_acwidgets_list_selector_holo_light</item>
+        <item name="android:dialogTheme">@style/DialogTheme.Light</item>
     </style>
 
     <style name="ActivityTheme.Base.Dark" parent="@style/Theme.Dark_ab">
@@ -35,6 +36,7 @@
         
         <item name="actionBarStyle">?android:actionBarStyle</item>
         <item name="selectableItemBackground">@drawable/dark_acwidgets_list_selector_holo_dark</item>
+        <item name="android:dialogTheme">@style/DialogTheme.Dark</item>
     </style>
 
     <style name="ActivityTheme.Base.Palm" parent="@style/Theme.Palm_ab">
@@ -76,6 +78,7 @@
         
         <item name="actionModeBackground">?android:actionModeBackground</item>
         <item name="actionModeSplitBackground">?android:actionModeSplitBackground</item>
+        <item name="android:dialogTheme">@style/DialogTheme.Palm</item>
     </style>
 
     <style name="ListViewStyle.Palm" parent="@style/ListViewPalm_ACWidgets">

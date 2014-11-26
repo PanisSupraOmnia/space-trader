@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start"
         android:orientation="vertical" >
 
         <LinearLayout
@@ -170,7 +170,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/screen_status_ship_type_layout"
-        android:gravity="right"
+        android:gravity="end"
         android:orientation="horizontal"
         android:weightSum="4" >
 
@@ -192,7 +192,7 @@
         android:id="@+id/screen_status_buttons"
         style="@style/ScreenRow"
         android:layout_below="@id/spacer"
-        android:gravity="left" >
+        android:gravity="start" >
 
         <Button
             android:id="@+id/screen_status_back_button"

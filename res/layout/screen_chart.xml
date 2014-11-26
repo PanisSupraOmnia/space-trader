@@ -46,7 +46,7 @@
             android:layout_alignBaseline="@id/screen_chart_systemrow"
             android:baselineAligned="true"
             android:baselineAlignedChildIndex="0"
-            android:gravity="center_vertical|right"
+            android:gravity="center_vertical|end"
             android:orientation="horizontal"
             android:paddingTop="5dp" >
 
@@ -70,7 +70,7 @@
             android:id="@+id/screen_chart_description"
             style="?android:attr/textViewStyle" android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:gravity="left"
+            android:gravity="start"
             android:minLines="2"
             android:singleLine="false"
             android:layout_below="@id/screen_chart_systemrow" />

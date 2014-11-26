@@ -20,6 +20,7 @@
 
         <EditText
             android:layout_toRightOf="@id/dialog_newgame_name_label"
+            android:layout_toEndOf="@id/dialog_newgame_name_label"
             android:layout_alignBaseline="@id/dialog_newgame_name_label"
             android:id="@+id/dialog_newgame_name"
             android:layout_width="match_parent"

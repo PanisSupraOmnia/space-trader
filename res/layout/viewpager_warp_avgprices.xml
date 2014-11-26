@@ -74,6 +74,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="2dp"
+            android:layout_marginEnd="2dp"
             android:layout_weight="1.9"
             android:orientation="vertical" >
 
@@ -82,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
-                android:gravity="right"
+                android:gravity="end"
                 android:onClick="pagerClick" />
 
             <TextView
@@ -90,7 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
-                android:gravity="right"
+                android:gravity="end"
                 android:onClick="pagerClick" />
 
             <TextView
@@ -98,7 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
-                android:gravity="right"
+                android:gravity="end"
                 android:onClick="pagerClick" />
 
             <TextView
@@ -106,7 +107,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
-                android:gravity="right"
+                android:gravity="end"
                 android:onClick="pagerClick" />
 
             <TextView
@@ -114,7 +115,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
-                android:gravity="right"
+                android:gravity="end"
                 android:onClick="pagerClick" />
         </LinearLayout>
 
@@ -176,7 +177,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
-                android:gravity="right"
+                android:gravity="end"
                 android:onClick="pagerClick" />
 
             <TextView
@@ -184,7 +185,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
-                android:gravity="right"
+                android:gravity="end"
                 android:onClick="pagerClick" />
 
             <TextView
@@ -192,7 +193,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
-                android:gravity="right"
+                android:gravity="end"
                 android:onClick="pagerClick" />
 
             <TextView
@@ -200,7 +201,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
-                android:gravity="right"
+                android:gravity="end"
                 android:onClick="pagerClick" />
 
             <TextView
@@ -208,7 +209,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
-                android:gravity="right"
+                android:gravity="end"
                 android:onClick="pagerClick" />
         </LinearLayout>
     </LinearLayout>

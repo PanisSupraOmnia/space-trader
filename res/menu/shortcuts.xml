@@ -8,6 +8,7 @@
             android:icon="@null"
             android:title="@string/screen_buy"
             android:titleCondensed="@string/shortcut_buy"
+            support:actionLayout="@layout/action_button"
             support:showAsAction="always|withText"/>
         <item
             android:id="@+id/menu_shortcut2"
@@ -15,6 +16,7 @@
             android:icon="@null"
             android:title="@string/screen_sell"
             android:titleCondensed="@string/shortcut_sell"
+            support:actionLayout="@layout/action_button"
             support:showAsAction="always|withText"/>
         <item
             android:id="@+id/menu_shortcut3"
@@ -22,6 +24,7 @@
             android:icon="@null"
             android:title="@string/screen_yard"
             android:titleCondensed="@string/shortcut_yard"
+            support:actionLayout="@layout/action_button"
             support:showAsAction="always|withText"/>
         <item
             android:id="@+id/menu_shortcut4"
@@ -29,6 +32,8 @@
             android:icon="@null"
             android:title="@string/screen_warp"
             android:titleCondensed="@string/shortcut_warp"
+            support:actionLayout="@layout/action_button"
             support:showAsAction="always|withText"/>
     </group>
-</menu>
+
+</menu>

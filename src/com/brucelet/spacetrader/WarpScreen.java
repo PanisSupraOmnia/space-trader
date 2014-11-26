@@ -20,6 +20,7 @@
  */
 package com.brucelet.spacetrader;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Bundle;
@@ -103,6 +104,7 @@ public class WarpScreen extends BaseScreen {
 			mFragment.getGameState().drawShortRange(canvas);
 		}
 
+		@SuppressLint("ClickableViewAccessibility")
 		@Override
 		public boolean onTouchEvent(MotionEvent event) {
 			switch (MotionEventCompat.getActionMasked(event)) {
@@ -110,7 +112,7 @@ public class WarpScreen extends BaseScreen {
 			case MotionEvent.ACTION_POINTER_DOWN:
 				return mFragment.getGameState().warpFormHandleEvent(event.getX(), event.getY());
 			default:
-				return false;
+				return super.onTouchEvent(event);
 			}
 		}
 	}
