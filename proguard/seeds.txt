@@ -15783,12 +15783,7 @@ com.brucelet.spacetrader.R$drawable: int spinner_background_ab_light_ab
 com.brucelet.spacetrader.R$drawable: int spinner_background_ab_palm_ab
 com.brucelet.spacetrader.R$drawable: int spinner_background_palm
 com.brucelet.spacetrader.R$drawable: int spinner_black_spinner_default_holo_light
-com.brucelet.spacetrader.R$drawable: int spinner_default_palm
-com.brucelet.spacetrader.R$drawable: int spinner_disabled_palm
 com.brucelet.spacetrader.R$drawable: int spinner_drawable_palm
-com.brucelet.spacetrader.R$drawable: int spinner_focused_palm
-com.brucelet.spacetrader.R$drawable: int spinner_palm
-com.brucelet.spacetrader.R$drawable: int spinner_pressed_palm
 com.brucelet.spacetrader.R$drawable: int spinner_white_spinner_default_holo_light
 com.brucelet.spacetrader.R$drawable: int tab_indicator_ab_dark_ab
 com.brucelet.spacetrader.R$drawable: int tab_indicator_ab_light_ab
@@ -16523,11 +16518,12 @@ com.brucelet.spacetrader.R$id: int screen_yard_buyship_grasshopper_price
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_hornet_buy
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_hornet_info
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_hornet_price
-com.brucelet.spacetrader.R$id: int screen_yard_buyship_info_bottom
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_info_cargo
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_info_cargo_row
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_info_crew
+com.brucelet.spacetrader.R$id: int screen_yard_buyship_info_crew_row
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_info_gadget
+com.brucelet.spacetrader.R$id: int screen_yard_buyship_info_gadget_row
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_info_hull
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_info_hull_row
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_info_image
@@ -16536,9 +16532,11 @@ com.brucelet.spacetrader.R$id: int screen_yard_buyship_info_name_row
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_info_range
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_info_range_row
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_info_shield
+com.brucelet.spacetrader.R$id: int screen_yard_buyship_info_shield_row
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_info_size
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_info_size_row
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_info_weapon
+com.brucelet.spacetrader.R$id: int screen_yard_buyship_info_weapon_row
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_mosquito_buy
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_mosquito_info
 com.brucelet.spacetrader.R$id: int screen_yard_buyship_mosquito_price
@@ -16637,10 +16635,8 @@ com.brucelet.spacetrader.R$layout: int dialog_options
 com.brucelet.spacetrader.R$layout: int dialog_plunder
 com.brucelet.spacetrader.R$layout: int dialog_questscheat
 com.brucelet.spacetrader.R$layout: int dialog_shortcut
-com.brucelet.spacetrader.R$layout: int dialog_title
 com.brucelet.spacetrader.R$layout: int dialog_veryrarecheat
 com.brucelet.spacetrader.R$layout: int menu_action_mode_dropdowns
-com.brucelet.spacetrader.R$layout: int menu_popup_listview
 com.brucelet.spacetrader.R$layout: int screen_bank
 com.brucelet.spacetrader.R$layout: int screen_buy
 com.brucelet.spacetrader.R$layout: int screen_buyeq
@@ -16670,7 +16666,6 @@ com.brucelet.spacetrader.R$layout: int screen_yard_buyship
 com.brucelet.spacetrader.R$layout: int screen_yard_buyship_info
 com.brucelet.spacetrader.R$layout: int spinner_dropdown_item_actionbar
 com.brucelet.spacetrader.R$layout: int spinner_dropdown_item_shortcut
-com.brucelet.spacetrader.R$layout: int spinner_dropdown_title_actionbar
 com.brucelet.spacetrader.R$layout: int support_simple_spinner_dropdown_item
 com.brucelet.spacetrader.R$layout: int viewpager_warp_avgprices
 com.brucelet.spacetrader.R$layout: int viewpager_warp_target
@@ -16973,7 +16968,6 @@ com.brucelet.spacetrader.R$string: int format_buyitem
 com.brucelet.spacetrader.R$string: int format_cash
 com.brucelet.spacetrader.R$string: int format_credits
 com.brucelet.spacetrader.R$string: int format_dailycost
-com.brucelet.spacetrader.R$string: int format_days
 com.brucelet.spacetrader.R$string: int format_discarditem
 com.brucelet.spacetrader.R$string: int format_number
 com.brucelet.spacetrader.R$string: int format_parsecs
@@ -17794,11 +17788,9 @@ com.brucelet.spacetrader.R$string: int screen_yard_buypod_query
 com.brucelet.spacetrader.R$string: int screen_yard_buypod_title
 com.brucelet.spacetrader.R$string: int screen_yard_buyrepairs
 com.brucelet.spacetrader.R$string: int screen_yard_buyship
-com.brucelet.spacetrader.R$string: int screen_yard_buyship_backbutton
 com.brucelet.spacetrader.R$string: int screen_yard_buyship_buy_extramessage
 com.brucelet.spacetrader.R$string: int screen_yard_buyship_buy_message
 com.brucelet.spacetrader.R$string: int screen_yard_buyship_buy_title
-com.brucelet.spacetrader.R$string: int screen_yard_buyship_buybutton
 com.brucelet.spacetrader.R$string: int screen_yard_buyship_canttransferslot_message
 com.brucelet.spacetrader.R$string: int screen_yard_buyship_canttransferslot_title
 com.brucelet.spacetrader.R$string: int screen_yard_buyship_fuelcompactor
@@ -17815,7 +17807,6 @@ com.brucelet.spacetrader.R$string: int screen_yard_buyship_info_range
 com.brucelet.spacetrader.R$string: int screen_yard_buyship_info_shield
 com.brucelet.spacetrader.R$string: int screen_yard_buyship_info_size
 com.brucelet.spacetrader.R$string: int screen_yard_buyship_info_weapon
-com.brucelet.spacetrader.R$string: int screen_yard_buyship_infobutton
 com.brucelet.spacetrader.R$string: int screen_yard_buyship_lightningshield
 com.brucelet.spacetrader.R$string: int screen_yard_buyship_morganslaser
 com.brucelet.spacetrader.R$string: int screen_yard_buyship_notavailable_message
@@ -17868,7 +17859,6 @@ com.brucelet.spacetrader.R$string: int shiptype_mosquito
 com.brucelet.spacetrader.R$string: int shiptype_scarab
 com.brucelet.spacetrader.R$string: int shiptype_termite
 com.brucelet.spacetrader.R$string: int shiptype_wasp
-com.brucelet.spacetrader.R$string: int shortcut_avgprices
 com.brucelet.spacetrader.R$string: int shortcut_bank
 com.brucelet.spacetrader.R$string: int shortcut_buy
 com.brucelet.spacetrader.R$string: int shortcut_buyeq
@@ -17880,7 +17870,6 @@ com.brucelet.spacetrader.R$string: int shortcut_personnel
 com.brucelet.spacetrader.R$string: int shortcut_sell
 com.brucelet.spacetrader.R$string: int shortcut_selleq
 com.brucelet.spacetrader.R$string: int shortcut_status
-com.brucelet.spacetrader.R$string: int shortcut_target
 com.brucelet.spacetrader.R$string: int shortcut_warp
 com.brucelet.spacetrader.R$string: int shortcut_yard
 com.brucelet.spacetrader.R$string: int size_huge

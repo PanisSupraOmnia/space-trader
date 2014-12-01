@@ -33,6 +33,7 @@ import java.util.LinkedList;
 import java.util.Map;
 
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.app.backup.BackupManager;
 import android.content.Context;
 import android.content.Intent;
@@ -460,7 +461,7 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 //				menu.removeGroup(R.id.menu_group_game);
 			}
 
-			getTheme().resolveAttribute(R.attr.selectableItemBackground, tv, true);
+			getTheme().resolveAttribute(R.attr.actionBarItemBackground, tv, true);
 			mTitleView.setBackgroundResource(tv.resourceId);
 		}
 		

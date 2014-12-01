@@ -16,7 +16,6 @@
         <item quantity="one">%1$d day</item>
         <item quantity="other">%1$d days</item>
     </plurals>
-    <string name="format_days">%1$d days</string>
     <string name="format_skills">%1$d [%2$d]</string>
     <string name="format_percent">%d%%</string>
     <string name="format_bays">Bays: %1$d/%2$d</string>
@@ -86,8 +85,6 @@
     <string name="shortcut_status">C</string>
     <string name="shortcut_chart">G</string>
     <string name="shortcut_warp">W</string>
-    <string name="shortcut_target">T</string>
-    <string name="shortcut_avgprices">A</string>
 
     <string name="shortcut_options">O</string>
     <string name="shortcut_help">H</string>
@@ -168,10 +165,7 @@
     <string name="screen_yard_buyship_lightningshield">lightning shield</string>
     <string name="screen_yard_buyship_morganslaser">customized laser</string>
 
-    <string name="screen_yard_buyship_buybutton">Buy</string>
-    <string name="screen_yard_buyship_infobutton">Info</string>
     <string name="screen_yard_buyship_gotone">got one</string>
-    <string name="screen_yard_buyship_backbutton">Back</string>
     <string name="screen_yard_buyship_info">Ship Information</string>
     <string name="screen_yard_buyship_info_name">Name</string>
     <string name="screen_yard_buyship_info_size">Size</string>
@@ -662,8 +656,8 @@
     <string name="dialog_options_theme_light">Holo Light</string>
     <string name="dialog_options_theme_dark">Holo Dark</string>
     <string name="dialog_options_theme_palm">Classic</string>
-    <string name="dialog_options_theme_material_light">Material Light (Beta)</string>
-    <string name="dialog_options_theme_material_dark">Material Dark (Beta)</string>
+    <string name="dialog_options_theme_material_light">Material Light</string>
+    <string name="dialog_options_theme_material_dark">Material Dark</string>
     <string name="dialog_options_developermode">Developer Mode</string>
 
     <string name="dialog_about">About Space Trader</string>

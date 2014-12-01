@@ -897,13 +897,6 @@ android.support.v4.view.AccessibilityDelegateCompatIcs:
     28:30:AccessibilityDelegateCompatIcs()
 android.support.v4.view.AccessibilityDelegateCompatJellyBean:
     30:32:AccessibilityDelegateCompatJellyBean()
-android.support.v4.view.ActionProvider:
-    private static final java.lang.String TAG
-    86:86:public android.content.Context getContext()
-    145:148:public void refreshVisibility()
-    217:220:public void subUiVisibilityChanged(boolean)
-android.support.v4.view.ActionProvider$SubUiVisibilityListener:
-    public abstract void onSubUiVisibilityChanged(boolean)
 android.support.v4.view.GestureDetectorCompat
 android.support.v4.view.GestureDetectorCompat$GestureDetectorCompatImpl
 android.support.v4.view.GestureDetectorCompat$GestureDetectorCompatImplBase
@@ -2778,8 +2771,6 @@ android.support.v7.internal.view.menu.MenuItemImpl:
     232:233:public android.view.MenuItem setCallback(java.lang.Runnable)
 android.support.v7.internal.view.menu.MenuItemWrapperICS:
     static final java.lang.String LOG_TAG
-android.support.v7.internal.view.menu.MenuItemWrapperJB$ActionProviderWrapperJB:
-    68:69:public void refreshVisibility()
 android.support.v7.internal.view.menu.MenuPopupHelper:
     private static final java.lang.String TAG
     80:81:public MenuPopupHelper(android.content.Context,android.support.v7.internal.view.menu.MenuBuilder)
@@ -3046,7 +3037,6 @@ android.support.v7.widget.ActionMenuPresenter:
     375:375:public boolean isOverflowReserved()
     520:522:public android.os.Parcelable onSaveInstanceState()
     527:535:public void onRestoreInstanceState(android.os.Parcelable)
-    539:545:public void onSubUiVisibilityChanged(boolean)
 android.support.v7.widget.ActionMenuView:
     private static final java.lang.String TAG
     static final int MIN_CELL_SIZE
@@ -3241,9 +3231,9 @@ com.brucelet.spacetrader.BankScreen:
 com.brucelet.spacetrader.BaseDialog:
     243:244:public void setTitle(java.lang.CharSequence)
 com.brucelet.spacetrader.BaseDialog$Builder:
-    571:572:public com.brucelet.spacetrader.BaseDialog$Builder setPositiveButton(java.lang.CharSequence)
-    581:582:public com.brucelet.spacetrader.BaseDialog$Builder setNeutralButton(java.lang.CharSequence)
-    591:592:public com.brucelet.spacetrader.BaseDialog$Builder setNegativeButton(java.lang.CharSequence)
+    345:346:public com.brucelet.spacetrader.BaseDialog$Builder setPositiveButton(java.lang.CharSequence)
+    355:356:public com.brucelet.spacetrader.BaseDialog$Builder setNeutralButton(java.lang.CharSequence)
+    365:366:public com.brucelet.spacetrader.BaseDialog$Builder setNegativeButton(java.lang.CharSequence)
 com.brucelet.spacetrader.BaseScreen:
     130:130:public void setAdapter(com.brucelet.spacetrader.ScreenPagerAdapter)
     public abstract com.brucelet.spacetrader.enumtypes.ScreenType getType()
@@ -3294,7 +3284,7 @@ com.brucelet.spacetrader.R$plurals
 com.brucelet.spacetrader.R$string
 com.brucelet.spacetrader.R$style
 com.brucelet.spacetrader.R$styleable:
-    5456:5456:public R$styleable()
+    5445:5445:public R$styleable()
 com.brucelet.spacetrader.ScreenPagerAdapter
 com.brucelet.spacetrader.SellEqScreen:
     133:133:public static com.brucelet.spacetrader.SellEqScreen newInstance()
@@ -3422,4 +3412,3 @@ com.brucelet.spacetrader.enumtypes.Weapon:
     67:67:public java.lang.String toXmlPluralString(int,android.content.res.Resources)
     82:82:public com.brucelet.spacetrader.enumtypes.TechLevel techLevel()
 com.brucelet.spacetrader.enumtypes.XmlString$Plural
-com.brucelet.spacetrader.widget.EncounterHelpActionProvider

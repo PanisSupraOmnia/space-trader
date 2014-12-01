@@ -29,3 +29,6 @@
     public static void v(...);
 }
 
+-keep class com.brucelet.spacetrader.widget.EncounterHelpActionProvider {
+	*;
+}

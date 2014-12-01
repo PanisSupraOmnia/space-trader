@@ -4039,6 +4039,8 @@ public class GameState {
 		    		mGameManager.showDialogFragment(ConfirmDialog.newInstance(
 		    				R.string.screen_encounter_noillegal_title, 
 		    				R.string.screen_encounter_noillegal_message,
+		    				R.string.screen_encounter_noillegal_yes,
+		    				R.string.screen_encounter_noillegal_no,
 		    				R.string.help_suretofleeorbribe,
 		    				newUnlocker(latch),
 		    				newStopper(latch)));
@@ -4176,6 +4178,8 @@ public class GameState {
 		    		mGameManager.showDialogFragment(ConfirmDialog.newInstance(
 		    				R.string.screen_encounter_noillegal_title, 
 		    				R.string.screen_encounter_noillegal_message,
+		    				R.string.screen_encounter_noillegal_yes,
+		    				R.string.screen_encounter_noillegal_no,
 		    				R.string.help_suretofleeorbribe,
 		    				newUnlocker(latch),
 		    				newStopper(latch)));
@@ -4713,6 +4717,8 @@ public class GameState {
 		    		mGameManager.showDialogFragment(ConfirmDialog.newInstance(
 		    				R.string.screen_encounter_noillegal_title, 
 		    				R.string.screen_encounter_noillegal_message,
+		    				R.string.screen_encounter_noillegal_yes,
+		    				R.string.screen_encounter_noillegal_no,
 		    				R.string.help_suretofleeorbribe,
 		    				newUnlocker(latch),
 		    				newStopper(latch)));
@@ -4739,6 +4745,8 @@ public class GameState {
 		    	mGameManager.showDialogFragment(ConfirmDialog.newInstance(
 		    			R.string.screen_encounter_bribe_title, 
 		    			R.string.screen_encounter_bribe_message, 
+		    			R.string.screen_encounter_bribe_yes,
+		    			R.string.screen_encounter_bribe_no,
 		    			R.string.help_bribe,
 		    			new OnConfirmListener() {
 							@Override
@@ -4811,7 +4819,9 @@ public class GameState {
 			    	CountDownLatch latch = newLatch();
 		    		mGameManager.showDialogFragment(ConfirmDialog.newInstance(
 		    				R.string.screen_encounter_illegal_title, 
-		    				R.string.screen_encounter_illegal_message, 
+		    				R.string.screen_encounter_illegal_message,
+		    				R.string.screen_encounter_illegal_yes,
+		    				R.string.generic_no,
 		    				R.string.help_suretosubmit,
 		    				newUnlocker(latch),
 		    				newStopper(latch),
@@ -5099,6 +5109,8 @@ public class GameState {
 		    		mGameManager.showDialogFragment(ConfirmDialog.newInstance(
 		    				R.string.dialog_engagebottle_title,
 		    				R.string.dialog_engagebottle_message, 
+		    				R.string.dialog_engagebottle_pos,
+		    				R.string.generic_no,
 		    				R.string.help_drinkoldtonic,
 		    				new OnConfirmListener() {
 								
@@ -5124,6 +5136,8 @@ public class GameState {
 		    		mGameManager.showDialogFragment(ConfirmDialog.newInstance(
 		    				R.string.dialog_engagebottle_title,
 		    				R.string.dialog_engagebottle_message, 
+		    				R.string.dialog_engagebottle_pos,
+		    				R.string.generic_no,
 		    				R.string.help_drinkoldtonic,
 		    				new OnConfirmListener() {
 								
