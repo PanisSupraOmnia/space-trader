@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DialogTheme.Base.Light" parent="ActivityTheme.Light">
+    </style>
+    <style name="DialogTheme.Base.Dark" parent="ActivityTheme.Dark">
+    </style>
+</resources>

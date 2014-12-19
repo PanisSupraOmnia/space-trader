@@ -1,5 +1,9 @@
-bin/*
-
+.gradle
+local.properties
+.idea
+/build
+*/build
+*.iml
 
 # Compiled source #
 ###################

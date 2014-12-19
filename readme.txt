@@ -18,6 +18,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 You can contact the author at spacetrader@brucelet.com
 
 Note:
-To compile this code, you must also include the AppCompat package of 
-the Android Support Library. Release 1.1.0 and later uses version 21,
-while previous releases used version 20.
+Beginning with version 1.2.0, Space Trader is packaged for Android
+Studio.
+
+Previous versions were packaged for Eclipse using the Android
+Development Tools plugin.  To compile the Eclipse releases, you must
+also include the AppCompat package of the Android Support Library.
+Version 1.1.x used release 21, while previous versions used release 20.
