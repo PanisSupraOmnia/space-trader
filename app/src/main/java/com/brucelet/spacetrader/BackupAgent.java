@@ -36,26 +36,26 @@ public class BackupAgent extends BackupAgentHelper {
 	
 	private static final String sTag = "Space Trader Backup";
 
-    // Allocate a helper and add it to the backup agent
-    @Override
-    public void onCreate() {
-    	Log.i(sTag, "Creating BackupAgent.");
-        SharedPreferencesBackupHelper helper = new SharedPreferencesBackupHelper(this, MainActivity.GAME_1, MainActivity.GAME_2);
-        addHelper("prefs backup", helper);
-    }
-    
-    @Override
-    public void onBackup(ParcelFileDescriptor oldState, BackupDataOutput data, ParcelFileDescriptor newState) throws IOException {
-    	Log.i(sTag, "Backing up data...");
-        super.onBackup(oldState, data, newState);
-    	Log.i(sTag, "Backup complete.");
+	// Allocate a helper and add it to the backup agent
+	@Override
+	public void onCreate() {
+		Log.i(sTag, "Creating BackupAgent.");
+		SharedPreferencesBackupHelper helper = new SharedPreferencesBackupHelper(this, MainActivity.GAME_1, MainActivity.GAME_2);
+		addHelper("prefs backup", helper);
+	}
 
-    }
-    
-    @Override
-    public void onRestore (BackupDataInput data, int appVersionCode, ParcelFileDescriptor newState) throws IOException {
-    	Log.i(sTag, "Restoring data...");
-    	super.onRestore(data, appVersionCode, newState);
-    	Log.i(sTag, "Restore complete.");
-    }
+	@Override
+	public void onBackup(ParcelFileDescriptor oldState, BackupDataOutput data, ParcelFileDescriptor newState) throws IOException {
+		Log.i(sTag, "Backing up data...");
+		super.onBackup(oldState, data, newState);
+		Log.i(sTag, "Backup complete.");
+
+	}
+
+	@Override
+	public void onRestore (BackupDataInput data, int appVersionCode, ParcelFileDescriptor newState) throws IOException {
+		Log.i(sTag, "Restoring data...");
+		super.onRestore(data, appVersionCode, newState);
+		Log.i(sTag, "Restore complete.");
+	}
 }

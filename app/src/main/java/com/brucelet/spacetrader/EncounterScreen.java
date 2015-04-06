@@ -38,7 +38,7 @@ public class EncounterScreen extends BaseScreen {
 	
 	public static final List<Integer> BUTTONS;
 	static {
-		List<Integer> ids = new ArrayList<Integer>();
+		List<Integer> ids = new ArrayList<>();
 		ids.add(R.id.screen_encounter_button1);
 		ids.add(R.id.screen_encounter_button2);
 		ids.add(R.id.screen_encounter_button3);
@@ -48,7 +48,7 @@ public class EncounterScreen extends BaseScreen {
 	
 	public static final List<Integer> TRIBBLES;
 	static {
-		List<Integer> ids = new ArrayList<Integer>();
+		List<Integer> ids = new ArrayList<>();
 		ids.add(R.id.screen_encounter_tribble0);
 		ids.add(R.id.screen_encounter_tribble1);
 		ids.add(R.id.screen_encounter_tribble2);

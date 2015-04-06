@@ -35,7 +35,7 @@ import com.brucelet.spacetrader.enumtypes.TradeItem;
 public class SellScreen extends BaseScreen {
 	public static final Map<TradeItem, Integer> AMOUNT_IDS; 
 	static {
-		Map<TradeItem, Integer> ids = new EnumMap<TradeItem, Integer>(TradeItem.class);
+		Map<TradeItem, Integer> ids = new EnumMap<>(TradeItem.class);
 		ids.put(TradeItem.WATER,     R.id.screen_sell_water_amount);
 		ids.put(TradeItem.FURS,      R.id.screen_sell_furs_amount);
 		ids.put(TradeItem.FOOD,      R.id.screen_sell_food_amount);
@@ -50,7 +50,7 @@ public class SellScreen extends BaseScreen {
 	}
 	public static final Map<TradeItem, Integer> LABEL_IDS; 
 	static {
-		Map<TradeItem, Integer> ids = new EnumMap<TradeItem, Integer>(TradeItem.class);
+		Map<TradeItem, Integer> ids = new EnumMap<>(TradeItem.class);
 		ids.put(TradeItem.WATER,     R.id.screen_sell_water_label);
 		ids.put(TradeItem.FURS,      R.id.screen_sell_furs_label);
 		ids.put(TradeItem.FOOD,      R.id.screen_sell_food_label);
@@ -65,7 +65,7 @@ public class SellScreen extends BaseScreen {
 	}
 	public static final Map<TradeItem, Integer> ALL_IDS; 
 	static {
-		Map<TradeItem, Integer> ids = new EnumMap<TradeItem, Integer>(TradeItem.class);
+		Map<TradeItem, Integer> ids = new EnumMap<>(TradeItem.class);
 		ids.put(TradeItem.WATER,     R.id.screen_sell_water_all);
 		ids.put(TradeItem.FURS,      R.id.screen_sell_furs_all);
 		ids.put(TradeItem.FOOD,      R.id.screen_sell_food_all);
@@ -80,7 +80,7 @@ public class SellScreen extends BaseScreen {
 	}
 	public static final Map<TradeItem, Integer> PRICE_IDS; 
 	static {
-		Map<TradeItem, Integer> ids = new EnumMap<TradeItem, Integer>(TradeItem.class);
+		Map<TradeItem, Integer> ids = new EnumMap<>(TradeItem.class);
 		ids.put(TradeItem.WATER,     R.id.screen_sell_water_price);
 		ids.put(TradeItem.FURS,      R.id.screen_sell_furs_price);
 		ids.put(TradeItem.FOOD,      R.id.screen_sell_food_price);

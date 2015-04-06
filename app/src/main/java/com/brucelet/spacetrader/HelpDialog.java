@@ -22,7 +22,9 @@ package com.brucelet.spacetrader;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class HelpDialog extends BaseDialog {
 
@@ -39,7 +41,13 @@ public class HelpDialog extends BaseDialog {
 	@Override
 	public final void onBuildDialog(Builder builder, LayoutInflater inflater, ViewGroup parent) {
 		int resId = getArguments().getInt("resId");
-		getGameState().buildHelpDialog(resId, builder, inflater, parent);
+
+		View view = inflater.inflate(R.layout.dialog_help, parent, false);
+		String message = getGameState().getHelpText(resId);
+		((TextView) view.findViewById(R.id.dialog_help_message)).setText(message);
+		builder.setView(view);
+		builder.setTitle(R.string.dialog_help_title);
+		builder.setPositiveButton(R.string.generic_done);
 	}
 	
 	public int getHelpTextResId() {

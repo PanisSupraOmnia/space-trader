@@ -33,7 +33,7 @@ import com.brucelet.spacetrader.enumtypes.TradeItem;
 public class PlunderDialog extends BaseDialog implements OnSingleClickListener {
 	public static final Map<TradeItem, Integer> AMOUNT_IDS; 
 	static {
-		Map<TradeItem, Integer> ids = new EnumMap<TradeItem, Integer>(TradeItem.class);
+		Map<TradeItem, Integer> ids = new EnumMap<>(TradeItem.class);
 		ids.put(TradeItem.WATER,     R.id.dialog_plunder_water_amount);
 		ids.put(TradeItem.FURS,      R.id.dialog_plunder_furs_amount);
 		ids.put(TradeItem.FOOD,      R.id.dialog_plunder_food_amount);
@@ -48,7 +48,7 @@ public class PlunderDialog extends BaseDialog implements OnSingleClickListener {
 	}
 	public static final Map<TradeItem, Integer> ALL_IDS; 
 	static {
-		Map<TradeItem, Integer> ids = new EnumMap<TradeItem, Integer>(TradeItem.class);
+		Map<TradeItem, Integer> ids = new EnumMap<>(TradeItem.class);
 		ids.put(TradeItem.WATER,     R.id.dialog_plunder_water_all);
 		ids.put(TradeItem.FURS,      R.id.dialog_plunder_furs_all);
 		ids.put(TradeItem.FOOD,      R.id.dialog_plunder_food_all);

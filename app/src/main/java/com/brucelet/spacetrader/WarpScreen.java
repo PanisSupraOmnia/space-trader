@@ -20,12 +20,11 @@
  */
 package com.brucelet.spacetrader;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Bundle;
-import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -33,21 +32,8 @@ import android.view.ViewGroup;
 
 import com.brucelet.spacetrader.enumtypes.ScreenType;
 
-/**
- * A simple {@link android.support.v4.app.Fragment} subclass. Activities that
- * contain this fragment must implement the
- * {@link ChartScreen.OnInteractionListener} interface to handle
- * interaction events. Use the {@link WarpScreen#newInstance} factory method
- * to create an instance of this fragment.
- * 
- */
 public class WarpScreen extends BaseScreen {
 
-	/**
-	 * Use this factory method to create a new instance of this fragment.
-	 * 
-	 * @return A new instance of fragment WarpScreen.
-	 */
 	public static WarpScreen newInstance() {
 		return new WarpScreen();
 	}
@@ -85,9 +71,16 @@ public class WarpScreen extends BaseScreen {
 	public static class WarpView extends View {
 
 		private WarpScreen mFragment;
-		
+        private GestureDetector mGestureDetector;
+
 		public WarpView(Context context, AttributeSet attrs) {
 			super(context, attrs);
+			mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
+				@Override
+				public boolean onDown(MotionEvent e) {
+					return mFragment.getGameState().warpFormHandleEvent(e.getX(), e.getY());
+				}
+			});
 		}
 		
 		
@@ -104,22 +97,15 @@ public class WarpScreen extends BaseScreen {
 			mFragment.getGameState().drawShortRange(canvas);
 		}
 
-		@SuppressLint("ClickableViewAccessibility")
 		@Override
 		public boolean onTouchEvent(MotionEvent event) {
-			switch (MotionEventCompat.getActionMasked(event)) {
-			case MotionEvent.ACTION_DOWN:
-			case MotionEvent.ACTION_POINTER_DOWN:
-				return mFragment.getGameState().warpFormHandleEvent(event.getX(), event.getY());
-			default:
-				return super.onTouchEvent(event);
-			}
+			return mGestureDetector.onTouchEvent(event) | super.onTouchEvent(event);
 		}
 	}
 
 	@Override
 	public void onSingleClick(View v) {
-		// NB WarpScreen has no views; all activity is handled by onTouchEvent()
+		// WarpScreen has no clickable views; all activity is handled by onTouchEvent()
 	}
 	
 	@Override

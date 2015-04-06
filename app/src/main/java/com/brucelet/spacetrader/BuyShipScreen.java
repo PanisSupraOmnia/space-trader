@@ -35,7 +35,7 @@ import com.brucelet.spacetrader.enumtypes.ShipType;
 public class BuyShipScreen extends BaseScreen {
 	public static final Map<ShipType, Integer> BUY_IDS; 
 	static {
-		Map<ShipType, Integer> ids = new EnumMap<ShipType, Integer>(ShipType.class);
+		Map<ShipType, Integer> ids = new EnumMap<>(ShipType.class);
 		ids.put(ShipType.FLEA,        R.id.screen_yard_buyship_flea_buy);
 		ids.put(ShipType.GNAT,        R.id.screen_yard_buyship_gnat_buy);
 		ids.put(ShipType.FIREFLY,     R.id.screen_yard_buyship_firefly_buy);
@@ -50,7 +50,7 @@ public class BuyShipScreen extends BaseScreen {
 	}
 	public static final Map<ShipType, Integer> INFO_IDS; 
 	static {
-		Map<ShipType, Integer> ids = new EnumMap<ShipType, Integer>(ShipType.class);
+		Map<ShipType, Integer> ids = new EnumMap<>(ShipType.class);
 		ids.put(ShipType.FLEA,        R.id.screen_yard_buyship_flea_info);
 		ids.put(ShipType.GNAT,        R.id.screen_yard_buyship_gnat_info);
 		ids.put(ShipType.FIREFLY,     R.id.screen_yard_buyship_firefly_info);
@@ -65,7 +65,7 @@ public class BuyShipScreen extends BaseScreen {
 	}
 	public static final Map<ShipType, Integer> PRICE_IDS; 
 	static {
-		Map<ShipType, Integer> ids = new EnumMap<ShipType, Integer>(ShipType.class);
+		Map<ShipType, Integer> ids = new EnumMap<>(ShipType.class);
 		ids.put(ShipType.FLEA,        R.id.screen_yard_buyship_flea_price);
 		ids.put(ShipType.GNAT,        R.id.screen_yard_buyship_gnat_price);
 		ids.put(ShipType.FIREFLY,     R.id.screen_yard_buyship_firefly_price);

@@ -33,14 +33,16 @@
         <item name="actionModeSpinnerTextStyle">@style/TitleText.Light</item>
 <!--         <item name="actionBarTitleBackground">?selectableItemBackground</item> -->
         <item name="actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Material.Light</item>
-        
+        <item name="footerButtonStyle">@style/FooterButtonStyle.Material.Light</item>
+
         <item name="roundedButtonDrawable">@drawable/btn_rounded_material_light</item>
         <item name="squareButtonDrawable">@drawable/btn_square_material_light</item>
         <item name="strokeColor">@color/stroke_material_light</item>
         <item name="startArrow">@drawable/arrow_start_black</item>
         <item name="endArrow">@drawable/arrow_end_black</item>
         <item name="avgPriceListBackground">?selectableItemBackground</item>
-        
+
+        <item name="dialogLayout">@layout/dialog_layout_holo</item>
         <item name="dialogTitleTextStyle">@style/TextAppearance.DialogWindowTitle.Material</item>
         <item name="dialogDividerColor">?colorAccent</item>
         <item name="pressableTextColor">?android:textColorPrimary</item>
@@ -98,14 +100,16 @@
         <item name="actionModeSpinnerTextStyle">@style/TitleText.Dark</item>
         <item name="actionBarTitleBackground">?attr/selectableItemBackground</item>
         <item name="actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Material.Dark</item>
-        
+        <item name="footerButtonStyle">?actionButtonStyle</item>
+
         <item name="roundedButtonDrawable">@drawable/btn_rounded_material_dark</item>
         <item name="squareButtonDrawable">@drawable/btn_square_material_dark</item>
         <item name="strokeColor">@color/stroke_material_dark</item>
         <item name="startArrow">@drawable/arrow_start_white</item>
         <item name="endArrow">@drawable/arrow_end_white</item>
         <item name="avgPriceListBackground">?selectableItemBackground</item>
-        
+
+        <item name="dialogLayout">@layout/dialog_layout_holo</item>
         <item name="dialogTitleTextStyle">@style/TextAppearance.DialogWindowTitle.Material</item>
         <item name="dialogDividerColor">?colorAccent</item>
         <item name="pressableTextColor">?android:textColorPrimary</item>
@@ -154,8 +158,15 @@
         <item name="android:typeface">monospace</item>
     </style>
 
+    <style name="FooterButtonStyle.Material" parent="ActionButtonStyle.Material" />
+    <style name="FooterButtonStyle.Material.Light" >
+        <item name="android:background">@drawable/abc_item_background_holo_light</item>
+    </style>
+
+
     <style name="ActionButtonStyle.Material.Dialog">
-<!--        <item name="android:minWidth">@dimen/abc_action_button_min_width_material</item>-->
+        <item name="android:minWidth">@dimen/abc_action_button_min_width_material</item>
+        <item name="android:background">?selectableItemBackground</item>
     </style>
 
     <style name="ActionModeCloseButtonStyle.Base.Material" parent="@style/Widget.AppCompat.ActionButton.CloseMode">

@@ -74,6 +74,30 @@
     <string name="menu_help_about">About</string>
     <string name="menu_help_documentation">Documentation</string>
 
+    <string name="command_dropdown_buy">Buy Cargo</string>
+    <string name="command_dropdown_sell">Sell Cargo</string>
+    <string name="command_dropdown_yard">Ship Yard</string>
+    <string name="command_dropdown_buyeq">Buy Equipment</string>
+    <string name="command_dropdown_selleq">Sell Equipment</string>
+    <string name="command_dropdown_personnel">Personnel Roster</string>
+    <string name="command_dropdown_bank">Bank</string>
+    <string name="command_dropdown_info">System Information</string>
+    <string name="command_dropdown_status">Commander Status</string>
+    <string name="command_dropdown_chart">Galactic Chart</string>
+    <string name="command_dropdown_warp">Short Range Chart</string>
+
+    <string name="shortcut_spinner_buy">Buy Cargo</string>
+    <string name="shortcut_spinner_sell">Sell Cargo</string>
+    <string name="shortcut_spinner_yard">Ship Yard</string>
+    <string name="shortcut_spinner_buyeq">Buy Equipment</string>
+    <string name="shortcut_spinner_selleq">Sell Equipment</string>
+    <string name="shortcut_spinner_personnel">Personnel Roster</string>
+    <string name="shortcut_spinner_bank">Bank</string>
+    <string name="shortcut_spinner_info">System Info</string>
+    <string name="shortcut_spinner_status">Commander Status</string>
+    <string name="shortcut_spinner_chart">Galactic Chart</string>
+    <string name="shortcut_spinner_warp">Short Range Warp</string>
+
     <string name="shortcut_buy">B</string>
     <string name="shortcut_sell">S</string>
     <string name="shortcut_yard">Y</string>
@@ -239,7 +263,7 @@
     <string name="screen_bank_ins_stopquery">Do you really want to stop your insurance and lose your no-claim?</string>
 
     <!-- <string name="screen_info">System Info</string> -->
-    <string name="screen_info">System Information</string>
+    <string name="screen_info">System Info</string>
     <string name="screen_info_name">Name</string>
     <string name="screen_info_size">Size</string>
     <string name="screen_info_tech">Tech Level</string>
@@ -649,12 +673,16 @@
     <string name="dialog_options_identify">Identify at startup</string>
     <string name="dialog_options_shareprefs">Copy prefs from parallel game</string>
 
+    <string name="dialog_options_zoomgalaxy">Zoom-in on Galactic Chart</string>
     <string name="dialog_options_volumescroll">Scroll systems with vol. keys</string>
     <string name="dialog_options_recallscreens">Prev. screen with back button</string>
     <string name="dialog_options_encounterstyle">Encounter Style:</string>
     <string name="dialog_options_encounterstyle_textual">Text</string>
     <string name="dialog_options_encounterstyle_graphical">Graphics</string>
     <string name="dialog_options_encounterstyle_both">Both</string>
+    <string name="dialog_options_encounteranim">Animate encounters</string>
+    <string name="dialog_options_extrashortcuts">Extra shortcuts in footer</string>
+    <string name="dialog_options_tracklongpress">Long press to track systems</string>
     <string name="dialog_options_theme">Set Application Theme:</string>
     <string name="dialog_options_theme_light">Holo Light</string>
     <string name="dialog_options_theme_dark">Holo Dark</string>
@@ -852,10 +880,10 @@
         \n
         \nIf the system isn\'t out of range, you can warp to it by tapping the Warp button. If the system is out of range, or if you decide you don\'t want to warp, you can get to other options through the menu, or you can immediately return to the Short Range Chart by tapping the appropriate button. You can also view the average price list for the target system by tapping the Average Price List button.
         \n
-        \nThe arrows in the top right area of the screen can be used to scroll through the systems which are within range.</string>
+        \nThe arrows in the top right area of the screen can be used to scroll through the systems which are within range.  You can also scroll through the systems by using the volume buttons if you have enabled that setting in the options menu.</string>
     <string name="help_galacticchart">Tapping a system on the galactic chart shows information on that system at the bottom of the screen. Tapping on a wormhole will display a line indicating the system to which the wormhole goes, as well as the name of both systems.
         \n
-        \nTapping a system twice will cause that system to be tracked, which will be indicated with an \"X\". On the Short-Range chart, an arrow will indicate the direction to the tracked system. Tapping on a tracked system will turn off tracking.
+        \nTapping a system twice will cause that system to be tracked, which will be indicated with an \"X\". On the Short-Range chart, an arrow will indicate the direction to the tracked system. Tapping on a tracked system will turn off tracking. If you have \"Long press to track systems\" checked in the options menu, you must long press to turn tracking on or off.
         \n
         <!--\nOn color Palms, systems you have already visited are blue, unvisited systems are green, and wormholes are red. On other Palms, systems you have already visited are black, unvisited systems are \"open\" circles, and wormholes are small crosses.-->
         \nSystems you have already visited are blue, unvisited systems are green, and wormholes are red.
@@ -863,7 +891,9 @@
         <!--\nYou can alphabetically scroll through the systems by using the PalmPilot Scroll button.-->
         \nYou can alphabetically scroll through the systems by using the volume buttons if you have enabled that setting in the options menu.
         \n
-        \nThe Find button allows you to enter a system name, on which the chart will then focus; you also have the option to track the system.</string>
+        \nThe Find button allows you to enter a system name, on which the chart will then focus; you also have the option to track the system.
+        \n
+        \nIf you have enabled the option "Zoom-in on Galactic Chart\", you can use a pinch gesture or double-tap to zoom-in on the chart. A long press can also be used to toggle between the minimum and maximum zoom, unless the \"Long press to track systems\" option is also checked. When zoomed-in, you can drag to scroll the chart.</string>
     <string name="help_systeminformation">This screen shows information on the system where you are currently docked. You can click on the News button to buy a newspaper, which will have headlines about local and nearby events. If there is a Special button visible, tap it to get a special offer, only available in this system. If there is a mercenary available in this system, a Mercenary For Hire button is visible. Tapping it will take you to the Personnel Roster.</string>
     <string name="help_confirmnew">Starting a new game will erase all data on your current game.</string>
     <string name="help_moreskillpoints">You have 20 skill points to divide over the four commander skills. You should award them all.</string>
@@ -954,17 +984,27 @@
         \n
         \n\"Prev. screen with back button\" will enable use of the back button to return to the previously-viewed screen while docked, rather than exiting the game.
         \n
+        \n\"Zoom-in on Galactic Chart\", if checked, will enable touch gestures to zoom-in and scroll on the Galactic Chart screen. Zooming can be initiated with a pinch gesture or by double-tapping and dragging. A long press can also be used to toggle between the minimum and maximum zoom levels, unless \"Long press to track systems\" is also checked.
+        \n
         \n\"Show range to tracked system\" determines whether or not the Short Range Chart will display the distance to a tracked system. You can track a system by double-clicking it in the Galactic Chart, or by clicking the \"Track this system\" checkbox when you find a system on the Galactic Chart.
         \n
         \n\"Stop tracking systems on arrival\" allows you to automatically stop tracking a system when you arrive at that system. If you uncheck this, you will continue to track the system until you turn off system tracking or select a different system to track in the Galactic Chart.
 		\n
+        \n\"Long press to track systems\" will modify the galactic chart behavior so that a long press is required to change the tracked system. If this and \"Zoom-in on Galactic Chart\" are both checked, long-pressing will not toggle zoom.
+        \n
 		\n\"Encounter Style\" toggles how encounters are displayed. \"Textual\", when selected, shows encounters as text instead of as ship pictures. This gives a bit more information but doesn\'t look as good. \"Graphical\", enabled by default, shows only ship pictures. \"Both\" shows a hybrid view, including pictures as well as hull and shield percentages.
 		\n
+        \n\"Animate encounters\" will enable animations when interacting with other ships on the Encounter screen.
+        \n
 		\nChecking \"Remind about loans\" will provide you with notification of your current loan balance every five days.
 		\n
 		\n\"Identify at startup\" shows the name of the current commander when Space Trader is started. This is useful when playing two switched games.
 		\n
 		\n\"Copy prefs from parallel game\", if checked when you switch to this game, will copy the preferences from the parallel game. One person playing two parallel games on a <!--Palm-->single device will usually have this turned on (an exception might be where the player is a pirate in one game but a lawful trader in the other). Two persons sharing a <!--Palm-->device playing parallel games will want this turned off. Note that you must turn copying off separately for each game. It is entirely possible for one game not to copy preferences from the other game, but have its own preferences copied to the other game.</string>
+        \n
+        \n\"Extra shortcuts in footer\" will enable an extra row of shortcuts to all of the screens accessible from the Command menu.
+        \n
+        \n\"Set Application Theme\" allows you to select between different visual themes for the game.
     <string name="help_averageprices">This screen shows the average prices you get for goods in the target system. If the trade good is shown in a bold font, it means the average price mentioned here is better than the buying price in the current system.
         \n
         \nNote that these prices do take into account the system size, government and tech level. Special resources (like rich soil) are also taken into account if you know about them. Special situations (like war) are temporary and are therefore not taken into account.
@@ -973,7 +1013,7 @@
         \n
         \nThe button \"Price Differences\" switches to an overview of the differences between the average prices in the target system and the buying prices in the current system. When price differences are shown, this button is replaced by an \"Absolute Prices\" button, which, if tapped, will switch back to absolute prices.
         \n
-        \nThe buttons labeled \"&lt;\" and \"&gt;\" can be used to scroll through the systems which are within range.
+        \nThe buttons labeled \"&lt;\" and \"&gt;\" can be used to scroll through the systems which are within range. You can also scroll through the systems by using the volume buttons if you have enabled that setting in the options menu.
         \n
         \nTo return to the target system information screen, tap the System Information button and to return to the short range chart, tap the Short Range Chart button. You can also immediately go into warp by tapping the Warp button.</string>
     <string name="help_bank" formatted="false">At the bank you can get a loan, if you are really in need of cash. As long as your police record is at least clean, you can have a loan of at least 1000 credits, more if you are rich yourself. When you don\'t have a clean police record, the bank will maximally lend you 500 credits.
@@ -1102,6 +1142,7 @@
         \nJustin Ardini
         \nWilliam Cheung
         \nMike Hopps
+        \nTodd Naffin
         \nCam Tenny
         \nBryant Wolf
         \n
@@ -1370,7 +1411,7 @@
         \nAnd all the players that sent me their ideas
         \n
         \nSpace Trader is released under a GNU General Public License</string>
-    <string name="help_loanreminder">The Bank Officer will contact you every five days to remind you of your debt. You can turn off these warnings on the second page of Game Options.</string>
+    <string name="help_loanreminder">The Bank Officer will contact you every five days to remind you of your debt. You can turn off these warnings <!--on the second page of-->in the Game Options.</string>
     <string name="help_singularity">To use the Portable Singularity in the Galactic Chart, select your destination system by tracking it, then Jump by clicking  the \"J\" button. Voila! You will travel through the Singularity and arrive instananeously at your destination.</string>
     <string name="help_nodumpnoscoop">If you wanted to pick up the floating canister, you had to dump something from your cargo holds.</string>
     <string name="help_cannotsave">There was an error trying to create the savegame file. This may be due to a lack of system resources.</string>

@@ -31,28 +31,6 @@
         android:text="@string/menu_help"
         android:textAppearance="?attr/actionModeSpinnerTextStyle" />
 
-    <!-- These dummy spinners are used to get the correct background in material themes since we can't access the default spinner style. -->
-    <Spinner
-        android:id="@+id/menu_dummy1"
-        style="?android:attr/spinnerStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:visibility="gone" />
-
-    <Spinner
-        android:id="@+id/menu_dummy2"
-        style="?android:attr/spinnerStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:visibility="gone" />
-
-    <Spinner
-        android:id="@+id/menu_dummy3"
-        style="?android:attr/spinnerStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:visibility="gone" />
-
     <View
         android:layout_width="0dp"
         android:layout_height="match_parent"

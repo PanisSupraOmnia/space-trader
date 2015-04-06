@@ -95,7 +95,7 @@ public abstract class BaseScreen extends Fragment implements ConvenienceMethods,
 
 	@Override
 	public final void onClick(View view) {
-		if (getGameManager().isClicking()) return;
+		if (getGameManager() == null || getGameManager().isClicking()) return;
 		if (getGameManager().finishMenuActionMode()) return;
 		
 		getGameManager().startClick();

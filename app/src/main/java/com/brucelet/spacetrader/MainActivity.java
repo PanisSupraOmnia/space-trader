@@ -45,6 +45,8 @@ import android.support.v7.widget.PopupMenu.OnMenuItemClickListener;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.GestureDetector;
+import android.view.HapticFeedbackConstants;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -53,11 +55,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.brucelet.spacetrader.datatypes.GameState;
@@ -126,6 +130,7 @@ import java.util.Map;
  *  - Bug: There are instances where dialogs become blank when leaving and returning to app after long time. Look into fragment lifecycle to handle saving state better.
  *    - Use arguments in place of all instance fields? But how to handle listeners and arbitrarily-typed args? This may require a large change to remove anonymous inner class listeners
  *    - This looks ugly but is usually just a minor problem because user can close dialog and repeat whatever action originally spawned it.
+ *    - It can be bad however if we're inside an ASyncTask
  *  - Xml/Code: Layout updates to make app organization more modernized?
  *    - Do something with bottom half of screen?
  *    - Separate activities for Title, End, Encounter, Docked
@@ -163,6 +168,8 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 	private TextView mTitleText;
 	private ImageView mTitleIcon;
 
+	private LinearLayout mFooter;
+
 	private final GameState mGameState = new GameState(this);
 	
 	private volatile boolean mClicking;
@@ -178,8 +185,12 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 	
 	private ActionMode mActionMode;
 
-	private ScreenType mCurrentScreen;
-	
+	private ScreenType mCurrentScreen = ScreenType.TITLE; // This will be overwritten but it can't be null
+
+	private View mCommandMenuButton;
+	private boolean mDraggingMenuOpen;
+	private int[] mDragCoordHelper = new int[2];
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
@@ -221,6 +232,35 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 				onOptionsItemSelectedWithId(v.getId());
 			}
 		});
+		mTitleView.setOnTouchListener(new OnTouchListener() {
+			private GestureDetector gestureDetector = new GestureDetector(MainActivity.this, new GestureDetector.SimpleOnGestureListener() {
+
+				@Override
+				public boolean onScroll(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+					// If pointer scrolls beyond the bottom of the view, open the menu
+					if (e2.getY() > mTitleView.getHeight()) {
+						mDraggingMenuOpen = true;
+						startMenuActionMode();
+					}
+					return false;
+				}
+
+			});
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				boolean out = gestureDetector.onTouchEvent(event);
+				if (getCurrentScreenType().docked && mCommandMenuButton != null) {
+					mTitleView.getLocationOnScreen(mDragCoordHelper);
+					int titleX = mDragCoordHelper[0];
+					mCommandMenuButton.getLocationOnScreen(mDragCoordHelper);
+					int menuX = mDragCoordHelper[0];
+					MotionEvent event2 = MotionEvent.obtain(event);
+					event2.setLocation(event.getX() + titleX - menuX, event.getY());
+					mCommandMenuButton.dispatchTouchEvent(event2);
+				}
+				return out;
+			}
+		});
 		mTitleIcon.setVisibility(View.GONE);
 		mToolbar.setContentInsetsAbsolute(0, 0);
 		mToolbar.addView(mTitleView);
@@ -232,13 +272,39 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 		ActionBar ab = getSupportActionBar();
 		ab.setDisplayShowHomeEnabled(false);
 		ab.setDisplayShowTitleEnabled(false);
-		
-		
+
+		mFooter = (LinearLayout) findViewById(R.id.footer_shortcuts);
 		final ScreenType[] screens = ScreenType.dropdownValues();
 		mShortcutKeys = new char[screens.length];
 		for (int i = 0; i < mShortcutKeys.length; i++) {
-			mShortcutKeys[i] = Character.toLowerCase(getResources().getString(screens[i].shortcutId).charAt(0));
+			final ScreenType screen = screens[i];
+			mShortcutKeys[i] = Character.toLowerCase(getResources().getString(screen.shortcutId).charAt(0));
+
+			ShortcutButton shortcut = new ShortcutButton(this, null, R.attr.footerButtonStyle);
+			shortcut.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					setCurrentScreenType(screen);
+				}
+			});
+			shortcut.setTitles(getResources().getString(screen.titleId), getResources().getString(screen.shortcutId));
+			shortcut.setPadding(0,0,0,0);
+			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT);
+			params.weight = 1;
+			shortcut.setLayoutParams(params);
+			mFooter.addView(shortcut);
 		}
+
+		// This will eat touch events to the screen when the Menu Action Mode is live.
+		View touchBlocker = findViewById(R.id.action_mode_touch_blocker);
+		touchBlocker.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if (mActionMode == null) return false;
+				finishMenuActionMode();
+				return true;
+			}
+		});
 
 		Log.d("onCreate()", "Finished");
 	}
@@ -272,10 +338,17 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 	@Override
 	protected void onResume() {
 		super.onResume();
-		loadState(getSharedPreferences(mCurrentGame, MODE_PRIVATE));
+		mGameState.loadState(getSharedPreferences(mCurrentGame, MODE_PRIVATE));
+	}
+
+	@Override
+	protected void onPostResume() {
+		// NB Moved some stuff from onResume() into here to avoid committing Fragment transactions with state loss.
+		super.onPostResume();
+		loadCurrentScreen(getSharedPreferences(mCurrentGame, MODE_PRIVATE));
 
 		if (mGameState.identifyStartup() && !mWelcomeShown) {
-			// Make sure only one of these ever appears, in case onResume() is called again before the dialog is dismissed.
+			// Make sure only one of these ever appears, in case onPostResume() is called again before the dialog is dismissed.
 			if (getSupportFragmentManager().findFragmentByTag(IdentifyStartupDialog.class.getName()) == null) {
 				showDialogFragment(IdentifyStartupDialog.newInstance());
 			}
@@ -366,9 +439,15 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 			menu.removeItem(R.id.menu_savegame);
 		}
 
+		refreshExtraShortcuts();
+
 		boolean out = super.onCreateOptionsMenu(menu);
 		Log.d("onCreateOptionsMenu()","Options menu (re-)created!");
 		return out;
+	}
+
+	public void refreshExtraShortcuts() {
+		mFooter.setVisibility(getGameState().extraShortcuts() && getCurrentScreenType().docked? View.VISIBLE : View.GONE);
 	}
 
 	private boolean hasWriteExternalPermission() {
@@ -704,8 +783,10 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 
 	@Override
 	public void onDestroyActionMode(ActionMode mode) {
-		Log.d("Menu Item Click","Destroying Menu ActionMode");
+		Log.d("Menu Item Click", "Destroying Menu ActionMode");
 		mActionMode = null;
+		mCommandMenuButton = null;
+		mDraggingMenuOpen = false;
 	}
 
 	@Override
@@ -717,11 +798,7 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 		final Button game = (Button) view.findViewById(R.id.menu_game);
 		final Button help = (Button) view.findViewById(R.id.menu_help);
 
-		// NB Because we're using buttons that only look like spinners, AppCompat fails to set material style backgrounds correctly
-		// so we do so manually by stealing from dummy spinners
-		command.setBackgroundDrawable(view.findViewById(R.id.menu_dummy1).getBackground());
-		game.setBackgroundDrawable(view.findViewById(R.id.menu_dummy2).getBackground());
-		help.setBackgroundDrawable(view.findViewById(R.id.menu_dummy3).getBackground());
+		mCommandMenuButton = command;
 
 		// Remove outlines which appear in lollipop because they're being drawn for buttons and these need to look like spinners
 		removeOutline(command, game, help);
@@ -784,7 +861,7 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 //						public void onItemClick(
 //								android.widget.AdapterView<?> parent,
 //								View view, int position, long id) {
-//							setCurrentScreen(screens[position].fragmentId);
+//							setCurrentScreenType(screens[position]);
 //							commandDropdown.dismiss();
 //						}
 //					});
@@ -803,21 +880,50 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 //					command.setOnTouchListener(commandDropdown.createDragToOpenListener(command));
 //					commandDropdown.postShow();
 
-			initializeDropdown(command, R.menu.command).show();
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+				android.widget.PopupMenu commandDropDown = initializeDropdownL(command, R.menu.command);
+				if (!mDraggingMenuOpen) {
+					commandDropDown.show();
+				} else {
+					mDraggingMenuOpen = false;
+				}
+			} else {
+				PopupMenu commandDropDown = initializeDropdown(command, R.menu.command);
+				if (!mDraggingMenuOpen) {
+					commandDropDown.show();
+				} else {
+					mDraggingMenuOpen = false;
+				}
+			}
 		} else {
 			command.setVisibility(View.GONE);
 		}
 
-		PopupMenu gameDropdown = initializeDropdown(game, R.menu.game);
-		if (!getGameState().developerMode()) gameDropdown.getMenu().removeGroup(R.id.menu_group_extra);	// Dev options eg call keyboard for testing.
-		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT && !hasWriteExternalPermission()) {
-			gameDropdown.getMenu().removeItem(R.id.menu_savegame);
-		}
-		if (!getCurrentScreenType().docked) {
-			gameDropdown.getMenu().removeItem(R.id.menu_retire);
-		}
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+			android.widget.PopupMenu gameDropdown = initializeDropdownL(game, R.menu.game);
+			if (!getGameState().developerMode())
+				gameDropdown.getMenu().removeGroup(R.id.menu_group_extra);    // Dev options eg call keyboard for testing.
+			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT && !hasWriteExternalPermission()) {
+				gameDropdown.getMenu().removeItem(R.id.menu_savegame);
+			}
+			if (!getCurrentScreenType().docked) {
+				gameDropdown.getMenu().removeItem(R.id.menu_retire);
+			}
 
-		initializeDropdown(help, R.menu.help);
+			initializeDropdownL(help, R.menu.help);
+		} else {
+			PopupMenu gameDropdown = initializeDropdown(game, R.menu.game);
+			if (!getGameState().developerMode())
+				gameDropdown.getMenu().removeGroup(R.id.menu_group_extra);    // Dev options eg call keyboard for testing.
+			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT && !hasWriteExternalPermission()) {
+				gameDropdown.getMenu().removeItem(R.id.menu_savegame);
+			}
+			if (!getCurrentScreenType().docked) {
+				gameDropdown.getMenu().removeItem(R.id.menu_retire);
+			}
+
+			initializeDropdown(help, R.menu.help);
+		}
 
 		mode.setCustomView(view);
 		view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.abc_fade_in));
@@ -825,7 +931,6 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 //		// This doesn't work because the initial dropdown.show() is not lined up correctly
 //		MenuItem dropdowns = menu.add("");
 //		MenuItemCompat.setActionView(dropdowns, view);
-
 
 		return true;
 	}
@@ -866,6 +971,32 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 		
 		return dropdown;
 	}
+
+	// NB This is a temporary band-aid so that things look consistent in android 5.1 while we wait for fixes to trickle down to the support library
+	@TargetApi(Build.VERSION_CODES.LOLLIPOP)
+	private android.widget.PopupMenu initializeDropdownL(Button anchor, int menuRes) {
+		final android.widget.PopupMenu dropdown = new android.widget.PopupMenu(MainActivity.this, anchor);
+		dropdown.getMenuInflater().inflate(menuRes, dropdown.getMenu());
+		dropdown.setOnMenuItemClickListener(new android.widget.PopupMenu.OnMenuItemClickListener() {
+
+			@Override
+			public boolean onMenuItemClick(MenuItem item) {
+				return MainActivity.this.onMenuItemClick(item);
+			}
+		});
+		anchor.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				dropdown.show();
+			}
+		});
+
+		OnTouchListener listener = dropdown.getDragToOpenListener();
+		if (listener != null) anchor.setOnTouchListener(listener);
+
+		return dropdown;
+	}
 	
 	boolean finishMenuActionMode() {
 		Log.d("Menu Item Click","Finishing Menu ActionMode");
@@ -904,11 +1035,18 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
-		
+
 		FragmentManager fm = getSupportFragmentManager();
 		FragmentTransaction ft = fm.beginTransaction();
 		ft.replace(R.id.container, next, getResources().getString(type.titleId));
 		ft.commit();
+//		try{
+//			ft.commit();
+//		} catch (IllegalStateException e) {
+//			Log.w(GameState.LOG_TAG, "Error on Fragment transaction commit. Committing with potential state loss.");
+//			e.printStackTrace();
+//			ft.commitAllowingStateLoss();
+//		}
 
 		if (prevType != null && type.docked && prevType.docked && type != prevType) {
 			mBackStack.addFirst(prevType);
@@ -974,6 +1112,7 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 			
 		case KeyEvent.KEYCODE_BACK:
 			if (event.isLongPress() && keyDown) {
+				findViewById(R.id.dummy_back_button).performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
 				showExitDialog();
 				return true;
 			}
@@ -1021,6 +1160,12 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 	private void loadState(SharedPreferences prefs) {
 		Log.d("loadState()","Begin loading state");
 		mGameState.loadState(prefs);
+		loadCurrentScreen(prefs);
+		Log.d("loadState()","Finished loading state");
+	}
+
+	private void loadCurrentScreen(SharedPreferences prefs) {
+
 		if (DEVELOPER_MODE) {
 
 			// Give user choice to avoid losing savegame in the event of an error. In public release will just error normally without try/catch.
@@ -1030,7 +1175,7 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 				e.printStackTrace();
 
 				showDialogFragment(ConfirmDialog.newInstance(
-						"Load Game Failed!", 
+						"Load Game Failed!",
 						"An error occured loading savegame. Would you like to scrap it and start over?",
 						-1,
 						new OnConfirmListener() {
@@ -1049,7 +1194,7 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 						}));
 
 			}
-		
+
 		} else {
 			setCurrentScreenType(ScreenType.values()[prefs.getInt("screen type", ScreenType.TITLE.ordinal())]);
 		}
@@ -1060,7 +1205,6 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 		}
 
 		supportInvalidateOptionsMenu();
-		Log.d("loadState()","Finished loading state");
 	}
 
 	void startClick() {
@@ -1080,13 +1224,27 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 	void reportDialogShown() {
 		mShowingDialog = false;
 	}
+
+//	public void onSaveInstanceState(Bundle outState) {
+//		super.onSaveInstanceState(outState);
+//
+//		SharedPreferences prefs = getSharedPreferences(mCurrentGame, MODE_PRIVATE);
+//		saveState(prefs);
+//	}
+//
+//	public void onRestoreInstanceState(Bundle savedInstanceState) {
+//		super.onRestoreInstanceState(savedInstanceState);
+//
+//		SharedPreferences prefs = getSharedPreferences(mCurrentGame, MODE_PRIVATE);
+//		loadState(prefs);
+//	}
 	
 //	private void saveStateToPreferences(Bundle state, SharedPreferences prefs) {
 //		SharedPreferences.Editor editor = prefs.edit();
-//		
+//
 //		for (String key : state.keySet()) {
 //			Object obj = state.get(key);
-//			
+//
 //			if (obj instanceof Integer) {
 //				editor.putInt(key, (Integer) obj);
 //			} else if (obj instanceof Boolean) {
@@ -1094,19 +1252,19 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 //			} else if (obj instanceof String) {
 //				editor.putString(key, (String) obj);
 //			} else {
-//				throw new IllegalArgumentException();
+//				throw new IllegalArgumentException("Illegal type while saving state: key="+key+", obj="+obj);
 //			}
 //		}
-//		
+//
 //		editor.commit();
 //	}
-//	
+//
 //	private void loadStateFromPreferences(Bundle state, SharedPreferences prefs) {
 //		Map<String, ?> map = prefs.getAll();
-//		
+//
 //		for (String key : map.keySet()) {
 //			Object obj = map.get(key);
-//			
+//
 //			if (obj instanceof Integer) {
 //				state.putInt(key, (Integer) obj);
 //			} else if (obj instanceof Boolean) {
@@ -1114,7 +1272,7 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 //			} else if (obj instanceof String) {
 //				state.putString(key, (String) obj);
 //			} else {
-//				throw new IllegalArgumentException();
+//				throw new IllegalArgumentException("Illegal type while loading state: key="+key+", obj="+obj);
 //			}
 //		}
 //	}

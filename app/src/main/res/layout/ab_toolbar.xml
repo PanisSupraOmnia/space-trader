@@ -23,6 +23,7 @@
         app:titleTextAppearance="?attr/actionBarTitleTextStyle" />
 
     <View
+        android:id="@+id/status_bar_tint"
         android:layout_width="match_parent"
         android:layout_height="?statusBarPadding"
         android:layout_alignParentTop="true"

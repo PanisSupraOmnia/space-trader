@@ -42,7 +42,7 @@ import com.brucelet.spacetrader.enumtypes.Weapon;
 public class StatusShipScreen extends BaseScreen {
 	public static final Map<Purchasable, Integer> EQUIPMENT_IDS; 
 	static {
-		Map<Purchasable, Integer> ids = new HashMap<Purchasable, Integer>();
+		Map<Purchasable, Integer> ids = new HashMap<>();
 		ids.put(Weapon.PULSE,            R.id.screen_status_ship_equip_pulse);
 		ids.put(Weapon.BEAM,             R.id.screen_status_ship_equip_beam);
 		ids.put(Weapon.MILITARY,         R.id.screen_status_ship_equip_military);

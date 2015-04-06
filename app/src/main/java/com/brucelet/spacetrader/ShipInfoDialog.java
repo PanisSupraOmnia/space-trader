@@ -38,8 +38,7 @@ public class ShipInfoDialog extends BaseDialog {
 		builder
 		.setTitle(R.string.screen_yard_buyship_info)
 		.setView(R.layout.screen_yard_buyship_info)
-//		.setPositiveButton(R.string.screen_yard_buyship_info_button);
-		.setPositiveButton(R.string.generic_ok);
+		.setPositiveButton(R.string.screen_yard_buyship_info_button);
 	}
 	
 	@Override

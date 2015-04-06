@@ -7,6 +7,6 @@
 
     <corners android:radius="@dimen/corner_radius" />
     
-    <solid android:color="@color/btn_default_pressed_palm" />
+    <gradient android:startColor="@color/btn_default_pressed_palm" android:endColor="@color/btn_default_pressed_palm"/>
 
 </shape>

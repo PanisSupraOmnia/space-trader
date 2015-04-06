@@ -20,35 +20,29 @@
  */
 package com.brucelet.spacetrader;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Bundle;
-import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
+import android.view.GestureDetector;
+import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.brucelet.spacetrader.datatypes.GameState;
 import com.brucelet.spacetrader.enumtypes.ScreenType;
 
-/**
- * A simple {@link android.support.v4.app.Fragment} subclass. Activities that
- * contain this fragment must implement the
- * {@link ChartScreen.OnInteractionListener} interface to handle
- * interaction events. Use the {@link ChartScreen#newInstance} factory method
- * to create an instance of this fragment.
- * 
- */
 public class ChartScreen extends BaseScreen {
-	
-	/**
-	 * Use this factory method to create a new instance of this fragment.
-	 * 
-	 * @return A new instance of fragment ChartFragment.
-	 */
+
+	public static final int DOWN = 0;
+	public static final int UP = 1;
+	public static final int MOVE = 2;
+	public static final int LONG = 3;
+
 	public static ChartScreen newInstance() {
 		return new ChartScreen();
 	}
@@ -94,42 +88,142 @@ public class ChartScreen extends BaseScreen {
 		getGameState().galacticChartFormHandleEvent(v.getId());
 	}
 	
-	public static class ChartView extends View {
+	public static class ChartView extends FrameLayout {
 		private ChartScreen mFragment;
-		
+		private GestureDetector mGestureDetector;
+		private ScaleGestureDetector mScaleGestureDetector;
+
+		private float mScale = 1;
+		private float mScrollX = 0;
+		private float mScrollY = 0;
+
+		private static final float MAX_SCALE = 1.5f;
+
 		public ChartView(Context context, AttributeSet attrs) {
 			super(context, attrs);
+			if (getForeground() == null) setForeground(getResources().getDrawable(R.drawable.foreground_shadow_bottom));
+			getForeground().setAlpha(0);
+			mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
+				@Override
+				public boolean onDown(MotionEvent e) {
+					float x = mScale == 1? e.getX() : (e.getX() - getWidth()/2)/mScale + getWidth()/2 + mScrollX;
+					float y = mScale == 1? e.getY() : (e.getY() - getHeight()/2)/mScale + getHeight()/2 + mScrollY;
+					return mFragment.getGameState().galacticChartFormHandleEvent(x, y, DOWN);
+				}
+
+				@Override
+				public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
+										float distanceY) {
+					if (mScale == 1) {
+						return mFragment.getGameState().galacticChartFormHandleEvent(e2.getX(), e2.getY(), MOVE);
+					} else if (mFragment.getGameState().zoomGalaxy()) {
+
+						mScrollX += distanceX/mScale;
+						mScrollY += distanceY/mScale;
+
+						checkScrollBounds();
+
+						invalidate();
+						return true;
+					} else {
+						return false;
+					}
+				}
+
+				@Override
+				public boolean onSingleTapUp(MotionEvent e) {
+					float x = mScale == 1? e.getX() : (e.getX() - getWidth()/2)/mScale + getWidth()/2 + mScrollX;
+					float y = mScale == 1? e.getY() : (e.getY() - getHeight()/2)/mScale + getHeight()/2 + mScrollY;
+					return mFragment.getGameState().galacticChartFormHandleEvent(x, y, UP);
+				}
+
+				public void onLongPress(MotionEvent e) {
+					if (mFragment.getGameState().trackLongPress()) {
+						float x = mScale == 1 ? e.getX() : (e.getX() - getWidth() / 2) / mScale + getWidth() / 2 + mScrollX;
+						float y = mScale == 1 ? e.getY() : (e.getY() - getHeight() / 2) / mScale + getHeight() / 2 + mScrollY;
+						mFragment.getGameState().galacticChartFormHandleEvent(x, y, LONG);
+						performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+					}
+					else if (mFragment.getGameState().zoomGalaxy()) {
+						mScale = mScale == MAX_SCALE ? 1 : MAX_SCALE;
+						if (mScale > 1) {
+							mScale = MAX_SCALE;
+							mScrollX += (e.getX() - getWidth()/2)/mScale;
+							mScrollY += (e.getY() - getHeight()/2)/mScale;
+						}
+
+						checkScrollBounds();
+						getForeground().setAlpha(mScale == 1? 0x00 : 0xff);
+						invalidate();
+						performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+					}
+
+				}
+
+			});
+			mScaleGestureDetector = new ScaleGestureDetector(context, new ScaleGestureDetector.SimpleOnScaleGestureListener() {
+				@Override
+				public boolean onScale(ScaleGestureDetector detector) {
+					if (mFragment.getGameState().zoomGalaxy()) {
+						float scaleFactor = detector.getScaleFactor();
+						mScale *= scaleFactor;
+						checkScrollBounds();
+
+						getForeground().setAlpha(mScale == 1? 0 : 0xff);
+						invalidate();
+
+						return true;
+					} else {
+						if (mScale != 1) {
+							mScale = 1;
+							checkScrollBounds();
+							getForeground().setAlpha(0);
+							invalidate();
+							return true;
+						}
+						return false;
+					}
+				}
+			});
+		}
+
+		private void checkScrollBounds() {
+			mScale = (mScale > MAX_SCALE ? MAX_SCALE : mScale < 1.01 ? 1 : mScale);
+
+			float left = (getLeft() - getWidth()/2)/mScale + getWidth()/2 + mScrollX;
+			float right = (getRight() - getWidth()/2)/mScale + getWidth()/2 + mScrollX;
+			float top = (getTop() - getHeight()/2)/mScale + getHeight()/2 + mScrollY;
+			float bottom = (getBottom() - getHeight()/2)/mScale + getHeight()/2 + mScrollY;
+
+			if (left < getLeft()) mScrollX += getLeft() - left;
+			if (right > getRight()) mScrollX -= right - getRight();
+			if (top < getTop()) mScrollY += getTop() - top;
+			if (bottom > getBottom()) mScrollY -= bottom - getBottom();
+
 		}
 		
 		@Override
 		public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-		    int width = MeasureSpec.getSize(widthMeasureSpec);
-		    int height = MeasureSpec.getSize(heightMeasureSpec);
-		    int size = width > height ? height : width;
-		    setMeasuredDimension(size, (int) (size * GameState.GALAXYHEIGHT * 1f / GameState.GALAXYWIDTH) );
+			int width = MeasureSpec.getSize(widthMeasureSpec);
+			int height = MeasureSpec.getSize(heightMeasureSpec);
+			int size = width > height ? height : width;
+			setMeasuredDimension(size, (int) (size * GameState.GALAXYHEIGHT * 1f / GameState.GALAXYWIDTH) );
 		}
 		
 		@Override
 		public void onDraw(Canvas canvas) {
+			int saveCount = canvas.save();
+			canvas.translate(getWidth()/2, getHeight()/2);
+			canvas.scale(mScale, mScale);
+			canvas.translate(-getWidth() / 2, -getHeight() / 2);
+			canvas.translate(-mScrollX, -mScrollY);
 			mFragment.getGameState().drawGalaxy(canvas);
-					
+			canvas.restoreToCount(saveCount);
 		}
 
-		@SuppressLint("ClickableViewAccessibility")
 		@Override
 		public boolean onTouchEvent(MotionEvent event) {
-			int action = MotionEventCompat.getActionMasked(event);
-			switch (action) {
-			case MotionEvent.ACTION_MOVE:
-			case MotionEvent.ACTION_DOWN:
-			case MotionEvent.ACTION_UP:
-				break;
-			default:
-				return false;
-			}
-			
-			mFragment.getGameState().galacticChartFormHandleEvent(event.getX(), event.getY(), action);
-			return true;
+			return mScaleGestureDetector.onTouchEvent(event) | mGestureDetector.onTouchEvent(event) | super.onTouchEvent(event);
 		}
 		
 	}

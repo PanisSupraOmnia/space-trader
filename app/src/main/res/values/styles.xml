@@ -87,6 +87,7 @@
         <item name="infoIconDialog">@drawable/info_holo_blue</item>
         <item name="dialogTitleTextStyle">@style/TextAppearance.DialogWindowTitle.Light</item>
         <item name="actionBarTitleBackground">?selectableItemBackground</item>
+        <item name="dialogLayout">@layout/dialog_layout_holo</item>
         <item name="dialogDividerColor">@color/light_acwidgets_color</item>
         <item name="pressableTextColor">?android:textColorPrimary</item>
         <item name="dialogBackgroundStyle">@style/Dialog.Light</item>
@@ -95,6 +96,7 @@
         <item name="dialogDivider">@drawable/list_divider_holo_light</item>
         <item name="statusBarPadding">0dp</item>
         <item name="statusBarExtraTint">@android:color/transparent</item>
+        <item name="footerButtonStyle">?actionButtonStyle</item>
 
         <item name="android:textViewStyle">@style/TextView.Light</item>
         <item name="android:editTextStyle">@style/EditText.Light</item>
@@ -143,6 +145,7 @@
         <item name="infoIconDialog">@drawable/info_holo_blue</item>
         <item name="dialogTitleTextStyle">@style/TextAppearance.DialogWindowTitle.Dark</item>
         <item name="actionBarTitleBackground">?selectableItemBackground</item>
+        <item name="dialogLayout">@layout/dialog_layout_holo</item>
         <item name="dialogDividerColor">@color/dark_acwidgets_color</item>
         <item name="pressableTextColor">?android:textColorPrimary</item>
         <item name="dialogBackgroundStyle">@style/Dialog.Dark</item>
@@ -151,7 +154,8 @@
         <item name="dialogDivider">@drawable/list_divider_holo_dark</item>
         <item name="statusBarPadding">0dp</item>
         <item name="statusBarExtraTint">@android:color/transparent</item>
-        
+        <item name="footerButtonStyle">?actionButtonStyle</item>
+
         <item name="android:textViewStyle">@style/TextView.Dark</item>
         <item name="android:editTextStyle">@style/EditText.Dark</item>
         <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextView.Dark</item>
@@ -200,6 +204,7 @@
         <item name="infoIconDialog">@drawable/info_white</item>
         <item name="dialogTitleTextStyle">@style/TextAppearance.DialogWindowTitle.Palm</item>
         <item name="actionBarTitleBackground">@drawable/ab_solid_palm_dab</item>
+        <item name="dialogLayout">@layout/dialog_layout_palm</item>
         <item name="dialogDividerColor">@color/palm_acwidgets_color</item>
         <item name="pressableTextColor">@color/primary_text_palm</item>
         <item name="dialogBackgroundStyle">@style/Dialog.Palm</item>
@@ -208,7 +213,8 @@
         <item name="dialogDivider">@android:color/transparent</item>
         <item name="statusBarPadding">0dp</item>
         <item name="statusBarExtraTint">@android:color/transparent</item>
-        
+        <item name="footerButtonStyle">?actionButtonStyle</item>
+
         <item name="actionButtonMarginTop">@dimen/action_bar_button_marginTop_palm</item>
         <item name="actionButtonMarginBottom">@dimen/action_bar_button_marginBottom_palm</item>
         

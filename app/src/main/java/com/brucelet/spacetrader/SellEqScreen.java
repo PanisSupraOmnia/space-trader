@@ -34,7 +34,7 @@ import com.brucelet.spacetrader.enumtypes.ScreenType;
 public class SellEqScreen extends BaseScreen {
 	public static final List<Integer> WEAPON_IDS;
 	static {
-		List<Integer> ids = new ArrayList<Integer>();
+		List<Integer> ids = new ArrayList<>();
 		ids.add(R.id.screen_selleq_weapon1);
 		ids.add(R.id.screen_selleq_weapon2);
 		ids.add(R.id.screen_selleq_weapon3);
@@ -42,7 +42,7 @@ public class SellEqScreen extends BaseScreen {
 	}
 	public static final List<Integer> WEAPON_BUTTON_IDS;
 	static {
-		List<Integer> ids = new ArrayList<Integer>();
+		List<Integer> ids = new ArrayList<>();
 		ids.add(R.id.screen_selleq_weapon1_button);
 		ids.add(R.id.screen_selleq_weapon2_button);
 		ids.add(R.id.screen_selleq_weapon3_button);
@@ -50,7 +50,7 @@ public class SellEqScreen extends BaseScreen {
 	}
 	public static final List<Integer> WEAPON_TYPE_IDS;
 	static {
-		List<Integer> ids = new ArrayList<Integer>();
+		List<Integer> ids = new ArrayList<>();
 		ids.add(R.id.screen_selleq_weapon1_type);
 		ids.add(R.id.screen_selleq_weapon2_type);
 		ids.add(R.id.screen_selleq_weapon3_type);
@@ -58,7 +58,7 @@ public class SellEqScreen extends BaseScreen {
 	}
 	public static final List<Integer> WEAPON_PRICE_IDS;
 	static {
-		List<Integer> ids = new ArrayList<Integer>();
+		List<Integer> ids = new ArrayList<>();
 		ids.add(R.id.screen_selleq_weapon1_price);
 		ids.add(R.id.screen_selleq_weapon2_price);
 		ids.add(R.id.screen_selleq_weapon3_price);
@@ -66,7 +66,7 @@ public class SellEqScreen extends BaseScreen {
 	}
 	public static final List<Integer> SHIELD_IDS;
 	static {
-		List<Integer> ids = new ArrayList<Integer>();
+		List<Integer> ids = new ArrayList<>();
 		ids.add(R.id.screen_selleq_shield1);
 		ids.add(R.id.screen_selleq_shield2);
 		ids.add(R.id.screen_selleq_shield3);
@@ -74,7 +74,7 @@ public class SellEqScreen extends BaseScreen {
 	}
 	public static final List<Integer> SHIELD_BUTTON_IDS;
 	static {
-		List<Integer> ids = new ArrayList<Integer>();
+		List<Integer> ids = new ArrayList<>();
 		ids.add(R.id.screen_selleq_shield1_button);
 		ids.add(R.id.screen_selleq_shield2_button);
 		ids.add(R.id.screen_selleq_shield3_button);
@@ -82,7 +82,7 @@ public class SellEqScreen extends BaseScreen {
 	}
 	public static final List<Integer> SHIELD_TYPE_IDS;
 	static {
-		List<Integer> ids = new ArrayList<Integer>();
+		List<Integer> ids = new ArrayList<>();
 		ids.add(R.id.screen_selleq_shield1_type);
 		ids.add(R.id.screen_selleq_shield2_type);
 		ids.add(R.id.screen_selleq_shield3_type);
@@ -90,7 +90,7 @@ public class SellEqScreen extends BaseScreen {
 	}
 	public static final List<Integer> SHIELD_PRICE_IDS;
 	static {
-		List<Integer> ids = new ArrayList<Integer>();
+		List<Integer> ids = new ArrayList<>();
 		ids.add(R.id.screen_selleq_shield1_price);
 		ids.add(R.id.screen_selleq_shield2_price);
 		ids.add(R.id.screen_selleq_shield3_price);
@@ -98,7 +98,7 @@ public class SellEqScreen extends BaseScreen {
 	}
 	public static final List<Integer> GADGET_IDS;
 	static {
-		List<Integer> ids = new ArrayList<Integer>();
+		List<Integer> ids = new ArrayList<>();
 		ids.add(R.id.screen_selleq_gadget1);
 		ids.add(R.id.screen_selleq_gadget2);
 		ids.add(R.id.screen_selleq_gadget3);
@@ -106,7 +106,7 @@ public class SellEqScreen extends BaseScreen {
 	}
 	public static final List<Integer> GADGET_BUTTON_IDS;
 	static {
-		List<Integer> ids = new ArrayList<Integer>();
+		List<Integer> ids = new ArrayList<>();
 		ids.add(R.id.screen_selleq_gadget1_button);
 		ids.add(R.id.screen_selleq_gadget2_button);
 		ids.add(R.id.screen_selleq_gadget3_button);
@@ -114,7 +114,7 @@ public class SellEqScreen extends BaseScreen {
 	}
 	public static final List<Integer> GADGET_TYPE_IDS;
 	static {
-		List<Integer> ids = new ArrayList<Integer>();
+		List<Integer> ids = new ArrayList<>();
 		ids.add(R.id.screen_selleq_gadget1_type);
 		ids.add(R.id.screen_selleq_gadget2_type);
 		ids.add(R.id.screen_selleq_gadget3_type);
@@ -122,7 +122,7 @@ public class SellEqScreen extends BaseScreen {
 	}
 	public static final List<Integer> GADGET_PRICE_IDS;
 	static {
-		List<Integer> ids = new ArrayList<Integer>();
+		List<Integer> ids = new ArrayList<>();
 		ids.add(R.id.screen_selleq_gadget1_price);
 		ids.add(R.id.screen_selleq_gadget2_price);
 		ids.add(R.id.screen_selleq_gadget3_price);

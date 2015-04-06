@@ -21,8 +21,6 @@
 package com.brucelet.spacetrader;
 
 
-
-
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -36,14 +34,6 @@ import android.widget.TextView;
 import com.brucelet.spacetrader.datatypes.GameState;
 import com.brucelet.spacetrader.enumtypes.ScreenType;
 
-/**
- * A simple {@link android.support.v4.app.Fragment} subclass. Activities that
- * contain this fragment must implement the
- * {@link ShortcutDialog.OnInteractionListener} interface to handle
- * interaction events. Use the {@link ShortcutDialog#newInstance} factory
- * method to create an instance of this fragment.
- * 
- */
 public class ShortcutDialog extends BaseDialog {
 	private static final int[] SPINNER_IDS = {
 		R.id.dialog_shortcut_selector1,
@@ -52,12 +42,6 @@ public class ShortcutDialog extends BaseDialog {
 		R.id.dialog_shortcut_selector4,
 	};
 
-	/**
-	 * Use this factory method to create a new instance of this fragment using
-	 * the provided parameters.
-	 * 
-	 * @return A new instance of fragment ShortcutFragment.
-	 */
 	public static ShortcutDialog newInstance() {
 		ShortcutDialog fragment = new ShortcutDialog();
 		return fragment;
@@ -77,29 +61,41 @@ public class ShortcutDialog extends BaseDialog {
 		
 		final ScreenType[] screens = ScreenType.dropdownValues();
 
-		SpinnerAdapter adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_dropdown_item, new String[screens.length]) {
+		SpinnerAdapter adapter = new ArrayAdapter<String>(getActivity(),R.layout.spinner_dropdown_item_shortcut, new String[screens.length]) {
 
 			@Override
 			public View getView(int position, View row, ViewGroup parent)
 			{   
 				if(row == null)
 				{
-					LayoutInflater inflater =(LayoutInflater) getActivity().getLayoutInflater();
-					row = inflater.inflate(R.layout.spinner_dropdown_item_shortcut, parent, false);
+					LayoutInflater inflater = getActivity().getLayoutInflater();
+					row = inflater.inflate(R.layout.spinner_selected_item_shortcut, parent, false);
 				}
 
-				TextView text1 = (TextView) row.findViewById(R.id.spinner_shortcut);
-				text1.setText(screens[position].shortcutId);
-				text1.setTypeface(Typeface.MONOSPACE);	// NB Lollipop is not setting this from xml so we need this here. 
-				TextView text2 = (TextView) row.findViewById(R.id.spinner_text);
-				text2.setText(screens[position].titleId);
+				setSpinnerText(position, row);
 
 				return row;
 			}
 			@Override
 			public View getDropDownView(int position, View row, ViewGroup parent)
-			{   
-				return getView(position, row, parent);
+			{
+				if(row == null)
+				{
+					LayoutInflater inflater = getActivity().getLayoutInflater();
+					row = inflater.inflate(R.layout.spinner_dropdown_item_shortcut, parent, false);
+				}
+
+				setSpinnerText(position, row);
+
+				return row;
+			}
+
+			private void setSpinnerText(int position, View row) {
+				TextView text1 = (TextView) row.findViewById(R.id.spinner_shortcut);
+				text1.setText(screens[position].shortcutId);
+				text1.setTypeface(Typeface.MONOSPACE);	// NB Lollipop is not setting this from xml so we need this here.
+				TextView text2 = (TextView) row.findViewById(R.id.spinner_text);
+				text2.setText(screens[position].spinnerId);
 			}
 		};
 

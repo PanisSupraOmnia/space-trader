@@ -30,7 +30,7 @@ import android.view.ViewGroup;
 public class HighScoresDialog extends BaseDialog {
 	public static final List<Integer> NAME_IDS;
 	static {
-		List<Integer> ids = new ArrayList<Integer>();
+		List<Integer> ids = new ArrayList<>();
 		ids.add(R.id.dialog_highscores_1_name);
 		ids.add(R.id.dialog_highscores_2_name);
 		ids.add(R.id.dialog_highscores_3_name);
@@ -38,7 +38,7 @@ public class HighScoresDialog extends BaseDialog {
 	}
 	public static final List<Integer> PCT_IDS;
 	static {
-		List<Integer> ids = new ArrayList<Integer>();
+		List<Integer> ids = new ArrayList<>();
 		ids.add(R.id.dialog_highscores_1_percent);
 		ids.add(R.id.dialog_highscores_2_percent);
 		ids.add(R.id.dialog_highscores_3_percent);
@@ -46,7 +46,7 @@ public class HighScoresDialog extends BaseDialog {
 	}
 	public static final List<Integer> DESC_IDS;
 	static {
-		List<Integer> ids = new ArrayList<Integer>();
+		List<Integer> ids = new ArrayList<>();
 		ids.add(R.id.dialog_highscores_1_description);
 		ids.add(R.id.dialog_highscores_2_description);
 		ids.add(R.id.dialog_highscores_3_description);

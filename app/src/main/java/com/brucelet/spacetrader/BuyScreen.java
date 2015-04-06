@@ -35,7 +35,7 @@ import com.brucelet.spacetrader.enumtypes.TradeItem;
 public class BuyScreen extends BaseScreen {
 	public static final Map<TradeItem, Integer> AMOUNT_IDS; 
 	static {
-		Map<TradeItem, Integer> ids = new EnumMap<TradeItem, Integer>(TradeItem.class);
+		Map<TradeItem, Integer> ids = new EnumMap<>(TradeItem.class);
 		ids.put(TradeItem.WATER,     R.id.screen_buy_water_amount);
 		ids.put(TradeItem.FURS,      R.id.screen_buy_furs_amount);
 		ids.put(TradeItem.FOOD,      R.id.screen_buy_food_amount);
@@ -50,7 +50,7 @@ public class BuyScreen extends BaseScreen {
 	}
 	public static final Map<TradeItem, Integer> MAX_IDS; 
 	static {
-		Map<TradeItem, Integer> ids = new EnumMap<TradeItem, Integer>(TradeItem.class);
+		Map<TradeItem, Integer> ids = new EnumMap<>(TradeItem.class);
 		ids.put(TradeItem.WATER,     R.id.screen_buy_water_max);
 		ids.put(TradeItem.FURS,      R.id.screen_buy_furs_max);
 		ids.put(TradeItem.FOOD,      R.id.screen_buy_food_max);
@@ -65,7 +65,7 @@ public class BuyScreen extends BaseScreen {
 	}
 	public static final Map<TradeItem, Integer> PRICE_IDS; 
 	static {
-		Map<TradeItem, Integer> ids = new EnumMap<TradeItem, Integer>(TradeItem.class);
+		Map<TradeItem, Integer> ids = new EnumMap<>(TradeItem.class);
 		ids.put(TradeItem.WATER,     R.id.screen_buy_water_price);
 		ids.put(TradeItem.FURS,      R.id.screen_buy_furs_price);
 		ids.put(TradeItem.FOOD,      R.id.screen_buy_food_price);

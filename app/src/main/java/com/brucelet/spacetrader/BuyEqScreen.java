@@ -38,7 +38,7 @@ import com.brucelet.spacetrader.enumtypes.Weapon;
 public class BuyEqScreen extends BaseScreen {
 	public static final Map<Purchasable, Integer> BUTTON_IDS; 
 	static {
-		Map<Purchasable, Integer> ids = new HashMap<Purchasable, Integer>();
+		Map<Purchasable, Integer> ids = new HashMap<>();
 		ids.put(Weapon.PULSE,            R.id.screen_buyeq_pulse_button);
 		ids.put(Weapon.BEAM,             R.id.screen_buyeq_beam_button);
 		ids.put(Weapon.MILITARY,         R.id.screen_buyeq_military_button);
@@ -53,7 +53,7 @@ public class BuyEqScreen extends BaseScreen {
 	}
 	public static final Map<Purchasable, Integer> PRICE_IDS; 
 	static {
-		Map<Purchasable, Integer> ids = new HashMap<Purchasable, Integer>();
+		Map<Purchasable, Integer> ids = new HashMap<>();
 		ids.put(Weapon.PULSE,            R.id.screen_buyeq_pulse_price);
 		ids.put(Weapon.BEAM,             R.id.screen_buyeq_beam_price);
 		ids.put(Weapon.MILITARY,         R.id.screen_buyeq_military_price);

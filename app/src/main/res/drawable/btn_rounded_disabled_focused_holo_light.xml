@@ -7,6 +7,6 @@
 
     <corners android:radius="@dimen/corner_radius" />
     
-    <solid android:color="@color/btn_default_disabled_focused_holo" />
+    <gradient android:startColor="@color/btn_default_disabled_focused_holo" android:endColor="@color/btn_default_disabled_focused_holo"/>
 
 </shape>

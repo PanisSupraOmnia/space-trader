@@ -62,9 +62,14 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 		}
 		inflater = LayoutInflater.from(context);
 
-		View root = inflater.inflate(R.layout.dialog_layout, container, false);
 		TypedValue tv = new TypedValue();
 		TypedArray ta;
+
+//		getActivity().getTheme().resolveAttribute(R.attr.dialogLayout, tv, true);
+//		int layoutRes = tv.resourceId;
+		int layoutRes = R.layout.dialog_layout_holo;
+
+		View root = inflater.inflate(layoutRes, container, false);
 
 		View topPanel = root.findViewById(R.id.topPanel);
 		View contentPanel = root.findViewById(R.id.contentPanel);
@@ -119,7 +124,7 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 
 				@Override
 				public void onClick(View v) {
-					if (getGameManager().isClicking()) return;
+					if (getGameManager() == null || getGameManager().isClicking()) return;
 					
 					getGameManager().startClick();
 					onClickPositiveButton();
@@ -134,7 +139,7 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 
 				@Override
 				public void onClick(View v) {
-					if (getGameManager().isClicking()) return;
+					if (getGameManager() == null || getGameManager().isClicking()) return;
 					
 					getGameManager().startClick();
 					onClickNegativeButton();
@@ -149,7 +154,7 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 
 				@Override
 				public void onClick(View v) {
-					if (getGameManager().isClicking()) return;
+					if (getGameManager() == null || getGameManager().isClicking()) return;
 					
 					getGameManager().startClick();
 					onClickNeutralButton();
@@ -170,7 +175,7 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 				
 				@Override
 				public void onClick(View v) {
-					if (getGameManager().isClicking()) return;
+					if (getGameManager() == null || getGameManager().isClicking()) return;
 					
 					getGameManager().startClick();
 					onClickHelpButton();
@@ -222,8 +227,27 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 			Log.d("BaseDialog", "Not setting Dialog Theme");
 			setStyle(STYLE_NO_FRAME, 0);
 		}
-		
-		Dialog dialog = super.onCreateDialog(savedInstanceState);
+
+		getActivity().getTheme().resolveAttribute(R.attr.statusBarExtraTint, tv, true);
+		final int statusBarExtraTint = tv.data;
+		Dialog dialog = new Dialog(getActivity(), getTheme()) {
+			@Override
+			public void onActionModeStarted(android.view.ActionMode mode) {
+				Log.d("BaseDialog","Dialog ActionMode started");
+				if (statusBarExtraTint != 0) {
+					getActivity().findViewById(R.id.status_bar_tint).setBackgroundColor(getResources().getColor(android.R.color.black));
+				}
+			}
+
+			@Override
+			public void onActionModeFinished(android.view.ActionMode mode) {
+				Log.d("BaseDialog","Dialog ActionMode finished");
+				if (statusBarExtraTint != 0) {
+					getActivity().findViewById(R.id.status_bar_tint).setBackgroundColor(statusBarExtraTint);
+				}
+			}
+		};
+//		Dialog dialog = super.onCreateDialog(savedInstanceState);
 		dialog.setOnShowListener(new DialogInterface.OnShowListener() { // NB OnShowListener requires API 8
 			
 			@Override
@@ -233,7 +257,7 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 				getGameManager().reportDialogShown();
 			}
 		});
-		
+
 		// STYLE_NO_FRAME removes animation style so add it back in
 		Window window = dialog.getWindow();
 		WindowManager.LayoutParams windowAttributes = window.getAttributes();
@@ -244,7 +268,7 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 		windowAttributes.dimAmount = 0.6f; // NB Just hardcoding this right now although it might be technically more correct to grab it from style.
 		
 		window.setAttributes(windowAttributes);
-		
+
 		return dialog;
 	}
 	
@@ -296,7 +320,7 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 	@Override
 	public final void onClick(View view) {
 		if (!(this instanceof OnSingleClickListener)) return;
-		if (getGameManager().isClicking()) return;
+		if (getGameManager() == null || getGameManager().isClicking()) return;
 		
 		getGameManager().startClick();
 		((OnSingleClickListener)this).onSingleClick(view);

@@ -44,7 +44,7 @@ public class SolarSystem {
 	private int y;					// Y-coordinate (galaxy height = 100)
 	public final SpecialResources specialResources;	// Special resources
 	public final Size size;				// System size
-	private final Map<TradeItem, Integer> qty = new EnumMap<TradeItem, Integer>(TradeItem.class);// Quantities of tradeitems. These change very slowly over time.
+	private final Map<TradeItem, Integer> qty = new EnumMap<>(TradeItem.class);// Quantities of tradeitems. These change very slowly over time.
 	private int countDown;			// Countdown for reset of tradeitems.
 	private boolean visited;			// Visited Yes or No
 	private SpecialEvent special;				// Special event

@@ -44,7 +44,7 @@
         <item name="android:actionBarSize">@dimen/abc_action_bar_default_height_material</item>
         <item name="android:actionModeCloseDrawable">?actionModeCloseDrawable</item>
         <item name="android:actionModeCloseButtonStyle">?actionModeCloseButtonStyle</item>
-        <item name="android:actionButtonStyle">@style/Widget.AppCompat.ActionButton</item>
+        <item name="android:actionButtonStyle">@style/ActionButtonStyle.Material.Dialog</item>
     </style>
 
     <style name="DialogTheme.Base.Material.Dark" parent="ActivityTheme.Material.Dark">
@@ -67,7 +67,7 @@
         <item name="android:actionBarSize">@dimen/abc_action_bar_default_height_material</item>
         <item name="android:actionModeCloseDrawable">?actionModeCloseDrawable</item>
         <item name="android:actionModeCloseButtonStyle">?actionModeCloseButtonStyle</item>
-        <item name="android:actionButtonStyle">@style/Widget.AppCompat.ActionButton</item>
+        <item name="android:actionButtonStyle">@style/ActionButtonStyle.Material.Dialog</item>
     </style>
 
 </resources>

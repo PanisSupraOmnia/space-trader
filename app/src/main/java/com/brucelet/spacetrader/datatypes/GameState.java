@@ -20,14 +20,8 @@
  */
 package com.brucelet.spacetrader.datatypes;
 
-import java.util.Arrays;
-import java.util.EnumMap;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Random;
-import java.util.concurrent.CountDownLatch;
-
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.SharedPreferences;
@@ -40,6 +34,7 @@ import android.graphics.Paint.Align;
 import android.graphics.Paint.Cap;
 import android.graphics.Paint.Join;
 import android.graphics.Paint.Style;
+import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
@@ -50,10 +45,10 @@ import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -99,7 +94,6 @@ import com.brucelet.spacetrader.WarpScreen;
 import com.brucelet.spacetrader.WarpSubScreen;
 import com.brucelet.spacetrader.WarpSystemPagerAdapter;
 import com.brucelet.spacetrader.WarpTargetCostDialog;
-import com.brucelet.spacetrader.enumtypes.ActivityLevel;
 import com.brucelet.spacetrader.enumtypes.DifficultyLevel;
 import com.brucelet.spacetrader.enumtypes.Encounter;
 import com.brucelet.spacetrader.enumtypes.EncounterButton;
@@ -126,6 +120,14 @@ import com.brucelet.spacetrader.enumtypes.TechLevel;
 import com.brucelet.spacetrader.enumtypes.ThemeType;
 import com.brucelet.spacetrader.enumtypes.TradeItem;
 import com.brucelet.spacetrader.enumtypes.Weapon;
+
+import java.util.Arrays;
+import java.util.EnumMap;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Random;
+import java.util.concurrent.CountDownLatch;
 
 public class GameState {
 
@@ -282,11 +284,17 @@ public class GameState {
 	private int narcs;
 	private boolean playerShipNeedsUpdate;
 	private boolean opponentShipNeedsUpdate;
-	boolean opponentGotHit;
+	private boolean opponentGotHit;
 	boolean commanderGotHit;
-	EndStatus endStatus = null;
+	private EndStatus endStatus = null;
+	private volatile EncounterButton prevEncounterAction;
+
 	private boolean recallScreens;
 	private boolean volumeScroll;
+	private boolean zoomGalaxy;
+	private boolean trackLongPress;
+	private boolean encounterAnim;
+	private boolean extraShortcuts;
 	private boolean randomQuestSystems;
 	private boolean developerMode;
 	
@@ -469,6 +477,10 @@ public class GameState {
 
 		editor.putBoolean("volumeScroll", volumeScroll);
 		editor.putBoolean("recallScreens", recallScreens);
+		editor.putBoolean("zoomGalaxy", zoomGalaxy);
+		editor.putBoolean("trackLongPress", trackLongPress);
+		editor.putBoolean("encounterAnim", encounterAnim);
+		editor.putBoolean("extraShortcuts", extraShortcuts);
 
 		editor.putBoolean("randomQuestSystems", randomQuestSystems);
 
@@ -648,6 +660,10 @@ public class GameState {
 
 		recallScreens = prefs.getBoolean("recallScreens", recallScreens);
 		volumeScroll = prefs.getBoolean("volumeScroll", volumeScroll);
+		zoomGalaxy = prefs.getBoolean("zoomGalaxy", zoomGalaxy);
+		trackLongPress = prefs.getBoolean("trackLongPress", trackLongPress);
+		encounterAnim = prefs.getBoolean("encounterAnim", encounterAnim);
+		extraShortcuts = prefs.getBoolean("extraShortcuts", extraShortcuts);
 
 		randomQuestSystems = prefs.getBoolean("randomQuestSystems", randomQuestSystems);
 		
@@ -800,6 +816,10 @@ public class GameState {
 		copyPreference(oldPrefs, newPrefs, "graphicalEncounters", graphicalEncounters);
 		copyPreference(oldPrefs, newPrefs, "volumeScroll", volumeScroll);
 		copyPreference(oldPrefs, newPrefs, "recallScreens", recallScreens);
+		copyPreference(oldPrefs, newPrefs, "zoomGalaxy", zoomGalaxy);
+		copyPreference(oldPrefs, newPrefs, "trackLongPress", trackLongPress);
+		copyPreference(oldPrefs, newPrefs, "encounterAnim", encounterAnim);
+		copyPreference(oldPrefs, newPrefs, "extraShortcuts", extraShortcuts);
 		copyPreference(oldPrefs, newPrefs, "developerMode", developerMode);
 	}
 
@@ -812,6 +832,15 @@ public class GameState {
 	}
 	public boolean volumeScroll() {
 		return volumeScroll;
+	}
+	public boolean zoomGalaxy() {
+		return zoomGalaxy;
+	}
+	public boolean trackLongPress() {
+		return trackLongPress;
+	}
+	public boolean extraShortcuts() {
+		return extraShortcuts;
 	}
 	public boolean identifyStartup() {
 		return identifyStartup;
@@ -945,6 +974,10 @@ public class GameState {
 		// New options in android version
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_volumescroll)).setChecked(volumeScroll);
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_recallscreens)).setChecked(recallScreens);
+		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_zoomgalaxy)).setChecked(zoomGalaxy);
+		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_tracklongpress)).setChecked(trackLongPress);
+		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_encounteranim)).setChecked(encounterAnim);
+		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_extrashortcuts)).setChecked(extraShortcuts);
 		
 		dialog.setViewVisibilityById(R.id.dialog_options_developermode, MainActivity.DEVELOPER_MODE, false);
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_developermode)).setChecked(developerMode);
@@ -972,12 +1005,6 @@ public class GameState {
 			themeGroup.clearCheck();
 			break;
 		}
-		
-//		// On older devices, material themes look bad, so hide them.
-//		if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.GINGERBREAD_MR1 && !developerMode) {
-//			themeGroup.findViewById(R.id.dialog_options_theme_material_light).setVisibility(View.GONE);
-//			themeGroup.findViewById(R.id.dialog_options_theme_material_dark).setVisibility(View.GONE);
-//		}
 	}
 	
 	public void dismissOptions()
@@ -1026,6 +1053,11 @@ public class GameState {
 
 		volumeScroll = ((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_volumescroll)).isChecked();
 		recallScreens = ((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_recallscreens)).isChecked();
+		zoomGalaxy = ((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_zoomgalaxy)).isChecked();
+		trackLongPress = ((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_tracklongpress)).isChecked();
+		encounterAnim = ((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_encounteranim)).isChecked();
+		extraShortcuts = ((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_extrashortcuts)).isChecked();
+		mGameManager.refreshExtraShortcuts();
 		
 		developerMode = MainActivity.DEVELOPER_MODE && ((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_developermode)).isChecked();
 
@@ -2271,7 +2303,7 @@ public class GameState {
 			View amt = screen.getView().findViewById(SellScreen.AMOUNT_IDS.get(item));
 			if (sellPrice.get(item) <= 0)
 			{
-				amt.setBackgroundResource(0);
+				amt.setBackgroundDrawable(null);
 				amt.setClickable(false);
 				screen.setViewTextById(SellScreen.ALL_IDS.get(item), R.string.generic_dump);
 			}
@@ -2574,7 +2606,6 @@ public class GameState {
 		
 		if (mGameManager.getCurrentScreenType() == ScreenType.BUY) {
 			drawBuyCargoForm();
-//		} else if (mGameManager.findDialogByClass(WarpPopupDialog.class) != null) {
 		} else if (mGameManager.getCurrentScreenType() == ScreenType.AVGPRICES) {
 			showAveragePrices();
 			setAdapterSystems(((WarpSubScreen)mGameManager.getCurrentScreen()).getPagerAdapter());
@@ -2846,21 +2877,6 @@ public class GameState {
 		{
 			mGameManager.setCurrentScreenType(ScreenType.SHIP);
 		}
-		
-//		StatusPopupDialog fragment;
-//		if (buttonId == R.id.screen_status_quests_button)
-//		{
-//			fragment = StatusPopupDialog.newInstance(0);
-//		}
-//		else if (buttonId == R.id.screen_status_cargo_button)
-//		{
-//			fragment = StatusPopupDialog.newInstance(2);
-//		}
-//		else
-//		{
-//			fragment = StatusPopupDialog.newInstance(1);
-//		}
-//		mGameManager.showDialogFragment(fragment);
 	}
 	
 	// New function to handle cheat form display (originally in CommanderStatusFormHandleEvent())
@@ -3017,7 +3033,7 @@ public class GameState {
 			screen.setViewTextById(R.id.screen_encounter_enemyaction, encounterType.action());
 		}
 	}
-	
+
 		
 	// *************************************************************************
 	// Show the ship stats on the encounter screen
@@ -3026,7 +3042,7 @@ public class GameState {
 	{
 		BaseScreen screen = mGameManager.getCurrentScreen();
 		if (screen == null || screen.getView() == null || screen.getType() != ScreenType.ENCOUNTER) return;
-		
+
 		int hullPc = sh.hull * 100 / sh.getHullStrength();
 		int shieldPc = 0;
 		if (sh.totalShields() > 0)
@@ -3047,25 +3063,28 @@ public class GameState {
 			hullViewId = R.id.screen_encounter_enemyship_hull;
 			shieldViewId = R.id.screen_encounter_enemyship_shields;
 		}
+		if ((commandersShip && commanderOffScreen) || (!commandersShip && opponentOffScreen)) {
+			((ImageView)screen.getView().findViewById(shipViewId)).setAlpha(0);
+		}
 		screen.setViewVisibilityById(shipViewId, graphicalEncounters, false);
 		screen.setViewVisibilityById(shipTypeViewId, textualEncounters && !graphicalEncounters, false);
 		screen.setViewVisibilityById(hullViewId, textualEncounters, false);
 		screen.setViewVisibilityById(shieldViewId, textualEncounters, false);
-		
-		
+
+
 		if (textualEncounters)
 		{
-		
+
 			screen.setViewTextById(shipTypeViewId, sh.type);
-			
+
 			int hullTextId;
 			if (encounterType.opponentType() == Opponent.MONSTER)
 				hullTextId = R.string.screen_encounter_hide;
 			else
 				hullTextId = R.string.screen_encounter_hull;
-			
+
 			screen.setViewTextById(hullViewId, hullTextId, hullPc);
-			
+
 			int shieldTextId;
 			if (sh.shield[0] == null)
 				shieldTextId = R.string.screen_encounter_noshields;
@@ -3076,60 +3095,25 @@ public class GameState {
 		if (graphicalEncounters)
 		{
 			ImageView shipView = (ImageView) screen.getView().findViewById(shipViewId);
-			
+
 			// Rotation of the enemy ship (NB not in original)
-			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-				shipRotationHoneycomb(shipView, commandersShip);
-			}
-			else if (!commandersShip)
-			{
-				
-				// Attempt to calculate how much the image is already scaled by the xml.
-				float l = shipView.getLeft();
-				float r = shipView.getRight();
-				float t = shipView.getTop();
-				float b = shipView.getBottom();
-				
-				float iw = getResources().getDrawable(sh.type.drawableId).getIntrinsicWidth();
-				float ih = getResources().getDrawable(sh.type.drawableId).getIntrinsicHeight();
-				
-				float sx = (r-l)/iw;
-				float sy = (b-t)/ih;
-				
-
-				if (sx == 0 || sy == 0)  {
-					Log.w(GameState.LOG_TAG, "Compatibility ship rotation failure. Will re-try in 100ms");
-					shipView.postDelayed(new Runnable() {
-						
-						@Override
-						public void run() {
-							showShip(opponent, false);
-						}
-					}, 100);
-				}
-
-				// Construct a new transformation matrix for the imageview, which scales as the xml and also rotates 180 deg.
-				Matrix matrix = new Matrix();
-				matrix.preScale(sx, sy);
-				matrix.preRotate( 180f, iw/2, ih/2);
-
-				shipView.setScaleType(ImageView.ScaleType.MATRIX);
-				shipView.setImageMatrix(matrix);
-			}
+			shipRotation(shipView, sh, commandersShip);
 
 			shipView.setImageResource(sh.type.drawableId);
-			
-			int damageLevel = hullPc <= 0? 100000 : hullPc >= 100? 0 :
+
+			int damageLevel = hullPc <= 0? 10000 : hullPc >= 100? 0 :
 				sh.type.damageMin + (100 - hullPc) * (sh.type.damageMax - sh.type.damageMin) / 100;
-			int shieldLevel = shieldPc >= 100? 100000 : shieldPc <= 0? 0 :
+			int shieldLevel = shieldPc >= 100? 10000 : shieldPc <= 0? 0 :
 				sh.type.shieldMin + shieldPc * (sh.type.shieldMax - sh.type.shieldMin) / 100;
+
+			Log.d("showShip()", "Showing "+(commandersShip? "player" : "opponent")+" with damageLevel="+damageLevel+" and shieldLevel="+shieldLevel);
 
 			LayerDrawable shipLayers = (LayerDrawable) shipView.getDrawable();
 			Drawable shield = shipLayers.findDrawableByLayerId(R.id.drawable_shield);
 			Drawable damage = shipLayers.findDrawableByLayerId(R.id.drawable_damage);
 			damage.setLevel(damageLevel);
 			shield.setLevel(shieldLevel);
-			
+
 			if (!commandersShip)
 			{
 				int iconId = encounterType.opponentType().iconId;
@@ -3140,15 +3124,203 @@ public class GameState {
 			}
 		}
 	}
-	
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	private void shipRotationHoneycomb(View shipView, boolean commandersShip) {
-		
+
+	private void shipRotation(ImageView shipView, Ship sh, boolean commandersShip) {
+//		boolean fleeing = commandersShip? prevEncounterAction == EncounterButton.FLEE : encounterType.action() == OpponentAction.FLEE;
+//		if (!commandersShip ^ isRtl() ^ fleeing) {
 		if (!commandersShip ^ isRtl()) {
-			shipView.setRotation(180);
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+				shipRotationHoneycomb(shipView);
+			} else {
+				shipRotationBase(shipView, sh, 100);
+			}
 		}
 	}
 
+	// XXX Something in here is currently causing horizontal stretch
+	private void shipRotationBase(final ImageView shipView, final Ship sh, final int delay) {
+
+		// Attempt to calculate how much the image is already scaled by the xml.
+		float l = shipView.getLeft();
+		float r = shipView.getRight();
+		float t = shipView.getTop();
+		float b = shipView.getBottom();
+
+		float iw = getResources().getDrawable(sh.type.drawableId).getIntrinsicWidth();
+		float ih = getResources().getDrawable(sh.type.drawableId).getIntrinsicHeight();
+
+		float sx = (r - l) / iw;
+		float sy = (b - t) / ih;
+
+
+		if (sx == 0 || sy == 0) {
+			Log.w(GameState.LOG_TAG, "Compatibility ship rotation failure. Will re-try in "+delay+"ms");
+			shipView.postDelayed(new Runnable() {
+
+				@Override
+				public void run() {
+					shipRotationBase(shipView, sh, 2*delay);
+				}
+			}, delay);
+		}
+
+		// Construct a new transformation matrix for the imageview, which scales as the xml and also rotates 180 deg.
+		Matrix matrix = new Matrix();
+		matrix.preScale(sx, sy);
+		matrix.preRotate(180f, iw / 2, ih / 2);
+
+		shipView.setScaleType(ImageView.ScaleType.MATRIX);
+		shipView.setImageMatrix(matrix);
+
+		// Also reverse horizontal margin/padding
+		shipView.setPadding(shipView.getPaddingRight(), shipView.getPaddingTop(), shipView.getPaddingLeft(), shipView.getPaddingBottom());
+		ViewGroup.LayoutParams params = shipView.getLayoutParams();
+		if (params instanceof ViewGroup.MarginLayoutParams) {
+			ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) params;
+			marginParams.setMargins(marginParams.rightMargin, marginParams.topMargin, marginParams.leftMargin, marginParams.bottomMargin);
+			shipView.setLayoutParams(marginParams);
+		}
+	}
+	
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	private void shipRotationHoneycomb(ImageView shipView) {
+		shipView.setRotation(180);
+	}
+
+	private void animateAttack(final boolean commanderUnderAttack, final boolean hit, final boolean destroyed) {
+		BaseScreen screen = mGameManager.getCurrentScreen();
+		if (screen == null || screen.getView() == null || screen.getType() != ScreenType.ENCOUNTER) return;
+
+		final ImageView shipView = (ImageView) screen.getView().findViewById(commanderUnderAttack? R.id.screen_encounter_playership_image : R.id.screen_encounter_enemyship_image);
+
+		// We're not in the main thread so we must post instead of running this code here.
+		shipView.post(new Runnable() {
+
+			@Override
+			public void run() {
+				shipView.clearAnimation();
+				int animId = destroyed? commanderUnderAttack? R.anim.destroyed_player : R.anim.destroyed_opponent : hit? commanderUnderAttack? R.anim.hit_player : R.anim.hit_opponent  :  commanderUnderAttack? R.anim.miss_player : R.anim.miss_opponent;
+				// Basic shake or dodge animation
+				Animation anim = AnimationUtils.loadAnimation(mGameManager, animId);
+				shipView.startAnimation(anim);
+
+				// Flash red
+				if (hit) {
+
+					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+						// TODO do this in a way that requires less initialization
+						ValueAnimator valueAnimator = ValueAnimator.ofInt(0x00000000, 0xffff0000, 0x00000000).setDuration(200);
+						valueAnimator.setEvaluator(new ArgbEvaluator());
+						valueAnimator.setInterpolator(AnimationUtils.loadInterpolator(mGameManager, android.R.interpolator.accelerate_decelerate));
+						valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+							@Override
+							@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+							public void onAnimationUpdate(ValueAnimator animation) {
+								shipView.getDrawable().setColorFilter((int) animation.getAnimatedValue(), PorterDuff.Mode.SRC_ATOP);
+							}
+						});
+						valueAnimator.start();
+
+						anim.setAnimationListener(new Animation.AnimationListener() {
+							@Override
+							public void onAnimationStart(Animation animation) {
+
+							}
+
+							@Override
+							public void onAnimationEnd(Animation animation) {
+								shipView.getDrawable().setColorFilter(0x00000000, PorterDuff.Mode.SRC_ATOP);
+							}
+
+							@Override
+							public void onAnimationRepeat(Animation animation) {
+
+							}
+						});
+					} else {
+						// Old android versions cannot use ValueAnimator so we simply flash on/off instead
+						shipView.postDelayed(new Runnable() {
+							@Override
+							public void run() {
+								shipView.getDrawable().setColorFilter(0xcccc0000, PorterDuff.Mode.SRC_ATOP);
+							}
+						}, 60);
+
+						shipView.postDelayed(new Runnable() {
+							@Override
+							public void run() {
+								shipView.getDrawable().setColorFilter(0x00000000, PorterDuff.Mode.SRC_ATOP);
+							}
+						}, 140);
+					}
+				}
+
+				// Hide destroyed ship after fade-out
+				if (destroyed) {
+					anim.setAnimationListener(new Animation.AnimationListener() {
+						@Override
+						public void onAnimationStart(Animation animation) {
+
+						}
+
+						@Override
+						public void onAnimationEnd(Animation animation) {
+							shipView.setAlpha(0);
+						}
+
+						@Override
+						public void onAnimationRepeat(Animation animation) {
+
+						}
+					});
+				}
+			}
+		});
+
+
+	}
+
+
+	private void animateEnterExit(final boolean commandersShip, final boolean enter) {
+		BaseScreen screen = mGameManager.getCurrentScreen();
+		if (screen == null || screen.getView() == null || screen.getType() != ScreenType.ENCOUNTER) return;
+
+		final ImageView shipView = (ImageView) screen.getView().findViewById(commandersShip? R.id.screen_encounter_playership_image : R.id.screen_encounter_enemyship_image);
+		final boolean left = commandersShip ^ isRtl();
+
+		final int animId = enter? left? R.anim.enter_left : R.anim.enter_right : left? R.anim.exit_left : R.anim.exit_right;
+		final Animation anim = AnimationUtils.loadAnimation(mGameManager, animId);
+		anim.setAnimationListener(new Animation.AnimationListener() {
+			@Override
+			public void onAnimationStart(Animation animation) {
+				shipView.setAlpha(255);
+			}
+
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				if (commandersShip) {
+					commanderOffScreen = !enter;
+					playerShipNeedsUpdate = true;
+				} else {
+					opponentOffScreen = !enter;
+					opponentShipNeedsUpdate = true;
+				}
+				encounterDisplayShips();
+			}
+
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+
+			}
+		});
+		shipView.post(new Runnable() {
+			@Override
+			public void run() {
+				shipView.clearAnimation();
+				shipView.startAnimation(anim);
+			}
+		});
+	}
 	
 	// *************************************************************************
 	// Display on the encounter screen the ships (and also wipe it)
@@ -3550,17 +3722,40 @@ public class GameState {
 		}
 		
 	}
-	
-	
+
+	private boolean commanderOffScreen;
+	private boolean opponentOffScreen;
+
 	public void drawEncounterForm()
 	{
 		BaseScreen screen = mGameManager.getCurrentScreen();
 		if (screen == null || screen.getView() == null || screen.getType() != ScreenType.ENCOUNTER) return;
-		
+
+		prevEncounterAction = null;
+
 		encounterButtons();
 		
 		playerShipNeedsUpdate=true;
 		opponentShipNeedsUpdate=true;
+
+		if (encounterAnim) {
+			((ImageView) screen.getView().findViewById(R.id.screen_encounter_enemyship_image)).setAlpha(0);
+			animateEnterExit(false, true);
+			if (commanderOffScreen) {
+				((ImageView) screen.getView().findViewById(R.id.screen_encounter_playership_image)).setAlpha(0);
+				animateEnterExit(true, true);
+			} else {
+				// NB This avoids an odd bug where hull/shield levels don't display correctly when opponent and player are the same ship type.
+				final ImageView shipView = (ImageView) screen.getView().findViewById(R.id.screen_encounter_playership_image);
+				shipView.setAlpha(0);
+				shipView.post(new Runnable() {
+					@Override
+					public void run() {
+						shipView.setAlpha(255);
+					}
+				});
+			}
+		}
 
 		encounterDisplayShips();
 		encounterDisplayNextAction( true );
@@ -3791,7 +3986,8 @@ public class GameState {
 		}
 
 		autoHandler.removeCallbacksAndMessages(null);
-		new EncounterButtonTask().execute(button);
+		runningTask = new EncounterButtonTask();
+		runningTask.execute(button);
 		
 		if (EncounterScreen.TRIBBLES.contains(buttonId)) {
 			Log.d("tribble", "click");
@@ -3822,6 +4018,7 @@ public class GameState {
 	
 	public void clearButtonAction() {
     	autoHandler.removeCallbacksAndMessages(null);
+		runningTask = null;
     	autoTask = null;
 		autoAttack = false;
 		autoFlee = false;
@@ -3833,6 +4030,7 @@ public class GameState {
 	}
 	
 	private boolean encounterButtonRunning;
+	private EncounterButtonTask runningTask;
 	private EncounterButtonTask autoTask;
 	private final Handler autoHandler = new Handler();
 	private final Runnable autoRun = new Runnable() {
@@ -3869,6 +4067,10 @@ public class GameState {
 //		private volatile boolean redrawButtons;
 		
 		private Encounter prevEncounterType;
+
+		@Override
+		protected void onPreExecute() {
+		}
 		
 		@Override
 		protected Result doInBackground(EncounterButton... params) {
@@ -3876,7 +4078,8 @@ public class GameState {
 			if (action == null) {
 				throw new IllegalArgumentException();
 			}
-			
+
+			GameState.this.prevEncounterAction = action;
 			return doEncounterButton(action);
 		}
 		
@@ -3971,9 +4174,10 @@ public class GameState {
 			}
 			
 			encounterButtonRunning = false;
+			runningTask = null;
 		}
 		
-		private Result doEncounterButton(EncounterButton action) {
+		private Result doEncounterButton(final EncounterButton action) {
 			stop = false;
 //			redrawButtons = false;
 			
@@ -5387,6 +5591,7 @@ public class GameState {
 				)
 			{
 				commanderGotHit = executeAttack( opponent, ship, commanderFlees, true );
+				if (encounterAnim) animateAttack(true, commanderGotHit, ship.hull <= 0); // NB Animation is a new addition
 			}
 
 			opponentGotHit = false;
@@ -5402,6 +5607,7 @@ public class GameState {
 				{
 					opponentGotHit = executeAttack( ship, opponent, false, false );
 				}
+				if (encounterAnim) animateAttack(false, opponentGotHit, opponent.hull <= 0); // NB Animation is a new addition
 			}
 
 			if (commanderGotHit)
@@ -5412,8 +5618,6 @@ public class GameState {
 			{
 				 opponentShipNeedsUpdate = true;
 			}
-			
-//			publishProgress();	// NB this will update ships right away, so that damage displays before dialogs appear.
 
 			// Determine whether someone gets destroyed
 			if (ship.hull <= 0 && opponent.hull <= 0)
@@ -5572,6 +5776,8 @@ public class GameState {
 					autoAttack = false;
 					autoFlee = false;
 
+					if (encounterAnim) animateEnterExit(true, false); // NB Animation is a new addition
+
 		    		CountDownLatch latch = newLatch();
 					mGameManager.showDialogFragment(SimpleDialog.newInstance(
 							R.string.screen_encounter_escaped_title,
@@ -5590,6 +5796,9 @@ public class GameState {
 				{
 					autoAttack = false;
 					autoFlee = false;
+
+					if (encounterAnim) animateEnterExit(true, false); // NB Animation is a new addition
+
 					if (commanderGotHit)
 					{
 						publishProgress();
@@ -5629,6 +5838,8 @@ public class GameState {
 					autoFlee = false;
 
 					publishProgress();
+
+					if (encounterAnim) animateEnterExit(false, false); // NB Animation is a new addition
 					
 		    		CountDownLatch latch = newLatch();
 					mGameManager.showDialogFragment(SimpleDialog.newInstance(
@@ -5705,6 +5916,14 @@ public class GameState {
 					}
 				}
 			}
+
+
+//			if (encounterAnim) {
+//				if (prevEncounterType.action() != OpponentAction.FLEE && encounterType.action() == OpponentAction.FLEE) {
+//					animateFlee(false);
+//				}
+//			}
+
 
 			if (prevEncounterType != encounterType)
 			{
@@ -5784,7 +6003,7 @@ public class GameState {
 
 	private int getRandom2(int maxVal)
 	{
-		int out = (int)(rand() % maxVal);
+		int out = (rand() % maxVal);
 		if (out < 0) {
 			out += maxVal;
 		}
@@ -7304,9 +7523,9 @@ public class GameState {
 		// Moved this from HandleEvent to here because we don't handle opening events the way the palm version did
 		if (curSystem().special() == SpecialEvent.MONSTERKILLED && monsterStatus == 2)
 			addNewsEvent(NewsEvent.MONSTERKILLED);
-		else if (curSystem().special() == SpecialEvent.DRAGONFLY && showSpecial)
+		else if (curSystem().special() == SpecialEvent.DRAGONFLY && showSpecial) // NB original omitted the showSpecial check here so the news story might display when the special button didn't
 			addNewsEvent(NewsEvent.DRAGONFLY);
-		else if (curSystem().special() == SpecialEvent.SCARAB && showSpecial)
+		else if (curSystem().special() == SpecialEvent.SCARAB && showSpecial) // NB original omitted the showSpecial check here so the news story might display when the special button didn't
 			addNewsEvent(NewsEvent.SCARAB);
 		else if (curSystem().special() == SpecialEvent.SCARABDESTROYED && scarabStatus == 2)
 			addNewsEvent(NewsEvent.SCARABDESTROYED);
@@ -7790,10 +8009,9 @@ public class GameState {
 		{
 			
 			int b =	hScores[i] == null? 0 : hScores[i].score;
-			
-			if ((a > b) || (a == b && currentWorth() > hScores[i].worth) ||
-				(a == b && currentWorth() == hScores[i].worth && days > hScores[i].days) ||
-				hScores[i] == null
+
+			if (hScores[i] == null || (a > b) || (a == b && currentWorth() > hScores[i].worth) ||
+				(a == b && currentWorth() == hScores[i].worth && days > hScores[i].days)
 				)
 			{
 
@@ -8362,10 +8580,20 @@ public class GameState {
 					system.techLevel(), system.politics(),
 					(system.visited()? system.specialResources : SpecialResources.NOSPECIALRESOURCES ));
 
-			if (price > buyPrice.get(item) && buyPrice.get(item) > 0 && curSystem().getQty(item) > 0)
+			if (price > buyPrice.get(item) && buyPrice.get(item) > 0 && curSystem().getQty(item) > 0) {
 				((TextView) page.findViewById(WarpPricesScreen.LABEL_IDS.get(item))).setTypeface(Typeface.DEFAULT_BOLD);
-			else
+//				TypedValue tv = new TypedValue();
+//				mGameManager.getTheme().resolveAttribute(R.attr.colorAccent, tv, true);
+//				((TextView) page.findViewById(WarpPricesScreen.LABEL_IDS.get(item))).setTextColor(tv.data);
+//				((TextView) page.findViewById(WarpPricesScreen.PRICE_IDS.get(item))).setTextColor(tv.data);
+			}
+			else {
 				((TextView) page.findViewById(WarpPricesScreen.LABEL_IDS.get(item))).setTypeface(Typeface.DEFAULT);
+//				TypedValue tv = new TypedValue();
+//				mGameManager.getTheme().resolveAttribute(android.R.attr.textColorPrimary, tv, true);
+//				((TextView) page.findViewById(WarpPricesScreen.LABEL_IDS.get(item))).setTextColor(tv.data);
+//				((TextView) page.findViewById(WarpPricesScreen.PRICE_IDS.get(item))).setTextColor(tv.data);
+			}
 
 			int formatId = (priceDifferences? R.string.format_signedcredits : R.string.format_credits);
 			int priceText = (priceDifferences? price - buyPrice.get(item) : price);
@@ -8955,7 +9183,7 @@ public class GameState {
 			}
 
 			// For the rest, we randomize. HashSet indices will keep track of planets we've already selected.
-			HashSet<Integer> indices = new HashSet<Integer>();
+			HashSet<Integer> indices = new HashSet<>();
 			indices.add(og);
 			indices.add(sol);
 			indices.add(utopia);
@@ -10178,7 +10406,7 @@ public class GameState {
 		           
 		            if (firstEmptySlot >= 0)
 		            {
-		            	// NB moved this here instead of displaying before checking firstEmptySlot. Now we don't only see the dialog if we have space and something happens.
+		            	// NB moved this here instead of displaying before checking firstEmptySlot. Now we only see the dialog if we have space and something happens.
 						latch = newLatch();
 						mGameManager.showDialogFragment(SimpleDialog.newInstance(
 								R.string.screen_encounter_egg_title,
@@ -10601,6 +10829,16 @@ public class GameState {
 		if (ship.getFuel() > 0)
 			canvas.drawCircle(xs, ys, delta, chartStroke);
 
+		if (warpSystem != null &&
+				(abs( warpSystem.x() - curSystem().x() ) <= MAXRANGE) &&
+				(abs( warpSystem.y() - curSystem().y() ) <= MAXRANGE))
+		{
+			float x = (warpSystem.x() - curSystem().x())*scale + cw/2;
+			float y = (warpSystem.y() - curSystem().y())*scale + cw/2;
+			canvas.drawLine(x, y-SEL_CROSS*RADIUS, x, y+SEL_CROSS*RADIUS, chartStroke);
+			canvas.drawLine(x-SEL_CROSS*RADIUS, y, x+SEL_CROSS*RADIUS, y, chartStroke);
+		}
+
 		// show the tracked system (if any)
 		if (trackedSystem != null)
 		{
@@ -10643,11 +10881,11 @@ public class GameState {
 					float y = (system.y() - curSystem().y())*scale + cw/2;
 					if (j == 1)
 					{
-						if (system == warpSystem)
-						{
-							canvas.drawLine(x, y-SEL_CROSS*RADIUS, x, y+SEL_CROSS*RADIUS, chartStroke);
-							canvas.drawLine(x-SEL_CROSS*RADIUS, y, x+SEL_CROSS*RADIUS, y, chartStroke);
-						}
+//						if (system == warpSystem)
+//						{
+//							canvas.drawLine(x, y-SEL_CROSS*RADIUS, x, y+SEL_CROSS*RADIUS, chartStroke);
+//							canvas.drawLine(x-SEL_CROSS*RADIUS, y, x+SEL_CROSS*RADIUS, y, chartStroke);
+//						}
 						Drawable d = system.visited()? visitedDrawable : defaultDrawable;
 						d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
 						d.draw(canvas);
@@ -10842,6 +11080,60 @@ public class GameState {
 		if (ship.getFuel() > 0)
 			canvas.drawCircle((curSystem().x() - GALAXYWIDTH/2)*scale + cw/2, (curSystem().y() - GALAXYHEIGHT/2)*scale + ch/2, (ship.getFuel())*scale, chartStroke);
 
+		if (galacticChartSystem != null)
+		{
+			float x = (galacticChartSystem.x() - GALAXYWIDTH/2)*scale + cw/2;
+			float y = (galacticChartSystem.y() - GALAXYHEIGHT/2)*scale + ch/2;
+			canvas.drawLine(
+					x + (galacticChartWormhole? WORMHOLE_OFFSET : 0)*RADIUS,
+					y - SEL_OUTER*RADIUS,
+					x + (galacticChartWormhole? WORMHOLE_OFFSET : 0)*RADIUS,
+					y + SEL_OUTER*RADIUS,
+					chartStroke
+			);
+			canvas.drawLine(
+					x + (galacticChartWormhole? WORMHOLE_OFFSET : 0)*RADIUS - SEL_OUTER*RADIUS,
+					y,
+					x + (galacticChartWormhole? WORMHOLE_OFFSET : 0)*RADIUS + SEL_OUTER*RADIUS,
+					y,
+					chartStroke
+			);
+		}
+
+		if (trackedSystem != null)
+		{
+			float x = (trackedSystem.x() - GALAXYWIDTH/2)*scale + cw/2;
+			float y = (trackedSystem.y() - GALAXYHEIGHT/2)*scale + ch/2;
+			canvas.drawLine(
+					x - SEL_OUTER*RADIUS,
+					y + SEL_OUTER*RADIUS,
+					x - SEL_INNER*RADIUS,
+					y + SEL_INNER*RADIUS,
+					chartStroke
+			);
+			canvas.drawLine(
+					x + SEL_OUTER*RADIUS,
+					y - SEL_OUTER*RADIUS,
+					x + SEL_INNER*RADIUS,
+					y - SEL_INNER*RADIUS,
+					chartStroke
+			);
+			canvas.drawLine(
+					x + SEL_OUTER*RADIUS,
+					y + SEL_OUTER*RADIUS,
+					x + SEL_INNER*RADIUS,
+					y + SEL_INNER*RADIUS,
+					chartStroke
+			);
+			canvas.drawLine(
+					x - SEL_OUTER*RADIUS,
+					y - SEL_OUTER*RADIUS,
+					x - SEL_INNER*RADIUS,
+					y - SEL_INNER*RADIUS,
+					chartStroke
+			);
+		}
+
 		SolarSystem wormholeOut = null;
 		if (galacticChartWormhole)
 		{
@@ -10863,60 +11155,30 @@ public class GameState {
 		for (SolarSystem system : solarSystem)
 		{
 
-			if (system == galacticChartSystem)
-			{
-				canvas.drawLine(
-						(system.x() - GALAXYWIDTH/2)*scale + (galacticChartWormhole? WORMHOLE_OFFSET : 0)*RADIUS + cw/2,
-						(system.y() - GALAXYHEIGHT/2)*scale - SEL_OUTER*RADIUS + ch/2,
-						(system.x() - GALAXYWIDTH/2)*scale + (galacticChartWormhole? WORMHOLE_OFFSET : 0)*RADIUS + cw/2,
-						(system.y() - GALAXYHEIGHT/2)*scale + SEL_OUTER*RADIUS + ch/2,
-						chartStroke
-						);
-				canvas.drawLine(
-						(system.x() - GALAXYWIDTH/2)*scale + (galacticChartWormhole? WORMHOLE_OFFSET : 0)*RADIUS - SEL_OUTER*RADIUS + cw/2,
-						(system.y() - GALAXYHEIGHT/2)*scale + ch/2,
-						(system.x() - GALAXYWIDTH/2)*scale + (galacticChartWormhole? WORMHOLE_OFFSET : 0)*RADIUS + SEL_OUTER*RADIUS + cw/2,
-						(system.y() - GALAXYHEIGHT/2)*scale + ch/2,
-						chartStroke
-						);
-			}
+//			if (system == galacticChartSystem)
+//			{
+//				canvas.drawLine(
+//						(system.x() - GALAXYWIDTH/2)*scale + (galacticChartWormhole? WORMHOLE_OFFSET : 0)*RADIUS + cw/2,
+//						(system.y() - GALAXYHEIGHT/2)*scale - SEL_OUTER*RADIUS + ch/2,
+//						(system.x() - GALAXYWIDTH/2)*scale + (galacticChartWormhole? WORMHOLE_OFFSET : 0)*RADIUS + cw/2,
+//						(system.y() - GALAXYHEIGHT/2)*scale + SEL_OUTER*RADIUS + ch/2,
+//						chartStroke
+//						);
+//				canvas.drawLine(
+//						(system.x() - GALAXYWIDTH/2)*scale + (galacticChartWormhole? WORMHOLE_OFFSET : 0)*RADIUS - SEL_OUTER*RADIUS + cw/2,
+//						(system.y() - GALAXYHEIGHT/2)*scale + ch/2,
+//						(system.x() - GALAXYWIDTH/2)*scale + (galacticChartWormhole? WORMHOLE_OFFSET : 0)*RADIUS + SEL_OUTER*RADIUS + cw/2,
+//						(system.y() - GALAXYHEIGHT/2)*scale + ch/2,
+//						chartStroke
+//						);
+//			}
 			float x = (system.x() - GALAXYWIDTH/2)*scale + cw/2;
 			float y = (system.y() - GALAXYHEIGHT/2)*scale + ch/2;
 			Drawable d = system.visited()? visitedDrawable : defaultDrawable;
 			d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
 			d.draw(canvas);
 
-			if (system == trackedSystem)
-			{
-				canvas.drawLine(
-						x - SEL_OUTER*RADIUS,
-						y + SEL_OUTER*RADIUS,
-						x - SEL_INNER*RADIUS,
-						y + SEL_INNER*RADIUS,
-						chartStroke
-						);
-				canvas.drawLine(
-						x + SEL_OUTER*RADIUS,
-						y - SEL_OUTER*RADIUS,
-						x + SEL_INNER*RADIUS,
-						y - SEL_INNER*RADIUS,
-						chartStroke
-						);
-				canvas.drawLine(
-						x + SEL_OUTER*RADIUS,
-						y + SEL_OUTER*RADIUS,
-						x + SEL_INNER*RADIUS,
-						y + SEL_INNER*RADIUS,
-						chartStroke
-						);
-				canvas.drawLine(
-						x - SEL_OUTER*RADIUS,
-						y - SEL_OUTER*RADIUS,
-						x - SEL_INNER*RADIUS,
-						y - SEL_INNER*RADIUS,
-						chartStroke
-						);
-			}
+//			if (system1
 
 			if (wormholeExists( system, null ))
 			{
@@ -11228,14 +11490,16 @@ public class GameState {
 	// Booleans to track whether we've dragged to change the galactic chart system.
 	private boolean downOnChartSystem = false;
 	private boolean moveOnChartSystem = false;
-	
+
+
 	// Separate function for touch events takes in coordinates instead of a button.
 	public boolean galacticChartFormHandleEvent(float x, float y, int action)
 	{
-		boolean up = action == MotionEvent.ACTION_UP;
-		boolean down = action == MotionEvent.ACTION_DOWN;
-		boolean move = action == MotionEvent.ACTION_MOVE;
-		
+		boolean up = action == ChartScreen.UP;
+		boolean down = action == ChartScreen.DOWN;
+		boolean move = action == ChartScreen.MOVE;
+		boolean longPress = action == ChartScreen.LONG;
+
 		final float RADIUS = 4f * getResources().getDisplayMetrics().density;
 		final float SEL_RADIUS_FACTOR = 4f;
 		final float WORMHOLE_OFFSET = 2f;
@@ -11273,7 +11537,6 @@ public class GameState {
 				dist = d;
 				system = s;
 				isWormhole = true;
-				break;
 			}
 		}
 
@@ -11286,7 +11549,7 @@ public class GameState {
 		}
 
 		final SolarSystem fSystem = system;
-		boolean showDialogs = (up && downOnChartSystem && moveOnChartSystem);
+		boolean showDialogs = trackLongPress? longPress : (up && downOnChartSystem && moveOnChartSystem);
 		if (fSystem != null)
 		{
 			if (showDialogs && fSystem == trackedSystem)
@@ -11350,7 +11613,7 @@ public class GameState {
 				moveOnChartSystem = downOnChartSystem;
 			} else if (move) {
 				moveOnChartSystem = (downOnChartSystem && moveOnChartSystem && fSystem == galacticChartSystem && !galacticChartWormhole);
-			} else if (up) {
+			} else if (up || longPress) {
 				downOnChartSystem = moveOnChartSystem = false;
 			}
 			galacticChartSystem = fSystem;
@@ -11358,7 +11621,7 @@ public class GameState {
 			screen.getView().findViewById(R.id.screen_chart_chartview).invalidate();
 		}
 		
-		return oldSystem != galacticChartSystem;
+		return oldSystem != galacticChartSystem || (longPress && fSystem != null);
 	}
 	
 	// Moved Find dialog handling to new functions here
@@ -11679,9 +11942,9 @@ public class GameState {
 		return false;
 	}
 	
-	
+	private String marieSystem;
 	// Help dialog building takes place here so it can see special system names
-	public void buildHelpDialog(int resId, Builder builder, LayoutInflater inflater, ViewGroup parent) {
+	public String getHelpText(int resId) {
 		if (resId > 0) {
 			
 			String message;
@@ -11703,23 +11966,21 @@ public class GameState {
 				
 			// Originally, Marie Celeste had always recently visited Lowry, but just for fun we'll randomize that too. Wonder if anyone will notice...
 			case R.string.help_lootmarieceleste:
-				message = getResources().getString(resId, randomQuestSystems? getRandom(solarSystem).name : getResources().getString(R.string.solarsystem_lowry));
+				if (!randomQuestSystems) {
+					marieSystem = getResources().getString(R.string.solarsystem_lowry);
+				} else if (marieSystem == null) {
+					marieSystem = getRandom(solarSystem).name;
+				}
+				message = getResources().getString(resId, marieSystem);
 				break;
 				
 			default:
 				message = getResources().getString(resId);
 			}
-			
-			View view = inflater.inflate(R.layout.dialog_help, parent, false);
-			((TextView) view.findViewById(R.id.dialog_help_message)).setText(message);
-			builder.setView(view);
-			
+
+			return message;
 		}
-		
-		builder
-		.setTitle(R.string.dialog_help_title)
-		.setPositiveButton(R.string.generic_ok)
-		;
+		return "";
 	}
 	
 	

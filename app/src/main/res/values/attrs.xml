@@ -22,7 +22,9 @@
 	<attr name="statusBarPadding" format="dimension" />
     <attr name="statusBarExtraTint" format="color" />
     <attr name="avgPriceListBackground" format="reference" />
-	
+    <attr name="footerButtonStyle" format="reference" />
+
+    <attr name="dialogLayout" format="reference" />
     <attr name="dialogTitleTextStyle" format="reference" />
 	<attr name="dialogDividerColor" format="color|reference" />
 	<attr name="dialogBackgroundStyle" format="reference" />

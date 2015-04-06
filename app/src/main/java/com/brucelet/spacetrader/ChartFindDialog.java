@@ -22,8 +22,6 @@ package com.brucelet.spacetrader;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.os.Build;
-import android.support.v7.widget.ListPopupWindow;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,18 +48,12 @@ public class ChartFindDialog extends BaseDialog implements TextView.OnEditorActi
 		View view = inflater.inflate(R.layout.screen_chart_find, parent, false);
 		AutoCompleteTextView input = (AutoCompleteTextView) view.findViewById(R.id.screen_chart_find_value);
 		String[] names = getResources().getStringArray(R.array.solar_system_name);
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+		ArrayAdapter<String> adapter = new ArrayAdapter<>(
 				getActivity(), 
 				R.layout.autocomplete_dropdown_item, 
 				names);
 		input.setAdapter(adapter);
 		input.setOnEditorActionListener(this);
-
-		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP && getGameManager().getThemeType().isMaterialTheme) {
-			// Material themes are setting bad dropdown background so manually copy from dummy view
-			ListPopupWindow dummy = new ListPopupWindow(getActivity());
-			input.setDropDownBackgroundDrawable(dummy.getBackground());
-		}
 		
 		builder.setView(view);
 	}
@@ -69,12 +61,6 @@ public class ChartFindDialog extends BaseDialog implements TextView.OnEditorActi
 	@Override
 	public void onShowDialog() {
 		View input = getDialog().findViewById(R.id.screen_chart_find_value);
-		
-		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP && getGameManager().getThemeType().isMaterialTheme) {
-			// NB AppCompat currently doesn't use Material style for AutoCompleteTextView, so manually copy background from a dummy EditText 
-			View dummy = getDialog().findViewById(R.id.screen_chart_find_dummy);
-			input.setBackgroundDrawable(dummy.getBackground());
-		}
 		
 		// Immediately request IMM so we're focused and see keyboard
 		InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);

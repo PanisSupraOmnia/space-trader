@@ -30,7 +30,7 @@ import android.view.ViewGroup;
 public class NewspaperDialog extends BaseDialog {
 	public static final List<Integer> HEADLINE_IDS;
 	static {
-		List<Integer> ids = new ArrayList<Integer>();
+		List<Integer> ids = new ArrayList<>();
 		ids.add(R.id.dialog_newspaper_headline1);
 		ids.add(R.id.dialog_newspaper_headline2);
 		ids.add(R.id.dialog_newspaper_headline3);

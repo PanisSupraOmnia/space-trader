@@ -41,7 +41,7 @@ import android.view.ViewGroup;
 public class NewGameDialog extends BaseDialog implements OnSingleClickListener {
 	private static final List<Integer> CLICKABLE_IDS;
 	static {
-		List<Integer> ids = new ArrayList<Integer>();
+		List<Integer> ids = new ArrayList<>();
 		ids.add(R.id.dialog_newgame_difficultypicker_minus);
 		ids.add(R.id.dialog_newgame_difficultypicker_plus);
 		ids.add(R.id.dialog_newgame_pilotpicker_minus);

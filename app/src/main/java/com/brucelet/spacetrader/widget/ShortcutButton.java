@@ -7,6 +7,7 @@ import android.graphics.Typeface;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,9 +20,9 @@ import com.brucelet.spacetrader.R;
 // NB This class exists so that Lollipop will correctly set monospace typeface for action buttons
 // It also allows us to display titles on longpress since default actionbuttons disable this when displaying text instead of icons
 public class ShortcutButton extends Button implements View.OnLongClickListener {
-	
-	private MenuItem mItem;
-	
+
+	private CharSequence mTitle;
+
 	public ShortcutButton(Context context) {
 		this(context, null);
 	}
@@ -46,16 +47,28 @@ public class ShortcutButton extends Button implements View.OnLongClickListener {
 	}
 	
 	public void setMenuItem(MenuItem item) {
-		mItem = item;
+		mTitle = item.getTitle();
 		setText(item.getTitleCondensed());
 	}
-	
+
+	public void setTitles(CharSequence title, CharSequence titleCondensed) {
+		mTitle = title;
+		setText(titleCondensed);
+	}
+
 	@Override
+	// Based on android.support.v7.internal.view.menu.ActionMenuItemView.onLongClick()
 	public boolean onLongClick(View v) {
         final int[] screenPos = new int[2];
         final Rect displayFrame = new Rect();
         getLocationOnScreen(screenPos);
         getWindowVisibleDisplayFrame(displayFrame);
+
+		// This is an extra customization so that behavior is consistent for material themes,
+		// which have a translucent status bar and therefore a larger display frame.
+		TypedValue tv = new TypedValue();
+		getContext().getTheme().resolveAttribute(R.attr.statusBarPadding, tv, true);
+		float statusBarPadding = tv.getDimension(getResources().getDisplayMetrics());
 
         final Context context = getContext();
         final int width = getWidth();
@@ -66,8 +79,8 @@ public class ShortcutButton extends Button implements View.OnLongClickListener {
             final int screenWidth = context.getResources().getDisplayMetrics().widthPixels;
             referenceX = screenWidth - referenceX; // mirror
         }
-        Toast cheatSheet = Toast.makeText(context, mItem.getTitle(), Toast.LENGTH_SHORT);
-        if (midy < displayFrame.height()) {
+        Toast cheatSheet = Toast.makeText(context, mTitle, Toast.LENGTH_SHORT);
+        if (midy < displayFrame.height() - statusBarPadding) {
             // Show along the top; follow action buttons
             cheatSheet.setGravity(Gravity.TOP | GravityCompat.END, referenceX, height);
         } else {

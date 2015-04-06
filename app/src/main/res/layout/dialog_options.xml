@@ -143,6 +143,13 @@
             android:textAppearance="?android:textAppearanceMedium" />
 
         <CheckBox
+            android:id="@+id/dialog_options_zoomgalaxy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_options_zoomgalaxy"
+            android:textAppearance="?android:textAppearanceMedium" />
+
+        <CheckBox
             android:id="@+id/dialog_options_range"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -154,6 +161,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/dialog_options_track"
+            android:textAppearance="?android:textAppearanceMedium" />
+
+        <CheckBox
+            android:id="@+id/dialog_options_tracklongpress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_options_tracklongpress"
             android:textAppearance="?android:textAppearanceMedium" />
 
         <TextView
@@ -194,6 +208,13 @@
         </RadioGroup>
 
         <CheckBox
+            android:id="@+id/dialog_options_encounteranim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_options_encounteranim"
+            android:textAppearance="?android:textAppearanceMedium" />
+
+        <CheckBox
             android:id="@+id/dialog_options_loans"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -212,6 +233,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/dialog_options_identify"
+            android:textAppearance="?android:textAppearanceMedium" />
+
+        <CheckBox
+            android:id="@+id/dialog_options_extrashortcuts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_options_extrashortcuts"
             android:textAppearance="?android:textAppearanceMedium" />
 
         <TextView

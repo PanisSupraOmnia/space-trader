@@ -13,8 +13,8 @@
         android:id="@+id/dialog_about_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_launcher"
-        android:drawableStart="@drawable/ic_launcher"
+        android:drawableLeft="@mipmap/ic_launcher"
+        android:drawableStart="@mipmap/ic_launcher"
         android:gravity="center_vertical|start"
         android:text="@string/dialog_about_title"
         android:textStyle="bold" />
