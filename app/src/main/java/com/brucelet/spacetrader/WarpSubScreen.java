@@ -20,8 +20,11 @@
  */
 package com.brucelet.spacetrader;
 
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
 
 import com.brucelet.spacetrader.datatypes.GameState;
 
@@ -31,11 +34,39 @@ public abstract class WarpSubScreen extends BaseScreen implements ViewPager.OnPa
 	public abstract ViewPager getPager();
 	protected abstract WarpSystemPagerAdapter createPagerAdapter();
 	protected abstract void onRefreshWarpSubScreen();
+
+//	public static final String KEY_MOTION_EVENT = "event";
+//	private MotionEvent mEvent;
+//	private View mToggleButton;
+//
+//	public void onViewCreated(View view, Bundle savedInstanceState) {
+//		super.onViewCreated(view, savedInstanceState);
+//		mToggleButton = view.findViewById(R.id.screen_warp_toggle);
+//		if (savedInstanceState != null && savedInstanceState.containsKey(KEY_MOTION_EVENT)) {
+//			mEvent = savedInstanceState.getParcelable(KEY_MOTION_EVENT);
+//			mToggleButton.onTouchEvent(mEvent);
+//		}
+//		mToggleButton.setOnTouchListener(new View.OnTouchListener() {
+//			@Override
+//			public boolean onTouch(View v, MotionEvent event) {
+//				mEvent = event;
+//				return false;
+//			}
+//		});
+//
+//	}
+//
+//	@Override
+//	public void onSaveInstanceState(Bundle outState) {
+//		super.onSaveInstanceState(outState);
+//
+//		outState.putParcelable(KEY_MOTION_EVENT, mEvent);
+//	}
 	
 	@Override
 	public void onPageSelected(int position) {
 		// Do nothing
-		Log.d("WarpSubScreen.onPageSelected()","position="+position);
+		Log.d("WarpSubScreen","position="+position);
 		
 	}
 	
@@ -50,7 +81,7 @@ public abstract class WarpSubScreen extends BaseScreen implements ViewPager.OnPa
 		if (state == ViewPager.SCROLL_STATE_IDLE) {
 			// Update the adapter so that we can continue scrolling.
 			
-			Log.d("WarpSubScreen.onPageScrollStateChanged()","State idle");
+			Log.d("WarpSubScreen","State idle");
 
 			ViewPager pager = getPager();
 			int currentItem = pager.getCurrentItem();
@@ -97,7 +128,7 @@ public abstract class WarpSubScreen extends BaseScreen implements ViewPager.OnPa
 //		setPageListeners(pager.getChildAt(2));
 
 		
-		Log.d("WarpSubScreen.onRefreshScreen()", "current item is "+pager.getCurrentItem());
+		Log.d("WarpSubScreen", "current item is "+pager.getCurrentItem());
 	}
 	
 	public WarpSystemPagerAdapter getPagerAdapter() {

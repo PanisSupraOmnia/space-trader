@@ -18,6 +18,7 @@
             support:showAsAction="never"
             android:title="@string/menu_retire"/>
     </group>
+
     <group android:id="@+id/menu_group_settings" >
         <item
             android:id="@+id/menu_options"
@@ -31,6 +32,7 @@
             support:showAsAction="never"
             android:title="@string/menu_shortcuts"/>
     </group>
+
     <group android:id="@+id/menu_group_scores" >
         <item
             android:id="@+id/menu_scores"
@@ -44,11 +46,13 @@
             android:title="@string/menu_clearscores"/>
     </group>
 
-    <item
-        android:id="@+id/menu_savegame"
-        android:icon="@null"
-        support:showAsAction="never"
-        android:title="@string/menu_savegame"/>
+    <group android:id="@+id/menu_group_savegame">
+        <item
+            android:id="@+id/menu_savegame"
+            android:icon="@null"
+            support:showAsAction="never"
+            android:title="@string/menu_savegame"/>
+    </group>
 
     <group android:id="@+id/menu_group_extra" >
         <item

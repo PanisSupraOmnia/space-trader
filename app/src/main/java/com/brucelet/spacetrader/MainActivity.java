@@ -20,13 +20,13 @@
  */
 package com.brucelet.spacetrader;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.backup.BackupManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -35,13 +35,13 @@ import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.internal.view.menu.MenuBuilder;
 import android.support.v7.view.ActionMode;
-import android.support.v7.widget.PopupMenu;
-import android.support.v7.widget.PopupMenu.OnMenuItemClickListener;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
@@ -58,7 +58,6 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -68,6 +67,8 @@ import com.brucelet.spacetrader.datatypes.GameState;
 import com.brucelet.spacetrader.enumtypes.EndStatus;
 import com.brucelet.spacetrader.enumtypes.ScreenType;
 import com.brucelet.spacetrader.enumtypes.ThemeType;
+import com.brucelet.spacetrader.widget.MenuDropDownWindow;
+import com.brucelet.spacetrader.widget.MenuTouchInterceptor;
 import com.brucelet.spacetrader.widget.ShortcutButton;
 
 import java.io.BufferedReader;
@@ -79,6 +80,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -138,7 +140,7 @@ import java.util.Map;
  * 
  * 
  */
-public class MainActivity extends ActionBarActivity implements OnMenuItemClickListener, ActionMode.Callback {
+public class MainActivity extends AppCompatActivity implements MenuDropDownWindow.OnDropDownItemClickListener, ActionMode.Callback {
 
 	static { Log.w(GameState.LOG_TAG, "Space Trader for Android"); }
 	
@@ -187,13 +189,16 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 
 	private ScreenType mCurrentScreen = ScreenType.TITLE; // This will be overwritten but it can't be null
 
-	private View mCommandMenuButton;
+	private MenuTouchInterceptor mMenuTouchInterceptor;
 	private boolean mDraggingMenuOpen;
+	private boolean mBeginMenuDrag;
+	private boolean mMenuLongPress;
 	private int[] mDragCoordHelper = new int[2];
+	private MenuDropDownWindow[] mPopups = new MenuDropDownWindow[3];
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		mCurrentGame = getPreferences(MODE_PRIVATE).getString("currentGame", GAME_1);
 		Log.d("onCreate()", "Current game is "+mCurrentGame);
 				
@@ -210,23 +215,20 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 		}
 		setTheme(theme.resId);
 		
-		Log.d("onCreate()", "Setting theme "+getResources().getResourceName(theme.resId));
+		Log.d("onCreate()", "Setting theme " + getResources().getResourceName(theme.resId));
 		getSharedPreferences(mCurrentGame, MODE_PRIVATE).edit().putInt("theme", theme.ordinal()).commit();
 
-
-		super.onCreate(savedInstanceState);		
-		
+		super.onCreate(savedInstanceState);
 		
 		Log.d("onCreate()", "setContentView() called");
 		setContentView(R.layout.activity_main);
 		
 		mToolbar = (Toolbar) findViewById(R.id.toolbar);
-		mToolbar.inflateMenu(R.menu.shortcuts);
 		mTitleView = LayoutInflater.from(mToolbar.getContext()).inflate(R.layout.ab_title_main, mToolbar, false);
 		mTitleText = (TextView) mTitleView.findViewById(R.id.title);
 		mTitleIcon = (ImageView) mTitleView.findViewById(R.id.icon);
 		mTitleView.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				onOptionsItemSelectedWithId(v.getId());
@@ -236,27 +238,56 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 			private GestureDetector gestureDetector = new GestureDetector(MainActivity.this, new GestureDetector.SimpleOnGestureListener() {
 
 				@Override
+				public boolean onDown(MotionEvent e) {
+					mBeginMenuDrag = true;
+					return false;
+				}
+
+				@Override
 				public boolean onScroll(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
 					// If pointer scrolls beyond the bottom of the view, open the menu
-					if (e2.getY() > mTitleView.getHeight()) {
+					float x = e2.getX();
+					float y = e2.getY();
+					if (mBeginMenuDrag && x > mTitleView.getLeft() && x < mTitleView.getRight() && y > mTitleView.getBottom()) {
 						mDraggingMenuOpen = true;
+						mBeginMenuDrag = false;
 						startMenuActionMode();
+					} else if (x < mTitleView.getLeft() || x > mTitleView.getRight() || y < mTitleView.getTop()) {
+						mBeginMenuDrag = false;
 					}
 					return false;
 				}
 
+//				@Override
+//				public void onLongPress(MotionEvent e) {
+//					mBeginMenuDrag = false;
+//					mMenuLongPress = true;
+//					mDraggingMenuOpen = true;
+//					startMenuActionMode();
+//				}
+
 			});
+			{
+				gestureDetector.setIsLongpressEnabled(false);
+			}
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				boolean out = gestureDetector.onTouchEvent(event);
-				if (getCurrentScreenType().docked && mCommandMenuButton != null) {
+				if (mMenuTouchInterceptor != null) {
+					// Forward touch event from TitleView to CommandMenuButton for drag-to-open handling
 					mTitleView.getLocationOnScreen(mDragCoordHelper);
 					int titleX = mDragCoordHelper[0];
-					mCommandMenuButton.getLocationOnScreen(mDragCoordHelper);
+					mMenuTouchInterceptor.getLocationOnScreen(mDragCoordHelper);
 					int menuX = mDragCoordHelper[0];
-					MotionEvent event2 = MotionEvent.obtain(event);
-					event2.setLocation(event.getX() + titleX - menuX, event.getY());
-					mCommandMenuButton.dispatchTouchEvent(event2);
+					if (mMenuLongPress) {
+						MotionEvent upEvent = MotionEvent.obtain(event.getDownTime(), event.getEventTime(), MotionEvent.ACTION_UP, event.getX() + titleX - menuX, event.getY(), event.getMetaState());
+						mMenuTouchInterceptor.dispatchTouchToActiveView(upEvent);
+						MotionEvent downEvent = MotionEvent.obtain(event.getDownTime(), event.getEventTime(), MotionEvent.ACTION_DOWN, event.getX() + titleX - menuX, event.getY(), event.getMetaState());
+						mMenuTouchInterceptor.dispatchTouchToActiveView(downEvent);
+						mMenuLongPress = false;
+					}
+					MotionEvent forwardedEvent = MotionEvent.obtain(event.getDownTime(), event.getEventTime(), event.getAction(), event.getX() + titleX - menuX, event.getY(), event.getMetaState());
+					mMenuTouchInterceptor.dispatchTouchEvent(forwardedEvent);
 				}
 				return out;
 			}
@@ -268,7 +299,7 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 		tbParams.height = Toolbar.LayoutParams.MATCH_PARENT;
 		mTitleView.setLayoutParams(tbParams);
 		setSupportActionBar(mToolbar);
-		
+
 		ActionBar ab = getSupportActionBar();
 		ab.setDisplayShowHomeEnabled(false);
 		ab.setDisplayShowTitleEnabled(false);
@@ -379,7 +410,7 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 				if (tv.type >= TypedValue.TYPE_FIRST_COLOR_INT && tv.type <= TypedValue.TYPE_LAST_COLOR_INT) {
 					ab.setBackgroundDrawable(new ColorDrawable(tv.data));
 				} else {
-					ab.setBackgroundDrawable(getResources().getDrawable(tv.resourceId));
+					ab.setBackgroundDrawable(ResourcesCompat.getDrawable(getResources(), tv.resourceId, getTheme()));
 				}
 			}
 
@@ -416,7 +447,7 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 				if (tv.type >= TypedValue.TYPE_FIRST_COLOR_INT && tv.type <= TypedValue.TYPE_LAST_COLOR_INT) {
 					ab.setBackgroundDrawable(new ColorDrawable(tv.data));
 				} else {
-					ab.setBackgroundDrawable(getResources().getDrawable(tv.resourceId));
+					ab.setBackgroundDrawable(ResourcesCompat.getDrawable(getResources(), tv.resourceId, getTheme()));
 				}
 			}
 
@@ -426,28 +457,21 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 			} else {
 				mTitleText.setText(R.string.app_name);
 				mTitleIcon.setVisibility(getThemeType().isMaterialTheme? View.GONE : View.VISIBLE);
-
-				// No retiring from title or endgame screens
-				menu.removeItem(R.id.menu_retire);
 			}
 
 			getTheme().resolveAttribute(R.attr.actionBarTitleBackground, tv, true);
 			mTitleView.setBackgroundResource(tv.resourceId);
 		}
 
-		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT && !hasWriteExternalPermission()) {
-			menu.removeItem(R.id.menu_savegame);
-		}
-
 		refreshExtraShortcuts();
 
 		boolean out = super.onCreateOptionsMenu(menu);
-		Log.d("onCreateOptionsMenu()","Options menu (re-)created!");
+		Log.d("onCreateOptionsMenu()", "Options menu (re-)created!");
 		return out;
 	}
 
 	public void refreshExtraShortcuts() {
-		mFooter.setVisibility(getGameState().extraShortcuts() && getCurrentScreenType().docked? View.VISIBLE : View.GONE);
+		mFooter.setVisibility(getGameState().extraShortcuts() && getCurrentScreenType().docked ? View.VISIBLE : View.GONE);
 	}
 
 	private boolean hasWriteExternalPermission() {
@@ -475,7 +499,9 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 	}
 
 	@Override
-	public boolean onMenuItemClick(MenuItem item) {
+	public boolean onDropDownItemClick(MenuItem item) {
+
+		if (item == null) return false;
 
 		if (item.getGroupId() == R.id.menu_group_command) {
 			for (int i = 0; i < mShortcutKeys.length; i++) {
@@ -532,17 +558,21 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 					}, null));
 			return true;
 		case R.id.menu_new:
-			showDialogFragment(ConfirmDialog.newInstance(
-					R.string.dialog_newgame_confirm,
-					R.string.dialog_newgame_confirm_message,
-					R.string.help_confirmnew,
-					new OnConfirmListener() {
-						@Override
-						public void onConfirm() {
-							setCurrentScreenType(ScreenType.TITLE);
-							showDialogFragment(NewGameDialog.newInstance());
-						}
-					}, null));
+			if (getCurrentScreenType() == ScreenType.TITLE) {
+				showDialogFragment(NewGameDialog.newInstance());
+			} else {
+				showDialogFragment(ConfirmDialog.newInstance(
+						R.string.dialog_newgame_confirm,
+						R.string.dialog_newgame_confirm_message,
+						R.string.help_confirmnew,
+						new OnConfirmListener() {
+							@Override
+							public void onConfirm() {
+								setCurrentScreenType(ScreenType.TITLE);
+								showDialogFragment(NewGameDialog.newInstance());
+							}
+						}, null));
+			}
 			return true;
 		case R.id.menu_switch:
 			showDialogFragment(ConfirmDialog.newInstance(
@@ -700,9 +730,8 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 		if (finishMenuActionMode()) return;
 
 		if (mGameState.recallScreens() && mBackStack.size() > 0) {
-			setCurrentScreenType(mBackStack.removeFirst());
-			Log.d("onBackPressed()", "Popping back stack. Remaining states: "+mBackStack.size());
-			mBackStack.removeFirst(); // setCurrentScreen will add a new layer, so pop it off.
+			setCurrentScreenType(mBackStack.removeFirst(), false);
+			Log.d("onBackPressed()", "Popping back stack. Remaining states: " + mBackStack.size());
 		}
 		else {
 			showExitDialog();
@@ -785,145 +814,89 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 	public void onDestroyActionMode(ActionMode mode) {
 		Log.d("Menu Item Click", "Destroying Menu ActionMode");
 		mActionMode = null;
-		mCommandMenuButton = null;
+		mMenuTouchInterceptor = null;
 		mDraggingMenuOpen = false;
+
+		for (int i = 0; i < mPopups.length; i++) {
+			MenuDropDownWindow popup = mPopups[i];
+			if (popup != null) popup.dismiss();
+			mPopups[i] = null;
+		}
 	}
 
 	@Override
 	public boolean onCreateActionMode(ActionMode mode, Menu menu) {
 		Log.d("Menu Item Click","Creating Menu ActionMode");
 		Context context = MainActivity.this;//getSupportActionBar().getThemedContext();
+		@SuppressLint("InflateParams") // We have no parent view to pass to inflate()
 		View view = LayoutInflater.from(context).inflate(R.layout.menu_action_mode_dropdowns, null);
-		final Button command = (Button) view.findViewById(R.id.menu_command);
-		final Button game = (Button) view.findViewById(R.id.menu_game);
-		final Button help = (Button) view.findViewById(R.id.menu_help);
-
-		mCommandMenuButton = command;
+		final View command =  view.findViewById(R.id.menu_command);
+		final View game = view.findViewById(R.id.menu_game);
+		final View help = view.findViewById(R.id.menu_help);
 
 		// Remove outlines which appear in lollipop because they're being drawn for buttons and these need to look like spinners
 		removeOutline(command, game, help);
 
-		// Hacking around the fact that this isn't setting correctly from style
-		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB && getThemeType() == ThemeType.MATERIAL_DARK) {
-			command.setTextColor(Color.WHITE);
-			game.setTextColor(Color.WHITE);
-			help.setTextColor(Color.WHITE);
-		}
+
+		final MenuTouchInterceptor intercepter = (MenuTouchInterceptor) view.findViewById(R.id.touch_intercepter);
+		intercepter.requestFocus();
+
 
 		final boolean showCommand = getCurrentScreenType().docked;
-		// TODO: Convert these PopupMenus to ListPopupWindows in order to include shortcut characters
-//		final PopupMenu commandDropdown;
 		if (showCommand) {
-//					// This big commented block is a first pass at using ListPopupWindow instead of PopupMenu. It's difficult to get the dropdown to behave correctly,
-//					// specifically to set the correct width (wrap_content wraps to the anchor view) and to appear/disappear at the proper location when displayed immediately
-//					final ScreenType[] screens = ScreenType.dropdownValues();
-//					ListAdapter adapter = new BaseAdapter() {
-//
-//						@Override
-//						public View getView(int position, View convertView, ViewGroup parent) {
-//							View listItem = LayoutInflater.from(parent.getContext()).inflate(R.layout.spinner_dropdown_item_actionbar, parent, false);
-//							TextView text1 = (TextView) listItem.findViewById(R.id.spinner_shortcut);
-//							text1.setText(screens[position].shortcutId);
-//							TextView text2 = (TextView) listItem.findViewById(R.id.spinner_text);
-//							text2.setText(screens[position].titleId);
-//							return listItem;
-//						}
-//
-//						@Override
-//						public long getItemId(int position) {
-//							return screens[position].fragmentId;
-//						}
-//
-//						@Override
-//						public Object getItem(int position) {
-//							return screens[position];
-//						}
-//
-//						@Override
-//						public int getCount() {
-//							return screens.length;
-//						}
-//
-//					};
-//					final ListPopupWindow commandDropdown = new ListPopupWindow(MainActivity.this);
-////					commandDropdown = new ListPopupWindow(MainActivity.this);
-//					commandDropdown.setAdapter(adapter);
-//					commandDropdown.setAnchorView(command);
-//
-//
-////					getTheme().resolveAttribute(R.attr.panelMenuListWidth, tv, true);
-////					commandDropdown.setContentWidth((int) (tv.getDimension(getResources().getDisplayMetrics()) + 0.5));
-////					commandDropdown.setContentWidth(ListPopupWindow.WRAP_CONTENT);
-//					commandDropdown.setWidth(ListPopupWindow.MATCH_PARENT);
-//					commandDropdown.setOnItemClickListener(new ListView.OnItemClickListener() {
-//
-//						@Override
-//						public void onItemClick(
-//								android.widget.AdapterView<?> parent,
-//								View view, int position, long id) {
-//							setCurrentScreenType(screens[position]);
-//							commandDropdown.dismiss();
-//						}
-//					});
-//
-//					command.setOnClickListener(new OnClickListener() {
-//
-//						@Override
-//						public void onClick(View v) {
-//							if (commandDropdown.isShowing()) {
-//								commandDropdown.dismiss();
-//							} else {
-//								commandDropdown.show();
-//							}
-//						}
-//					});
-//					command.setOnTouchListener(commandDropdown.createDragToOpenListener(command));
-//					commandDropdown.postShow();
+			intercepter.addForwardingView(command);
 
-			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-				android.widget.PopupMenu commandDropDown = initializeDropdownL(command, R.menu.command);
-				if (!mDraggingMenuOpen) {
-					commandDropDown.show();
-				} else {
-					mDraggingMenuOpen = false;
+			Menu commandMenu = new MenuBuilder(context);
+			getMenuInflater().inflate(R.menu.command, commandMenu);
+			final MenuDropDownWindow commandDropdown = new MenuDropDownWindow(MainActivity.this, command, commandMenu);
+			commandDropdown.setOnDropDownItemClickListener(this);
+			mPopups[0] = commandDropdown;
+
+			// If we call commandDropdown,show() directly, the anchor view isn't ready yet, but this works.
+			command.post(new Runnable() {
+				@Override
+				public void run() {
+					if (!mDraggingMenuOpen) {
+						commandDropdown.show();
+					}
 				}
-			} else {
-				PopupMenu commandDropDown = initializeDropdown(command, R.menu.command);
-				if (!mDraggingMenuOpen) {
-					commandDropDown.show();
-				} else {
-					mDraggingMenuOpen = false;
-				}
-			}
+			});
+
 		} else {
 			command.setVisibility(View.GONE);
 		}
 
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-			android.widget.PopupMenu gameDropdown = initializeDropdownL(game, R.menu.game);
-			if (!getGameState().developerMode())
-				gameDropdown.getMenu().removeGroup(R.id.menu_group_extra);    // Dev options eg call keyboard for testing.
-			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT && !hasWriteExternalPermission()) {
-				gameDropdown.getMenu().removeItem(R.id.menu_savegame);
-			}
-			if (!getCurrentScreenType().docked) {
-				gameDropdown.getMenu().removeItem(R.id.menu_retire);
-			}
-
-			initializeDropdownL(help, R.menu.help);
-		} else {
-			PopupMenu gameDropdown = initializeDropdown(game, R.menu.game);
-			if (!getGameState().developerMode())
-				gameDropdown.getMenu().removeGroup(R.id.menu_group_extra);    // Dev options eg call keyboard for testing.
-			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT && !hasWriteExternalPermission()) {
-				gameDropdown.getMenu().removeItem(R.id.menu_savegame);
-			}
-			if (!getCurrentScreenType().docked) {
-				gameDropdown.getMenu().removeItem(R.id.menu_retire);
-			}
-
-			initializeDropdown(help, R.menu.help);
+		intercepter.addForwardingView(game);
+		Menu gameMenu = new MenuBuilder(context);
+		getMenuInflater().inflate(R.menu.game, gameMenu);
+		if (!getGameState().developerMode())
+			gameMenu.removeGroup(R.id.menu_group_extra);    // Dev options eg call keyboard for testing.
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT && !hasWriteExternalPermission()) {
+			gameMenu.removeItem(R.id.menu_savegame);
 		}
+		if (!getCurrentScreenType().docked) {
+			gameMenu.removeItem(R.id.menu_retire);
+		}
+		final MenuDropDownWindow gameDropdown = new MenuDropDownWindow(MainActivity.this, game, gameMenu);
+		gameDropdown.setOnDropDownItemClickListener(this);
+		mPopups[1] = gameDropdown;
+
+		intercepter.addForwardingView(help);
+		Menu helpMenu = new MenuBuilder(context);
+		getMenuInflater().inflate(R.menu.help, helpMenu);
+		final MenuDropDownWindow helpDropdown = new MenuDropDownWindow(MainActivity.this, help, helpMenu);
+		helpDropdown.setOnDropDownItemClickListener(this);
+		mPopups[2] = helpDropdown;
+
+
+		intercepter.post(new Runnable() {
+			@Override
+			public void run() {
+				intercepter.setActiveView(showCommand? command : game);
+				mMenuTouchInterceptor = intercepter;
+			}
+		});
+
 
 		mode.setCustomView(view);
 		view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.abc_fade_in));
@@ -943,63 +916,17 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 	}
 	
 	@TargetApi(Build.VERSION_CODES.LOLLIPOP)
-	private void removeOutline(View... views) {
+	private static void removeOutline(View... views) {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 			for (View view : views) {
 				view.setOutlineProvider(null);
+				view.setStateListAnimator(null);
 			}
 		}
 	}
-
-	private PopupMenu initializeDropdown(Button anchor, int menuRes) {
-
-		final PopupMenu dropdown = new PopupMenu(MainActivity.this, anchor);
-		dropdown.inflate(menuRes);
-		dropdown.setOnMenuItemClickListener(MainActivity.this);
-		anchor.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				dropdown.show();
-			}
-		});
-
-		// XXX There are some bugs in getDragToOpenListener() including occasional misdrawing of selector, and omiting text color change in Palm theme
-		// See AOSP issues 76371 and 82905 at https://code.google.com/p/android/
-		OnTouchListener listener = dropdown.getDragToOpenListener();
-		if (listener != null) anchor.setOnTouchListener(listener);
-		
-		return dropdown;
-	}
-
-	// NB This is a temporary band-aid so that things look consistent in android 5.1 while we wait for fixes to trickle down to the support library
-	@TargetApi(Build.VERSION_CODES.LOLLIPOP)
-	private android.widget.PopupMenu initializeDropdownL(Button anchor, int menuRes) {
-		final android.widget.PopupMenu dropdown = new android.widget.PopupMenu(MainActivity.this, anchor);
-		dropdown.getMenuInflater().inflate(menuRes, dropdown.getMenu());
-		dropdown.setOnMenuItemClickListener(new android.widget.PopupMenu.OnMenuItemClickListener() {
-
-			@Override
-			public boolean onMenuItemClick(MenuItem item) {
-				return MainActivity.this.onMenuItemClick(item);
-			}
-		});
-		anchor.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				dropdown.show();
-			}
-		});
-
-		OnTouchListener listener = dropdown.getDragToOpenListener();
-		if (listener != null) anchor.setOnTouchListener(listener);
-
-		return dropdown;
-	}
 	
 	boolean finishMenuActionMode() {
-		Log.d("Menu Item Click","Finishing Menu ActionMode");
+		Log.d("Menu Item Click", "Finishing Menu ActionMode");
 		if (mActionMode != null) {
 			mActionMode.finish();
 			mActionMode = null;
@@ -1022,7 +949,11 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 		showDialogFragment(mDialogQueue.removeFirst());
 	}
 
-	public BaseScreen setCurrentScreenType(ScreenType type) {
+	public void setCurrentScreenType(ScreenType type) {
+		setCurrentScreenType(type, true);
+	}
+
+	private void setCurrentScreenType(ScreenType type, boolean addToBackStack) {
 		Log.i(GameState.LOG_TAG,"Showing screen: "+type.toXmlString(getResources()));
 		
 		ScreenType prevType = getCurrentScreenType();
@@ -1031,7 +962,10 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 		BaseScreen next;
 		try {
 			next = type.screenClass.newInstance();
-		} catch (InstantiationException | IllegalAccessException e) {
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
@@ -1040,29 +974,21 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 		FragmentTransaction ft = fm.beginTransaction();
 		ft.replace(R.id.container, next, getResources().getString(type.titleId));
 		ft.commit();
-//		try{
-//			ft.commit();
-//		} catch (IllegalStateException e) {
-//			Log.w(GameState.LOG_TAG, "Error on Fragment transaction commit. Committing with potential state loss.");
-//			e.printStackTrace();
-//			ft.commitAllowingStateLoss();
-//		}
 
-		if (prevType != null && type.docked && prevType.docked && type != prevType) {
+		if (addToBackStack && prevType != null && type.docked && prevType.docked && type != prevType) {
 			mBackStack.addFirst(prevType);
-			Log.d("setCurrentScreen()", "Adding "+prevType+" to back stack. Total size is "+mBackStack.size());
-		} else if (type != prevType) {
+			Log.d("setCurrentScreen()", "Adding " + prevType + " to back stack. Total size is " + mBackStack.size());
+			Log.v("setCurrentScreen()", Arrays.toString(mBackStack.toArray()));
+		} else if (addToBackStack && type != prevType) {
 			mBackStack.clear();
 			Log.d("setCurrentScreen()", "Clearing back stack.");
 		}
 
 		mCurrentScreen = type;
 		
-		supportInvalidateOptionsMenu();
-//		if (prevType == null || !type.docked || !prevType.docked) supportInvalidateOptionsMenu();
-//		else mTitleText.setText(type.titleId);	// If we don't recreate menu than we must update title here instead.
-		
-		return next;
+		if (prevType == null || !type.docked || !prevType.docked) supportInvalidateOptionsMenu();
+		else mTitleText.setText(type.titleId);	// If we don't recreate menu than we must update title here instead.
+
 	}
 
 	public BaseDialog findDialogByClass(Class<? extends BaseDialog> tag) {
@@ -1074,7 +1000,8 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 		int keyCode = event.getKeyCode();
 		char shortcut = event.getMatch(mShortcutKeys);
 		boolean keyDown = event.getMetaState() == 0 && event.getAction() == KeyEvent.ACTION_DOWN;
-		
+//		boolean keyDown = event.getAction() == KeyEvent.ACTION_DOWN;
+
 		if (shortcut > 0) {
 			if (keyDown) for (int i = 0; i < mShortcutKeys.length; i++) {
 				if (shortcut == mShortcutKeys[i]) {
@@ -1122,14 +1049,15 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 		case KeyEvent.KEYCODE_MENU:
 			if (getCurrentScreenType() == ScreenType.ENCOUNTER) getGameState().clearButtonAction();
 			if (keyDown) {
-				if (!finishMenuActionMode()) {
+				if (mActionMode == null) {
 					startMenuActionMode();
+				} else {
+					finishMenuActionMode();
 				}
 			}
 			return true;
 
 		}
-
 		return super.dispatchKeyEvent(event);
 	}
 
@@ -1170,7 +1098,7 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 
 			// Give user choice to avoid losing savegame in the event of an error. In public release will just error normally without try/catch.
 			try {
-				setCurrentScreenType(ScreenType.values()[prefs.getInt("screen type", ScreenType.TITLE.ordinal())]);
+				setCurrentScreenType(ScreenType.values()[prefs.getInt("screen type", ScreenType.TITLE.ordinal())], false);
 			} catch (final Exception e) {
 				e.printStackTrace();
 
@@ -1196,7 +1124,7 @@ public class MainActivity extends ActionBarActivity implements OnMenuItemClickLi
 			}
 
 		} else {
-			setCurrentScreenType(ScreenType.values()[prefs.getInt("screen type", ScreenType.TITLE.ordinal())]);
+			setCurrentScreenType(ScreenType.values()[prefs.getInt("screen type", ScreenType.TITLE.ordinal())], false);
 		}
 
 		mBackStack.clear();

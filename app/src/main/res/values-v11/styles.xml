@@ -97,6 +97,9 @@
         <item name="android:actionModeCloseDrawable">?actionModeCloseDrawable</item>
         <item name="android:actionModeCloseButtonStyle">?actionModeCloseButtonStyle</item>
         <item name="android:actionButtonStyle">@style/ActionButtonStyle.Light.Dialog</item>
+        <item name="android:actionModeCopyDrawable">?actionModeCopyDrawable</item>
+        <item name="android:actionModeCutDrawable">?actionModeCutDrawable</item>
+        <item name="android:actionModePasteDrawable">?actionModePasteDrawable</item>
     </style>
 
     <style name="DialogTheme.Base.Dark" parent="ActivityTheme.Dark">
@@ -120,6 +123,9 @@
         <item name="android:actionModeCloseDrawable">?actionModeCloseDrawable</item>
         <item name="android:actionModeCloseButtonStyle">?actionModeCloseButtonStyle</item>
         <item name="android:actionButtonStyle">@style/ActionButtonStyle.Dark.Dialog</item>
+        <item name="android:actionModeCopyDrawable">?actionModeCopyDrawable</item>
+        <item name="android:actionModeCutDrawable">?actionModeCutDrawable</item>
+        <item name="android:actionModePasteDrawable">?actionModePasteDrawable</item>
     </style>
 
     <style name="DialogTheme.Base.Palm" parent="ActivityTheme.Palm">
@@ -144,6 +150,9 @@
         <item name="android:actionModeCloseButtonStyle">?actionModeCloseButtonStyle</item>
         <item name="android:actionButtonStyle">@style/ActionButtonStyle.Palm.Dialog</item>
         <item name="actionButtonStyle">@style/ActionButtonStyle.Palm.Dialog</item>
+        <item name="android:actionModeCopyDrawable">?actionModeCopyDrawable</item>
+        <item name="android:actionModeCutDrawable">?actionModeCutDrawable</item>
+        <item name="android:actionModePasteDrawable">?actionModePasteDrawable</item>
     </style>
     
     <style name="ActionBarStyle.Palm" parent="@style/ActionBar.Transparent.Palm_ab">

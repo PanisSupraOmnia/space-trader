@@ -19,6 +19,7 @@
             android:text="@string/dialog_newgame_name" />
 
         <EditText
+            style="?android:editTextStyle"
             android:layout_toRightOf="@id/dialog_newgame_name_label"
             android:layout_toEndOf="@id/dialog_newgame_name_label"
             android:layout_alignBaseline="@id/dialog_newgame_name_label"
@@ -260,7 +261,7 @@
             android:layout_weight="3" />
     </LinearLayout>
 
-    <CheckBox android:textAppearance="?android:textAppearanceMedium"
+    <CheckBox style="?android:checkboxStyle"
         android:id="@+id/dialog_newgame_randomsystems"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

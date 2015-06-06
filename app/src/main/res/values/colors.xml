@@ -37,15 +37,20 @@
     <color name="btn_default_pressed_palm">#ff330099</color>
     
     <color name="doc_background">#ffa9be8e</color>
-    
+
     <color name="icon_green1">#ff316500</color>
     <color name="icon_green2">#ff319a00</color>
     <color name="icon_green3">#ff31cf00</color>
     <color name="icon_yellow">#ffceff31</color>
     <color name="icon_thumb_yellow">#ffffcf00</color>
     <color name="icon_blue">#ff639ace</color>
-    
+
+    <color name="icon_green1_dark">#ff244a00</color>
+
     <color name="highlighted_text_green2">#66319a00</color>
 
     <color name="blue_palm">#ff330099</color>
+
+    <color name="status_bar_extra_tint">#43000000</color>
+
 </resources>

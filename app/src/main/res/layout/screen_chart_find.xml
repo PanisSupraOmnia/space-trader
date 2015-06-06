@@ -18,6 +18,7 @@
         android:weightSum="2" >
 
         <AutoCompleteTextView
+            style="?android:autoCompleteTextViewStyle"
             android:id="@+id/screen_chart_find_value"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -27,12 +28,7 @@
             android:scrollHorizontally="true" />
     </LinearLayout>
     
-    <EditText android:id="@+id/screen_chart_find_dummy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
-    
-    <CheckBox android:textAppearance="?android:textAppearanceMedium"
+    <CheckBox style="?android:checkboxStyle"
         android:id="@+id/screen_chart_find_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

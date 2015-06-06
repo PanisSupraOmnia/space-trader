@@ -67,6 +67,7 @@
     
     <style name="ActivityTheme.Light" parent="ActivityTheme.Base.Light">  
         <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
         <item name="android:windowNoTitle">true</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="android:windowContentOverlay">@null</item>
@@ -95,8 +96,8 @@
         <item name="dialogButtonStyle">@style/Button.Dialog.Light</item>
         <item name="dialogDivider">@drawable/list_divider_holo_light</item>
         <item name="statusBarPadding">0dp</item>
-        <item name="statusBarExtraTint">@android:color/transparent</item>
         <item name="footerButtonStyle">?actionButtonStyle</item>
+        <item name="listDividerColor">#1f000000</item>
 
         <item name="android:textViewStyle">@style/TextView.Light</item>
         <item name="android:editTextStyle">@style/EditText.Light</item>
@@ -114,6 +115,8 @@
         <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownStyle.Light</item>
         <item name="spinnerDropDownItemStyle">@style/SpinnerDropDownStyle.Light</item>
         <item name="selectableItemBackgroundBorderless">?selectableItemBackground</item>
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="listPopupWindowStyle">@style/ListPopupMenuStyle.Light</item>
 
         <item name="actionModeCopyDrawable">@drawable/abc_ic_menu_copy_mtrl_black</item>
         <item name="actionModeCutDrawable">@drawable/abc_ic_menu_cut_mtrl_black</item>
@@ -125,6 +128,7 @@
     
     <style name="ActivityTheme.Dark" parent="ActivityTheme.Base.Dark">
         <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
         <item name="android:windowNoTitle">true</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="android:windowContentOverlay">@null</item>
@@ -153,8 +157,8 @@
         <item name="dialogButtonStyle">@style/Button.Dialog.Dark</item>
         <item name="dialogDivider">@drawable/list_divider_holo_dark</item>
         <item name="statusBarPadding">0dp</item>
-        <item name="statusBarExtraTint">@android:color/transparent</item>
         <item name="footerButtonStyle">?actionButtonStyle</item>
+        <item name="listDividerColor">#1fffffff</item>
 
         <item name="android:textViewStyle">@style/TextView.Dark</item>
         <item name="android:editTextStyle">@style/EditText.Dark</item>
@@ -172,6 +176,8 @@
         <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownStyle.Dark</item>
         <item name="spinnerDropDownItemStyle">@style/SpinnerDropDownStyle.Dark</item>
         <item name="selectableItemBackgroundBorderless">?selectableItemBackground</item>
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="listPopupWindowStyle">@style/ListPopupMenuStyle.Dark</item>
 
         <item name="actionModeCopyDrawable">@drawable/abc_ic_menu_copy_mtrl_white</item>
         <item name="actionModeCutDrawable">@drawable/abc_ic_menu_cut_mtrl_white</item>
@@ -179,10 +185,14 @@
         <item name="actionModeSelectAllDrawable">@drawable/abc_ic_menu_selectall_mtrl_white</item>
         <item name="actionModeCloseDrawable">@drawable/abc_ic_ab_back_mtrl_white</item>
         <item name="actionModeBackground">@drawable/cab_background_top_dark_ab</item>
+        <item name="actionModeShareDrawable">@drawable/abc_ic_menu_share_mtrl_alpha</item>
+        <item name="actionModeFindDrawable">@drawable/abc_ic_search_api_mtrl_alpha</item>
+        <item name="actionModeWebSearchDrawable">@drawable/abc_ic_search_api_mtrl_alpha</item>
     </style>
     
     <style name="ActivityTheme.Palm" parent="ActivityTheme.Base.Palm">  
         <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
         <item name="android:windowNoTitle">true</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="android:windowContentOverlay">@null</item>
@@ -212,8 +222,8 @@
         <item name="dialogButtonStyle">@style/Button.Dialog.Palm</item>
         <item name="dialogDivider">@android:color/transparent</item>
         <item name="statusBarPadding">0dp</item>
-        <item name="statusBarExtraTint">@android:color/transparent</item>
         <item name="footerButtonStyle">?actionButtonStyle</item>
+        <item name="listDividerColor">#ff000000</item>
 
         <item name="actionButtonMarginTop">@dimen/action_bar_button_marginTop_palm</item>
         <item name="actionButtonMarginBottom">@dimen/action_bar_button_marginBottom_palm</item>
@@ -224,7 +234,7 @@
         <item name="textViewStyleHeader">@style/TextView.Header.Palm</item>
         <item name="buttonStyleRounded">@style/Button.Rounded.Palm</item>
         <item name="buttonStyleSquare">@style/Button.Square.Palm</item>
-        
+
         <item name="android:textColorPrimary">@android:color/black</item>
         <item name="android:textColorSecondary">@android:color/black</item>
         <item name="android:checkboxStyle">@style/CheckBox.Palm</item>
@@ -233,6 +243,8 @@
         <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownStyle.Palm</item>
         <item name="spinnerDropDownItemStyle">@style/SpinnerDropDownStyle.Palm</item>
         <item name="selectableItemBackgroundBorderless">?selectableItemBackground</item>
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="listPopupWindowStyle">@style/ListPopupMenuStyle.Palm</item>
 
         <item name="actionModeCopyDrawable">@drawable/abc_ic_menu_copy_mtrl_palm</item>
         <item name="actionModeCutDrawable">@drawable/abc_ic_menu_cut_mtrl_palm</item>
@@ -434,26 +446,32 @@
     
     <style name="CheckBox.Light" parent="@style/CheckBoxLight_ACWidgets">
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:background">@null</item>
     </style>
     
     <style name="CheckBox.Dark" parent="@style/CheckBoxDark_ACWidgets">
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:background">@null</item>
     </style>
     
     <style name="CheckBox.Palm" parent="@style/CheckBoxPalm_ACWidgets">
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:background">@null</item>
     </style>
     
     <style name="RadioButton.Light" parent="@style/RadioButtonLight_ACWidgets">
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:background">@null</item>
     </style>
     
     <style name="RadioButton.Dark" parent="@style/RadioButtonDark_ACWidgets">
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:background">@null</item>
     </style>
     
     <style name="RadioButton.Palm" parent="@style/RadioButtonPalm_ACWidgets">
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:background">@null</item>
     </style>
     
     <style name="SpinnerStyle.Light" parent="@style/SpinnerLight_ACWidgets">
@@ -492,6 +510,18 @@
     <style name="PopupMenuText.Palm" parent="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large" >
         <item name="android:textColor">@color/primary_text_palm</item>
         <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="ListPopupMenuStyle.Light" parent="Widget.AppCompat.Light.ListPopupWindow">
+        <item name="android:popupBackground">@drawable/dialog_full_holo_light</item>
+    </style>
+
+    <style name="ListPopupMenuStyle.Dark" parent="Widget.AppCompat.ListPopupWindow">
+        <item name="android:popupBackground">@drawable/dialog_full_holo_dark</item>
+    </style>
+
+    <style name="ListPopupMenuStyle.Palm" parent="Widget.AppCompat.Light.ListPopupWindow">
+        <item name="android:popupBackground">@drawable/dialog_full_palm</item>
     </style>
     
     <style name="ListViewStyle.Palm" parent="@style/ListViewPalm_ACWidgets" >

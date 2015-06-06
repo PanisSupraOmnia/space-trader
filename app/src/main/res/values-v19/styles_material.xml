@@ -11,7 +11,6 @@
         <item name="actionBarItemBackground">@drawable/abc_item_background_holo_dark</item>
         <item name="selectableItemBackground">@drawable/abc_item_background_holo_light</item>
         <item name="statusBarPadding">25dp</item>
-        <item name="statusBarExtraTint">#66000000</item>
         <item name="android:dialogTheme">@style/DialogTheme.Material.Light</item>
     </style>
 
@@ -21,7 +20,6 @@
 
         <item name="android:windowTranslucentStatus">true</item>
         <item name="statusBarPadding">25dp</item>
-        <item name="statusBarExtraTint">#66000000</item>
         <item name="android:dialogTheme">@style/DialogTheme.Material.Dark</item>
     </style>
 

@@ -23,6 +23,7 @@ package com.brucelet.spacetrader;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Bundle;
+import android.support.v4.content.res.ResourcesCompat;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.HapticFeedbackConstants;
@@ -101,7 +102,7 @@ public class ChartScreen extends BaseScreen {
 
 		public ChartView(Context context, AttributeSet attrs) {
 			super(context, attrs);
-			if (getForeground() == null) setForeground(getResources().getDrawable(R.drawable.foreground_shadow_bottom));
+			if (getForeground() == null) setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.foreground_shadow_bottom, context.getTheme()));
 			getForeground().setAlpha(0);
 			mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
 				@Override

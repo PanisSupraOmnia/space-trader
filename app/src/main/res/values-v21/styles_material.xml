@@ -4,10 +4,11 @@
         <item name="infoIconEncounter">@drawable/info_white_ripple_dark</item>
         <item name="infoIconDialog">@drawable/info_material_green2_ripple_light</item>
 
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="actionBarTitleBackground">?selectableItemBackground</item>
-        <item name="statusBarPadding">25dp</item>
-        <item name="statusBarExtraTint">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="actionBarTitleBackground">?selectableItemBackgroundBorderless</item>
+        <item name="statusBarPadding">0dp</item>
         <item name="android:dialogTheme">@style/DialogTheme.Material.Light</item>
     </style>
 
@@ -15,10 +16,11 @@
         <item name="infoIconEncounter">@drawable/info_white_ripple_dark</item>
         <item name="infoIconDialog">@drawable/info_material_green2_ripple_dark</item>
 
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="actionBarTitleBackground">?selectableItemBackground</item>
-        <item name="statusBarPadding">25dp</item>
-        <item name="statusBarExtraTint">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="actionBarTitleBackground">?selectableItemBackgroundBorderless</item>
+        <item name="statusBarPadding">0dp</item>
         <item name="android:dialogTheme">@style/DialogTheme.Material.Dark</item>
     </style>
 

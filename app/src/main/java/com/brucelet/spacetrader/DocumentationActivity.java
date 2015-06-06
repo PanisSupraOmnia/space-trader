@@ -22,8 +22,9 @@ package com.brucelet.spacetrader;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.View;
@@ -31,7 +32,7 @@ import android.webkit.WebView;
 
 import com.brucelet.spacetrader.enumtypes.ThemeType;
 
-public class DocumentationActivity extends ActionBarActivity implements View.OnClickListener {
+public class DocumentationActivity extends AppCompatActivity implements View.OnClickListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,7 @@ public class DocumentationActivity extends ActionBarActivity implements View.OnC
 		ActionBar ab = getSupportActionBar();
 		TypedValue tv = new TypedValue();
 		if (getTheme().resolveAttribute(R.attr.actionBarBackgroundDefault, tv, true)) {
-			ab.setBackgroundDrawable(getResources().getDrawable(tv.resourceId));
+			ab.setBackgroundDrawable(ResourcesCompat.getDrawable(getResources(), tv.resourceId, getTheme()));
 		}
 		if (themeType.isMaterialTheme && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 			// In Lollipop, use the platform up button so the ripple is masked correctly.
@@ -64,8 +65,17 @@ public class DocumentationActivity extends ActionBarActivity implements View.OnC
 			ab.setDisplayShowTitleEnabled(false);
 			ab.setDisplayShowCustomEnabled(true);
 		}
-		
-		getWebView().loadUrl("file:///android_asset/spacetrader.html");
+
+		WebView webView = getWebView();
+		// Getting the text selection action mode to theme correctly here is a pain, so block it instead.
+		webView.setOnLongClickListener(new View.OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View v) {
+				return true;
+			}
+		});
+		webView.setHapticFeedbackEnabled(false);
+		webView.loadUrl("file:///android_asset/spacetrader.html");
 	}
 	
 	private WebView getWebView() {
@@ -85,5 +95,19 @@ public class DocumentationActivity extends ActionBarActivity implements View.OnC
 	@Override
 	public void onClick(View v) {
 		onSupportNavigateUp();
+	}
+
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+
+		outState.putInt("scroll", getWebView().getScrollY());
+	}
+
+	@Override
+	public void onRestoreInstanceState(Bundle savedInstanceState) {
+		super.onRestoreInstanceState(savedInstanceState);
+
+		getWebView().scrollTo(0,savedInstanceState.getInt("scroll"));
 	}
 }

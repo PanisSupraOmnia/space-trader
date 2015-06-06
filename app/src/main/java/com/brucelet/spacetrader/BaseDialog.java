@@ -28,6 +28,7 @@ import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AppCompatDialog;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
@@ -61,6 +62,9 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 			context = getActivity();
 		}
 		inflater = LayoutInflater.from(context);
+//		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
+//			inflater = LayoutInflater.from(getActivity());
+//		}
 
 		TypedValue tv = new TypedValue();
 		TypedArray ta;
@@ -228,26 +232,7 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 			setStyle(STYLE_NO_FRAME, 0);
 		}
 
-		getActivity().getTheme().resolveAttribute(R.attr.statusBarExtraTint, tv, true);
-		final int statusBarExtraTint = tv.data;
-		Dialog dialog = new Dialog(getActivity(), getTheme()) {
-			@Override
-			public void onActionModeStarted(android.view.ActionMode mode) {
-				Log.d("BaseDialog","Dialog ActionMode started");
-				if (statusBarExtraTint != 0) {
-					getActivity().findViewById(R.id.status_bar_tint).setBackgroundColor(getResources().getColor(android.R.color.black));
-				}
-			}
-
-			@Override
-			public void onActionModeFinished(android.view.ActionMode mode) {
-				Log.d("BaseDialog","Dialog ActionMode finished");
-				if (statusBarExtraTint != 0) {
-					getActivity().findViewById(R.id.status_bar_tint).setBackgroundColor(statusBarExtraTint);
-				}
-			}
-		};
-//		Dialog dialog = super.onCreateDialog(savedInstanceState);
+		Dialog dialog = super.onCreateDialog(savedInstanceState);
 		dialog.setOnShowListener(new DialogInterface.OnShowListener() { // NB OnShowListener requires API 8
 			
 			@Override

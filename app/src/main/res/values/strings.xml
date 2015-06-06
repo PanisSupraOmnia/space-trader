@@ -112,6 +112,7 @@
 
     <string name="shortcut_options">O</string>
     <string name="shortcut_help">H</string>
+    <string name="shortcut_none">_</string>
 
     <string name="screen_buy">Buy Cargo</string>
     <string name="screen_buy_query">At %2$d cr. each, you can afford %3$d. How many do you want to buy?</string>
