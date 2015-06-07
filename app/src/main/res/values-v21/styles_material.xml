@@ -40,6 +40,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:singleLine">true</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+
+        <item name="android:textCursorDrawable">@drawable/text_cursor_material_green2</item>
     </style>
     
     <style name="AutoCompleteTextView.Material.Light" parent="@style/Widget.AppCompat.Light.AutoCompleteTextView">
@@ -47,6 +49,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:singleLine">true</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+
+        <item name="android:textCursorDrawable">@drawable/text_cursor_material_green2</item>
     </style>
 
     <style name="AutoCompleteTextView.Material.Dark" parent="@style/Widget.AppCompat.AutoCompleteTextView">
@@ -54,5 +58,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:singleLine">true</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+
+        <item name="android:textCursorDrawable">@drawable/text_cursor_material_green2</item>
     </style>
 </resources>

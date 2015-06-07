@@ -105,7 +105,7 @@
         <item name="actionBarWidgetTheme">@style/ActionBarWidgetTheme.Dark</item>
         <item name="actionBarTitleTextStyle">@style/TitleText.Dark</item>
         <item name="actionModeSpinnerTextStyle">@style/TitleText.Dark</item>
-        <item name="actionBarTitleBackground">?attr/selectableItemBackground</item>
+        <item name="actionBarTitleBackground">?attr/selectableItemBackgroundBorderless</item>
         <item name="actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Material.Dark</item>
         <item name="footerButtonStyle">@style/FooterButtonStyle.Material</item>
         <item name="listDividerColor">#1fffffff</item>
