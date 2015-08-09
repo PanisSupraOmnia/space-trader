@@ -21,8 +21,8 @@
 package com.brucelet.spacetrader.enumtypes;
 
 public interface Incrementable<T> {
-	public T next();
-	public T prev();
+	T next();
+	T prev();
 	
 	abstract class Impl {
 		protected static <E extends Enum<E>> E next(E e, E[] values) {

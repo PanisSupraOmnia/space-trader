@@ -38,7 +38,7 @@ public enum TechLevel implements XmlString {
 
 	private final int resId;
 
-	private TechLevel(int resId) {
+	TechLevel(int resId) {
 		this.resId = resId;
 	}
 	

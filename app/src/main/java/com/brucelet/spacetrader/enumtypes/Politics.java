@@ -62,7 +62,7 @@ public enum Politics implements XmlString {
 	public final int mastheadId;
 	public final int headlineId;
 	
-	private Politics(
+	Politics(
 			int resId,
 			int reactionIllegal,
 			int strengthPolice,
@@ -76,7 +76,7 @@ public enum Politics implements XmlString {
 			TradeItem wanted,
 			int mastheadId,
 			int headlineId
-			) {
+	) {
 		this.resId = resId;
 		this.reactionIllegal = reactionIllegal;
 		this.strengthPolice = ActivityLevel.values()[strengthPolice];

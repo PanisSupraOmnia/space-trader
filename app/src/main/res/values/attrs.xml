@@ -7,7 +7,7 @@
     <attr name="actionBarBackgroundDefault" format="reference|color" />
     <attr name="roundedButtonDrawable" format="reference" />
     <attr name="squareButtonDrawable" format="reference" />
-    <attr name="strokeColor" format="color|reference" />
+    <attr name="strokeColor" format="color" />
     <attr name="startArrow" format="reference" />
     <attr name="endArrow" format="reference" />
     <attr name="infoIconDialog" format="reference" />
@@ -16,13 +16,13 @@
     <attr name="textViewStyleHeader" format="reference" />
     <attr name="buttonStyleRounded" format="reference" />
     <attr name="buttonStyleSquare" format="reference" />
-	<attr name="pressableTextColor" format="color|reference" />
+	<attr name="pressableTextColor" format="color" />
 	<attr name="actionButtonMarginTop" format="dimension" />
 	<attr name="actionButtonMarginBottom" format="dimension" />
 	<attr name="statusBarPadding" format="dimension" />
     <attr name="avgPriceListBackground" format="reference" />
     <attr name="footerButtonStyle" format="reference" />
-    <attr name="listDividerColor" format="color|reference" />
+    <attr name="listDividerColor" format="color" />
 
     <attr name="dialogLayout" format="reference" />
     <attr name="dialogTitleTextStyle" format="reference" />

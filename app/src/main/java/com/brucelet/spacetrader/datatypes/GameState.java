@@ -43,7 +43,6 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.support.v4.content.res.ResourcesCompat;
-import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.util.TypedValue;
@@ -299,8 +298,22 @@ public class GameState {
 	private boolean extraShortcuts;
 	private boolean randomQuestSystems;
 	private boolean developerMode;
-	
-	
+
+	private ValueAnimator playerFlashAnimator;
+	private ValueAnimator opponentFlashAnimator;
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	private class ShipFlashUpdateListener implements ValueAnimator.AnimatorUpdateListener {
+		private ImageView shipView;
+		@Override
+		public void onAnimationUpdate(ValueAnimator animation) {
+			if (shipView != null) {
+				shipView.getDrawable().setColorFilter((int) animation.getAnimatedValue(), PorterDuff.Mode.SRC_ATOP);
+			}
+		}
+	}
+	private ShipFlashUpdateListener playerFlashUpdateListener;
+	private ShipFlashUpdateListener opponentFlashUpdateListener;
+
 	public static final int GALAXYWIDTH = 150;
 	public static final int GALAXYHEIGHT = 110;
 	static final int SHORTRANGEWIDTH = 140;
@@ -368,6 +381,20 @@ public class GameState {
 	
 	public GameState(MainActivity gm) {
 		mGameManager = gm;
+
+		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB) {
+			playerFlashAnimator = ValueAnimator.ofInt(0x00000000, 0xffff0000, 0x00000000).setDuration(200);
+			playerFlashAnimator.setEvaluator(new ArgbEvaluator());
+//			playerFlashAnimator.setInterpolator(AnimationUtils.loadInterpolator(mGameManager, android.R.interpolator.accelerate_decelerate));
+			playerFlashUpdateListener = new ShipFlashUpdateListener();
+			playerFlashAnimator.addUpdateListener(playerFlashUpdateListener);
+
+			opponentFlashAnimator = ValueAnimator.ofInt(0x00000000, 0xffff0000, 0x00000000).setDuration(200);
+			opponentFlashAnimator.setEvaluator(new ArgbEvaluator());
+//			opponentFlashAnimator.setInterpolator(AnimationUtils.loadInterpolator(mGameManager, android.R.interpolator.accelerate_decelerate));
+			opponentFlashUpdateListener = new ShipFlashUpdateListener();
+			opponentFlashAnimator.addUpdateListener(opponentFlashUpdateListener);
+		}
 	}
 
 	public void saveState(SharedPreferences.Editor editor) {
@@ -2305,15 +2332,13 @@ public class GameState {
 			View amt = screen.getView().findViewById(SellScreen.AMOUNT_IDS.get(item));
 			if (sellPrice.get(item) <= 0)
 			{
-				amt.setBackgroundDrawable(null);
+				amt.getBackground().setAlpha(0);
 				amt.setClickable(false);
 				screen.setViewTextById(SellScreen.ALL_IDS.get(item), R.string.generic_dump);
 			}
 			else
 			{
-				TypedValue tv = new TypedValue();
-				mGameManager.getTheme().resolveAttribute(R.attr.squareButtonDrawable, tv, true);
-				amt.setBackgroundResource(tv.resourceId);
+				amt.getBackground().setAlpha(255);
 				amt.setClickable(true);
 				screen.setViewTextById(SellScreen.ALL_IDS.get(item), R.string.generic_all);
 			}
@@ -3201,7 +3226,10 @@ public class GameState {
 			@Override
 			public void run() {
 				shipView.clearAnimation();
-				int animId = destroyed? commanderUnderAttack? R.anim.destroyed_player : R.anim.destroyed_opponent : hit? commanderUnderAttack? R.anim.hit_player : R.anim.hit_opponent  :  commanderUnderAttack? R.anim.miss_player : R.anim.miss_opponent;
+				int animId =
+						destroyed?	commanderUnderAttack? R.anim.destroyed_player : R.anim.destroyed_opponent  :
+						hit? 		commanderUnderAttack? R.anim.hit_player : R.anim.hit_opponent  :
+									commanderUnderAttack? R.anim.miss_player : R.anim.miss_opponent;
 				// Basic shake or dodge animation
 				Animation anim = AnimationUtils.loadAnimation(mGameManager, animId);
 				shipView.startAnimation(anim);
@@ -3211,16 +3239,10 @@ public class GameState {
 
 					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 						// TODO do this in a way that requires less initialization
-						ValueAnimator valueAnimator = ValueAnimator.ofInt(0x00000000, 0xffff0000, 0x00000000).setDuration(200);
-						valueAnimator.setEvaluator(new ArgbEvaluator());
-						valueAnimator.setInterpolator(AnimationUtils.loadInterpolator(mGameManager, android.R.interpolator.accelerate_decelerate));
-						valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-							@Override
-							@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-							public void onAnimationUpdate(ValueAnimator animation) {
-								shipView.getDrawable().setColorFilter((int) animation.getAnimatedValue(), PorterDuff.Mode.SRC_ATOP);
-							}
-						});
+						ValueAnimator valueAnimator = commanderUnderAttack? playerFlashAnimator : opponentFlashAnimator;
+						valueAnimator.setCurrentPlayTime(0);
+						ShipFlashUpdateListener shipFlashUpdateListener = commanderUnderAttack? playerFlashUpdateListener : opponentFlashUpdateListener;
+						shipFlashUpdateListener.shipView = shipView;
 						valueAnimator.start();
 
 						anim.setAnimationListener(new Animation.AnimationListener() {
@@ -3451,7 +3473,7 @@ public class GameState {
 			if (justLootedMarie)
 			{
 //				latch = newLatch();
-//				mGameManager.showDialogFragment(SimpleDialog.newInstance(
+//				mGameManager.showDialogFragment(SimpleDialog.creator(
 //						R.string.screen_encounter_mariegoodslost_title,
 //						R.string.screen_encounter_mariegoodslost_message,
 //						newUnlocker(latch)));
@@ -3637,7 +3659,7 @@ public class GameState {
 			if (justLootedMarie)
 			{
 //				latch = newLatch();
-//				mGameManager.showDialogFragment(SimpleDialog.newInstance(
+//				mGameManager.showDialogFragment(SimpleDialog.creator(
 //						R.string.screen_encounter_mariegoodsimpounded_title,
 //						R.string.screen_encounter_mariegoodsimpounded_message,
 //						newUnlocker(latch)));
@@ -4011,7 +4033,7 @@ public class GameState {
 	
 	
 	// Some helpers for the EncounterButtonTask
-	private static enum Result {
+	private enum Result {
 		TRAVEL,
 		REFRESH,
 		NOTHING,
@@ -4194,7 +4216,7 @@ public class GameState {
 	    	
 //				// NB Moved this dialog to encounterFormHandleEvent()
 //	    		CountDownLatch latch = newLatch();
-//	    		mGameManager.showDialogFragment(SimpleDialog.newInstance(
+//	    		mGameManager.showDialogFragment(SimpleDialog.creator(
 //	    				R.string.screen_encounter_squeek_title, 
 //	    				R.string.screen_encounter_squeek_message,
 //	    				R.string.help_squeek,
@@ -4614,7 +4636,7 @@ public class GameState {
 //		    			if (policeRecordScore >= PoliceRecord.DUBIOUS.score) 
 //		    			{
 //				    		CountDownLatch latch = newLatch();
-//				    		mGameManager.showDialogFragment(SimpleDialog.newInstance(
+//				    		mGameManager.showDialogFragment(SimpleDialog.creator(
 //				    				R.string.screen_encounter_contrabandnotfound_title,
 //				    				R.string.screen_encounter_contrabandnotfound_message,
 //				    				newUnlocker(latch)));
@@ -4623,7 +4645,7 @@ public class GameState {
 //		    			else 
 //		    			{
 //				    		CountDownLatch latch = newLatch();
-//				    		mGameManager.showDialogFragment(SimpleDialog.newInstance(
+//				    		mGameManager.showDialogFragment(SimpleDialog.creator(
 //				    				R.string.screen_encounter_contrabandnotfound_title,
 //				    				R.string.screen_encounter_contrabandnotfound_arrestedmessage,
 //				    				newUnlocker(latch)));
@@ -5105,7 +5127,7 @@ public class GameState {
 		    	else
 		    		policeRecordScore += PoliceRecord.PLUNDERPIRATESCORE;
 
-		    	mGameManager.showDialogFragment(PlunderDialog.newInstance(0));
+		    	mGameManager.showDialogFragment(PlunderDialog.newInstance());
 		    	return Result.NOTHING;
 		    }
 		    else if (action == EncounterButton.INTERRUPT) // Interrupt automatic attack/flight
@@ -5288,7 +5310,7 @@ public class GameState {
 		    		if (stop) return Result.TRAVEL;
 		    		
 		    		narcs = ship.getCargo(TradeItem.NARCOTICS);
-		    		mGameManager.showDialogFragment(PlunderDialog.newInstance(ship.getCargo(TradeItem.NARCOTICS)));
+		    		mGameManager.showDialogFragment(PlunderDialog.newInstance());
 		    		return Result.NOTHING;
 		    	}
 		    }		
@@ -8165,7 +8187,7 @@ public class GameState {
 								wildStatus = 0;
 							}
 						}, 
-						(OnCancelListener) null,
+						null,
 						curSystem().name));
 				return false;
 			}
@@ -8586,15 +8608,17 @@ public class GameState {
 				((TextView) page.findViewById(WarpPricesScreen.LABEL_IDS.get(item))).setTypeface(Typeface.DEFAULT_BOLD);
 //				TypedValue tv = new TypedValue();
 //				mGameManager.getTheme().resolveAttribute(R.attr.colorAccent, tv, true);
-//				((TextView) page.findViewById(WarpPricesScreen.LABEL_IDS.get(item))).setTextColor(tv.data);
-//				((TextView) page.findViewById(WarpPricesScreen.PRICE_IDS.get(item))).setTextColor(tv.data);
+//				ColorStateList color = getResources().getColorStateList(tv.resourceId);
+//				((TextView) page.findViewById(WarpPricesScreen.LABEL_IDS.get(item))).setTextColor(color);
+//				((TextView) page.findViewById(WarpPricesScreen.PRICE_IDS.get(item))).setTextColor(color);
 			}
 			else {
 				((TextView) page.findViewById(WarpPricesScreen.LABEL_IDS.get(item))).setTypeface(Typeface.DEFAULT);
 //				TypedValue tv = new TypedValue();
-//				mGameManager.getTheme().resolveAttribute(android.R.attr.textColorPrimary, tv, true);
-//				((TextView) page.findViewById(WarpPricesScreen.LABEL_IDS.get(item))).setTextColor(tv.data);
-//				((TextView) page.findViewById(WarpPricesScreen.PRICE_IDS.get(item))).setTextColor(tv.data);
+//				mGameManager.getTheme().resolveAttribute(R.attr.pressableTextColor, tv, true);
+//				ColorStateList color = getResources().getColorStateList(tv.resourceId);
+//				((TextView) page.findViewById(WarpPricesScreen.LABEL_IDS.get(item))).setTextColor(color);
+//				((TextView) page.findViewById(WarpPricesScreen.PRICE_IDS.get(item))).setTextColor(color);
 			}
 
 			int formatId = (priceDifferences? R.string.format_signedcredits : R.string.format_credits);

@@ -123,4 +123,11 @@ public class BuyScreen extends BaseScreen {
 		return ScreenType.BUY;
 	}
 
+	public static ScreenType.Creator<BuyScreen> CREATOR = new ScreenType.Creator<BuyScreen>() {
+
+		@Override
+		public BuyScreen newInstance() {
+			return BuyScreen.newInstance();
+		}
+	};
 }

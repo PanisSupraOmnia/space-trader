@@ -44,7 +44,7 @@
         <item name="endArrow">@drawable/arrow_end_black</item>
         <item name="avgPriceListBackground">?selectableItemBackground</item>
 
-        <item name="dialogLayout">@layout/dialog_layout_holo</item>
+        <item name="dialogLayout">@layout/dialog_layout_material</item>
         <item name="dialogTitleTextStyle">@style/TextAppearance.DialogWindowTitle.Material</item>
         <item name="dialogDividerColor">?colorAccent</item>
         <item name="pressableTextColor">?android:textColorPrimary</item>
@@ -117,7 +117,7 @@
         <item name="endArrow">@drawable/arrow_end_white</item>
         <item name="avgPriceListBackground">?selectableItemBackground</item>
 
-        <item name="dialogLayout">@layout/dialog_layout_holo</item>
+        <item name="dialogLayout">@layout/dialog_layout_material</item>
         <item name="dialogTitleTextStyle">@style/TextAppearance.DialogWindowTitle.Material</item>
         <item name="dialogDividerColor">?colorAccent</item>
         <item name="pressableTextColor">?android:textColorPrimary</item>
@@ -242,7 +242,7 @@
     </style>
         
     <style name="TextAppearance.DialogWindowTitle.Material" parent="@android:style/TextAppearance.DialogWindowTitle">
-        <item name="android:textColor">?colorAccent</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
         <item name="android:textSize">22sp</item>
     </style>
 

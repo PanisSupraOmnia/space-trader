@@ -39,6 +39,8 @@
             android:layout_gravity="center"
             android:layout_marginLeft="16dip"
             android:layout_marginRight="16dip"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
             android:minHeight="@dimen/alert_dialog_title_height" >
 
             <ImageButton
@@ -61,7 +63,8 @@
                 android:layout_toStartOf="@id/alertHelp"
                 android:ellipsize="end"
                 android:gravity="start|center_vertical"
-                android:singleLine="true"
+                android:maxLines="2"
+                android:singleLine="false"
                 android:textAppearance="?attr/dialogTitleTextStyle" />
         </RelativeLayout>
 

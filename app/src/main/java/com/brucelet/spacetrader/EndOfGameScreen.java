@@ -64,4 +64,12 @@ public class EndOfGameScreen extends BaseScreen {
 		return ScreenType.ENDGAME;
 	}
 
+	public static ScreenType.Creator<EndOfGameScreen> CREATOR = new ScreenType.Creator<EndOfGameScreen>() {
+
+		@Override
+		public EndOfGameScreen newInstance() {
+			return EndOfGameScreen.newInstance();
+		}
+	};
+
 }

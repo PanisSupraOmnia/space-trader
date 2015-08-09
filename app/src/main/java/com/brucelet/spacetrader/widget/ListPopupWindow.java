@@ -1625,9 +1625,26 @@ public class ListPopupWindow {
 			performItemClick(child, position, id);
 		}
 
+		private View mSelectedChild = null; // XXX stores the selected child view so we can call setPressed() on it or its children
+
 		private void clearPressedItem() {
 			mDrawsInPressedState = false;
 			setPressed(false);
+
+			// XXX
+			// For reasons which remain unclear, the pressed text color will only change in Palm
+			// theme if we explicity call setPressed() on all children, rather than call it on the
+			// parent and use the duplicateParentState attribute.
+			if (mSelectedChild instanceof ViewGroup) {
+				ViewGroup childRoot = (ViewGroup) mSelectedChild;
+				for (int i = 0, n = childRoot.getChildCount(); i < n; i++) {
+					View subChild = childRoot.getChildAt(i);
+					subChild.setPressed(false);
+				}
+			}
+			mSelectedChild = null;
+			// XXX
+
 			// This will call through to updateSelectorState()
 			drawableStateChanged();
 
@@ -1644,7 +1661,27 @@ public class ListPopupWindow {
 			// the children. This will ensure the selector actually gets drawn.
 			setPressed(true);
 			layoutChildren();
-//			child.setPressed(true); // XXX added child.setPressed() call but it doesn't appear to work
+
+			// XXX
+			// For reasons which remain unclear, the pressed text color will only change in Palm
+			// theme if we explicity call setPressed() on all children, rather than call it on the
+			// parent and use the duplicateParentState attribute.
+			if (mSelectedChild instanceof ViewGroup && mSelectedChild != child) {
+				ViewGroup childRoot = (ViewGroup) mSelectedChild;
+				for (int i = 0, n = childRoot.getChildCount(); i < n; i++) {
+					View subChild = childRoot.getChildAt(i);
+					subChild.setPressed(false);
+				}
+			}
+			if (child instanceof ViewGroup) {
+				ViewGroup childRoot = (ViewGroup) child;
+				for (int i = 0, n = childRoot.getChildCount(); i < n; i++) {
+					View subChild = childRoot.getChildAt(i);
+					subChild.setPressed(true);
+				}
+			}
+			mSelectedChild = child;
+			// XXX
 
 			// Ensure that keyboard focus starts from the last touched position.
 			setSelection(position);

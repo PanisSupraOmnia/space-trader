@@ -104,7 +104,7 @@ public class EncounterScreen extends BaseScreen {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 //		if (item.getItemId() == R.id.encounter_help) {
-//			getGameManager().showDialogFragment(HelpDialog.newInstance(getHelpTextResId()));
+//			getGameManager().showDialogFragment(HelpDialog.creator(getHelpTextResId()));
 //			return true;
 //		}
 		return super.onOptionsItemSelected(item);
@@ -152,6 +152,14 @@ public class EncounterScreen extends BaseScreen {
 	public ScreenType getType() {
 		return ScreenType.ENCOUNTER;
 	}
+
+	public static ScreenType.Creator<EncounterScreen> CREATOR = new ScreenType.Creator<EncounterScreen>() {
+
+		@Override
+		public EncounterScreen newInstance() {
+			return EncounterScreen.newInstance();
+		}
+	};
 
 
 }

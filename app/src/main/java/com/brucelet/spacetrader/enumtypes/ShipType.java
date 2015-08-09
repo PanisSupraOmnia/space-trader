@@ -71,7 +71,7 @@ public enum ShipType implements XmlString, Purchasable {
 	public final int shieldMin;		// Minimum level for shield display
 	public final int shieldMax;		// Maximum level for shield display
 	
-	private ShipType(
+	ShipType(
 			int resId,
 			int cargoBays,
 			int weaponSlots,
@@ -79,7 +79,7 @@ public enum ShipType implements XmlString, Purchasable {
 			int gadgetSlots,
 			int crewQuarters,
 			int fuelTanks,
-			int minTechLevel, 
+			int minTechLevel,
 			int costOfFuel,
 			int price,
 			int bounty,
@@ -95,7 +95,7 @@ public enum ShipType implements XmlString, Purchasable {
 			int damageMax,
 			int shieldMin,
 			int shieldMax
-			) {
+	) {
 		this.resId = resId;
 		this.cargoBays = cargoBays;
 		this.weaponSlots = weaponSlots;

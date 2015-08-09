@@ -23,6 +23,7 @@ package com.brucelet.spacetrader;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -98,7 +99,7 @@ public class WarpScreen extends BaseScreen {
 		}
 
 		@Override
-		public boolean onTouchEvent(MotionEvent event) {
+		public boolean onTouchEvent(@NonNull MotionEvent event) {
 			return mGestureDetector.onTouchEvent(event) | super.onTouchEvent(event);
 		}
 	}
@@ -117,4 +118,12 @@ public class WarpScreen extends BaseScreen {
 	public ScreenType getType() {
 		return ScreenType.WARP;
 	}
+
+	public static ScreenType.Creator<WarpScreen> CREATOR = new ScreenType.Creator<WarpScreen>() {
+
+		@Override
+		public WarpScreen newInstance() {
+			return WarpScreen.newInstance();
+		}
+	};
 }

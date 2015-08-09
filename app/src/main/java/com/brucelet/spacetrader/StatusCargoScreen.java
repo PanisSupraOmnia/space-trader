@@ -78,4 +78,12 @@ public class StatusCargoScreen extends BaseScreen {
 	public ScreenType getType() {
 		return ScreenType.CARGO;
 	}
+
+	public static ScreenType.Creator<StatusCargoScreen> CREATOR = new ScreenType.Creator<StatusCargoScreen>() {
+
+		@Override
+		public StatusCargoScreen newInstance() {
+			return StatusCargoScreen.newInstance();
+		}
+	};
 }

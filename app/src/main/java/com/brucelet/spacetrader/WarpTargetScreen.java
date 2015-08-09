@@ -132,4 +132,12 @@ public class WarpTargetScreen extends WarpSubScreen {
 		
 	}
 
+	public static ScreenType.Creator<WarpTargetScreen> CREATOR = new ScreenType.Creator<WarpTargetScreen>() {
+
+		@Override
+		public WarpTargetScreen newInstance() {
+			return WarpTargetScreen.newInstance();
+		}
+	};
+
 }

@@ -45,7 +45,7 @@ public class AboutDialog extends BaseDialog {
 		
 		// Link the play store button, or hide it if we don't have the store installed.
 		Intent intent = new Intent(Intent.ACTION_VIEW);
-		intent.setData(Uri.parse("market://details?id=com.example.android"));
+		intent.setData(Uri.parse("market://details?id=com.brucelet.spacetrader"));
 		if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
 			((TextView) view.findViewById(R.id.dialog_about_store)).setMovementMethod(LinkMovementMethod.getInstance());
 		} else {

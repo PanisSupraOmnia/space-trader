@@ -42,7 +42,7 @@ public enum Gadget implements XmlString, Purchasable {
 	public final TechLevel techLevel;
 	public final int chance; // Chance that this is fitted in a slot
 	
-	private Gadget(int resId, int price, int techLevel, int chance) {
+	Gadget(int resId, int price, int techLevel, int chance) {
 		this.resId = resId;
 		this.price = price;
 		

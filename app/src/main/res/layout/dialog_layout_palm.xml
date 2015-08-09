@@ -39,7 +39,9 @@
             android:layout_gravity="center"
             android:layout_marginLeft="16dip"
             android:layout_marginRight="16dip"
-            android:minHeight="@dimen/alert_dialog_title_height" >
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:minHeight="48dp" >
 
             <ImageButton
                 android:id="@+id/alertHelp"
@@ -52,6 +54,18 @@
                 android:contentDescription="@string/dialog_titlehelp"
                 android:src="?attr/infoIconDialog" />
 
+
+            <ImageButton
+                android:id="@+id/alertHelpDummy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:src="?attr/infoIconDialog"
+                android:visibility="invisible"/>
+
             <TextView
                 android:id="@+id/alertTitle"
                 android:layout_width="match_parent"
@@ -59,17 +73,15 @@
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@id/alertHelp"
                 android:layout_toStartOf="@id/alertHelp"
+                android:layout_toRightOf="@id/alertHelpDummy"
+                android:layout_toEndOf="@id/alertHelpDummy"
                 android:ellipsize="end"
-                android:gravity="start|center_vertical"
-                android:singleLine="true"
+                android:gravity="center_horizontal|center_vertical"
+                android:maxLines="2"
+                android:singleLine="false"
+                android:textSize="20sp"
                 android:textAppearance="?attr/dialogTitleTextStyle" />
         </RelativeLayout>
-
-        <View
-            android:id="@+id/titleDivider"
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:background="@null" />
     </LinearLayout>
 
     <FrameLayout
@@ -95,11 +107,6 @@
         android:minHeight="@dimen/alert_dialog_button_bar_height"
         android:orientation="vertical" >
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:background="@null" />
-
         <LinearLayout
             android:id="@+id/buttons"
             style="?attr/dialogButtonBarStyle"
@@ -119,13 +126,6 @@
                 android:maxLines="2"
                 android:visibility="gone"/>
 
-            <View
-                android:id="@+id/dividerNegative"
-                android:layout_width="0dip"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:visibility="gone" />
-
             <Button
                 android:id="@+id/neutral"
                 style="?dialogButtonStyle"
@@ -133,13 +133,6 @@
                 android:layout_height="wrap_content"
                 android:minWidth="75dp"
                 android:maxLines="2"
-                android:visibility="gone" />
-
-            <View
-                android:id="@+id/dividerPositive"
-                android:layout_width="0dip"
-                android:layout_height="match_parent"
-                android:background="@null"
                 android:visibility="gone" />
 
             <Button

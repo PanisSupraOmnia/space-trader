@@ -43,7 +43,7 @@ public enum SpecialResources implements XmlString {
 	
 	private final int resId;
 	
-	private SpecialResources(int resId) {
+	SpecialResources(int resId) {
 		this.resId = resId;
 	}
 	

@@ -27,8 +27,9 @@ import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AppCompatDialog;
+import android.support.v4.view.ViewCompat;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
@@ -69,11 +70,10 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 		TypedValue tv = new TypedValue();
 		TypedArray ta;
 
-//		getActivity().getTheme().resolveAttribute(R.attr.dialogLayout, tv, true);
-//		int layoutRes = tv.resourceId;
-		int layoutRes = R.layout.dialog_layout_holo;
+		getActivity().getTheme().resolveAttribute(R.attr.dialogLayout, tv, true);
+		int layoutRes = tv.resourceId;
 
-		View root = inflater.inflate(layoutRes, container, false);
+		final View root = inflater.inflate(layoutRes, container, false);
 
 		View topPanel = root.findViewById(R.id.topPanel);
 		View contentPanel = root.findViewById(R.id.contentPanel);
@@ -87,7 +87,7 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 		buttonPanel.setBackgroundResource(ta.getResourceId(R.styleable.dialog_bottom, 0));
 		ta.recycle();
 		
-		ViewGroup content = (ViewGroup) contentPanel.findViewById(R.id.content);
+		final ViewGroup content = (ViewGroup) contentPanel.findViewById(R.id.content);
 		View message = inflater.inflate(R.layout.dialog_message, content, false);
 		
 		Builder builder = new Builder(getActivity());
@@ -115,12 +115,28 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 		boolean showNeu = builder.mNeutralButton != null && builder.mNeutralButton.length() > 0;
 		
 		if (showPos && (showNeu || showNeg)) {
-			root.findViewById(R.id.dividerPositive).setVisibility(View.VISIBLE);
+			View view = root.findViewById(R.id.dividerPositive);
+			if (view != null) view.setVisibility(View.VISIBLE);
 		}
 		if (showNeg && showNeu) {
-			root.findViewById(R.id.dividerNegative).setVisibility(View.VISIBLE);
+			View view = root.findViewById(R.id.dividerNegative);
+			if (view != null) view.setVisibility(View.VISIBLE);
 		}
-		
+		// NB we do this asynchronously because otherwise canScrollVertically() always returns false.
+		content.post(new Runnable() {
+			@Override
+			public void run() {
+				View contentView = content.getChildAt(0);
+				if (ViewCompat.canScrollVertically(contentView, 1)) {
+					View dividerTop = root.findViewById(R.id.scrollDividerTop);
+					View dividerBottom = root.findViewById(R.id.scrollDividerBottom);
+					if (dividerTop != null) dividerTop.setVisibility(View.VISIBLE);
+					if (dividerBottom != null) dividerBottom.setVisibility(View.VISIBLE);
+				}
+
+			}
+		});
+
 		if (showPos) {
 			pos.setVisibility(View.VISIBLE);
 			pos.setText(builder.mPositiveButton);
@@ -193,6 +209,20 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 		return root;
 	}
 
+//	@Override
+//	public void onViewCreated(View view, Bundle savedInstanceState) {
+//		super.onViewCreated(view, savedInstanceState);
+//
+//		ViewGroup content = (ViewGroup) view.findViewById(R.id.content);
+//		View contentView = content.getChildAt(0);
+//		if (ViewCompat.canScrollVertically(contentView, 1)) {
+//			View dividerTop = view.findViewById(R.id.scrollDividerTop);
+//			View dividerBottom = view.findViewById(R.id.scrollDividerBottom);
+//			if (dividerTop != null) dividerTop.setVisibility(View.VISIBLE);
+//			if (dividerBottom != null) dividerBottom.setVisibility(View.VISIBLE);
+//		}
+//	}
+
 	@Override
 	public void onAttach(Activity activity) {
 		if (!(activity instanceof MainActivity)) {
@@ -220,8 +250,9 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 		getGameManager().finishMenuActionMode();
 		onRefreshDialog();
 	}
-	
+
 	@Override
+	@NonNull
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
 		TypedValue tv = new TypedValue();
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB && getActivity().getTheme().resolveAttribute(android.R.attr.dialogTheme, tv, true)) {

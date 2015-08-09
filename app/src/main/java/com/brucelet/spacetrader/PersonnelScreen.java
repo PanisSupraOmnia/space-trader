@@ -75,5 +75,13 @@ public class PersonnelScreen extends BaseScreen {
 	public ScreenType getType() {
 		return ScreenType.PERSONNEL;
 	}
+
+	public static ScreenType.Creator<PersonnelScreen> CREATOR = new ScreenType.Creator<PersonnelScreen>() {
+
+		@Override
+		public PersonnelScreen newInstance() {
+			return PersonnelScreen.newInstance();
+		}
+	};
 	
 }

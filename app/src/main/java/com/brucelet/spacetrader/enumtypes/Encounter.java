@@ -23,13 +23,13 @@ package com.brucelet.spacetrader.enumtypes;
 
 public interface Encounter {
 
-	public Opponent opponentType();
-	public EncounterButton button(int which);
-	public OpponentAction action();
+	Opponent opponentType();
+	EncounterButton button(int which);
+	OpponentAction action();
 	
 	// Enum methods specified in interface so they can be accessed by interface types.
-	public int ordinal();
-	public String name();
+	int ordinal();
+	String name();
 
 	enum Police implements Encounter {
 		INSPECTION( // Police asks to submit for inspection

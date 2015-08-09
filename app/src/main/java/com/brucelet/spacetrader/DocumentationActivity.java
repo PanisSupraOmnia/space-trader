@@ -22,6 +22,7 @@ package com.brucelet.spacetrader;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -105,7 +106,7 @@ public class DocumentationActivity extends AppCompatActivity implements View.OnC
 	}
 
 	@Override
-	public void onRestoreInstanceState(Bundle savedInstanceState) {
+	public void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
 		super.onRestoreInstanceState(savedInstanceState);
 
 		getWebView().scrollTo(0,savedInstanceState.getInt("scroll"));

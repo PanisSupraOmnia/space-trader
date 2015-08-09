@@ -20,11 +20,8 @@
  */
 package com.brucelet.spacetrader;
 
-import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
 
 import com.brucelet.spacetrader.datatypes.GameState;
 
@@ -113,7 +110,7 @@ public abstract class WarpSubScreen extends BaseScreen implements ViewPager.OnPa
 			
 			adapter = createPagerAdapter();
 			
-			pager.setOnPageChangeListener(this);
+			pager.addOnPageChangeListener(this);
 			pager.setOffscreenPageLimit(2);
 			
 			adapter.instantiateItem(pager, 0);

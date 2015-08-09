@@ -23,6 +23,7 @@ package com.brucelet.spacetrader;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.content.res.ResourcesCompat;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
@@ -223,7 +224,7 @@ public class ChartScreen extends BaseScreen {
 		}
 
 		@Override
-		public boolean onTouchEvent(MotionEvent event) {
+		public boolean onTouchEvent(@NonNull MotionEvent event) {
 			return mScaleGestureDetector.onTouchEvent(event) | mGestureDetector.onTouchEvent(event) | super.onTouchEvent(event);
 		}
 		
@@ -238,5 +239,13 @@ public class ChartScreen extends BaseScreen {
 	public ScreenType getType() {
 		return ScreenType.CHART;
 	}
+
+	public static ScreenType.Creator<ChartScreen> CREATOR = new ScreenType.Creator<ChartScreen>() {
+
+		@Override
+		public ChartScreen newInstance() {
+			return ChartScreen.newInstance();
+		}
+	};
 	
 }

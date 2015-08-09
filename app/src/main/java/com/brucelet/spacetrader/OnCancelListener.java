@@ -21,5 +21,5 @@
 package com.brucelet.spacetrader;
 
 public interface OnCancelListener {
-	public void onCancel();
+	void onCancel();
 }

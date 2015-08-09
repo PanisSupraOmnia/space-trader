@@ -83,5 +83,13 @@ public class InfoScreen extends BaseScreen {
 		return ScreenType.INFO;
 	}
 
+	public static ScreenType.Creator<InfoScreen> CREATOR = new ScreenType.Creator<InfoScreen>() {
+
+		@Override
+		public InfoScreen newInstance() {
+			return InfoScreen.newInstance();
+		}
+	};
+
 
 }

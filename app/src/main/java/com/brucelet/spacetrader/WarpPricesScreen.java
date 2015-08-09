@@ -188,4 +188,12 @@ public class WarpPricesScreen extends WarpSubScreen {
 		
 	}
 
+	public static ScreenType.Creator<WarpPricesScreen> CREATOR = new ScreenType.Creator<WarpPricesScreen>() {
+
+		@Override
+		public WarpPricesScreen newInstance() {
+			return WarpPricesScreen.newInstance();
+		}
+	};
+
 }

@@ -1,9 +1,7 @@
 package com.brucelet.spacetrader.widget;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Typeface;
-import android.os.Build;
 //import android.support.v7.widget.ListPopupWindow;
 //import android.widget.ListPopupWindow;
 import android.view.KeyEvent;
@@ -23,7 +21,7 @@ import com.brucelet.spacetrader.R;
 import java.util.ArrayList;
 import java.util.List;
 
-@TargetApi(Build.VERSION_CODES.KITKAT)
+//@TargetApi(Build.VERSION_CODES.KITKAT)
 public class MenuDropDownWindow extends ListPopupWindow implements View.OnKeyListener{
 	private OnDropDownItemClickListener mListener;
 	private Menu mMenu;

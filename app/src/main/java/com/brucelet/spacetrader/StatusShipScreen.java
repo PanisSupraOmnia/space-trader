@@ -105,4 +105,12 @@ public class StatusShipScreen extends BaseScreen {
 		return ScreenType.SHIP;
 	}
 
+	public static ScreenType.Creator<StatusShipScreen> CREATOR = new ScreenType.Creator<StatusShipScreen>() {
+
+		@Override
+		public StatusShipScreen newInstance() {
+			return StatusShipScreen.newInstance();
+		}
+	};
+
 }

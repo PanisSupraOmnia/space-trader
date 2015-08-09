@@ -37,7 +37,7 @@ public enum ActivityLevel implements XmlString {
 
 	private final int resId;
 
-	private ActivityLevel(int resId) {
+	ActivityLevel(int resId) {
 		this.resId = resId;
 	}
 	

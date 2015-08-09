@@ -53,7 +53,7 @@ public enum PoliceRecord implements XmlString {
 	private final int resId;
 	public final int score;
 	
-	private PoliceRecord(int resId, int score) {
+	PoliceRecord(int resId, int score) {
 		this.resId = resId;
 		this.score = score;
 	}

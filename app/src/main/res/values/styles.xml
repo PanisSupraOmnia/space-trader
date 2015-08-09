@@ -209,7 +209,7 @@
         <item name="strokeColor">@color/stroke_palm</item>
         <item name="startArrow">@drawable/arrow_start_palm</item>
         <item name="endArrow">@drawable/arrow_end_palm</item>
-        <item name="avgPriceListBackground">@null</item>
+        <item name="avgPriceListBackground">?selectableItemBackground</item>
         <item name="infoIconEncounter">@drawable/info_white</item>
         <item name="infoIconDialog">@drawable/info_white</item>
         <item name="dialogTitleTextStyle">@style/TextAppearance.DialogWindowTitle.Palm</item>

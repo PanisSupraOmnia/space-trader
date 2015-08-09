@@ -40,7 +40,7 @@ public enum Status implements XmlString {
 	public final int localHeadlineId;
 	public final int remoteHeadlineId;
 	
-	private Status(int resId, int localHeadlineId, int remoteHeadlineId) {
+	Status(int resId, int localHeadlineId, int remoteHeadlineId) {
 		this.resId = resId;
 		this.localHeadlineId = localHeadlineId;
 		this.remoteHeadlineId = remoteHeadlineId;

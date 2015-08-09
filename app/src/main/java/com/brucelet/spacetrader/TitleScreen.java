@@ -69,4 +69,12 @@ public class TitleScreen extends BaseScreen {
 		return ScreenType.TITLE;
 	}
 
+	public static ScreenType.Creator<TitleScreen> CREATOR = new ScreenType.Creator<TitleScreen>() {
+
+		@Override
+		public TitleScreen newInstance() {
+			return TitleScreen.newInstance();
+		}
+	};
+
 }

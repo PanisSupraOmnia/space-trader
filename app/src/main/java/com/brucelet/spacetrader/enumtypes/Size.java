@@ -35,7 +35,7 @@ public enum Size implements XmlString {
 	
 	private final int resId;
 
-	private Size(int resId) {
+	Size(int resId) {
 		this.resId = resId;
 	}
 	

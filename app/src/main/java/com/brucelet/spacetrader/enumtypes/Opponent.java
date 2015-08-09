@@ -43,7 +43,7 @@ public enum Opponent { // Doesn't implement XmlString to avoid ambiguity between
 	public final int updateResId;
 	public final int iconId;
 	
-	private Opponent(int initResId, int updateResId, int iconId) {
+	Opponent(int initResId, int updateResId, int iconId) {
 		this.initResId = initResId;
 		this.updateResId = updateResId;
 		this.iconId = iconId;

@@ -40,7 +40,7 @@ public enum Reputation implements XmlString {
 	private final int resId;
 	public final int score;
 	
-	private Reputation(int resId, int minScore) {
+	Reputation(int resId, int minScore) {
 		this.resId = resId;
 		this.score = minScore;
 	}

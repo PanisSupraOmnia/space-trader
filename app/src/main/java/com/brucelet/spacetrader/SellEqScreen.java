@@ -180,4 +180,12 @@ public class SellEqScreen extends BaseScreen {
 		return ScreenType.SELLEQ;
 	}
 
+	public static ScreenType.Creator<SellEqScreen> CREATOR = new ScreenType.Creator<SellEqScreen>() {
+
+		@Override
+		public SellEqScreen newInstance() {
+			return SellEqScreen.newInstance();
+		}
+	};
+
 }

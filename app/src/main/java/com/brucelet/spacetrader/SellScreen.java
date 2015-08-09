@@ -136,4 +136,12 @@ public class SellScreen extends BaseScreen {
 	public ScreenType getType() {
 		return ScreenType.SELL;
 	}
+
+	public static ScreenType.Creator<SellScreen> CREATOR = new ScreenType.Creator<SellScreen>() {
+
+		@Override
+		public SellScreen newInstance() {
+			return SellScreen.newInstance();
+		}
+	};
 }

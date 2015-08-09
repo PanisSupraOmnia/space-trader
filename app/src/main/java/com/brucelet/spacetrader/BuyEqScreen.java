@@ -109,4 +109,12 @@ public class BuyEqScreen extends BaseScreen {
 		return ScreenType.BUYEQ;
 	}
 
+	public static ScreenType.Creator<BuyEqScreen> CREATOR = new ScreenType.Creator<BuyEqScreen>() {
+
+		@Override
+		public BuyEqScreen newInstance() {
+			return BuyEqScreen.newInstance();
+		}
+	};
+
 }

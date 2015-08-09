@@ -81,10 +81,10 @@ public class InputDialog extends BaseDialog implements TextView.OnEditorActionLi
 		String message = "";
 		if (mArgs != null) {
 			if (mTitleId >= 0) builder.setTitle(mTitleId, mArgs);
-			if (mMessageId >= 0) message = getResources().getString(mMessageId, mArgs);//builder.setMessage(mMessageId, mArgs);
+			if (mMessageId >= 0) message = getResources().getString(mMessageId, mArgs);//creator.setMessage(mMessageId, mArgs);
 		} else {
 			if (mTitleId >= 0) builder.setTitle(mTitleId);
-			if (mMessageId >= 0) message = getResources().getString(mMessageId);//builder.setMessage(mMessageId); 
+			if (mMessageId >= 0) message = getResources().getString(mMessageId);//creator.setMessage(mMessageId);
 		}
 		if (mPositiveId >= 0) builder.setPositiveButton(mPositiveId);
 		if (mNeutralId >= 0) builder.setNeutralButton(mNeutralId);

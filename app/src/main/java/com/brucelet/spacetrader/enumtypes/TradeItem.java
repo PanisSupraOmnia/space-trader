@@ -56,12 +56,12 @@ public enum TradeItem implements XmlString {
 	public final int roundOff;						// Roundoff price for trade in orbit
 	
 	
-	private TradeItem(
+	TradeItem(
 			int resId,
 			int techProduction,
 			int techUsage,
 			int techTopProduction,
-			int priceLowTech,			
+			int priceLowTech,
 			int priceInc,
 			int variance,
 			Status doublePriceStatus,
@@ -70,7 +70,7 @@ public enum TradeItem implements XmlString {
 			int minTradePrice,
 			int maxTradePrice,
 			int roundOff
-			) {
+	) {
 		this.resId = resId;
 		this.techProduction = TechLevel.values()[techProduction];
 		this.techUsage = TechLevel.values()[techUsage];

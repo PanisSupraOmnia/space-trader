@@ -35,8 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@id/screen_warp_target_pagerspacer"
-                android:layout_alignTop="@id/screen_warp_target_pagerspacer"
-                android:paddingTop="@dimen/activity_vertical_margin" />
+                android:layout_alignTop="@id/screen_warp_target_pagerspacer" />
 
         </RelativeLayout>
         

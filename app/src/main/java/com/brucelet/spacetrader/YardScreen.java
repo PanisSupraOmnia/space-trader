@@ -78,4 +78,12 @@ public class YardScreen extends BaseScreen {
 		return ScreenType.YARD;
 	}
 
+	public static ScreenType.Creator<YardScreen> CREATOR = new ScreenType.Creator<YardScreen>() {
+
+		@Override
+		public YardScreen newInstance() {
+			return YardScreen.newInstance();
+		}
+	};
+
 }

@@ -79,4 +79,12 @@ public class StatusQuestsScreen extends BaseScreen {
 		return ScreenType.QUESTS;
 	}
 
+	public static ScreenType.Creator<StatusQuestsScreen> CREATOR = new ScreenType.Creator<StatusQuestsScreen>() {
+
+		@Override
+		public StatusQuestsScreen newInstance() {
+			return StatusQuestsScreen.newInstance();
+		}
+	};
+
 }

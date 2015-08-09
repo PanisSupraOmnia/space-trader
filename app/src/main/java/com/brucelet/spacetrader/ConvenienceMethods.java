@@ -37,20 +37,20 @@ interface ConvenienceMethods {
 	 * Access the {@link GameManager} interface this fragment is attached to.
 	 * @return {@link Fragment#getActivity()} cast as a {@link GameManager}.
 	 */
-	public MainActivity getGameManager();
+	MainActivity getGameManager();
 	
 	/**
 	 * Convenience method to call getGameState() on the attached {@link GameManager}
 	 * @return {@link GameManager#getGameState()} called on {@link getGameManager()}
 	 */
-	public GameState getGameState();
+	GameState getGameState();
 	
 	/**
 	 * Convenience method for setting text of a TextView with the specified id
 	 * @param viewId The id of the TextView to update
 	 * @param textId The string resource id of the text to place in that view
 	 */
-	public void setViewTextById(int viewId, int textId);
+	void setViewTextById(int viewId, int textId);
 
 	/**
 	 * Convenience method for setting text of a TextView with the specified id
@@ -60,21 +60,21 @@ interface ConvenienceMethods {
 	 * the use of {@link XmlString} enums in place of String objects by calling
 	 * toXmlString() instead of toString().
 	 */
-	public void setViewTextById(int viewId, int textId, Object... args);
+	void setViewTextById(int viewId, int textId, Object... args);
 	
 	/**
 	 * Convenience method for setting text of a TextView with the specified id
 	 * @param viewId The id of the TextView to update
 	 * @param text The text to place in that view
 	 */
-	public void setViewTextById(int viewId, CharSequence text);
+	void setViewTextById(int viewId, CharSequence text);
 	
 	/**
 	 * Convenience method for setting text of a TextView with the specified id
 	 * @param viewId The id of the TextView to update
 	 * @param item An XmlString enum to use as content for the TextView
 	 */
-	public void setViewTextById(int viewId, XmlString item);
+	void setViewTextById(int viewId, XmlString item);
 	
 	/**
 	 * Convenience method for setting visibility of a View with the specified id.
@@ -83,12 +83,12 @@ interface ConvenienceMethods {
 	 * it is false the View will be set to GONE.
 	 * @param viewId The id of the View to update
 	 */
-	public void setViewVisibilityById(int viewId, boolean visOrInvis, boolean invisOrGone);
+	void setViewVisibilityById(int viewId, boolean visOrInvis, boolean invisOrGone);
 	
 	/**
 	 * Convenience method for setting visibility of a View with the specified id
 	 * @param viewId The id of the View to update
 	 * @param visOrInvis View visibility will be set to VISIBLE if this is true and INVISIBLE otherwise
 	 */
-	public void setViewVisibilityById(int viewId, boolean visOrInvis);
+	void setViewVisibilityById(int viewId, boolean visOrInvis);
 }

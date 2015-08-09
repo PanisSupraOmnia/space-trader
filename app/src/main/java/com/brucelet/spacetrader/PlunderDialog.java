@@ -62,9 +62,7 @@ public class PlunderDialog extends BaseDialog implements OnSingleClickListener {
 		ALL_IDS = Collections.unmodifiableMap(ids);
 	}
 	
-//	private int narcs;
-	
-	public static PlunderDialog newInstance(int narcs) {
+	public static PlunderDialog newInstance() {
 		PlunderDialog dialog = new PlunderDialog();
 		return dialog;
 	}

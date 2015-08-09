@@ -42,7 +42,7 @@ public enum Shield implements XmlString, XmlString.Plural, Purchasable {
 	
 	public final int pluralId;
 	
-	private Shield(int resId, int power, int price, int techLevel, int chance, int pluralId) {
+	Shield(int resId, int power, int price, int techLevel, int chance, int pluralId) {
 		this.resId = resId;
 		this.pluralId = pluralId;
 		

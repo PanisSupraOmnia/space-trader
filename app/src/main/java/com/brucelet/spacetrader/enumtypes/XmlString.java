@@ -25,11 +25,11 @@ import android.content.res.Resources;
 public interface XmlString {
 	String toXmlString(Resources res);
 
-	public interface Plural {
+	interface Plural {
 		String toXmlPluralString(int amount, Resources res);
 	}
 
-	public static class Static {
+	class Static {
 
 		public static void processXmlArguements(Object[] args, Resources res) {
 			for (int i = 0; i < args.length; i++) {

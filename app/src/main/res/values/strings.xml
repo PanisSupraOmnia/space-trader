@@ -694,7 +694,7 @@
 
     <string name="dialog_about">About Space Trader</string>
     <string name="dialog_about_title">%1$s %2$s</string>
-    <string name="dialog_about_author">Copyright \u00a9 2014 by Russell Wolf</string>
+    <string name="dialog_about_author">Copyright \u00a9 2014\u20132015 by Russell Wolf</string>
     <string name="dialog_about_author2">Palm OS version copyright \u00a9 2000\u20132002 by Pieter Spronck</string>
     <string name="dialog_about_images">Pictures based on originals \u00a9 2000 by Alexander Lawrence</string>
     <string name="dialog_about_license">This game is freeware under a GNU General Public License</string>
@@ -1133,9 +1133,9 @@
         \nIf you fly a ship with extra crew quarters, you can hire mercenaries. These travel with you, for a certain sum of credits per day. The net effect of having a mercenary on board is that if the mercenary is better in a certain skill than you are, he will take over the tasks for which that skill is needed. So, if you are lacking a certain skill, a mercenary can compensate for that.
         \n
         \nAnother way to increase certain skills is to buy gadgets. Especially, a navigating system increases your pilot skill, an auto-repair system increases your engineer skill, and a targeting system increases your fighter skill.</string>
-    <string name="help_acknowledgements">This Android version of \"Space Trader\" was created by me, Russell Wolf, beginning in late 2013 and finishing in September 2014.
+    <string name="help_acknowledgements">This Android version of \"Space Trader\" was created by me, Russell Wolf, beginning in late 2013 and initially released in September 2014.
         \n
-        \nI wrote this using the Android Development Tools plugin for Eclipse. Nearly the entirety of the game logic was ported directly from the original Palm OS source code, although numerous things needed to be structured differently on Android than on Palm. I also occasionally consulted the source of Jay French\'s Space Trader for Windows port.
+        \nI wrote this using the Android Development Tools plugin for Eclipse, although the codebase has since been ported to Android Studio. Nearly the entirety of the game logic was ported directly from the original Palm OS source code, although numerous things needed to be structured differently on Android than on Palm. I also occasionally consulted the source of Jay French\'s Space Trader for Windows port.
         \n
         \nI made an effort to keep the look and feel of the Android version as true to the original as possible. While I did include some minor enhancements and bugfixes, hopefully it feels very familiar to anyone who remembers the Palm version.
         \n
@@ -1368,7 +1368,7 @@
         \nGet the right version for your Palm.</string>
     <string name="help_credits">Space Trader for Android
         \n
-        \nCopyright \u00a9 2014 by Russell Wolf
+        \nCopyright \u00a9 2014\u20132015 by Russell Wolf
         \n
         \nDesign, Programming, and Graphics:
         \nRussell Wolf

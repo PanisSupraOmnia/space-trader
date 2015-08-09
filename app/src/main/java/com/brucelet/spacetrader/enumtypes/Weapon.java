@@ -44,7 +44,7 @@ public enum Weapon implements XmlString, XmlString.Plural, Purchasable {
 	public final int pluralId;
 	
 	
-	private Weapon(int resId, int power, int price, int techLevel, int chance, int pluralId) {
+	Weapon(int resId, int power, int price, int techLevel, int chance, int pluralId) {
 		this.resId = resId;
 		this.pluralId = pluralId;
 		

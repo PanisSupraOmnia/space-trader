@@ -33,7 +33,7 @@ public enum Skill implements XmlString {
 	
 	private final int resId;
 	
-	private Skill(int resId) {
+	Skill(int resId) {
 		this.resId = resId;
 	}
 	

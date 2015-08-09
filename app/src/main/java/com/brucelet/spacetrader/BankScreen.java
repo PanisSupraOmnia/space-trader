@@ -75,4 +75,12 @@ public class BankScreen extends BaseScreen {
 		return ScreenType.BANK;
 	}
 
+	public static ScreenType.Creator<BankScreen> CREATOR = new ScreenType.Creator<BankScreen>() {
+
+		@Override
+		public BankScreen newInstance() {
+			return BankScreen.newInstance();
+		}
+	};
+
 }

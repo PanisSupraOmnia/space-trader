@@ -32,6 +32,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -80,7 +81,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -192,7 +192,7 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 	private MenuTouchInterceptor mMenuTouchInterceptor;
 	private boolean mDraggingMenuOpen;
 	private boolean mBeginMenuDrag;
-	private boolean mMenuLongPress;
+//	private boolean mMenuLongPress;
 	private int[] mDragCoordHelper = new int[2];
 	private MenuDropDownWindow[] mPopups = new MenuDropDownWindow[3];
 
@@ -222,6 +222,9 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 		
 		Log.d("onCreate()", "setContentView() called");
 		setContentView(R.layout.activity_main);
+
+//		// See AOSP issue 159795 at https://code.google.com/p/android/issues/detail?id=159795
+//		AppCompatActivityMenuKeyInterceptor.intercept(this);
 		
 		mToolbar = (Toolbar) findViewById(R.id.toolbar);
 		mTitleView = LayoutInflater.from(mToolbar.getContext()).inflate(R.layout.ab_title_main, mToolbar, false);
@@ -248,11 +251,13 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 					// If pointer scrolls beyond the bottom of the view, open the menu
 					float x = e2.getX();
 					float y = e2.getY();
-					if (mBeginMenuDrag && x > mTitleView.getLeft() && x < mTitleView.getRight() && y > mTitleView.getBottom()) {
+//					if (mBeginMenuDrag && x > mTitleView.getLeft() && x < mTitleView.getRight() && y > mTitleView.getBottom()) {
+					if (mBeginMenuDrag && (x > mTitleView.getRight() || y > mTitleView.getBottom())) {
 						mDraggingMenuOpen = true;
 						mBeginMenuDrag = false;
 						startMenuActionMode();
-					} else if (x < mTitleView.getLeft() || x > mTitleView.getRight() || y < mTitleView.getTop()) {
+//					} else if (x < mTitleView.getLeft() || x > mTitleView.getRight() || y < mTitleView.getTop()) {
+					} else if (x < mTitleView.getLeft() || y < mTitleView.getTop()) {
 						mBeginMenuDrag = false;
 					}
 					return false;
@@ -279,13 +284,13 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 					int titleX = mDragCoordHelper[0];
 					mMenuTouchInterceptor.getLocationOnScreen(mDragCoordHelper);
 					int menuX = mDragCoordHelper[0];
-					if (mMenuLongPress) {
-						MotionEvent upEvent = MotionEvent.obtain(event.getDownTime(), event.getEventTime(), MotionEvent.ACTION_UP, event.getX() + titleX - menuX, event.getY(), event.getMetaState());
-						mMenuTouchInterceptor.dispatchTouchToActiveView(upEvent);
-						MotionEvent downEvent = MotionEvent.obtain(event.getDownTime(), event.getEventTime(), MotionEvent.ACTION_DOWN, event.getX() + titleX - menuX, event.getY(), event.getMetaState());
-						mMenuTouchInterceptor.dispatchTouchToActiveView(downEvent);
-						mMenuLongPress = false;
-					}
+//					if (mMenuLongPress) {
+//						MotionEvent upEvent = MotionEvent.obtain(event.getDownTime(), event.getEventTime(), MotionEvent.ACTION_UP, event.getX() + titleX - menuX, event.getY(), event.getMetaState());
+//						mMenuTouchInterceptor.dispatchTouchToActiveView(upEvent);
+//						MotionEvent downEvent = MotionEvent.obtain(event.getDownTime(), event.getEventTime(), MotionEvent.ACTION_DOWN, event.getX() + titleX - menuX, event.getY(), event.getMetaState());
+//						mMenuTouchInterceptor.dispatchTouchToActiveView(downEvent);
+//						mMenuLongPress = false;
+//					}
 					MotionEvent forwardedEvent = MotionEvent.obtain(event.getDownTime(), event.getEventTime(), event.getAction(), event.getX() + titleX - menuX, event.getY(), event.getMetaState());
 					mMenuTouchInterceptor.dispatchTouchEvent(forwardedEvent);
 				}
@@ -517,7 +522,7 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 		return onOptionsItemSelectedWithId(item.getItemId());
 	}
 
-	public boolean onOptionsItemSelectedWithId(int id) {
+	private boolean onOptionsItemSelectedWithId(int id) {
 
 		Log.d("","Selecting menu item with id "+getResources().getResourceEntryName(id));
 
@@ -718,10 +723,9 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 			}
 		}
 
-		if (super.onTouchEvent(event)) return true;
+		return super.onTouchEvent(event);
 
 
-		return false;
 	}
 
 
@@ -853,14 +857,14 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 			mPopups[0] = commandDropdown;
 
 			// If we call commandDropdown,show() directly, the anchor view isn't ready yet, but this works.
-			command.post(new Runnable() {
-				@Override
-				public void run() {
-					if (!mDraggingMenuOpen) {
+			if (!mDraggingMenuOpen) {
+				command.post(new Runnable() {
+					@Override
+					public void run() {
 						commandDropdown.show();
 					}
-				}
-			});
+				});
+			}
 
 		} else {
 			command.setVisibility(View.GONE);
@@ -955,30 +959,21 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 
 	private void setCurrentScreenType(ScreenType type, boolean addToBackStack) {
 		Log.i(GameState.LOG_TAG,"Showing screen: "+type.toXmlString(getResources()));
-		
+
 		ScreenType prevType = getCurrentScreenType();
 		finishMenuActionMode();
 
-		BaseScreen next;
-		try {
-			next = type.screenClass.newInstance();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}
+		BaseScreen next = type.creator.newInstance();
 
 		FragmentManager fm = getSupportFragmentManager();
 		FragmentTransaction ft = fm.beginTransaction();
 		ft.replace(R.id.container, next, getResources().getString(type.titleId));
+//		if (type != prevType) ft.setTransition(addToBackStack? FragmentTransaction.TRANSIT_FRAGMENT_OPEN : FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
 		ft.commit();
 
 		if (addToBackStack && prevType != null && type.docked && prevType.docked && type != prevType) {
 			mBackStack.addFirst(prevType);
 			Log.d("setCurrentScreen()", "Adding " + prevType + " to back stack. Total size is " + mBackStack.size());
-			Log.v("setCurrentScreen()", Arrays.toString(mBackStack.toArray()));
 		} else if (addToBackStack && type != prevType) {
 			mBackStack.clear();
 			Log.d("setCurrentScreen()", "Clearing back stack.");
@@ -996,14 +991,14 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 	}
 
 	@Override
-	public boolean dispatchKeyEvent(KeyEvent event) {
+	public boolean dispatchKeyEvent(@NonNull KeyEvent event) {
 		int keyCode = event.getKeyCode();
-		char shortcut = event.getMatch(mShortcutKeys);
 		boolean keyDown = event.getMetaState() == 0 && event.getAction() == KeyEvent.ACTION_DOWN;
 //		boolean keyDown = event.getAction() == KeyEvent.ACTION_DOWN;
 
-		if (shortcut > 0) {
-			if (keyDown) for (int i = 0; i < mShortcutKeys.length; i++) {
+		if (getCurrentScreenType().docked && keyDown) {
+			char shortcut = event.getMatch(mShortcutKeys);
+			if (shortcut > 0) for (int i = 0; i < mShortcutKeys.length; i++) {
 				if (shortcut == mShortcutKeys[i]) {
 					setCurrentScreenType(ScreenType.values()[i]);
 					return true;
@@ -1046,16 +1041,16 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 			// Otherwise, we use default key-handling, and push through to onBackPressed().
 			break;
 			
-		case KeyEvent.KEYCODE_MENU:
-			if (getCurrentScreenType() == ScreenType.ENCOUNTER) getGameState().clearButtonAction();
-			if (keyDown) {
-				if (mActionMode == null) {
-					startMenuActionMode();
-				} else {
-					finishMenuActionMode();
-				}
-			}
-			return true;
+//		case KeyEvent.KEYCODE_MENU:
+//			if (getCurrentScreenType() == ScreenType.ENCOUNTER) getGameState().clearButtonAction();
+//			if (keyDown) {
+//				if (mActionMode == null) {
+//					startMenuActionMode();
+//				} else {
+//					finishMenuActionMode();
+//				}
+//			}
+//			return true;
 
 		}
 		return super.dispatchKeyEvent(event);
@@ -1075,7 +1070,7 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 		int s = mBackStack.size();
 		editor.putInt("backstack size", s);
 		for (int i = 0; i < s; i++) {
-			editor.putInt("backstack_"+i, mBackStack.removeFirst().ordinal());
+			editor.putInt("backstack_"+i, mBackStack.get(i).ordinal());
 		}
 		
 		mGameState.saveState(editor);
@@ -1129,7 +1124,7 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 
 		mBackStack.clear();
 		for (int i = 0, s = prefs.getInt("backstack size", 0); i < s; i++) {
-			mBackStack.addFirst(ScreenType.values()[prefs.getInt("backstack_"+i, 0)]);
+			mBackStack.add(ScreenType.values()[prefs.getInt("backstack_"+i, 0)]);
 		}
 
 		supportInvalidateOptionsMenu();
@@ -1292,7 +1287,7 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 			return false;
 		}
 		
-		return false;
+		return true;
 	}
 	
 	public void pagerClick(View view) {

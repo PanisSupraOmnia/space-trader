@@ -35,7 +35,7 @@ public enum DifficultyLevel implements XmlString, Incrementable<DifficultyLevel>
 	
 	private final int resId;
 	
-	private DifficultyLevel(int resId) {
+	DifficultyLevel(int resId) {
 		this.resId = resId;
 	}
 	

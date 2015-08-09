@@ -119,4 +119,12 @@ public class BuyShipScreen extends BaseScreen {
 		return ScreenType.BUYSHIP;
 	}
 
+	public static ScreenType.Creator<BuyShipScreen> CREATOR = new ScreenType.Creator<BuyShipScreen>() {
+
+		@Override
+		public BuyShipScreen newInstance() {
+			return BuyShipScreen.newInstance();
+		}
+	};
+
 }

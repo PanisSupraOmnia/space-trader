@@ -21,5 +21,5 @@
 package com.brucelet.spacetrader;
 
 public interface OnConfirmListener {
-	public void onConfirm();
+	void onConfirm();
 }

@@ -5,7 +5,8 @@
     android:gravity="center"
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin" >
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin" >
 
     <TextView
         android:id="@+id/screen_warp_avgprices_name"
@@ -44,13 +45,15 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
-                    android:text="@string/tradeitem_water" />
+                    android:text="@string/tradeitem_water"
+                    android:textColor="?pressableTextColor"/>
                 <TextView
                     android:id="@+id/screen_warp_avgprices_water_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true"
+                    android:textColor="?pressableTextColor" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -67,13 +70,15 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
-                    android:text="@string/tradeitem_furs" />
+                    android:text="@string/tradeitem_furs"
+                    android:textColor="?pressableTextColor" />
                 <TextView
                     android:id="@+id/screen_warp_avgprices_furs_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true"
+                    android:textColor="?pressableTextColor" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -90,13 +95,15 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
-                    android:text="@string/tradeitem_food" />
+                    android:text="@string/tradeitem_food"
+                    android:textColor="?pressableTextColor" />
                 <TextView
                     android:id="@+id/screen_warp_avgprices_food_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true"
+                    android:textColor="?pressableTextColor" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -113,13 +120,15 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
-                    android:text="@string/tradeitem_ore" />
+                    android:text="@string/tradeitem_ore"
+                    android:textColor="?pressableTextColor" />
                 <TextView
                     android:id="@+id/screen_warp_avgprices_ore_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true"
+                    android:textColor="?pressableTextColor" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -136,13 +145,15 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
-                    android:text="@string/tradeitem_games" />
+                    android:text="@string/tradeitem_games"
+                    android:textColor="?pressableTextColor" />
                 <TextView
                     android:id="@+id/screen_warp_avgprices_games_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true"
+                    android:textColor="?pressableTextColor" />
             </RelativeLayout>
 
         </LinearLayout>
@@ -168,13 +179,15 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
-                    android:text="@string/tradeitem_firearms" />
+                    android:text="@string/tradeitem_firearms"
+                    android:textColor="?pressableTextColor" />
                 <TextView
                     android:id="@+id/screen_warp_avgprices_firearms_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true"
+                    android:textColor="?pressableTextColor" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -191,13 +204,15 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
-                    android:text="@string/tradeitem_medicine" />
+                    android:text="@string/tradeitem_medicine"
+                    android:textColor="?pressableTextColor" />
                 <TextView
                     android:id="@+id/screen_warp_avgprices_medicine_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true"
+                    android:textColor="?pressableTextColor" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -214,13 +229,15 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
-                    android:text="@string/tradeitem_machinery" />
+                    android:text="@string/tradeitem_machinery"
+                    android:textColor="?pressableTextColor" />
                 <TextView
                     android:id="@+id/screen_warp_avgprices_machinery_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true"
+                    android:textColor="?pressableTextColor" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -237,13 +254,15 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
-                    android:text="@string/tradeitem_narcotics" />
+                    android:text="@string/tradeitem_narcotics"
+                    android:textColor="?pressableTextColor" />
                 <TextView
                     android:id="@+id/screen_warp_avgprices_narcotics_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true"
+                    android:textColor="?pressableTextColor" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -260,13 +279,15 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
-                    android:text="@string/tradeitem_robots" />
+                    android:text="@string/tradeitem_robots"
+                    android:textColor="?pressableTextColor" />
                 <TextView
                     android:id="@+id/screen_warp_avgprices_robots_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true"
+                    android:textColor="?pressableTextColor" />
             </RelativeLayout>
 
         </LinearLayout>
