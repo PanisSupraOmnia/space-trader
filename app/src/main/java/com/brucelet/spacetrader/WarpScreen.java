@@ -87,10 +87,8 @@ public class WarpScreen extends BaseScreen {
 		
 		@Override
 		public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-		    int width = MeasureSpec.getSize(widthMeasureSpec);
-		    int height = MeasureSpec.getSize(heightMeasureSpec);
-		    int size = width > height ? height : width;
-		    setMeasuredDimension(size, size);
+		    int size = MeasureSpec.getSize(widthMeasureSpec);
+			setMeasuredDimension(size, size);
 		}
 		
 		@Override

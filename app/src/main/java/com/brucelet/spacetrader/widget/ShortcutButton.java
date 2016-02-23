@@ -53,7 +53,11 @@ public class ShortcutButton extends Button implements View.OnLongClickListener {
 
 	public ShortcutButton(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
-		TypedArray ta = context.getTheme().obtainStyledAttributes(R.attr.actionButtonStyle,
+
+		TypedValue tv = new TypedValue();
+		context.getTheme().resolveAttribute(R.attr.actionButtonStyle, tv, true);
+		int actionButtonStyle = tv.resourceId;
+		TypedArray ta = context.getTheme().obtainStyledAttributes(actionButtonStyle,
 				new int[] {R.attr.actionMenuTextAppearance, R.attr.actionButtonMarginTop, R.attr.actionButtonMarginBottom});
 		setTextAppearance(context, ta.getResourceId(0, 0));
 		int marginTop = ta.getDimensionPixelOffset(1, 0);
@@ -102,7 +106,8 @@ public class ShortcutButton extends Button implements View.OnLongClickListener {
         Toast cheatSheet = Toast.makeText(context, mTitle, Toast.LENGTH_SHORT);
         if (midy < displayFrame.height() - statusBarPadding) {
             // Show along the top; follow action buttons
-            cheatSheet.setGravity(Gravity.TOP | GravityCompat.END, referenceX, height);
+            cheatSheet.setGravity(Gravity.TOP | GravityCompat.END, referenceX,
+					screenPos[1] + height - displayFrame.top);
         } else {
             // Show along the bottom center
             cheatSheet.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, height);

@@ -21,7 +21,6 @@ import com.brucelet.spacetrader.R;
 import java.util.ArrayList;
 import java.util.List;
 
-//@TargetApi(Build.VERSION_CODES.KITKAT)
 public class MenuDropDownWindow extends ListPopupWindow implements View.OnKeyListener{
 	private OnDropDownItemClickListener mListener;
 	private Menu mMenu;
@@ -121,13 +120,11 @@ public class MenuDropDownWindow extends ListPopupWindow implements View.OnKeyLis
 
 		private static final int DUMMY_MEASURE_SPEC = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
 
-//		private Menu mMenu;
 		private List<MenuItem> mMenuItems = new ArrayList<>();
 		private int mMaxWidth;
 		private OnWidthChangedListener mListener;
 
 		public MenuListAdapter(Context context, Menu menu, OnWidthChangedListener listener) {
-//			mMenu = menu;
 			int j = 0;
 			int currentGroupId = 0;
 			for (int i = 0, n = menu.size(); i < n; i++,j++) {
@@ -185,7 +182,13 @@ public class MenuDropDownWindow extends ListPopupWindow implements View.OnKeyLis
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-			if (getItemViewType(position) != 0) return LayoutInflater.from(parent.getContext()).inflate(R.layout.menu_dropdown_divider, parent, false);
+			if (getItemViewType(position) != 0) {
+				if (convertView == null) {
+					return LayoutInflater.from(parent.getContext()).inflate(R.layout.menu_dropdown_divider, parent, false);
+				} else {
+					return convertView;
+				}
+			}
 
 			View listItem;
 			if (convertView == null) {

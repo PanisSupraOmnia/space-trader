@@ -57,6 +57,7 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.brucelet.spacetrader.Application;
 import com.brucelet.spacetrader.BaseDialog;
 import com.brucelet.spacetrader.BaseDialog.Builder;
 import com.brucelet.spacetrader.BaseScreen;
@@ -696,7 +697,7 @@ public class GameState {
 
 		randomQuestSystems = prefs.getBoolean("randomQuestSystems", randomQuestSystems);
 		
-		developerMode = MainActivity.DEVELOPER_MODE && prefs.getBoolean("developerMode", developerMode);
+		developerMode = Application.DEVELOPER_MODE && prefs.getBoolean("developerMode", developerMode);
 
 		for (int i = 0; i < solarSystem.length; i++) {
 			solarSystem[i] = new SolarSystem(prefs, "system"+i, this);
@@ -719,6 +720,7 @@ public class GameState {
 				}
 			}
 		}
+		Log.d("loadState()", "nameCommander()="+nameCommander());
 		
 		if (prefs.contains("ship_type")) {
 			ship = new Ship(prefs, "ship", this);
@@ -854,6 +856,7 @@ public class GameState {
 
 	public String nameCommander() {
 		return commander().name;
+//		return commander() != null? commander().name : "???";
 	}
 	
 	public boolean recallScreens() {
@@ -912,7 +915,7 @@ public class GameState {
 	}
 	
 	public boolean developerMode() {
-		return MainActivity.DEVELOPER_MODE && developerMode;
+		return Application.DEVELOPER_MODE && developerMode;
 	}
 
 
@@ -1008,7 +1011,7 @@ public class GameState {
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_encounteranim)).setChecked(encounterAnim);
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_extrashortcuts)).setChecked(extraShortcuts);
 		
-		dialog.setViewVisibilityById(R.id.dialog_options_developermode, MainActivity.DEVELOPER_MODE, false);
+		dialog.setViewVisibilityById(R.id.dialog_options_developermode, Application.DEVELOPER_MODE, false);
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_developermode)).setChecked(developerMode);
 		
 		
@@ -1088,7 +1091,7 @@ public class GameState {
 		extraShortcuts = ((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_extrashortcuts)).isChecked();
 		mGameManager.refreshExtraShortcuts();
 		
-		developerMode = MainActivity.DEVELOPER_MODE && ((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_developermode)).isChecked();
+		developerMode = Application.DEVELOPER_MODE && ((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_developermode)).isChecked();
 
 		// New: Check if theme has changed
 		ThemeType theme = mGameManager.getThemeType();
@@ -10826,19 +10829,19 @@ public class GameState {
 
 		BaseScreen screen = mGameManager.getCurrentScreen();
 		if (screen == null || screen.getView() == null || screen.getType() != ScreenType.WARP) return;
-		
+
 		final float RADIUS = 8 * getResources().getDisplayMetrics().density;
 		final float SEL_CROSS = 1.5f;
 		final int TEXT_OFFSET = 2;
 		final float WORMHOLE_OFFSET = 2.5f;
 		final float ARROW_WIDTH = 1f;
 		final float ARROW_LENGTH = 6.25f;
-		
+
 		boolean l = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
 		final Drawable defaultDrawable = ResourcesCompat.getDrawable(getResources(), l? R.drawable.warpsysteml : R.drawable.warpsystem, mGameManager.getTheme());
 		final Drawable visitedDrawable = ResourcesCompat.getDrawable(getResources(), l? R.drawable.warpsystemvl : R.drawable.warpsystemv, mGameManager.getTheme());
 		final Drawable wormholeDrawable = ResourcesCompat.getDrawable(getResources(), l? R.drawable.warpsystemwl : R.drawable.warpsystemw, mGameManager.getTheme());
-		
+
 		initializePaints();
 
 		int cw = canvas.getWidth();
@@ -10997,7 +11000,7 @@ public class GameState {
 //		canvas.drawText(getResources().getString(R.string.solarsystem_iralius), x, y - TEXT_OFFSET*scale, chartText);
 //		x=cw/2;
 //		y=cw/2;
-//		Drawable d = ResourcesCompat.getDrawable(getResources(), R.drawable.warpsystemv, mGameManager.getTheme());
+//		Drawable d = ResourcesCompat.getDrawable(getResources(), R.drawable.warpsystemvl, mGameManager.getTheme());
 //		d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
 //		d.draw(canvas);
 //		x=cw/2+-15*scale;
@@ -11024,7 +11027,7 @@ public class GameState {
 //		y=cw/2+-8*scale;
 //		d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
 //		d.draw(canvas);
-//		d = ResourcesCompat.getDrawable(getResources(), R.drawable.warpsystem, mGameManager.getTheme());
+//		d = ResourcesCompat.getDrawable(getResources(), R.drawable.warpsysteml, mGameManager.getTheme());
 //		x=cw/2+-13*scale;
 //		y=cw/2+18*scale;
 //		d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
@@ -11057,7 +11060,7 @@ public class GameState {
 //		y=cw/2+-20*scale;
 //		d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
 //		d.draw(canvas);
-//		d = ResourcesCompat.getDrawable(getResources(), R.drawable.warpsystemw, mGameManager.getTheme());
+//		d = ResourcesCompat.getDrawable(getResources(), R.drawable.warpsystemwl, mGameManager.getTheme());
 //		x=cw/2+-15*scale + WORMHOLE_OFFSET*RADIUS;
 //		y=cw/2+1*scale;
 //		d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
@@ -11242,7 +11245,7 @@ public class GameState {
 //		canvas.drawLine((18f - GALAXYWIDTH/2)*scale - SEL_OUTER*RADIUS + cw/2,(58f - GALAXYHEIGHT/2)*scale + ch/2,(18f - GALAXYWIDTH/2)*scale + SEL_OUTER*RADIUS + cw/2,(58f - GALAXYHEIGHT/2)*scale + ch/2,chartStroke);
 //		float x,y;
 //		Drawable d;
-//		d = ResourcesCompat.getDrawable(getResources(), R.drawable.chartsystemv, mGameManager.getTheme());
+//		d = ResourcesCompat.getDrawable(getResources(), R.drawable.chartsystemvl, mGameManager.getTheme());
 //		x=10;y=67;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
 //		x=22;y=83;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
 //		x=14;y=82;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
@@ -11250,7 +11253,7 @@ public class GameState {
 //		x=28;y=74;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
 //		x=21;y=90;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
 //		x=16;y=97;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
-//		d = ResourcesCompat.getDrawable(getResources(), R.drawable.chartsystem, mGameManager.getTheme());
+//		d = ResourcesCompat.getDrawable(getResources(), R.drawable.chartsysteml, mGameManager.getTheme());
 //		x=22;y=21;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
 //		x=73;y=22;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
 //		x=75;y=87;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
@@ -11363,7 +11366,7 @@ public class GameState {
 //		x=135;y=85;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
 //		x=139;y=71;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
 //		x=147;y=87;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
-//		d = ResourcesCompat.getDrawable(getResources(), R.drawable.chartsystemw, mGameManager.getTheme());
+//		d = ResourcesCompat.getDrawable(getResources(), R.drawable.chartsystemwl, mGameManager.getTheme());
 //		x=22;y=83;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 + WORMHOLE_OFFSET*RADIUS - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + WORMHOLE_OFFSET*RADIUS + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
 //		x=22;y=21;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 + WORMHOLE_OFFSET*RADIUS - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + WORMHOLE_OFFSET*RADIUS + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);
 //		x=73;y=22;d.setBounds((int)((x - GALAXYWIDTH/2)*scale + cw/2 + WORMHOLE_OFFSET*RADIUS - RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 - RADIUS), (int)((x - GALAXYWIDTH/2)*scale + cw/2 + WORMHOLE_OFFSET*RADIUS + RADIUS), (int)((y - GALAXYHEIGHT/2)*scale + ch/2 + RADIUS));d.draw(canvas);

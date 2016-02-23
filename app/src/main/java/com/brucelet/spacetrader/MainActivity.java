@@ -41,7 +41,7 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.internal.view.menu.MenuBuilder;
+import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -62,6 +62,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.brucelet.spacetrader.datatypes.GameState;
@@ -142,17 +143,6 @@ import java.util.Map;
  */
 public class MainActivity extends AppCompatActivity implements MenuDropDownWindow.OnDropDownItemClickListener, ActionMode.Callback {
 
-	static { Log.w(GameState.LOG_TAG, "Space Trader for Android"); }
-	
-	// Proguard run flag. As written, didntRunProguard will always be true. However proguard settings assume no side
-	// effects from doesntRunInProguard() and so strip the function call out so that didntRunProguard is left as false.
-	// Then DEVELOPER_MODE is set to be true if proguard doesn't run so that it doesn't need to be manually toggled.
-	private static boolean didntRunProguard = false;
-	private static void doesntRunInProguard() {	didntRunProguard = true; }
-	static { doesntRunInProguard(); }
-	public static final boolean DEVELOPER_MODE = didntRunProguard;
-	static { if (DEVELOPER_MODE) Log.w(GameState.LOG_TAG, "Developer Mode is active"); }
-		
 	private static final int[] SHORTCUT_IDS = {
 		R.id.menu_shortcut1,
 		R.id.menu_shortcut2,
@@ -219,13 +209,22 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 		getSharedPreferences(mCurrentGame, MODE_PRIVATE).edit().putInt("theme", theme.ordinal()).commit();
 
 		super.onCreate(savedInstanceState);
+
+		// Trying this here instead of onPostResume() to avoid certain dialog issues
+		mGameState.loadState(getSharedPreferences(mCurrentGame, MODE_PRIVATE));
 		
 		Log.d("onCreate()", "setContentView() called");
 		setContentView(R.layout.activity_main);
 
-//		// See AOSP issue 159795 at https://code.google.com/p/android/issues/detail?id=159795
-//		AppCompatActivityMenuKeyInterceptor.intercept(this);
-		
+		// Prevent image screens (title and endgame) from scrolling, since they bleed past the bottom
+		ScrollView fragmentContainer = (ScrollView) findViewById(R.id.container);
+		fragmentContainer.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				return getCurrentScreenType().isImage;
+			}
+		});
+
 		mToolbar = (Toolbar) findViewById(R.id.toolbar);
 		mTitleView = LayoutInflater.from(mToolbar.getContext()).inflate(R.layout.ab_title_main, mToolbar, false);
 		mTitleText = (TextView) mTitleView.findViewById(R.id.title);
@@ -268,6 +267,7 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 //					mBeginMenuDrag = false;
 //					mMenuLongPress = true;
 //					mDraggingMenuOpen = true;
+//					mTitleView.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
 //					startMenuActionMode();
 //				}
 
@@ -306,6 +306,7 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 		setSupportActionBar(mToolbar);
 
 		ActionBar ab = getSupportActionBar();
+		//noinspection ConstantConditions
 		ab.setDisplayShowHomeEnabled(false);
 		ab.setDisplayShowTitleEnabled(false);
 
@@ -374,7 +375,7 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 	@Override
 	protected void onResume() {
 		super.onResume();
-		mGameState.loadState(getSharedPreferences(mCurrentGame, MODE_PRIVATE));
+//		mGameState.loadState(getSharedPreferences(mCurrentGame, MODE_PRIVATE));
 	}
 
 	@Override
@@ -1018,7 +1019,6 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 		case KeyEvent.KEYCODE_VOLUME_UP:
 		case KeyEvent.KEYCODE_VOLUME_DOWN:
 			if (!getGameState().volumeScroll()) break;
-			
 
 			switch (getCurrentScreenType()) {
 			case TARGET:
@@ -1041,16 +1041,16 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 			// Otherwise, we use default key-handling, and push through to onBackPressed().
 			break;
 			
-//		case KeyEvent.KEYCODE_MENU:
-//			if (getCurrentScreenType() == ScreenType.ENCOUNTER) getGameState().clearButtonAction();
-//			if (keyDown) {
-//				if (mActionMode == null) {
-//					startMenuActionMode();
-//				} else {
-//					finishMenuActionMode();
-//				}
-//			}
-//			return true;
+		case KeyEvent.KEYCODE_MENU:
+			if (getCurrentScreenType() == ScreenType.ENCOUNTER) getGameState().clearButtonAction();
+			if (event.getAction() == KeyEvent.ACTION_UP && event.getRepeatCount() == 0) {
+				if (mActionMode == null) {
+					startMenuActionMode();
+				} else {
+					finishMenuActionMode();
+				}
+			}
+			return true;
 
 		}
 		return super.dispatchKeyEvent(event);
@@ -1089,7 +1089,7 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 
 	private void loadCurrentScreen(SharedPreferences prefs) {
 
-		if (DEVELOPER_MODE) {
+		if (Application.DEVELOPER_MODE) {
 
 			// Give user choice to avoid losing savegame in the event of an error. In public release will just error normally without try/catch.
 			try {

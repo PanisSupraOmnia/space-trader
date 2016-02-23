@@ -41,8 +41,8 @@ public enum Politics implements XmlString {
 	MILITARY     ( R.string.politics_military,     7, 7, 0, 6, 2, 7, 0, false, true,  ROBOTS,    R.array.masthead_military,     R.array.headline_military     ),
 	MONARCHY     ( R.string.politics_monarchy,     3, 4, 3, 4, 0, 5, 4, true,  true,  MEDICINE,  R.array.masthead_monarchy,     R.array.headline_monarchy     ),
 	PACIFIST     ( R.string.politics_pacifist,     7, 2, 1, 5, 0, 3, 1, true,  false, null,      R.array.masthead_pacifist,     R.array.headline_pacifist     ),
-	SOCIALIST    ( R.string.politics_socialist,    4, 2, 5, 3, 0, 5, 6, true,  true,  null,      R.array.masthead_satori,       R.array.headline_satori       ),
-	SATORI       ( R.string.politics_satori,       0, 1, 1, 1, 0, 1, 0, false, false, null,      R.array.masthead_socialist,    R.array.headline_socialist    ),
+	SOCIALIST    ( R.string.politics_socialist,    4, 2, 5, 3, 0, 5, 6, true,  true,  null,      R.array.masthead_socialist,    R.array.headline_socialist    ),
+	SATORI       ( R.string.politics_satori,       0, 1, 1, 1, 0, 1, 0, false, false, null,      R.array.masthead_satori,       R.array.headline_satori       ),
 	TECHNOCRACY  ( R.string.politics_technocracy,  1, 6, 3, 6, 4, 7, 2, true,  true,  WATER,     R.array.masthead_technocracy,  R.array.headline_technocracy  ),
 	THEOCRACY    ( R.string.politics_theocracy,    5, 6, 1, 4, 0, 4, 0, true,  true,  NARCOTICS, R.array.masthead_theocracy,    R.array.headline_theocracy    ),
 	;

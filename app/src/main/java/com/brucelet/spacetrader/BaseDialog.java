@@ -203,7 +203,7 @@ public abstract class BaseDialog extends DialogFragment implements ConvenienceMe
 				}
 			});
 		} else {
-			infoButton.setVisibility(View.GONE);
+			infoButton.setVisibility(View.INVISIBLE);
 		}
 
 		return root;

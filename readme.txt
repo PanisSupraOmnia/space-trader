@@ -1,4 +1,4 @@
-Copyright (C) 2014 Russell Wolf, All Rights Reserved
+Copyright (C) 2014-2016 Russell Wolf, All Rights Reserved
 
 Based on code by Pieter Spronck
 

@@ -206,9 +206,7 @@ public class ChartScreen extends BaseScreen {
 		
 		@Override
 		public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-			int width = MeasureSpec.getSize(widthMeasureSpec);
-			int height = MeasureSpec.getSize(heightMeasureSpec);
-			int size = width > height ? height : width;
+			int size = MeasureSpec.getSize(widthMeasureSpec);
 			setMeasuredDimension(size, (int) (size * GameState.GALAXYHEIGHT * 1f / GameState.GALAXYWIDTH) );
 		}
 		

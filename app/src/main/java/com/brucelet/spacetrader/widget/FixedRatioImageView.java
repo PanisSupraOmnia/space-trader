@@ -45,9 +45,9 @@ public class FixedRatioImageView extends ImageView {
 			return;
 		}
 		double hwratio = 1.0 * intHeight / intWidth;
-		
+
 		int width = MeasureSpec.getSize(widthMeasureSpec);
-		int height = (int) (width * hwratio + 0.5); 
+		int height = (int) (width * hwratio + 0.5);
 		setMeasuredDimension(width, height);
 
 	}

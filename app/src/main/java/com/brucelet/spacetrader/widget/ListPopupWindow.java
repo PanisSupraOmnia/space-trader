@@ -30,8 +30,8 @@ import android.support.v4.view.ViewPropertyAnimatorCompat;
 import android.support.v4.widget.ListViewAutoScrollHelper;
 import android.support.v4.widget.PopupWindowCompat;
 import android.support.v7.appcompat.R;
-import android.support.v7.internal.widget.AppCompatPopupWindow;
-import android.support.v7.internal.widget.ListViewCompat;
+import android.support.v7.widget.AppCompatPopupWindow;
+import android.support.v7.widget.ListViewCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
@@ -1633,7 +1633,7 @@ public class ListPopupWindow {
 
 			// XXX
 			// For reasons which remain unclear, the pressed text color will only change in Palm
-			// theme if we explicity call setPressed() on all children, rather than call it on the
+			// theme if we explicitly call setPressed() on all children, rather than call it on the
 			// parent and use the duplicateParentState attribute.
 			if (mSelectedChild instanceof ViewGroup) {
 				ViewGroup childRoot = (ViewGroup) mSelectedChild;
