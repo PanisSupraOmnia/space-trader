@@ -185,9 +185,6 @@
         <item name="actionModeSelectAllDrawable">@drawable/abc_ic_menu_selectall_mtrl_white</item>
         <item name="actionModeCloseDrawable">@drawable/abc_ic_ab_back_mtrl_white</item>
         <item name="actionModeBackground">@drawable/cab_background_top_dark_ab</item>
-        <item name="actionModeShareDrawable">@drawable/abc_ic_menu_share_mtrl_alpha</item>
-        <item name="actionModeFindDrawable">@drawable/abc_ic_search_api_mtrl_alpha</item>
-        <item name="actionModeWebSearchDrawable">@drawable/abc_ic_search_api_mtrl_alpha</item>
     </style>
     
     <style name="ActivityTheme.Palm" parent="ActivityTheme.Base.Palm">  

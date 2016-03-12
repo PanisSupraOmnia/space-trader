@@ -217,7 +217,7 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 		setContentView(R.layout.activity_main);
 
 		// Prevent image screens (title and endgame) from scrolling, since they bleed past the bottom
-		ScrollView fragmentContainer = (ScrollView) findViewById(R.id.container);
+		View fragmentContainer = findViewById(R.id.container);
 		fragmentContainer.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {

@@ -694,7 +694,7 @@
 
     <string name="dialog_about">About Space Trader</string>
     <string name="dialog_about_title">%1$s %2$s</string>
-    <string name="dialog_about_author">Copyright \u00a9 2014\u20132015 by Russell Wolf</string>
+    <string name="dialog_about_author">Copyright \u00a9 2014\u20132016 by Russell Wolf</string>
     <string name="dialog_about_author2">Palm OS version copyright \u00a9 2000\u20132002 by Pieter Spronck</string>
     <string name="dialog_about_images">Pictures based on originals \u00a9 2000 by Alexander Lawrence</string>
     <string name="dialog_about_license">This game is freeware under a GNU General Public License</string>
@@ -1368,7 +1368,7 @@
         \nGet the right version for your Palm.</string>
     <string name="help_credits">Space Trader for Android
         \n
-        \nCopyright \u00a9 2014\u20132015 by Russell Wolf
+        \nCopyright \u00a9 2014\u20132016 by Russell Wolf
         \n
         \nDesign, Programming, and Graphics:
         \nRussell Wolf
