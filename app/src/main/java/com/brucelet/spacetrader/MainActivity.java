@@ -62,7 +62,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.brucelet.spacetrader.datatypes.GameState;
@@ -527,189 +526,166 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 
 		Log.d("","Selecting menu item with id "+getResources().getResourceEntryName(id));
 
-		switch (id) {
-		case R.id.menu_keyboard:
+        if (id == R.id.menu_keyboard) {
 			// NB developer mode only for debugging.
-			InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-			imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
-
-			return true;
-
-		case R.id.menu_crash:
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+            return true;
+        } else if (id == R.id.menu_crash) {
 			// NB developer mode only for debugging.
-			throw new Error("Intentional crash for stack trace debugging");
+            throw new Error("Intentional crash for stack trace debugging");
+        } else if (id == R.id.menu_options) {
+            showDialogFragment(OptionsDialog.newInstance());
+            return true;
+        } else if (id == R.id.menu_shortcuts) {
+            showDialogFragment(ShortcutDialog.newInstance());
+            return true;
+        } else if (id == R.id.menu_scores) {
+            getGameState().viewHighScores();
+            return true;
+        } else if (id == R.id.menu_clearscores) {
+            showDialogFragment(ConfirmDialog.newInstance(
+                    R.string.dialog_clearscores_title,
+                    R.string.dialog_clearscores_message,
+                    R.string.help_cleartable,
+                    new OnConfirmListener() {
+                        @Override
+                        public void onConfirm() {
+                            mGameState.initHighScores();
+                        }
+                    }, null));
+            return true;
+        } else if (id == R.id.menu_new) {
+            if (getCurrentScreenType() == ScreenType.TITLE) {
+                showDialogFragment(NewGameDialog.newInstance());
+            } else {
+                showDialogFragment(ConfirmDialog.newInstance(
+                        R.string.dialog_newgame_confirm,
+                        R.string.dialog_newgame_confirm_message,
+                        R.string.help_confirmnew,
+                        new OnConfirmListener() {
+                            @Override
+                            public void onConfirm() {
+                                setCurrentScreenType(ScreenType.TITLE);
+                                showDialogFragment(NewGameDialog.newInstance());
+                            }
+                        }, null));
+            }
+            return true;
+        } else if (id == R.id.menu_switch) {
+            showDialogFragment(ConfirmDialog.newInstance(
+                    R.string.dialog_switchgame_title,
+                    R.string.dialog_switchgame_message,
+                    R.string.help_switchgame,
+                    new OnConfirmListener() {
 
-		case R.id.menu_options:
+                        @Override
+                        public void onConfirm() {
+                            SharedPreferences currentPrefs = getSharedPreferences(mCurrentGame, MODE_PRIVATE);
+                            saveState(currentPrefs);
 
-			showDialogFragment(OptionsDialog.newInstance());
-			return true;
-		case R.id.menu_shortcuts:
+                            final String otherGame = mCurrentGame.equals(GAME_1) ? GAME_2 : GAME_1;
+                            SharedPreferences otherPrefs = getSharedPreferences(otherGame, MODE_PRIVATE);
 
-			showDialogFragment(ShortcutDialog.newInstance());
+                            if (!otherPrefs.getBoolean("game started", false)) {
+                                // start new game
+                                setCurrentScreenType(ScreenType.TITLE);
+                                showDialogFragment(SimpleDialog.newInstance(
+                                        R.string.dialog_switchtonew_title,
+                                        R.string.dialog_switchtonew_message,
+                                        R.string.help_switchtonew,
+                                        new OnConfirmListener() {
+                                            @Override
+                                            public void onConfirm() {
+                                                String defaultName = getString(otherGame.equals(GAME_1) ? R.string.name_commander : R.string.name_commander2);
+                                                mGameState.switchToNew(defaultName);
+                                            }
+                                        }));
 
-			return true;
-		case R.id.menu_scores:
-			getGameState().viewHighScores();
-			return true;
-		case R.id.menu_clearscores:
-			showDialogFragment(ConfirmDialog.newInstance(
-					R.string.dialog_clearscores_title,
-					R.string.dialog_clearscores_message,
-					R.string.help_cleartable,
-					new OnConfirmListener() {
-						@Override
-						public void onConfirm() {
-							mGameState.initHighScores();
-						}
-					}, null));
-			return true;
-		case R.id.menu_new:
-			if (getCurrentScreenType() == ScreenType.TITLE) {
-				showDialogFragment(NewGameDialog.newInstance());
-			} else {
-				showDialogFragment(ConfirmDialog.newInstance(
-						R.string.dialog_newgame_confirm,
-						R.string.dialog_newgame_confirm_message,
-						R.string.help_confirmnew,
-						new OnConfirmListener() {
-							@Override
-							public void onConfirm() {
-								setCurrentScreenType(ScreenType.TITLE);
-								showDialogFragment(NewGameDialog.newInstance());
-							}
-						}, null));
-			}
-			return true;
-		case R.id.menu_switch:
-			showDialogFragment(ConfirmDialog.newInstance(
-					R.string.dialog_switchgame_title,
-					R.string.dialog_switchgame_message,
-					R.string.help_switchgame,
-					new OnConfirmListener() {
+                            } else {
+                                // switch to existing game
 
-						@Override
-						public void onConfirm() {
-							SharedPreferences currentPrefs = getSharedPreferences(mCurrentGame, MODE_PRIVATE);
-							saveState(currentPrefs);
+                                SharedPreferences.Editor otherEditor = otherPrefs.edit();
+                                if (otherPrefs.getBoolean("sharePreferences", mGameState.sharePreferences())) {
+                                    // If other game shares preferences, then copy from current game.
 
-							final String otherGame = mCurrentGame.equals(GAME_1)? GAME_2 : GAME_1;
-							SharedPreferences otherPrefs = getSharedPreferences(otherGame, MODE_PRIVATE);
+                                    mGameState.copyPrefs(currentPrefs, otherEditor);
+                                }
+                                // NB For now, theme is always the same in both games so we don't need to reset the activity here.
+                                // TODO Clean up switch so we can change theme here
+                                otherEditor.putInt("theme", getThemeType().ordinal());
+                                otherEditor.commit();
 
-							if (!otherPrefs.getBoolean("game started", false)) {
-								// start new game
-								setCurrentScreenType(ScreenType.TITLE);
-								showDialogFragment(SimpleDialog.newInstance(
-										R.string.dialog_switchtonew_title,
-										R.string.dialog_switchtonew_message,
-										R.string.help_switchtonew,
-										new OnConfirmListener() {
-											@Override
-											public void onConfirm() {
-												String defaultName = getString(otherGame.equals(GAME_1)? R.string.name_commander : R.string.name_commander2);
-												mGameState.switchToNew(defaultName);
-											}
-										}));
+                                loadState(otherPrefs);
 
-							} else {
-								// switch to existing game
+                                showDialogFragment(SimpleDialog.newInstance(
+                                        R.string.dialog_switched_title,
+                                        R.string.dialog_switched_message,
+                                        R.string.help_switched,
+                                        getGameState().nameCommander()));
+                            }
 
-								SharedPreferences.Editor otherEditor = otherPrefs.edit();
-								if (otherPrefs.getBoolean("sharePreferences", mGameState.sharePreferences())) {
-									// If other game shares preferences, then copy from current game.
-
-									mGameState.copyPrefs(currentPrefs, otherEditor);
-								}
-								// NB For now, theme is always the same in both games so we don't need to reset the activity here.
-								// TODO Clean up switch so we can change theme here
-								otherEditor.putInt("theme", getThemeType().ordinal());
-								otherEditor.commit();
-
-								loadState(otherPrefs);
-
-								showDialogFragment(SimpleDialog.newInstance(
-										R.string.dialog_switched_title,
-										R.string.dialog_switched_message,
-										R.string.help_switched,
-										getGameState().nameCommander()));
-							}
-
-							mCurrentGame = otherGame;
-							getPreferences(MODE_PRIVATE).edit().putString("currentGame", mCurrentGame).commit();
-						}
-					},
-					null));
-			return true;
-		case R.id.menu_retire:
-			showDialogFragment(ConfirmDialog.newInstance(
-					R.string.dialog_retire_title,
-					R.string.dialog_retire_message,
-					R.string.help_retire,
-					new OnConfirmListener() {
-						@Override
-						public void onConfirm() {
-							mGameState.showEndGameScreen(EndStatus.RETIRED);
-						}
-					}, null));
-			return true;
-
-
-		case R.id.menu_savegame:
-			saveSnapshot();
-			return true;
-
-
-		case R.id.menu_help_about:
-			showDialogFragment(AboutDialog.newInstance());
-			return true;
-
-		case R.id.menu_help_acknowledgements:
-			showDialogFragment(HelpDialog.newInstance(R.string.help_acknowledgements));
-			return true;
-
-		case R.id.menu_help_current:
-			showDialogFragment(HelpDialog.newInstance(getCurrentScreen().getHelpTextResId()));
-			return true;
-
-		case R.id.menu_help_firststeps:
-			showDialogFragment(HelpDialog.newInstance(R.string.help_firststeps));
-			return true;
-
-		case R.id.menu_help_howtoplay:
-			showDialogFragment(HelpDialog.newInstance(R.string.help_howtoplay));
-			return true;
-
-		case R.id.menu_help_helponmenu:
-			showDialogFragment(HelpDialog.newInstance(R.string.help_helponmenu));
-			return true;
-
-		case R.id.menu_help_skills:
-			showDialogFragment(HelpDialog.newInstance(R.string.help_skills));
-			return true;
-
-		case R.id.menu_help_shipequipment:
-			showDialogFragment(HelpDialog.newInstance(R.string.help_shipequipment));
-			return true;
-
-		case R.id.menu_help_trading:
-			showDialogFragment(HelpDialog.newInstance(R.string.help_trading));
-			return true;
-
-		case R.id.menu_help_traveling:
-			showDialogFragment(HelpDialog.newInstance(R.string.help_travelling));
-			return true;
-
-		case R.id.menu_help_documentation:
+                            mCurrentGame = otherGame;
+                            getPreferences(MODE_PRIVATE).edit().putString("currentGame", mCurrentGame).commit();
+                        }
+                    },
+                    null));
+            return true;
+        } else if (id == R.id.menu_retire) {
+            showDialogFragment(ConfirmDialog.newInstance(
+                    R.string.dialog_retire_title,
+                    R.string.dialog_retire_message,
+                    R.string.help_retire,
+                    new OnConfirmListener() {
+                        @Override
+                        public void onConfirm() {
+                            mGameState.showEndGameScreen(EndStatus.RETIRED);
+                        }
+                    }, null));
+            return true;
+        } else if (id == R.id.menu_savegame) {
+            saveSnapshot();
+            return true;
+        } else if (id == R.id.menu_help_about) {
+            showDialogFragment(AboutDialog.newInstance());
+            return true;
+        } else if (id == R.id.menu_help_acknowledgements) {
+            showDialogFragment(HelpDialog.newInstance(R.string.help_acknowledgements));
+            return true;
+        } else if (id == R.id.menu_help_current) {
+            showDialogFragment(HelpDialog.newInstance(getCurrentScreen().getHelpTextResId()));
+            return true;
+        } else if (id == R.id.menu_help_firststeps) {
+            showDialogFragment(HelpDialog.newInstance(R.string.help_firststeps));
+            return true;
+        } else if (id == R.id.menu_help_howtoplay) {
+            showDialogFragment(HelpDialog.newInstance(R.string.help_howtoplay));
+            return true;
+        } else if (id == R.id.menu_help_helponmenu) {
+            showDialogFragment(HelpDialog.newInstance(R.string.help_helponmenu));
+            return true;
+        } else if (id == R.id.menu_help_skills) {
+            showDialogFragment(HelpDialog.newInstance(R.string.help_skills));
+            return true;
+        } else if (id == R.id.menu_help_shipequipment) {
+            showDialogFragment(HelpDialog.newInstance(R.string.help_shipequipment));
+            return true;
+        } else if (id == R.id.menu_help_trading) {
+            showDialogFragment(HelpDialog.newInstance(R.string.help_trading));
+            return true;
+        } else if (id == R.id.menu_help_traveling) {
+            showDialogFragment(HelpDialog.newInstance(R.string.help_travelling));
+            return true;
+        } else if (id == R.id.menu_help_documentation) {
 			// Show the documentation html file from the original game, in a webview
-			Intent intent = new Intent(this, DocumentationActivity.class);
-			intent.putExtra("theme", getThemeType());
-			startActivity(intent);
-			return true;
-
-		case R.id.home:
-		case android.R.id.home:
-			startMenuActionMode();
-			return true;
-		}
+            Intent intent = new Intent(this, DocumentationActivity.class);
+            intent.putExtra("theme", getThemeType());
+            startActivity(intent);
+            return true;
+        } else if (id == android.support.v7.appcompat.R.id.home || id == android.R.id.home) {
+            startMenuActionMode();
+            return true;
+        }
 		return false;
 	}
 
@@ -904,7 +880,7 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 
 
 		mode.setCustomView(view);
-		view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.abc_fade_in));
+		view.startAnimation(AnimationUtils.loadAnimation(context, android.support.v7.appcompat.R.anim.abc_fade_in));
 
 //		// This doesn't work because the initial dropdown.show() is not lined up correctly
 //		MenuItem dropdowns = menu.add("");

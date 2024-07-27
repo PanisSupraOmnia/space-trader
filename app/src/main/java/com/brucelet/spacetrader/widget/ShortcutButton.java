@@ -55,10 +55,10 @@ public class ShortcutButton extends Button implements View.OnLongClickListener {
 		super(context, attrs, defStyleAttr);
 
 		TypedValue tv = new TypedValue();
-		context.getTheme().resolveAttribute(R.attr.actionButtonStyle, tv, true);
+		context.getTheme().resolveAttribute(android.support.v7.appcompat.R.attr.actionButtonStyle, tv, true);
 		int actionButtonStyle = tv.resourceId;
 		TypedArray ta = context.getTheme().obtainStyledAttributes(actionButtonStyle,
-				new int[] {R.attr.actionMenuTextAppearance, R.attr.actionButtonMarginTop, R.attr.actionButtonMarginBottom});
+				new int[] {android.support.v7.appcompat.R.attr.actionMenuTextAppearance, R.attr.actionButtonMarginTop, R.attr.actionButtonMarginBottom});
 		setTextAppearance(context, ta.getResourceId(0, 0));
 		int marginTop = ta.getDimensionPixelOffset(1, 0);
 		int marginBottom = ta.getDimensionPixelOffset(2, 0);

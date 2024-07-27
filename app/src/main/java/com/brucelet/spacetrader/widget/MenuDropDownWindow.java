@@ -26,7 +26,7 @@ public class MenuDropDownWindow extends ListPopupWindow implements View.OnKeyLis
 	private Menu mMenu;
 
 	public MenuDropDownWindow(Context context, View anchor, Menu menu) {
-		super(context, null, R.attr.listPopupWindowStyle);
+		super(context, null, android.support.v7.appcompat.R.attr.listPopupWindowStyle);
 
 		mMenu = menu;
 
