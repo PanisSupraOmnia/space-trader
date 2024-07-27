@@ -4,22 +4,21 @@ plugins {
 }
 
 android {
-    compileSdkVersion(23)
+    namespace = "com.brucelet.spacetrader"
+    compileSdk = 23
 
     defaultConfig {
         applicationId = "com.brucelet.spacetrader"
-        minSdkVersion(8)
-        targetSdkVersion(23)
+        minSdk = 8
+        targetSdk = 23
     }
 
     buildTypes {
         release {
-            minifyEnabled = true
+            isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-project.txt")
         }
     }
-    namespace = "com.brucelet.spacetrader"
-
 }
 
 dependencies {
