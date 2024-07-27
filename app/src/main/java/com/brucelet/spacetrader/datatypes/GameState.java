@@ -1,21 +1,21 @@
 /*
  *     Copyright (C) 2014 Russell Wolf, All Rights Reserved
- *     
+ *
  *     Based on code by Pieter Spronck
- * 
+ *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
  *     (at your option) any later version.
- * 
+ *
  *     This program is distributed in the hope that it will be useful,
  *     but WITHOUT ANY WARRANTY; without even the implied warranty of
  *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *     GNU General Public License for more details.
- * 
+ *
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *     
+ *
  *     You can contact the author at spacetrader@brucelet.com
  */
 package com.brucelet.spacetrader.datatypes;
@@ -137,15 +137,15 @@ public class GameState {
 
 	private static final Random rng = new Random();
 	private final MainActivity mGameManager;
-	
+
 	// Debt Control
 	private static final int DEBTWARNING= 75000;
 	private static final int DEBTTOOLARGE= 100000;
-	
+
 	final CrewMember[] mercenary = new CrewMember[31];
 	final SolarSystem[] solarSystem = new SolarSystem[120];
 	final SolarSystem[] wormhole = new SolarSystem[6];
-	
+
 	// The following globals are saved between sessions
 	// Note that these initializations are overruled by the StartNewGame function
 	int credits = 1000;            // Current credits owned
@@ -179,7 +179,7 @@ public class GameState {
 	int shortcut3 = 2;				// default shortcut 3 = Shipyard
 	int shortcut4 = 10;				// default shortcut 4 = Short Range Warp
 
-	
+
 	// the next two values are NOT saved between sessions -- they can only be changed via cheats.
 	int chanceOfVeryRareEncounter	= CHANCEOFVERYRAREENCOUNTER;
 	int chanceOfTradeInOrbit		= CHANCEOFTRADEINORBIT;
@@ -237,7 +237,7 @@ public class GameState {
 	boolean litterWarning = false;		// Warning against littering has been issued.
 	boolean sharePreferences = true;	// Share preferences between switched games.
 	boolean identifyStartup = false;	// Identify commander at game start
-	boolean rectangularButtonsOn = false; // Indicates on OS 5.0 and higher whether rectangular buttons should be used.		
+	boolean rectangularButtonsOn = false; // Indicates on OS 5.0 and higher whether rectangular buttons should be used.
 
 	final HighScore[] hScores = new HighScore[3];
 	private final NewsEvent[] newsEvents = new NewsEvent[MAXSPECIALNEWSEVENTS];
@@ -257,7 +257,7 @@ public class GameState {
 	int utopia = -1;
 	int zalkon = -1;
 
-		
+
 	Ship ship;
 	Ship opponent;
 	private final Ship monster = new Ship(this, ShipType.MONSTER);
@@ -270,7 +270,7 @@ public class GameState {
 
 		scarab.weapon[0] = Weapon.MILITARY;
 		scarab.weapon[1] = Weapon.MILITARY;
-		
+
 		dragonfly.weapon[0] = Weapon.MILITARY;
 		dragonfly.weapon[1] = Weapon.PULSE;
 		dragonfly.shield[0] = Shield.LIGHTNING;
@@ -354,32 +354,32 @@ public class GameState {
 
 	private final Paint chartStroke = new Paint();
 	private final Paint chartText = new Paint();
-	private void initializePaints() {		
+	private void initializePaints() {
 		chartStroke.setStyle(Style.STROKE);
 		chartStroke.setStrokeWidth(getResources().getDimensionPixelSize(R.dimen.line_width));
 		chartStroke.setStrokeCap(Cap.ROUND);
 		chartStroke.setStrokeJoin(Join.MITER);
 		chartStroke.setAntiAlias(true);
-		
+
 		TypedValue tv = new TypedValue();
 		mGameManager.getTheme().resolveAttribute(R.attr.strokeColor, tv, true);
 		int strokeColor = getResources().getColor(tv.resourceId);
 		chartStroke.setColor(strokeColor);
-		
+
 		chartText.setTextAlign(Align.CENTER);
 		chartText.setAntiAlias(true);
-		
+
 		mGameManager.getTheme().resolveAttribute(android.R.attr.textAppearanceMedium, tv, true);
 		TypedArray ta = mGameManager.getTheme().obtainStyledAttributes(tv.resourceId, new int[] {android.R.attr.textSize});
 		ta.getValue(0, tv);
 		chartText.setTextSize(tv.getDimension(getResources().getDisplayMetrics()));
 		ta.recycle();
-		
+
 		mGameManager.getTheme().resolveAttribute(android.R.attr.textColorPrimary, tv, true);
 		int textColor = getResources().getColor(tv.resourceId);
 		chartText.setColor(textColor);
 	}
-	
+
 	public GameState(MainActivity gm) {
 		mGameManager = gm;
 
@@ -485,7 +485,7 @@ public class GameState {
 		editor.putBoolean("litterWarning", litterWarning);
 		editor.putBoolean("sharePreferences", sharePreferences);
 		editor.putBoolean("identifyStartup", identifyStartup);
-		editor.putBoolean("rectangularButtonsOn", rectangularButtonsOn);	
+		editor.putBoolean("rectangularButtonsOn", rectangularButtonsOn);
 
 		editor.putInt("acamar", acamar);
 		editor.putInt("baratas", baratas);
@@ -515,7 +515,7 @@ public class GameState {
 		editor.putBoolean("randomQuestSystems", randomQuestSystems);
 
 		editor.putBoolean("developerMode", developerMode);
-		
+
 		if (ship != null) {
 			ship.saveState(editor, "ship");
 		}
@@ -532,20 +532,20 @@ public class GameState {
 		for (int i = 0; i < mercenary.length; i++) {
 			mercenary[i].saveState(editor, "mercenary"+i);
 		}
-		
+
 		for (int i = 0; i < hScores.length; i++) {
 			if (hScores[i] != null) {
 				hScores[i].saveState(editor, "hScore"+i);
 			}
 			editor.putBoolean("hScore"+i+"_null", hScores[i] == null);
 		}
-		
+
 		if (endStatus != null) editor.putInt("endStatus", endStatus.ordinal());
-		
+
 		// If we're saving state while auto actions on the Encounter screen are active, disable then and redraw the UI for if we come back.
 		clearButtonAction();
 	}
-	
+
 	public void loadState(SharedPreferences prefs) {
 		credits = prefs.getInt("credits", credits);
 		debt = prefs.getInt("debt", debt);
@@ -570,7 +570,7 @@ public class GameState {
 
 		int oppTypeIndex = prefs.getInt("encounterOpponent", -1);
 		int encTypeIndex = prefs.getInt("encounterType", -1);
-		
+
 		if (encTypeIndex < 0) {
 			encounterType = null;
 		} else {
@@ -668,7 +668,7 @@ public class GameState {
 		litterWarning = prefs.getBoolean("litterWarning", litterWarning);
 		sharePreferences = prefs.getBoolean("sharePreferences", sharePreferences);
 		identifyStartup = prefs.getBoolean("identifyStartup", identifyStartup);
-		rectangularButtonsOn = prefs.getBoolean("rectangularButtonsOn", rectangularButtonsOn);	
+		rectangularButtonsOn = prefs.getBoolean("rectangularButtonsOn", rectangularButtonsOn);
 
 		acamar = prefs.getInt("acamar", acamar);
 		baratas = prefs.getInt("baratas", baratas);
@@ -686,7 +686,7 @@ public class GameState {
 		zalkon = prefs.getInt("zalkon", zalkon);
 
 		opponentGotHit = prefs.getBoolean("opponentGotHit", opponentGotHit);
-		commanderGotHit = prefs.getBoolean("commanderGotHit", commanderGotHit);	
+		commanderGotHit = prefs.getBoolean("commanderGotHit", commanderGotHit);
 
 		recallScreens = prefs.getBoolean("recallScreens", recallScreens);
 		volumeScroll = prefs.getBoolean("volumeScroll", volumeScroll);
@@ -696,7 +696,7 @@ public class GameState {
 		extraShortcuts = prefs.getBoolean("extraShortcuts", extraShortcuts);
 
 		randomQuestSystems = prefs.getBoolean("randomQuestSystems", randomQuestSystems);
-		
+
 		developerMode = Application.DEVELOPER_MODE && prefs.getBoolean("developerMode", developerMode);
 
 		for (int i = 0; i < solarSystem.length; i++) {
@@ -721,7 +721,7 @@ public class GameState {
 			}
 		}
 		Log.d("loadState()", "nameCommander()="+nameCommander());
-		
+
 		if (prefs.contains("ship_type")) {
 			ship = new Ship(prefs, "ship", this);
 		}
@@ -746,7 +746,7 @@ public class GameState {
 				}
 			}
 		}
-		
+
 		warpSystem = curSystem();
 		galacticChartSystem = null;
 		trackedSystem = null;
@@ -761,18 +761,18 @@ public class GameState {
 				trackedSystem = system;
 			}
 		}
-		
+
 		for (int i = 0; i < hScores.length; i++) {
 			if (!prefs.getBoolean("hScore"+i+"_null", true)) {
 				hScores[i] = new HighScore(prefs, "hScore"+i);
 			}
 		}
 		galacticChartWormhole = prefs.getBoolean("galacticChartWormhole", false);
-		
+
 		if (prefs.contains("endStatus")) endStatus = EndStatus.values()[prefs.getInt("endStatus", 0)];
-		
+
 	}
-	
+
 	private Resources getResources() {
 		return mGameManager.getResources();
 	}
@@ -782,12 +782,12 @@ public class GameState {
 		return new OnCancelListener() {
 			@Override
 			public void onCancel() {
-				stop = true; 
+				stop = true;
 				unlock(latch);
 			}
 		};
 	}
-	
+
 	private static OnConfirmListener newUnlocker(final CountDownLatch latch) {
 		return new OnConfirmListener() {
 			@Override
@@ -796,15 +796,15 @@ public class GameState {
 			}
 		};
 	}
-	
+
 	private static CountDownLatch newLatch() {
 		return new CountDownLatch(1);
 	}
-	
+
 	private static void unlock(CountDownLatch latch) {
 		latch.countDown();
 	}
-	
+
 	private static void lock(CountDownLatch latch) {
 		try {
 			latch.await();
@@ -812,20 +812,20 @@ public class GameState {
 			Thread.currentThread().interrupt();
 		}
 	}
-	
+
 	private void copyPreference(SharedPreferences oldPrefs, SharedPreferences.Editor newPrefs, String key, int value) {
 		newPrefs.putInt(key, oldPrefs.getInt(key, value));
 	}
 	private void copyPreference(SharedPreferences oldPrefs, SharedPreferences.Editor newPrefs, String key, boolean value) {
 		newPrefs.putBoolean(key, oldPrefs.getBoolean(key, value));
 	}
-	
+
 	public void copyPrefs(SharedPreferences oldPrefs, SharedPreferences.Editor newPrefs) {
 		copyPreference(oldPrefs, newPrefs, "shortcut1", shortcut1);
 		copyPreference(oldPrefs, newPrefs, "shortcut2", shortcut2);
 		copyPreference(oldPrefs, newPrefs, "shortcut3", shortcut3);
 		copyPreference(oldPrefs, newPrefs, "shortcut4", shortcut4);
-		
+
 		copyPreference(oldPrefs, newPrefs, "leaveEmpty", leaveEmpty);
 		copyPreference(oldPrefs, newPrefs, "autoRepair", autoRepair);
 		copyPreference(oldPrefs, newPrefs, "leaveEmpty", leaveEmpty);
@@ -858,7 +858,7 @@ public class GameState {
 		return commander().name;
 //		return commander() != null? commander().name : "???";
 	}
-	
+
 	public boolean recallScreens() {
 		return recallScreens;
 	}
@@ -880,7 +880,7 @@ public class GameState {
 	public boolean sharePreferences() {
 		return sharePreferences;
 	}
-	
+
 	public int getShortcut(int shortcut) {
 		switch(shortcut) {
 		case 1:
@@ -913,7 +913,7 @@ public class GameState {
 			throw new IllegalArgumentException();
 		}
 	}
-	
+
 	public boolean developerMode() {
 		return Application.DEVELOPER_MODE && developerMode;
 	}
@@ -926,10 +926,10 @@ public class GameState {
 	 * spacetrader.h
 	 */
 	private static final int MAX_WORD = 65535;
-	
+
 	static int min ( int a, int b ) { return a <= b? a : b; }
 	static int max ( int a, int b ) { return a >= b? a : b; }
-	
+
 	static int getRandom( int maxVal ) {
 		if (maxVal < 2) {
 			return 0;
@@ -946,16 +946,16 @@ public class GameState {
 	}
 	static <E> E getRandom(E[] array, int start, int end) {
 		if (start >= end || end > array.length) throw new IllegalArgumentException();
-		
+
 		int index = start + getRandom(end-start);
 		return array[index];
 	}
-	
+
 	static int abs ( int a ) { return ((a) < 0 ? (-(a)) : (a)); }
 	static int sqr ( int a ) { return ((a) * (a)); }
 	CrewMember commander() { return mercenary[0]; }
 	SolarSystem curSystem() { return commander().curSystem(); }
-	
+
 	/*
 	 * AppHandleEvent.c
 	 */
@@ -965,11 +965,11 @@ public class GameState {
 		mercenary[0] = new CrewMember(defaultName, 1, 1, 1, 1, this);
 		mGameManager.showDialogFragment(NewGameDialog.newInstance());
 	}
-	
+
 	public void showOptions()
 	{
 		// NB some missing options here that don't exist in this version, and some new ones that don't exist in palm.
-		
+
 		BaseDialog dialog = mGameManager.findDialogByClass(OptionsDialog.class);
 
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_fulltank)).setChecked(autoFuel);
@@ -983,14 +983,14 @@ public class GameState {
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_contattack)).setChecked(continuous);
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_contattflee)).setChecked(attackFleeing);
 		dialog.setViewTextById(R.id.dialog_options_bays, R.string.format_number, leaveEmpty);
-		
+
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_news)).setChecked(newsAutoPay);
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_range)).setChecked(showTrackedRange);
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_track)).setChecked(trackAutoOff);
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_loans)).setChecked(remindLoans);
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_shareprefs)).setChecked(sharePreferences);
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_identify)).setChecked(identifyStartup);
-		
+
 		// We treat textual encounters differently than the original because we can have hybrid textual/graphical view
 		RadioGroup encGroup = (RadioGroup) dialog.getDialog().findViewById(R.id.dialog_options_encounterstyle);
 		if (textualEncounters && graphicalEncounters) {
@@ -1002,7 +1002,7 @@ public class GameState {
 		} else {
 			encGroup.clearCheck();
 		}
-		
+
 		// New options in android version
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_volumescroll)).setChecked(volumeScroll);
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_recallscreens)).setChecked(recallScreens);
@@ -1010,11 +1010,11 @@ public class GameState {
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_tracklongpress)).setChecked(trackLongPress);
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_encounteranim)).setChecked(encounterAnim);
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_extrashortcuts)).setChecked(extraShortcuts);
-		
+
 		dialog.setViewVisibilityById(R.id.dialog_options_developermode, Application.DEVELOPER_MODE, false);
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_developermode)).setChecked(developerMode);
-		
-		
+
+
 		ThemeType theme = mGameManager.getThemeType();
 		RadioGroup themeGroup = (RadioGroup) dialog.getDialog().findViewById(R.id.dialog_options_theme);
 		switch (theme) {
@@ -1038,9 +1038,9 @@ public class GameState {
 			break;
 		}
 	}
-	
+
 	public void dismissOptions()
-	{	
+	{
 		BaseDialog dialog = mGameManager.findDialogByClass(OptionsDialog.class);
 
 		try {
@@ -1058,30 +1058,25 @@ public class GameState {
 		alwaysInfo = ((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_chartinfo)).isChecked();
 		continuous = ((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_contattack)).isChecked();
 		attackFleeing = ((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_contattflee)).isChecked();
-		
+
 		newsAutoPay = ((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_news)).isChecked();
 		showTrackedRange = ((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_range)).isChecked();
 		trackAutoOff = ((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_track)).isChecked();
 		remindLoans = ((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_loans)).isChecked();
 		sharePreferences = ((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_shareprefs)).isChecked();
 		identifyStartup = ((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_identify)).isChecked();
-		
+
 		int encounterStyle = ((RadioGroup) dialog.getDialog().findViewById(R.id.dialog_options_encounterstyle)).getCheckedRadioButtonId();
-		switch (encounterStyle) {
-		case R.id.dialog_options_encounterstyle_both:
-			textualEncounters = true;
-			graphicalEncounters = true;
-			break;
-		case R.id.dialog_options_encounterstyle_textual:
-			textualEncounters = true;
-			graphicalEncounters = false;
-			break;
-		case R.id.dialog_options_encounterstyle_graphical:
-		default:
-			textualEncounters = false;
-			graphicalEncounters = true;
-			break;
-		}
+        if (encounterStyle == R.id.dialog_options_encounterstyle_both) {
+            textualEncounters = true;
+            graphicalEncounters = true;
+        } else if (encounterStyle == R.id.dialog_options_encounterstyle_textual) {
+            textualEncounters = true;
+            graphicalEncounters = false;
+        } else {
+            textualEncounters = false;
+            graphicalEncounters = true;
+        }
 
 		volumeScroll = ((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_volumescroll)).isChecked();
 		recallScreens = ((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_recallscreens)).isChecked();
@@ -1090,7 +1085,7 @@ public class GameState {
 		encounterAnim = ((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_encounteranim)).isChecked();
 		extraShortcuts = ((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_extrashortcuts)).isChecked();
 		mGameManager.refreshExtraShortcuts();
-		
+
 		developerMode = Application.DEVELOPER_MODE && ((CheckBox) dialog.getDialog().findViewById(R.id.dialog_options_developermode)).isChecked();
 
 		// New: Check if theme has changed
@@ -1098,25 +1093,19 @@ public class GameState {
 
 		RadioGroup rg = (RadioGroup) dialog.getDialog().findViewById(R.id.dialog_options_theme);
 		ThemeType newTheme;
-		switch (rg.getCheckedRadioButtonId()) {
-		case R.id.dialog_options_theme_palm:
-			newTheme = ThemeType.HOLO_PALM;
-			break;
-		case R.id.dialog_options_theme_dark:
-			newTheme = ThemeType.HOLO_DARK;
-			break;
-		case R.id.dialog_options_theme_light:
-		default:
-			newTheme = ThemeType.HOLO_LIGHT;
-			break;
-		case R.id.dialog_options_theme_material_light:
-			newTheme = ThemeType.MATERIAL_LIGHT;
-			break;
-		case R.id.dialog_options_theme_material_dark:
-			newTheme = ThemeType.MATERIAL_DARK;
-			break;
-		}
-		
+		int checkedRadioButtonId = rg.getCheckedRadioButtonId();
+        if (checkedRadioButtonId == R.id.dialog_options_theme_palm) {
+            newTheme = ThemeType.HOLO_PALM;
+        } else if (checkedRadioButtonId == R.id.dialog_options_theme_dark) {
+            newTheme = ThemeType.HOLO_DARK;
+        } else if (checkedRadioButtonId == R.id.dialog_options_theme_material_light) {
+            newTheme = ThemeType.MATERIAL_LIGHT;
+        } else if (checkedRadioButtonId == R.id.dialog_options_theme_material_dark) {
+            newTheme = ThemeType.MATERIAL_DARK;
+        } else {
+            newTheme = ThemeType.HOLO_LIGHT;
+        }
+
 		if (theme != newTheme) {
 			mGameManager.setNewTheme(newTheme);
 		}
@@ -1132,11 +1121,11 @@ public class GameState {
 	// *************************************************************************
 	public int maxLoan( )
 	{
-		return policeRecordScore >= PoliceRecord.CLEAN.score ? 
+		return policeRecordScore >= PoliceRecord.CLEAN.score ?
 				min( MAXLOAN, max( 1000, ((currentWorth() / 10) / 500) * 500 ) ) : 500;
 	}
-	
-	
+
+
 	// *************************************************************************
 	// Lending money
 	// *************************************************************************
@@ -1161,7 +1150,7 @@ public class GameState {
 		credits -= amount;
 		debt -= amount;
 	}
-	
+
 	// *************************************************************************
 	// Show the Bank screen
 	// *************************************************************************
@@ -1177,7 +1166,7 @@ public class GameState {
 
 		screen.setViewTextById(R.id.screen_bank_loan_max, R.string.format_credits, maxLoan());
 
-		screen.setViewTextById(R.id.screen_bank_ins_ship, R.string.format_credits, ship.currentPriceWithoutCargo(true));		
+		screen.setViewTextById(R.id.screen_bank_ins_ship, R.string.format_credits, ship.currentPriceWithoutCargo(true));
 
 		screen.setViewTextById(
 				R.id.screen_bank_ins_noclaim,
@@ -1188,7 +1177,7 @@ public class GameState {
 		screen.setViewTextById(R.id.screen_bank_ins_cost, R.string.format_dailycost, insuranceMoney());
 
 		screen.setViewTextById(R.id.screen_bank_credits, R.string.format_cash, credits);
-		
+
 //		// Screenshot override
 //		screen.setViewVisibilityById(R.id.screen_bank_loan_pay, false);
 //		screen.setViewTextById(R.id.screen_bank_ins_buy, R.string.screen_bank_ins_buy);
@@ -1198,9 +1187,9 @@ public class GameState {
 //		screen.setViewTextById(R.id.screen_bank_ins_noclaim, R.string.format_percent, 0);
 //		screen.setViewTextById(R.id.screen_bank_ins_cost, R.string.format_dailycost, 0);
 //		screen.setViewTextById(R.id.screen_bank_credits, R.string.format_cash, 389304);
-		
+
 	}
-	
+
 	// *************************************************************************
 	// Handling of events on the Bank screen
 	// *************************************************************************
@@ -1279,14 +1268,14 @@ public class GameState {
 				mGameManager.showDialogFragment(SimpleDialog.newInstance(R.string.screen_bank_ins_nopod, R.string.screen_bank_ins_useless, R.string.help_noescapepod, false));
 				return;
 			}
-			
+
 			insurance = true;
-		}			
+		}
 		else if (buttonId == R.id.screen_bank_ins_buy && insurance)
 		{
 			mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-					R.string.screen_bank_ins_stop, 
-					R.string.screen_bank_ins_stopquery, 
+					R.string.screen_bank_ins_stop,
+					R.string.screen_bank_ins_stopquery,
 					R.string.help_stopinsurance,
 					new OnConfirmListener() {
 						@Override
@@ -1298,7 +1287,7 @@ public class GameState {
 					},
 					null,
 					false));
-		}			
+		}
 		showBank();
 	}
 
@@ -1312,7 +1301,7 @@ public class GameState {
 	{
 		BaseScreen screen = mGameManager.getCurrentScreen();
 		if (screen == null || screen.getView() == null || screen.getType() != ScreenType.BUYEQ) return;
-			
+
 		int price = item.buyPrice(curSystem().techLevel(), ship.skill(Skill.TRADER));
 		if (price > 0)
 			screen.setViewTextById(BuyEqScreen.PRICE_IDS.get(item), R.string.format_credits, price);
@@ -1320,25 +1309,25 @@ public class GameState {
 			screen.setViewTextById(BuyEqScreen.PRICE_IDS.get(item), R.string.generic_notsold);
 
 	}
-	
+
 	public void drawBuyEquipmentForm()
 	{
 
 		BaseScreen screen = mGameManager.getCurrentScreen();
 		if (screen == null || screen.getView() == null || screen.getType() != ScreenType.BUYEQ) return;
-		
+
 		for (int i=0; i<MAXWEAPONTYPE+MAXSHIELDTYPE+MAXGADGETTYPE; ++i)
 		{
 			if (i < MAXWEAPONTYPE)
 			{
 				Weapon weapon = Weapon.buyableValues()[i];
 				screen.setViewVisibilityById(BuyEqScreen.BUTTON_IDS.get(weapon), weapon.buyPrice(curSystem().techLevel(), ship.skill(Skill.TRADER)) > 0);
-			}	
+			}
 			else if (i < MAXWEAPONTYPE + MAXSHIELDTYPE)
 			{
 				Shield shield = Shield.buyableValues()[ i-MAXWEAPONTYPE ];
 				screen.setViewVisibilityById(BuyEqScreen.BUTTON_IDS.get(shield), shield.buyPrice(curSystem().techLevel(), ship.skill(Skill.TRADER)) > 0);
-			}	
+			}
 			else
 			{
 				Gadget gadget = Gadget.buyableValues()[ i-MAXWEAPONTYPE-MAXSHIELDTYPE ];
@@ -1354,7 +1343,7 @@ public class GameState {
 			drawItem( gadget );
 
 		screen.setViewTextById(R.id.screen_buyeq_credits, R.string.format_cash, credits);
-		
+
 //		// Screenshot override
 //		screen.setViewVisibilityById(BuyEqScreen.BUTTON_IDS.get(Weapon.PULSE), true);
 //		screen.setViewTextById(BuyEqScreen.PRICE_IDS.get(Weapon.PULSE), R.string.format_credits, 1800);
@@ -1378,7 +1367,7 @@ public class GameState {
 //		screen.setViewTextById(BuyEqScreen.PRICE_IDS.get(Gadget.CLOAKINGDEVICE), R.string.generic_notsold);
 //		screen.setViewTextById(R.id.screen_buyeq_credits, R.string.format_cash, 378511);
 
-		
+
 	}
 
 	// *************************************************************************
@@ -1405,11 +1394,11 @@ public class GameState {
 				break;
 			}
 		}
-		
+
 		if ( item instanceof Weapon)
 		{
-			buyItem( ship.type.weaponSlots, 
-					ship.weapon, 
+			buyItem( ship.type.weaponSlots,
+					ship.weapon,
 					item.buyPrice(curSystem().techLevel(), ship.skill(Skill.TRADER)),
 					item.toXmlString(getResources()),
 					item );
@@ -1417,8 +1406,8 @@ public class GameState {
 
 		if ( item instanceof Shield)
 		{
-			buyItem( ship.type.shieldSlots, 
-					ship.shield, 
+			buyItem( ship.type.shieldSlots,
+					ship.shield,
 					item.buyPrice(curSystem().techLevel(), ship.skill(Skill.TRADER)),
 					item.toXmlString(getResources()),
 					item );
@@ -1430,8 +1419,8 @@ public class GameState {
 				mGameManager.showDialogFragment(SimpleDialog.newInstance(R.string.screen_buyeq_dialog_notuseful, R.string.screen_buyeq_dialog_notuseful_message, R.string.help_nomoreofitem));
 			else
 			{
-				buyItem( ship.type.gadgetSlots, 
-						ship.gadget, 
+				buyItem( ship.type.gadgetSlots,
+						ship.gadget,
 						item.buyPrice(curSystem().techLevel(), ship.skill(Skill.TRADER)),
 						item.toXmlString(getResources()),
 						item );
@@ -1439,8 +1428,8 @@ public class GameState {
 		}
 
 	}
-	
-	
+
+
 	/*
 	 * BuyShipEvent.c
 	 */
@@ -1449,14 +1438,14 @@ public class GameState {
 	// *************************************************************************
 	private void createShip( ShipType index )
 	{
-		// NB this looks different from original because most of the 
+		// NB this looks different from original because most of the
 		// functionality is now handled by Ship class constructor.
 		ship = new Ship(this, index);
 		ship.crew[0] = commander();
 		for (TradeItem item : TradeItem.values()) {
 			buyingPrice.put(item, 0);
 		}
-		
+
 	}
 
 
@@ -1474,8 +1463,8 @@ public class GameState {
 		if (scarabStatus == 3)
 			scarabStatus = 0;
 	}
-	
-	
+
+
 	// *************************************************************************
 	// Determine Ship Prices depending on tech level of current system.
 	// *************************************************************************
@@ -1486,7 +1475,7 @@ public class GameState {
 			if (type.minTechLevel.compareTo(curSystem().techLevel()) <= 0)
 			{
 				int price = type.buyPrice(curSystem().techLevel(), ship.skill(Skill.TRADER)) - ship.currentPrice( false );
-				if (price == 0) 
+				if (price == 0)
 					price = 1;
 
 				shipPrice.put(type, price);
@@ -1495,24 +1484,24 @@ public class GameState {
 				shipPrice.put(type, 0);
 		}
 	}
-	
+
 	// *************************************************************************
 	// You get a Flea
 	// *************************************************************************
 	private void createFlea(  )
 	{
 		createShip( ShipType.FLEA );
-		
+
 		escapePod = false;
 		insurance = false;
 		noClaim = 0;
 	}
-	
+
 	public void drawBuyShipForm()
 	{
 		BaseScreen screen = mGameManager.getCurrentScreen();
 		if (screen == null || screen.getView() == null || screen.getType() != ScreenType.BUYSHIP) return;
-		
+
 		determineShipPrices();
 		for (ShipType type : ShipType.buyableValues())
 		{
@@ -1525,7 +1514,7 @@ public class GameState {
 				screen.setViewTextById(BuyShipScreen.PRICE_IDS.get(type), R.string.generic_notsold);
 			else if (ship.type == type)
 				screen.setViewTextById(BuyShipScreen.PRICE_IDS.get(type), R.string.screen_yard_buyship_gotone);
-			else 
+			else
 				screen.setViewTextById(BuyShipScreen.PRICE_IDS.get(type), R.string.format_credits, shipPrice.get(type));
 		}
 		screen.setViewTextById(R.id.screen_yard_buyship_credits, R.string.format_cash, credits);
@@ -1534,8 +1523,8 @@ public class GameState {
 		{
 			mGameManager.showDialogFragment(SimpleDialog.newInstance(R.string.screen_yard_buyship_tribbles_title, R.string.screen_yard_buyship_tribbles_message, R.string.help_shipnotworthmuch));
 			tribbleMessage = true;
-		}	
-		
+		}
+
 //		// Screenshot override
 //		screen.setViewVisibilityById(BuyShipScreen.BUY_IDS.get(ShipType.FLEA), true);
 //		screen.setViewVisibilityById(BuyShipScreen.BUY_IDS.get(ShipType.GNAT), true);
@@ -1558,7 +1547,7 @@ public class GameState {
 //		screen.setViewTextById(BuyShipScreen.PRICE_IDS.get(ShipType.TERMITE), R.string.generic_notsold);
 //		screen.setViewTextById(BuyShipScreen.PRICE_IDS.get(ShipType.WASP), R.string.generic_notsold);
 //		screen.setViewTextById(R.id.screen_yard_buyship_credits, R.string.format_cash, 378511);
-		
+
 	}
 
 	// *************************************************************************
@@ -1583,7 +1572,7 @@ public class GameState {
 			new BuyShipTask().execute();
 		}
 	}
-	
+
 	private class BuyShipTask extends AsyncTask<Void, Void, Void> {
 		private int extra = 0;
 		private boolean hasLightning = false;
@@ -1606,46 +1595,46 @@ public class GameState {
 				++j;
 			if (shipPrice.get(selectedShipType) == 0)
 				mGameManager.showDialogFragment(SimpleDialog.newInstance(
-						R.string.screen_yard_buyship_notavailable_title, 
-						R.string.screen_yard_buyship_notavailable_message, 
+						R.string.screen_yard_buyship_notavailable_title,
+						R.string.screen_yard_buyship_notavailable_message,
 						R.string.help_itemnotsold)); // NB Not quite sure if the help text here is correct, but that's ok because the dialog shouldn't ever appear anyway since the button won't be drawn.
 			else if ((shipPrice.get(selectedShipType) >= 0) &&
 					(debt > 0))
 				mGameManager.showDialogFragment(SimpleDialog.newInstance(
-						R.string.dialog_youreindebt_title, 
+						R.string.dialog_youreindebt_title,
 						R.string.dialog_youreindebt_message,
 						R.string.help_youreindebt));
 			else if (shipPrice.get(selectedShipType) > toSpend())
 				mGameManager.showDialogFragment(SimpleDialog.newInstance(
-						R.string.screen_yard_buyship_notenoughmoney_title, 
+						R.string.screen_yard_buyship_notenoughmoney_title,
 						R.string.screen_yard_buyship_notenoughmoney_message,
 						R.string.help_cantbuyship));
 			// NB a new check here if both Wild and Jarek are on board
 			else if ((jarekStatus == 1) && (wildStatus == 1) && (selectedShipType.crewQuarters < 3))
 				mGameManager.showDialogFragment(SimpleDialog.newInstance(
-						R.string.dialog_special_passengerneedsquarters_title, 
-						R.string.dialog_special_passengerneedsquarters_message, 
+						R.string.dialog_special_passengerneedsquarters_title,
+						R.string.dialog_special_passengerneedsquarters_message,
 						R.string.help_passengersneedsquarters,
 						getResources().getString(R.string.dialog_special_passenger_both, getResources().getString(R.string.dialog_special_passenger_jarek), getResources().getString(R.string.dialog_special_passenger_wild))));
 			else if ((jarekStatus == 1) && (selectedShipType.crewQuarters < 2))
 				mGameManager.showDialogFragment(SimpleDialog.newInstance(
-						R.string.dialog_special_passengerneedsquarters_title, 
-						R.string.dialog_special_passengerneedsquarters_message, 
+						R.string.dialog_special_passengerneedsquarters_title,
+						R.string.dialog_special_passengerneedsquarters_message,
 						R.string.help_jarekneedsquarters,
 						getResources().getString(R.string.dialog_special_passenger_jarek)));
 			else if ((wildStatus == 1) && (selectedShipType.crewQuarters < 2))
 				mGameManager.showDialogFragment(SimpleDialog.newInstance(
-						R.string.dialog_special_passengerneedsquarters_title, 
-						R.string.dialog_special_passengerneedsquarters_message, 
+						R.string.dialog_special_passengerneedsquarters_title,
+						R.string.dialog_special_passengerneedsquarters_message,
 						R.string.help_jarekneedsquarters,
 						getResources().getString(R.string.dialog_special_passenger_wild)));
 			else if (reactorStatus > 0 && reactorStatus < 21)
 				mGameManager.showDialogFragment(SimpleDialog.newInstance(
-						R.string.dialog_special_shipwithreactor_title, 
+						R.string.dialog_special_shipwithreactor_title,
 						R.string.dialog_special_shipwithreactor_message,
 						R.string.help_cantsellshipwithreactor));
 			else
-			{	
+			{
 
 				extra = 0;
 				hasLightning = false;
@@ -1748,10 +1737,10 @@ public class GameState {
 						final CountDownLatch latch = newLatch();
 						mGameManager.showDialogFragment(ConfirmDialog.newInstance(
 								R.string.screen_yard_buyship_transferequip_title,
-								R.string.screen_yard_buyship_transferequip_message, 
+								R.string.screen_yard_buyship_transferequip_message,
 								R.string.help_transferlightningshield,
 								new OnConfirmListener() {
-									
+
 									@Override
 									public void onConfirm() {
 										addLightning = true;
@@ -1760,7 +1749,7 @@ public class GameState {
 									}
 								},
 								new OnCancelListener() {
-									
+
 									@Override
 									public void onCancel() {
 										unlock(latch);
@@ -1791,10 +1780,10 @@ public class GameState {
 						final CountDownLatch latch = newLatch();
 						mGameManager.showDialogFragment(ConfirmDialog.newInstance(
 								R.string.screen_yard_buyship_transferequip_title,
-								R.string.screen_yard_buyship_transferequip_message, 
+								R.string.screen_yard_buyship_transferequip_message,
 								R.string.help_transferfuelcompactor,
 								new OnConfirmListener() {
-									
+
 									@Override
 									public void onConfirm() {
 										addCompactor = true;
@@ -1803,7 +1792,7 @@ public class GameState {
 									}
 								},
 								new OnCancelListener() {
-									
+
 									@Override
 									public void onCancel() {
 										unlock(latch);
@@ -1834,10 +1823,10 @@ public class GameState {
 						final CountDownLatch latch = newLatch();
 						mGameManager.showDialogFragment(ConfirmDialog.newInstance(
 								R.string.screen_yard_buyship_transferequip_title,
-								R.string.screen_yard_buyship_transferequip_message, 
+								R.string.screen_yard_buyship_transferequip_message,
 								R.string.help_transfermorganslaser,
 								new OnConfirmListener() {
-									
+
 									@Override
 									public void onConfirm() {
 										addMorganLaser = true;
@@ -1846,7 +1835,7 @@ public class GameState {
 									}
 								},
 								new OnCancelListener() {
-									
+
 									@Override
 									public void onCancel() {
 										unlock(latch);
@@ -1868,13 +1857,13 @@ public class GameState {
 								Weapon.MORGAN));
 						lock(latch);
 					}
-					
+
 				}
 
 				if (j > selectedShipType.crewQuarters) {
 					CountDownLatch latch = newLatch();
 					mGameManager.showDialogFragment(SimpleDialog.newInstance(
-							R.string.screen_yard_buyship_toomanycrew_title, 
+							R.string.screen_yard_buyship_toomanycrew_title,
 							R.string.screen_yard_buyship_toomanycrew_message,
 							R.string.help_toomanycrewmembers,
 							newUnlocker(latch)));
@@ -1897,8 +1886,8 @@ public class GameState {
 					final boolean fAddMorganLaser = addMorganLaser;
 					final CountDownLatch latch = newLatch();
 					mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-							R.string.screen_yard_buyship_buy_title, 
-							buyMessageId, 
+							R.string.screen_yard_buyship_buy_title,
+							buyMessageId,
 							R.string.help_tradeship,
 							new OnConfirmListener() {
 
@@ -1912,13 +1901,13 @@ public class GameState {
 										ship.shield[0] = Shield.LIGHTNING;
 									if (fAddMorganLaser)
 										ship.weapon[0] = Weapon.MORGAN;
-									ship.tribbles = 0;		
-								
+									ship.tribbles = 0;
+
 									unlock(latch);
 								}
 							},
 							new OnCancelListener() {
-								
+
 								@Override
 								public void onCancel() {
 									unlock(latch);
@@ -1929,17 +1918,17 @@ public class GameState {
 					lock(latch);
 				}
 			}
-			
+
 			return null;
 		}
-		
+
 		@Override
 		public void onPostExecute(Void result) {
 			drawBuyShipForm();
 		}
 
 	}
-	
+
 	/*
 	 * Cargo.c
 	 */
@@ -2017,23 +2006,23 @@ public class GameState {
 					buyingPrice.get(item) / ship.getCargo(item)
 			};
 		}
-		
+
 		mGameManager.showDialogFragment(InputDialog.newInstance(
-				titleId, 
+				titleId,
 				messageId,
 				R.string.generic_ok,
 				R.string.generic_all,
 				R.string.generic_none,
 				R.string.help_amounttosell,
 				new OnPositiveListener() {
-					
+
 					@Override
 					public void onClickPositiveButton(int value) {
 						if (value > 0) sellCargo(item, value, operation);
 					}
 				},
 				new OnNeutralListener() {
-					
+
 					@Override
 					public void onClickNeutralButton() {
 						sellCargo(item, 999, operation);
@@ -2042,7 +2031,7 @@ public class GameState {
 				args));
 
 	}
-	
+
 	// *************************************************************************
 	// Determines if a given ship is carrying items that can be bought or sold
 	// in a specified system.
@@ -2060,22 +2049,22 @@ public class GameState {
 				thisRet = true;
 			else if (sh.getCargo(item) > 0 && !sell && sellPrice.get(item) > 0)
 				thisRet = true;
-				
+
 			// Criminals can only buy or sell illegal goods, Noncriminals cannot buy
 			// or sell such items.
 			if (policeRecordScore < PoliceRecord.DUBIOUS.score && item != TradeItem.FIREARMS && item != TradeItem.NARCOTICS)
 			    thisRet = false;
 			else if (policeRecordScore >= PoliceRecord.DUBIOUS.score && (item == TradeItem.FIREARMS || item == TradeItem.NARCOTICS))
 			    thisRet = false;
-			    
+
 			if (thisRet)
 				ret = true;
 
 		}
-		
+
 		return ret;
 	}
-	
+
 	// *************************************************************************
 	// Returns the index of a trade good that is on a given ship that can be
 	// sold in a given system.
@@ -2085,8 +2074,8 @@ public class GameState {
 		boolean looping = true;
 		int i=0;
 		TradeItem item = null;
-		
-		while (looping && i < 10) 
+
+		while (looping && i < 10)
 		{
 			item = getRandom(TradeItem.values());
 			// It's not as ugly as it may look! If the ship has a particulat item, the following
@@ -2094,7 +2083,7 @@ public class GameState {
 			// if the trader is buying, there must be a valid sale price for that good on the local system
 			// if the trader is selling, there must be a valid buy price for that good on the local system
 			// if the player is criminal, the good must be illegal
-			// if the player is not criminal, the good must be legal 
+			// if the player is not criminal, the good must be legal
 			if ( (sh.getCargo(item) > 0 && sell && buyPrice.get(item) > 0) &&
 			     ((policeRecordScore < PoliceRecord.DUBIOUS.score && (item == TradeItem.FIREARMS || item == TradeItem.NARCOTICS)) ||
 			      (policeRecordScore >= PoliceRecord.DUBIOUS.score && item != TradeItem.FIREARMS && item != TradeItem.NARCOTICS)) )
@@ -2123,7 +2112,7 @@ public class GameState {
 				    ((sh.getCargo(item) > 0 && !sell &&  sellPrice.get(item) > 0))) &&
 			     	((policeRecordScore < PoliceRecord.DUBIOUS.score && (item == TradeItem.FIREARMS || item == TradeItem.NARCOTICS)) ||
 			      	(policeRecordScore >= PoliceRecord.DUBIOUS.score && item != TradeItem.FIREARMS && item != TradeItem.NARCOTICS)) )
-				    
+
 				{
 					looping = false;
 				}
@@ -2143,9 +2132,9 @@ public class GameState {
 		}
 		return item;
 	}
-	
-	
-	
+
+
+
 	// *************************************************************************
 	// Let the commander indicate how many he wants to buy
 	// *************************************************************************
@@ -2175,33 +2164,33 @@ public class GameState {
 		mGameManager.showDialogFragment(InputDialog.newInstance(
 				R.string.format_buyitem,
 				queryRes,
-				R.string.generic_ok, 
-				R.string.generic_all, 
-				R.string.generic_none, 
+				R.string.generic_ok,
+				R.string.generic_all,
+				R.string.generic_none,
 				R.string.help_amounttobuy,
 				new OnPositiveListener() {
-					
+
 					@Override
 					public void onClickPositiveButton(int value) {
 						if (value > 0) buyCargo(item, value);
 					}
-				}, 
+				},
 				new OnNeutralListener() {
-					
+
 					@Override
 					public void onClickNeutralButton() {
 						buyCargo(item, 999);
 					}
-				}, 
+				},
 				item,
 				buyPrice.get(item),
-				min( toSpend() / buyPrice.get(item), curSystem().getQty(item) )				
+				min( toSpend() / buyPrice.get(item), curSystem().getQty(item) )
 				));
 
 
-	}	
-	
-	
+	}
+
+
 	public void drawPlunderForm()
 	{
 		BaseDialog dialog = mGameManager.findDialogByClass(PlunderDialog.class);
@@ -2225,7 +2214,7 @@ public class GameState {
 				break;
 			}
 		}
-		
+
 		if (PlunderDialog.ALL_IDS.containsValue(buttonId))
 			plunderCargo( item, 999 );
 		else if (PlunderDialog.AMOUNT_IDS.containsValue(buttonId))
@@ -2248,13 +2237,13 @@ public class GameState {
 			travel();
 		}
 	}
-	
-	
+
+
 	public void drawBuyCargoForm()
 	{
 		BaseScreen screen = mGameManager.getCurrentScreen();
 		if (screen == null || screen.getView() == null || screen.getType() != ScreenType.BUY) return;
-		
+
 		for (TradeItem item : TradeItem.values())
 		{
 			screen.setViewVisibilityById(BuyScreen.AMOUNT_IDS.get(item), buyPrice.get(item) > 0);
@@ -2299,7 +2288,7 @@ public class GameState {
 //		screen.setViewTextById(BuyScreen.PRICE_IDS.get(TradeItem.ROBOTS), R.string.format_credits, 4075);
 //		screen.setViewTextById(R.id.screen_buy_bays, R.string.format_bays, 30,30);
 //		screen.setViewTextById(R.id.screen_buy_credits, R.string.format_cash, 197761);
-		
+
 
 	}
 
@@ -2316,7 +2305,7 @@ public class GameState {
 				break;
 			}
 		}
-		
+
 		if (BuyScreen.MAX_IDS.containsValue(buttonId))
 			buyCargo( item, 999 );
 		else
@@ -2324,12 +2313,12 @@ public class GameState {
 			getAmountToBuy(item);
 		}
 	}
-	
+
 	public void drawSellCargoForm()
 	{
 		BaseScreen screen = mGameManager.getCurrentScreen();
 		if (screen == null || screen.getView() == null || screen.getType() != ScreenType.SELL) return;
-		
+
 		for (TradeItem item : TradeItem.values())
 		{
 			View amt = screen.getView().findViewById(SellScreen.AMOUNT_IDS.get(item));
@@ -2346,7 +2335,7 @@ public class GameState {
 				screen.setViewTextById(SellScreen.ALL_IDS.get(item), R.string.generic_all);
 			}
 		}
-		
+
 		for (TradeItem item : TradeItem.values())
 		{
 			if (ship.getCargo(item) > 0 && sellPrice.get(item) > buyingPrice.get(item) / ship.getCargo(item)) {
@@ -2354,18 +2343,18 @@ public class GameState {
 			} else {
 				((TextView) screen.getView().findViewById(SellScreen.LABEL_IDS.get(item))).setTypeface( Typeface.DEFAULT );
 			}
-			
+
 			if (sellPrice.get(item) > 0)
 				screen.setViewTextById(SellScreen.PRICE_IDS.get(item), R.string.format_credits, sellPrice.get(item));
 			else
 				screen.setViewTextById(SellScreen.PRICE_IDS.get(item), R.string.generic_notrade);
-				
+
 			screen.setViewTextById(SellScreen.AMOUNT_IDS.get(item), R.string.format_number, ship.getCargo(item));
 		}
 
 		screen.setViewTextById(R.id.screen_sell_bays, R.string.format_bays, ship.filledCargoBays(), ship.totalCargoBays());
 		screen.setViewTextById(R.id.screen_sell_credits, R.string.format_cash, credits);
-		
+
 //		// Screenshot override
 //		TypedValue tv = new TypedValue();
 //		mGameManager.getTheme().resolveAttribute(R.attr.squareButtonDrawable, tv, true);
@@ -2421,9 +2410,9 @@ public class GameState {
 //		screen.setViewTextById(SellScreen.AMOUNT_IDS.get(TradeItem.ROBOTS), R.string.format_number, 0);
 //		screen.setViewTextById(R.id.screen_sell_bays, R.string.format_bays, 30, 30);
 //		screen.setViewTextById(R.id.screen_sell_credits, R.string.format_cash, 197761);
-		
+
 	}
-	
+
 	// *************************************************************************
 	// Handling the events of the Sell Cargo form.
 	// Cannot be moved without moving all functions that use QtyBuf to same file
@@ -2437,7 +2426,7 @@ public class GameState {
 				break;
 			}
 		}
-		
+
 		if (SellScreen.ALL_IDS.containsValue(buttonId) && sellPrice.get(item) > 0)
 		{
 			sellCargo( item, 999, SellOperation.SELL );
@@ -2468,15 +2457,15 @@ public class GameState {
 			drawSellCargoForm();
 		}
 	}
-	
-	
+
+
 	// *************************************************************************
 	// Show contents of Dump cargo form.
 	// *************************************************************************
 	public void showDumpCargo(  )
 	{
 		BaseDialog dialog = mGameManager.findDialogByClass(JettisonDialog.class);
-		
+
 		for (TradeItem item : TradeItem.values())
 		{
 			dialog.setViewTextById(JettisonDialog.AMOUNT_IDS.get(item), R.string.format_number, ship.getCargo(item));
@@ -2484,7 +2473,7 @@ public class GameState {
 		dialog.setViewVisibilityById(R.id.dialog_plunder_dump, false);
 		dialog.setViewTextById(R.id.dialog_plunder_bays, R.string.format_bays, ship.filledCargoBays(), ship.totalCargoBays());
 	}
-		
+
 	// *************************************************************************
 	// Handling the events of the Discard Cargo form.
 	// Cannot be moved without moving all functions that use QtyBuf to same file
@@ -2512,7 +2501,7 @@ public class GameState {
 					R.string.dialog_dumpall_message,
 					R.string.help_dumpall,
 					new OnConfirmListener() {
-						
+
 						@Override
 						public void onConfirm() {
 							sellCargo( fItem, 999, SellOperation.JETTISON );
@@ -2521,7 +2510,7 @@ public class GameState {
 					null,
 					item,
 					buyingPrice.get(item)));
-			
+
 		}
 		else
 		{
@@ -2533,14 +2522,14 @@ public class GameState {
 			getAmountToSell( item, SellOperation.JETTISON );
 		}
 	}
-	
-	
+
+
 	// *************************************************************************
 	// Plunder amount of cargo
 	// *************************************************************************
 	public void plunderCargo( TradeItem item, int amount )
 	{
-		
+
 		if (opponent.getCargo(item) <= 0)
 		{
 			mGameManager.showDialogFragment(SimpleDialog.newInstance(R.string.screen_buy_notavailable_title, R.string.dialog_plunder_nothing, R.string.help_victimdoesnthaveany));
@@ -2552,48 +2541,48 @@ public class GameState {
 			mGameManager.showDialogFragment(SimpleDialog.newInstance(R.string.screen_buy_noemptybays_title, R.string.screen_buy_noemptybays_message, R.string.help_noemptybays));
 			return;
 		}
-		
+
 		int toPlunder = min( amount, opponent.getCargo(item) );
 		toPlunder = min( toPlunder, ship.totalCargoBays() - ship.filledCargoBays() );
-		
+
 		ship.addCargo(item, toPlunder);
 		opponent.addCargo(item, -toPlunder);
-		
+
 		mGameManager.findDialogByClass(PlunderDialog.class).onRefreshDialog();
 	}
-	
-	
+
+
 	// *************************************************************************
 	// Let the commander indicate how many he wants to plunder
 	// *************************************************************************
 	public void getAmountToPlunder( final TradeItem item )
 	{
 		mGameManager.showDialogFragment(InputDialog.newInstance(
-				R.string.dialog_plunder_title, 
-				R.string.dialog_plunder_query, 
+				R.string.dialog_plunder_title,
+				R.string.dialog_plunder_query,
 				R.string.generic_ok,
 				R.string.generic_all,
 				R.string.generic_none,
 				R.string.help_amounttoplunder,
 				new OnPositiveListener() {
-					
+
 					@Override
 					public void onClickPositiveButton(int value) {
-						if (value > 0) plunderCargo(item, value); 
+						if (value > 0) plunderCargo(item, value);
 					}
-				}, 
+				},
 				new OnNeutralListener() {
-					
+
 					@Override
 					public void onClickNeutralButton() {
 						plunderCargo(item, 999);
 					}
-				}, 
+				},
 				item,
 				opponent.getCargo(item)));
 	}
-	
-	
+
+
 	// *************************************************************************
 	// Buy amount of cargo
 	// *************************************************************************
@@ -2633,7 +2622,7 @@ public class GameState {
 		credits -= toBuy * buyPrice.get(item);
 		buyingPrice.put(item, buyingPrice.get(item) + toBuy * buyPrice.get(item));
 		curSystem().addQty(item, -toBuy);
-		
+
 		if (mGameManager.getCurrentScreenType() == ScreenType.BUY) {
 			drawBuyCargoForm();
 		} else if (mGameManager.getCurrentScreenType() == ScreenType.AVGPRICES) {
@@ -2642,8 +2631,8 @@ public class GameState {
 		}
 
 	}
-	
-	
+
+
 	// *************************************************************************
 	// Sell or Jettison amount of cargo
 	// Operation is SELLCARGO, DUMPCARGO, or JETTISONCARGO
@@ -2660,22 +2649,22 @@ public class GameState {
 			}
 			return;
 		}
-		
+
 		if (sellPrice.get(item) <= 0 && operation == SellOperation.SELL)
 		{
 			mGameManager.showDialogFragment(SimpleDialog.newInstance(R.string.screen_sell_notinterested, R.string.screen_sell_notinterested_message, R.string.help_notinterested));
 			return;
 		}
-		
+
 		if (operation == SellOperation.JETTISON)
 		{
 			if (policeRecordScore > PoliceRecord.DUBIOUS.score && !litterWarning)
 			{
 				litterWarning = true;
-				
+
 				mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-						R.string.dialog_spacelittering_title, 
-						R.string.dialog_spacelittering_message, 
+						R.string.dialog_spacelittering_title,
+						R.string.dialog_spacelittering_message,
 						R.string.help_spacelittering,
 						new OnConfirmListener(	) {
 					@Override
@@ -2690,13 +2679,13 @@ public class GameState {
 		}
 
 		int toSell = min( amount, ship.getCargo(item) );
-		
+
 		if (operation == SellOperation.DUMP)
 		{
 			toSell = min(toSell, toSpend() / 5 * (difficulty.ordinal() + 1));
 		}
-		
-		buyingPrice.put(item, 
+
+		buyingPrice.put(item,
 				(buyingPrice.get(item) * (ship.getCargo(item) - toSell)) / ship.getCargo(item)
 				);
 		ship.addCargo(item, -toSell);
@@ -2715,7 +2704,7 @@ public class GameState {
 				addNewsEvent(NewsEvent.CAUGHTLITTERING);
 			}
 		}
-		
+
 		if (operation == SellOperation.SELL || operation == SellOperation.DUMP)
 		{
 			drawSellCargoForm();
@@ -2726,7 +2715,7 @@ public class GameState {
 		}
 
 	}
-	
+
 	// *************************************************************************
 	// Buy an item: Slots is the number of slots, Item is the array in the
 	// Ship record which contains the item type, Price is the costs,
@@ -2765,7 +2754,7 @@ public class GameState {
 
 		}
 	}
-	
+
 	// *************************************************************************
 	// Drawing the Sell Equipment screen.
 	// *************************************************************************
@@ -2773,19 +2762,19 @@ public class GameState {
 	{
 		BaseScreen screen = mGameManager.getCurrentScreen();
 		if (screen == null || screen.getView() == null || screen.getType() != ScreenType.SELLEQ) return;
-		
+
 		screen.setViewVisibilityById(R.id.screen_selleq_weapon_empty, ship.weapon[0] == null);
 		screen.setViewVisibilityById(R.id.screen_selleq_weapon_notempty, ship.weapon[0] != null);
-		
+
 		for (int i=0; i<ship.weapon.length; ++i)
 		{
-			
+
 			screen.setViewVisibilityById(SellEqScreen.WEAPON_IDS.get(i), ship.weapon[i] != null);
 			if (ship.weapon[i] == null)
 			{
 				continue;
 			}
-			
+
 			screen.setViewTextById(SellEqScreen.WEAPON_TYPE_IDS.get(i), ship.weapon[i]);
 
 			screen.setViewTextById(SellEqScreen.WEAPON_PRICE_IDS.get(i), R.string.format_credits, ship.weapon[i].sellPrice());
@@ -2801,7 +2790,7 @@ public class GameState {
 			{
 				continue;
 			}
-			
+
 			screen.setViewTextById(SellEqScreen.SHIELD_TYPE_IDS.get(i), ship.shield[i]);
 
 			screen.setViewTextById(SellEqScreen.SHIELD_PRICE_IDS.get(i), R.string.format_credits, ship.shield[i].sellPrice());
@@ -2809,7 +2798,7 @@ public class GameState {
 
 		screen.setViewVisibilityById(R.id.screen_selleq_gadget_empty, ship.gadget[0] == null);
 		screen.setViewVisibilityById(R.id.screen_selleq_gadget_notempty, ship.gadget[0] != null);
-		
+
 		for (int i=0; i<ship.gadget.length; ++i)
 		{
 			screen.setViewVisibilityById(SellEqScreen.GADGET_IDS.get(i), ship.gadget[i] != null);
@@ -2817,15 +2806,15 @@ public class GameState {
 			{
 				continue;
 			}
-			
+
 			screen.setViewTextById(SellEqScreen.GADGET_TYPE_IDS.get(i), ship.gadget[i]);
 
 			screen.setViewTextById(SellEqScreen.GADGET_PRICE_IDS.get(i), R.string.format_credits, ship.gadget[i].sellPrice());
 		}
-		
+
 		screen.setViewTextById(R.id.screen_selleq_credits, R.string.format_cash, credits);
 	}
-	
+
 	/*
 	 * CmdrStatusEvent.c
 	 */
@@ -2836,9 +2825,9 @@ public class GameState {
 	{
 		BaseScreen screen = mGameManager.getCurrentScreen();
 		if (screen == null || screen.getView() == null || screen.getType() != ScreenType.STATUS) return;
-		
+
 		screen.setViewTextById(R.id.screen_status_name, commander().name);
-		
+
 		screen.setViewTextById(R.id.screen_status_pilot, R.string.format_skills, commander().pilot(), ship.skill(Skill.PILOT));
 		screen.setViewTextById(R.id.screen_status_fighter, R.string.format_skills, commander().fighter(), ship.skill(Skill.FIGHTER));
 		screen.setViewTextById(R.id.screen_status_trader, R.string.format_skills, commander().trader(), ship.skill(Skill.TRADER));
@@ -2862,10 +2851,10 @@ public class GameState {
 		screen.setViewTextById(R.id.screen_status_worth, R.string.format_credits, currentWorth());
 
 		screen.setViewVisibilityById(R.id.screen_status_cheat, cheatCounter == 3);
-		
-		
+
+
 		cheatCounter = 0;
-		
+
 //		// Screenshot override
 //		screen.setViewTextById(R.id.screen_status_name, "Jameson");
 //		screen.setViewTextById(R.id.screen_status_pilot, R.string.format_skills, 10, 13);
@@ -2881,7 +2870,7 @@ public class GameState {
 //		screen.setViewTextById(R.id.screen_status_debt, R.string.format_credits, 0);
 //		screen.setViewTextById(R.id.screen_status_worth, R.string.format_credits, 433195);
 	}
-	
+
 	// *************************************************************************
 	// Handling of events on the Commander Status screen
 	// *************************************************************************
@@ -2894,7 +2883,7 @@ public class GameState {
 			return;
 		}
 
-		
+
 		if (buttonId == R.id.screen_status_quests_button)
 		{
 			mGameManager.setCurrentScreenType(ScreenType.QUESTS);
@@ -2908,17 +2897,17 @@ public class GameState {
 			mGameManager.setCurrentScreenType(ScreenType.SHIP);
 		}
 	}
-	
+
 	// New function to handle cheat form display (originally in CommanderStatusFormHandleEvent())
 	public void showCheatDialog() {
 		BaseDialog dialog = mGameManager.findDialogByClass(CheatDialog.class);
-		
+
 		dialog.setViewTextById(R.id.dialog_cheat_credits, R.string.format_number, credits);
-		
+
 		dialog.setViewTextById(R.id.dialog_cheat_debt, R.string.format_number, debt);
-		
+
 		dialog.setViewTextById(R.id.dialog_cheat_reputation, R.string.format_number, reputationScore);
-		
+
 		dialog.setViewTextById(R.id.dialog_cheat_record, R.string.format_number, abs(policeRecordScore));
 
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_cheat_negative)).setChecked(policeRecordScore < 0);
@@ -2927,33 +2916,33 @@ public class GameState {
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_cheat_fuelcompactor)).setChecked(ship.hasGadget(Gadget.FUELCOMPACTOR));
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_cheat_morgan)).setChecked(ship.hasWeapon(Weapon.MORGAN, true));
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_cheat_singularity)).setChecked(canSuperWarp);
-		
+
 		// NB this is a new addition
 		((CheckBox) dialog.getDialog().findViewById(R.id.dialog_cheat_hull)).setChecked(scarabStatus == 3);
 	}
-	
+
 	// New function to handle cheat form dismissal (originally in CommanderStatusFormHandleEvent())
 	public void cheatDialogDismiss() {
 		BaseDialog dialog = mGameManager.findDialogByClass(CheatDialog.class);
-		
+
 		try {
 			credits = Integer.parseInt(((EditText) dialog.getDialog().findViewById(R.id.dialog_cheat_credits)).getText().toString());
-		} 
+		}
 		catch (NumberFormatException e) {}
 
 		try {
 			debt = Integer.parseInt(((EditText) dialog.getDialog().findViewById(R.id.dialog_cheat_debt)).getText().toString());
-		} 
+		}
 		catch (NumberFormatException e) {}
 
 		try {
 			reputationScore = Integer.parseInt(((EditText) dialog.getDialog().findViewById(R.id.dialog_cheat_reputation)).getText().toString());
-		} 
+		}
 		catch (NumberFormatException e) {}
-		
+
 		try {
 			policeRecordScore = Integer.parseInt(((EditText) dialog.getDialog().findViewById(R.id.dialog_cheat_record)).getText().toString());
-		} 
+		}
 		catch (NumberFormatException e) {}
 
 		if ( ((CheckBox)dialog.getDialog().findViewById(R.id.dialog_cheat_negative)).isChecked() )
@@ -2994,7 +2983,7 @@ public class GameState {
 		}
 
 		canSuperWarp = ((CheckBox)dialog.getDialog().findViewById(R.id.dialog_cheat_singularity)).isChecked();
-		
+
 		// NB this is a new addition so that the scarab strengthened hull can be activated from the cheat menu.
 		if (((CheckBox) dialog.getDialog().findViewById(R.id.dialog_cheat_hull)).isChecked())
 			scarabStatus = 3;
@@ -3002,7 +2991,7 @@ public class GameState {
 		showCommanderStatus();
 	}
 
-	
+
 	/*
 	 * Encounter.c
 	 */
@@ -3025,7 +3014,7 @@ public class GameState {
 			else
 				((ImageView) screen.getView().findViewById(R.id.screen_encounter_continuous_ticker)).setImageResource(l? R.drawable.continuous1l : R.drawable.continuous1);
 		}
-		
+
 		// NB We treat surrender button differently from others because it's wider, so it gets a special layout.
 		screen.setViewVisibilityById(R.id.screen_encounter_surrender, false);
 		for (int i = 0; i < EncounterScreen.BUTTONS.size(); i++) {
@@ -3043,7 +3032,7 @@ public class GameState {
 		screen.setViewVisibilityById(R.id.screen_encounter_enemyship_header, textualEncounters && !graphicalEncounters, false);
 	}
 
-	
+
 	// *************************************************************************
 	// Display on the encounter screen what the next action will be
 	// *************************************************************************
@@ -3053,8 +3042,8 @@ public class GameState {
 
 		BaseScreen screen = mGameManager.getCurrentScreen();
 		if (screen == null || screen.getView() == null || screen.getType() != ScreenType.ENCOUNTER) return;
-		
-		if (firstDisplay && encounterType == Encounter.Police.ATTACK && 
+
+		if (firstDisplay && encounterType == Encounter.Police.ATTACK &&
 				policeRecordScore > PoliceRecord.CRIMINAL.score) {
 			screen.setViewTextById(R.id.screen_encounter_enemyaction, R.string.opponentaction_hailsurrender);
 		} else if (encounterType.action() == OpponentAction.IGNORE && ship.cloaked(opponent)) {
@@ -3064,7 +3053,7 @@ public class GameState {
 		}
 	}
 
-		
+
 	// *************************************************************************
 	// Show the ship stats on the encounter screen
 	// *************************************************************************
@@ -3077,7 +3066,7 @@ public class GameState {
 		int shieldPc = 0;
 		if (sh.totalShields() > 0)
 			shieldPc = sh.totalShieldStrength() * 100 / sh.totalShields();
-		
+
 		int shipViewId;
 		int shipTypeViewId;
 		int hullViewId;
@@ -3211,7 +3200,7 @@ public class GameState {
 			shipView.setLayoutParams(marginParams);
 		}
 	}
-	
+
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	private void shipRotationHoneycomb(ImageView shipView) {
 		shipView.setRotation(180);
@@ -3348,7 +3337,7 @@ public class GameState {
 			}
 		});
 	}
-	
+
 	// *************************************************************************
 	// Display on the encounter screen the ships (and also wipe it)
 	// *************************************************************************
@@ -3365,8 +3354,8 @@ public class GameState {
 			showShip( ship, true );
 	    }
 	}
-	
-	
+
+
 	// *************************************************************************
 	// Your escape pod ejects you
 	// *************************************************************************
@@ -3374,13 +3363,13 @@ public class GameState {
 	{
 		new EscapePodTask().execute();
 	}
-	
+
 	private class EscapePodTask extends AsyncTask<Void, Void, Void> {
 
 		@Override
 		protected Void doInBackground(Void... params) {
 			CountDownLatch latch;
-			
+
 			latch = newLatch();
 			mGameManager.showDialogFragment(SimpleDialog.newInstance(
 					R.string.screen_encounter_escapepodactivate_title,
@@ -3388,7 +3377,7 @@ public class GameState {
 					R.string.help_escapepodactivated,
 					newUnlocker(latch)));
 			lock(latch);
-			
+
 			if (scarabStatus == 3)
 				scarabStatus = 0;
 
@@ -3471,7 +3460,7 @@ public class GameState {
 				lock(latch);
 				ship.tribbles = 0;
 			}
-			
+
 			// NB This is a new message if Marie narcotics are lost (Customs will no longer approach you)
 			if (justLootedMarie)
 			{
@@ -3483,7 +3472,7 @@ public class GameState {
 //				lock(latch);
 				justLootedMarie = false;
 			}
-			
+
 
 			if (insurance)
 			{
@@ -3505,7 +3494,7 @@ public class GameState {
 				credits = 0;
 			}
 
-			incDays( 3 );	
+			incDays( 3 );
 
 			createFlea();
 			latch = newLatch();
@@ -3515,21 +3504,21 @@ public class GameState {
 					R.string.help_fleabuilt,
 					newUnlocker(latch)));
 			lock(latch);
-			
+
 			return null;
 		}
-		
+
 		@Override
 		protected void onPostExecute(Void result) {
 			mGameManager.setCurrentScreenType(ScreenType.INFO);
 			mGameManager.clearBackStack();
-			
+
 			// NB Now autosaving on arrival:
 			mGameManager.autosave();
 		}
-		
+
 	}
-	
+
 	// *************************************************************************
 	// You get arrested
 	// *************************************************************************
@@ -3537,13 +3526,13 @@ public class GameState {
 	{
 		new ArrestedTask().execute();
 	}
-	
+
 	private class ArrestedTask extends AsyncTask<Void, Void, Void> {
 
 		@Override
 		protected Void doInBackground(Void... params) {
 			CountDownLatch latch;
-			
+
 			int fine = ((1 + (((currentWorth() * min( 80, -policeRecordScore )) / 100) / 500)) * 500);
 			if (wildStatus == 1)
 			{
@@ -3553,7 +3542,7 @@ public class GameState {
 
 			latch = newLatch();
 			mGameManager.showDialogFragment(SimpleDialog.newInstance(
-					R.string.screen_encounter_arrested_title, 
+					R.string.screen_encounter_arrested_title,
 					R.string.screen_encounter_arrested_message,
 					R.string.help_arrested,
 					newUnlocker(latch)));
@@ -3561,7 +3550,7 @@ public class GameState {
 
 			latch = newLatch();
 			mGameManager.showDialogFragment(SimpleDialog.newInstance(
-					R.string.screen_encounter_convicted_title, 
+					R.string.screen_encounter_convicted_title,
 					R.string.screen_encounter_convicted_message,
 					R.string.help_conviction,
 					newUnlocker(latch),
@@ -3573,7 +3562,7 @@ public class GameState {
 			{
 				latch = newLatch();
 				mGameManager.showDialogFragment(SimpleDialog.newInstance(
-						R.string.screen_encounter_impounded_title, 
+						R.string.screen_encounter_impounded_title,
 						R.string.screen_encounter_impounded_message,
 						R.string.help_impound,
 						newUnlocker(latch)));
@@ -3586,7 +3575,7 @@ public class GameState {
 			{
 				latch = newLatch();
 				mGameManager.showDialogFragment(SimpleDialog.newInstance(
-						R.string.screen_encounter_stopinsurance_title, 
+						R.string.screen_encounter_stopinsurance_title,
 						R.string.screen_encounter_stopinsurance_message,
 						R.string.help_insurancelost,
 						newUnlocker(latch)));
@@ -3599,7 +3588,7 @@ public class GameState {
 			{
 				latch = newLatch();
 				mGameManager.showDialogFragment(SimpleDialog.newInstance(
-						R.string.screen_encounter_mercenariesleave_title, 
+						R.string.screen_encounter_mercenariesleave_title,
 						R.string.screen_encounter_mercenariesleave_message,
 						R.string.help_mercenariesleave,
 						newUnlocker(latch)));
@@ -3612,7 +3601,7 @@ public class GameState {
 			{
 				latch = newLatch();
 				mGameManager.showDialogFragment(SimpleDialog.newInstance(
-						R.string.screen_encounter_antidoteremoved_title, 
+						R.string.screen_encounter_antidoteremoved_title,
 						R.string.screen_encounter_antidoteremoved_message,
 						R.string.help_antidoteremoved,
 						newUnlocker(latch),
@@ -3655,9 +3644,9 @@ public class GameState {
 						R.string.help_reactortaken,
 						newUnlocker(latch)));
 				lock(latch);
-				reactorStatus = 0; 
+				reactorStatus = 0;
 			}
-			
+
 			// NB This is a new check if Marie narcotics are impounded (Customs will no longer approach you)
 			if (justLootedMarie)
 			{
@@ -3669,7 +3658,7 @@ public class GameState {
 //				lock(latch);
 				justLootedMarie = false;
 			}
-			
+
 			arrival();
 
 			incDays( imprisonment );
@@ -3715,7 +3704,7 @@ public class GameState {
 
 				createFlea();
 			}
-			
+
 			policeRecordScore = PoliceRecord.DUBIOUS.score;
 
 			if (debt > 0)
@@ -3731,23 +3720,23 @@ public class GameState {
 					credits = 0;
 				}
 			}
-			
+
 			for (int i=0; i<imprisonment; ++i)
 				payInterest();
-			
+
 			return null;
 
 		}
-		
+
 		@Override
 		protected void onPostExecute(Void result) {
 			mGameManager.setCurrentScreenType(ScreenType.INFO);
 			mGameManager.clearBackStack();
-			
+
 			// NB Now autosaving on arrival:
 			mGameManager.autosave();
 		}
-		
+
 	}
 
 	private boolean commanderOffScreen;
@@ -3761,7 +3750,7 @@ public class GameState {
 		prevEncounterAction = null;
 
 		encounterButtons();
-		
+
 		playerShipNeedsUpdate=true;
 		opponentShipNeedsUpdate=true;
 
@@ -3818,8 +3807,8 @@ public class GameState {
 			}
 			String description = getResources().getQuantityString(R.plurals.screen_encounter_description_initial, clicks, clicks, warpSystem, opponentType, opponentShip);
 			screen.setViewTextById(R.id.screen_encounter_description, description);
-		}		
-		
+		}
+
 		int d = sqrt( ship.tribbles/250 );
 		d = min(d, EncounterScreen.TRIBBLES.size());
 		for (int id : EncounterScreen.TRIBBLES)
@@ -3831,7 +3820,7 @@ public class GameState {
 			final int id = EncounterScreen.TRIBBLES.get(getRandom(EncounterScreen.TRIBBLES.size()));
 			randomizeTribblePosition(id, 0);
 		}
-		
+
 //		// Screenshot override
 //		screen.setViewVisibilityById(R.id.screen_encounter_playership_header, false, false);
 //		screen.setViewVisibilityById(R.id.screen_encounter_playership_type, false, false);
@@ -3944,7 +3933,7 @@ public class GameState {
 		final int sh = screen.getView().getHeight();
 		final int tw = tribble.getWidth();
 		final int th = tribble.getHeight();
-		
+
 		// If views don't have dimensions yet, wait a bit and try again. TODO I'd love to find a slightly cleaner way to do this...
 		if (tries < 10 && (sw == 0 || sh == 0 || tw == 0 || th == 0)) {
 			tribble.postDelayed(new Runnable() {
@@ -3956,7 +3945,7 @@ public class GameState {
 			}, 100);
 			return;
 		}
-		
+
 		if (VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB)
 		{
 			tribble.setX(rng.nextFloat() * (sw - tw));
@@ -3970,12 +3959,12 @@ public class GameState {
 			params.topMargin = getRandom(sh - th);
 			params.rightMargin = 0;
 			params.bottomMargin = 0;
-			
+
 			tribble.setLayoutParams(params);
 			tribble.setVisibility(View.VISIBLE);
 		}
 	}
-	
+
 	// *************************************************************************
 	// Encounter screen Event Handler
 	// *************************************************************************
@@ -3983,47 +3972,38 @@ public class GameState {
 	{
 		if (encounterButtonRunning) return;
 		encounterButtonRunning = true;
-		
+
 		EncounterButton button;
-		switch (buttonId) {
-		case R.id.screen_encounter_button1:
-			button = encounterType.button(1);
-			break;
-		case R.id.screen_encounter_button2:
-			button = encounterType.button(2);
-			break;
-		case R.id.screen_encounter_button3:
-			button = encounterType.button(3);
-			break;
-		case R.id.screen_encounter_button4:
-			button = encounterType.button(4);
-			break;
-		case R.id.screen_encounter_surrender:
-			button = EncounterButton.SURRENDER;
-			break;
-		case R.id.screen_encounter_continuous_interrupt:
-			button = EncounterButton.INTERRUPT;
-			break;
-		default:
-			if (EncounterScreen.TRIBBLES.contains(buttonId)) {
-				button = EncounterButton.TRIBBLE;
-			}
-			else throw new IllegalArgumentException();
-			break;
-		}
+        if (buttonId == R.id.screen_encounter_button1) {
+            button = encounterType.button(1);
+        } else if (buttonId == R.id.screen_encounter_button2) {
+            button = encounterType.button(2);
+        } else if (buttonId == R.id.screen_encounter_button3) {
+            button = encounterType.button(3);
+        } else if (buttonId == R.id.screen_encounter_button4) {
+            button = encounterType.button(4);
+        } else if (buttonId == R.id.screen_encounter_surrender) {
+            button = EncounterButton.SURRENDER;
+        } else if (buttonId == R.id.screen_encounter_continuous_interrupt) {
+            button = EncounterButton.INTERRUPT;
+        } else {
+            if (EncounterScreen.TRIBBLES.contains(buttonId)) {
+                button = EncounterButton.TRIBBLE;
+            } else throw new IllegalArgumentException();
+        }
 
 		autoHandler.removeCallbacksAndMessages(null);
 		runningTask = new EncounterButtonTask();
 		runningTask.execute(button);
-		
+
 		if (EncounterScreen.TRIBBLES.contains(buttonId)) {
 			Log.d("tribble", "click");
     		mGameManager.showDialogFragment(SimpleDialog.newInstance(
-    				R.string.screen_encounter_squeek_title, 
+    				R.string.screen_encounter_squeek_title,
     				R.string.screen_encounter_squeek_message,
     				R.string.help_squeek,
 					new OnConfirmListener() {
-						
+
 						@Override
 						public void onConfirm() {
 							Log.d("tribble", "dismiss");
@@ -4032,9 +4012,9 @@ public class GameState {
 					}));
 		}
 	}
-	
-	
-	
+
+
+
 	// Some helpers for the EncounterButtonTask
 	private enum Result {
 		TRAVEL,
@@ -4042,7 +4022,7 @@ public class GameState {
 		NOTHING,
 		DEAD,
 	}
-	
+
 	public void clearButtonAction() {
     	autoHandler.removeCallbacksAndMessages(null);
 		runningTask = null;
@@ -4055,7 +4035,7 @@ public class GameState {
 		}
 
 	}
-	
+
 	private boolean encounterButtonRunning;
 	private EncounterButtonTask runningTask;
 	private EncounterButtonTask autoTask;
@@ -4081,24 +4061,24 @@ public class GameState {
 			screen.setViewVisibilityById(R.id.screen_encounter_continuous_ticker, false);
 		}
 	};
-	
+
 	private class EncounterButtonTask extends AsyncTask<EncounterButton, Void, Result> {
 //		private boolean autoAttack;
 //		private boolean autoFlee;
 
 //		private boolean playerShipNeedsUpdate = false;
 //		private boolean opponentShipNeedsUpdate = false;
-		
+
 		private boolean commanderFlees;
-		
+
 //		private volatile boolean redrawButtons;
-		
+
 		private Encounter prevEncounterType;
 
 		@Override
 		protected void onPreExecute() {
 		}
-		
+
 		@Override
 		protected Result doInBackground(EncounterButton... params) {
 			EncounterButton action = params[0];
@@ -4109,18 +4089,18 @@ public class GameState {
 			GameState.this.prevEncounterAction = action;
 			return doEncounterButton(action);
 		}
-		
+
 		@Override
 		protected void onProgressUpdate(Void... params) {
 			encounterDisplayShips();
 		}
-				
+
 		@Override
 		protected void onPostExecute(final Result result) {
 
 			encounterButtons();
 			encounterDisplayShips();
-			
+
 			switch (result) {
 			case TRAVEL:
 				travel();
@@ -4128,16 +4108,16 @@ public class GameState {
 			case DEAD:
 				showEndGameScreen(EndStatus.KILLED);
 				break;
-			case REFRESH:				
+			case REFRESH:
 				// TODO stick this in a separate method somewhere for cleaner organization?
 				BaseScreen screen = mGameManager.getCurrentScreen();
 				if (screen == null || screen.getView() == null || screen.getType() != ScreenType.ENCOUNTER) return;
-				
+
 				String opponentType = encounterType.opponentType().toXmlStringUpdate(getResources());
 				if (opponent.type == ShipType.MANTIS) {
 					opponentType = Opponent.MANTIS.toXmlStringUpdate(getResources());
 				}
-				
+
 				String description = "";
 				if (commanderGotHit)
 				{
@@ -4164,7 +4144,7 @@ public class GameState {
 				}
 
 				if (prevEncounterType == Encounter.Police.FLEE || prevEncounterType == Encounter.Trader.FLEE ||
-						prevEncounterType == Encounter.Pirate.FLEE)	
+						prevEncounterType == Encounter.Pirate.FLEE)
 				{
 					if (description.length() > 0) description += "\n";
 					description += getResources().getString(R.string.screen_encounter_description_opponentnoescape, opponentType);
@@ -4185,9 +4165,9 @@ public class GameState {
 					Log.d("Encounter description","description="+description);
 					textView.setText(description);
 				}
-				
+
 				encounterDisplayNextAction(false);
-				
+
 				break;
 			case NOTHING:
 				break;
@@ -4195,19 +4175,19 @@ public class GameState {
 				// This should never happen
 				break;
 			}
-			
+
 			if (autoAttack || autoFlee) {
 				autoHandler.postDelayed(autoRun, 1000);
 			}
-			
+
 			encounterButtonRunning = false;
 			runningTask = null;
 		}
-		
+
 		private Result doEncounterButton(final EncounterButton action) {
 			stop = false;
 //			redrawButtons = false;
-			
+
 			if (action == EncounterButton.TRIBBLE)
 			{
 //		    	if (autoAttack || autoFlee)
@@ -4216,11 +4196,11 @@ public class GameState {
 				autoFlee = false;
 //	    		if (redrawButtons)
 //	    			publishProgress();
-	    	
+
 //				// NB Moved this dialog to encounterFormHandleEvent()
 //	    		CountDownLatch latch = newLatch();
 //	    		mGameManager.showDialogFragment(SimpleDialog.creator(
-//	    				R.string.screen_encounter_squeek_title, 
+//	    				R.string.screen_encounter_squeek_title,
 //	    				R.string.screen_encounter_squeek_message,
 //	    				R.string.help_squeek,
 //						newUnlocker(latch)));
@@ -4241,7 +4221,7 @@ public class GameState {
 		    	{
 		    		CountDownLatch latch = newLatch();
 		    		mGameManager.showDialogFragment(SimpleDialog.newInstance(
-		    				R.string.screen_encounter_noweapons_title, 
+		    				R.string.screen_encounter_noweapons_title,
 		    				R.string.screen_encounter_noweapons_message,
 		    				R.string.help_noweapons,
 							newUnlocker(latch)));
@@ -4254,7 +4234,7 @@ public class GameState {
 		    	{
 		    		CountDownLatch latch = newLatch();
 		    		mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-		    				R.string.screen_encounter_noillegal_title, 
+		    				R.string.screen_encounter_noillegal_title,
 		    				R.string.screen_encounter_noillegal_message,
 		    				R.string.screen_encounter_noillegal_yes,
 		    				R.string.screen_encounter_noillegal_no,
@@ -4262,7 +4242,7 @@ public class GameState {
 		    				newUnlocker(latch),
 		    				newStopper(latch)));
 					lock(latch);
-					
+
 					if (stop) return Result.NOTHING;
 		    	}
 
@@ -4272,7 +4252,7 @@ public class GameState {
 		    		if (policeRecordScore > PoliceRecord.CRIMINAL.score) {
 		    			CountDownLatch latch = newLatch();
 		    			mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-		    					R.string.screen_encounter_attackpolice_title, 
+		    					R.string.screen_encounter_attackpolice_title,
 		    					R.string.screen_encounter_attackpolice_message,
 		    					R.string.help_attackbyaccident,
 		    					newUnlocker(latch),
@@ -4299,7 +4279,7 @@ public class GameState {
 		    	}
 		    	else if (encounterType.opponentType() == Opponent.TRADER)
 		    	{
-		    		if (encounterType == Encounter.Trader.IGNORE 
+		    		if (encounterType == Encounter.Trader.IGNORE
 		    				|| encounterType == Encounter.Trader.BUY || encounterType == Encounter.Trader.SELL
 		    				)
 		    		{
@@ -4307,7 +4287,7 @@ public class GameState {
 		    			{
 		    				CountDownLatch latch = newLatch();
 				    		mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-				    				R.string.screen_encounter_attacktrader_title, 
+				    				R.string.screen_encounter_attacktrader_title,
 				    				R.string.screen_encounter_attacktrader_message,
 				    				R.string.help_attacktrader,
 				    				newUnlocker(latch),
@@ -4349,13 +4329,13 @@ public class GameState {
 		    		if (encounterType != Encounter.VeryRare.FAMOUSCAPATTACK) {
 			    		CountDownLatch latch = newLatch();
 			    		mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-			    				R.string.screen_encounter_suretoattackfamous_title, 
+			    				R.string.screen_encounter_suretoattackfamous_title,
 			    				R.string.screen_encounter_suretoattackfamous_message,
 			    				R.string.help_attackgreatcaptain,
 			    				newUnlocker(latch),
 			    				newStopper(latch)));
 						lock(latch);
-						
+
 						if (stop) return Result.NOTHING;
 		    		}
 		    		if (policeRecordScore > PoliceRecord.VILLAIN.score)
@@ -4377,9 +4357,9 @@ public class GameState {
 		    		return Result.REFRESH;
 		    	if (ship.hull <= 0)
 		    		return Result.DEAD;
-		    }					
+		    }
 		    else if ((action == EncounterButton.FLEE)) // Flee
-		    {			
+		    {
 //		    	if (autoAttack || autoFlee)
 //	    			redrawButtons = true;
 		    	autoAttack = false;
@@ -4393,7 +4373,7 @@ public class GameState {
 		    	{
 		    		CountDownLatch latch = newLatch();
 		    		mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-		    				R.string.screen_encounter_noillegal_title, 
+		    				R.string.screen_encounter_noillegal_title,
 		    				R.string.screen_encounter_noillegal_message,
 		    				R.string.screen_encounter_noillegal_yes,
 		    				R.string.screen_encounter_noillegal_no,
@@ -4401,7 +4381,7 @@ public class GameState {
 		    				newUnlocker(latch),
 		    				newStopper(latch)));
 					lock(latch);
-					
+
 					if (stop) return Result.NOTHING;
 		    	}
 
@@ -4442,7 +4422,7 @@ public class GameState {
 		    		return Result.DEAD;
 		    }
 		    else if (action == EncounterButton.IGNORE) // Ignore
-		    {			
+		    {
 		    	// Only occurs when opponent either ignores you or flees, so just continue
 //		    	if (autoAttack || autoFlee)
 //		    		redrawButtons = true;
@@ -4450,14 +4430,14 @@ public class GameState {
 		    	autoFlee = false;
 //		    	if (redrawButtons)
 //		    		publishProgress();
-		    }		
+		    }
 		    else if (action == EncounterButton.TRADE) // Trade in Orbit
-		    {	
+		    {
 		    	if (encounterType == Encounter.Trader.BUY)
-		    	{				
+		    	{
 		    		final TradeItem item = getRandomTradeableItem (ship, false);
 		    		int price = sellPrice.get(item);
-		    		
+
 		    		if (item == TradeItem.NARCOTICS || item == TradeItem.FIREARMS)
 		    		{
 		    			if (getRandom(100) <= 45)
@@ -4480,20 +4460,20 @@ public class GameState {
 		    			price = item.minTradePrice;
 		    		if (price > item.maxTradePrice)
 		    			price = item.maxTradePrice;
-		    		
+
 		    		sellPrice.put(item, price);
 
 		    		final int fPrice = price;
 		    		final CountDownLatch latch = newLatch();
 		    		mGameManager.showDialogFragment(InputDialog.newInstance(
-		    				R.string.dialog_tradeinorbit_title, 
+		    				R.string.dialog_tradeinorbit_title,
 		    				R.string.dialog_tradeinorbit_buymessage,
 		    				R.string.generic_ok,
 		    				R.string.generic_all,
 		    				R.string.generic_none,
 		    				R.string.help_tradeinorbit,
 		    				new OnPositiveListener() {
-								
+
 								@Override
 								public void onClickPositiveButton(int value) {
 				    				int amount = max(0, min(ship.getCargo(item), value));
@@ -4501,7 +4481,7 @@ public class GameState {
 								}
 							},
 		    				new OnNeutralListener() {
-								
+
 								@Override
 								public void onClickNeutralButton() {
 									int amount = ship.getCargo(item);
@@ -4509,7 +4489,7 @@ public class GameState {
 								}
 							},
 							new OnNegativeListener() {
-								
+
 								@Override
 								public void onClickNegativeButton() {
 									unlock(latch);
@@ -4523,7 +4503,7 @@ public class GameState {
 		    		lock(latch);
 		    	}
 		    	else if (encounterType == Encounter.Trader.SELL)
-		    	{				
+		    	{
 		    		final TradeItem item = getRandomTradeableItem (opponent, true);
 
 			    	Log.d("Trade bug", "Item is "+item);
@@ -4551,18 +4531,18 @@ public class GameState {
 		    			price = item.maxTradePrice;
 
 		    		buyPrice.put(item, price);
-		    		
+
 		    		final int fPrice = price;
 		    		final CountDownLatch latch = newLatch();
 		    		mGameManager.showDialogFragment(InputDialog.newInstance(
-		    				R.string.dialog_tradeinorbit_title, 
+		    				R.string.dialog_tradeinorbit_title,
 		    				R.string.dialog_tradeinorbit_sellmessage,
 		    				R.string.generic_ok,
 		    				R.string.generic_all,
 		    				R.string.generic_none,
 		    				R.string.help_tradeinorbit,
 		    				new OnPositiveListener() {
-								
+
 								@Override
 								public void onClickPositiveButton(int value) {
 				    				int amount = max(0, min(opponent.getCargo(item), value));
@@ -4570,7 +4550,7 @@ public class GameState {
 								}
 							},
 		    				new OnNeutralListener() {
-								
+
 								@Override
 								public void onClickNeutralButton() {
 									int amount = min(opponent.getCargo(item), (ship.totalCargoBays()-ship.filledCargoBays()));
@@ -4578,7 +4558,7 @@ public class GameState {
 								}
 							},
 							new OnNegativeListener() {
-								
+
 								@Override
 								public void onClickNegativeButton() {
 									unlock(latch);
@@ -4591,15 +4571,15 @@ public class GameState {
 							));
 		    		lock(latch);
 		    	}
-		    }			
+		    }
 		    else if (action == EncounterButton.YIELD) // Yield Narcotics from Marie Celeste
-		    {	
+		    {
 
     			if (wildStatus == 1)
 			    {
 		    		CountDownLatch latch = newLatch();
 		    		mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-		    				R.string.screen_encounter_surrender_title, 
+		    				R.string.screen_encounter_surrender_title,
 		    				R.string.screen_encounter_surrender_extra,
 		    				R.string.help_wanttosurrender,
 		    				newUnlocker(latch),
@@ -4614,7 +4594,7 @@ public class GameState {
 				{
 		    		CountDownLatch latch = newLatch();
 		    		mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-		    				R.string.screen_encounter_surrender_title, 
+		    				R.string.screen_encounter_surrender_title,
 		    				R.string.screen_encounter_surrender_extra,
 		    				R.string.help_wanttosurrender,
 		    				newUnlocker(latch),
@@ -4631,12 +4611,12 @@ public class GameState {
 		    		arrested();
 		    	}
 		    	else
-		    	{			
+		    	{
 //		    		// NB added some new logic here. If you dumped your illegal goods after the Marie encounter, then Customs Police can't do anything.
 //		    		// However, this angers them, so if you're a criminal they will arrest you anyway.
 //		    		if (ship.getCargo(TradeItem.FIREARMS) == 0 && ship.getCargo(TradeItem.NARCOTICS) == 0)
 //		    		{
-//		    			if (policeRecordScore >= PoliceRecord.DUBIOUS.score) 
+//		    			if (policeRecordScore >= PoliceRecord.DUBIOUS.score)
 //		    			{
 //				    		CountDownLatch latch = newLatch();
 //				    		mGameManager.showDialogFragment(SimpleDialog.creator(
@@ -4645,7 +4625,7 @@ public class GameState {
 //				    				newUnlocker(latch)));
 //							lock(latch);
 //		    			}
-//		    			else 
+//		    			else
 //		    			{
 //				    		CountDownLatch latch = newLatch();
 //				    		mGameManager.showDialogFragment(SimpleDialog.creator(
@@ -4653,14 +4633,14 @@ public class GameState {
 //				    				R.string.screen_encounter_contrabandnotfound_arrestedmessage,
 //				    				newUnlocker(latch)));
 //							lock(latch);
-//							
+//
 //							arrested();
 //		    			}
 //		    		}
 //		    		else
 		    		{
 		    			// This is the generic case in the original code.
-		    			
+
 			    		// Police Record becomes dubious, if it wasn't already.
 			    		if (policeRecordScore > PoliceRecord.DUBIOUS.score)
 			    			policeRecordScore = PoliceRecord.DUBIOUS.score;
@@ -4675,10 +4655,10 @@ public class GameState {
 			    				newUnlocker(latch)));
 						lock(latch);
 		    		}
-		    		
+
 		    	}
-		    }	
-		    
+		    }
+
 		    else if (action == EncounterButton.SURRENDER) // Surrender
 		    {
 //		    	if (autoAttack || autoFlee)
@@ -4700,9 +4680,9 @@ public class GameState {
 			    				newUnlocker(latch),
 			    				newStopper(latch)));
 						lock(latch);
-						
+
 						if (stop) return Result.NOTHING;
-		    			
+
 						latch = newLatch();
 			    		mGameManager.showDialogFragment(SimpleDialog.newInstance(
 			    				R.string.screen_encounter_artifactstolen_title,
@@ -4718,7 +4698,7 @@ public class GameState {
 		    			// NB This message is somewhat out-of-character when encountered by aliens who have invaded Gemulon
 			    		CountDownLatch latch = newLatch();
 		    			mGameManager.showDialogFragment(SimpleDialog.newInstance(
-		    					R.string.screen_encounter_nosurrender_title, 
+		    					R.string.screen_encounter_nosurrender_title,
 		    					R.string.screen_encounter_nosurrender_message,
 		    					R.string.help_nosurrender,
 								newUnlocker(latch)));
@@ -4732,7 +4712,7 @@ public class GameState {
 		    		{
 			    		CountDownLatch latch = newLatch();
 		    			mGameManager.showDialogFragment(SimpleDialog.newInstance(
-		    					R.string.screen_encounter_nosurrender_title, 
+		    					R.string.screen_encounter_nosurrender_title,
 		    					R.string.screen_encounter_nosurrender_message,
 		    					R.string.help_nosurrender,
 								newUnlocker(latch)));
@@ -4745,7 +4725,7 @@ public class GameState {
 					    {
 				    		CountDownLatch latch = newLatch();
 				    		mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-				    				R.string.screen_encounter_surrender_title, 
+				    				R.string.screen_encounter_surrender_title,
 				    				R.string.screen_encounter_surrender_extra,
 				    				R.string.help_wanttosurrender,
 				    				newUnlocker(latch),
@@ -4760,7 +4740,7 @@ public class GameState {
 						{
 				    		CountDownLatch latch = newLatch();
 				    		mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-				    				R.string.screen_encounter_surrender_title, 
+				    				R.string.screen_encounter_surrender_title,
 				    				R.string.screen_encounter_surrender_extra,
 				    				R.string.help_wanttosurrender,
 				    				newUnlocker(latch),
@@ -4775,7 +4755,7 @@ public class GameState {
 						{
 				    		CountDownLatch latch = newLatch();
 				    		mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-				    				R.string.screen_encounter_surrender_title, 
+				    				R.string.screen_encounter_surrender_title,
 				    				R.string.screen_encounter_surrender_message,
 				    				R.string.help_wanttosurrender,
 				    				newUnlocker(latch),
@@ -4783,7 +4763,7 @@ public class GameState {
 							lock(latch);
 							if (stop) return Result.NOTHING;
 						}
-					
+
 						arrested();
 						return Result.NOTHING;
 
@@ -4814,9 +4794,9 @@ public class GameState {
 		    					R.string.help_piratesfindnocargo,
 								newUnlocker(latch)));
 			    		lock(latch);
-		    		}		
+		    		}
 		    		else
-		    		{	
+		    		{
 
 		    			// NB it's interesting that the original code explicitly checks here if the pirates have room, but doesn't do so for traders.
 		    			int bays = opponent.type.cargoBays;
@@ -4826,7 +4806,7 @@ public class GameState {
 		    			for (TradeItem item : TradeItem.values())
 		    				bays -= opponent.getCargo(item);
 
-		    			// Pirates steal everything					
+		    			// Pirates steal everything
 		    			if (bays >= totalCargo)
 		    			{
 		    				for (TradeItem item : TradeItem.values())
@@ -4834,9 +4814,9 @@ public class GameState {
 		    					ship.clearCargo(item);
 		    					buyingPrice.put(item, 0);
 		    				}
-		    			}		
+		    			}
 		    			else
-		    			{		
+		    			{
 		    				// Pirates steal a lot
 		    				while (bays > 0)
 		    				{
@@ -4895,7 +4875,7 @@ public class GameState {
 		    	}
 		    }
 		    else if (action == EncounterButton.BRIBE) // Bribe
-		    {			
+		    {
 //		    	if (autoAttack || autoFlee)
 //		    		redrawButtons = true;
 		    	autoAttack = false;
@@ -4914,7 +4894,7 @@ public class GameState {
 		    		lock(latch);
 		    		return Result.NOTHING;
 		    	}
-		    	
+
 		    	if (encounterType == Encounter.VeryRare.POSTMARIEPOLICE)
 		    	{
 		    		CountDownLatch latch = newLatch();
@@ -4932,7 +4912,7 @@ public class GameState {
 		    	{
 		    		CountDownLatch latch = newLatch();
 		    		mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-		    				R.string.screen_encounter_noillegal_title, 
+		    				R.string.screen_encounter_noillegal_title,
 		    				R.string.screen_encounter_noillegal_message,
 		    				R.string.screen_encounter_noillegal_yes,
 		    				R.string.screen_encounter_noillegal_no,
@@ -4940,12 +4920,12 @@ public class GameState {
 		    				newUnlocker(latch),
 		    				newStopper(latch)));
 					lock(latch);
-					
+
 					if (stop) return Result.NOTHING;
 		    	}
 
 		    	// Bribe depends on how easy it is to bribe the police and commander's current worth
-		    	int bribe = currentWorth() / 
+		    	int bribe = currentWorth() /
 		    			((10 + 5 * (DifficultyLevel.IMPOSSIBLE.ordinal() - difficulty.ordinal())) * warpSystem.politics().bribeLevel);
 		    	if (bribe % 100 != 0)
 		    		bribe += (100 - (bribe % 100));
@@ -4960,8 +4940,8 @@ public class GameState {
 		    	final int fBribe = bribe;
 	    		final CountDownLatch latch = newLatch();
 		    	mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-		    			R.string.screen_encounter_bribe_title, 
-		    			R.string.screen_encounter_bribe_message, 
+		    			R.string.screen_encounter_bribe_title,
+		    			R.string.screen_encounter_bribe_message,
 		    			R.string.screen_encounter_bribe_yes,
 		    			R.string.screen_encounter_bribe_no,
 		    			R.string.help_bribe,
@@ -4972,7 +4952,7 @@ public class GameState {
 					    		{
 						    		stop = true;
 					    			mGameManager.showDialogFragment(SimpleDialog.newInstance(
-						    			R.string.screen_encounter_cantaffordbribe_title, 
+						    			R.string.screen_encounter_cantaffordbribe_title,
 						    			R.string.screen_encounter_cantaffordbribe_message,
 						    			R.string.help_nomoneyforbribe,
 						    			newUnlocker(latch)
@@ -4998,7 +4978,7 @@ public class GameState {
 		    	autoFlee = false;
 //		    	if (redrawButtons)
 //		    		publishProgress();
-		    	
+
 		    	if (encounterType == Encounter.Police.INSPECTION && (ship.getCargo(TradeItem.FIREARMS) > 0 ||
 		    			ship.getCargo(TradeItem.NARCOTICS) > 0 || wildStatus == 1 || (reactorStatus > 1 && reactorStatus < 21)))
 		    	{
@@ -5032,10 +5012,10 @@ public class GameState {
 		    		{
 	    				illegalGoodsString = mGameManager.getResources().getString(R.string.screen_encounter_illegal_goods);
 		    		}
-		    		
+
 			    	CountDownLatch latch = newLatch();
 		    		mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-		    				R.string.screen_encounter_illegal_title, 
+		    				R.string.screen_encounter_illegal_title,
 		    				R.string.screen_encounter_illegal_message,
 		    				R.string.screen_encounter_illegal_yes,
 		    				R.string.generic_no,
@@ -5046,9 +5026,9 @@ public class GameState {
 		    				arrestedString));
 		    		lock(latch);
 		    		if (stop) return Result.NOTHING;
-		    		
+
 		    	}
-		    	
+
 		    	if ((ship.getCargo(TradeItem.FIREARMS) > 0) || (ship.getCargo(TradeItem.NARCOTICS) > 0))
 		    	{
 		    		// If you carry illegal goods, they are impounded and you are fined
@@ -5067,10 +5047,10 @@ public class GameState {
 		    			debt += (fine - credits);
 		    			credits = 0;
 		    		}
-		    		
+
 		    		CountDownLatch latch = newLatch();
 		    		mGameManager.showDialogFragment(SimpleDialog.newInstance(
-		    				R.string.screen_encounter_illegalfound_title, 
+		    				R.string.screen_encounter_illegalfound_title,
 		    				R.string.screen_encounter_illegalfound_message,
 		    				R.string.help_illegalgoods,
 		    				newUnlocker(latch),
@@ -5083,14 +5063,14 @@ public class GameState {
 		    		// If you aren't carrying illegal goods, the police will increase your lawfulness record
 		    		CountDownLatch latch = newLatch();
 		    		mGameManager.showDialogFragment(SimpleDialog.newInstance(
-		    				R.string.screen_encounter_nothingfound_title, 
+		    				R.string.screen_encounter_nothingfound_title,
 		    				R.string.screen_encounter_nothingfound_message,
 		    				R.string.help_noillegalgoods,
 		    				newUnlocker(latch)));
 		    		lock(latch);
 		    		policeRecordScore -= PoliceRecord.TRAFFICKING;
 		    	}
-		    	
+
 		    	if (wildStatus == 1)
 		    	{
 		    		// Jonathan Wild Captured, and your status damaged.
@@ -5106,16 +5086,16 @@ public class GameState {
 		    		// before we get to this point. (no longer true - 25 August 2002)
 		    		CountDownLatch latch = newLatch();
 		    		mGameManager.showDialogFragment(SimpleDialog.newInstance(
-		    				R.string.screen_encounter_policeconfiscatereactor_title, 
+		    				R.string.screen_encounter_policeconfiscatereactor_title,
 		    				R.string.screen_encounter_policeconfiscatereactor_message,
 		    				R.string.help_reactortaken,
 		    				newUnlocker(latch)));
 		    		lock(latch);
 		    		reactorStatus = 0;
 		    	}
-		    	
+
 		    	return Result.TRAVEL;
-		    }		
+		    }
 		    else if (action == EncounterButton.PLUNDER) // Plunder
 		    {
 //		    	if (autoAttack || autoFlee)
@@ -5141,9 +5121,9 @@ public class GameState {
 		    	autoFlee = false;
 //		    	if (redrawButtons)
 //		    		publishProgress();
-		    	
+
 		    	clearButtonAction();
-		    	
+
 		    	return Result.REFRESH;
 		    }
 		    else if (action == EncounterButton.MEET) // Meet with Famous Captain
@@ -5160,7 +5140,7 @@ public class GameState {
 		    				newStopper(latch)));
 		    		lock(latch);
 		    		if (stop) return Result.TRAVEL;
-		    		
+
 		    		// remove the last reflective shield
 		    		int i=ship.shield.length - 1;
 		    		while (i >= 0)
@@ -5192,7 +5172,7 @@ public class GameState {
 //		    		}
 		    		latch = newLatch();
 		    		mGameManager.showDialogFragment(SimpleDialog.newInstance(
-		    				R.string.screen_encounter_trainingcompleted_title, 
+		    				R.string.screen_encounter_trainingcompleted_title,
 		    				R.string.screen_encounter_trainingcompleted_message,
 		    				R.string.help_training,
 		    				newUnlocker(latch)));
@@ -5210,7 +5190,7 @@ public class GameState {
 		    				newStopper(latch)));
 		    		lock(latch);
 		    		if (stop) return Result.TRAVEL;
-		    		
+
 		    		// remove the last military laser
 		    		int i=ship.weapon.length - 1;
 		    		while (i>=0)
@@ -5240,7 +5220,7 @@ public class GameState {
 //		    		}
 		    		latch = newLatch();
 		    		mGameManager.showDialogFragment(SimpleDialog.newInstance(
-		    				R.string.screen_encounter_trainingcompleted_title, 
+		    				R.string.screen_encounter_trainingcompleted_title,
 		    				R.string.screen_encounter_trainingcompleted_message,
 		    				R.string.help_training,
 		    				newUnlocker(latch)));
@@ -5253,13 +5233,13 @@ public class GameState {
 			    	CountDownLatch latch = newLatch();
 		    		mGameManager.showDialogFragment(ConfirmDialog.newInstance(
 		    				R.string.screen_encounter_engagecaptainhuie_title,
-		    				R.string.screen_encounter_engagecaptainhuie_message, 
+		    				R.string.screen_encounter_engagecaptainhuie_message,
 		    				R.string.help_tradecaptainhuie,
 		    				newUnlocker(latch),
 		    				newStopper(latch)));
 		    		lock(latch);
 		    		if (stop) return Result.TRAVEL;
-		    		
+
 		    		// remove the last military laser
 		    		int i=ship.weapon.length - 1;
 		    		while (i>=0)
@@ -5290,7 +5270,7 @@ public class GameState {
 		    		recalculateBuyPrices(curSystem());
 		    		latch = newLatch();
 		    		mGameManager.showDialogFragment(SimpleDialog.newInstance(
-		    				R.string.screen_encounter_trainingcompleted_title, 
+		    				R.string.screen_encounter_trainingcompleted_title,
 		    				R.string.screen_encounter_trainingcompleted_message,
 		    				R.string.help_training,
 		    				newUnlocker(latch)));
@@ -5305,18 +5285,18 @@ public class GameState {
 			    	CountDownLatch latch = newLatch();
 		    		mGameManager.showDialogFragment(ConfirmDialog.newInstance(
 		    				R.string.screen_encounter_engagemarie_title,
-		    				R.string.screen_encounter_engagemarie_message, 
+		    				R.string.screen_encounter_engagemarie_message,
 		    				R.string.help_lootmarieceleste,
 		    				newUnlocker(latch),
 		    				newStopper(latch)));
 		    		lock(latch);
 		    		if (stop) return Result.TRAVEL;
-		    		
+
 		    		narcs = ship.getCargo(TradeItem.NARCOTICS);
 		    		mGameManager.showDialogFragment(PlunderDialog.newInstance());
 		    		return Result.NOTHING;
 		    	}
-		    }		
+		    }
 		    else if (action == EncounterButton.DRINK) // Drink Tonic?
 		    {
 		    	if (encounterType == Encounter.VeryRare.BOTTLEGOOD)
@@ -5325,25 +5305,25 @@ public class GameState {
 		    		final CountDownLatch latch = newLatch();
 		    		mGameManager.showDialogFragment(ConfirmDialog.newInstance(
 		    				R.string.dialog_engagebottle_title,
-		    				R.string.dialog_engagebottle_message, 
+		    				R.string.dialog_engagebottle_message,
 		    				R.string.dialog_engagebottle_pos,
 		    				R.string.generic_no,
 		    				R.string.help_drinkoldtonic,
 		    				new OnConfirmListener() {
-								
+
 								@Override
 								public void onConfirm() {
 									// two points if you're on beginner-normal, one otherwise
 									commander().increaseRandomSkill();
 									if (difficulty.compareTo(DifficultyLevel.HARD) < 0)
 										commander().increaseRandomSkill();
-									
+
 									mGameManager.showDialogFragment(SimpleDialog.newInstance(R.string.dialog_drink_title, R.string.dialog_gooddrink_message, R.string.help_drankgoodskilltonic, newUnlocker(latch)));
 								}
 							},
 							newStopper(latch)));
 		    		lock(latch);
-		    		
+
 
 		    	}
 		    	else if (encounterType == Encounter.VeryRare.BOTTLEOLD)
@@ -5352,12 +5332,12 @@ public class GameState {
 		    		final CountDownLatch latch = newLatch();
 		    		mGameManager.showDialogFragment(ConfirmDialog.newInstance(
 		    				R.string.dialog_engagebottle_title,
-		    				R.string.dialog_engagebottle_message, 
+		    				R.string.dialog_engagebottle_message,
 		    				R.string.dialog_engagebottle_pos,
 		    				R.string.generic_no,
 		    				R.string.help_drinkoldtonic,
 		    				new OnConfirmListener() {
-								
+
 								@Override
 								public void onConfirm() {
 					    			commander().tonicTweakRandomSkill();
@@ -5369,12 +5349,12 @@ public class GameState {
 
 		    	}
 		    }
-		    
+
 		    return Result.TRAVEL;
 		}
-		
+
 		// new Trade In Orbit methods because android version needs to call these from two different places to mimic original application flow.
-		
+
 		// Player sells to trader (Encounter.Trader.Buy)
 		private void sellInOrbit(TradeItem item, int amount, int price, CountDownLatch latch) {
 //			amount = min( amount, opponent.type.cargoBays );
@@ -5390,7 +5370,7 @@ public class GameState {
 					newUnlocker(latch),
 					item));
 		}
-				
+
 		// player buys from trader (Encounter.Trader.Sell)
 		private void buyInOrbit(TradeItem item, int amount, int price, CountDownLatch latch) {
 			amount = min ( amount, (credits / buyPrice.get(item)));
@@ -5405,10 +5385,10 @@ public class GameState {
 					newUnlocker(latch),
 					item));
 		}
-		
-		
 
-		
+
+
+
 		// *************************************************************************
 		// You can pick up cannisters left by a destroyed ship
 		// *************************************************************************
@@ -5420,16 +5400,16 @@ public class GameState {
 			if (difficulty.compareTo(DifficultyLevel.NORMAL) >= 0)
 				if (getRandom( difficulty.ordinal() ) != 1)
 					return;
-			
+
 			// More chance to pick up a cheap good
 			TradeItem d = getRandom( TradeItem.values() );
 			if (d.ordinal() >= 5)
 				d = getRandom( TradeItem.values() );
-			
+
 			final TradeItem item = d;
 			final CountDownLatch latch = newLatch();
 			mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-					R.string.dialog_scoop_title, 
+					R.string.dialog_scoop_title,
 					R.string.dialog_scoop_message,
 					R.string.dialog_scoop_pos,
 					R.string.dialog_scoop_neg,
@@ -5438,32 +5418,32 @@ public class GameState {
 
 						@Override
 						public void onConfirm() {
-							
+
 							if (ship.filledCargoBays() >= ship.totalCargoBays())
 							{
 								mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-										R.string.dialog_scoopnoroom_title, 
+										R.string.dialog_scoopnoroom_title,
 										R.string.dialog_scoopnoroom_message,
 										R.string.dialog_scoopnoroom_pos,
 										R.string.dialog_scoopnoroom_neg,
 										R.string.help_pickcannister,
 										new OnConfirmListener() {
-											
+
 											@Override
 											public void onConfirm() {
 												mGameManager.showDialogFragment(JettisonDialog.newInstance(
 														new OnConfirmListener() {
-															
+
 															@Override
 															public void onConfirm() {
 																scoop2(item, latch);
 															}
 														}
-														)); 
+														));
 											}
-										}, 
+										},
 										new OnCancelListener() {
-											
+
 											@Override
 											public void onCancel() {
 												scoop2(item, latch);
@@ -5473,13 +5453,13 @@ public class GameState {
 								scoop2(item, latch);
 							}
 						}
-					}, 
+					},
 					newStopper(latch),
 					item));
 			lock(latch);
-			
+
 		}
-		
+
 		// The second half of the original Scoop() method is broken off here so it can be called from multiple locations.
 		private void scoop2(final TradeItem item, final CountDownLatch latch) {
 			if (ship.filledCargoBays() < ship.totalCargoBays()) {
@@ -5488,8 +5468,8 @@ public class GameState {
 			}
 			else
 				mGameManager.showDialogFragment(SimpleDialog.newInstance(
-						R.string.dialog_noscoop_title, 
-						R.string.dialog_noscoop_message, 
+						R.string.dialog_noscoop_title,
+						R.string.dialog_noscoop_message,
 						R.string.help_nodumpnoscoop,
 						new OnConfirmListener() {
 					@Override
@@ -5498,8 +5478,8 @@ public class GameState {
 					}
 				}));
 		}
-		
-		
+
+
 		// *************************************************************************
 		// An attack: Attacker attacks Defender, Flees indicates if Defender is fleeing
 		// *************************************************************************
@@ -5512,7 +5492,7 @@ public class GameState {
 
 			// Fighterskill attacker is pitted against pilotskill defender; if defender
 			// is fleeing the attacker has a free shot, but the chance to hit is smaller
-			if (getRandom( attacker.skill(Skill.FIGHTER) + defender.type.size.ordinal() ) < 
+			if (getRandom( attacker.skill(Skill.FIGHTER) + defender.type.size.ordinal() ) <
 				(flees ? 2 : 1) * getRandom( 5 + (defender.skill(Skill.PILOT) >> 1) ))
 				// Misses
 				return false;
@@ -5543,7 +5523,7 @@ public class GameState {
 				else
 					damage *= 1 + (difficulty.ordinal() + 1)*0.33;
 			}
-			
+
 			// First, shields are depleted
 			for (int i=0; i<defender.shield.length; ++i)
 			{
@@ -5560,8 +5540,8 @@ public class GameState {
 			}
 
 			int prevDamage = damage;
-			
-			// If there still is damage after the shields have been depleted, 
+
+			// If there still is damage after the shields have been depleted,
 			// this is subtracted from the hull, modified by the engineering skill
 			// of the defender.
 			if (damage > 0)
@@ -5569,7 +5549,7 @@ public class GameState {
 				damage -= getRandom( defender.skill(Skill.ENGINEER) );
 				if (damage <= 0)
 					damage = 1;
-				// At least 2 shots on Normal level are needed to destroy the hull 
+				// At least 2 shots on Normal level are needed to destroy the hull
 				// (3 on Easy, 4 on Beginner, 1 on Hard or Impossible). For opponents,
 				// it is always 2.
 				if (commanderUnderAttack && scarabStatus == 3)
@@ -5597,7 +5577,7 @@ public class GameState {
 
 			return true;
 		}
-		
+
 		// *************************************************************************
 		// A fight round
 		// Return value indicates whether fight continues into another round
@@ -5605,10 +5585,10 @@ public class GameState {
 		private boolean executeAction( boolean commanderFlees )
 		{
 			this.commanderFlees = commanderFlees;
-			
+
 			int opponentHull = opponent.hull;
 			int shipHull = ship.hull;
-			
+
 			commanderGotHit = false;
 			// Fire shots
 			if (encounterType == Encounter.Pirate.ATTACK || encounterType == Encounter.Police.ATTACK ||
@@ -5622,11 +5602,11 @@ public class GameState {
 			}
 
 			opponentGotHit = false;
-			
+
 			if (!commanderFlees)
 			{
 				if (encounterType == Encounter.Police.FLEE || encounterType == Encounter.Trader.FLEE ||
-						encounterType == Encounter.Pirate.FLEE)	
+						encounterType == Encounter.Pirate.FLEE)
 				{
 					opponentGotHit = executeAttack( ship, opponent, true, false );
 				}
@@ -5652,7 +5632,7 @@ public class GameState {
 				autoAttack = false;
 				autoFlee = false;
 				publishProgress();
-			
+
 				if (escapePod)
 				{
 					escapeWithPod();
@@ -5662,12 +5642,12 @@ public class GameState {
 				{
 		    		CountDownLatch latch = newLatch();
 					mGameManager.showDialogFragment(SimpleDialog.newInstance(
-							R.string.screen_encounter_bothlose_title, 
+							R.string.screen_encounter_bothlose_title,
 							R.string.screen_encounter_bothlose_message,
 							R.string.help_bothdestroyed,
 							newUnlocker(latch)));
 		    		lock(latch);
-		    		
+
 				}
 				return false;
 			}
@@ -5676,12 +5656,12 @@ public class GameState {
 				autoAttack = false;
 				autoFlee = false;
 				publishProgress();
-						
+
 				if (encounterType.opponentType() == Opponent.PIRATE && opponent.type != ShipType.MANTIS && policeRecordScore >= PoliceRecord.DUBIOUS.score)
 				{
 		    		CountDownLatch latch = newLatch();
 					mGameManager.showDialogFragment(SimpleDialog.newInstance(
-							R.string.screen_encounter_bounty_title, 
+							R.string.screen_encounter_bounty_title,
 							R.string.screen_encounter_bounty_message,
 							R.string.help_bounty,
 							newUnlocker(latch),
@@ -5728,9 +5708,9 @@ public class GameState {
 					default:
 						// Do nothing. This shouldn't ever come up.
 						break;
-						
+
 					}
-					
+
 				}
 				else if (encounterType.opponentType() == Opponent.PIRATE)
 				{
@@ -5738,7 +5718,7 @@ public class GameState {
 					{
 						if (policeRecordScore >= PoliceRecord.DUBIOUS.score) // NB added this check to match when the bounty dialog appears.
 							credits += opponent.getBounty();
-						
+
 						policeRecordScore += PoliceRecord.KILLPIRATESCORE;
 						scoop();
 					}
@@ -5776,7 +5756,7 @@ public class GameState {
 				autoAttack = false;
 				autoFlee = false;
 				publishProgress();
-			
+
 				if (escapePod)
 				{
 					escapeWithPod();
@@ -5786,7 +5766,7 @@ public class GameState {
 				{
 		    		CountDownLatch latch = newLatch();
 					mGameManager.showDialogFragment(SimpleDialog.newInstance(
-							R.string.screen_encounter_lose_title, 
+							R.string.screen_encounter_lose_title,
 							R.string.screen_encounter_lose_message,
 							R.string.help_shipdestroyed,
 							newUnlocker(latch)));
@@ -5794,7 +5774,7 @@ public class GameState {
 				}
 				return false;
 			}
-			
+
 			// Determine whether someone gets away.
 			if (commanderFlees)
 			{
@@ -5812,13 +5792,13 @@ public class GameState {
 							R.string.help_youescaped,
 							newUnlocker(latch)));
 		    		lock(latch);
-					
+
 					if (encounterType.opponentType() == Opponent.MONSTER)
 						monsterHull = opponent.hull;
 
 					return false;
 				}
-				else if ((getRandom( 7 ) + (ship.skill(Skill.PILOT) / 3)) * 2 >= 
+				else if ((getRandom( 7 ) + (ship.skill(Skill.PILOT) / 3)) * 2 >=
 					getRandom( opponent.skill(Skill.PILOT) ) * (2 + difficulty.ordinal()))
 				{
 					autoAttack = false;
@@ -5847,18 +5827,18 @@ public class GameState {
 								newUnlocker(latch)));
 			    		lock(latch);
 					}
-					
+
 					if (encounterType.opponentType() == Opponent.MONSTER)
 						monsterHull = opponent.hull;
-						
+
 					return false;
 				}
 			}
 			else if (encounterType == Encounter.Police.FLEE || encounterType == Encounter.Trader.FLEE ||
 				encounterType == Encounter.Pirate.FLEE || encounterType == Encounter.Trader.SURRENDER ||
-				encounterType == Encounter.Pirate.SURRENDER)	
+				encounterType == Encounter.Pirate.SURRENDER)
 			{
-				if (getRandom( ship.skill(Skill.PILOT) ) * 4 <= 
+				if (getRandom( ship.skill(Skill.PILOT) ) * 4 <=
 					getRandom( (7 + (opponent.skill(Skill.PILOT) / 3))) * 2)
 				{
 					autoAttack = false;
@@ -5867,7 +5847,7 @@ public class GameState {
 					publishProgress();
 
 					if (encounterAnim) animateEnterExit(false, false); // NB Animation is a new addition
-					
+
 		    		CountDownLatch latch = newLatch();
 					mGameManager.showDialogFragment(SimpleDialog.newInstance(
 							R.string.screen_encounter_opponentescaped_title,
@@ -5878,10 +5858,10 @@ public class GameState {
 					return false;
 				}
 			}
-			
+
 			// Determine whether the opponent's actions must be changed
 			prevEncounterType = encounterType;
-			
+
 			if (opponent.hull < opponentHull)
 			{
 				if (encounterType.opponentType() == Opponent.POLICE)
@@ -5891,7 +5871,7 @@ public class GameState {
 						{
 							if (getRandom( 10 ) > 5)
 								encounterType = Encounter.Police.FLEE;
-						}	
+						}
 						else
 							encounterType = Encounter.Police.FLEE;
 				}
@@ -5959,15 +5939,15 @@ public class GameState {
 					autoAttack = false;
 				autoFlee = false;
 			}
-			
+
 //			publishProgress();
 
 			return true;
 		}
-		
+
 	}
 
-	
+
 	/*
 	 * Fuel.c
 	 */
@@ -5981,13 +5961,13 @@ public class GameState {
 			amount = maxFuel;
 		if (amount > credits)
 			amount = credits;
-			
+
 		int parsecs = amount / ship.type.costOfFuel;
-		
+
 		ship.fuel += parsecs;
 		credits -= parsecs * ship.type.costOfFuel;
 	}
-	
+
 	/*
 	 * Math.c
 	 */
@@ -6015,8 +5995,8 @@ public class GameState {
 	{
 		return (sqrt( sqrDistance( a, b ) ));
 	}
-	
-	
+
+
 	// *************************************************************************
 	// Pieter's new random functions, tweaked a bit by SjG
 	// *************************************************************************
@@ -6059,7 +6039,7 @@ public class GameState {
 	       seedY = seed2;
 	   else
 	       seedY = DEFSEEDY;
-	} 
+	}
 
 
 	/*
@@ -6072,7 +6052,7 @@ public class GameState {
 	{
 		return ship.currentPrice(false) + credits - debt + (moonBought ? COSTMOON : 0);
 	}
-	
+
 
 	// *************************************************************************
 	// Pay interest on debt
@@ -6084,15 +6064,15 @@ public class GameState {
 			int incDebt = max( 1, debt / 10 );
 			if (credits > incDebt)
 				credits -= incDebt;
-			else 
+			else
 			{
 				debt += (incDebt - credits);
 				credits = 0;
 			}
 		}
 	}
-	
-	
+
+
 	/*
 	 * OtherEvent.c
 	 */
@@ -6100,7 +6080,7 @@ public class GameState {
 	{
 		BaseScreen screen = mGameManager.getCurrentScreen();
 		if (screen == null || screen.getView() == null || screen.getType() != ScreenType.CARGO) return;
-				
+
 		screen.setViewVisibilityById(R.id.screen_status_cargo_tribbles, ship.tribbles > 0, false);
 		if (ship.tribbles > 0)
 		{
@@ -6109,7 +6089,7 @@ public class GameState {
 			else
 			{
 				screen.setViewTextById(
-						R.id.screen_status_cargo_tribbles, 
+						R.id.screen_status_cargo_tribbles,
 						getResources().getQuantityString(R.plurals.screen_status_cargo_tribbles, ship.tribbles, ship.tribbles)
 						);
 			}
@@ -6131,18 +6111,18 @@ public class GameState {
 		}
 		screen.setViewVisibilityById(R.id.screen_status_cargo_singularity, canSuperWarp, false);
 
-		boolean specialCargo = 
-				ship.tribbles > 0 || 
-				japoriDiseaseStatus == 1 || 
-				artifactOnBoard || 
-				jarekStatus == 2 || 
+		boolean specialCargo =
+				ship.tribbles > 0 ||
+				japoriDiseaseStatus == 1 ||
+				artifactOnBoard ||
+				jarekStatus == 2 ||
 				(reactorStatus > 0 && reactorStatus < 21) ||
 				canSuperWarp;
 		screen.setViewVisibilityById(R.id.screen_status_cargo_default, !specialCargo, false);
 
 	}
-	
-	
+
+
 	public void specialCargoFormHandleEvent( int buttonId ) {
 
 		if (buttonId == R.id.screen_status_back_button)
@@ -6157,10 +6137,10 @@ public class GameState {
 		{
 			mGameManager.setCurrentScreenType(ScreenType.QUESTS);
 		}
-		
+
 	}
-	
-	
+
+
 	/*
 	 * QuestEvent.c
 	 */
@@ -6168,7 +6148,7 @@ public class GameState {
 	private int openQuests(  )
 	{
 		int r = 0;
-		
+
 		if (monsterStatus == 1)
 			++r;
 
@@ -6205,16 +6185,16 @@ public class GameState {
 
 		if (scarabStatus == 1)
 			++r;
-				
+
 		if (ship.tribbles > 0)
 			++r;
-				
+
 		if (moonBought)
 			++r;
-			
+
 		return r;
 	}
-	
+
 	public void drawQuestsForm()
 	{
 		BaseScreen screen = mGameManager.getCurrentScreen();
@@ -6222,7 +6202,7 @@ public class GameState {
 
 		screen.setViewVisibilityById(R.id.screen_status_quests_monster, monsterStatus == 1, false);
 		screen.setViewTextById(R.id.screen_status_quests_monster, R.string.screen_status_quests_monster, solarSystem[acamar]);
-		
+
 		screen.setViewVisibilityById(R.id.screen_status_quests_dragonfly,
 				(dragonflyStatus >= 1 && dragonflyStatus <= 4) || solarSystem[zalkon].special() == SpecialEvent.INSTALLLIGHTNINGSHIELD, false);
 		switch (dragonflyStatus) {
@@ -6242,7 +6222,7 @@ public class GameState {
 			screen.setViewTextById(R.id.screen_status_quests_dragonfly, R.string.screen_status_quests_lightningshield, solarSystem[zalkon]);
 			break;
 		}
-		
+
 		screen.setViewVisibilityById(R.id.screen_status_quests_disease, japoriDiseaseStatus == 1, false);
 		screen.setViewTextById(R.id.screen_status_quests_disease, R.string.screen_status_quests_disease, solarSystem[japori]);
 
@@ -6265,7 +6245,7 @@ public class GameState {
 		{
 			int days = 7 - invasionStatus;
 			screen.setViewTextById(
-					R.id.screen_status_quests_invasion, 
+					R.id.screen_status_quests_invasion,
 					getResources().getQuantityString(R.plurals.screen_status_quests_invasion, days, days, solarSystem[gemulon])
 					);
 		}
@@ -6279,7 +6259,7 @@ public class GameState {
 		{
 			int days = 11 - experimentStatus;
 			screen.setViewTextById(
-					R.id.screen_status_quests_experiment, 
+					R.id.screen_status_quests_experiment,
 					getResources().getQuantityString(R.plurals.screen_status_quests_experiment, days, days, solarSystem[daled])
 					);
 		}
@@ -6305,15 +6285,15 @@ public class GameState {
 		screen.setViewVisibilityById(R.id.screen_status_quests_scarab, scarabStatus == 1, false);
 
 		screen.setViewVisibilityById(R.id.screen_status_quests_tribbles, ship.tribbles > 0, false);
-		
+
 
 		screen.setViewVisibilityById(R.id.screen_status_quests_moon, moonBought, false);
 		screen.setViewTextById(R.id.screen_status_quests_moon, R.string.screen_status_quests_moon, solarSystem[utopia]);
-		
+
 		screen.setViewVisibilityById(R.id.screen_status_quests_default, openQuests() == 0, false);
 	}
-	
-	
+
+
 	public void questsFormHandleEvent( int buttonId ) {
 
 		if (buttonId == R.id.screen_status_back_button)
@@ -6328,7 +6308,7 @@ public class GameState {
 		{
 			mGameManager.setCurrentScreenType(ScreenType.CARGO);
 		}
-		
+
 	}
 	/*
 	 * SellEquipEvent.c
@@ -6338,17 +6318,17 @@ public class GameState {
 	// *************************************************************************
 	public void sellEquipmentFormHandleEvent( final int buttonId )
 	{
-		
+
 		mGameManager.showDialogFragment(ConfirmDialog.newInstance(
 				R.string.generic_sell,
 				R.string.screen_selleq_sellquery,
 				R.string.help_sellitem,
 				new OnConfirmListener() {
-					
+
 					@Override
 					public void onConfirm() {
 						boolean sale = true;
-						
+
 						if (SellEqScreen.WEAPON_BUTTON_IDS.contains(buttonId))
 						{
 							int index = -1;
@@ -6362,7 +6342,7 @@ public class GameState {
 								ship.weapon[i-1] = ship.weapon[i];
 							ship.weapon[ship.weapon.length-1] = null;
 						}
-						
+
 						if (SellEqScreen.SHIELD_BUTTON_IDS.contains(buttonId))
 						{
 							int index = -1;
@@ -6380,7 +6360,7 @@ public class GameState {
 							ship.shield[ship.shield.length-1] = null;
 							ship.shieldStrength[ship.shieldStrength.length-1] = 0;
 						}
-						
+
 						if (SellEqScreen.GADGET_BUTTON_IDS.contains(buttonId))
 						{
 							int index = -1;
@@ -6389,7 +6369,7 @@ public class GameState {
 									index = i;
 								}
 							}
-							
+
 							if (ship.gadget[index] == Gadget.EXTRABAYS)
 							{
 								if (ship.filledCargoBays() > ship.totalCargoBays() - 5)
@@ -6398,7 +6378,7 @@ public class GameState {
 									sale = false;
 								}
 							}
-							
+
 							if (sale)
 							{
 								credits += ship.gadget[index].sellPrice();
@@ -6407,7 +6387,7 @@ public class GameState {
 								ship.gadget[ship.gadget.length-1] = null;
 							}
 						}
-						
+
 						if (sale)
 							drawSellEquipment();
 					}
@@ -6415,7 +6395,7 @@ public class GameState {
 				null));
 	}
 
-	
+
 	/*
 	 * ShipEvent.c
 	 */
@@ -6431,7 +6411,7 @@ public class GameState {
 		else
 			screen.setViewTextById(R.id.screen_status_ship_type, ship.type);
 
-		
+
 		for (Weapon type : Weapon.values())
 		{
 			int j = 0;
@@ -6487,18 +6467,18 @@ public class GameState {
 
 		screen.setViewVisibilityById(R.id.screen_status_ship_unfilled_layout, ship.anyEmptySlots(), false);
 		if (ship.anyEmptySlots())
-		{		
+		{
 			// NB this bit added to mimic the fact that in original code, the unfilled items header overwrote the equipment header if the ship had no equipment
 			boolean displayEquip = false;
 			for (Purchasable item : StatusShipScreen.EQUIPMENT_IDS.keySet()) {
 				if ( (item instanceof Weapon && ship.hasWeapon((Weapon)item, true)) ||
 						(item instanceof Shield && ship.hasShield((Shield)item)) ||
 						(item instanceof Gadget && ship.hasGadget((Gadget)item)) ||
-						escapePod) 
+						escapePod)
 					displayEquip = true;
 			}
 			screen.setViewVisibilityById(R.id.screen_status_ship_equip_layout, displayEquip, false);
-			
+
 			int firstEmptySlot;
 			firstEmptySlot = getFirstEmptySlot(ship.type.weaponSlots, ship.weapon);
 			screen.setViewVisibilityById(R.id.screen_status_ship_unfilled_weapons, firstEmptySlot >= 0, false);
@@ -6531,10 +6511,10 @@ public class GameState {
 			}
 
 		}
-		
+
 	}
-	
-	
+
+
 	// *************************************************************************
 	// Event handler for the Current Ship screen
 	// ********************************************************************
@@ -6553,10 +6533,10 @@ public class GameState {
 		{
 			mGameManager.setCurrentScreenType(ScreenType.CARGO);
 		}
-		
+
 	}
-		
-	
+
+
 	/*
 	 * ShiptypeInfoEvent.c
 	 */
@@ -6573,11 +6553,11 @@ public class GameState {
 		dialog.setViewTextById(R.id.screen_yard_buyship_info_crew, R.string.format_number, selectedShipType.crewQuarters);
 		dialog.setViewTextById(R.id.screen_yard_buyship_info_range, R.string.format_parsecs, selectedShipType.fuelTanks);
 		dialog.setViewTextById(R.id.screen_yard_buyship_info_hull, R.string.format_number, selectedShipType.hullStrength);
-		
+
 		ImageView shipView = (ImageView) dialog.getDialog().findViewById(R.id.screen_yard_buyship_info_image);
 		shipView.setImageResource(selectedShipType.drawableId);
 	}
-	
+
 	/*
 	 * Shipyard.c
 	 */
@@ -6601,7 +6581,7 @@ public class GameState {
 							showShipYard();
 						}
 					}
-				}, 
+				},
 				new OnNeutralListener() {
 
 					public void onClickNeutralButton() {
@@ -6609,7 +6589,7 @@ public class GameState {
 						showShipYard();
 					}
 				}));
-	}	
+	}
 
 	// *************************************************************************
 	// Let the commander indicate how much he wants to spend on fuel
@@ -6617,11 +6597,11 @@ public class GameState {
 	public void getAmountForFuel(  )
 	{
 		mGameManager.showDialogFragment(InputDialog.newInstance(
-				R.string.screen_yard_fuelbutton, 
-				R.string.screen_yard_fuelquery, 
-				R.string.generic_ok, 
-				R.string.generic_maximum, 
-				R.string.generic_nothing, 
+				R.string.screen_yard_fuelbutton,
+				R.string.screen_yard_fuelquery,
+				R.string.generic_ok,
+				R.string.generic_maximum,
+				R.string.generic_nothing,
 				R.string.help_buyfuel,
 				new OnPositiveListener() {
 					@Override
@@ -6631,7 +6611,7 @@ public class GameState {
 							showShipYard();
 						}
 					}
-				}, 
+				},
 				new OnNeutralListener() {
 
 					public void onClickNeutralButton() {
@@ -6639,7 +6619,7 @@ public class GameState {
 						showShipYard();
 					}
 				}));
-	}	
+	}
 
 
 	// *************************************************************************
@@ -6665,23 +6645,23 @@ public class GameState {
 		{
 			screen.setViewTextById(R.id.screen_yard_shipsbutton, R.string.screen_yard_noshipsbutton);
 		}
-		screen.setViewVisibilityById(R.id.screen_yard_podbutton, 
+		screen.setViewVisibilityById(R.id.screen_yard_podbutton,
 				!(escapePod || toSpend() < 2000 || curSystem().techLevel().compareTo(ShipType.values()[0].minTechLevel) < 0));
 
 		screen.setViewTextById(R.id.screen_yard_range, getResources().getQuantityString(R.plurals.screen_yard_range, ship.getFuel(), ship.getFuel()));
-		
+
 		if (ship.getFuel() < ship.getFuelTanks())
 		{
-			screen.setViewTextById(R.id.screen_yard_tank, R.string.screen_yard_tank, (ship.getFuelTanks() - ship.getFuel()) * ship.type.costOfFuel);		
+			screen.setViewTextById(R.id.screen_yard_tank, R.string.screen_yard_tank, (ship.getFuelTanks() - ship.getFuel()) * ship.type.costOfFuel);
 		}
 		else
-			screen.setViewTextById(R.id.screen_yard_tank, R.string.screen_yard_fulltank);		
+			screen.setViewTextById(R.id.screen_yard_tank, R.string.screen_yard_fulltank);
 
 		screen.setViewTextById(R.id.screen_yard_hull, R.string.screen_yard_hull, (ship.hull * 100) / ship.getHullStrength());
-		
+
 		if (ship.hull < ship.getHullStrength())
 		{
-			screen.setViewTextById(R.id.screen_yard_repair, R.string.screen_yard_repair, 
+			screen.setViewTextById(R.id.screen_yard_repair, R.string.screen_yard_repair,
 					(ship.getHullStrength() - ship.hull) * ship.type.repairCosts);
 		}
 		else
@@ -6691,7 +6671,7 @@ public class GameState {
 			screen.setViewTextById(R.id.screen_yard_ships, R.string.screen_yard_ships);
 		else
 			screen.setViewTextById(R.id.screen_yard_ships, R.string.screen_yard_noships);
-		
+
 		screen.setViewTextById(R.id.screen_yard_credits, R.string.format_cash, credits);
 
 		if (escapePod)
@@ -6702,7 +6682,7 @@ public class GameState {
 			screen.setViewTextById(R.id.screen_yard_buypod, R.string.screen_yard_cantaffordpod);
 		else
 			screen.setViewTextById(R.id.screen_yard_buypod, R.string.screen_yard_buypod);
-		
+
 //		// Screenshot override
 //		screen.setViewVisibilityById(R.id.screen_yard_fuelbutton, true);
 //		screen.setViewVisibilityById(R.id.screen_yard_fullfuelbutton, true);
@@ -6717,9 +6697,9 @@ public class GameState {
 //		screen.setViewTextById(R.id.screen_yard_ships, R.string.screen_yard_noships);
 //		screen.setViewTextById(R.id.screen_yard_credits, R.string.format_cash, 378304);
 //		screen.setViewTextById(R.id.screen_yard_buypod, R.string.screen_yard_havepod);
-		
-		
-	    
+
+
+
 
 	}
 	// *************************************************************************
@@ -6727,15 +6707,15 @@ public class GameState {
 	// *************************************************************************
 	private void buyRepairs( int amount )
 	{
-		int maxRepairs = (ship.getHullStrength() - ship.hull) * 
+		int maxRepairs = (ship.getHullStrength() - ship.hull) *
 			ship.type.repairCosts;
 		if (amount > maxRepairs)
 			amount = maxRepairs;
 		if (amount > credits)
 			amount = credits;
-			
+
 		int percentage = amount / ship.type.repairCosts;
-		
+
 		ship.hull += percentage;
 		credits -= percentage * ship.type.repairCosts;
 	}
@@ -6746,49 +6726,36 @@ public class GameState {
 	public void shipYardFormHandleEvent( int buttonId )
 	{
 
-		switch (buttonId)
-		{
-		case R.id.screen_yard_fuelbutton:
-			getAmountForFuel();
-			showShipYard();
-			break;
-
-		case R.id.screen_yard_fullfuelbutton:
-			buyFuel( ship.getFuelTanks()*ship.type.costOfFuel );
-			showShipYard();
-			break;
-			
-		case R.id.screen_yard_repairbutton:
-			getAmountForRepairs();
-			showShipYard();
-			break;
-
-		case R.id.screen_yard_fullrepairbutton:
-			buyRepairs( ship.getHullStrength()*ship.type.repairCosts );
-			showShipYard();
-			break;
-			
-		case R.id.screen_yard_shipsbutton:
-			mGameManager.setCurrentScreenType(ScreenType.BUYSHIP);
-			break;
-
-		case R.id.screen_yard_podbutton:
-			mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-					R.string.screen_yard_buypod_title, 
-					R.string.screen_yard_buypod_query, 
-					R.string.help_buyescapepod,
-					new OnConfirmListener() {
-						@Override
-						public void onConfirm() {
-							escapePod = true;
-							credits -= 2000;
-							showShipYard();
-						}
-					}, null));
-			break;
-		}
+        if (buttonId == R.id.screen_yard_fuelbutton) {
+            getAmountForFuel();
+            showShipYard();
+        } else if (buttonId == R.id.screen_yard_fullfuelbutton) {
+            buyFuel(ship.getFuelTanks() * ship.type.costOfFuel);
+            showShipYard();
+        } else if (buttonId == R.id.screen_yard_repairbutton) {
+            getAmountForRepairs();
+            showShipYard();
+        } else if (buttonId == R.id.screen_yard_fullrepairbutton) {
+            buyRepairs(ship.getHullStrength() * ship.type.repairCosts);
+            showShipYard();
+        } else if (buttonId == R.id.screen_yard_shipsbutton) {
+            mGameManager.setCurrentScreenType(ScreenType.BUYSHIP);
+        } else if (buttonId == R.id.screen_yard_podbutton) {
+            mGameManager.showDialogFragment(ConfirmDialog.newInstance(
+                    R.string.screen_yard_buypod_title,
+                    R.string.screen_yard_buypod_query,
+                    R.string.help_buyescapepod,
+                    new OnConfirmListener() {
+                        @Override
+                        public void onConfirm() {
+                            escapePod = true;
+                            credits -= 2000;
+                            showShipYard();
+                        }
+                    }, null));
+        }
 	}
-	
+
 	/*
 	 * Skill.c
 	 */
@@ -6809,7 +6776,7 @@ public class GameState {
 			{
 				if (policeRecordScore < PoliceRecord.DUBIOUS.score)
 					buyPrice.put(item, (sellPrice.get(item) * 100) / 90 );
-				else 
+				else
 					buyPrice.put(item, sellPrice.get(item));
 				// BuyPrice = SellPrice + 1 to 12% (depending on trader skill (minimum is 1, max 12))
 				buyPrice.put(item, (buyPrice.get(item) * (103 + (MAXSKILL - ship.skill(Skill.TRADER))) / 100) );
@@ -6818,7 +6785,7 @@ public class GameState {
 			}
 		}
 	}
-		
+
 	// *************************************************************************
 	// After erasure of police record, selling prices must be recalculated
 	// *************************************************************************
@@ -6827,16 +6794,16 @@ public class GameState {
 		for (TradeItem item : TradeItem.values())
 			sellPrice.put(item, (sellPrice.get(item) * 100) / 90);
 	}
-	
+
 	// *************************************************************************
 	// Random mercenary skill
 	// *************************************************************************
 	private static int randomSkill() {
 		return 1 + getRandom( 5 ) + getRandom( 6 );
 	}
-	
-	
-	
+
+
+
 	/*
 	 * SpecialEvent.c
 	 */
@@ -6887,7 +6854,7 @@ public class GameState {
 		default:
 			sysName = null;
 		}
-		
+
 		builder.setTitle(curSystem().special().titleId, sysName);
 		if (curSystem().special().justAMessage) {
 			builder.setPositiveButton(R.string.generic_ok);
@@ -6895,15 +6862,15 @@ public class GameState {
 			builder.setPositiveButton(R.string.generic_yes);
 			builder.setNegativeButton(R.string.generic_no);
 		}
-		
+
 		builder.setMessage(curSystem().special().questStringId, sysName);
 	}
-	
+
 	public void specialEventFormHandleEvent( int unused )
 	{
 		boolean handled = false;
 		int firstEmptySlot;
-		
+
 		if (toSpend() < curSystem().special().price)
 		{
 			mGameManager.showDialogFragment(SimpleDialog.newInstance(
@@ -6928,23 +6895,23 @@ public class GameState {
 			}
 			else if (wildStatus == 1)
 			{
-				
+
 				mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-						R.string.screen_warp_wildwontstayonboard_title, 
-						R.string.screen_warp_wildwontstayonboard_message, 
+						R.string.screen_warp_wildwontstayonboard_title,
+						R.string.screen_warp_wildwontstayonboard_message,
 						R.string.screen_warp_wildwontgo_pos,
 						R.string.generic_cancel,
 						R.string.help_wildwontgowithreactor,
 						new OnConfirmListener() {
-							
+
 							@Override
 							public void onConfirm() {
 								mGameManager.showDialogFragment(SimpleDialog.newInstance(
-										R.string.screen_warp_wildleavesship_title, 
+										R.string.screen_warp_wildleavesship_title,
 										R.string.screen_warp_wildleavesship_message,
-										R.string.help_wildleaves, 
+										R.string.help_wildleaves,
 										new OnConfirmListener() {
-											
+
 											@Override
 											public void onConfirm() {
 												mGameManager.showDialogFragment(SimpleDialog.newInstance(R.string.dialog_special_reactor_title, R.string.dialog_special_reactor_message, R.string.help_reactoronboard));
@@ -6954,7 +6921,7 @@ public class GameState {
 										curSystem().name));
 								wildStatus = 0;
 							}
-						}, 
+						},
 						null,
 						curSystem().name));
 
@@ -6969,7 +6936,7 @@ public class GameState {
 			curSystem().setSpecial(SpecialEvent.GETSPECIALLASER);
 			reactorStatus = 21;
 			handled = true;
-			break;	
+			break;
 
 		case MONSTERKILLED:
 			break;
@@ -6982,14 +6949,14 @@ public class GameState {
 			scarabStatus = 2;
 			curSystem().setSpecial(SpecialEvent.GETHULLUPGRADED);
 			handled = true;
-			break;	
+			break;
 
 		case GETHULLUPGRADED:
 			mGameManager.showDialogFragment(SimpleDialog.newInstance(R.string.dialog_special_hullupgrade_title, R.string.dialog_special_hullupgrade_message, R.string.help_hullreinforced));
 			ship.hull += Ship.UPGRADEDHULL;
 			scarabStatus = 3;
 			handled = true;
-			break;	
+			break;
 
 		case EXPERIMENT:
 			experimentStatus = 1;
@@ -7036,9 +7003,9 @@ public class GameState {
 
 		case MOONFORSALE:
 			mGameManager.showDialogFragment(SimpleDialog.newInstance(
-					R.string.dialog_special_moonbought_title, 
-					R.string.dialog_special_moonbought_message, 
-					R.string.help_moonbought, 
+					R.string.dialog_special_moonbought_title,
+					R.string.dialog_special_moonbought_message,
+					R.string.help_moonbought,
 					solarSystem[utopia].name));
 			moonBought = true;
 			break;
@@ -7088,16 +7055,16 @@ public class GameState {
 			if (ship.crew[ship.type.crewQuarters-1] != null)
 			{
 				mGameManager.showDialogFragment(SimpleDialog.newInstance(
-						R.string.dialog_special_noquartersavailable_title, 
-						R.string.dialog_special_noquartersavailable_message, 
+						R.string.dialog_special_noquartersavailable_title,
+						R.string.dialog_special_noquartersavailable_message,
 						R.string.help_noquartersforjarek,
 						mGameManager.getResources().getString(R.string.dialog_special_passenger_jarek)));
 				handled = true;
 				break;
 			}
 			mGameManager.showDialogFragment(SimpleDialog.newInstance(
-					R.string.dialog_special_passengertakenonboard_title, 
-					R.string.dialog_special_passengertakenonboard_message, 
+					R.string.dialog_special_passengertakenonboard_title,
+					R.string.dialog_special_passengertakenonboard_message,
 					R.string.help_jarektakenonboard,
 					mGameManager.getResources().getString(R.string.dialog_special_passenger_jarek)));
 			jarekStatus = 1;
@@ -7108,8 +7075,8 @@ public class GameState {
 			if (ship.crew[ship.type.crewQuarters-1] != null)
 			{
 				mGameManager.showDialogFragment(SimpleDialog.newInstance(
-						R.string.dialog_special_noquartersavailable_title, 
-						R.string.dialog_special_noquartersavailable_message, 
+						R.string.dialog_special_noquartersavailable_title,
+						R.string.dialog_special_noquartersavailable_message,
 						R.string.help_noquartersforjarek,
 						mGameManager.getResources().getString(R.string.dialog_special_passenger_wild)));
 				handled = true;
@@ -7128,8 +7095,8 @@ public class GameState {
 				break;
 			}
 			mGameManager.showDialogFragment(SimpleDialog.newInstance(
-					R.string.dialog_special_passengertakenonboard_title, 
-					R.string.dialog_special_passengertakenonboard_message, 
+					R.string.dialog_special_passengertakenonboard_title,
+					R.string.dialog_special_passengertakenonboard_message,
 					R.string.help_jarektakenonboard,
 					mGameManager.getResources().getString(R.string.dialog_special_passenger_wild)));
 			wildStatus = 1;
@@ -7183,7 +7150,7 @@ public class GameState {
 				engineer = 8;
 				break;
 			}
-			
+
 			mercenary[mercenary.length-1] = new CrewMember(mercenary[mercenary.length-1].name, pilot, fighter, trader, engineer, this);
 			mercenary[mercenary.length-1].setSystem(solarSystem[kravat]);
 
@@ -7252,9 +7219,9 @@ public class GameState {
 			else
 			{
 				mGameManager.showDialogFragment(SimpleDialog.newInstance(
-						R.string.dialog_special_antidote_title, 
-						R.string.dialog_special_antidote_message, 
-						R.string.help_antidote, 
+						R.string.dialog_special_antidote_title,
+						R.string.dialog_special_antidote_message,
+						R.string.help_antidote,
 						solarSystem[japori].name));
 				japoriDiseaseStatus = 1;
 
@@ -7264,14 +7231,14 @@ public class GameState {
 		default:
 			break;
 		}
-		
-		if (!handled)				
+
+		if (!handled)
 			curSystem().setSpecial(null);
-		
+
 		drawSystemInformationForm();
 	}
-	
-	
+
+
 
 	/*
 	 * SystemInfoEvent.c
@@ -7294,7 +7261,7 @@ public class GameState {
 		}
 		return forHire;
 	}
-	
+
 	// *************************************************************************
 	// Drawing the Personnel Roster screen
 	// *************************************************************************
@@ -7303,43 +7270,43 @@ public class GameState {
 	{
 		BaseScreen screen = mGameManager.getCurrentScreen();
 		if (screen == null || screen.getView() == null || screen.getType() != ScreenType.PERSONNEL) return;
-		
+
 		// NB we add this new check so that we display correctly if both Jarek and Wild are on board
 		if (ship.type.crewQuarters == 3 && jarekStatus == 1 && wildStatus == 1) {
 			screen.setViewTextById(R.id.screen_personnel_merc1_empty, R.string.screen_personnel_wild);
 		}
-		
+
 		else if (ship.type.crewQuarters == 2 &&  (jarekStatus == 1 || wildStatus == 1))
 		{
 			if (jarekStatus == 1)
 				screen.setViewTextById(R.id.screen_personnel_merc1_empty, R.string.screen_personnel_jarek);
 			else
 				screen.setViewTextById(R.id.screen_personnel_merc1_empty, R.string.screen_personnel_wild);
-			
+
 			screen.setViewVisibilityById(R.id.screen_personnel_merc1_empty_layout, true);
 			screen.setViewVisibilityById(R.id.screen_personnel_merc1_stats, false);
 		}
-		
+
 		else if (ship.type.crewQuarters <= 1)
 		{
 			screen.setViewTextById(R.id.screen_personnel_merc1_empty, R.string.screen_personnel_noquarters);
-			
+
 			screen.setViewVisibilityById(R.id.screen_personnel_merc1_empty_layout, true);
 			screen.setViewVisibilityById(R.id.screen_personnel_merc1_stats, false);
 		}
-		
+
 		else if (ship.crew[1] == null)
 		{
 			screen.setViewTextById(R.id.screen_personnel_merc1_empty, R.string.screen_personnel_vacancy);
-			
+
 			screen.setViewVisibilityById(R.id.screen_personnel_merc1_empty_layout, true);
 			screen.setViewVisibilityById(R.id.screen_personnel_merc1_stats, false);
 		}
-		
+
 		else {
 			screen.setViewVisibilityById(R.id.screen_personnel_merc1_empty_layout, false);
 			screen.setViewVisibilityById(R.id.screen_personnel_merc1_stats, true);
-			
+
 			screen.setViewTextById(R.id.screen_personnel_merc1_name, ship.crew[1].name);
 			screen.setViewTextById(R.id.screen_personnel_merc1_price, R.string.format_dailycost, ship.crew[1].hirePrice());
 			screen.setViewTextById(R.id.screen_personnel_merc1_pilot, R.string.screen_personnel_pilot, ship.crew[1].pilot());
@@ -7347,10 +7314,10 @@ public class GameState {
 			screen.setViewTextById(R.id.screen_personnel_merc1_trader, R.string.screen_personnel_trader, ship.crew[1].trader());
 			screen.setViewTextById(R.id.screen_personnel_merc1_engineer, R.string.screen_personnel_engineer, ship.crew[1].engineer());
 		}
-		
-		
-		
-		if (ship.type.crewQuarters == 3 &&  (jarekStatus == 1 || wildStatus == 1))	
+
+
+
+		if (ship.type.crewQuarters == 3 &&  (jarekStatus == 1 || wildStatus == 1))
 		{
 			if (jarekStatus == 1)
 				screen.setViewTextById(R.id.screen_personnel_merc2_empty, R.string.screen_personnel_jarek);
@@ -7360,27 +7327,27 @@ public class GameState {
 			screen.setViewVisibilityById(R.id.screen_personnel_merc2_empty_layout, true);
 			screen.setViewVisibilityById(R.id.screen_personnel_merc2_stats, false);
 		}
-		
+
 		else if (ship.type.crewQuarters <= 2)
 		{
 			screen.setViewTextById(R.id.screen_personnel_merc2_empty, R.string.screen_personnel_noquarters);
-			
+
 			screen.setViewVisibilityById(R.id.screen_personnel_merc2_empty_layout, true);
 			screen.setViewVisibilityById(R.id.screen_personnel_merc2_stats, false);
 		}
-		
+
 		else if (ship.crew[2] == null)
 		{
 			screen.setViewTextById(R.id.screen_personnel_merc2_empty, R.string.screen_personnel_vacancy);
-			
+
 			screen.setViewVisibilityById(R.id.screen_personnel_merc2_empty_layout, true);
 			screen.setViewVisibilityById(R.id.screen_personnel_merc2_stats, false);
 		}
-		
+
 		else {
 			screen.setViewVisibilityById(R.id.screen_personnel_merc2_empty_layout, false);
 			screen.setViewVisibilityById(R.id.screen_personnel_merc2_stats, true);
-			
+
 			screen.setViewTextById(R.id.screen_personnel_merc2_name, ship.crew[2].name);
 			screen.setViewTextById(R.id.screen_personnel_merc2_price, R.string.format_dailycost, ship.crew[2].hirePrice());
 			screen.setViewTextById(R.id.screen_personnel_merc2_pilot, R.string.screen_personnel_pilot, ship.crew[2].pilot());
@@ -7396,10 +7363,10 @@ public class GameState {
 			screen.setViewVisibilityById(R.id.screen_personnel_merc3_stats, false);
 		}
 		else
-		{	
+		{
 			screen.setViewVisibilityById(R.id.screen_personnel_merc3_empty_layout, false);
 			screen.setViewVisibilityById(R.id.screen_personnel_merc3_stats, true);
-			
+
 			screen.setViewTextById(R.id.screen_personnel_merc3_name, forHire.name);
 			screen.setViewTextById(R.id.screen_personnel_merc3_price, R.string.format_dailycost, forHire.hirePrice());
 			screen.setViewTextById(R.id.screen_personnel_merc3_pilot, R.string.screen_personnel_pilot, forHire.pilot());
@@ -7409,7 +7376,7 @@ public class GameState {
 		}
 
 		screen.setViewTextById(R.id.screen_personnel_credits, R.string.format_cash, credits);
-		
+
 //		// Screenshot override
 //		screen.setViewVisibilityById(R.id.screen_personnel_merc1_empty_layout, false);
 //		screen.setViewVisibilityById(R.id.screen_personnel_merc1_stats, true);
@@ -7431,9 +7398,9 @@ public class GameState {
 //		screen.setViewTextById(R.id.screen_personnel_merc3_trader, R.string.screen_personnel_trader, 6);
 //		screen.setViewTextById(R.id.screen_personnel_merc3_engineer, R.string.screen_personnel_engineer, 6);
 //		screen.setViewTextById(R.id.screen_personnel_credits, R.string.format_cash, 202093);
-		
+
 	}
-	
+
 	// *************************************************************************
 	// Add a news event flag
 	// *************************************************************************
@@ -7449,7 +7416,7 @@ public class GameState {
 	// *************************************************************************
 	void replaceNewsEvent(NewsEvent originalEventFlag, NewsEvent replacementEventFlag)
 	{
-		
+
 		if (originalEventFlag == null)
 		{
 			addNewsEvent(replacementEventFlag);
@@ -7496,14 +7463,14 @@ public class GameState {
 		}
 		return false;
 	}
-	
-	
+
+
 	public void drawSystemInformationForm()
 	{
 		// Check this first, because we use it twice: once for showing special button, and once for adding related news events.
 		boolean showSpecial;
 		int openQ = openQuests();
-		if ((curSystem().special() == null) || 
+		if ((curSystem().special() == null) ||
 				(curSystem().special() == SpecialEvent.BUYTRIBBLE && ship.tribbles <= 0) ||
 				(curSystem().special() == SpecialEvent.ERASERECORD && policeRecordScore >= PoliceRecord.DUBIOUS.score) ||
 				(curSystem().special() == SpecialEvent.CARGOFORSALE && (ship.filledCargoBays() > ship.totalCargoBays() - 3)) ||
@@ -7546,7 +7513,7 @@ public class GameState {
 			showSpecial = false;
 		else
 			showSpecial = true;
-		
+
 		// Moved this from HandleEvent to here because we don't handle opening events the way the palm version did
 		if (curSystem().special() == SpecialEvent.MONSTERKILLED && monsterStatus == 2)
 			addNewsEvent(NewsEvent.MONSTERKILLED);
@@ -7582,7 +7549,7 @@ public class GameState {
 			addNewsEvent(NewsEvent.EXPERIMENTSTOPPED);
 		else if (curSystem().special() == SpecialEvent.EXPERIMENTNOTSTOPPED)
 			addNewsEvent(NewsEvent.EXPERIMENTNOTSTOPPED);
-		
+
 		// These two headlines were added manually in the original but are treated as NewsEvents now
 		else if (curSystem().special() == SpecialEvent.DRAGONFLYDESTROYED && dragonflyStatus == 4)
 			addNewsEvent(NewsEvent.DRAGONFLYNOTDESTROYED);
@@ -7595,7 +7562,7 @@ public class GameState {
 		BaseScreen screen = mGameManager.getCurrentScreen();
 		if (screen == null || screen.getView() == null || screen.getType() != ScreenType.INFO) return;
 		if (developerMode) screen.setViewVisibilityById(R.id.screen_info_traderlayout, true);
-		
+
 		screen.setViewTextById(R.id.screen_info_name, curSystem().name);
 		screen.setViewTextById(R.id.screen_info_tech, curSystem().techLevel());
 		screen.setViewTextById(R.id.screen_info_gov, curSystem().politics());
@@ -7607,7 +7574,7 @@ public class GameState {
 		screen.setViewTextById(R.id.screen_info_traders, curSystem().politics().strengthTraders);
 		screen.setViewVisibilityById(R.id.screen_info_special, showSpecial);
 		screen.setViewVisibilityById(R.id.screen_info_merc, getForHire() != null);
-		
+
 //		// Screenshot override
 //		screen.setViewTextById(R.id.screen_info_name, R.string.solarsystem_hades);
 //		screen.setViewTextById(R.id.screen_info_tech, TechLevel.PREAGRICULTURAL);
@@ -7619,7 +7586,7 @@ public class GameState {
 //		screen.setViewTextById(R.id.screen_info_pirates, ActivityLevel.ABUNDANT);
 //		screen.setViewVisibilityById(R.id.screen_info_special, false);
 //		screen.setViewVisibilityById(R.id.screen_info_merc, false);
-		
+
 
 	}
 
@@ -7646,9 +7613,9 @@ public class GameState {
 				return;
 			}
 			else
-			{	
+			{
 				OnConfirmListener readNewspaperListener = new OnConfirmListener() {
-					
+
 					@Override
 					public void onConfirm() {
 						if (!alreadyPaidForNewspaper)
@@ -7659,7 +7626,7 @@ public class GameState {
 						mGameManager.showDialogFragment(NewspaperDialog.newInstance());
 					}
 				};
-				
+
 				if (!newsAutoPay && !alreadyPaidForNewspaper)
 					mGameManager.showDialogFragment(ConfirmDialog.newInstance(
 							R.string.screen_info_buynewspaper_title,
@@ -7674,7 +7641,7 @@ public class GameState {
 			}
 		}
 	}
-	
+
 	private int headlineCount = 0;
 	private void displayHeadline(int stringId, Object... args) {
 		if (headlineCount > MAXSTORIES) return;
@@ -7688,7 +7655,7 @@ public class GameState {
 		mGameManager.findDialogByClass(NewspaperDialog.class).setViewVisibilityById(lineId, true);
 		mGameManager.findDialogByClass(NewspaperDialog.class).setViewTextById(lineId, String.format(string, args));
 	}
-	
+
 	public String newspaperTitle() {
 	    int sysIndex = 0;
 	    for (SolarSystem system : solarSystem) {
@@ -7700,12 +7667,12 @@ public class GameState {
 		String title = getResources().getStringArray(curSystem().politics().mastheadId)[sysIndex % MAXMASTHEADS];
 		return String.format(title, curSystem());
 	}
-	
+
 	public void drawNewspaperForm()
 	{
 		headlineCount = 0;
 //		BaseDialog dialog = mGameManager.findDialogByClass(NewspaperDialog.class);
-		
+
 	    boolean realNews = false;
 
 	    int sysIndex = 0;
@@ -7717,7 +7684,7 @@ public class GameState {
 	    }
 //		String title = getResources().getStringArray(curSystem().politics().mastheadId)[sysIndex % MAXMASTHEADS];
 //		dialog.getDialog().setTitle(String.format(title, curSystem()));
-					
+
 		randSeed( sysIndex, days );
 
 		// Special Events get to go first, crowding out other news
@@ -7729,7 +7696,7 @@ public class GameState {
 				if (event == NewsEvent.CAUGHTLITTERING) {
 					// Handled later because this appears after other stories
 				} else if (event.hasArgs) {
-					SolarSystem system;					
+					SolarSystem system;
 					switch (event) {
 					case FLYMELINA:
 						system = solarSystem[melina];
@@ -7752,7 +7719,7 @@ public class GameState {
 					default:
 						throw new IllegalArgumentException();
 					}
-					
+
 					displayHeadline(event.resId, system);
 				}
 				else{
@@ -7766,7 +7733,7 @@ public class GameState {
 		{
 			displayHeadline(curSystem().status().localHeadlineId);
 		}
-		
+
 		// character-specific news.
 		if (policeRecordScore <= PoliceRecord.VILLAIN.score)
 		{
@@ -7779,14 +7746,14 @@ public class GameState {
 			int j = getRandom2(3);
 			displayHeadline(getResources().getStringArray(R.array.headline_hero)[j], commander().name);
 		}
-		
+
 		// caught littering?
 		if  (isNewsEvent(NewsEvent.CAUGHTLITTERING))
 		{
 			displayHeadline(R.string.newsevent_caughtlittering, commander().name);
 		}
 
-		
+
 		// and now, finally, useful news (if any)
 		// base probability of a story showing up is (50 / MAXTECHLEVEL) * Current Tech Level
 		// This is then modified by adding 10% for every level of play less than Impossible
@@ -7797,7 +7764,7 @@ public class GameState {
 			    ||
 			    (wormholeExists( curSystem(), system )))	// NB this is useful but unrealistic. It's from the original so it stays.
 			    )
-			    
+
 			{
 				// Special stories that always get shown: moon, millionaire
 				if (system.special() == SpecialEvent.MOONFORSALE)
@@ -7808,7 +7775,7 @@ public class GameState {
 				{
 					displayHeadline(R.string.newsevent_buytribble, system);
 				}
-				
+
 				// And not-always-shown stories
 				if ( system.status() != Status.UNEVENTFUL &&		// NB original checked uneventful in parent if statement. This led to a subtle bug where moon/tribble stories don't appear for systems with uneventful status.
 						(getRandom2(100) <= STORYPROBABILITY * curSystem().techLevel().ordinal() + 10 * (5 - difficulty.ordinal())) )
@@ -7819,7 +7786,7 @@ public class GameState {
 				}
 			}
 		}
-		
+
 		// if there's no useful news, we throw up at least one
 		// headline from our canned news list.
 		if (! realNews)
@@ -7828,14 +7795,14 @@ public class GameState {
 			for (int i=0; i <=getRandom2(MAXSTORIES); i++)
 			{
 				int j = getRandom2(MAXSTORIES);
-				if (!shown[j] && headlineCount < newsEvents.length) 
+				if (!shown[j] && headlineCount < newsEvents.length)
 				{
 					displayHeadline(getResources().getStringArray(curSystem().politics().headlineId)[j]);
 					shown[j] = true;
 				}
 			}
 		}
-		
+
 //		// Screenshot override
 //		mGameManager.getCurrentScreen().setViewTextById(R.id.screen_info_gov, Politics.THEOCRACY);
 //		mGameManager.getCurrentScreen().setViewTextById(R.id.screen_info_tech, TechLevel.AGRICULTURAL);
@@ -7858,17 +7825,17 @@ public class GameState {
 	// *****************************************************************
 	public void personnelRosterFormHandleEvent( int buttonId )
 	{
-		
+
 		final int oldTraderSkill = ship.skill(Skill.TRADER);
-		
-		if (buttonId == R.id.screen_personnel_merc1_fire) 
+
+		if (buttonId == R.id.screen_personnel_merc1_fire)
 		{
 			mGameManager.showDialogFragment(ConfirmDialog.newInstance(
 					R.string.screen_personnel_firemercenary_title,
 					R.string.screen_personnel_firemercenary_message,
 					R.string.help_firemercenary,
 					new OnConfirmListener() {
-						
+
 						@Override
 						public void onConfirm() {
 							ship.crew[1] = ship.crew[2];
@@ -7879,14 +7846,14 @@ public class GameState {
 					null,
 					ship.crew[1]));
 		}
-		else if (buttonId == R.id.screen_personnel_merc2_fire) 
+		else if (buttonId == R.id.screen_personnel_merc2_fire)
 		{
 			mGameManager.showDialogFragment(ConfirmDialog.newInstance(
 					R.string.screen_personnel_firemercenary_title,
 					R.string.screen_personnel_firemercenary_message,
 					R.string.help_firemercenary,
 					new OnConfirmListener() {
-						
+
 						@Override
 						public void onConfirm() {
 							ship.crew[2] = null;
@@ -7895,7 +7862,7 @@ public class GameState {
 					},
 					null));
 		}
-		else if (buttonId == R.id.screen_personnel_merc3_hire) 
+		else if (buttonId == R.id.screen_personnel_merc3_hire)
 		{
 			CrewMember forHire = getForHire();
 
@@ -7922,7 +7889,7 @@ public class GameState {
 		if (oldTraderSkill != ship.skill(Skill.TRADER))
 			recalculateBuyPrices(curSystem());
 	}
-	
+
 	/*
 	 * Traveler.c
 	 */
@@ -7934,10 +7901,10 @@ public class GameState {
 		if (!insurance)
 			return 0;
 		else
-			return (max( 1, (((ship.currentPriceWithoutCargo( true ) * 5) / 2000) * 
+			return (max( 1, (((ship.currentPriceWithoutCargo( true ) * 5) / 2000) *
 					(100 - min( noClaim, 90 )) / 100) ));
 	}
-	
+
 	// *************************************************************************
 	// Standard price calculation
 	// *************************************************************************
@@ -7954,7 +7921,7 @@ public class GameState {
 
 		// If a good is highly requested, increase the price
 		if (government.wanted == good)
-			price = (price * 4) / 3;	
+			price = (price * 4) / 3;
 
 		// High trader activity decreases prices
 		price = (price * (100 - (2 * government.strengthTraders.ordinal()))) / 100;
@@ -7962,7 +7929,7 @@ public class GameState {
 		// Large system = high production decreases prices
 		price = (price * (100 - size.ordinal())) / 100;
 
-		// Special resources price adaptation		
+		// Special resources price adaptation
 		if (resources != SpecialResources.NOSPECIALRESOURCES)
 		{
 			if (good.cheapResource != null)
@@ -7996,7 +7963,7 @@ public class GameState {
 		}
 		return toPay;
 	}
-	
+
 	// *************************************************************************
 	// Calculate wormhole tax to be paid between systems a and b
 	// *************************************************************************
@@ -8007,8 +7974,8 @@ public class GameState {
 
 		return 0;
 	}
-	
-	
+
+
 	// *************************************************************************
 	// Initializing the high score table
 	// *************************************************************************
@@ -8019,8 +7986,8 @@ public class GameState {
 			hScores[i] = null;
 		}
 	}
-	
-	
+
+
 	// *************************************************************************
 	// Handling of endgame: highscore table
 	// *************************************************************************
@@ -8029,12 +7996,12 @@ public class GameState {
 	{
 		final HighScore highScore = new HighScore( commander().name, endStatus, days, currentWorth(), difficulty );
 		final int a = highScore.score;
-		
+
 		boolean scored = false;
 		int i = 0;
 		while (i<hScores.length)
 		{
-			
+
 			int b =	hScores[i] == null? 0 : hScores[i].score;
 
 			if (hScores[i] == null || (a > b) || (a == b && currentWorth() > hScores[i].worth) ||
@@ -8050,9 +8017,9 @@ public class GameState {
 
 					hScores[i] = highScore;
 				}
-				
+
 				scored = true;
-				
+
 				break;
 			}
 
@@ -8076,10 +8043,10 @@ public class GameState {
 		{
 			scoreTextId = R.string.dialog_finalscore_nohighscore;
 		}
-		
+
 		final boolean fScored = scored;
 		BaseDialog dialog = SimpleDialog.newInstance(
-				R.string.dialog_finalscore_title, 
+				R.string.dialog_finalscore_title,
 				scoreTextId,
 				R.string.help_highscore,
 				new OnConfirmListener() {
@@ -8096,26 +8063,26 @@ public class GameState {
 				);
 //		dialog.setCancelable(false);.
 		mGameManager.showDialogFragment(dialog);
-		
+
 		mGameManager.autosave();
-		
+
 	}
-	
+
 
 	public void showEndGameScreen(EndStatus endStatus)
 	{
 		this.endStatus = endStatus;
 		mGameManager.setCurrentScreenType(ScreenType.ENDGAME);
 	}
-	
+
 	public void drawEndGameScreen()
 	{
 		BaseScreen screen = mGameManager.getCurrentScreen();
 		if (screen == null || screen.getView() == null || screen.getType() != ScreenType.ENDGAME) return;
 		((ImageView) screen.getView().findViewById(R.id.screen_endofgame_image)).setImageResource(endStatus.imageId);
 	}
-	
-	
+
+
 	// *************************************************************************
 	// Determine prices in specified system (changed from Current System) SjG
 	// *************************************************************************
@@ -8159,8 +8126,8 @@ public class GameState {
 
 		recalculateBuyPrices(system);
 	}
-	
-	
+
+
 	// *************************************************************************
 	// Execute a warp command
 	// *************************************************************************
@@ -8169,27 +8136,27 @@ public class GameState {
 
 		// if Wild is aboard, make sure ship is armed!
 		if (wildStatus == 1)
-		{	
+		{
 			if (! ship.hasWeapon(Weapon.BEAM, false))
 			{
 				mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-						R.string.screen_warp_wildwontgo_title, 
-						R.string.screen_warp_wildwontgo_message, 
+						R.string.screen_warp_wildwontgo_title,
+						R.string.screen_warp_wildwontgo_message,
 						R.string.screen_warp_wildwontgo_pos,
 						R.string.generic_cancel,
 						R.string.help_wildwontgo,
 						new OnConfirmListener() {
-							
+
 							@Override
 							public void onConfirm() {
 								mGameManager.showDialogFragment(SimpleDialog.newInstance(
-										R.string.screen_warp_wildleavesship_title, 
-										R.string.screen_warp_wildleavesship_message, 
+										R.string.screen_warp_wildleavesship_title,
+										R.string.screen_warp_wildleavesship_message,
 										R.string.help_wildleaves,
 										curSystem().name));
 								wildStatus = 0;
 							}
-						}, 
+						},
 						null,
 						curSystem().name));
 				return false;
@@ -8200,17 +8167,17 @@ public class GameState {
 		if (debt > DEBTTOOLARGE)
 		{
 			mGameManager.showDialogFragment(SimpleDialog.newInstance(
-					R.string.screen_warp_debttoolarge_title, 
+					R.string.screen_warp_debttoolarge_title,
 					R.string.screen_warp_debttoolarge_message,
 					R.string.help_debttoolargefortravel));
 			return false;
 		}
 
-		// Check for enough money to pay Mercenaries    
+		// Check for enough money to pay Mercenaries
 		if (mercenaryMoney() > credits)
 		{
 			mGameManager.showDialogFragment(SimpleDialog.newInstance(
-					R.string.screen_warp_mustpaymercenaries_title, 
+					R.string.screen_warp_mustpaymercenaries_title,
 					R.string.screen_warp_mustpaymercenaries_message,
 					R.string.help_mustpaymercenaries));
 			return false;
@@ -8222,19 +8189,19 @@ public class GameState {
 			if (insuranceMoney() + mercenaryMoney() > credits)
 			{
 				mGameManager.showDialogFragment(SimpleDialog.newInstance(
-						R.string.screen_warp_cantpayinsurance_title, 
+						R.string.screen_warp_cantpayinsurance_title,
 						R.string.screen_warp_cantpayinsurance_message,
 						R.string.help_cantpayinsurance));
 				return false;
 			}
 		}
 
-		// Check for enough money to pay Wormhole Tax 					
-		if (insuranceMoney() + mercenaryMoney() + 
+		// Check for enough money to pay Wormhole Tax
+		if (insuranceMoney() + mercenaryMoney() +
 				wormholeTax( curSystem(), warpSystem ) > credits)
 		{
 			mGameManager.showDialogFragment(SimpleDialog.newInstance(
-					R.string.screen_warp_cantpaywormhole_title, 
+					R.string.screen_warp_cantpaywormhole_title,
 					R.string.screen_warp_cantpaywormhole_message,
 					R.string.help_cantpaywormhole));
 			return false;
@@ -8243,7 +8210,7 @@ public class GameState {
 		if (! viaSingularity)
 		{
 			credits -= wormholeTax( curSystem(), warpSystem );
-			credits -= mercenaryMoney();						
+			credits -= mercenaryMoney();
 			credits -= insuranceMoney();
 		}
 
@@ -8305,7 +8272,7 @@ public class GameState {
 		possibleToGoThroughRip=true;
 
 		travel();
-		
+
 		return true;
 	}
 
@@ -8318,21 +8285,21 @@ public class GameState {
 
 		BaseScreen screen = mGameManager.getCurrentScreen();
 		if (screen == null || screen.getView() == null || screen.getType() != ScreenType.TARGET) return;
-		
+
 ////		screen.setViewVisibilityById(R.id.screen_warp_target_traders_layout, developerMode, false);
 ////		screen.setViewTextById(R.id.screen_warp_target_traders, warpSystem.politics().strengthTraders);
-		
+
 		((ViewGroup)screen.getView().findViewById(R.id.screen_warp_target_pagerspacer)).getChildAt(0).setVisibility(developerMode? View.VISIBLE : View.GONE);
-		
+
 		screen.setViewTextById(R.id.screen_warp_toggle, R.string.screen_warp_avgprices_button);
-		
+
 		int distance = 0;
-//		
+//
 //		screen.setViewTextById(R.id.screen_warp_target_name, warpSystem.name);
 //		screen.setViewTextById(R.id.screen_warp_target_tech, warpSystem.techLevel());
 //		screen.setViewTextById(R.id.screen_warp_target_gov, warpSystem.politics());
 //		screen.setViewTextById(R.id.screen_warp_target_size, warpSystem.size);
-//					
+//
 		if (wormholeExists( curSystem(), warpSystem ))
 		{
 //			screen.setViewTextById(R.id.screen_warp_target_distance, R.string.screen_warp_target_distance_wormhole);
@@ -8345,7 +8312,7 @@ public class GameState {
 //
 //		screen.setViewTextById(R.id.screen_warp_target_police, warpSystem.politics().strengthPolice);
 //		screen.setViewTextById(R.id.screen_warp_target_pirates, warpSystem.politics().strengthPirates);
-//		int cost = insuranceMoney() + mercenaryMoney() + (debt < 0 ? 
+//		int cost = insuranceMoney() + mercenaryMoney() + (debt < 0 ?
 //				max( debt / 10, 1 ) : 0 ) + wormholeTax( curSystem(), warpSystem );
 //		screen.setViewTextById(R.id.screen_warp_target_cost, R.string.format_credits, cost);
 //
@@ -8373,32 +8340,32 @@ public class GameState {
 			screen.setViewVisibilityById(R.id.screen_warp_toggle, true);
 //			screen.setViewVisibilityById(R.id.screen_warp_target_toofar, false);
 		}
-//			
+//
 //		screen.setViewVisibilityById(R.id.screen_warp_target_cost_specific,
 //				(wormholeExists( curSystem(), warpSystem ) || insurance || debt > 0 || ship.crew[1] != null));
 
 //		WarpSystemPagerAdapter adapter = ((WarpTargetScreen)screen).getPagerAdapter();
 //		if (adapter == null) return;
 //		setAdapterSystems(adapter);
-		
+
 //		// Screenshot override
 //		screen.setViewTextById(R.id.screen_warp_toggle, R.string.screen_warp_avgprices_button);
 //		screen.setViewVisibilityById(R.id.screen_warp_warp, true);
 //		screen.setViewVisibilityById(R.id.screen_warp_toggle, true);
 	}
-	
+
 	public void showExecuteWarpPage(SolarSystem system, View page) {
 		page.findViewById(R.id.screen_warp_target_traders).setVisibility(developerMode? View.VISIBLE : View.GONE);
 		page.findViewById(R.id.screen_warp_target_traders_header).setVisibility(developerMode? View.VISIBLE : View.GONE);
 		((TextView) page.findViewById(R.id.screen_warp_target_traders)).setText(system.politics().strengthTraders.toXmlString(getResources()));
-		
+
 		int distance = 0;
 
 		((TextView) page.findViewById(R.id.screen_warp_target_name)).setText(system.name);
 		((TextView) page.findViewById(R.id.screen_warp_target_tech)).setText(system.techLevel().toXmlString(getResources()));
 		((TextView) page.findViewById(R.id.screen_warp_target_gov)).setText(system.politics().toXmlString(getResources()));
 		((TextView) page.findViewById(R.id.screen_warp_target_size)).setText(system.size.toXmlString(getResources()));
-					
+
 		if (wormholeExists( curSystem(), system ))
 		{
 			((TextView) page.findViewById(R.id.screen_warp_target_distance)).setText(R.string.screen_warp_target_distance_wormhole);
@@ -8411,7 +8378,7 @@ public class GameState {
 
 		((TextView) page.findViewById(R.id.screen_warp_target_police)).setText(system.politics().strengthPolice.toXmlString(getResources()));
 		((TextView) page.findViewById(R.id.screen_warp_target_pirates)).setText(system.politics().strengthPirates.toXmlString(getResources()));
-		int cost = insuranceMoney() + mercenaryMoney() + (debt < 0 ? 
+		int cost = insuranceMoney() + mercenaryMoney() + (debt < 0 ?
 				max( debt / 10, 1 ) : 0 ) + wormholeTax( curSystem(), system );
 		((TextView) page.findViewById(R.id.screen_warp_target_cost)).setText(getResources().getString(R.string.format_credits, cost));
 
@@ -8439,7 +8406,7 @@ public class GameState {
 //			page.findViewById(R.id.screen_warp_toggle).setVisibility(View.VISIBLE);
 			page.findViewById(R.id.screen_warp_target_toofar).setVisibility(View.INVISIBLE);
 		}
-		
+
 		if (wormholeExists( curSystem(), system ) || insurance || debt > 0 || ship.crew[1] != null)
 		{
 			page.findViewById(R.id.screen_warp_target_cost_specific).setVisibility(View.VISIBLE);
@@ -8448,7 +8415,7 @@ public class GameState {
 		{
 			page.findViewById(R.id.screen_warp_target_cost_specific).setVisibility(View.INVISIBLE);
 		}
-		
+
 //		// Screenshot override
 //		((TextView) page.findViewById(R.id.screen_warp_target_name)).setText(R.string.solarsystem_montor);
 //		((TextView) page.findViewById(R.id.screen_warp_target_tech)).setText(TechLevel.MEDIEVAL.toXmlString(getResources()));
@@ -8460,7 +8427,7 @@ public class GameState {
 //		((TextView) page.findViewById(R.id.screen_warp_target_cost)).setText(getResources().getString(R.string.format_credits, 0));
 //		page.findViewById(R.id.screen_warp_target_toofar).setVisibility(View.INVISIBLE);
 //		page.findViewById(R.id.screen_warp_target_cost_specific).setVisibility(View.INVISIBLE);
-		
+
 	}
 
 	// *************************************************************************
@@ -8493,15 +8460,15 @@ public class GameState {
 	// Determine next system withing range
 	// *************************************************************************
 	public SolarSystem nextSystemWithinRange( SolarSystem current, boolean back) {
-		
+
 		int i;
 		for (i = 0; i < solarSystem.length; i++) {
 			if (solarSystem[i] == current) break;
 		}
 		int init = i;
-		
+
 		if (back) --i; else ++i;
-		
+
 		while (true)
 		{
 			if (i < 0)
@@ -8510,7 +8477,7 @@ public class GameState {
 				i = 0;
 			if (i == init)
 				break;
-				
+
 			if (wormholeExists( curSystem(), solarSystem[i] ))
 				return solarSystem[i];
 			else if (realDistance( curSystem(), solarSystem[i] ) <= ship.getFuel() &&
@@ -8519,10 +8486,10 @@ public class GameState {
 
 			if (back) --i; else ++i;
 		}
-		
+
 		return null;
 	}
-	
+
 	public void scrollWarpSystem(boolean back) {
 		SolarSystem nextWarpSystem = nextSystemWithinRange(warpSystem, back);
 		warpSystem = nextWarpSystem != null? nextWarpSystem : warpSystem;
@@ -8558,13 +8525,13 @@ public class GameState {
 		}
 
 		screen.setViewTextById(R.id.screen_warp_avgprices_bays, R.string.format_bays, ship.filledCargoBays(), ship.totalCargoBays());
-				
+
 //		for (TradeItem item : TradeItem.values())
 //		{
-//			int price = standardPrice( item, warpSystem.size, 
-//					warpSystem.techLevel(), warpSystem.politics(), 
+//			int price = standardPrice( item, warpSystem.size,
+//					warpSystem.techLevel(), warpSystem.politics(),
 //					(warpSystem.visited()? warpSystem.specialResources : SpecialResources.NOSPECIALRESOURCES ));
-//				
+//
 //			if (price > buyPrice.get(item) && buyPrice.get(item) > 0 && curSystem().getQty(item) > 0)
 //				((TextView) screen.getView().findViewById(WarpPricesScreen.LABEL_IDS.get(item))).setTypeface(Typeface.DEFAULT_BOLD);
 //			else
@@ -8578,27 +8545,27 @@ public class GameState {
 //			{
 //				screen.setViewTextById(WarpPricesScreen.PRICE_IDS.get(item), formatId, priceText);
 //			}
-//		}			
+//		}
 
 //		WarpSystemPagerAdapter adapter = ((WarpPricesScreen)screen).getPagerAdapter();
 //		if (adapter == null) return;
 //		setAdapterSystems(adapter);
-		
+
 //		// Screenshot override
 //		screen.setViewTextById(R.id.screen_warp_toggle, R.string.screen_warp_target_button);
 //		screen.setViewTextById(R.id.screen_warp_avgprices_diffbutton, R.string.screen_warp_avgprices_abs);
 //		screen.setViewTextById(R.id.screen_warp_avgprices_bays, R.string.format_bays, 1, 30);
 //		screen.setViewTextById(R.id.screen_warp_avgprices_credits, R.string.format_cash, 378304);
-		
-		
+
+
 	}
-	
+
 	public void showAveragePricesPage(SolarSystem system, View page) {
 		if (system.visited())
 			((TextView) page.findViewById(R.id.screen_warp_avgprices_resources)).setText(system.specialResources.toXmlString(getResources()));
 		else
 			((TextView) page.findViewById(R.id.screen_warp_avgprices_resources)).setText(R.string.specialresources_unknown);
-		
+
 		((TextView) page.findViewById(R.id.screen_warp_avgprices_name)).setText(system.name);
 
 		for (TradeItem item : TradeItem.values())
@@ -8634,7 +8601,7 @@ public class GameState {
 			}
 
 		}
-		
+
 //		// Screenshot override
 //		((TextView) page.findViewById(R.id.screen_warp_avgprices_resources)).setText(R.string.specialresources_unknown);
 //		((TextView) page.findViewById(R.id.screen_warp_avgprices_name)).setText(R.string.solarsystem_exo);
@@ -8658,9 +8625,9 @@ public class GameState {
 //		((TextView) page.findViewById(WarpPricesScreen.PRICE_IDS.get(TradeItem.MACHINERY))).setText(R.string.screen_warp_avgprices_null);
 //		((TextView) page.findViewById(WarpPricesScreen.PRICE_IDS.get(TradeItem.NARCOTICS))).setText(R.string.screen_warp_avgprices_null);
 //		((TextView) page.findViewById(WarpPricesScreen.PRICE_IDS.get(TradeItem.ROBOTS))).setText(R.string.screen_warp_avgprices_null);
-		
+
 	}
-	
+
 	// *************************************************************************
 	// Generate an opposing ship
 	// *************************************************************************
@@ -8671,34 +8638,34 @@ public class GameState {
 			opponent = new Ship(this, ShipType.BOTTLE);
 			return;
 		}
-		
-		
+
+
 		int tries = 1;
-		
+
 		if (opp == Opponent.FAMOUSCAPTAIN)
 		{
 			// we just fudge for the Famous Captains' Ships...;
 			opponent = new Ship(this, ShipType.WASP);
-			
+
 			for (int i=0;i<opponent.shield.length;i++)
 			{
-				opponent.shield[i] = Shield.REFLECTIVE; 
+				opponent.shield[i] = Shield.REFLECTIVE;
 				opponent.shieldStrength[i]= Shield.REFLECTIVE.power;
 			}
 			for (int i=0;i<opponent.weapon.length;i++)
 			{
-				opponent.weapon[i] = Weapon.MILITARY; 
+				opponent.weapon[i] = Weapon.MILITARY;
 			}
 			opponent.gadget[0]=Gadget.TARGETINGSYSTEM;
 			opponent.gadget[1]=Gadget.AUTOREPAIRSYSTEM;
 			opponent.hull = ShipType.WASP.hullStrength;
 
 			// these guys are bad-ass!
-			opponent.crew[0] = new CrewMember("", 
-					MAXSKILL, 
-					MAXSKILL, 
-					MAXSKILL, 
-					MAXSKILL, 
+			opponent.crew[0] = new CrewMember("",
+					MAXSKILL,
+					MAXSKILL,
+					MAXSKILL,
+					MAXSKILL,
 					this);
 			return;
 		}
@@ -8706,11 +8673,11 @@ public class GameState {
 		if (opp == Opponent.MANTIS)
 			tries = 1+difficulty.ordinal();
 
-		
-		// The police will try to hunt you down with better ships if you are 
+
+		// The police will try to hunt you down with better ships if you are
 		// a villain, and they will try even harder when you are considered to
 		// be a psychopath (or are transporting Jonathan Wild)
-		
+
 		if (opp == Opponent.POLICE)
 		{
 			if (policeRecordScore < PoliceRecord.VILLAIN.score && wildStatus != 1)
@@ -8726,7 +8693,7 @@ public class GameState {
 			tries = 1 + (currentWorth() / 100000);
 			tries = max( 1, tries + difficulty.ordinal() - DifficultyLevel.NORMAL.ordinal() );
 		}
-			
+
 		int j = 0;
 		int opponentType;
 		if (opp == Opponent.TRADER)
@@ -8734,7 +8701,7 @@ public class GameState {
 		else
 			opponentType = 1;
 
-		int k = (difficulty.compareTo(DifficultyLevel.NORMAL) >= 0? 
+		int k = (difficulty.compareTo(DifficultyLevel.NORMAL) >= 0?
 				difficulty.ordinal() - DifficultyLevel.NORMAL.ordinal() : 0);
 
 		while (j < tries)
@@ -8755,21 +8722,21 @@ public class GameState {
 					sum += ShipType.values()[i].occurrence;
 				}
 
-				if (opp == Opponent.POLICE && (ShipType.values()[i].police == null || 
+				if (opp == Opponent.POLICE && (ShipType.values()[i].police == null ||
 					warpSystem.politics().strengthPolice.ordinal() + k < ShipType.values()[i].police.ordinal() ))
 					continue;
 
-				if (opp == Opponent.PIRATE && (ShipType.values()[i].pirates == null || 
+				if (opp == Opponent.PIRATE && (ShipType.values()[i].pirates == null ||
 					warpSystem.politics().strengthPirates.ordinal() + k < ShipType.values()[i].pirates.ordinal() ))
 					continue;
 
-				if (opp == Opponent.TRADER && (ShipType.values()[i].traders == null || 
+				if (opp == Opponent.TRADER && (ShipType.values()[i].traders == null ||
 					warpSystem.politics().strengthTraders.ordinal() + k < ShipType.values()[i].traders.ordinal() ))
 					continue;
 
 				redo = false;
 			}
-		
+
 			if (i > opponentType)
 				opponentType = i;
 			++j;
@@ -8777,10 +8744,10 @@ public class GameState {
 
 		if (opp == Opponent.MANTIS)
 			opponentType = ShipType.MANTIS.ordinal();
-		else	
+		else
 			tries = max( 1, (currentWorth() / 150000) + difficulty.ordinal() - DifficultyLevel.NORMAL.ordinal() );
-		
-		
+
+
 		opponent = new Ship(this, ShipType.values()[opponentType]);
 
 		// Determine the gadgets
@@ -8852,7 +8819,7 @@ public class GameState {
 			}
 			if (sum < 1)
 				sum = 1;
-			
+
 			int i = 0;
 			while (i < sum)
 			{
@@ -8867,10 +8834,10 @@ public class GameState {
 
 		// Fill the fuel tanks
 		opponent.fuel = opponent.type.fuelTanks;
-		
+
 		// No tribbles on board
 		opponent.tribbles = 0;
-				
+
 		// Fill the weapon slots (if possible, at least one weapon)
 		if (opponent.type.weaponSlots <= 0)
 			d = 0;
@@ -8930,7 +8897,7 @@ public class GameState {
 		{
 			int e = 0;
 			int f = 0;
-			
+
 			while (e < tries)
 			{
 				k = getRandom( 100 );
@@ -8958,7 +8925,7 @@ public class GameState {
 					k = e;
 				++j;
 			}
-			opponent.shieldStrength[i] = k;			
+			opponent.shieldStrength[i] = k;
 		}
 		for (int i=d; i<opponent.shield.length; ++i)
 		{
@@ -8981,7 +8948,7 @@ public class GameState {
 					k = d;
 				++i;
 			}
-			opponent.hull = k;			
+			opponent.hull = k;
 		}
 
 		if (opp == Opponent.MANTIS || opp == Opponent.FAMOUSCAPTAIN)
@@ -9023,18 +8990,18 @@ public class GameState {
 //				- wormholeTax(curSystem(), warpSystem)	// NB Should this be here? (not in original)
 				);
 	}
-	
+
 	// *************************************************************************
 	// View high scores
 	// *************************************************************************
 	public void viewHighScores(  ) {
 		mGameManager.showDialogFragment(HighScoresDialog.newInstance());
 	}
-	
+
 	public void showHighScores(  )
 	{
 		BaseDialog dialog = mGameManager.findDialogByClass(HighScoresDialog.class);
-		
+
 		for (int i = 0; i < hScores.length; i++)
 		{
 			if (hScores[i] == null)
@@ -9044,17 +9011,17 @@ public class GameState {
 				dialog.setViewTextById(HighScoresDialog.DESC_IDS.get(i), "");
 				continue;
 			}
-			
+
 			dialog.setViewTextById(HighScoresDialog.NAME_IDS.get(i), hScores[i].name);
-			
+
 			int score = hScores[i].score;
 			dialog.setViewTextById(HighScoresDialog.PCT_IDS.get(i), R.string.dialog_highscores_percent, (score / 50), ((score%50) / 5));
-			
-			String description = getResources().getQuantityString(R.plurals.dialog_highscores_description, hScores[i].days, 
+
+			String description = getResources().getQuantityString(R.plurals.dialog_highscores_description, hScores[i].days,
 					hScores[i].status.toXmlString(getResources()), hScores[i].days, hScores[i].worth, hScores[i].difficulty.toXmlString(getResources()).toLowerCase(Locale.getDefault()));
 			dialog.setViewTextById(HighScoresDialog.DESC_IDS.get(i), description);
 		}
-		
+
 //		// Screenshot override
 //		dialog.setViewTextById(HighScoresDialog.NAME_IDS.get(0), R.string.name_commander);
 //		dialog.setViewTextById(HighScoresDialog.PCT_IDS.get(0), R.string.dialog_highscores_percent, 46, 9);
@@ -9068,16 +9035,16 @@ public class GameState {
 //		dialog.setViewTextById(HighScoresDialog.PCT_IDS.get(2), R.string.dialog_highscores_percent, 1, 0);
 //		dialog.setViewTextById(HighScoresDialog.DESC_IDS.get(2), getResources().getQuantityString(R.plurals.dialog_highscores_description, 1,
 //				EndStatus.RETIRED.toXmlString(getResources()), 1, 9974, DifficultyLevel.NORMAL.toXmlString(getResources()).toLowerCase(Locale.getDefault())));
-		
-	}	
 
-	
+	}
+
+
 	// *************************************************************************
 	// Start a new game
 	// *************************************************************************
 	private void startNewGame()
 	{
-		
+
 		// Initialize Galaxy
 		String[] systemNames = getResources().getStringArray(R.array.solar_system_name);
 		for (int i = 0; i < solarSystem.length; )
@@ -9086,15 +9053,15 @@ public class GameState {
 			if (i < wormhole.length)
 			{
 				// Place the first system somewhere in the centre
-				x = (((CLOSEDISTANCE>>1) - 
-						getRandom( CLOSEDISTANCE )) + ((GALAXYWIDTH * (1 + 2*(i%3)))/6));		
-				y = (((CLOSEDISTANCE>>1) - 
-						getRandom( CLOSEDISTANCE )) + ((GALAXYHEIGHT * (i < 3 ? 1 : 3))/4));		
+				x = (((CLOSEDISTANCE>>1) -
+						getRandom( CLOSEDISTANCE )) + ((GALAXYWIDTH * (1 + 2*(i%3)))/6));
+				y = (((CLOSEDISTANCE>>1) -
+						getRandom( CLOSEDISTANCE )) + ((GALAXYHEIGHT * (i < 3 ? 1 : 3))/4));
 			}
 			else
 			{
-				x = (1 + getRandom( GALAXYWIDTH - 2 ));		
-				y = (1 + getRandom( GALAXYHEIGHT - 2 ));		
+				x = (1 + getRandom( GALAXYWIDTH - 2 ));
+				y = (1 + getRandom( GALAXYHEIGHT - 2 ));
 			}
 
 			boolean closeFound = false;
@@ -9104,14 +9071,14 @@ public class GameState {
 				for (int j=0; j<i; ++j)
 				{
 					//  Minimum distance between any two systems not to be accepted
-					if (sqr(solarSystem[j].x() - x) + sqr(solarSystem[j].y() - y) <= sqr( MINDISTANCE + 1 )) 
+					if (sqr(solarSystem[j].x() - x) + sqr(solarSystem[j].y() - y) <= sqr( MINDISTANCE + 1 ))
 					{
 						redo = true;
 						break;
 					}
 
 					// There should be at least one system which is closeby enough
-					if (sqr(solarSystem[j].x() - x) + sqr(solarSystem[j].y() - y) < sqr( CLOSEDISTANCE )) 
+					if (sqr(solarSystem[j].x() - x) + sqr(solarSystem[j].y() - y) < sqr( CLOSEDISTANCE ))
 						closeFound = true;
 				}
 			}
@@ -9138,20 +9105,20 @@ public class GameState {
 			Status status;
 			if (getRandom( 100 ) < 15)
 				status = getRandom(Status.values(), 1);
-			else			
+			else
 				status = Status.UNEVENTFUL;
 
 			String name = systemNames[i];
-			
+
 			solarSystem[i] = new SolarSystem(this, name, techLevel, politics, status, x, y, specialResources, size);
 			if (i < wormhole.length)
-			{		
+			{
 				wormhole[i] = solarSystem[i];
 			}
 
 			++i;
 		}
-		
+
 		// Randomize the system locations a bit more, otherwise the systems with the first
 		// names in the alphabet are all in the centre
 		for (int i=0; i<solarSystem.length; ++i)
@@ -9179,7 +9146,7 @@ public class GameState {
 			wormhole[i] = wormhole[j];
 			wormhole[j] = s;
 		}
-		
+
 
 		if (randomQuestSystems) {
 			// This randomizes quest systems which were static in the original.
@@ -9366,13 +9333,13 @@ public class GameState {
 		for (int i = 1; i < mercenary.length; )
 		{
 
-			mercenary[i] = new CrewMember(getResources().getStringArray(R.array.mercenary_name)[i], 
+			mercenary[i] = new CrewMember(getResources().getStringArray(R.array.mercenary_name)[i],
 					randomSkill(),
 					randomSkill(),
 					randomSkill(),
 					randomSkill(),
 					this);
-			
+
 			mercenary[i].setSystem(getRandom(solarSystem));
 
 			boolean redo = false;
@@ -9393,7 +9360,7 @@ public class GameState {
 
 			++i;
 		}
-		
+
 		// special individuals: Zeethibal, Jonathan Wild's Nephew
 		mercenary[mercenary.length-1].setSystem(null);
 
@@ -9407,7 +9374,7 @@ public class GameState {
 		solarSystem[utopia].setSpecial(SpecialEvent.MOONBOUGHT);
 		solarSystem[devidia].setSpecial(SpecialEvent.JAREKGETSOUT);
 		solarSystem[kravat].setSpecial(SpecialEvent.WILDGETSOUT);
-						
+
 		// Assign a wormhole location endpoint for the Scarab.
 		// It's possible that ALL wormhole destinations are already
 		// taken. In that case, we don't offer the Scarab quest.
@@ -9509,7 +9476,7 @@ public class GameState {
 		}
 		// NB Unlike original, we're looping though everything here. This is ok because we're only doing stuff if occurrence > 0.
 		for (SpecialEvent event : SpecialEvent.values())
-		{			
+		{
 			for (int j=0; j<event.occurrence; ++j)
 			{
 				if (event == SpecialEvent.ALIENARTIFACT && noArtifact) continue;
@@ -9517,7 +9484,7 @@ public class GameState {
 				while (redo)
 				{
 					int d = 1 + getRandom( solarSystem.length - 1 );
-					if (solarSystem[d].special() == null) 
+					if (solarSystem[d].special() == null)
 					{
 						if (freeWormhole || event != SpecialEvent.SCARAB) {
 							solarSystem[d].setSpecial(event);
@@ -9564,9 +9531,9 @@ public class GameState {
 		debt = 0;
 		days = 0;
 		warpSystem = curSystem();
-		policeKills = 0; 
-		traderKills = 0; 
-		pirateKills = 0; 
+		policeKills = 0;
+		traderKills = 0;
+		pirateKills = 0;
 		policeRecordScore = 0;
 		reputationScore = 0;
 		monsterStatus = 0;
@@ -9605,7 +9572,7 @@ public class GameState {
 		canSuperWarp = false;
 		gameLoaded = false;
 		cheated = false;
-		
+
 		endStatus = null;
 
 		// Initialize Ship
@@ -9620,7 +9587,7 @@ public class GameState {
 	// *************************************************************************
 	private void incDays( final int amount )
 	{
-		
+
 		// Moved this check to front, so that if recursive call happens we don't increment days variable twice.
 		if (experimentStatus > 0 && experimentStatus < 12)
 		{
@@ -9631,17 +9598,17 @@ public class GameState {
 				solarSystem[daled].setSpecial(SpecialEvent.EXPERIMENTNOTSTOPPED);
 				// in case Amount > 1
 				experimentStatus = 12;
-				
+
 
 				mGameManager.showDialogFragment(SimpleDialog.newInstance(
-						R.string.dialog_experimentperformed_title, 
+						R.string.dialog_experimentperformed_title,
 						R.string.dialog_experimentperformed_message,
 						-1, // NB original has no help text here.
 						new OnConfirmListener() {
-							
+
 							@Override
 							public void onConfirm() {
-								addNewsEvent(NewsEvent.EXPERIMENTPERFORMED);			
+								addNewsEvent(NewsEvent.EXPERIMENTPERFORMED);
 								incDays(amount);
 							}
 						}));
@@ -9653,8 +9620,8 @@ public class GameState {
 		{
 			fabricRipProbability -= amount;
 		}
-		
-		
+
+
 		days += amount;
 
 		if (invasionStatus > 0 && invasionStatus < 8)
@@ -9675,21 +9642,21 @@ public class GameState {
 
 		}
 	}
-	
+
 	// *************************************************************************
 	// Travelling to the target system
 	// *************************************************************************
-	private void travel(  ) 
+	private void travel(  )
 	{
 		clearButtonAction();
-	
+
 		boolean pirate = false;
 		boolean trader = false;
 		boolean police = false;
 		boolean mantis = false;
 		boolean haveMilitaryLaser = ship.hasWeapon(Weapon.MILITARY, true);
 		boolean haveReflectiveShield = ship.hasShield(Shield.REFLECTIVE);
-			
+
 		// if timespace is ripped, we may switch the warp system here.
 		if (possibleToGoThroughRip &&
 		    experimentStatus == 12 && fabricRipProbability > 0 &&
@@ -9697,11 +9664,11 @@ public class GameState {
 		    )
 		{
 			mGameManager.showDialogFragment(SimpleDialog.newInstance(
-					R.string.dialog_fabricrip_title, 
+					R.string.dialog_fabricrip_title,
 					R.string.dialog_fabricrip_message,
 					R.string.help_impound, // NB yes this is apparently correct.
 					new OnConfirmListener() {
-						
+
 						@Override
 						public void onConfirm() {
 							possibleToGoThroughRip = false;
@@ -9711,12 +9678,12 @@ public class GameState {
 			warpSystem = getRandom(solarSystem);
 			return;
 		}
-			
+
 		possibleToGoThroughRip=false;
-		
+
 		int startClicks = clicks;
 		--clicks;
-		
+
 		while (clicks > 0)
 		{
 			// Engineer may do some repairs
@@ -9729,7 +9696,7 @@ public class GameState {
 			}
 			else
 				repairs = 0;
-			
+
 			// Shields are easier to repair
 			repairs = 2 * repairs;
 			for (int i=0; i<ship.shield.length; ++i)
@@ -9745,13 +9712,13 @@ public class GameState {
 				else
 					repairs = 0;
 			}
-		
+
 			// Encounter with space monster
 			if ((clicks == 1) && (warpSystem == solarSystem[acamar]) && (monsterStatus == 1))
 			{
 				opponent = monster.copy();
 				opponent.hull = monsterHull;
-				opponent.crew[0] = new CrewMember("", 
+				opponent.crew[0] = new CrewMember("",
 						8 + difficulty.ordinal(),
 						8 + difficulty.ordinal(),
 						1,
@@ -9764,13 +9731,13 @@ public class GameState {
 				mGameManager.setCurrentScreenType(ScreenType.ENCOUNTER);
 				return;
 			}
-			
+
 			// Encounter with the stolen Scarab
 			if (clicks == 20 && warpSystem.special() == SpecialEvent.SCARABDESTROYED &&
 				scarabStatus == 1 && arrivedViaWormhole)
 			{
 				opponent = scarab.copy();
-				opponent.crew[0] = new CrewMember("", 
+				opponent.crew[0] = new CrewMember("",
 						5 + difficulty.ordinal(),
 						6 + difficulty.ordinal(),
 						1,
@@ -9782,12 +9749,12 @@ public class GameState {
 					encounterType = Encounter.Scarab.ATTACK;
 				mGameManager.setCurrentScreenType(ScreenType.ENCOUNTER);
 				return;
-			} 
+			}
 			// Encounter with stolen Dragonfly
 			if ((clicks == 1) && (warpSystem == solarSystem[zalkon]) && (dragonflyStatus == 4))
 			{
 				opponent = dragonfly.copy();
-				opponent.crew[0] = new CrewMember("", 
+				opponent.crew[0] = new CrewMember("",
 						4 + difficulty.ordinal(),
 						6 + difficulty.ordinal(),
 						1,
@@ -9800,7 +9767,7 @@ public class GameState {
 				mGameManager.setCurrentScreenType(ScreenType.ENCOUNTER);
 				return;
 			}
-			
+
 			if (warpSystem == solarSystem[gemulon] && invasionStatus > 7)
 			{
 				if (getRandom( 10 ) > 4)
@@ -9810,22 +9777,22 @@ public class GameState {
 			{
 				// Check if it is time for an encounter
 				int encounterTest = getRandom( 44 - (2 * difficulty.ordinal()) );
-				
+
 				// encounters are half as likely if you're in a flea.
 				if (ship.type == ShipType.FLEA)
 					encounterTest *= 2;
-				
+
 				if (encounterTest < warpSystem.politics().strengthPirates.ordinal() &&
 					!raided) // When you are already raided, other pirates have little to gain
 					pirate = true;
-				else if (encounterTest < 
-						warpSystem.politics().strengthPirates.ordinal() + 
+				else if (encounterTest <
+						warpSystem.politics().strengthPirates.ordinal() +
 						warpSystem.strengthPolice(policeRecordScore))
 					// StrengthPolice adapts itself to your criminal record: you'll
 					// encounter more police if you are a hardened criminal.
 					police = true;
-				else if (encounterTest < 
-						warpSystem.politics().strengthPirates.ordinal() + 
+				else if (encounterTest <
+						warpSystem.politics().strengthPirates.ordinal() +
 						warpSystem.strengthPolice(policeRecordScore) +
 						warpSystem.politics().strengthTraders.ordinal())
 					trader = true;
@@ -9845,12 +9812,12 @@ public class GameState {
 					{
 						police = true;
 					}
-				}	
+				}
 				if (!(trader || police || pirate))
 					if (artifactOnBoard && getRandom( 20 ) <= 3)
 						mantis = true;
 			}
-				
+
 			// Encounter with police
 			if (police)
 			{
@@ -9879,7 +9846,7 @@ public class GameState {
 					else
 						encounterType = Encounter.Police.FLEE;
 				}
-				else if (policeRecordScore >= PoliceRecord.DUBIOUS.score && 
+				else if (policeRecordScore >= PoliceRecord.DUBIOUS.score &&
 						policeRecordScore < PoliceRecord.CLEAN.score && !inspected)
 				{
 					// If you're reputation is dubious, the police will inspect you
@@ -9918,7 +9885,7 @@ public class GameState {
 						encounterType = Encounter.Police.INSPECTION;
 					}
 				}
-				
+
 				// If they ignore you and you can't see them, the encounter doesn't take place
 				if (encounterType == Encounter.Police.IGNORE && opponent.cloaked(ship))
 					{
@@ -9929,13 +9896,13 @@ public class GameState {
 
 				// If you automatically don't want to confront someone who ignores you, the
 				// encounter may not take place
-				if (alwaysIgnorePolice && (encounterType == Encounter.Police.IGNORE || 
+				if (alwaysIgnorePolice && (encounterType == Encounter.Police.IGNORE ||
 						encounterType == Encounter.Police.FLEE))
 				{
 					--clicks;
 					continue;
 				}
-				
+
 				mGameManager.setCurrentScreenType(ScreenType.ENCOUNTER);
 				return;
 			}
@@ -9967,10 +9934,10 @@ public class GameState {
 				{
 					encounterType = Encounter.Pirate.ATTACK;
 				}
-				
-				
+
+
 				// If they ignore you or flee and you can't see them, the encounter doesn't take place
-				if ((encounterType == Encounter.Pirate.IGNORE || encounterType == Encounter.Pirate.FLEE) && 
+				if ((encounterType == Encounter.Pirate.IGNORE || encounterType == Encounter.Pirate.FLEE) &&
 						opponent.cloaked(ship))
 				{
 					--clicks;
@@ -9987,7 +9954,7 @@ public class GameState {
 			}
 			// Encounter with trader
 			else if (trader)
-			{	
+			{
 				generateOpponent( Opponent.TRADER );
 				encounterType = Encounter.Trader.IGNORE;
 				// If you are cloaked, they don't see you
@@ -10004,20 +9971,20 @@ public class GameState {
 							encounterType = Encounter.Trader.FLEE;
 					}
 				}
-				
+
 				// Will there be trade in orbit?
 				if (encounterType == Encounter.Trader.IGNORE && (getRandom(1000) < chanceOfTradeInOrbit))
 				{
 					if (ship.filledCargoBays() < ship.totalCargoBays() && hasTradeableItems(opponent, true))
 						encounterType = Encounter.Trader.SELL;
-					
+
 //					// we fudge on whether the trader has capacity to carry the stuff he's buying.
 //					if (hasTradeableItems(ship, false) && encounterType != Encounter.Trader.SELL)
 					// In Java, we don't need to fudge this because we can check opponent's cargo bays. (Not that this couldn't have been done longhand in the original, as it was when being looted by pirates)
 					if (hasTradeableItems(ship, false) && encounterType != Encounter.Trader.SELL && (opponent.filledCargoBays() < opponent.totalCargoBays()))
 						encounterType = Encounter.Trader.BUY;
 				}
-				
+
 				// If they ignore you and you can't see them, the encounter doesn't take place
 				if ( (encounterType == Encounter.Trader.IGNORE || encounterType == Encounter.Trader.FLEE
 						|| encounterType == Encounter.Trader.SELL || encounterType == Encounter.Trader.BUY)
@@ -10037,7 +10004,7 @@ public class GameState {
 				// pay attention to user's prefs with regard to ignoring trade in orbit
 				if (alwaysIgnoreTradeInOrbit && (encounterType == Encounter.Trader.BUY ||
 						encounterType == Encounter.Trader.SELL))
-				{	
+				{
 					--clicks;
 					continue;
 				}
@@ -10100,7 +10067,7 @@ public class GameState {
 						mGameManager.setCurrentScreenType(ScreenType.ENCOUNTER);
 						return;
 					}
-					break; 
+					break;
 
 				case CAPTAINHUIE:
 					if (haveMilitaryLaser && commander().trader() < 10 &&
@@ -10138,13 +10105,13 @@ public class GameState {
 					break;
 				}
 			}
-					
+
 			--clicks;
 		}
-		
+
 		// ah, just when you thought you were gonna get away with it...
 		if (justLootedMarie)
-		{			
+		{
 			generateOpponent( Opponent.POLICE );
 			encounterType = Encounter.VeryRare.POSTMARIEPOLICE;
 			justLootedMarie = false;
@@ -10152,27 +10119,27 @@ public class GameState {
 			mGameManager.setCurrentScreenType(ScreenType.ENCOUNTER);
 			return;
 		}
-		
+
 		new ArrivalTask().execute(startClicks);
-		
+
 	}
-	
+
 	private class ArrivalTask extends AsyncTask<Integer, Void, Void> {
 
 		@Override
 		protected Void doInBackground(Integer... params) {
 			int startClicks = params[0];
-			
+
 			// Arrival in the target system
 			CountDownLatch latch = newLatch();
 			mGameManager.showDialogFragment(SimpleDialog.newInstance(
-					(startClicks > 20 ? R.string.screen_encounter_uneventful_title : R.string.screen_encounter_arrival_title), 
+					(startClicks > 20 ? R.string.screen_encounter_uneventful_title : R.string.screen_encounter_arrival_title),
 					(startClicks > 20 ? R.string.screen_encounter_uneventful_message : R.string.screen_encounter_arrival_message),
 					(startClicks > 20 ? R.string.help_uneventfultrip : R.string.help_arrival),
 					newUnlocker(latch)));
 			lock(latch);
-			
-			// Check for Large Debt - 06/30/01 SRA 
+
+			// Check for Large Debt - 06/30/01 SRA
 			if (debt >= DEBTWARNING ) {
 				latch = newLatch();
 				mGameManager.showDialogFragment(SimpleDialog.newInstance(
@@ -10196,10 +10163,10 @@ public class GameState {
 						debt));
 				lock(latch);
 			}
-			
+
 			arrival();
 
-			// Reactor warnings:	
+			// Reactor warnings:
 			// now they know the quest has a time constraint!
 			if (reactorStatus == 2)
 			{
@@ -10233,7 +10200,7 @@ public class GameState {
 						newUnlocker(latch)));
 				lock(latch);
 			}
-			
+
 			if (reactorStatus == 20)
 			{
 				latch = newLatch();
@@ -10263,7 +10230,7 @@ public class GameState {
 					showEndGameScreen(EndStatus.KILLED);
 					return null;
 				}
-				
+
 			}
 
 			if (trackAutoOff && trackedSystem == curSystem())
@@ -10273,7 +10240,7 @@ public class GameState {
 
 			boolean foodOnBoard = false;
 			int previousTribbles = ship.tribbles;
-			
+
 			if (ship.tribbles > 0 && reactorStatus > 0 && reactorStatus < 21)
 			{
 				ship.tribbles /= 2;
@@ -10307,11 +10274,11 @@ public class GameState {
 				ship.tribbles = 1 + getRandom( 3 );
 				int j = 1 + getRandom( 3 );
 				int i = min( j, ship.getCargo(TradeItem.NARCOTICS) );
-				buyingPrice.put(TradeItem.NARCOTICS, (buyingPrice.get(TradeItem.NARCOTICS) * 
+				buyingPrice.put(TradeItem.NARCOTICS, (buyingPrice.get(TradeItem.NARCOTICS) *
 					(ship.getCargo(TradeItem.NARCOTICS) - i)) / ship.getCargo(TradeItem.NARCOTICS));
 				ship.addCargo(TradeItem.NARCOTICS, -i);
 				ship.addCargo(TradeItem.FURS, +i);
-				
+
 				latch = newLatch();
 				mGameManager.showDialogFragment(SimpleDialog.newInstance(
 						R.string.screen_encounter_tribblesatenarcotics_title,
@@ -10328,7 +10295,7 @@ public class GameState {
 				buyingPrice.put(TradeItem.FOOD, (buyingPrice.get(TradeItem.FOOD) * i) / ship.getCargo(TradeItem.FOOD));
 				ship.clearCargo(TradeItem.FOOD);
 				ship.addCargo(TradeItem.FOOD, i);
-				
+
 				latch = newLatch();
 				mGameManager.showDialogFragment(SimpleDialog.newInstance(
 						R.string.screen_encounter_tribblesatefood_title,
@@ -10339,13 +10306,13 @@ public class GameState {
 				lock(latch);
 				foodOnBoard = true;
 			}
-	
+
 			if (ship.tribbles > 0 && ship.tribbles < MAXTRIBBLES)
 				ship.tribbles += 1 + getRandom( max( 1, (ship.tribbles >> (foodOnBoard ? 0 : 1)) ) );
-				
+
 			if (ship.tribbles > MAXTRIBBLES)
 				ship.tribbles = MAXTRIBBLES;
-	
+
 			if ((previousTribbles < 100 && ship.tribbles >= 100) ||
 				(previousTribbles < 1000 && ship.tribbles >= 1000) ||
 				(previousTribbles < 10000 && ship.tribbles >= 10000) ||
@@ -10367,7 +10334,7 @@ public class GameState {
 						));
 				lock(latch);
 			}
-			
+
 			tribbleMessage = false;
 
 			ship.hull += getRandom( ship.skill(Skill.ENGINEER) );
@@ -10376,7 +10343,7 @@ public class GameState {
 
 			boolean tryAutoRepair = true;
 			if (autoFuel)
-			{	
+			{
 				buyFuel( ship.getFuelTanks()*ship.type.costOfFuel );
 				if (ship.getFuel() < ship.getFuelTanks())
 				{
@@ -10384,7 +10351,7 @@ public class GameState {
 					{
 						latch = newLatch();
 						mGameManager.showDialogFragment(SimpleDialog.newInstance(
-								R.string.screen_encounter_notanksorrepairs_title, 
+								R.string.screen_encounter_notanksorrepairs_title,
 								R.string.screen_encounter_notanksorrepairs_message,
 								R.string.help_nofulltanksorrepairs,
 								newUnlocker(latch)));
@@ -10394,7 +10361,7 @@ public class GameState {
 					else {
 						latch = newLatch();
 						mGameManager.showDialogFragment(SimpleDialog.newInstance(
-								R.string.screen_encounter_notanks_title, 
+								R.string.screen_encounter_notanks_title,
 								R.string.screen_encounter_notanks_message,
 								R.string.help_nofulltanks,
 								newUnlocker(latch)));
@@ -10404,25 +10371,25 @@ public class GameState {
 			}
 
 			if (autoRepair && tryAutoRepair)
-			{	
+			{
 				buyRepairs( ship.getHullStrength()*ship.type.repairCosts );
 				if (ship.hull < ship.getHullStrength()) {
 					latch = newLatch();
 					mGameManager.showDialogFragment(SimpleDialog.newInstance(
-							R.string.screen_encounter_norepairs_title, 
+							R.string.screen_encounter_norepairs_title,
 							R.string.screen_encounter_norepairs_message,
 							R.string.help_nofullrepairs,
 							newUnlocker(latch)));
 					lock(latch);
 				}
 			}
-			
+
 		    /* This Easter Egg gives the commander a Lighting Shield */
 			if (curSystem() == solarSystem[og])
 			{
 				int i = 0;
 				boolean easterEgg = false;
-				for (TradeItem item : TradeItem.values())		
+				for (TradeItem item : TradeItem.values())
 				{
 					if (ship.getCargo(item) != 1)
 						break;
@@ -10430,9 +10397,9 @@ public class GameState {
 				}
 				if (i >= TradeItem.values().length)
 			    {
-					
+
 					int firstEmptySlot = getFirstEmptySlot( ship.type.shieldSlots, ship.shield );
-		           
+
 		            if (firstEmptySlot >= 0)
 		            {
 		            	// NB moved this here instead of displaying before checking firstEmptySlot. Now we only see the dialog if we have space and something happens.
@@ -10443,13 +10410,13 @@ public class GameState {
 								R.string.help_egg,
 								newUnlocker(latch)));
 						lock(latch);
-		            	
-				      	ship.shield[firstEmptySlot] = Shield.LIGHTNING;  
+
+				      	ship.shield[firstEmptySlot] = Shield.LIGHTNING;
 					  	ship.shieldStrength[firstEmptySlot] = Shield.LIGHTNING.power;
 				      	easterEgg = true;
 				    }
-				      
-				      
+
+
 				    if (easterEgg)
 				    {
 					  	for (TradeItem item : TradeItem.values())
@@ -10457,10 +10424,10 @@ public class GameState {
 						 	ship.clearCargo(item);
 						 	buyingPrice.put(item, 0);
 						}
-		            }			
+		            }
 				}
 			}
-			
+
 			// It seems a glitch may cause cargo bays to become negative - no idea how...
 			for (TradeItem item : TradeItem.values()) {
 				if (ship.getCargo(item) < 0)
@@ -10469,12 +10436,12 @@ public class GameState {
 
 			return null;
 		}
-		
+
 		@Override
 		protected void onPostExecute(Void result) {
 			mGameManager.setCurrentScreenType(ScreenType.INFO);
 			mGameManager.clearBackStack();
-			
+
 			// NB Now autosaving on arrival:
 			mGameManager.autosave();
 		}
@@ -10482,8 +10449,8 @@ public class GameState {
 	}
 
 	// *************************************************************************
-	// Returns true if there exists a wormhole from a to b. 
-	// If b < 0, then return true if there exists a wormhole 
+	// Returns true if there exists a wormhole from a to b.
+	// If b < 0, then return true if there exists a wormhole
 	// at all from a.
 	// *************************************************************************
 	public boolean wormholeExists( SolarSystem a, SolarSystem b )
@@ -10514,7 +10481,7 @@ public class GameState {
 
 		return false;
 	}
-	
+
 
 	// *************************************************************************
 	// Standard handling of arrival
@@ -10531,7 +10498,7 @@ public class GameState {
 		alreadyPaidForNewspaper = false;
 
 	}
-	
+
 
 	// *************************************************************************
 	// Determine first empty slot, return -1 if none
@@ -10545,25 +10512,25 @@ public class GameState {
 			{
 				firstEmptySlot = j;
 				break;
-			}							
+			}
 		}
-		
+
 		return firstEmptySlot;
 	}
-	
+
 	public void showNewGameDialog() {
 		BaseDialog dialog = mGameManager.findDialogByClass(NewGameDialog.class);
-		
+
 		commander().initializeSkills();
-		
+
 		String name = commander().name;
 		if (name == null || name.length() <= 0) {
 			name = getResources().getString(R.string.name_commander);
 		}
 		dialog.setViewTextById(R.id.dialog_newgame_name, name);
-		
+
 		((CheckBox)dialog.getDialog().findViewById(R.id.dialog_newgame_randomsystems)).setChecked(randomQuestSystems);
-		
+
 		newCommanderDrawSkills();
 	}
 
@@ -10573,117 +10540,94 @@ public class GameState {
 	public void newCommanderFormHandleEvent(int buttonId)
 	{
 		BaseDialog dialog = mGameManager.findDialogByClass(NewGameDialog.class);
-			
+
 		// Tapping of one of the skill increase or decrease buttons
-		switch (buttonId)
-		{
-		case AlertDialog.BUTTON_POSITIVE:	// NB moved ok button handling to here
-			if (2*MAXSKILL - commander().pilot() - commander().fighter() -
-					commander().trader() - commander().engineer() > 0)
-			{
-				mGameManager.showDialogFragment(SimpleDialog.newInstance(
-						R.string.dialog_newgame_morepoints, 
-						R.string.dialog_newgame_morepoints_message, 
-						R.string.help_moreskillpoints));
-				return;
-			}
-			String name = ((EditText)dialog.getDialog().findViewById(R.id.dialog_newgame_name)).getText().toString().trim();
-			
-			// NB this is a new check to verify that name is not blank. 
-			if (name.length() <= 0) {
-				mGameManager.showDialogFragment(SimpleDialog.newInstance(
-						R.string.dialog_newgame_noname, 
-						R.string.dialog_newgame_noname_message,
-						R.string.help_noname));
-				return;
-			}
+        if (buttonId == AlertDialog.BUTTON_POSITIVE) {    // NB moved ok button handling to here
+            if (2 * MAXSKILL - commander().pilot() - commander().fighter() -
+                    commander().trader() - commander().engineer() > 0) {
+                mGameManager.showDialogFragment(SimpleDialog.newInstance(
+                        R.string.dialog_newgame_morepoints,
+                        R.string.dialog_newgame_morepoints_message,
+                        R.string.help_moreskillpoints));
+                return;
+            }
+            String name = ((EditText) dialog.getDialog().findViewById(R.id.dialog_newgame_name)).getText().toString().trim();
+
+            // NB this is a new check to verify that name is not blank.
+            if (name.length() <= 0) {
+                mGameManager.showDialogFragment(SimpleDialog.newInstance(
+                        R.string.dialog_newgame_noname,
+                        R.string.dialog_newgame_noname_message,
+                        R.string.help_noname));
+                return;
+            }
 
 //			commander().name = name;
-			mercenary[0] = new CrewMember(name, commander().pilot(), commander().fighter(), commander().trader(), commander().engineer(), this);
-			
-			
+            mercenary[0] = new CrewMember(name, commander().pilot(), commander().fighter(), commander().trader(), commander().engineer(), this);
+
+
 //			int pilot = commander().pilot();
 //			int fighter = commander().fighter();
 //			int trader = commander().trader();
 //			int engineer = commander().engineer();
 //			SolarSystem curSystem = curSystem();
-			
-			randomQuestSystems = ((CheckBox)dialog.getDialog().findViewById(R.id.dialog_newgame_randomsystems)).isChecked();
-			startNewGame();// NB in original this happens before dialog displays instead of on dismissal. We don't do that here for historical reasons and also so we can read in randomQuestsSystems before generating galaxy.
+
+            randomQuestSystems = ((CheckBox) dialog.getDialog().findViewById(R.id.dialog_newgame_randomsystems)).isChecked();
+            startNewGame();// NB in original this happens before dialog displays instead of on dismissal. We don't do that here for historical reasons and also so we can read in randomQuestsSystems before generating galaxy.
 
 //			mercenary[0] = new CrewMember(commander().name, pilot, fighter, trader, engineer, this);
 //			mercenary[0].setSystem(curSystem);
-			
-			determinePrices(curSystem());
 
-			if (difficulty.compareTo(DifficultyLevel.NORMAL) < 0)
-				if (curSystem().special() == null)
-					curSystem().setSpecial(SpecialEvent.LOTTERYWINNER);
+            determinePrices(curSystem());
 
-			((ImageView) mGameManager.getCurrentScreen().getView().findViewById(R.id.screen_title_image)).setImageDrawable(null);
-			mGameManager.setCurrentScreenType(ScreenType.INFO);
-			mGameManager.clearBackStack();
-			mGameManager.autosave();
-			dialog.dismiss();
+            if (difficulty.compareTo(DifficultyLevel.NORMAL) < 0)
+                if (curSystem().special() == null)
+                    curSystem().setSpecial(SpecialEvent.LOTTERYWINNER);
 
-			return;
-		
-		case R.id.dialog_newgame_difficultypicker_minus:
-			difficulty = difficulty.prev();
-			break;
+            ((ImageView) mGameManager.getCurrentScreen().getView().findViewById(R.id.screen_title_image)).setImageDrawable(null);
+            mGameManager.setCurrentScreenType(ScreenType.INFO);
+            mGameManager.clearBackStack();
+            mGameManager.autosave();
+            dialog.dismiss();
 
-		case R.id.dialog_newgame_difficultypicker_plus:
-			difficulty = difficulty.next();
-			break;
-
-		case R.id.dialog_newgame_pilotpicker_minus:
-			if (commander().pilot() > 1)
-				commander().decreaseSkill(Skill.PILOT);
-			break;
-
-		case R.id.dialog_newgame_pilotpicker_plus:
-			if (commander().pilot() < MAXSKILL)
-				if (2*MAXSKILL - commander().pilot() - commander().fighter() -
-						commander().trader() - commander().engineer() > 0)
-					commander().increaseSkill(Skill.PILOT);
-			break;
-
-		case R.id.dialog_newgame_fighterpicker_minus:
-			if (commander().fighter() > 1)
-				commander().decreaseSkill(Skill.FIGHTER);
-			break;
-
-		case R.id.dialog_newgame_fighterpicker_plus:
-			if (commander().fighter() < MAXSKILL)
-				if (2*MAXSKILL - commander().pilot() - commander().fighter() -
-						commander().trader() - commander().engineer() > 0)
-					commander().increaseSkill(Skill.FIGHTER);
-			break;
-
-		case R.id.dialog_newgame_traderpicker_minus:
-			if (commander().trader() > 1)
-				commander().decreaseSkill(Skill.TRADER);
-			break;
-
-		case R.id.dialog_newgame_traderpicker_plus:
-			if (commander().trader() < MAXSKILL)
-				if (2*MAXSKILL - commander().pilot() - commander().fighter() -
-						commander().trader() - commander().engineer() > 0)
-					commander().increaseSkill(Skill.TRADER);
-			break;
-
-		case R.id.dialog_newgame_engineerpicker_minus:
-			if (commander().engineer() > 1)
-				commander().decreaseSkill(Skill.ENGINEER);
-			break;
-
-		case R.id.dialog_newgame_engineerpicker_plus:
-			if (commander().engineer() < MAXSKILL)
-				if (2*MAXSKILL - commander().pilot() - commander().fighter() -
-						commander().trader() - commander().engineer() > 0)
-					commander().increaseSkill(Skill.ENGINEER);
-			break;
-		}
+            return;
+        } else if (buttonId == R.id.dialog_newgame_difficultypicker_minus) {
+            difficulty = difficulty.prev();
+        } else if (buttonId == R.id.dialog_newgame_difficultypicker_plus) {
+            difficulty = difficulty.next();
+        } else if (buttonId == R.id.dialog_newgame_pilotpicker_minus) {
+            if (commander().pilot() > 1)
+                commander().decreaseSkill(Skill.PILOT);
+        } else if (buttonId == R.id.dialog_newgame_pilotpicker_plus) {
+            if (commander().pilot() < MAXSKILL)
+                if (2 * MAXSKILL - commander().pilot() - commander().fighter() -
+                        commander().trader() - commander().engineer() > 0)
+                    commander().increaseSkill(Skill.PILOT);
+        } else if (buttonId == R.id.dialog_newgame_fighterpicker_minus) {
+            if (commander().fighter() > 1)
+                commander().decreaseSkill(Skill.FIGHTER);
+        } else if (buttonId == R.id.dialog_newgame_fighterpicker_plus) {
+            if (commander().fighter() < MAXSKILL)
+                if (2 * MAXSKILL - commander().pilot() - commander().fighter() -
+                        commander().trader() - commander().engineer() > 0)
+                    commander().increaseSkill(Skill.FIGHTER);
+        } else if (buttonId == R.id.dialog_newgame_traderpicker_minus) {
+            if (commander().trader() > 1)
+                commander().decreaseSkill(Skill.TRADER);
+        } else if (buttonId == R.id.dialog_newgame_traderpicker_plus) {
+            if (commander().trader() < MAXSKILL)
+                if (2 * MAXSKILL - commander().pilot() - commander().fighter() -
+                        commander().trader() - commander().engineer() > 0)
+                    commander().increaseSkill(Skill.TRADER);
+        } else if (buttonId == R.id.dialog_newgame_engineerpicker_minus) {
+            if (commander().engineer() > 1)
+                commander().decreaseSkill(Skill.ENGINEER);
+        } else if (buttonId == R.id.dialog_newgame_engineerpicker_plus) {
+            if (commander().engineer() < MAXSKILL)
+                if (2 * MAXSKILL - commander().pilot() - commander().fighter() -
+                        commander().trader() - commander().engineer() > 0)
+                    commander().increaseSkill(Skill.ENGINEER);
+        }
 		newCommanderDrawSkills();
 	}
 
@@ -10693,7 +10637,7 @@ public class GameState {
 	public void averagePricesFormHandleEvent(int buttonId)
 	{
 //		BaseDialog dialog = mGameManager.findDialogByClass(WarpPopupDialog.class);
-		
+
 //		if (WarpPricesScreen.LABEL_IDS.containsValue(buttonId) ||
 //				WarpPricesScreen.PRICE_IDS.containsValue(buttonId))
 		if (WarpPricesScreen.CLICKABLE_IDS.containsValue(buttonId))
@@ -10710,40 +10654,28 @@ public class GameState {
 			}
 		}
 
-		switch (buttonId)
-		{
-		case R.id.screen_warp_prev:
-		case R.id.screen_warp_next:
+        if (buttonId == R.id.screen_warp_prev || buttonId == R.id.screen_warp_next) {
 //			SolarSystem system = nextSystemWithinRange( warpSystem, buttonId == R.id.screen_warp_prev );
 //			if (system != null)
 //			{
 //				warpSystem = system;
 //				showAveragePrices();
 //			}
-			ViewPager pager =  ((WarpSubScreen) mGameManager.getCurrentScreen()).getPager();
-			int position = (buttonId == R.id.screen_warp_prev? WarpSystemPagerAdapter.POSITION_PREV : WarpSystemPagerAdapter.POSITION_NEXT);
-			pager.setCurrentItem(position);
-			break;
-
-		case R.id.screen_warp_warp:
-			doWarp(false);
-			break;
-
-		case R.id.screen_warp_toggle:
-			aplScreen = false;
+            ViewPager pager = ((WarpSubScreen) mGameManager.getCurrentScreen()).getPager();
+            int position = (buttonId == R.id.screen_warp_prev ? WarpSystemPagerAdapter.POSITION_PREV : WarpSystemPagerAdapter.POSITION_NEXT);
+            pager.setCurrentItem(position);
+        } else if (buttonId == R.id.screen_warp_warp) {
+            doWarp(false);
+        } else if (buttonId == R.id.screen_warp_toggle) {
+            aplScreen = false;
 //			showExecuteWarp();
-			mGameManager.setCurrentScreenType(ScreenType.TARGET);
-			break;
-
-		case R.id.screen_warp_avgprices_diffbutton:
-			priceDifferences = !priceDifferences;
-			mGameManager.getCurrentScreen().onRefreshScreen();
-			break;
-
-		default:
-			mGameManager.setCurrentScreenType(ScreenType.WARP);
-			break;
-		}
+            mGameManager.setCurrentScreenType(ScreenType.TARGET);
+        } else if (buttonId == R.id.screen_warp_avgprices_diffbutton) {
+            priceDifferences = !priceDifferences;
+            mGameManager.getCurrentScreen().onRefreshScreen();
+        } else {
+            mGameManager.setCurrentScreenType(ScreenType.WARP);
+        }
 	}
 
 
@@ -10754,48 +10686,36 @@ public class GameState {
 	{
 //		BaseDialog dialog = mGameManager.findDialogByClass(WarpPopupDialog.class);
 
-		switch (buttonId)
-		{
-		case R.id.screen_warp_prev:
-		case R.id.screen_warp_next:
+        if (buttonId == R.id.screen_warp_prev || buttonId == R.id.screen_warp_next) {
 //			SolarSystem system = nextSystemWithinRange( warpSystem, buttonId == R.id.screen_warp_prev );
 //			if (system != null)
 //			{
 //				warpSystem = system;
 //				showExecuteWarp();
 //			}
-			ViewPager pager =  ((WarpSubScreen) mGameManager.getCurrentScreen()).getPager();
-			int position = (buttonId == R.id.screen_warp_prev? WarpSystemPagerAdapter.POSITION_PREV : WarpSystemPagerAdapter.POSITION_NEXT);
-			pager.setCurrentItem(position);
-			break;
-
-		// Warp	to another system. This can only be selected if the warp is indeed possible		
-		case R.id.screen_warp_warp:
-			doWarp(false);
-			break;
-
-		case R.id.screen_warp_toggle:
-			aplScreen = true;
+            ViewPager pager = ((WarpSubScreen) mGameManager.getCurrentScreen()).getPager();
+            int position = (buttonId == R.id.screen_warp_prev ? WarpSystemPagerAdapter.POSITION_PREV : WarpSystemPagerAdapter.POSITION_NEXT);
+            pager.setCurrentItem(position);
+        } else if (buttonId == R.id.screen_warp_warp) {
+			// Warp	to another system. This can only be selected if the warp is indeed possible
+            doWarp(false);
+        } else if (buttonId == R.id.screen_warp_toggle) {
+            aplScreen = true;
 //			showAveragePrices();
-			mGameManager.setCurrentScreenType(ScreenType.AVGPRICES);
-			break;
+            mGameManager.setCurrentScreenType(ScreenType.AVGPRICES);
+        } else if (buttonId == R.id.screen_warp_target_cost_specific) {
+            mGameManager.showDialogFragment(WarpTargetCostDialog.newInstance());
+        } else {
+            mGameManager.setCurrentScreenType(ScreenType.WARP);
+        }
 
-		case R.id.screen_warp_target_cost_specific:
-			mGameManager.showDialogFragment(WarpTargetCostDialog.newInstance());
-			break;
-
-		default:
-			mGameManager.setCurrentScreenType(ScreenType.WARP);
-			break;
-		}
-				
 	}
-	
+
 	// NB Adding a new method for filling out the cost specification dialog
 	public void showSpecificationForm()
 	{
 		BaseDialog dialog = mGameManager.findDialogByClass(WarpTargetCostDialog.class);
-		
+
 		int total = 0;
 
 		dialog.setViewTextById(R.id.screen_warp_target_cost_specific_merc, R.string.format_credits, mercenaryMoney());
@@ -10816,8 +10736,8 @@ public class GameState {
 
 		dialog.setViewTextById(R.id.screen_warp_target_cost_specific_total, R.string.format_credits, total);
 	}
-	
-	
+
+
 	/*
 	 * WarpFormEvent.c
 	 * NB A bunch of stuff changed here to more naturally handle android graphics
@@ -10948,7 +10868,7 @@ public class GameState {
 		}
 		else
 			screen.setViewVisibilityById(R.id.screen_warp_tracked, false);
-		
+
 
 //		// Screenshot override
 //		float x=cw/2, y=cw/2;
@@ -11065,10 +10985,10 @@ public class GameState {
 //		y=cw/2+1*scale;
 //		d.setBounds((int)(x - RADIUS), (int)(y - RADIUS), (int)(x + RADIUS), (int)(y + RADIUS));
 //		d.draw(canvas);
-		
-		
+
+
 	}
-	
+
 	public void showGalaxy()
 	{
 		galacticChartSystem = curSystem();
@@ -11082,19 +11002,19 @@ public class GameState {
 	{
 		BaseScreen screen = mGameManager.getCurrentScreen();
 		if (screen == null || screen.getView() == null || screen.getType() != ScreenType.CHART) return;
-	
-		
+
+
 		final float RADIUS = 4f * getResources().getDisplayMetrics().density;
 		final float SEL_OUTER = 1.75f;
 		final float SEL_INNER = 1f;
 		final float WORMHOLE_OFFSET = 2f;
-		
+
 		// NB now caching these ahead of time to see if it helps occasional graphical glitches
 		boolean l = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
 		final Drawable defaultDrawable = ResourcesCompat.getDrawable(getResources(), l? R.drawable.chartsysteml : R.drawable.chartsystem, mGameManager.getTheme());
 		final Drawable visitedDrawable = ResourcesCompat.getDrawable(getResources(), l? R.drawable.chartsystemvl : R.drawable.chartsystemv, mGameManager.getTheme());
 		final Drawable wormholeDrawable = ResourcesCompat.getDrawable(getResources(), l? R.drawable.chartsystemwl : R.drawable.chartsystemw, mGameManager.getTheme());
-		
+
 		initializePaints();
 
 		int cw = screen.getView().findViewById(R.id.screen_chart_chartview).getWidth();
@@ -11103,7 +11023,7 @@ public class GameState {
 //		int cw = canvas.getWidth();
 //		int ch = canvas.getHeight();
 //		float scale = cw * 1f / (1.1f * GALAXYWIDTH);
-		
+
 		if (ship.getFuel() > 0)
 			canvas.drawCircle((curSystem().x() - GALAXYWIDTH/2)*scale + cw/2, (curSystem().y() - GALAXYHEIGHT/2)*scale + ch/2, (ship.getFuel())*scale, chartStroke);
 
@@ -11238,7 +11158,7 @@ public class GameState {
 	    }
 
 		screen.setViewVisibilityById(R.id.screen_chart_jump, canSuperWarp);
-		
+
 //		// Screenshot override
 //		canvas.drawCircle((10f - GALAXYWIDTH/2)*scale + cw/2, (67f - GALAXYHEIGHT/2)*scale + ch/2, 15f*scale, chartStroke);
 //		canvas.drawLine((18f - GALAXYWIDTH/2)*scale + cw/2,(58f - GALAXYHEIGHT/2)*scale - SEL_OUTER*RADIUS + ch/2,(18f - GALAXYWIDTH/2)*scale + cw/2,(58f - GALAXYHEIGHT/2)*scale + SEL_OUTER*RADIUS + ch/2,chartStroke);
@@ -11395,7 +11315,7 @@ public class GameState {
 		int cw = screen.getView().findViewById(R.id.screen_warp_warpview).getWidth();
 		float scale = cw * 1f / 54; // NB 54 is the width of the original screen in grid units
 		SolarSystem oldSystem = warpSystem;
-		
+
 		boolean isWormhole = false;
 		SolarSystem system = null;
 		double dist = SEL_RADIUS_FACTOR * RADIUS;
@@ -11410,7 +11330,7 @@ public class GameState {
 				system = s;
 			}
 		}
-	
+
 		for (SolarSystem s : wormhole)
 		{
 			float xp = (s.x() - curSystem().x())*scale + WORMHOLE_OFFSET*RADIUS + cw/2;
@@ -11423,7 +11343,7 @@ public class GameState {
 				isWormhole = true;
 			}
 		}
-		
+
 		if (system != null)
 		{
 			if (isWormhole) {
@@ -11436,14 +11356,14 @@ public class GameState {
 						break;
 					}
 				}
-				
+
 				if (curSystem() != system)
 				{
 					mGameManager.showDialogFragment(SimpleDialog.newInstance(
-							R.string.screen_warp_unreachable_title, 
-							R.string.screen_warp_unreachable_message, 
+							R.string.screen_warp_unreachable_title,
+							R.string.screen_warp_unreachable_message,
 							R.string.help_wormholeoutofrange,
-							newSystem, 
+							newSystem,
 							system));
 					return false;
 				}
@@ -11452,7 +11372,7 @@ public class GameState {
 			}
 			else
 				warpSystem = system;
-			
+
 			screen.getWarpView().invalidate();
 			if (!alwaysInfo && aplScreen && ((realDistance( curSystem(), warpSystem ) <= ship.getFuel() &&
 					realDistance( curSystem(), warpSystem ) > 0) || isWormhole))
@@ -11464,7 +11384,7 @@ public class GameState {
 			}
 
 		}
-		
+
 		return warpSystem != oldSystem;
 	}
 
@@ -11487,13 +11407,13 @@ public class GameState {
 				mGameManager.showDialogFragment(SimpleDialog.newInstance(R.string.screen_chart_nojumpcursystem_title, R.string.screen_chart_nojumpcursystem_message, R.string.help_nojumptocursystem));
 				return;
 			}
-			else 
+			else
 			{
 				mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-						R.string.screen_chart_usesingularity_title, 
-						R.string.screen_chart_usesingularity_message, 
-						R.string.screen_chart_usesingularity_pos,  
-						R.string.screen_chart_usesingularity_neg, 
+						R.string.screen_chart_usesingularity_title,
+						R.string.screen_chart_usesingularity_message,
+						R.string.screen_chart_usesingularity_pos,
+						R.string.screen_chart_usesingularity_neg,
 						R.string.help_singularity,
 						new OnConfirmListener() {
 
@@ -11503,8 +11423,8 @@ public class GameState {
 								canSuperWarp = false;
 								doWarp(true);
 							}
-						}, 
-						null, 
+						},
+						null,
 						trackedSystem));
 			}
 		}
@@ -11512,7 +11432,7 @@ public class GameState {
 		{
 			mGameManager.showDialogFragment(ChartFindDialog.newInstance());
 		}
-	}	
+	}
 
 	// Booleans to track whether we've dragged to change the galactic chart system.
 	private boolean downOnChartSystem = false;
@@ -11538,7 +11458,7 @@ public class GameState {
 		int ch = screen.getView().findViewById(R.id.screen_chart_chartview).getHeight();
 		float scale = cw * 1f / (1.1f * GALAXYWIDTH);
 		SolarSystem oldSystem = galacticChartSystem;
-		
+
 		boolean isWormhole = false;
 		SolarSystem system = null;
 		double dist = SEL_RADIUS_FACTOR * RADIUS;
@@ -11582,8 +11502,8 @@ public class GameState {
 			if (showDialogs && fSystem == trackedSystem)
 			{
 				mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-						R.string.screen_chart_track_title, 
-						R.string.screen_chart_track_stop, 
+						R.string.screen_chart_track_title,
+						R.string.screen_chart_track_stop,
 						R.string.help_tracksystem,
 						new OnConfirmListener() {
 
@@ -11593,7 +11513,7 @@ public class GameState {
 						screen.getView().findViewById(R.id.screen_chart_chartview).invalidate();
 					}
 				},
-				null, 
+				null,
 				fSystem));
 			}
 			else if (showDialogs && fSystem == galacticChartSystem && !galacticChartWormhole)
@@ -11601,8 +11521,8 @@ public class GameState {
 				if (trackedSystem == null)
 				{
 					mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-							R.string.screen_chart_track_title, 
-							R.string.screen_chart_track_start, 
+							R.string.screen_chart_track_title,
+							R.string.screen_chart_track_start,
 							R.string.help_tracksystem,
 							new OnConfirmListener() {
 
@@ -11612,14 +11532,14 @@ public class GameState {
 							screen.getView().findViewById(R.id.screen_chart_chartview).invalidate();
 						}
 					},
-					null, 
+					null,
 					fSystem));
 				}
 				else
 				{
 					mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-							R.string.screen_chart_track_title, 
-							R.string.screen_chart_track_switch, 
+							R.string.screen_chart_track_title,
+							R.string.screen_chart_track_switch,
 							R.string.help_tracksystem,
 							new OnConfirmListener() {
 
@@ -11647,18 +11567,18 @@ public class GameState {
 			galacticChartWormhole = false;
 			screen.getView().findViewById(R.id.screen_chart_chartview).invalidate();
 		}
-		
+
 		return oldSystem != galacticChartSystem || (longPress && fSystem != null);
 	}
-	
+
 	// Moved Find dialog handling to new functions here
 	private void showCheatConfirm(OnConfirmListener listener) {
 		if (!cheated && !developerMode) {
 			mGameManager.showDialogFragment(ConfirmDialog.newInstance(
-					R.string.dialog_disablescoring_title, 
-					R.string.dialog_disablescoring_cheatmessage, 
-					R.string.help_disablescoringcheat, 
-					listener, 
+					R.string.dialog_disablescoring_title,
+					R.string.dialog_disablescoring_cheatmessage,
+					R.string.help_disablescoringcheat,
+					listener,
 					null));
 		}
 		else
@@ -11666,21 +11586,21 @@ public class GameState {
 			listener.onConfirm();
 		}
 	}
-	
+
 	public void findDialogHandleEvent(int unused)
 	{
 		BaseDialog dialog = mGameManager.findDialogByClass(ChartFindDialog.class);
 		final String[] systemnames = getResources().getStringArray(R.array.solar_system_name);
 		Arrays.sort(systemnames); // Protection against future non-alphabetic insertion into the system names list
-		
+
 		final CharSequence findSystem = ((EditText) dialog.getDialog().findViewById(R.id.screen_chart_find_value)).getText();
-		
+
 		if (findSystem.length() == 0)
 		{
 			dialog.dismiss();
 			return;
 		}
-		
+
 		boolean track = ((CheckBox) dialog.getDialog().findViewById(R.id.screen_chart_find_check)).isChecked();
 
 		if ("Moolah".contentEquals(findSystem))
@@ -11719,7 +11639,7 @@ public class GameState {
 				@Override
 				public void onConfirm() {
 					if (!developerMode) cheated = true;
-					
+
 					CharSequence findSystemSub = findSystem.subSequence(3, findSystem.length());
 					String findName = "";
 					for (String name : systemnames) {
@@ -11728,7 +11648,7 @@ public class GameState {
 							break;
 						}
 					}
-					
+
 					SolarSystem goSystem = null;
 					for (SolarSystem system : solarSystem) {
 						if (system.name.equals(findName)) {
@@ -11736,13 +11656,13 @@ public class GameState {
 							break;
 						}
 					}
-					
+
 					if (goSystem != null)
 					{
 						commander().setSystem(goSystem);
 						galacticChartSystem = goSystem;
 					}
-					
+
 				}
 			});
 		}
@@ -11756,7 +11676,7 @@ public class GameState {
 				}
 			});
 		}
-	
+
 		else if ("Timewarp".contentEquals(findSystem))
 		{
 			OnConfirmListener loadGame = new OnConfirmListener() {
@@ -11796,7 +11716,7 @@ public class GameState {
 					break;
 				}
 			}
-			
+
 			galacticChartSystem = null;
 			for (SolarSystem system : solarSystem) {
 				if (system.name.equals(findName)) {
@@ -11812,15 +11732,15 @@ public class GameState {
 			{
 				trackedSystem = galacticChartSystem;
 			}
-			
+
 			galacticChartWormhole = false;
 		}
-		
+
 		mGameManager.getCurrentScreen().onRefreshScreen();
 		dialog.dismiss();
 	}
 
-	public void showVeryRareCheat() 
+	public void showVeryRareCheat()
 	{
 		BaseDialog dialog = mGameManager.findDialogByClass(VeryRareCheatDialog.class);
 
@@ -11834,18 +11754,18 @@ public class GameState {
 		dialog.setViewTextById(R.id.dialog_veryrarecheat_chances_encounter, R.string.format_number, chanceOfVeryRareEncounter);
 		dialog.setViewTextById(R.id.dialog_veryrarecheat_chances_trade, R.string.format_number, chanceOfTradeInOrbit);
 	}
-	
+
 	public void veryRareCheatHandleEvent()
 	{
 		BaseDialog dialog = mGameManager.findDialogByClass(VeryRareCheatDialog.class);
 
 		try {
 			chanceOfVeryRareEncounter = Integer.parseInt(((EditText) dialog.getDialog().findViewById(R.id.dialog_veryrarecheat_chances_encounter)).getText().toString());
-		} 
+		}
 		catch (NumberFormatException e) {}
 		try {
 			chanceOfTradeInOrbit = Integer.parseInt(((EditText) dialog.getDialog().findViewById(R.id.dialog_veryrarecheat_chances_trade)).getText().toString());
-		} 
+		}
 		catch (NumberFormatException e) {}
 
 		veryRareEncounter = 0;
@@ -11860,20 +11780,20 @@ public class GameState {
 		if (((CheckBox) dialog.getDialog().findViewById(R.id.dialog_veryrarecheat_happened_goodtonic)).isChecked())
 			veryRareEncounter |= ALREADYBOTTLEGOOD;
 		if (((CheckBox) dialog.getDialog().findViewById(R.id.dialog_veryrarecheat_happened_badtonic)).isChecked())
-			veryRareEncounter |= ALREADYBOTTLEOLD;	
+			veryRareEncounter |= ALREADYBOTTLEOLD;
 
 		dialog.dismiss();
 	}
-	
+
 	public void showQuestsCheat()
 	{
 		BaseDialog dialog = mGameManager.findDialogByClass(QuestsCheatDialog.class);
-		
+
 		for (SolarSystem system : solarSystem)
 		{
 			if (system.special() == null)
 				continue;
-			
+
 			switch (system.special())
 			{
 			case DRAGONFLY:
@@ -11931,8 +11851,8 @@ public class GameState {
 	/*
 	 * NB End adapted code
 	 */
-	
-	
+
+
 	// New function for volume key handling (formally inside of event handlers for Chart screen and Warp subscreens
 	public boolean scrollSystem(boolean down) {
 		BaseScreen screen = mGameManager.getCurrentScreen();
@@ -11952,65 +11872,57 @@ public class GameState {
 					break;
 				}
 			}
-			
+
 			current += (down? 1 : -1);
 			if (current >= solarSystem.length) current = 0;
 			if (current < 0) current = solarSystem.length - 1;
-			
+
 			galacticChartSystem = solarSystem[current];
 			galacticChartWormhole = false;
 			screen.onRefreshScreen();
-			
+
 			return true;
 		}
-		
-		
-		
+
+
+
 		return false;
 	}
-	
+
 	private String marieSystem;
 	// Help dialog building takes place here so it can see special system names
 	public String getHelpText(int resId) {
 		if (resId > 0) {
-			
+
 			String message;
-			
+
 			// Some special treatment of certain help texts which need to change based on variable system names
-			switch (resId) {
-			// Nix
-			case R.string.help_reactoronboard:
-			case R.string.help_cantsellshipwithreactor:
-				message = getResources().getString(resId, solarSystem[nix]);
-				break;
-				
-			// Japori
-			case R.string.help_antidote:
-			case R.string.help_antidotedestroyed:
-			case R.string.help_antidoteremoved:
-				message = getResources().getString(resId, solarSystem[japori]);
-				break;
-				
-			// Originally, Marie Celeste had always recently visited Lowry, but just for fun we'll randomize that too. Wonder if anyone will notice...
-			case R.string.help_lootmarieceleste:
-				if (!randomQuestSystems) {
-					marieSystem = getResources().getString(R.string.solarsystem_lowry);
-				} else if (marieSystem == null) {
-					marieSystem = getRandom(solarSystem).name;
-				}
-				message = getResources().getString(resId, marieSystem);
-				break;
-				
-			default:
-				message = getResources().getString(resId);
-			}
+            // Nix
+            if (resId == R.string.help_reactoronboard || resId == R.string.help_cantsellshipwithreactor) {
+                message = getResources().getString(resId, solarSystem[nix]);
+
+                // Japori
+            } else if (resId == R.string.help_antidote || resId == R.string.help_antidotedestroyed || resId == R.string.help_antidoteremoved) {
+                message = getResources().getString(resId, solarSystem[japori]);
+
+                // Originally, Marie Celeste had always recently visited Lowry, but just for fun we'll randomize that too. Wonder if anyone will notice...
+            } else if (resId == R.string.help_lootmarieceleste) {
+                if (!randomQuestSystems) {
+                    marieSystem = getResources().getString(R.string.solarsystem_lowry);
+                } else if (marieSystem == null) {
+                    marieSystem = getRandom(solarSystem).name;
+                }
+                message = getResources().getString(resId, marieSystem);
+            } else {
+                message = getResources().getString(resId);
+            }
 
 			return message;
 		}
 		return "";
 	}
-	
-	
+
+
 	// Populating PagerAdapters for Warp subscreens
 	public void setAdapterSystems(WarpSystemPagerAdapter adapter) {
 		SolarSystem next = nextSystemWithinRange(warpSystem, false);
@@ -12020,7 +11932,7 @@ public class GameState {
 		}
 		adapter.setSystems(warpSystem, prev, next);
 	}
-	
+
 
 	@TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
 	private boolean isRtl() {
