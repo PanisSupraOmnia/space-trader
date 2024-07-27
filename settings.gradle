@@ -37,4 +37,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Space Trader"
-include ':app'
+include(":app")
