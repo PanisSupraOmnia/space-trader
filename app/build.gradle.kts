@@ -19,6 +19,9 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-project.txt")
         }
     }
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 dependencies {
