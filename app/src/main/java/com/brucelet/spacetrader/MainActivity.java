@@ -62,7 +62,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.brucelet.spacetrader.datatypes.GameState;
@@ -705,7 +704,7 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 			startActivity(intent);
 			return true;
 
-		case R.id.home:
+		case android.support.v7.appcompat.R.id.home:
 		case android.R.id.home:
 			startMenuActionMode();
 			return true;
@@ -904,7 +903,7 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 
 
 		mode.setCustomView(view);
-		view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.abc_fade_in));
+		view.startAnimation(AnimationUtils.loadAnimation(context, android.support.v7.appcompat.R.anim.abc_fade_in));
 
 //		// This doesn't work because the initial dropdown.show() is not lined up correctly
 //		MenuItem dropdowns = menu.add("");

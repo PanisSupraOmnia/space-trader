@@ -55,7 +55,7 @@ public class DocumentationActivity extends AppCompatActivity implements View.OnC
 			// In Lollipop, use the platform up button so the ripple is masked correctly.
 			ab.setDisplayShowTitleEnabled(true);
 			ab.setDisplayHomeAsUpEnabled(true);
-			if (getTheme().resolveAttribute(R.attr.homeAsUpIndicator, tv, true)) {
+			if (getTheme().resolveAttribute(android.support.v7.appcompat.R.attr.homeAsUpIndicator, tv, true)) {
 				ab.setHomeAsUpIndicator(tv.resourceId);
 			}
 		} else {
