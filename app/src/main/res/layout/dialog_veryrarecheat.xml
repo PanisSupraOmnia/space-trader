@@ -7,7 +7,7 @@
     android:paddingBottom="8dip"
     android:paddingLeft="8dip"
     android:paddingRight="8dip"
-    android:paddingTop="8dip" >
+    android:paddingTop="8dip">
 
     <TextView
         android:layout_width="match_parent"
@@ -16,37 +16,43 @@
         android:paddingRight="8dip"
         android:text="@string/dialog_veryrarecheat_happened" />
 
-    <CheckBox style="?android:checkboxStyle"
+    <CheckBox
+        style="?android:checkboxStyle"
         android:id="@+id/dialog_veryrarecheat_happened_ahab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dialog_veryrarecheat_happened_ahab" />
 
-    <CheckBox style="?android:checkboxStyle"
+    <CheckBox
+        style="?android:checkboxStyle"
         android:id="@+id/dialog_veryrarecheat_happened_huie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dialog_veryrarecheat_happened_huie" />
 
-    <CheckBox style="?android:checkboxStyle"
+    <CheckBox
+        style="?android:checkboxStyle"
         android:id="@+id/dialog_veryrarecheat_happened_conrad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dialog_veryrarecheat_happened_conrad" />
 
-    <CheckBox style="?android:checkboxStyle"
+    <CheckBox
+        style="?android:checkboxStyle"
         android:id="@+id/dialog_veryrarecheat_happened_goodtonic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dialog_veryrarecheat_happened_goodtonic" />
 
-    <CheckBox style="?android:checkboxStyle"
+    <CheckBox
+        style="?android:checkboxStyle"
         android:id="@+id/dialog_veryrarecheat_happened_badtonic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dialog_veryrarecheat_happened_badtonic" />
 
-    <CheckBox style="?android:checkboxStyle"
+    <CheckBox
+        style="?android:checkboxStyle"
         android:id="@+id/dialog_veryrarecheat_happened_marie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -63,7 +69,7 @@
         style="@style/ScreenRow"
         android:orientation="horizontal"
         android:paddingLeft="8dip"
-        android:paddingRight="8dip" >
+        android:paddingRight="8dip">
 
         <TextView
             android:layout_width="0dp"
@@ -86,7 +92,7 @@
         style="@style/ScreenRow"
         android:orientation="horizontal"
         android:paddingLeft="8dip"
-        android:paddingRight="8dip" >
+        android:paddingRight="8dip">
 
         <TextView
             android:layout_width="0dp"

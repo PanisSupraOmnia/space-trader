@@ -6,5 +6,5 @@
     android:adjustViewBounds="true"
     android:clickable="true"
     android:contentDescription="@string/screen_title"
-    android:scrollbars="none"/>
+    android:scrollbars="none" />
 

@@ -5,7 +5,9 @@
 
             <corners android:radius="@dimen/corner_radius" />
 
-            <gradient android:startColor="@color/btn_default_normal_holo_dark" android:endColor="@color/btn_default_normal_holo_dark"/>
+            <gradient
+                android:startColor="@color/btn_default_normal_holo_dark"
+                android:endColor="@color/btn_default_normal_holo_dark" />
 
         </shape>
     </item>
@@ -18,7 +20,9 @@
 
             <corners android:radius="@dimen/corner_radius" />
 
-            <gradient android:startColor="@color/btn_default_pressed_holo" android:endColor="@color/btn_default_pressed_holo"/>
+            <gradient
+                android:startColor="@color/btn_default_pressed_holo"
+                android:endColor="@color/btn_default_pressed_holo" />
 
         </shape>
     </item>

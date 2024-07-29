@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- File created by the Android Action Bar Style Generator
+<?xml version="1.0" encoding="utf-8"?><!-- File created by the Android Action Bar Style Generator
 
      Copyright (C) 2011 The Android Open Source Project
      Copyright (C) 2012 readyState Software Ltd
@@ -29,22 +28,24 @@
         <item name="actionModeBackground">@drawable/cab_background_top_palm_ab</item>
         <item name="actionModeSplitBackground">@drawable/cab_background_bottom_palm_ab</item>
         <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Palm_ab</item>
-        
+
         <item name="android:editTextStyle">@style/EditTextPalm_ACWidgets</item>
         <item name="android:textColorHighlight">#99330099</item>
-        <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewPalm_ACWidgets</item>
+        <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewPalm_ACWidgets
+        </item>
         <item name="android:checkboxStyle">@style/CheckBoxPalm_ACWidgets</item>
         <item name="android:radioButtonStyle">@style/RadioButtonPalm_ACWidgets</item>
         <item name="android:buttonStyle">@style/ButtonPalm_ACWidgets</item>
         <item name="android:imageButtonStyle">@style/ImageButtonPalm_ACWidgets</item>
         <item name="android:spinnerStyle">@style/SpinnerPalm_ACWidgets</item>
-        <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItemPalm_ACWidgets</item>
+        <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItemPalm_ACWidgets
+        </item>
         <item name="android:progressBarStyleHorizontal">@style/ProgressBarPalm_ACWidgets</item>
         <item name="android:listViewStyle">@style/ListViewPalm_ACWidgets</item>
         <item name="android:listViewWhiteStyle">@style/ListViewPalm_ACWidgets.White</item>
         <item name="android:spinnerItemStyle">@style/SpinnerItemPalm_ACWidgets</item>
 
-        
+
     </style>
 
     <style name="ActionBar.Solid.Palm_ab" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
@@ -58,11 +59,11 @@
         <item name="background">@drawable/ab_transparent_palm_ab</item>
         <item name="progressBarStyle">@style/ProgressBar.Palm_ab</item>
     </style>
-	
-    <style name="PopupMenu.Palm_ab" parent="@style/Widget.AppCompat.Light.PopupMenu">	
-        <item name="android:popupBackground">@drawable/menu_dropdown_panel_palm_ab</item>	
+
+    <style name="PopupMenu.Palm_ab" parent="@style/Widget.AppCompat.Light.PopupMenu">
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_palm_ab</item>
     </style>
-	
+
     <style name="DropDownListView.Palm_ab" parent="@style/Widget.AppCompat.Light.ListView.DropDown">
         <item name="android:listSelector">@drawable/selectable_background_palm_ab</item>
     </style>
@@ -70,21 +71,21 @@
     <style name="ActionBarTabStyle.Palm_ab" parent="@style/Widget.AppCompat.Light.ActionBar.TabView">
         <item name="android:background">@drawable/tab_indicator_ab_palm_ab</item>
     </style>
-	
+
     <style name="DropDownNav.Palm_ab" parent="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar">
         <item name="android:background">@drawable/spinner_background_ab_palm_ab</item>
         <item name="android:popupBackground">@drawable/menu_dropdown_panel_palm_ab</item>
         <item name="android:dropDownSelector">@drawable/selectable_background_palm_ab</item>
     </style>
-    
+
     <style name="ProgressBar.Palm_ab" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
         <item name="android:progressDrawable">@drawable/progress_horizontal_palm_ab</item>
     </style>
-    
+
     <style name="ActionButton.CloseMode.Palm_ab" parent="@style/Widget.AppCompat.Light.ActionButton.CloseMode">
         <item name="android:background">@drawable/btn_cab_done_palm_ab</item>
     </style>
-    
+
     <!-- this style is only referenced in a Light.DarkActionBar based theme -->
     <style name="Theme.Palm_ab.Widget" parent="@style/Theme.AppCompat">
         <item name="popupMenuStyle">@style/PopupMenu.Palm_ab</item>

@@ -3,9 +3,9 @@
 
     <string name="app_name">Space Trader</string>
     <string name="title_activity_documentation">Documentation</string>
-    
+
     <string name="loading">Loading\u2026</string>
-    
+
     <string name="name_commander">Jameson</string>
     <string name="name_commander2">Shelby</string>
 
@@ -51,7 +51,7 @@
     <string name="menu_command">Command</string>
     <string name="menu_game">Game</string>
     <string name="menu_help">Help</string>
-    
+
     <string name="menu_options">Options</string>
     <string name="menu_shortcuts">Shortcuts</string>
     <string name="menu_new">New Game</string>
@@ -775,7 +775,7 @@
     <string name="dialog_experimentperformed_message">The galaxy is abuzz with news of a terrible malfunction in Dr. Fehler\'s laboratory. Evidently he was not warned in time and he performed his experiment\u2026 with disastrous results!</string>
     <string name="dialog_fabricrip_title">Timespace Fabric Rip</string>
     <string name="dialog_fabricrip_message">You have flown through a tear in the timespace continuum caused by Dr. Fehler\'s failed experiment. You may not have reached your planned destination!</string>
-    
+
     <string name="dialog_special_reactor_title">Reactor</string>
     <string name="dialog_special_reactor_message">Five of your cargo bays now contain the unstable Ion Reactor, and ten of your bays contain enriched fuel.</string>
     <string name="dialog_special_shipwithreactor_title">Shipyard Engineer</string>
@@ -862,7 +862,7 @@
     <string name="dialog_cannotload_message">No savegame file could be found to load.</string>
     <string name="dialog_cannotsave_title">Cannot Save</string>
     <string name="dialog_cannotsave_message">The savegame file can not be created.</string>
-    
+
     <string name="help_main">While you are docked at a system, you can use the menu to access functions to buy and sell cargo, equip your ship or sell equipment, visit the ship yard to buy fuel, make repairs, or buy a new ship, get information on the system where you are currently docked and neighbouring systems, visit the bank and warp to another system by using the short range chart.</string>
     <string name="help_newcommander">In the New Commander screen you can set your name, and set skill values. There are four skills, each with a value between 1 and 10 points, 10 being the best. You can divide 20 points over the skills, though each skill must get at least 1 point. The pilot skill determines how well you handle your ship, which is especially important to escape fights and to dodge shots. The fighter skill influences how well you can attack other ships, which is especially important to score hits on other ships. The trader skill influences your profit margins. The engineer skill determines how well you manage to keep your ship in shape, which is especially important to keep your shields up and hull intact. The engineer skill is also important for tuning a cloaking device, when you have bought one. Finally, a good engineer may influence the effectiveness of your weapons.
         \n
@@ -876,7 +876,8 @@
         \n
         \nA wormhole is a hole into the space-time continuum which leads somewhere else in the galaxy. Before you can warp through the wormhole, you must first fly to the system that owns it, which is displayed to the left of it. From that system, you can tap the wormhole and warp immediately to the system at the other side.
         \n
-        \nIf you are Tracking a system (which you can do from the Galactic Chart), there will be an arrow from your current system in the direction of the system being tracked, and the distance will be displayed at the <!--top-->bottom of the screen.</string>
+        \nIf you are Tracking a system (which you can do from the Galactic Chart), there will be an arrow from your current system in the direction of the system being tracked, and the distance will be displayed at the <!--top-->
+        bottom of the screen.</string>
     <string name="help_executewarp">This screen shows information on the system you have selected. If the system is reachable by a wormhole, it says so next to \"Distance\". To warp through a wormhole you have to pay wormhole taxes, which depend on the type of your ship. The \"Current Costs\" item indicates what you have to pay your mercenaries, the current system as wormhole tax, the bank as interest on a loan and the bank as insurance, before you can warp.
         \n
         \nIf the system isn\'t out of range, you can warp to it by tapping the Warp button. If the system is out of range, or if you decide you don\'t want to warp, you can get to other options through the menu, or you can immediately return to the Short Range Chart by tapping the appropriate button. You can also view the average price list for the target system by tapping the Average Price List button.
@@ -1001,11 +1002,14 @@
 		\n
 		\n\"Identify at startup\" shows the name of the current commander when Space Trader is started. This is useful when playing two switched games.
 		\n
-		\n\"Copy prefs from parallel game\", if checked when you switch to this game, will copy the preferences from the parallel game. One person playing two parallel games on a <!--Palm-->single device will usually have this turned on (an exception might be where the player is a pirate in one game but a lawful trader in the other). Two persons sharing a <!--Palm-->device playing parallel games will want this turned off. Note that you must turn copying off separately for each game. It is entirely possible for one game not to copy preferences from the other game, but have its own preferences copied to the other game.</string>
-        \n
-        \n\"Extra shortcuts in footer\" will enable an extra row of shortcuts to all of the screens accessible from the Command menu.
-        \n
-        \n\"Set Application Theme\" allows you to select between different visual themes for the game.
+		\n\"Copy prefs from parallel game\", if checked when you switch to this game, will copy the preferences from the parallel game. One person playing two parallel games on a <!--Palm-->
+        single device will usually have this turned on (an exception might be where the player is a pirate in one game but a lawful trader in the other). Two persons sharing a <!--Palm-->
+        device playing parallel games will want this turned off. Note that you must turn copying off separately for each game. It is entirely possible for one game not to copy preferences from the other game, but have its own preferences copied to the other game.</string>
+    \n
+    \n\"Extra shortcuts in footer\" will enable an extra row of shortcuts to all of the screens
+    accessible from the Command menu.
+    \n
+    \n\"Set Application Theme\" allows you to select between different visual themes for the game.
     <string name="help_averageprices">This screen shows the average prices you get for goods in the target system. If the trade good is shown in a bold font, it means the average price mentioned here is better than the buying price in the current system.
         \n
         \nNote that these prices do take into account the system size, government and tech level. Special resources (like rich soil) are also taken into account if you know about them. Special situations (like war) are temporary and are therefore not taken into account.
@@ -1076,11 +1080,13 @@
     <string name="help_nofullrepairs">You have automatic full hull repairs checked in the Options menu, but you don\'t have the money for that. If you still want the repairs, don\'t forget to make them before you leave the system.</string>
     <string name="help_nofulltanksorrepairs">In the Options menu you have indicated that you wish to buy full tanks and full hull repairs automatically when you arrive in a new system, but you don\'t have the money for that. At least make sure that you buy full tanks after you have made some money.</string>
     <string name="help_highscore">Your score, calculated from the way you ended the game, your total worth, and the number of days you played, is entered automatically in the high score table when you qualify. <!--You do NOT qualify if you loaded a savegame while playing the game.--></string>
-    <string name="help_highscoretable" formatted="false">This screen shows the high scores. The scoring percentage is calculated as follows: if you retired through the menu, your score is your total worth / 25000, minus 5%. If you got killed, your score is calculated in the same way, except that 10% is deducted instead of 5%. If you won the game by claiming your own moon, your score is calculated by adding 100 times the difficulty level (beginner=1, impossible=5), minus the number of days played, multiplied by 1000, to your total worth. That amount is divided by 25000 to get your score. The moon is included in your total worth. One extra thing to notice is that if your total worth exceeds 1 million, every credit over 1 million counts for only 0.1 credit. <!-- Begin added text -->Finally, regardless of how you finished the game, your score is multiplied by a factor of 1\u20135 depending on the difficulty. </string>
+    <string name="help_highscoretable" formatted="false">This screen shows the high scores. The scoring percentage is calculated as follows: if you retired through the menu, your score is your total worth / 25000, minus 5%. If you got killed, your score is calculated in the same way, except that 10% is deducted instead of 5%. If you won the game by claiming your own moon, your score is calculated by adding 100 times the difficulty level (beginner=1, impossible=5), minus the number of days played, multiplied by 1000, to your total worth. That amount is divided by 25000 to get your score. The moon is included in your total worth. One extra thing to notice is that if your total worth exceeds 1 million, every credit over 1 million counts for only 0.1 credit. <!-- Begin added text -->
+        Finally, regardless of how you finished the game, your score is multiplied by a factor of 1\u20135 depending on the difficulty. </string>
     <string name="help_cleartable">If you clear the high score table, your next score is certain to get entered. It\'s a bit of a cowardly option, though.</string>
     <string name="help_howtoplay">Space Trader is a strategy game in which the ultimate goal is to make enough cash to buy your own moon, to which you can retire. The most straightforward way to make cash is to trade goods between solar systems, hopefully making a profit. However, you can also decide to become a pirate and rob innocent traders of their wares.
         \n
-        \nInformation on the game can be found in the documentation <!--file which comes with it-->view. The Help menu in the game offers basic information, enough to play the game. The menu choice Help Current Screen always gives information on the screen which is currently shown. The rest of the menu choices give a basic overview of the game, of which this particular text is the first. The First Steps choice is especially interesting for a first-time player, since it descibes all the steps you need to perform your first days as a trader.
+        \nInformation on the game can be found in the documentation <!--file which comes with it-->
+        view. The Help menu in the game offers basic information, enough to play the game. The menu choice Help Current Screen always gives information on the screen which is currently shown. The rest of the menu choices give a basic overview of the game, of which this particular text is the first. The First Steps choice is especially interesting for a first-time player, since it descibes all the steps you need to perform your first days as a trader.
         \n
         \nYou have to change screens often. All main screens are accessible through the menu. Shortcut keys are provided for the major choices, and you are advised to use them. To make that easier, you don\'t even have to provide the shortcut-stroke: just write the character associated with the menu and it will be activated. The four choices you have to use the most (Buy Cargo, Sell Cargo, Ship Yard and Short Range Chart) have their own shortcut button at the top right corner of every screen.
         \n
@@ -1412,7 +1418,8 @@
         \nAnd all the players that sent me their ideas
         \n
         \nSpace Trader is released under a GNU General Public License</string>
-    <string name="help_loanreminder">The Bank Officer will contact you every five days to remind you of your debt. You can turn off these warnings <!--on the second page of-->in the Game Options.</string>
+    <string name="help_loanreminder">The Bank Officer will contact you every five days to remind you of your debt. You can turn off these warnings <!--on the second page of-->
+        in the Game Options.</string>
     <string name="help_singularity">To use the Portable Singularity in the Galactic Chart, select your destination system by tracking it, then Jump by clicking  the \"J\" button. Voila! You will travel through the Singularity and arrive instananeously at your destination.</string>
     <string name="help_nodumpnoscoop">If you wanted to pick up the floating canister, you had to dump something from your cargo holds.</string>
     <string name="help_cannotsave">There was an error trying to create the savegame file. This may be due to a lack of system resources.</string>
@@ -1425,8 +1432,11 @@
         \n
         \nUse the pulldowns to assign the function to each navigation button. Shortcut 1 is the leftmost shortcut, while Shortcut 4 is the rightmost.</string>
     <string name="help_spacelittering">Space litterers will at least be considered dubious. If you are already a dubious character, space littering will only add to your list of offences. However, the police must of course be able to track the litter to you, which they often are not.</string>
-    <string name="help_switchgame">You can play two parallel games of Space Trader on your <!--Palm-->device. You switch between them by using the \"Switch Game\" option. This allows you to try two different styles of gameplay at the same time (for instance as a pirate and as an honest trader), or two people to play their own Space Trader game on one <!--Palm-->device. It\'s best to name the Commander in the two games differently, so you can easily recognize which game is loaded.</string>
-    <string name="help_cannotswitch">Switching to a parallel game failed. This is usually due to a lack of space on your <!--Palm-->device.</string>
+    <string name="help_switchgame">You can play two parallel games of Space Trader on your <!--Palm-->
+        device. You switch between them by using the \"Switch Game\" option. This allows you to try two different styles of gameplay at the same time (for instance as a pirate and as an honest trader), or two people to play their own Space Trader game on one <!--Palm-->
+        device. It\'s best to name the Commander in the two games differently, so you can easily recognize which game is loaded.</string>
+    <string name="help_cannotswitch">Switching to a parallel game failed. This is usually due to a lack of space on your <!--Palm-->
+        device.</string>
     <string name="help_switched">A parallel game has been loaded. You can switch back to the previous game by using the option \"Switch Game\" again.</string>
     <string name="help_switchtonew">You can play two parallel games on <!--a Palm-->one device. You can switch between them with the \"Switch Game\" function. You best give the commander in each of the games a different name, which makes it easier to recognize them.</string>
     <string name="help_helponmenu">The menu consists of three main menu choices:
@@ -1438,7 +1448,8 @@
         \nThe functions in the \"Game\" menu probably need more in depth information:
         \n
         \n\"New Game\" starts a new game, without further ado.
-        \n\"Switch Game\" switches to a parallel game. You can play two different games in parallel on <!--a Palm-->one device, which is handy for people who are sharing a <!--Palm-->device.
+        \n\"Switch Game\" switches to a parallel game. You can play two different games in parallel on <!--a Palm-->
+        one device, which is handy for people who are sharing a <!--Palm-->device.
         \n\"Retire\" ends the game by retiring the commander. Your score is calculated and you can enter the high-score table if you qualify. However, the preferred way to end a game is by claiming a moon, which is something you have to work for.
         \n\"Options\" gives access to the game preferences.
         \n\"Shortcuts\" allows you to set new preferences for the four shortcut buttons in the top right corner of many screens.
@@ -1450,13 +1461,14 @@
     <string name="help_attemptrectangular">After you leave the Options, if the current game screen shown contains buttons that normally are rectangular, the change will be visible when you leave the screen and come back to it later.</string>
     <string name="help_nojumptocursystem">Track another system than the one where you are currently are located, then tap the Singularity button to jump.</string>
 
-    <!-- The following are new help texts, that were either missing in the original, or belong to new dialogs --><eat-comment/>
+    <!-- The following are new help texts, that were either missing in the original, or belong to new dialogs -->
+    <eat-comment />
     <string name="help_specialcargo">This screen shows any unique items you are currently carrying.</string>
     <string name="help_noname">You should designate a name for your Commander. Otherwise, the game won\'t know what to call you!</string>
     <string name="help_exit">If you exit, your progress will be saved.</string>
     <string name="help_passengersneedsquarters">There is room for your passengers on your current ship, but not on the ship you intend to buy.</string>
-    
-    
+
+
     <string name="activity_absent">Absent</string>
     <string name="activity_minimal">Minimal</string>
     <string name="activity_few">Few</string>
@@ -1486,15 +1498,15 @@
     <string name="encounterbutton_yield">Yield</string>
     <string name="encounterbutton_trade">Trade</string>
     <string name="encounterbutton_tribble">..</string>
-    
+
     <string name="endstatus_killed">Was killed</string>
     <string name="endstatus_retired">Retired</string>
     <string name="endstatus_moon">Claimed moon</string>
-    
+
     <string name="equipmenttype_weapon">Weapon</string>
     <string name="equipmenttype_shield">Shield</string>
     <string name="equipmenttype_gadget">Gadget</string>
-    
+
     <string name="gadget_extrabays">5 extra cargo bays</string>
     <string name="gadget_autorepair">Auto-repair system</string>
     <string name="gadget_navigating">Navigating system</string>
@@ -1917,7 +1929,8 @@
     <string name="skill_trader">Trader</string>
     <string name="skill_engineer">Engineer</string>
 
-    <!-- NB the following name list preserves Pieter Spronck's original comments --><eat-comment />
+    <!-- NB the following name list preserves Pieter Spronck's original comments -->
+    <eat-comment />
     <string name="solarsystem_acamar">Acamar</string>
     <string name="solarsystem_adahn">Adahn</string> <!-- The alternate personality for The Nameless One in "Planescape: Torment" -->
     <string name="solarsystem_aldea">Aldea</string>

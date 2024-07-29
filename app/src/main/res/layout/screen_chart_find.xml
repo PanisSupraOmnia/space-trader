@@ -4,7 +4,7 @@
     android:paddingBottom="8dip"
     android:paddingLeft="16dip"
     android:paddingRight="16dip"
-    android:paddingTop="8dip" >
+    android:paddingTop="8dip">
 
     <TextView
         android:layout_width="wrap_content"
@@ -15,7 +15,7 @@
     <LinearLayout
         style="@style/ScreenRow"
         android:gravity="center"
-        android:weightSum="2" >
+        android:weightSum="2">
 
         <AutoCompleteTextView
             style="?android:autoCompleteTextViewStyle"
@@ -27,8 +27,9 @@
             android:maxLines="1"
             android:scrollHorizontally="true" />
     </LinearLayout>
-    
-    <CheckBox style="?android:checkboxStyle"
+
+    <CheckBox
+        style="?android:checkboxStyle"
         android:id="@+id/screen_chart_find_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

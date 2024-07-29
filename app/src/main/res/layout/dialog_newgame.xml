@@ -33,7 +33,7 @@
     <LinearLayout
         android:layout_below="@id/dialog_newgame_name_row"
         android:id="@+id/dialog_newgame_difficultypicker"
-        style="@style/ScreenRow" >
+        style="@style/ScreenRow">
 
         <TextView
             android:id="@+id/dialog_newgame_difficultypicker_label"
@@ -69,7 +69,7 @@
         android:layout_below="@id/dialog_newgame_difficultypicker"
         android:id="@+id/dialog_newgame_points_row"
         style="@style/ScreenRow"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
             style="?attr/textViewStyleHeader"
@@ -108,7 +108,7 @@
     <LinearLayout
         android:layout_below="@id/dialog_newgame_points_row"
         android:id="@+id/dialog_newgame_pilotpicker"
-        style="@style/ScreenRow" >
+        style="@style/ScreenRow">
 
         <TextView
             style="?attr/textViewStyleHeader"
@@ -147,7 +147,7 @@
     <LinearLayout
         android:layout_below="@id/dialog_newgame_pilotpicker"
         android:id="@+id/dialog_newgame_fighterpicker"
-        style="@style/ScreenRow" >
+        style="@style/ScreenRow">
 
         <TextView
             style="?attr/textViewStyleHeader"
@@ -186,7 +186,7 @@
     <LinearLayout
         android:layout_below="@id/dialog_newgame_fighterpicker"
         android:id="@+id/dialog_newgame_traderpicker"
-        style="@style/ScreenRow" >
+        style="@style/ScreenRow">
 
         <TextView
             style="?attr/textViewStyleHeader"
@@ -225,7 +225,7 @@
     <LinearLayout
         android:layout_below="@id/dialog_newgame_traderpicker"
         android:id="@+id/dialog_newgame_engineerpicker"
-        style="@style/ScreenRow" >
+        style="@style/ScreenRow">
 
         <TextView
             style="?attr/textViewStyleHeader"
@@ -261,7 +261,8 @@
             android:layout_weight="3" />
     </LinearLayout>
 
-    <CheckBox style="?android:checkboxStyle"
+    <CheckBox
+        style="?android:checkboxStyle"
         android:id="@+id/dialog_newgame_randomsystems"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

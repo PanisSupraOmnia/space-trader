@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="?attr/actionBarTitleBackground"
     android:gravity="center_vertical"
-    android:orientation="horizontal" >
+    android:orientation="horizontal">
 
     <ImageButton
         android:id="@+id/up"

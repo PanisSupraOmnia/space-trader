@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- File created by the Android Action Bar Style Generator
+<?xml version="1.0" encoding="utf-8"?><!-- File created by the Android Action Bar Style Generator
 
      Copyright (C) 2011 The Android Open Source Project
      Copyright (C) 2012 readyState Software Ltd
@@ -32,22 +31,28 @@
         <!-- Widgets from palm_acwidgets -->
         <item name="android:editTextStyle">@style/EditTextPalm_ACWidgets</item>
         <item name="android:textColorHighlight">#99330099</item>
-        <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewPalm_ACWidgets</item>
+        <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewPalm_ACWidgets
+        </item>
         <item name="android:checkboxStyle">@style/CheckBoxPalm_ACWidgets</item>
         <item name="android:radioButtonStyle">@style/RadioButtonPalm_ACWidgets</item>
         <item name="android:buttonStyle">@style/ButtonPalm_ACWidgets</item>
         <item name="android:imageButtonStyle">@style/ImageButtonPalm_ACWidgets</item>
         <item name="android:spinnerStyle">@style/SpinnerPalm_ACWidgets</item>
-        <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItemPalm_ACWidgets</item>
+        <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItemPalm_ACWidgets
+        </item>
         <item name="android:progressBarStyleHorizontal">@style/ProgressBarPalm_ACWidgets</item>
         <item name="android:listViewStyle">@style/ListViewPalm_ACWidgets</item>
         <item name="android:listViewWhiteStyle">@style/ListViewPalm_ACWidgets.White</item>
         <item name="android:spinnerItemStyle">@style/SpinnerItemPalm_ACWidgets</item>
 
         <!-- API9 additions -->
-        <item name="android:textSelectHandleLeft">@drawable/palm_acwidgets_text_select_handle_left</item>
-        <item name="android:textSelectHandleRight">@drawable/palm_acwidgets_text_select_handle_right</item>
-        <item name="android:textSelectHandle">@drawable/palm_acwidgets_text_select_handle_middle</item>
+        <item name="android:textSelectHandleLeft">@drawable/palm_acwidgets_text_select_handle_left
+        </item>
+        <item name="android:textSelectHandleRight">
+            @drawable/palm_acwidgets_text_select_handle_right
+        </item>
+        <item name="android:textSelectHandle">@drawable/palm_acwidgets_text_select_handle_middle
+        </item>
     </style>
 
 </resources>

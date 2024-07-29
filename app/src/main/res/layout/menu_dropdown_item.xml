@@ -15,7 +15,7 @@
         android:ellipsize="end"
         android:gravity="center_vertical|start"
         android:singleLine="true"
-        android:textColor="?pressableTextColor"/>
+        android:textColor="?pressableTextColor" />
 
     <TextView
         android:id="@+id/spinner_shortcut"
@@ -29,6 +29,6 @@
         android:paddingRight="0dp"
         android:paddingEnd="0dp"
         android:textAppearance="?attr/actionMenuTextAppearance"
-        android:typeface="monospace"/>
+        android:typeface="monospace" />
 
 </LinearLayout>

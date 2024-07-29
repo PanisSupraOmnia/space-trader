@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<set xmlns:android="http://schemas.android.com/apk/res/android"
     android:interpolator="@android:anim/accelerate_decelerate_interpolator">
 
     <translate
@@ -8,7 +7,7 @@
         android:fromXDelta="0%"
         android:toXDelta="1%"
         android:fromYDelta="0%"
-        android:toYDelta="-1%"/>
+        android:toYDelta="-1%" />
 
     <translate
         android:startOffset="25"
@@ -16,7 +15,7 @@
         android:fromXDelta="0%"
         android:toXDelta="-2%"
         android:fromYDelta="0%"
-        android:toYDelta="0%"/>
+        android:toYDelta="0%" />
 
     <translate
         android:startOffset="75"
@@ -24,7 +23,7 @@
         android:fromXDelta="0%"
         android:toXDelta="2%"
         android:fromYDelta="0%"
-        android:toYDelta="2%"/>
+        android:toYDelta="2%" />
 
     <translate
         android:startOffset="125"
@@ -32,7 +31,7 @@
         android:fromXDelta="0%"
         android:toXDelta="-2%"
         android:fromYDelta="0%"
-        android:toYDelta="0%"/>
+        android:toYDelta="0%" />
 
     <translate
         android:startOffset="175"
@@ -40,6 +39,6 @@
         android:fromXDelta="0%"
         android:toXDelta="1%"
         android:fromYDelta="0%"
-        android:toYDelta="-1%"/>
+        android:toYDelta="-1%" />
 
 </set>

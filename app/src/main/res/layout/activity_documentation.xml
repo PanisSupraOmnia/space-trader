@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="?android:attr/windowBackground"
     android:orientation="vertical"
-    tools:context=".DocumentationActivity" >
+    tools:context=".DocumentationActivity">
 
     <include layout="@layout/ab_toolbar" />
 
@@ -12,13 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:foreground="@drawable/foreground_shadow"
-        android:gravity="top" >
+        android:gravity="top">
 
         <WebView
             android:id="@+id/documentation_webview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/doc_background"/>
+            android:background="@color/doc_background" />
     </FrameLayout>
 
 </LinearLayout>

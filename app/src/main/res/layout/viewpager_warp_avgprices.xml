@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin" >
+    android:paddingTop="@dimen/activity_vertical_margin">
 
     <TextView
         android:id="@+id/screen_warp_avgprices_name"
@@ -24,6 +24,7 @@
         android:layout_marginLeft="-1dp"
         android:layout_marginRight="-1dp"
         android:baselineAligned="false">
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -38,6 +39,7 @@
                 android:paddingRight="1dp"
                 android:background="?avgPriceListBackground"
                 android:onClick="pagerClick">
+
                 <TextView
                     android:id="@+id/screen_warp_avgprices_water_label"
                     android:layout_width="wrap_content"
@@ -45,7 +47,8 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:text="@string/tradeitem_water"
-                    android:textColor="?pressableTextColor"/>
+                    android:textColor="?pressableTextColor" />
+
                 <TextView
                     android:id="@+id/screen_warp_avgprices_water_price"
                     android:layout_width="wrap_content"
@@ -63,6 +66,7 @@
                 android:paddingRight="1dp"
                 android:background="?avgPriceListBackground"
                 android:onClick="pagerClick">
+
                 <TextView
                     android:id="@+id/screen_warp_avgprices_furs_label"
                     android:layout_width="wrap_content"
@@ -71,6 +75,7 @@
                     android:layout_alignParentLeft="true"
                     android:text="@string/tradeitem_furs"
                     android:textColor="?pressableTextColor" />
+
                 <TextView
                     android:id="@+id/screen_warp_avgprices_furs_price"
                     android:layout_width="wrap_content"
@@ -88,6 +93,7 @@
                 android:paddingRight="1dp"
                 android:background="?avgPriceListBackground"
                 android:onClick="pagerClick">
+
                 <TextView
                     android:id="@+id/screen_warp_avgprices_food_label"
                     android:layout_width="wrap_content"
@@ -96,6 +102,7 @@
                     android:layout_alignParentLeft="true"
                     android:text="@string/tradeitem_food"
                     android:textColor="?pressableTextColor" />
+
                 <TextView
                     android:id="@+id/screen_warp_avgprices_food_price"
                     android:layout_width="wrap_content"
@@ -113,6 +120,7 @@
                 android:paddingRight="1dp"
                 android:background="?avgPriceListBackground"
                 android:onClick="pagerClick">
+
                 <TextView
                     android:id="@+id/screen_warp_avgprices_ore_label"
                     android:layout_width="wrap_content"
@@ -121,6 +129,7 @@
                     android:layout_alignParentLeft="true"
                     android:text="@string/tradeitem_ore"
                     android:textColor="?pressableTextColor" />
+
                 <TextView
                     android:id="@+id/screen_warp_avgprices_ore_price"
                     android:layout_width="wrap_content"
@@ -138,6 +147,7 @@
                 android:paddingRight="1dp"
                 android:background="?avgPriceListBackground"
                 android:onClick="pagerClick">
+
                 <TextView
                     android:id="@+id/screen_warp_avgprices_games_label"
                     android:layout_width="wrap_content"
@@ -146,6 +156,7 @@
                     android:layout_alignParentLeft="true"
                     android:text="@string/tradeitem_games"
                     android:textColor="?pressableTextColor" />
+
                 <TextView
                     android:id="@+id/screen_warp_avgprices_games_price"
                     android:layout_width="wrap_content"
@@ -172,6 +183,7 @@
                 android:paddingRight="1dp"
                 android:background="?avgPriceListBackground"
                 android:onClick="pagerClick">
+
                 <TextView
                     android:id="@+id/screen_warp_avgprices_firearms_label"
                     android:layout_width="wrap_content"
@@ -180,6 +192,7 @@
                     android:layout_alignParentLeft="true"
                     android:text="@string/tradeitem_firearms"
                     android:textColor="?pressableTextColor" />
+
                 <TextView
                     android:id="@+id/screen_warp_avgprices_firearms_price"
                     android:layout_width="wrap_content"
@@ -197,6 +210,7 @@
                 android:paddingRight="1dp"
                 android:background="?avgPriceListBackground"
                 android:onClick="pagerClick">
+
                 <TextView
                     android:id="@+id/screen_warp_avgprices_medicine_label"
                     android:layout_width="wrap_content"
@@ -205,6 +219,7 @@
                     android:layout_alignParentLeft="true"
                     android:text="@string/tradeitem_medicine"
                     android:textColor="?pressableTextColor" />
+
                 <TextView
                     android:id="@+id/screen_warp_avgprices_medicine_price"
                     android:layout_width="wrap_content"
@@ -222,6 +237,7 @@
                 android:paddingRight="1dp"
                 android:background="?avgPriceListBackground"
                 android:onClick="pagerClick">
+
                 <TextView
                     android:id="@+id/screen_warp_avgprices_machinery_label"
                     android:layout_width="wrap_content"
@@ -230,6 +246,7 @@
                     android:layout_alignParentLeft="true"
                     android:text="@string/tradeitem_machinery"
                     android:textColor="?pressableTextColor" />
+
                 <TextView
                     android:id="@+id/screen_warp_avgprices_machinery_price"
                     android:layout_width="wrap_content"
@@ -247,6 +264,7 @@
                 android:paddingRight="1dp"
                 android:background="?avgPriceListBackground"
                 android:onClick="pagerClick">
+
                 <TextView
                     android:id="@+id/screen_warp_avgprices_narcotics_label"
                     android:layout_width="wrap_content"
@@ -255,6 +273,7 @@
                     android:layout_alignParentLeft="true"
                     android:text="@string/tradeitem_narcotics"
                     android:textColor="?pressableTextColor" />
+
                 <TextView
                     android:id="@+id/screen_warp_avgprices_narcotics_price"
                     android:layout_width="wrap_content"
@@ -272,6 +291,7 @@
                 android:paddingRight="1dp"
                 android:background="?avgPriceListBackground"
                 android:onClick="pagerClick">
+
                 <TextView
                     android:id="@+id/screen_warp_avgprices_robots_label"
                     android:layout_width="wrap_content"
@@ -280,6 +300,7 @@
                     android:layout_alignParentLeft="true"
                     android:text="@string/tradeitem_robots"
                     android:textColor="?pressableTextColor" />
+
                 <TextView
                     android:id="@+id/screen_warp_avgprices_robots_price"
                     android:layout_width="wrap_content"
@@ -292,231 +313,231 @@
         </LinearLayout>
     </LinearLayout>
 
-<!--    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:baselineAligned="false"
-        android:orientation="horizontal" >
-
-        <LinearLayout
-            android:layout_width="0dp"
+    <!--    <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1.75"
-            android:orientation="vertical">
+            android:baselineAligned="false"
+            android:orientation="horizontal" >
 
-            <TextView
-                android:background="?avgPriceListBackground"
-                android:id="@+id/screen_warp_avgprices_water_label"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:gravity="start"
-                android:onClick="pagerClick"
-                android:text="@string/tradeitem_water" />
+                android:layout_weight="1.75"
+                android:orientation="vertical">
 
-            <TextView
-                android:background="?avgPriceListBackground"
-                android:id="@+id/screen_warp_avgprices_furs_label"
-                android:layout_width="match_parent"
+                <TextView
+                    android:background="?avgPriceListBackground"
+                    android:id="@+id/screen_warp_avgprices_water_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:gravity="start"
+                    android:onClick="pagerClick"
+                    android:text="@string/tradeitem_water" />
+
+                <TextView
+                    android:background="?avgPriceListBackground"
+                    android:id="@+id/screen_warp_avgprices_furs_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:gravity="start"
+                    android:onClick="pagerClick"
+                    android:text="@string/tradeitem_furs" />
+
+                <TextView
+                    android:background="?avgPriceListBackground"
+                    android:id="@+id/screen_warp_avgprices_food_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:gravity="start"
+                    android:onClick="pagerClick"
+                    android:text="@string/tradeitem_food" />
+
+                <TextView
+                    android:background="?avgPriceListBackground"
+                    android:id="@+id/screen_warp_avgprices_ore_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:gravity="start"
+                    android:onClick="pagerClick"
+                    android:text="@string/tradeitem_ore" />
+
+                <TextView
+                    android:background="?avgPriceListBackground"
+                    android:id="@+id/screen_warp_avgprices_games_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:gravity="start"
+                    android:onClick="pagerClick"
+                    android:text="@string/tradeitem_games" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:gravity="start"
-                android:onClick="pagerClick"
-                android:text="@string/tradeitem_furs" />
+                android:layout_marginRight="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_weight="1.9"
+                android:orientation="vertical" >
 
-            <TextView
-                android:background="?avgPriceListBackground"
-                android:id="@+id/screen_warp_avgprices_food_label"
-                android:layout_width="match_parent"
+                <TextView
+                    android:background="?avgPriceListBackground"
+                    android:id="@+id/screen_warp_avgprices_water_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:gravity="end"
+                    android:onClick="pagerClick" />
+
+                <TextView
+                    android:background="?avgPriceListBackground"
+                    android:id="@+id/screen_warp_avgprices_furs_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:gravity="end"
+                    android:onClick="pagerClick" />
+
+                <TextView
+                    android:background="?avgPriceListBackground"
+                    android:id="@+id/screen_warp_avgprices_food_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:gravity="end"
+                    android:onClick="pagerClick" />
+
+                <TextView
+                    android:background="?avgPriceListBackground"
+                    android:id="@+id/screen_warp_avgprices_ore_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:gravity="end"
+                    android:onClick="pagerClick" />
+
+                <TextView
+                    android:background="?avgPriceListBackground"
+                    android:id="@+id/screen_warp_avgprices_games_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:gravity="end"
+                    android:onClick="pagerClick" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:gravity="start"
-                android:onClick="pagerClick"
-                android:text="@string/tradeitem_food" />
+                android:layout_weight="2.45"
+                android:orientation="vertical" >
 
-            <TextView
-                android:background="?avgPriceListBackground"
-                android:id="@+id/screen_warp_avgprices_ore_label"
-                android:layout_width="match_parent"
+                <TextView
+                    android:background="?avgPriceListBackground"
+                    android:id="@+id/screen_warp_avgprices_firearms_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:gravity="start"
+                    android:onClick="pagerClick"
+                    android:text="@string/tradeitem_firearms" />
+
+                <TextView
+                    android:background="?avgPriceListBackground"
+                    android:id="@+id/screen_warp_avgprices_medicine_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:gravity="start"
+                    android:onClick="pagerClick"
+                    android:text="@string/tradeitem_medicine" />
+
+                <TextView
+                    android:background="?avgPriceListBackground"
+                    android:id="@+id/screen_warp_avgprices_machinery_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:gravity="start"
+                    android:onClick="pagerClick"
+                    android:text="@string/tradeitem_machinery" />
+
+                <TextView
+                    android:background="?avgPriceListBackground"
+                    android:id="@+id/screen_warp_avgprices_narcotics_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:gravity="start"
+                    android:onClick="pagerClick"
+                    android:text="@string/tradeitem_narcotics" />
+
+                <TextView
+                    android:background="?avgPriceListBackground"
+                    android:id="@+id/screen_warp_avgprices_robots_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:gravity="start"
+                    android:onClick="pagerClick"
+                    android:text="@string/tradeitem_robots" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:gravity="start"
-                android:onClick="pagerClick"
-                android:text="@string/tradeitem_ore" />
+                android:layout_weight="2.2"
+                android:orientation="vertical" >
 
-            <TextView
-                android:background="?avgPriceListBackground"
-                android:id="@+id/screen_warp_avgprices_games_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:gravity="start"
-                android:onClick="pagerClick"
-                android:text="@string/tradeitem_games" />
-        </LinearLayout>
+                <TextView
+                    android:background="?avgPriceListBackground"
+                    android:id="@+id/screen_warp_avgprices_firearms_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:gravity="end"
+                    android:onClick="pagerClick" />
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="2dp"
-            android:layout_marginEnd="2dp"
-            android:layout_weight="1.9"
-            android:orientation="vertical" >
+                <TextView
+                    android:background="?avgPriceListBackground"
+                    android:id="@+id/screen_warp_avgprices_medicine_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:gravity="end"
+                    android:onClick="pagerClick" />
 
-            <TextView
-                android:background="?avgPriceListBackground"
-                android:id="@+id/screen_warp_avgprices_water_price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:gravity="end"
-                android:onClick="pagerClick" />
+                <TextView
+                    android:background="?avgPriceListBackground"
+                    android:id="@+id/screen_warp_avgprices_machinery_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:gravity="end"
+                    android:onClick="pagerClick" />
 
-            <TextView
-                android:background="?avgPriceListBackground"
-                android:id="@+id/screen_warp_avgprices_furs_price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:gravity="end"
-                android:onClick="pagerClick" />
+                <TextView
+                    android:background="?avgPriceListBackground"
+                    android:id="@+id/screen_warp_avgprices_narcotics_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:gravity="end"
+                    android:onClick="pagerClick" />
 
-            <TextView
-                android:background="?avgPriceListBackground"
-                android:id="@+id/screen_warp_avgprices_food_price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:gravity="end"
-                android:onClick="pagerClick" />
-
-            <TextView
-                android:background="?avgPriceListBackground"
-                android:id="@+id/screen_warp_avgprices_ore_price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:gravity="end"
-                android:onClick="pagerClick" />
-
-            <TextView
-                android:background="?avgPriceListBackground"
-                android:id="@+id/screen_warp_avgprices_games_price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:gravity="end"
-                android:onClick="pagerClick" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2.45"
-            android:orientation="vertical" >
-
-            <TextView
-                android:background="?avgPriceListBackground"
-                android:id="@+id/screen_warp_avgprices_firearms_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:gravity="start"
-                android:onClick="pagerClick"
-                android:text="@string/tradeitem_firearms" />
-
-            <TextView
-                android:background="?avgPriceListBackground"
-                android:id="@+id/screen_warp_avgprices_medicine_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:gravity="start"
-                android:onClick="pagerClick"
-                android:text="@string/tradeitem_medicine" />
-
-            <TextView
-                android:background="?avgPriceListBackground"
-                android:id="@+id/screen_warp_avgprices_machinery_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:gravity="start"
-                android:onClick="pagerClick"
-                android:text="@string/tradeitem_machinery" />
-
-            <TextView
-                android:background="?avgPriceListBackground"
-                android:id="@+id/screen_warp_avgprices_narcotics_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:gravity="start"
-                android:onClick="pagerClick"
-                android:text="@string/tradeitem_narcotics" />
-
-            <TextView
-                android:background="?avgPriceListBackground"
-                android:id="@+id/screen_warp_avgprices_robots_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:gravity="start"
-                android:onClick="pagerClick"
-                android:text="@string/tradeitem_robots" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2.2"
-            android:orientation="vertical" >
-
-            <TextView
-                android:background="?avgPriceListBackground"
-                android:id="@+id/screen_warp_avgprices_firearms_price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:gravity="end"
-                android:onClick="pagerClick" />
-
-            <TextView
-                android:background="?avgPriceListBackground"
-                android:id="@+id/screen_warp_avgprices_medicine_price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:gravity="end"
-                android:onClick="pagerClick" />
-
-            <TextView
-                android:background="?avgPriceListBackground"
-                android:id="@+id/screen_warp_avgprices_machinery_price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:gravity="end"
-                android:onClick="pagerClick" />
-
-            <TextView
-                android:background="?avgPriceListBackground"
-                android:id="@+id/screen_warp_avgprices_narcotics_price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:gravity="end"
-                android:onClick="pagerClick" />
-
-            <TextView
-                android:background="?avgPriceListBackground"
-                android:id="@+id/screen_warp_avgprices_robots_price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:gravity="end"
-                android:onClick="pagerClick" />
-        </LinearLayout>
-    </LinearLayout>-->
+                <TextView
+                    android:background="?avgPriceListBackground"
+                    android:id="@+id/screen_warp_avgprices_robots_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:gravity="end"
+                    android:onClick="pagerClick" />
+            </LinearLayout>
+        </LinearLayout>-->
 
 </LinearLayout>

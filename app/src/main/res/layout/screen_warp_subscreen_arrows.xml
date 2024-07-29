@@ -2,7 +2,7 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/ScreenRow"
     android:gravity="end"
-    android:orientation="horizontal" >
+    android:orientation="horizontal">
 
     <ImageButton
         android:id="@+id/screen_warp_next"
