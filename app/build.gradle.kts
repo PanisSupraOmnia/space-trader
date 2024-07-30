@@ -32,7 +32,7 @@ android {
 }
 
 dependencies {
-    implementation("com.android.support:appcompat-v7:23.4.0")
+    implementation("com.android.support:appcompat-v7:24.1.1")
 
 //    debugCompile("com.squareup.leakcanary:leakcanary-android:1.3.1")
 //    releaseCompile("com.squareup.leakcanary:leakcanary-android-no-op:1.3.1")
