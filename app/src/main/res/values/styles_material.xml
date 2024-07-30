@@ -222,26 +222,11 @@
         <item name="android:minHeight">@dimen/alert_dialog_button_bar_height</item>
     </style>
 
-    <style name="EditText.Material" parent="@style/Widget.AppCompat.EditText">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:singleLine">true</item>
-        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
-    </style>
+    <style name="EditText.Material" parent="@style/Widget.AppCompat.EditText"></style>
 
-    <style name="AutoCompleteTextView.Material.Light" parent="@style/Widget.AppCompat.Light.AutoCompleteTextView">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:singleLine">true</item>
-        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
-    </style>
+    <style name="AutoCompleteTextView.Material.Light" parent="@style/Widget.AppCompat.Light.AutoCompleteTextView"></style>
 
-    <style name="AutoCompleteTextView.Material.Dark" parent="@style/Widget.AppCompat.AutoCompleteTextView">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:singleLine">true</item>
-        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
-    </style>
+    <style name="AutoCompleteTextView.Material.Dark" parent="@style/Widget.AppCompat.AutoCompleteTextView"></style>
 
     <style name="TextAppearance.DialogWindowTitle.Material" parent="@android:style/TextAppearance.DialogWindowTitle">
         <item name="android:textColor">?android:textColorPrimary</item>
