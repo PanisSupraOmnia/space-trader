@@ -4,18 +4,18 @@
     android:paddingBottom="0dp"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin" >
+    android:paddingTop="@dimen/activity_vertical_margin">
 
     <RelativeLayout
         android:id="@+id/screen_personnel_merc1"
-        style="@style/RootLayout" >
+        style="@style/RootLayout">
 
         <LinearLayout
             android:id="@+id/screen_personnel_merc1_empty_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <Button
                 style="?attr/buttonStyleSquare"
@@ -36,9 +36,9 @@
         <LinearLayout
             android:id="@+id/screen_personnel_merc1_stats"
             style="@style/RootLayout"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
-            <LinearLayout style="@style/ScreenRow" >
+            <LinearLayout style="@style/ScreenRow">
 
                 <Button
                     android:id="@+id/screen_personnel_merc1_fire"
@@ -63,7 +63,7 @@
                     android:text="@string/format_dailycost" />
             </LinearLayout>
 
-            <LinearLayout style="@style/ScreenRow" >
+            <LinearLayout style="@style/ScreenRow">
 
                 <Button
                     style="?attr/buttonStyleSquare"
@@ -88,7 +88,7 @@
                     android:text="@string/screen_personnel_fighter" />
             </LinearLayout>
 
-            <LinearLayout style="@style/ScreenRow" >
+            <LinearLayout style="@style/ScreenRow">
 
                 <Button
                     style="?attr/buttonStyleSquare"
@@ -122,14 +122,14 @@
 
     <RelativeLayout
         android:id="@+id/screen_personnel_merc2"
-        style="@style/RootLayout" >
+        style="@style/RootLayout">
 
         <LinearLayout
             android:id="@+id/screen_personnel_merc2_empty_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <Button
                 style="?attr/buttonStyleSquare"
@@ -150,9 +150,9 @@
         <LinearLayout
             android:id="@+id/screen_personnel_merc2_stats"
             style="@style/RootLayout"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
-            <LinearLayout style="@style/ScreenRow" >
+            <LinearLayout style="@style/ScreenRow">
 
                 <Button
                     android:id="@+id/screen_personnel_merc2_fire"
@@ -177,7 +177,7 @@
                     android:text="@string/format_dailycost" />
             </LinearLayout>
 
-            <LinearLayout style="@style/ScreenRow" >
+            <LinearLayout style="@style/ScreenRow">
 
                 <Button
                     style="?attr/buttonStyleSquare"
@@ -202,7 +202,7 @@
                     android:text="@string/screen_personnel_fighter" />
             </LinearLayout>
 
-            <LinearLayout style="@style/ScreenRow" >
+            <LinearLayout style="@style/ScreenRow">
 
                 <Button
                     style="?attr/buttonStyleSquare"
@@ -236,14 +236,14 @@
 
     <RelativeLayout
         android:id="@+id/screen_personnel_merc3"
-        style="@style/RootLayout" >
+        style="@style/RootLayout">
 
         <LinearLayout
             android:id="@+id/screen_personnel_merc3_empty_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <Button
                 style="?attr/buttonStyleSquare"
@@ -264,9 +264,9 @@
         <LinearLayout
             android:id="@+id/screen_personnel_merc3_stats"
             style="@style/RootLayout"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
-            <LinearLayout style="@style/ScreenRow" >
+            <LinearLayout style="@style/ScreenRow">
 
                 <Button
                     android:id="@+id/screen_personnel_merc3_hire"
@@ -291,7 +291,7 @@
                     android:text="@string/format_dailycost" />
             </LinearLayout>
 
-            <LinearLayout style="@style/ScreenRow" >
+            <LinearLayout style="@style/ScreenRow">
 
                 <Button
                     style="?attr/buttonStyleSquare"
@@ -316,7 +316,7 @@
                     android:text="@string/screen_personnel_fighter" />
             </LinearLayout>
 
-            <LinearLayout style="@style/ScreenRow" >
+            <LinearLayout style="@style/ScreenRow">
 
                 <Button
                     style="?attr/buttonStyleSquare"

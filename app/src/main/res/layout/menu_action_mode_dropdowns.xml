@@ -26,7 +26,7 @@
         android:minWidth="0dp"
         android:singleLine="true"
         android:text="@string/menu_game"
-        android:textAppearance="?attr/actionModeSpinnerTextStyle"/>
+        android:textAppearance="?attr/actionModeSpinnerTextStyle" />
 
     <Button
         android:id="@+id/menu_help"
@@ -51,6 +51,6 @@
         android:layout_alignRight="@id/menu_help"
         android:layout_alignEnd="@id/menu_help"
         android:layout_alignTop="@id/menu_game"
-        android:layout_alignBottom="@id/menu_game"/>
+        android:layout_alignBottom="@id/menu_game" />
 
 </RelativeLayout>

@@ -1,21 +1,21 @@
 /*
  *     Copyright (C) 2014 Russell Wolf, All Rights Reserved
- *     
+ *
  *     Based on code by Pieter Spronck
- * 
+ *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
  *     (at your option) any later version.
- * 
+ *
  *     This program is distributed in the hope that it will be useful,
  *     but WITHOUT ANY WARRANTY; without even the implied warranty of
  *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *     GNU General Public License for more details.
- * 
+ *
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *     
+ *
  *     You can contact the author at spacetrader@brucelet.com
  */
 package com.brucelet.spacetrader;
@@ -86,7 +86,7 @@ import java.util.Map;
 
 /*
  * Some random notes:
- * 
+ *
  * List of modifications made to original code/behavior (All references to the original palm version refer to the final 1.2.2 release):
  *  - Quest systems can now be optionally randomized.
  *  - When selling cargo in orbit, the other trader will no longer buy more than he has room for.
@@ -119,7 +119,7 @@ import java.util.Map;
  *    - Fixed a bug where stats which were greater than 10 could never see a decrease.
  *    - Fixed a minor bug in computing the value of a ship when the fuel compactor gadget is present.
  *    - News stories no longer display for Dragonfly or Scarab quests if the player doesn't meet the conditions for receiving those quests.
- *  
+ *
  * TODO list:
  *  - Bug: Overflowing text on small devices.
  *  - Clean up laggy features:
@@ -136,130 +136,130 @@ import java.util.Map;
  *  - Xml/Code: Layout updates to make app organization more modernized?
  *    - Do something with bottom half of screen?
  *    - Separate activities for Title, End, Encounter, Docked
- * 
- * 
- * 
+ *
+ *
+ *
  */
 public class MainActivity extends AppCompatActivity implements MenuDropDownWindow.OnDropDownItemClickListener, ActionMode.Callback {
 
-	private static final int[] SHORTCUT_IDS = {
-		R.id.menu_shortcut1,
-		R.id.menu_shortcut2,
-		R.id.menu_shortcut3,
-		R.id.menu_shortcut4,
-	};
-	private char[] mShortcutKeys;
+    private static final int[] SHORTCUT_IDS = {
+            R.id.menu_shortcut1,
+            R.id.menu_shortcut2,
+            R.id.menu_shortcut3,
+            R.id.menu_shortcut4,
+    };
+    private char[] mShortcutKeys;
 
-	// NB using LinkedList as a Deque, but Deque interface doesn't exist on android until API 9 so we must specify type as LinkedList for addFirst() and removeFirst() methods.
-	private final LinkedList<ScreenType> mBackStack = new LinkedList<>();
-	private final LinkedList<BaseDialog> mDialogQueue = new LinkedList<>();
-	
-	private Toolbar mToolbar;
-	private View mTitleView;
-	private TextView mTitleText;
-	private ImageView mTitleIcon;
+    // NB using LinkedList as a Deque, but Deque interface doesn't exist on android until API 9 so we must specify type as LinkedList for addFirst() and removeFirst() methods.
+    private final LinkedList<ScreenType> mBackStack = new LinkedList<>();
+    private final LinkedList<BaseDialog> mDialogQueue = new LinkedList<>();
 
-	private LinearLayout mFooter;
+    private Toolbar mToolbar;
+    private View mTitleView;
+    private TextView mTitleText;
+    private ImageView mTitleIcon;
 
-	private final GameState mGameState = new GameState(this);
-	
-	private volatile boolean mClicking;
-	private volatile boolean mShowingDialog;
+    private LinearLayout mFooter;
 
-	public static final String GAME_1 = "Game 1";
-	public static final String GAME_2 = "Game 2";
-	static final String SAVEFILE = "SpaceTraderSave";
-	
-	private String mCurrentGame;
-	
-	private boolean mWelcomeShown = false;
-	
-	private ActionMode mActionMode;
+    private final GameState mGameState = new GameState(this);
 
-	private ScreenType mCurrentScreen = ScreenType.TITLE; // This will be overwritten but it can't be null
+    private volatile boolean mClicking;
+    private volatile boolean mShowingDialog;
 
-	private MenuTouchInterceptor mMenuTouchInterceptor;
-	private boolean mDraggingMenuOpen;
-	private boolean mBeginMenuDrag;
-//	private boolean mMenuLongPress;
-	private int[] mDragCoordHelper = new int[2];
-	private MenuDropDownWindow[] mPopups = new MenuDropDownWindow[3];
+    public static final String GAME_1 = "Game 1";
+    public static final String GAME_2 = "Game 2";
+    static final String SAVEFILE = "SpaceTraderSave";
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+    private String mCurrentGame;
 
-		mCurrentGame = getPreferences(MODE_PRIVATE).getString("currentGame", GAME_1);
-		Log.d("onCreate()", "Current game is "+mCurrentGame);
-				
-		ThemeType theme;
-		if (getIntent().hasExtra("theme")) {
-			Log.d("onCreate()", "Setting theme from intent extra");
-			int themeIndex = getIntent().getIntExtra("theme", 0);
-			if (themeIndex < 0 || themeIndex >= ThemeType.values().length) themeIndex = 0;
-			theme = ThemeType.values()[themeIndex];
-			mWelcomeShown = true;
-		} else {
-			Log.d("onCreate()", "Setting theme from saved preferences");
-			theme = getThemeType();
-		}
-		setTheme(theme.resId);
-		
-		Log.d("onCreate()", "Setting theme " + getResources().getResourceName(theme.resId));
-		getSharedPreferences(mCurrentGame, MODE_PRIVATE).edit().putInt("theme", theme.ordinal()).commit();
+    private boolean mWelcomeShown = false;
 
-		super.onCreate(savedInstanceState);
+    private ActionMode mActionMode;
 
-		// Trying this here instead of onPostResume() to avoid certain dialog issues
-		mGameState.loadState(getSharedPreferences(mCurrentGame, MODE_PRIVATE));
-		
-		Log.d("onCreate()", "setContentView() called");
-		setContentView(R.layout.activity_main);
+    private ScreenType mCurrentScreen = ScreenType.TITLE; // This will be overwritten but it can't be null
 
-		// Prevent image screens (title and endgame) from scrolling, since they bleed past the bottom
-		View fragmentContainer = findViewById(R.id.container);
-		fragmentContainer.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				return getCurrentScreenType().isImage;
-			}
-		});
+    private MenuTouchInterceptor mMenuTouchInterceptor;
+    private boolean mDraggingMenuOpen;
+    private boolean mBeginMenuDrag;
+    //	private boolean mMenuLongPress;
+    private int[] mDragCoordHelper = new int[2];
+    private MenuDropDownWindow[] mPopups = new MenuDropDownWindow[3];
 
-		mToolbar = (Toolbar) findViewById(R.id.toolbar);
-		mTitleView = LayoutInflater.from(mToolbar.getContext()).inflate(R.layout.ab_title_main, mToolbar, false);
-		mTitleText = (TextView) mTitleView.findViewById(R.id.title);
-		mTitleIcon = (ImageView) mTitleView.findViewById(R.id.icon);
-		mTitleView.setOnClickListener(new OnClickListener() {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
 
-			@Override
-			public void onClick(View v) {
-				onOptionsItemSelectedWithId(v.getId());
-			}
-		});
-		mTitleView.setOnTouchListener(new OnTouchListener() {
-			private GestureDetector gestureDetector = new GestureDetector(MainActivity.this, new GestureDetector.SimpleOnGestureListener() {
+        mCurrentGame = getPreferences(MODE_PRIVATE).getString("currentGame", GAME_1);
+        Log.d("onCreate()", "Current game is " + mCurrentGame);
 
-				@Override
-				public boolean onDown(MotionEvent e) {
-					mBeginMenuDrag = true;
-					return false;
-				}
+        ThemeType theme;
+        if (getIntent().hasExtra("theme")) {
+            Log.d("onCreate()", "Setting theme from intent extra");
+            int themeIndex = getIntent().getIntExtra("theme", 0);
+            if (themeIndex < 0 || themeIndex >= ThemeType.values().length) themeIndex = 0;
+            theme = ThemeType.values()[themeIndex];
+            mWelcomeShown = true;
+        } else {
+            Log.d("onCreate()", "Setting theme from saved preferences");
+            theme = getThemeType();
+        }
+        setTheme(theme.resId);
 
-				@Override
-				public boolean onScroll(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-					// If pointer scrolls beyond the bottom of the view, open the menu
-					float x = e2.getX();
-					float y = e2.getY();
+        Log.d("onCreate()", "Setting theme " + getResources().getResourceName(theme.resId));
+        getSharedPreferences(mCurrentGame, MODE_PRIVATE).edit().putInt("theme", theme.ordinal()).commit();
+
+        super.onCreate(savedInstanceState);
+
+        // Trying this here instead of onPostResume() to avoid certain dialog issues
+        mGameState.loadState(getSharedPreferences(mCurrentGame, MODE_PRIVATE));
+
+        Log.d("onCreate()", "setContentView() called");
+        setContentView(R.layout.activity_main);
+
+        // Prevent image screens (title and endgame) from scrolling, since they bleed past the bottom
+        View fragmentContainer = findViewById(R.id.container);
+        fragmentContainer.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return getCurrentScreenType().isImage;
+            }
+        });
+
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mTitleView = LayoutInflater.from(mToolbar.getContext()).inflate(R.layout.ab_title_main, mToolbar, false);
+        mTitleText = (TextView) mTitleView.findViewById(R.id.title);
+        mTitleIcon = (ImageView) mTitleView.findViewById(R.id.icon);
+        mTitleView.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                onOptionsItemSelectedWithId(v.getId());
+            }
+        });
+        mTitleView.setOnTouchListener(new OnTouchListener() {
+            private GestureDetector gestureDetector = new GestureDetector(MainActivity.this, new GestureDetector.SimpleOnGestureListener() {
+
+                @Override
+                public boolean onDown(MotionEvent e) {
+                    mBeginMenuDrag = true;
+                    return false;
+                }
+
+                @Override
+                public boolean onScroll(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+                    // If pointer scrolls beyond the bottom of the view, open the menu
+                    float x = e2.getX();
+                    float y = e2.getY();
 //					if (mBeginMenuDrag && x > mTitleView.getLeft() && x < mTitleView.getRight() && y > mTitleView.getBottom()) {
-					if (mBeginMenuDrag && (x > mTitleView.getRight() || y > mTitleView.getBottom())) {
-						mDraggingMenuOpen = true;
-						mBeginMenuDrag = false;
-						startMenuActionMode();
+                    if (mBeginMenuDrag && (x > mTitleView.getRight() || y > mTitleView.getBottom())) {
+                        mDraggingMenuOpen = true;
+                        mBeginMenuDrag = false;
+                        startMenuActionMode();
 //					} else if (x < mTitleView.getLeft() || x > mTitleView.getRight() || y < mTitleView.getTop()) {
-					} else if (x < mTitleView.getLeft() || y < mTitleView.getTop()) {
-						mBeginMenuDrag = false;
-					}
-					return false;
-				}
+                    } else if (x < mTitleView.getLeft() || y < mTitleView.getTop()) {
+                        mBeginMenuDrag = false;
+                    }
+                    return false;
+                }
 
 //				@Override
 //				public void onLongPress(MotionEvent e) {
@@ -270,19 +270,21 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 //					startMenuActionMode();
 //				}
 
-			});
-			{
-				gestureDetector.setIsLongpressEnabled(false);
-			}
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				boolean out = gestureDetector.onTouchEvent(event);
-				if (mMenuTouchInterceptor != null) {
-					// Forward touch event from TitleView to CommandMenuButton for drag-to-open handling
-					mTitleView.getLocationOnScreen(mDragCoordHelper);
-					int titleX = mDragCoordHelper[0];
-					mMenuTouchInterceptor.getLocationOnScreen(mDragCoordHelper);
-					int menuX = mDragCoordHelper[0];
+            });
+
+            {
+                gestureDetector.setIsLongpressEnabled(false);
+            }
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                boolean out = gestureDetector.onTouchEvent(event);
+                if (mMenuTouchInterceptor != null) {
+                    // Forward touch event from TitleView to CommandMenuButton for drag-to-open handling
+                    mTitleView.getLocationOnScreen(mDragCoordHelper);
+                    int titleX = mDragCoordHelper[0];
+                    mMenuTouchInterceptor.getLocationOnScreen(mDragCoordHelper);
+                    int menuX = mDragCoordHelper[0];
 //					if (mMenuLongPress) {
 //						MotionEvent upEvent = MotionEvent.obtain(event.getDownTime(), event.getEventTime(), MotionEvent.ACTION_UP, event.getX() + titleX - menuX, event.getY(), event.getMetaState());
 //						mMenuTouchInterceptor.dispatchTouchToActiveView(upEvent);
@@ -290,249 +292,249 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 //						mMenuTouchInterceptor.dispatchTouchToActiveView(downEvent);
 //						mMenuLongPress = false;
 //					}
-					MotionEvent forwardedEvent = MotionEvent.obtain(event.getDownTime(), event.getEventTime(), event.getAction(), event.getX() + titleX - menuX, event.getY(), event.getMetaState());
-					mMenuTouchInterceptor.dispatchTouchEvent(forwardedEvent);
-				}
-				return out;
-			}
-		});
-		mTitleIcon.setVisibility(View.GONE);
-		mToolbar.setContentInsetsAbsolute(0, 0);
-		mToolbar.addView(mTitleView);
-		Toolbar.LayoutParams tbParams = (Toolbar.LayoutParams) mTitleView.getLayoutParams();
-		tbParams.height = Toolbar.LayoutParams.MATCH_PARENT;
-		mTitleView.setLayoutParams(tbParams);
-		setSupportActionBar(mToolbar);
+                    MotionEvent forwardedEvent = MotionEvent.obtain(event.getDownTime(), event.getEventTime(), event.getAction(), event.getX() + titleX - menuX, event.getY(), event.getMetaState());
+                    mMenuTouchInterceptor.dispatchTouchEvent(forwardedEvent);
+                }
+                return out;
+            }
+        });
+        mTitleIcon.setVisibility(View.GONE);
+        mToolbar.setContentInsetsAbsolute(0, 0);
+        mToolbar.addView(mTitleView);
+        Toolbar.LayoutParams tbParams = (Toolbar.LayoutParams) mTitleView.getLayoutParams();
+        tbParams.height = Toolbar.LayoutParams.MATCH_PARENT;
+        mTitleView.setLayoutParams(tbParams);
+        setSupportActionBar(mToolbar);
 
-		ActionBar ab = getSupportActionBar();
-		//noinspection ConstantConditions
-		ab.setDisplayShowHomeEnabled(false);
-		ab.setDisplayShowTitleEnabled(false);
+        ActionBar ab = getSupportActionBar();
+        //noinspection ConstantConditions
+        ab.setDisplayShowHomeEnabled(false);
+        ab.setDisplayShowTitleEnabled(false);
 
-		mFooter = (LinearLayout) findViewById(R.id.footer_shortcuts);
-		final ScreenType[] screens = ScreenType.dropdownValues();
-		mShortcutKeys = new char[screens.length];
-		for (int i = 0; i < mShortcutKeys.length; i++) {
-			final ScreenType screen = screens[i];
-			mShortcutKeys[i] = Character.toLowerCase(getResources().getString(screen.shortcutId).charAt(0));
+        mFooter = (LinearLayout) findViewById(R.id.footer_shortcuts);
+        final ScreenType[] screens = ScreenType.dropdownValues();
+        mShortcutKeys = new char[screens.length];
+        for (int i = 0; i < mShortcutKeys.length; i++) {
+            final ScreenType screen = screens[i];
+            mShortcutKeys[i] = Character.toLowerCase(getResources().getString(screen.shortcutId).charAt(0));
 
-			ShortcutButton shortcut = new ShortcutButton(this, null, R.attr.footerButtonStyle);
-			shortcut.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					setCurrentScreenType(screen);
-				}
-			});
-			shortcut.setTitles(getResources().getString(screen.titleId), getResources().getString(screen.shortcutId));
-			shortcut.setPadding(0,0,0,0);
-			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT);
-			params.weight = 1;
-			shortcut.setLayoutParams(params);
-			mFooter.addView(shortcut);
-		}
+            ShortcutButton shortcut = new ShortcutButton(this, null, R.attr.footerButtonStyle);
+            shortcut.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    setCurrentScreenType(screen);
+                }
+            });
+            shortcut.setTitles(getResources().getString(screen.titleId), getResources().getString(screen.shortcutId));
+            shortcut.setPadding(0, 0, 0, 0);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT);
+            params.weight = 1;
+            shortcut.setLayoutParams(params);
+            mFooter.addView(shortcut);
+        }
 
-		// This will eat touch events to the screen when the Menu Action Mode is live.
-		View touchBlocker = findViewById(R.id.action_mode_touch_blocker);
-		touchBlocker.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				if (mActionMode == null) return false;
-				finishMenuActionMode();
-				return true;
-			}
-		});
+        // This will eat touch events to the screen when the Menu Action Mode is live.
+        View touchBlocker = findViewById(R.id.action_mode_touch_blocker);
+        touchBlocker.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (mActionMode == null) return false;
+                finishMenuActionMode();
+                return true;
+            }
+        });
 
-		Log.d("onCreate()", "Finished");
-	}
-	
-	public ThemeType getThemeType() {
-		int themeIndex = getSharedPreferences(mCurrentGame, MODE_PRIVATE).getInt("theme", -1);
-		if (themeIndex < 0 || themeIndex >= ThemeType.values().length) {
-			return ThemeType.MATERIAL_LIGHT;
-		}
-		return ThemeType.values()[themeIndex];
-	}
+        Log.d("onCreate()", "Finished");
+    }
 
-	public void setNewTheme(ThemeType theme) {
+    public ThemeType getThemeType() {
+        int themeIndex = getSharedPreferences(mCurrentGame, MODE_PRIVATE).getInt("theme", -1);
+        if (themeIndex < 0 || themeIndex >= ThemeType.values().length) {
+            return ThemeType.MATERIAL_LIGHT;
+        }
+        return ThemeType.values()[themeIndex];
+    }
 
-		Log.d("setNewTheme()", "Setting new theme "+getResources().getResourceName(theme.resId));
+    public void setNewTheme(ThemeType theme) {
 
-		finish();
-		Intent intent = new Intent(this, getClass());
-		intent.putExtra("theme", theme.ordinal());
+        Log.d("setNewTheme()", "Setting new theme " + getResources().getResourceName(theme.resId));
 
-		startActivity(intent);
+        finish();
+        Intent intent = new Intent(this, getClass());
+        intent.putExtra("theme", theme.ordinal());
+
+        startActivity(intent);
 //		overridePendingTransition(0, 0);
-	}
+    }
 
-	@Override
-	protected void onPause() {
-		autosave();
-		super.onPause();
-	}
+    @Override
+    protected void onPause() {
+        autosave();
+        super.onPause();
+    }
 
-	@Override
-	protected void onResume() {
-		super.onResume();
+    @Override
+    protected void onResume() {
+        super.onResume();
 //		mGameState.loadState(getSharedPreferences(mCurrentGame, MODE_PRIVATE));
-	}
+    }
 
-	@Override
-	protected void onPostResume() {
-		// NB Moved some stuff from onResume() into here to avoid committing Fragment transactions with state loss.
-		super.onPostResume();
-		loadCurrentScreen(getSharedPreferences(mCurrentGame, MODE_PRIVATE));
+    @Override
+    protected void onPostResume() {
+        // NB Moved some stuff from onResume() into here to avoid committing Fragment transactions with state loss.
+        super.onPostResume();
+        loadCurrentScreen(getSharedPreferences(mCurrentGame, MODE_PRIVATE));
 
-		if (mGameState.identifyStartup() && !mWelcomeShown) {
-			// Make sure only one of these ever appears, in case onPostResume() is called again before the dialog is dismissed.
-			if (getSupportFragmentManager().findFragmentByTag(IdentifyStartupDialog.class.getName()) == null) {
-				showDialogFragment(IdentifyStartupDialog.newInstance());
-			}
-		}
-	}
+        if (mGameState.identifyStartup() && !mWelcomeShown) {
+            // Make sure only one of these ever appears, in case onPostResume() is called again before the dialog is dismissed.
+            if (getSupportFragmentManager().findFragmentByTag(IdentifyStartupDialog.class.getName()) == null) {
+                showDialogFragment(IdentifyStartupDialog.newInstance());
+            }
+        }
+    }
 
-	public void autosave() {
-		saveState(getSharedPreferences(mCurrentGame, MODE_PRIVATE));
-	}
+    public void autosave() {
+        saveState(getSharedPreferences(mCurrentGame, MODE_PRIVATE));
+    }
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
 
-		ActionBar ab = getSupportActionBar();
-		TypedValue tv = new TypedValue();
+        ActionBar ab = getSupportActionBar();
+        TypedValue tv = new TypedValue();
 
-		ScreenType screenType = mCurrentScreen;
+        ScreenType screenType = mCurrentScreen;
 
-		if (screenType == null) {
-			// We're creating menu before the layouts are all ready, so stop and try again later
-			return false;
-		}
+        if (screenType == null) {
+            // We're creating menu before the layouts are all ready, so stop and try again later
+            return false;
+        }
 
-		if (screenType.docked) {
-			getMenuInflater().inflate(R.menu.shortcuts, menu);
+        if (screenType.docked) {
+            getMenuInflater().inflate(R.menu.shortcuts, menu);
 
-			if (getTheme().resolveAttribute(R.attr.actionBarBackgroundDocked, tv, true)) {
-				if (tv.type >= TypedValue.TYPE_FIRST_COLOR_INT && tv.type <= TypedValue.TYPE_LAST_COLOR_INT) {
-					ab.setBackgroundDrawable(new ColorDrawable(tv.data));
-				} else {
-					ab.setBackgroundDrawable(ResourcesCompat.getDrawable(getResources(), tv.resourceId, getTheme()));
-				}
-			}
+            if (getTheme().resolveAttribute(R.attr.actionBarBackgroundDocked, tv, true)) {
+                if (tv.type >= TypedValue.TYPE_FIRST_COLOR_INT && tv.type <= TypedValue.TYPE_LAST_COLOR_INT) {
+                    ab.setBackgroundDrawable(new ColorDrawable(tv.data));
+                } else {
+                    ab.setBackgroundDrawable(ResourcesCompat.getDrawable(getResources(), tv.resourceId, getTheme()));
+                }
+            }
 
-			ScreenType[] screens = ScreenType.dropdownValues();
-			for (int i = 0; i < SHORTCUT_IDS.length; i++) {
-				final MenuItem item = menu.findItem(SHORTCUT_IDS[i]);
-				final int screenIndex = getGameState().getShortcut(i+1);
-				final String title = getResources().getString(screens[screenIndex].titleId);
-				final String shortcut = getResources().getString(screens[screenIndex].shortcutId);
-				item.setTitle(title);
-				item.setTitleCondensed(shortcut);
-				item.setAlphabeticShortcut(shortcut.charAt(0));
-				final ShortcutButton button = (ShortcutButton) ((FrameLayout) MenuItemCompat.getActionView(item)).getChildAt(0);
-				button.setMenuItem(item);
-				button.setOnClickListener(new View.OnClickListener() {
+            ScreenType[] screens = ScreenType.dropdownValues();
+            for (int i = 0; i < SHORTCUT_IDS.length; i++) {
+                final MenuItem item = menu.findItem(SHORTCUT_IDS[i]);
+                final int screenIndex = getGameState().getShortcut(i + 1);
+                final String title = getResources().getString(screens[screenIndex].titleId);
+                final String shortcut = getResources().getString(screens[screenIndex].shortcutId);
+                item.setTitle(title);
+                item.setTitleCondensed(shortcut);
+                item.setAlphabeticShortcut(shortcut.charAt(0));
+                final ShortcutButton button = (ShortcutButton) ((FrameLayout) MenuItemCompat.getActionView(item)).getChildAt(0);
+                button.setMenuItem(item);
+                button.setOnClickListener(new View.OnClickListener() {
 
-					@Override
-					public void onClick(View v) {
-						onOptionsItemSelected(item);
-					}
+                    @Override
+                    public void onClick(View v) {
+                        onOptionsItemSelected(item);
+                    }
 
-				});
-			}
+                });
+            }
 
-			mTitleText.setText(screenType.titleId);
-			mTitleIcon.setVisibility(View.GONE);
+            mTitleText.setText(screenType.titleId);
+            mTitleIcon.setVisibility(View.GONE);
 
-			getTheme().resolveAttribute(R.attr.actionBarTitleBackground, tv, true);
-			mTitleView.setBackgroundResource(tv.resourceId);
+            getTheme().resolveAttribute(R.attr.actionBarTitleBackground, tv, true);
+            mTitleView.setBackgroundResource(tv.resourceId);
 
-		} else {
+        } else {
 
-			if (getTheme().resolveAttribute(R.attr.actionBarBackgroundDefault, tv, true)) {
-				if (tv.type >= TypedValue.TYPE_FIRST_COLOR_INT && tv.type <= TypedValue.TYPE_LAST_COLOR_INT) {
-					ab.setBackgroundDrawable(new ColorDrawable(tv.data));
-				} else {
-					ab.setBackgroundDrawable(ResourcesCompat.getDrawable(getResources(), tv.resourceId, getTheme()));
-				}
-			}
+            if (getTheme().resolveAttribute(R.attr.actionBarBackgroundDefault, tv, true)) {
+                if (tv.type >= TypedValue.TYPE_FIRST_COLOR_INT && tv.type <= TypedValue.TYPE_LAST_COLOR_INT) {
+                    ab.setBackgroundDrawable(new ColorDrawable(tv.data));
+                } else {
+                    ab.setBackgroundDrawable(ResourcesCompat.getDrawable(getResources(), tv.resourceId, getTheme()));
+                }
+            }
 
-			if (getCurrentScreenType() == ScreenType.ENCOUNTER) {
-				mTitleText.setText(R.string.screen_encounter);
-				mTitleIcon.setVisibility(View.GONE);
-			} else {
-				mTitleText.setText(R.string.app_name);
-				mTitleIcon.setVisibility(getThemeType().isMaterialTheme? View.GONE : View.VISIBLE);
-			}
+            if (getCurrentScreenType() == ScreenType.ENCOUNTER) {
+                mTitleText.setText(R.string.screen_encounter);
+                mTitleIcon.setVisibility(View.GONE);
+            } else {
+                mTitleText.setText(R.string.app_name);
+                mTitleIcon.setVisibility(getThemeType().isMaterialTheme ? View.GONE : View.VISIBLE);
+            }
 
-			getTheme().resolveAttribute(R.attr.actionBarTitleBackground, tv, true);
-			mTitleView.setBackgroundResource(tv.resourceId);
-		}
+            getTheme().resolveAttribute(R.attr.actionBarTitleBackground, tv, true);
+            mTitleView.setBackgroundResource(tv.resourceId);
+        }
 
-		refreshExtraShortcuts();
+        refreshExtraShortcuts();
 
-		boolean out = super.onCreateOptionsMenu(menu);
-		Log.d("onCreateOptionsMenu()", "Options menu (re-)created!");
-		return out;
-	}
+        boolean out = super.onCreateOptionsMenu(menu);
+        Log.d("onCreateOptionsMenu()", "Options menu (re-)created!");
+        return out;
+    }
 
-	public void refreshExtraShortcuts() {
-		mFooter.setVisibility(getGameState().extraShortcuts() && getCurrentScreenType().docked ? View.VISIBLE : View.GONE);
-	}
+    public void refreshExtraShortcuts() {
+        mFooter.setVisibility(getGameState().extraShortcuts() && getCurrentScreenType().docked ? View.VISIBLE : View.GONE);
+    }
 
-	private boolean hasWriteExternalPermission() {
-		PackageManager pm = getPackageManager();
-		int hasPerm = pm.checkPermission(
-				android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-				getPackageName());
-		return hasPerm == PackageManager.PERMISSION_GRANTED;
-	}
+    private boolean hasWriteExternalPermission() {
+        PackageManager pm = getPackageManager();
+        int hasPerm = pm.checkPermission(
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                getPackageName());
+        return hasPerm == PackageManager.PERMISSION_GRANTED;
+    }
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
 
-		if (item.getGroupId() == R.id.menu_group_shortcuts) {
-			for (int i = 0; i < mShortcutKeys.length; i++) {
-				if (item.getAlphabeticShortcut() == mShortcutKeys[i]) {
-					setCurrentScreenType(ScreenType.values()[i]);
-					return true;
-				}
+        if (item.getGroupId() == R.id.menu_group_shortcuts) {
+            for (int i = 0; i < mShortcutKeys.length; i++) {
+                if (item.getAlphabeticShortcut() == mShortcutKeys[i]) {
+                    setCurrentScreenType(ScreenType.values()[i]);
+                    return true;
+                }
 
-			}
-			return false;
-		}
-		return onOptionsItemSelectedWithId(item.getItemId()) || super.onOptionsItemSelected(item);
-	}
+            }
+            return false;
+        }
+        return onOptionsItemSelectedWithId(item.getItemId()) || super.onOptionsItemSelected(item);
+    }
 
-	@Override
-	public boolean onDropDownItemClick(MenuItem item) {
+    @Override
+    public boolean onDropDownItemClick(MenuItem item) {
 
-		if (item == null) return false;
+        if (item == null) return false;
 
-		if (item.getGroupId() == R.id.menu_group_command) {
-			for (int i = 0; i < mShortcutKeys.length; i++) {
-				if (item.getAlphabeticShortcut() == mShortcutKeys[i]) {
-					setCurrentScreenType(ScreenType.values()[i]);
-					return true;
-				}
+        if (item.getGroupId() == R.id.menu_group_command) {
+            for (int i = 0; i < mShortcutKeys.length; i++) {
+                if (item.getAlphabeticShortcut() == mShortcutKeys[i]) {
+                    setCurrentScreenType(ScreenType.values()[i]);
+                    return true;
+                }
 
-			}
-			return true;
-		}
+            }
+            return true;
+        }
 
-		return onOptionsItemSelectedWithId(item.getItemId());
-	}
+        return onOptionsItemSelectedWithId(item.getItemId());
+    }
 
-	private boolean onOptionsItemSelectedWithId(int id) {
+    private boolean onOptionsItemSelectedWithId(int id) {
 
-		Log.d("","Selecting menu item with id "+getResources().getResourceEntryName(id));
+        Log.d("", "Selecting menu item with id " + getResources().getResourceEntryName(id));
 
         if (id == R.id.menu_keyboard) {
-			// NB developer mode only for debugging.
+            // NB developer mode only for debugging.
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
             return true;
         } else if (id == R.id.menu_crash) {
-			// NB developer mode only for debugging.
+            // NB developer mode only for debugging.
             throw new Error("Intentional crash for stack trace debugging");
         } else if (id == R.id.menu_options) {
             showDialogFragment(OptionsDialog.newInstance());
@@ -677,7 +679,7 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
             showDialogFragment(HelpDialog.newInstance(R.string.help_travelling));
             return true;
         } else if (id == R.id.menu_help_documentation) {
-			// Show the documentation html file from the original game, in a webview
+            // Show the documentation html file from the original game, in a webview
             Intent intent = new Intent(this, DocumentationActivity.class);
             intent.putExtra("theme", getThemeType());
             startActivity(intent);
@@ -686,80 +688,79 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
             startMenuActionMode();
             return true;
         }
-		return false;
-	}
+        return false;
+    }
 
-	@Override
-	public boolean onTouchEvent(MotionEvent event) {
-		if (mActionMode != null) {
-			switch (MotionEventCompat.getActionMasked(event)) {
-				case MotionEvent.ACTION_DOWN:
-				case MotionEvent.ACTION_POINTER_DOWN:
-					finishMenuActionMode();
-					return true;
-			}
-		}
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (mActionMode != null) {
+            switch (MotionEventCompat.getActionMasked(event)) {
+                case MotionEvent.ACTION_DOWN:
+                case MotionEvent.ACTION_POINTER_DOWN:
+                    finishMenuActionMode();
+                    return true;
+            }
+        }
 
-		return super.onTouchEvent(event);
-
-
-	}
+        return super.onTouchEvent(event);
 
 
-	@Override
-	public void onBackPressed() {
-		if (finishMenuActionMode()) return;
+    }
 
-		if (mGameState.recallScreens() && mBackStack.size() > 0) {
-			setCurrentScreenType(mBackStack.removeFirst(), false);
-			Log.d("onBackPressed()", "Popping back stack. Remaining states: " + mBackStack.size());
-		}
-		else {
-			showExitDialog();
-		}
-	}
 
-	private void showExitDialog() {
-		BaseDialog dialog = ConfirmDialog.newInstance(
-				R.string.dialog_exit_title,
-				R.string.dialog_exit_message,
-				R.string.help_exit,
-				new OnConfirmListener() {
-			@Override
-			public void onConfirm() {
-				new Handler().post(new Runnable() {
-					@Override
-					public void run() {
-						MainActivity.super.onBackPressed();
-					}
-				});
-			}
-		}, null);
-		showDialogFragment(dialog);
-	}
+    @Override
+    public void onBackPressed() {
+        if (finishMenuActionMode()) return;
 
-	public GameState getGameState() {
-		return mGameState;
-	}
+        if (mGameState.recallScreens() && mBackStack.size() > 0) {
+            setCurrentScreenType(mBackStack.removeFirst(), false);
+            Log.d("onBackPressed()", "Popping back stack. Remaining states: " + mBackStack.size());
+        } else {
+            showExitDialog();
+        }
+    }
 
-	public void clearBackStack() {
-		mBackStack.clear();
-	}
+    private void showExitDialog() {
+        BaseDialog dialog = ConfirmDialog.newInstance(
+                R.string.dialog_exit_title,
+                R.string.dialog_exit_message,
+                R.string.help_exit,
+                new OnConfirmListener() {
+                    @Override
+                    public void onConfirm() {
+                        new Handler().post(new Runnable() {
+                            @Override
+                            public void run() {
+                                MainActivity.super.onBackPressed();
+                            }
+                        });
+                    }
+                }, null);
+        showDialogFragment(dialog);
+    }
 
-	public void showDialogFragment(BaseDialog dialog) {
-		
-		String tag = dialog.getClass().getName();
-		Log.d("showDialogFragment()", "Showing fragment "+tag);
-		
-		if (mShowingDialog) {
-			Log.d("showDialogFragment()", "Previous dialog display already in progress!");
-			if (!mDialogQueue.contains(dialog)) mDialogQueue.addFirst(dialog);
-			return;
-		}
-		
-		mShowingDialog = true;
-		
-		FragmentManager fm = getSupportFragmentManager();
+    public GameState getGameState() {
+        return mGameState;
+    }
+
+    public void clearBackStack() {
+        mBackStack.clear();
+    }
+
+    public void showDialogFragment(BaseDialog dialog) {
+
+        String tag = dialog.getClass().getName();
+        Log.d("showDialogFragment()", "Showing fragment " + tag);
+
+        if (mShowingDialog) {
+            Log.d("showDialogFragment()", "Previous dialog display already in progress!");
+            if (!mDialogQueue.contains(dialog)) mDialogQueue.addFirst(dialog);
+            return;
+        }
+
+        mShowingDialog = true;
+
+        FragmentManager fm = getSupportFragmentManager();
 //		FragmentTransaction ft = fm.beginTransaction();
 //		Fragment prev = fm.findFragmentByTag(tag);
 //		if (prev != null) {
@@ -767,362 +768,366 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 //		}
 //		ft.addToBackStack(null);
 
-		if (getCurrentScreenType() == ScreenType.ENCOUNTER) getGameState().clearButtonAction();
-		
-		// Show the dialog.
-		dialog.show(fm, tag);
-	}
-	
-	private void startMenuActionMode() {
+        if (getCurrentScreenType() == ScreenType.ENCOUNTER) getGameState().clearButtonAction();
 
-		if (mActionMode != null) {
-			return;
-		}
-		
-		if (getCurrentScreenType() == ScreenType.ENCOUNTER) getGameState().clearButtonAction();
-		
-		mActionMode = startSupportActionMode(this);
-	}
+        // Show the dialog.
+        dialog.show(fm, tag);
+    }
 
-	@Override
-	public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-		Log.d("Menu Item Click","Preparing Menu ActionMode");
-		// Do nothing
-		return false;
-	}
+    private void startMenuActionMode() {
 
-	@Override
-	public void onDestroyActionMode(ActionMode mode) {
-		Log.d("Menu Item Click", "Destroying Menu ActionMode");
-		mActionMode = null;
-		mMenuTouchInterceptor = null;
-		mDraggingMenuOpen = false;
+        if (mActionMode != null) {
+            return;
+        }
 
-		for (int i = 0; i < mPopups.length; i++) {
-			MenuDropDownWindow popup = mPopups[i];
-			if (popup != null) popup.dismiss();
-			mPopups[i] = null;
-		}
-	}
+        if (getCurrentScreenType() == ScreenType.ENCOUNTER) getGameState().clearButtonAction();
 
-	@Override
-	public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-		Log.d("Menu Item Click","Creating Menu ActionMode");
-		Context context = MainActivity.this;//getSupportActionBar().getThemedContext();
-		@SuppressLint("InflateParams") // We have no parent view to pass to inflate()
-		View view = LayoutInflater.from(context).inflate(R.layout.menu_action_mode_dropdowns, null);
-		final View command =  view.findViewById(R.id.menu_command);
-		final View game = view.findViewById(R.id.menu_game);
-		final View help = view.findViewById(R.id.menu_help);
+        mActionMode = startSupportActionMode(this);
+    }
 
-		// Remove outlines which appear in lollipop because they're being drawn for buttons and these need to look like spinners
-		removeOutline(command, game, help);
+    @Override
+    public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+        Log.d("Menu Item Click", "Preparing Menu ActionMode");
+        // Do nothing
+        return false;
+    }
 
+    @Override
+    public void onDestroyActionMode(ActionMode mode) {
+        Log.d("Menu Item Click", "Destroying Menu ActionMode");
+        mActionMode = null;
+        mMenuTouchInterceptor = null;
+        mDraggingMenuOpen = false;
 
-		final MenuTouchInterceptor intercepter = (MenuTouchInterceptor) view.findViewById(R.id.touch_intercepter);
-		intercepter.requestFocus();
+        for (int i = 0; i < mPopups.length; i++) {
+            MenuDropDownWindow popup = mPopups[i];
+            if (popup != null) popup.dismiss();
+            mPopups[i] = null;
+        }
+    }
+
+    @Override
+    public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+        Log.d("Menu Item Click", "Creating Menu ActionMode");
+        Context context = MainActivity.this;//getSupportActionBar().getThemedContext();
+        @SuppressLint("InflateParams") // We have no parent view to pass to inflate()
+        View view = LayoutInflater.from(context).inflate(R.layout.menu_action_mode_dropdowns, null);
+        final View command = view.findViewById(R.id.menu_command);
+        final View game = view.findViewById(R.id.menu_game);
+        final View help = view.findViewById(R.id.menu_help);
+
+        // Remove outlines which appear in lollipop because they're being drawn for buttons and these need to look like spinners
+        removeOutline(command, game, help);
 
 
-		final boolean showCommand = getCurrentScreenType().docked;
-		if (showCommand) {
-			intercepter.addForwardingView(command);
-
-			Menu commandMenu = new MenuBuilder(context);
-			getMenuInflater().inflate(R.menu.command, commandMenu);
-			final MenuDropDownWindow commandDropdown = new MenuDropDownWindow(MainActivity.this, command, commandMenu);
-			commandDropdown.setOnDropDownItemClickListener(this);
-			mPopups[0] = commandDropdown;
-
-			// If we call commandDropdown,show() directly, the anchor view isn't ready yet, but this works.
-			if (!mDraggingMenuOpen) {
-				command.post(new Runnable() {
-					@Override
-					public void run() {
-						commandDropdown.show();
-					}
-				});
-			}
-
-		} else {
-			command.setVisibility(View.GONE);
-		}
-
-		intercepter.addForwardingView(game);
-		Menu gameMenu = new MenuBuilder(context);
-		getMenuInflater().inflate(R.menu.game, gameMenu);
-		if (!getGameState().developerMode())
-			gameMenu.removeGroup(R.id.menu_group_extra);    // Dev options eg call keyboard for testing.
-		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT && !hasWriteExternalPermission()) {
-			gameMenu.removeItem(R.id.menu_savegame);
-		}
-		if (!getCurrentScreenType().docked) {
-			gameMenu.removeItem(R.id.menu_retire);
-		}
-		final MenuDropDownWindow gameDropdown = new MenuDropDownWindow(MainActivity.this, game, gameMenu);
-		gameDropdown.setOnDropDownItemClickListener(this);
-		mPopups[1] = gameDropdown;
-
-		intercepter.addForwardingView(help);
-		Menu helpMenu = new MenuBuilder(context);
-		getMenuInflater().inflate(R.menu.help, helpMenu);
-		final MenuDropDownWindow helpDropdown = new MenuDropDownWindow(MainActivity.this, help, helpMenu);
-		helpDropdown.setOnDropDownItemClickListener(this);
-		mPopups[2] = helpDropdown;
+        final MenuTouchInterceptor intercepter = (MenuTouchInterceptor) view.findViewById(R.id.touch_intercepter);
+        intercepter.requestFocus();
 
 
-		intercepter.post(new Runnable() {
-			@Override
-			public void run() {
-				intercepter.setActiveView(showCommand? command : game);
-				mMenuTouchInterceptor = intercepter;
-			}
-		});
+        final boolean showCommand = getCurrentScreenType().docked;
+        if (showCommand) {
+            intercepter.addForwardingView(command);
+
+            Menu commandMenu = new MenuBuilder(context);
+            getMenuInflater().inflate(R.menu.command, commandMenu);
+            final MenuDropDownWindow commandDropdown = new MenuDropDownWindow(MainActivity.this, command, commandMenu);
+            commandDropdown.setOnDropDownItemClickListener(this);
+            mPopups[0] = commandDropdown;
+
+            // If we call commandDropdown,show() directly, the anchor view isn't ready yet, but this works.
+            if (!mDraggingMenuOpen) {
+                command.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        commandDropdown.show();
+                    }
+                });
+            }
+
+        } else {
+            command.setVisibility(View.GONE);
+        }
+
+        intercepter.addForwardingView(game);
+        Menu gameMenu = new MenuBuilder(context);
+        getMenuInflater().inflate(R.menu.game, gameMenu);
+        if (!getGameState().developerMode())
+            gameMenu.removeGroup(R.id.menu_group_extra);    // Dev options eg call keyboard for testing.
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT && !hasWriteExternalPermission()) {
+            gameMenu.removeItem(R.id.menu_savegame);
+        }
+        if (!getCurrentScreenType().docked) {
+            gameMenu.removeItem(R.id.menu_retire);
+        }
+        final MenuDropDownWindow gameDropdown = new MenuDropDownWindow(MainActivity.this, game, gameMenu);
+        gameDropdown.setOnDropDownItemClickListener(this);
+        mPopups[1] = gameDropdown;
+
+        intercepter.addForwardingView(help);
+        Menu helpMenu = new MenuBuilder(context);
+        getMenuInflater().inflate(R.menu.help, helpMenu);
+        final MenuDropDownWindow helpDropdown = new MenuDropDownWindow(MainActivity.this, help, helpMenu);
+        helpDropdown.setOnDropDownItemClickListener(this);
+        mPopups[2] = helpDropdown;
 
 
-		mode.setCustomView(view);
-		view.startAnimation(AnimationUtils.loadAnimation(context, android.support.v7.appcompat.R.anim.abc_fade_in));
+        intercepter.post(new Runnable() {
+            @Override
+            public void run() {
+                intercepter.setActiveView(showCommand ? command : game);
+                mMenuTouchInterceptor = intercepter;
+            }
+        });
+
+
+        mode.setCustomView(view);
+        view.startAnimation(AnimationUtils.loadAnimation(context, android.support.v7.appcompat.R.anim.abc_fade_in));
 
 //		// This doesn't work because the initial dropdown.show() is not lined up correctly
 //		MenuItem dropdowns = menu.add("");
 //		MenuItemCompat.setActionView(dropdowns, view);
 
-		return true;
-	}
+        return true;
+    }
 
-	@Override
-	public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-		Log.d("Menu Item Click","Clicking Menu ActionMode");
-		// Do nothing
-		return false;
-	}
-	
-	@TargetApi(Build.VERSION_CODES.LOLLIPOP)
-	private static void removeOutline(View... views) {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-			for (View view : views) {
-				view.setOutlineProvider(null);
-				view.setStateListAnimator(null);
-			}
-		}
-	}
-	
-	boolean finishMenuActionMode() {
-		Log.d("Menu Item Click", "Finishing Menu ActionMode");
-		if (mActionMode != null) {
-			mActionMode.finish();
-			mActionMode = null;
-			return true;
-		}
-		return false;
-	}
-	
-	public BaseScreen getCurrentScreen() {
-		return (BaseScreen) getSupportFragmentManager().findFragmentByTag(getResources().getString(mCurrentScreen.titleId));
-	}
+    @Override
+    public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+        Log.d("Menu Item Click", "Clicking Menu ActionMode");
+        // Do nothing
+        return false;
+    }
 
-	public ScreenType getCurrentScreenType() {
-		return mCurrentScreen;
-	}
-	
-	void showQueuedDialog() {
-		if (mDialogQueue.isEmpty()) return;
-		
-		showDialogFragment(mDialogQueue.removeFirst());
-	}
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private static void removeOutline(View... views) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            for (View view : views) {
+                view.setOutlineProvider(null);
+                view.setStateListAnimator(null);
+            }
+        }
+    }
 
-	public void setCurrentScreenType(ScreenType type) {
-		setCurrentScreenType(type, true);
-	}
+    boolean finishMenuActionMode() {
+        Log.d("Menu Item Click", "Finishing Menu ActionMode");
+        if (mActionMode != null) {
+            mActionMode.finish();
+            mActionMode = null;
+            return true;
+        }
+        return false;
+    }
 
-	private void setCurrentScreenType(ScreenType type, boolean addToBackStack) {
-		Log.i(GameState.LOG_TAG,"Showing screen: "+type.toXmlString(getResources()));
+    public BaseScreen getCurrentScreen() {
+        return (BaseScreen) getSupportFragmentManager().findFragmentByTag(getResources().getString(mCurrentScreen.titleId));
+    }
 
-		ScreenType prevType = getCurrentScreenType();
-		finishMenuActionMode();
+    public ScreenType getCurrentScreenType() {
+        return mCurrentScreen;
+    }
 
-		BaseScreen next = type.creator.newInstance();
+    void showQueuedDialog() {
+        if (mDialogQueue.isEmpty()) return;
 
-		FragmentManager fm = getSupportFragmentManager();
-		FragmentTransaction ft = fm.beginTransaction();
-		ft.replace(R.id.container, next, getResources().getString(type.titleId));
+        showDialogFragment(mDialogQueue.removeFirst());
+    }
+
+    public void setCurrentScreenType(ScreenType type) {
+        setCurrentScreenType(type, true);
+    }
+
+    private void setCurrentScreenType(ScreenType type, boolean addToBackStack) {
+        Log.i(GameState.LOG_TAG, "Showing screen: " + type.toXmlString(getResources()));
+
+        ScreenType prevType = getCurrentScreenType();
+        finishMenuActionMode();
+
+        BaseScreen next = type.creator.newInstance();
+
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.container, next, getResources().getString(type.titleId));
 //		if (type != prevType) ft.setTransition(addToBackStack? FragmentTransaction.TRANSIT_FRAGMENT_OPEN : FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
-		ft.commit();
+        ft.commit();
 
-		if (addToBackStack && prevType != null && type.docked && prevType.docked && type != prevType) {
-			mBackStack.addFirst(prevType);
-			Log.d("setCurrentScreen()", "Adding " + prevType + " to back stack. Total size is " + mBackStack.size());
-		} else if (addToBackStack && type != prevType) {
-			mBackStack.clear();
-			Log.d("setCurrentScreen()", "Clearing back stack.");
-		}
+        if (addToBackStack && prevType != null && type.docked && prevType.docked && type != prevType) {
+            mBackStack.addFirst(prevType);
+            Log.d("setCurrentScreen()", "Adding " + prevType + " to back stack. Total size is " + mBackStack.size());
+        } else if (addToBackStack && type != prevType) {
+            mBackStack.clear();
+            Log.d("setCurrentScreen()", "Clearing back stack.");
+        }
 
-		mCurrentScreen = type;
-		
-		if (prevType == null || !type.docked || !prevType.docked) supportInvalidateOptionsMenu();
-		else mTitleText.setText(type.titleId);	// If we don't recreate menu than we must update title here instead.
+        mCurrentScreen = type;
 
-	}
+        if (prevType == null || !type.docked || !prevType.docked) supportInvalidateOptionsMenu();
+        else
+            mTitleText.setText(type.titleId);    // If we don't recreate menu than we must update title here instead.
 
-	public BaseDialog findDialogByClass(Class<? extends BaseDialog> tag) {
-		return ((BaseDialog) getSupportFragmentManager().findFragmentByTag(tag.getName()));
-	}
+    }
 
-	@Override
-	public boolean dispatchKeyEvent(@NonNull KeyEvent event) {
-		int keyCode = event.getKeyCode();
-		boolean keyDown = event.getMetaState() == 0 && event.getAction() == KeyEvent.ACTION_DOWN;
+    public BaseDialog findDialogByClass(Class<? extends BaseDialog> tag) {
+        return ((BaseDialog) getSupportFragmentManager().findFragmentByTag(tag.getName()));
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(@NonNull KeyEvent event) {
+        int keyCode = event.getKeyCode();
+        boolean keyDown = event.getMetaState() == 0 && event.getAction() == KeyEvent.ACTION_DOWN;
 //		boolean keyDown = event.getAction() == KeyEvent.ACTION_DOWN;
 
-		if (getCurrentScreenType().docked && keyDown) {
-			char shortcut = event.getMatch(mShortcutKeys);
-			if (shortcut > 0) for (int i = 0; i < mShortcutKeys.length; i++) {
-				if (shortcut == mShortcutKeys[i]) {
-					setCurrentScreenType(ScreenType.values()[i]);
-					return true;
-				}
-			}
-		}
-		switch (keyCode) {
-		case KeyEvent.KEYCODE_O:
-			
-			if (keyDown) showDialogFragment(OptionsDialog.newInstance());
-			return true;
-			
-		case KeyEvent.KEYCODE_H:
-			if (keyDown) showDialogFragment(HelpDialog.newInstance(getCurrentScreen().getHelpTextResId()));
-			return true;
+        if (getCurrentScreenType().docked && keyDown) {
+            char shortcut = event.getMatch(mShortcutKeys);
+            if (shortcut > 0) for (int i = 0; i < mShortcutKeys.length; i++) {
+                if (shortcut == mShortcutKeys[i]) {
+                    setCurrentScreenType(ScreenType.values()[i]);
+                    return true;
+                }
+            }
+        }
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_O:
 
-		case KeyEvent.KEYCODE_VOLUME_UP:
-		case KeyEvent.KEYCODE_VOLUME_DOWN:
-			if (!getGameState().volumeScroll()) break;
+                if (keyDown) showDialogFragment(OptionsDialog.newInstance());
+                return true;
 
-			switch (getCurrentScreenType()) {
-			case TARGET:
-			case AVGPRICES:
-			case CHART:
-				if (keyDown) return mGameState.scrollSystem(keyCode == KeyEvent.KEYCODE_VOLUME_DOWN);
-				else return true;
-			default:
-				// Drop to super call for default volume-change behavior
-				break;
-			}
-			break;
-			
-		case KeyEvent.KEYCODE_BACK:
-			if (event.isLongPress() && keyDown) {
-				findViewById(R.id.dummy_back_button).performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
-				showExitDialog();
-				return true;
-			}
-			// Otherwise, we use default key-handling, and push through to onBackPressed().
-			break;
-			
-		case KeyEvent.KEYCODE_MENU:
-			if (getCurrentScreenType() == ScreenType.ENCOUNTER) getGameState().clearButtonAction();
-			if (event.getAction() == KeyEvent.ACTION_UP && event.getRepeatCount() == 0) {
-				if (mActionMode == null) {
-					startMenuActionMode();
-				} else {
-					finishMenuActionMode();
-				}
-			}
-			return true;
+            case KeyEvent.KEYCODE_H:
+                if (keyDown)
+                    showDialogFragment(HelpDialog.newInstance(getCurrentScreen().getHelpTextResId()));
+                return true;
 
-		}
-		return super.dispatchKeyEvent(event);
-	}
+            case KeyEvent.KEYCODE_VOLUME_UP:
+            case KeyEvent.KEYCODE_VOLUME_DOWN:
+                if (!getGameState().volumeScroll()) break;
 
-	private void saveState(SharedPreferences prefs) {
-		SharedPreferences.Editor editor = prefs.edit();
-		
-		editor.clear();	// We're going to rewrite everything, so make sure we're starting from a blank slate.
+                switch (getCurrentScreenType()) {
+                    case TARGET:
+                    case AVGPRICES:
+                    case CHART:
+                        if (keyDown)
+                            return mGameState.scrollSystem(keyCode == KeyEvent.KEYCODE_VOLUME_DOWN);
+                        else return true;
+                    default:
+                        // Drop to super call for default volume-change behavior
+                        break;
+                }
+                break;
 
-		editor.putInt("theme", getThemeType().ordinal());
+            case KeyEvent.KEYCODE_BACK:
+                if (event.isLongPress() && keyDown) {
+                    findViewById(R.id.dummy_back_button).performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+                    showExitDialog();
+                    return true;
+                }
+                // Otherwise, we use default key-handling, and push through to onBackPressed().
+                break;
 
-		editor.putInt("screen type", getCurrentScreenType().ordinal());
+            case KeyEvent.KEYCODE_MENU:
+                if (getCurrentScreenType() == ScreenType.ENCOUNTER)
+                    getGameState().clearButtonAction();
+                if (event.getAction() == KeyEvent.ACTION_UP && event.getRepeatCount() == 0) {
+                    if (mActionMode == null) {
+                        startMenuActionMode();
+                    } else {
+                        finishMenuActionMode();
+                    }
+                }
+                return true;
 
-		editor.putBoolean("game started", !(getCurrentScreenType() == ScreenType.TITLE || getCurrentScreenType() == ScreenType.ENDGAME));
-		
-		int s = mBackStack.size();
-		editor.putInt("backstack size", s);
-		for (int i = 0; i < s; i++) {
-			editor.putInt("backstack_"+i, mBackStack.get(i).ordinal());
-		}
-		
-		mGameState.saveState(editor);
-		
-		editor.commit();
-		
-		new BackupManager(this).dataChanged();
-	}
-	
-	private void loadState(SharedPreferences prefs) {
-		Log.d("loadState()","Begin loading state");
-		mGameState.loadState(prefs);
-		loadCurrentScreen(prefs);
-		Log.d("loadState()","Finished loading state");
-	}
+        }
+        return super.dispatchKeyEvent(event);
+    }
 
-	private void loadCurrentScreen(SharedPreferences prefs) {
+    private void saveState(SharedPreferences prefs) {
+        SharedPreferences.Editor editor = prefs.edit();
 
-		if (Application.DEVELOPER_MODE) {
+        editor.clear();    // We're going to rewrite everything, so make sure we're starting from a blank slate.
 
-			// Give user choice to avoid losing savegame in the event of an error. In public release will just error normally without try/catch.
-			try {
-				setCurrentScreenType(ScreenType.values()[prefs.getInt("screen type", ScreenType.TITLE.ordinal())], false);
-			} catch (final Exception e) {
-				e.printStackTrace();
+        editor.putInt("theme", getThemeType().ordinal());
 
-				showDialogFragment(ConfirmDialog.newInstance(
-						"Load Game Failed!",
-						"An error occured loading savegame. Would you like to scrap it and start over?",
-						-1,
-						new OnConfirmListener() {
+        editor.putInt("screen type", getCurrentScreenType().ordinal());
 
-							@Override
-							public void onConfirm() {
-								setCurrentScreenType(ScreenType.TITLE);
-							}
-						},
-						new OnCancelListener() {
+        editor.putBoolean("game started", !(getCurrentScreenType() == ScreenType.TITLE || getCurrentScreenType() == ScreenType.ENDGAME));
 
-							@Override
-							public void onCancel() {
-								throw new RuntimeException(e);
-							}
-						}));
+        int s = mBackStack.size();
+        editor.putInt("backstack size", s);
+        for (int i = 0; i < s; i++) {
+            editor.putInt("backstack_" + i, mBackStack.get(i).ordinal());
+        }
 
-			}
+        mGameState.saveState(editor);
 
-		} else {
-			setCurrentScreenType(ScreenType.values()[prefs.getInt("screen type", ScreenType.TITLE.ordinal())], false);
-		}
+        editor.commit();
 
-		mBackStack.clear();
-		for (int i = 0, s = prefs.getInt("backstack size", 0); i < s; i++) {
-			mBackStack.add(ScreenType.values()[prefs.getInt("backstack_"+i, 0)]);
-		}
+        new BackupManager(this).dataChanged();
+    }
 
-		supportInvalidateOptionsMenu();
-	}
+    private void loadState(SharedPreferences prefs) {
+        Log.d("loadState()", "Begin loading state");
+        mGameState.loadState(prefs);
+        loadCurrentScreen(prefs);
+        Log.d("loadState()", "Finished loading state");
+    }
 
-	void startClick() {
-		mClicking = true;
+    private void loadCurrentScreen(SharedPreferences prefs) {
+
+        if (Application.DEVELOPER_MODE) {
+
+            // Give user choice to avoid losing savegame in the event of an error. In public release will just error normally without try/catch.
+            try {
+                setCurrentScreenType(ScreenType.values()[prefs.getInt("screen type", ScreenType.TITLE.ordinal())], false);
+            } catch (final Exception e) {
+                e.printStackTrace();
+
+                showDialogFragment(ConfirmDialog.newInstance(
+                        "Load Game Failed!",
+                        "An error occured loading savegame. Would you like to scrap it and start over?",
+                        -1,
+                        new OnConfirmListener() {
+
+                            @Override
+                            public void onConfirm() {
+                                setCurrentScreenType(ScreenType.TITLE);
+                            }
+                        },
+                        new OnCancelListener() {
+
+                            @Override
+                            public void onCancel() {
+                                throw new RuntimeException(e);
+                            }
+                        }));
+
+            }
+
+        } else {
+            setCurrentScreenType(ScreenType.values()[prefs.getInt("screen type", ScreenType.TITLE.ordinal())], false);
+        }
+
+        mBackStack.clear();
+        for (int i = 0, s = prefs.getInt("backstack size", 0); i < s; i++) {
+            mBackStack.add(ScreenType.values()[prefs.getInt("backstack_" + i, 0)]);
+        }
+
+        supportInvalidateOptionsMenu();
+    }
+
+    void startClick() {
+        mClicking = true;
 //		Log.v("click","Start click");
-	}
+    }
 
-	void finishClick() {
-		mClicking = false;
+    void finishClick() {
+        mClicking = false;
 //		Log.v("click","Finish click");
-	}
-	
-	boolean isClicking() {
-		return mShowingDialog || mClicking;
-	}
-	
-	void reportDialogShown() {
-		mShowingDialog = false;
-	}
+    }
+
+    boolean isClicking() {
+        return mShowingDialog || mClicking;
+    }
+
+    void reportDialogShown() {
+        mShowingDialog = false;
+    }
 
 //	public void onSaveInstanceState(Bundle outState) {
 //		super.onSaveInstanceState(outState);
@@ -1137,7 +1142,7 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 //		SharedPreferences prefs = getSharedPreferences(mCurrentGame, MODE_PRIVATE);
 //		loadState(prefs);
 //	}
-	
+
 //	private void saveStateToPreferences(Bundle state, SharedPreferences prefs) {
 //		SharedPreferences.Editor editor = prefs.edit();
 //
@@ -1175,108 +1180,108 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 //			}
 //		}
 //	}
-	
-	private void saveSnapshot() {
-		if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-			showDialogFragment(SimpleDialog.newInstance(R.string.dialog_cannotsave_title, R.string.dialog_cannotsave_message, R.string.help_cannotsave));
-			return;
-		}
-		
-		SharedPreferences prefs = getSharedPreferences(mCurrentGame, MODE_PRIVATE);
-		saveState(prefs);
-		Map<String, ?> map = prefs.getAll();
-		
-		File file = new File(ActivityCompat.getExternalFilesDirs(this, null)[0], SAVEFILE);
-		try {
-			FileOutputStream fos = new FileOutputStream(file);
-			OutputStreamWriter osw = new OutputStreamWriter(fos);
-			BufferedWriter bw = new BufferedWriter(osw);
-			for (String key : map.keySet()) {
-				bw.write(map.get(key).getClass().getSimpleName()+","+key+","+map.get(key)+"\n");
-			}
-			bw.close();
-			osw.close();
-			fos.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-			showDialogFragment(SimpleDialog.newInstance(R.string.dialog_cannotsave_title, R.string.dialog_cannotsave_message, R.string.help_cannotsave));
-			return;
-		}
-		
-		showDialogFragment(SimpleDialog.newInstance(R.string.dialog_gamesaved_title, R.string.dialog_gamesaved_message, R.string.help_gamesaved));
-	}
-	
-	public boolean loadSnapshot() {
-		if (!(Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()) || Environment.MEDIA_MOUNTED_READ_ONLY.equals(Environment.getExternalStorageState()))) {
-			showDialogFragment(SimpleDialog.newInstance(R.string.dialog_cannotload_title, R.string.dialog_cannotload_message, R.string.help_cannotload));
-			return false;
-		}
-		
-		SharedPreferences prefs = getSharedPreferences(mCurrentGame, MODE_PRIVATE);
-		File file = new File(ActivityCompat.getExternalFilesDirs(this, null)[0], SAVEFILE);
-		
-		try {
-			SharedPreferences.Editor editor = prefs.edit();
-			
-			FileInputStream fis = new FileInputStream(file);
-			InputStreamReader isr = new InputStreamReader(fis);
-			BufferedReader br = new BufferedReader(isr);
-			String line = br.readLine();
-			while (line != null) {
-				String[] tokens = line.split(",",3);
-				
-				String type = tokens[0];
-				String key = tokens[1];
-				String value = tokens.length == 3? tokens[2] : "";
-				
-				if (Integer.class.getSimpleName().equals(type)) {
-					editor.putInt(key, Integer.valueOf(value));
-				} else if (Boolean.class.getSimpleName().equals(type)) {
-					editor.putBoolean(key, Boolean.valueOf(value));
-				} else if (String.class.getSimpleName().equals(type)) {
-					editor.putString(key, value);
-				} else {
-					Log.e(GameState.LOG_TAG, "tokens[0] has invalid value "+tokens[0]);
-					showDialogFragment(SimpleDialog.newInstance(R.string.dialog_cannotload_title, R.string.dialog_cannotload_message, R.string.help_cannotload));
-					br.close();
-					isr.close();
-					fis.close();
-					return false;
-				}
-				
-				line = br.readLine();
-			}
-			br.close();
-			isr.close();
-			fis.close();
-			editor.commit();
-			
-			loadState(prefs);
-			
-		} catch (FileNotFoundException e) {
-			showDialogFragment(SimpleDialog.newInstance(R.string.dialog_cannotload_title, R.string.dialog_cannotload_message, R.string.help_cannotload));
-			e.printStackTrace();
-			return false;
-		} catch (IOException e) {
-			showDialogFragment(SimpleDialog.newInstance(R.string.dialog_cannotload_title, R.string.dialog_cannotload_message, R.string.help_cannotload));
-			e.printStackTrace();
-			return false;
-		}
-		
-		return true;
-	}
-	
-	public void pagerClick(View view) {
-		int id = view.getId();
-		if (id == R.id.screen_warp_target_cost_specific) {
-			mGameState.executeWarpFormHandleEvent(id);
-			return;
-		}
+
+    private void saveSnapshot() {
+        if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+            showDialogFragment(SimpleDialog.newInstance(R.string.dialog_cannotsave_title, R.string.dialog_cannotsave_message, R.string.help_cannotsave));
+            return;
+        }
+
+        SharedPreferences prefs = getSharedPreferences(mCurrentGame, MODE_PRIVATE);
+        saveState(prefs);
+        Map<String, ?> map = prefs.getAll();
+
+        File file = new File(ActivityCompat.getExternalFilesDirs(this, null)[0], SAVEFILE);
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            OutputStreamWriter osw = new OutputStreamWriter(fos);
+            BufferedWriter bw = new BufferedWriter(osw);
+            for (String key : map.keySet()) {
+                bw.write(map.get(key).getClass().getSimpleName() + "," + key + "," + map.get(key) + "\n");
+            }
+            bw.close();
+            osw.close();
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showDialogFragment(SimpleDialog.newInstance(R.string.dialog_cannotsave_title, R.string.dialog_cannotsave_message, R.string.help_cannotsave));
+            return;
+        }
+
+        showDialogFragment(SimpleDialog.newInstance(R.string.dialog_gamesaved_title, R.string.dialog_gamesaved_message, R.string.help_gamesaved));
+    }
+
+    public boolean loadSnapshot() {
+        if (!(Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()) || Environment.MEDIA_MOUNTED_READ_ONLY.equals(Environment.getExternalStorageState()))) {
+            showDialogFragment(SimpleDialog.newInstance(R.string.dialog_cannotload_title, R.string.dialog_cannotload_message, R.string.help_cannotload));
+            return false;
+        }
+
+        SharedPreferences prefs = getSharedPreferences(mCurrentGame, MODE_PRIVATE);
+        File file = new File(ActivityCompat.getExternalFilesDirs(this, null)[0], SAVEFILE);
+
+        try {
+            SharedPreferences.Editor editor = prefs.edit();
+
+            FileInputStream fis = new FileInputStream(file);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader br = new BufferedReader(isr);
+            String line = br.readLine();
+            while (line != null) {
+                String[] tokens = line.split(",", 3);
+
+                String type = tokens[0];
+                String key = tokens[1];
+                String value = tokens.length == 3 ? tokens[2] : "";
+
+                if (Integer.class.getSimpleName().equals(type)) {
+                    editor.putInt(key, Integer.valueOf(value));
+                } else if (Boolean.class.getSimpleName().equals(type)) {
+                    editor.putBoolean(key, Boolean.valueOf(value));
+                } else if (String.class.getSimpleName().equals(type)) {
+                    editor.putString(key, value);
+                } else {
+                    Log.e(GameState.LOG_TAG, "tokens[0] has invalid value " + tokens[0]);
+                    showDialogFragment(SimpleDialog.newInstance(R.string.dialog_cannotload_title, R.string.dialog_cannotload_message, R.string.help_cannotload));
+                    br.close();
+                    isr.close();
+                    fis.close();
+                    return false;
+                }
+
+                line = br.readLine();
+            }
+            br.close();
+            isr.close();
+            fis.close();
+            editor.commit();
+
+            loadState(prefs);
+
+        } catch (FileNotFoundException e) {
+            showDialogFragment(SimpleDialog.newInstance(R.string.dialog_cannotload_title, R.string.dialog_cannotload_message, R.string.help_cannotload));
+            e.printStackTrace();
+            return false;
+        } catch (IOException e) {
+            showDialogFragment(SimpleDialog.newInstance(R.string.dialog_cannotload_title, R.string.dialog_cannotload_message, R.string.help_cannotload));
+            e.printStackTrace();
+            return false;
+        }
+
+        return true;
+    }
+
+    public void pagerClick(View view) {
+        int id = view.getId();
+        if (id == R.id.screen_warp_target_cost_specific) {
+            mGameState.executeWarpFormHandleEvent(id);
+            return;
+        }
 //		if (WarpPricesScreen.LABEL_IDS.containsValue(id) || WarpPricesScreen.PRICE_IDS.containsValue(id)) {
-		if (WarpPricesScreen.CLICKABLE_IDS.containsValue(id)) {
-			mGameState.averagePricesFormHandleEvent(id);
-			return;
-		}
-		
-	}
+        if (WarpPricesScreen.CLICKABLE_IDS.containsValue(id)) {
+            mGameState.averagePricesFormHandleEvent(id);
+            return;
+        }
+
+    }
 }

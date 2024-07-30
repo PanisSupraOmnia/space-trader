@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<set xmlns:android="http://schemas.android.com/apk/res/android"
     android:interpolator="@android:anim/accelerate_decelerate_interpolator">
 
     <translate
@@ -8,7 +7,7 @@
         android:fromXDelta="0%"
         android:toXDelta="1%"
         android:fromYDelta="0%"
-        android:toYDelta="1%"/>
+        android:toYDelta="1%" />
 
     <translate
         android:startOffset="25"
@@ -16,7 +15,7 @@
         android:fromXDelta="0%"
         android:toXDelta="-2%"
         android:fromYDelta="0%"
-        android:toYDelta="0%"/>
+        android:toYDelta="0%" />
 
     <translate
         android:startOffset="75"
@@ -24,7 +23,7 @@
         android:fromXDelta="0%"
         android:toXDelta="2%"
         android:fromYDelta="0%"
-        android:toYDelta="-2%"/>
+        android:toYDelta="-2%" />
 
     <translate
         android:startOffset="125"
@@ -32,7 +31,7 @@
         android:fromXDelta="0%"
         android:toXDelta="-2%"
         android:fromYDelta="0%"
-        android:toYDelta="0%"/>
+        android:toYDelta="0%" />
 
     <translate
         android:startOffset="175"
@@ -40,7 +39,7 @@
         android:fromXDelta="0%"
         android:toXDelta="2%"
         android:fromYDelta="0%"
-        android:toYDelta="2%"/>
+        android:toYDelta="2%" />
 
     <translate
         android:startOffset="225"
@@ -48,7 +47,7 @@
         android:fromXDelta="0%"
         android:toXDelta="-2%"
         android:fromYDelta="0%"
-        android:toYDelta="0%"/>
+        android:toYDelta="0%" />
 
     <translate
         android:startOffset="275"
@@ -56,7 +55,7 @@
         android:fromXDelta="0%"
         android:toXDelta="2%"
         android:fromYDelta="0%"
-        android:toYDelta="-2%"/>
+        android:toYDelta="-2%" />
 
     <translate
         android:startOffset="325"
@@ -64,7 +63,7 @@
         android:fromXDelta="0%"
         android:toXDelta="-2%"
         android:fromYDelta="0%"
-        android:toYDelta="0%"/>
+        android:toYDelta="0%" />
 
     <translate
         android:startOffset="375"
@@ -72,7 +71,7 @@
         android:fromXDelta="0%"
         android:toXDelta="2%"
         android:fromYDelta="0%"
-        android:toYDelta="2%"/>
+        android:toYDelta="2%" />
 
     <translate
         android:startOffset="425"
@@ -80,7 +79,7 @@
         android:fromXDelta="0%"
         android:toXDelta="-2%"
         android:fromYDelta="0%"
-        android:toYDelta="0%"/>
+        android:toYDelta="0%" />
 
     <translate
         android:startOffset="475"
@@ -88,7 +87,7 @@
         android:fromXDelta="0%"
         android:toXDelta="2%"
         android:fromYDelta="0%"
-        android:toYDelta="-2%"/>
+        android:toYDelta="-2%" />
 
     <translate
         android:startOffset="525"
@@ -96,7 +95,7 @@
         android:fromXDelta="0%"
         android:toXDelta="-2%"
         android:fromYDelta="0%"
-        android:toYDelta="0%"/>
+        android:toYDelta="0%" />
 
     <translate
         android:startOffset="575"
@@ -104,7 +103,7 @@
         android:fromXDelta="0%"
         android:toXDelta="2%"
         android:fromYDelta="0%"
-        android:toYDelta="2%"/>
+        android:toYDelta="2%" />
 
     <translate
         android:startOffset="625"
@@ -112,7 +111,7 @@
         android:fromXDelta="0%"
         android:toXDelta="-2%"
         android:fromYDelta="0%"
-        android:toYDelta="0%"/>
+        android:toYDelta="0%" />
 
     <translate
         android:startOffset="675"
@@ -120,7 +119,7 @@
         android:fromXDelta="0%"
         android:toXDelta="2%"
         android:fromYDelta="0%"
-        android:toYDelta="-2%"/>
+        android:toYDelta="-2%" />
 
     <translate
         android:startOffset="725"
@@ -128,7 +127,7 @@
         android:fromXDelta="0%"
         android:toXDelta="-2%"
         android:fromYDelta="0%"
-        android:toYDelta="0%"/>
+        android:toYDelta="0%" />
 
     <translate
         android:startOffset="775"
@@ -136,13 +135,13 @@
         android:fromXDelta="0%"
         android:toXDelta="1%"
         android:fromYDelta="0%"
-        android:toYDelta="1%"/>
+        android:toYDelta="1%" />
 
     <alpha
         android:startOffset="775"
         android:duration="500"
         android:fromAlpha="1"
         android:toAlpha="0"
-        android:interpolator="@android:anim/decelerate_interpolator"/>
+        android:interpolator="@android:anim/decelerate_interpolator" />
 
 </set>

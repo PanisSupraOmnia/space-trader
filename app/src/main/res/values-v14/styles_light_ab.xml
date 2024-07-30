@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- File created by the Android Action Bar Style Generator
+<?xml version="1.0" encoding="utf-8"?><!-- File created by the Android Action Bar Style Generator
 
      Copyright (C) 2011 The Android Open Source Project
      Copyright (C) 2012 readyState Software Ltd
@@ -27,23 +26,40 @@
         <item name="android:actionDropDownStyle">@style/DropDownNav.Light_ab</item>
         <item name="android:actionBarStyle">@style/ActionBar.Solid.Light_ab</item>
         <item name="android:actionModeBackground">@drawable/cab_background_top_light_ab</item>
-        <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_light_ab</item>
-        <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Light_ab</item>
-        
-        <item name="android:editTextBackground">@drawable/light_acwidgets_edit_text_holo_light</item>
+        <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_light_ab
+        </item>
+        <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Light_ab
+        </item>
+
+        <item name="android:editTextBackground">@drawable/light_acwidgets_edit_text_holo_light
+        </item>
         <item name="android:textColorHighlight">#9933b5e5</item>
-        <item name="android:textSelectHandleLeft">@drawable/light_acwidgets_text_select_handle_left</item>
-        <item name="android:textSelectHandleRight">@drawable/light_acwidgets_text_select_handle_right</item>
-        <item name="android:textSelectHandle">@drawable/light_acwidgets_text_select_handle_middle</item>
-        <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewLight_ACWidgets</item>
-        <item name="android:listChoiceIndicatorMultiple">@drawable/light_acwidgets_btn_check_holo_light</item>
-        <item name="android:listChoiceIndicatorSingle">@drawable/light_acwidgets_btn_radio_holo_light</item>
+        <item name="android:textSelectHandleLeft">
+            @drawable/light_acwidgets_text_select_handle_left
+        </item>
+        <item name="android:textSelectHandleRight">
+            @drawable/light_acwidgets_text_select_handle_right
+        </item>
+        <item name="android:textSelectHandle">@drawable/light_acwidgets_text_select_handle_middle
+        </item>
+        <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewLight_ACWidgets
+        </item>
+        <item name="android:listChoiceIndicatorMultiple">
+            @drawable/light_acwidgets_btn_check_holo_light
+        </item>
+        <item name="android:listChoiceIndicatorSingle">
+            @drawable/light_acwidgets_btn_radio_holo_light
+        </item>
         <item name="android:buttonStyle">@style/ButtonLight_ACWidgets</item>
         <item name="android:imageButtonStyle">@style/ImageButtonLight_ACWidgets</item>
         <item name="android:dropDownSpinnerStyle">@style/SpinnerLight_ACWidgets</item>
         <item name="android:progressBarStyleHorizontal">@style/ProgressBarLight_ACWidgets</item>
-        <item name="android:listChoiceBackgroundIndicator">@drawable/light_acwidgets_list_selector_holo_light</item>
-        <item name="android:activatedBackgroundIndicator">@drawable/light_acwidgets_activated_background_holo_light</item>
+        <item name="android:listChoiceBackgroundIndicator">
+            @drawable/light_acwidgets_list_selector_holo_light
+        </item>
+        <item name="android:activatedBackgroundIndicator">
+            @drawable/light_acwidgets_activated_background_holo_light
+        </item>
 
     </style>
 
@@ -58,7 +74,7 @@
         <item name="android:background">@drawable/ab_transparent_light_ab</item>
         <item name="android:progressBarStyle">@style/ProgressBar.Light_ab</item>
     </style>
-    
+
     <!-- this style is only referenced in a Light.DarkActionBar based theme -->
     <style name="Theme.Light_ab.Widget" parent="@style/Theme.AppCompat">
         <item name="android:popupMenuStyle">@style/PopupMenu.Light_ab</item>

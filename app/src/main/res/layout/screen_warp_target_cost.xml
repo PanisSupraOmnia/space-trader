@@ -8,10 +8,11 @@
     android:paddingRight="16dip"
     android:paddingTop="8dip">
 
-    <LinearLayout style="@style/ScreenRow" >
+    <LinearLayout style="@style/ScreenRow">
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:text="@string/screen_warp_target_cost_specific_merc" />
@@ -23,10 +24,11 @@
             android:layout_weight="1" />
     </LinearLayout>
 
-    <LinearLayout style="@style/ScreenRow" >
+    <LinearLayout style="@style/ScreenRow">
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:text="@string/screen_warp_target_cost_specific_ins" />
@@ -38,10 +40,11 @@
             android:layout_weight="1" />
     </LinearLayout>
 
-    <LinearLayout style="@style/ScreenRow" >
+    <LinearLayout style="@style/ScreenRow">
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:text="@string/screen_warp_target_cost_specific_int" />
@@ -53,10 +56,11 @@
             android:layout_weight="1" />
     </LinearLayout>
 
-    <LinearLayout style="@style/ScreenRow" >
+    <LinearLayout style="@style/ScreenRow">
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:text="@string/screen_warp_target_cost_specific_tax" />
@@ -68,10 +72,11 @@
             android:layout_weight="1" />
     </LinearLayout>
 
-    <LinearLayout style="@style/ScreenRow" >
+    <LinearLayout style="@style/ScreenRow">
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:text="@string/screen_warp_target_cost_specific_total" />

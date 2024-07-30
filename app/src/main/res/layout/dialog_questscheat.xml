@@ -6,14 +6,15 @@
     android:paddingBottom="8dip"
     android:paddingLeft="16dip"
     android:paddingRight="16dip"
-    android:paddingTop="8dip" >
+    android:paddingTop="8dip">
 
     <LinearLayout
         style="@style/ScreenRow"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:text="@string/dialog_questscheat_dragonfly" />
@@ -28,10 +29,11 @@
 
     <LinearLayout
         style="@style/ScreenRow"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:text="@string/dialog_questscheat_monster" />
@@ -46,11 +48,12 @@
 
     <LinearLayout
         style="@style/ScreenRow"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/dialog_questscheat_artifact_title"
-            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:text="@string/dialog_questscheat_artifact" />
@@ -65,10 +68,11 @@
 
     <LinearLayout
         style="@style/ScreenRow"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:text="@string/dialog_questscheat_disease" />
@@ -83,10 +87,11 @@
 
     <LinearLayout
         style="@style/ScreenRow"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:text="@string/dialog_questscheat_tribbles" />
@@ -101,10 +106,11 @@
 
     <LinearLayout
         style="@style/ScreenRow"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:text="@string/dialog_questscheat_jarek" />
@@ -119,10 +125,11 @@
 
     <LinearLayout
         style="@style/ScreenRow"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:text="@string/dialog_questscheat_invasion" />
@@ -137,10 +144,11 @@
 
     <LinearLayout
         style="@style/ScreenRow"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:text="@string/dialog_questscheat_experiment" />
@@ -155,10 +163,11 @@
 
     <LinearLayout
         style="@style/ScreenRow"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:text="@string/dialog_questscheat_wild" />
@@ -173,10 +182,11 @@
 
     <LinearLayout
         style="@style/ScreenRow"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:text="@string/dialog_questscheat_reactor" />
@@ -191,10 +201,11 @@
 
     <LinearLayout
         style="@style/ScreenRow"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:text="@string/dialog_questscheat_scarab" />

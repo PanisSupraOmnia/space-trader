@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- File created by the Android Action Bar Style Generator
+<?xml version="1.0" encoding="utf-8"?><!-- File created by the Android Action Bar Style Generator
 
      Copyright (C) 2011 The Android Open Source Project
      Copyright (C) 2012 readyState Software Ltd
@@ -29,16 +28,18 @@
         <item name="actionModeBackground">@drawable/cab_background_top_dark_ab</item>
         <item name="actionModeSplitBackground">@drawable/cab_background_bottom_dark_ab</item>
         <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Dark_ab</item>
-        
+
         <item name="android:editTextStyle">@style/EditTextDark_ACWidgets</item>
         <item name="android:textColorHighlight">#9933b5e5</item>
-        <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewDark_ACWidgets</item>
+        <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewDark_ACWidgets
+        </item>
         <item name="android:checkboxStyle">@style/CheckBoxDark_ACWidgets</item>
         <item name="android:radioButtonStyle">@style/RadioButtonDark_ACWidgets</item>
         <item name="android:buttonStyle">@style/ButtonDark_ACWidgets</item>
         <item name="android:imageButtonStyle">@style/ImageButtonDark_ACWidgets</item>
         <item name="android:spinnerStyle">@style/SpinnerDark_ACWidgets</item>
-        <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItemDark_ACWidgets</item>
+        <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItemDark_ACWidgets
+        </item>
         <item name="android:progressBarStyleHorizontal">@style/ProgressBarDark_ACWidgets</item>
         <item name="android:listViewStyle">@style/ListViewDark_ACWidgets</item>
         <item name="android:listViewWhiteStyle">@style/ListViewDark_ACWidgets.White</item>
@@ -57,11 +58,11 @@
         <item name="background">@drawable/ab_transparent_dark_ab</item>
         <item name="progressBarStyle">@style/ProgressBar.Dark_ab</item>
     </style>
-	
-    <style name="PopupMenu.Dark_ab" parent="@style/Widget.AppCompat.PopupMenu">	
-        <item name="android:popupBackground">@drawable/menu_dropdown_panel_dark_ab</item>	
+
+    <style name="PopupMenu.Dark_ab" parent="@style/Widget.AppCompat.PopupMenu">
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_dark_ab</item>
     </style>
-	
+
     <style name="DropDownListView.Dark_ab" parent="@style/Widget.AppCompat.ListView.DropDown">
         <item name="android:listSelector">@drawable/selectable_background_dark_ab</item>
     </style>
@@ -69,21 +70,21 @@
     <style name="ActionBarTabStyle.Dark_ab" parent="@style/Widget.AppCompat.ActionBar.TabView">
         <item name="android:background">@drawable/tab_indicator_ab_dark_ab</item>
     </style>
-	
+
     <style name="DropDownNav.Dark_ab" parent="@style/Widget.AppCompat.Spinner.DropDown.ActionBar">
         <item name="android:background">@drawable/spinner_background_ab_dark_ab</item>
         <item name="android:popupBackground">@drawable/menu_dropdown_panel_dark_ab</item>
         <item name="android:dropDownSelector">@drawable/selectable_background_dark_ab</item>
     </style>
-    
+
     <style name="ProgressBar.Dark_ab" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
         <item name="android:progressDrawable">@drawable/progress_horizontal_dark_ab</item>
     </style>
-    
+
     <style name="ActionButton.CloseMode.Dark_ab" parent="@style/Widget.AppCompat.ActionButton.CloseMode">
         <item name="android:background">@drawable/btn_cab_done_dark_ab</item>
     </style>
-    
+
     <!-- this style is only referenced in a Light.DarkActionBar based theme -->
     <style name="Theme.Dark_ab.Widget" parent="@style/Theme.AppCompat">
         <item name="popupMenuStyle">@style/PopupMenu.Dark_ab</item>

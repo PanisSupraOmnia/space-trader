@@ -5,12 +5,12 @@
     android:paddingBottom="8dip"
     android:paddingLeft="16dip"
     android:paddingRight="16dip"
-    android:paddingTop="8dip" >
+    android:paddingTop="8dip">
 
     <LinearLayout
         android:id="@+id/screen_yard_buyship_info_name_row"
         style="@style/ScreenRow"
-        android:layout_alignParentTop="true" >
+        android:layout_alignParentTop="true">
 
         <TextView
             style="?attr/textViewStyleHeader"
@@ -29,7 +29,7 @@
     <LinearLayout
         android:id="@+id/screen_yard_buyship_info_size_row"
         style="@style/ScreenRow"
-        android:layout_below="@id/screen_yard_buyship_info_name_row" >
+        android:layout_below="@id/screen_yard_buyship_info_name_row">
 
         <TextView
             style="?attr/textViewStyleHeader"
@@ -48,7 +48,7 @@
     <LinearLayout
         android:id="@+id/screen_yard_buyship_info_cargo_row"
         style="@style/ScreenRow"
-        android:layout_below="@id/screen_yard_buyship_info_size_row" >
+        android:layout_below="@id/screen_yard_buyship_info_size_row">
 
         <TextView
             style="?attr/textViewStyleHeader"
@@ -67,7 +67,7 @@
     <LinearLayout
         android:id="@+id/screen_yard_buyship_info_range_row"
         style="@style/ScreenRow"
-        android:layout_below="@id/screen_yard_buyship_info_cargo_row" >
+        android:layout_below="@id/screen_yard_buyship_info_cargo_row">
 
         <TextView
             style="?attr/textViewStyleHeader"
@@ -86,7 +86,7 @@
     <LinearLayout
         android:id="@+id/screen_yard_buyship_info_hull_row"
         style="@style/ScreenRow"
-        android:layout_below="@id/screen_yard_buyship_info_range_row" >
+        android:layout_below="@id/screen_yard_buyship_info_range_row">
 
         <TextView
             style="?attr/textViewStyleHeader"
@@ -105,7 +105,7 @@
     <LinearLayout
         android:id="@+id/screen_yard_buyship_info_weapon_row"
         style="@style/ScreenRow"
-        android:layout_below="@id/screen_yard_buyship_info_hull_row" >
+        android:layout_below="@id/screen_yard_buyship_info_hull_row">
 
         <TextView
             style="?attr/textViewStyleHeader"
@@ -124,7 +124,7 @@
     <LinearLayout
         android:id="@+id/screen_yard_buyship_info_shield_row"
         style="@style/ScreenRow"
-        android:layout_below="@id/screen_yard_buyship_info_weapon_row" >
+        android:layout_below="@id/screen_yard_buyship_info_weapon_row">
 
         <TextView
             style="?attr/textViewStyleHeader"
@@ -143,7 +143,7 @@
     <LinearLayout
         android:id="@+id/screen_yard_buyship_info_gadget_row"
         style="@style/ScreenRow"
-        android:layout_below="@id/screen_yard_buyship_info_shield_row" >
+        android:layout_below="@id/screen_yard_buyship_info_shield_row">
 
         <TextView
             style="?attr/textViewStyleHeader"
@@ -162,7 +162,7 @@
     <LinearLayout
         android:id="@+id/screen_yard_buyship_info_crew_row"
         style="@style/ScreenRow"
-        android:layout_below="@id/screen_yard_buyship_info_gadget_row" >
+        android:layout_below="@id/screen_yard_buyship_info_gadget_row">
 
         <TextView
             style="?attr/textViewStyleHeader"

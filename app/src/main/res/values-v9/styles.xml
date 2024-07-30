@@ -16,12 +16,12 @@
         <item name="android:overScrollMode">never</item>
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
     </style>
-    
+
     <style name="ScrollView.Palm" parent="@android:style/Widget.ScrollView">
         <item name="android:fadingEdge">none</item>
         <item name="android:overScrollMode">never</item>
     </style>
-    
+
     <style name="AutoCompleteTextView.Palm" parent="@style/AutoCompleteTextViewPalm_ACWidgets">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

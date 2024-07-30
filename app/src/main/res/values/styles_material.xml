@@ -12,8 +12,8 @@
         <item name="selectableItemBackground">@drawable/abc_item_background_holo_light</item>
         <item name="statusBarPadding">0dp</item>
     </style>
-    
-    <style name="ActivityTheme.Material.Light" parent="ActivityTheme.Base.Material.Light">        
+
+    <style name="ActivityTheme.Material.Light" parent="ActivityTheme.Base.Material.Light">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowNoTitle">true</item>
@@ -32,8 +32,9 @@
         <item name="actionBarWidgetTheme">@style/ActionBarWidgetTheme.Dark</item>
         <item name="actionBarTitleTextStyle">@style/TitleText.Dark</item>
         <item name="actionModeSpinnerTextStyle">@style/TitleText.Light</item>
-<!--         <item name="actionBarTitleBackground">?selectableItemBackground</item> -->
-        <item name="actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Material.Light</item>
+        <!--         <item name="actionBarTitleBackground">?selectableItemBackground</item> -->
+        <item name="actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Material.Light
+        </item>
         <item name="footerButtonStyle">@style/FooterButtonStyle.Material.Light</item>
         <item name="listDividerColor">#1f000000</item>
 
@@ -60,9 +61,10 @@
         <item name="android:textColorPrimary">@android:color/black</item>
         <item name="android:textColorSecondary">@android:color/black</item>
         <item name="android:textColorHighlight">@color/highlighted_text_green2</item>
-        
+
         <item name="android:editTextStyle">@style/EditText.Material</item>
-        <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextView.Material.Light</item>
+        <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextView.Material.Light
+        </item>
         <item name="android:spinnerStyle">@style/Widget.AppCompat.Spinner</item>
         <item name="android:checkboxStyle">@style/CheckBox.Material</item>
         <item name="android:radioButtonStyle">@style/RadioButton.Material</item>
@@ -78,14 +80,14 @@
         <item name="actionModeBackground">@drawable/abc_cab_background_top_mtrl_light_green2</item>
     </style>
 
-    
+
     <style name="ActivityTheme.Base.Material.Dark" parent="Theme.AppCompat">
         <item name="infoIconEncounter">@drawable/info_white</item>
         <item name="infoIconDialog">@drawable/info_material_green2</item>
 
         <item name="statusBarPadding">0dp</item>
     </style>
-    
+
     <style name="ActivityTheme.Material.Dark" parent="ActivityTheme.Base.Material.Dark">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -99,14 +101,15 @@
 
         <item name="actionBarStyle">@style/ActionBarStyle.Material.Dark</item>
         <item name="actionBarBackgroundDocked">?colorPrimary</item>
-        <item name="actionBarBackgroundDefault">?colorPrimary</item>        
+        <item name="actionBarBackgroundDefault">?colorPrimary</item>
         <item name="actionButtonStyle">@style/ActionButtonStyle.Material</item>
         <item name="actionMenuTextAppearance">@style/ActionButtonText.Dark</item>
         <item name="actionBarWidgetTheme">@style/ActionBarWidgetTheme.Dark</item>
         <item name="actionBarTitleTextStyle">@style/TitleText.Dark</item>
         <item name="actionModeSpinnerTextStyle">@style/TitleText.Dark</item>
         <item name="actionBarTitleBackground">?attr/selectableItemBackgroundBorderless</item>
-        <item name="actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Material.Dark</item>
+        <item name="actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle.Material.Dark
+        </item>
         <item name="footerButtonStyle">@style/FooterButtonStyle.Material</item>
         <item name="listDividerColor">#1fffffff</item>
 
@@ -125,7 +128,7 @@
         <item name="dialogButtonBarStyle">@style/ButtonBar.Dialog.Dark</item>
         <item name="dialogButtonStyle">@style/Button.Dialog.Material.Dark</item>
         <item name="dialogDivider">@drawable/list_divider_holo_dark</item>
-        
+
         <item name="android:textViewStyle">@style/TextView.Dark</item>
         <item name="textViewStyleHeader">@style/TextView.Header.Dark</item>
         <item name="buttonStyleRounded">@style/Button.Rounded.Dark</item>
@@ -133,13 +136,14 @@
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:textColorSecondary">@android:color/white</item>
         <item name="android:textColorHighlight">@color/highlighted_text_green2</item>
-        
+
         <item name="android:editTextStyle">@style/EditText.Material</item>
-        <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextView.Material.Dark</item>
+        <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextView.Material.Dark
+        </item>
         <item name="android:spinnerStyle">@style/Widget.AppCompat.Spinner</item>
         <item name="android:checkboxStyle">@style/CheckBox.Material</item>
         <item name="android:radioButtonStyle">@style/RadioButton.Material</item>
-        
+
         <item name="textAppearanceLargePopupMenu">?android:textAppearanceMedium</item>
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
 
@@ -150,14 +154,14 @@
         <item name="actionModeCloseDrawable">@drawable/abc_ic_ab_back_mtrl_white</item>
         <item name="actionModeBackground">@drawable/abc_cab_background_top_mtrl_dark_green2</item>
     </style>
-    
+
     <style name="ActionBarStyle.Material.Light" parent="@style/Widget.AppCompat.Light.ActionBar">
         <item name="contentInsetStart">0dp</item>
         <item name="contentInsetEnd">0dp</item>
         <item name="contentInsetLeft">0dp</item>
         <item name="contentInsetRight">0dp</item>
     </style>
-    
+
     <style name="ActionBarStyle.Material.Dark" parent="@style/Widget.AppCompat.ActionBar">
         <item name="contentInsetStart">0dp</item>
         <item name="contentInsetEnd">0dp</item>
@@ -175,7 +179,8 @@
     </style>
 
     <style name="FooterButtonStyle.Material" parent="ActionButtonStyle.Material" />
-    <style name="FooterButtonStyle.Material.Light" >
+
+    <style name="FooterButtonStyle.Material.Light">
         <item name="android:background">?selectableItemBackgroundBorderless</item>
     </style>
 
@@ -194,39 +199,36 @@
         <item name="android:layout_marginTop">0dp</item>
         <item name="android:layout_marginBottom">0dp</item>
     </style>
-    
+
     <style name="ActionModeCloseButtonStyle.Base.Material.Light">
         <item name="android:background">@drawable/abc_item_background_holo_light</item>
     </style>
-    
-    <style name="ActionModeCloseButtonStyle.Material.Light" parent="ActionModeCloseButtonStyle.Base.Material.Light">
-    </style>
-    
-    <style name="ActionModeCloseButtonStyle.Base.Material.Dark">
-    </style>
-    
-    <style name="ActionModeCloseButtonStyle.Material.Dark" parent="ActionModeCloseButtonStyle.Base.Material.Dark">
-    </style>
-    
+
+    <style name="ActionModeCloseButtonStyle.Material.Light" parent="ActionModeCloseButtonStyle.Base.Material.Light"></style>
+
+    <style name="ActionModeCloseButtonStyle.Base.Material.Dark"></style>
+
+    <style name="ActionModeCloseButtonStyle.Material.Dark" parent="ActionModeCloseButtonStyle.Base.Material.Dark"></style>
+
     <style name="Button.Dialog.Material.Light" parent="@style/Button.Square.Light">
         <item name="android:background">?selectableItemBackground</item>
         <item name="android:textColor">@android:color/black</item>
         <item name="android:minHeight">@dimen/alert_dialog_button_bar_height</item>
     </style>
-    
+
     <style name="Button.Dialog.Material.Dark" parent="@style/Button.Square.Dark">
         <item name="android:background">?selectableItemBackground</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:minHeight">@dimen/alert_dialog_button_bar_height</item>
     </style>
-    
+
     <style name="EditText.Material" parent="@style/Widget.AppCompat.EditText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:singleLine">true</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
     </style>
-    
+
     <style name="AutoCompleteTextView.Material.Light" parent="@style/Widget.AppCompat.Light.AutoCompleteTextView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -240,7 +242,7 @@
         <item name="android:singleLine">true</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
     </style>
-        
+
     <style name="TextAppearance.DialogWindowTitle.Material" parent="@android:style/TextAppearance.DialogWindowTitle">
         <item name="android:textColor">?android:textColorPrimary</item>
         <item name="android:textSize">22sp</item>
@@ -255,5 +257,5 @@
         <item name="android:paddingLeft">0dp</item>
         <item name="android:paddingRight">0dp</item>
     </style>
-    
-    </resources>
+
+</resources>

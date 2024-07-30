@@ -11,13 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:baselineAligned="false"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="5"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 style="?attr/textViewStyleHeader"
@@ -74,7 +74,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="6"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/screen_warp_target_name"
@@ -126,7 +126,7 @@
         android:baselineAligned="true"
         android:baselineAlignedChildIndex="1"
         android:orientation="horizontal"
-        android:weightSum="11" >
+        android:weightSum="11">
 
         <TextView
             style="?attr/textViewStyleHeader"
@@ -149,7 +149,7 @@
         android:baselineAlignedChildIndex="0"
         android:gravity="end"
         android:orientation="horizontal"
-        android:weightSum="11" >
+        android:weightSum="11">
 
         <Button
             android:id="@+id/screen_warp_target_cost_specific"
@@ -160,7 +160,7 @@
             android:onClick="pagerClick"
             android:text="@string/screen_warp_target_cost_specific" />
     </LinearLayout>
-    
+
     <TextView
         android:id="@+id/screen_warp_target_toofar"
         android:layout_width="wrap_content"
@@ -169,13 +169,13 @@
         android:layout_alignParentBottom="false"
         android:text="@string/screen_warp_target_toofar"
         android:visibility="invisible" />
-    
+
     <Button
         android:baselineAligned="false"
         style="?attr/buttonStyleRounded"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/screen_warp_target_toofar"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
 </RelativeLayout>

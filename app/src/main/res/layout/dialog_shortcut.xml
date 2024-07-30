@@ -7,7 +7,7 @@
     android:paddingLeft="16dip"
     android:paddingRight="16dip"
     android:paddingTop="8dip"
-    tools:context=".ShortcutDialog" >
+    tools:context=".ShortcutDialog">
 
     <TextView
         style="?attr/textViewStyleHeader"

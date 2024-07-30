@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 /*
 ** Copyright 2010, The Android Open Source Project
 **
@@ -25,13 +24,13 @@
     android:paddingLeft="-8dip"
     android:paddingRight="-8dip"
     android:paddingTop="-8dp"
-    android:paddingBottom="-8dp" >
+    android:paddingBottom="-8dp">
 
     <LinearLayout
         android:id="@+id/topPanel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -41,7 +40,7 @@
             android:layout_marginRight="16dip"
             android:paddingTop="4dp"
             android:paddingBottom="4dp"
-            android:minHeight="@dimen/alert_dialog_title_height" >
+            android:minHeight="@dimen/alert_dialog_title_height">
 
             <ImageButton
                 android:id="@+id/alertHelp"
@@ -73,7 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dip"
             android:background="?listDividerColor"
-            android:visibility="gone"/>
+            android:visibility="gone" />
     </LinearLayout>
 
     <FrameLayout
@@ -81,7 +80,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:minHeight="64dp" >
+        android:minHeight="64dp">
 
         <FrameLayout
             android:id="@+id/content"
@@ -97,7 +96,7 @@
         android:divider="?android:attr/dividerHorizontal"
         android:gravity="bottom"
         android:minHeight="@dimen/alert_dialog_button_bar_height"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <View
             android:id="@+id/scrollDividerBottom"
@@ -120,19 +119,19 @@
             android:paddingBottom="4dp"
             android:paddingTop="4dp">
 
-<!--            <Button
-                android:id="@+id/neutral"
-                style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLines="2"
-                android:textColor="?colorAccent"
-                android:visibility="gone" />
+            <!--            <Button
+                            android:id="@+id/neutral"
+                            style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:maxLines="2"
+                            android:textColor="?colorAccent"
+                            android:visibility="gone" />
 
-            <android.support.v4.widget.Space
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />-->
+                        <android.support.v4.widget.Space
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />-->
 
             <Button
                 android:id="@+id/negative"

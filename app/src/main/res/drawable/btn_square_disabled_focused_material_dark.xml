@@ -3,7 +3,9 @@
     <item>
         <shape>
 
-            <gradient android:startColor="@color/btn_default_normal_material_dark" android:endColor="@color/btn_default_normal_material_dark"/>
+            <gradient
+                android:startColor="@color/btn_default_normal_material_dark"
+                android:endColor="@color/btn_default_normal_material_dark" />
 
         </shape>
     </item>
@@ -14,7 +16,9 @@
                 android:width="@dimen/line_width"
                 android:color="@color/stroke_material_dark" />
 
-            <gradient android:startColor="@color/btn_default_disabled_focused_material_dark" android:endColor="@color/btn_default_disabled_focused_material_dark"/>
+            <gradient
+                android:startColor="@color/btn_default_disabled_focused_material_dark"
+                android:endColor="@color/btn_default_disabled_focused_material_dark" />
 
         </shape>
     </item>

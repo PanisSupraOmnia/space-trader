@@ -5,14 +5,15 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".InfoScreen" >
+    tools:context=".InfoScreen">
 
     <LinearLayout
         style="@style/ScreenRow"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="@string/screen_info_name"
             android:layout_width="0dp" />
@@ -26,10 +27,11 @@
 
     <LinearLayout
         style="@style/ScreenRow"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="@string/screen_info_size"
             android:layout_width="0dp" />
@@ -43,10 +45,11 @@
 
     <LinearLayout
         style="@style/ScreenRow"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="@string/screen_info_tech"
             android:layout_width="0dp" />
@@ -60,10 +63,11 @@
 
     <LinearLayout
         style="@style/ScreenRow"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="@string/screen_info_gov"
             android:layout_width="0dp" />
@@ -77,10 +81,11 @@
 
     <LinearLayout
         style="@style/ScreenRow"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="@string/screen_info_resources"
             android:layout_width="0dp" />
@@ -94,10 +99,11 @@
 
     <LinearLayout
         style="@style/ScreenRow"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="@string/screen_info_police"
             android:layout_width="0dp" />
@@ -111,10 +117,11 @@
 
     <LinearLayout
         style="@style/ScreenRow"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="@string/screen_info_pirates"
             android:layout_width="0dp" />
@@ -130,10 +137,11 @@
         android:id="@+id/screen_info_traderlayout"
         style="@style/ScreenRow"
         android:orientation="horizontal"
-        android:visibility="gone" >
+        android:visibility="gone">
 
         <TextView
-            style="?attr/textViewStyleHeader" android:layout_height="wrap_content"
+            style="?attr/textViewStyleHeader"
+            android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="@string/screen_info_traders"
             android:layout_width="0dp" />
@@ -156,7 +164,7 @@
     <LinearLayout
         style="@style/ScreenRow"
         android:gravity="center"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/screen_info_news"
@@ -166,7 +174,7 @@
             style="?attr/buttonStyleRounded"
             android:text="@string/screen_info_news"
             android:paddingLeft="0dp"
-            android:paddingRight="0dp"  />
+            android:paddingRight="0dp" />
 
         <Button
             android:id="@+id/screen_info_merc"

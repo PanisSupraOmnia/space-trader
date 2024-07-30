@@ -3,17 +3,18 @@
     android:paddingBottom="0dp"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin" >
+    android:paddingTop="@dimen/activity_vertical_margin">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="start"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/screen_status_quests_monster"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:minLines="1"
             android:singleLine="false"
             android:text="@string/screen_status_quests_monster"
@@ -21,7 +22,8 @@
 
         <TextView
             android:id="@+id/screen_status_quests_dragonfly"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:minLines="1"
             android:singleLine="false"
             android:text="@string/screen_status_quests_dragonfly"
@@ -29,7 +31,8 @@
 
         <TextView
             android:id="@+id/screen_status_quests_disease"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:minLines="1"
             android:singleLine="false"
             android:text="@string/screen_status_quests_disease"
@@ -37,7 +40,8 @@
 
         <TextView
             android:id="@+id/screen_status_quests_artifact"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:minLines="1"
             android:singleLine="false"
             android:text="@string/screen_status_quests_artifact"
@@ -45,7 +49,8 @@
 
         <TextView
             android:id="@+id/screen_status_quests_wild"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:minLines="1"
             android:singleLine="false"
             android:text="@string/screen_status_quests_wild"
@@ -53,7 +58,8 @@
 
         <TextView
             android:id="@+id/screen_status_quests_jarek"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:minLines="1"
             android:singleLine="false"
             android:text="@string/screen_status_quests_jarek"
@@ -61,21 +67,24 @@
 
         <TextView
             android:id="@+id/screen_status_quests_invasion"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:minLines="1"
             android:singleLine="false"
             android:visibility="gone" />
 
         <TextView
             android:id="@+id/screen_status_quests_experiment"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:minLines="1"
             android:singleLine="false"
             android:visibility="gone" />
 
         <TextView
             android:id="@+id/screen_status_quests_reactor"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:minLines="1"
             android:singleLine="false"
             android:text="@string/screen_status_quests_reactor"
@@ -83,7 +92,8 @@
 
         <TextView
             android:id="@+id/screen_status_quests_scarab"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:minLines="1"
             android:singleLine="false"
             android:text="@string/screen_status_quests_scarab"
@@ -91,7 +101,8 @@
 
         <TextView
             android:id="@+id/screen_status_quests_tribbles"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:minLines="1"
             android:singleLine="false"
             android:text="@string/screen_status_quests_tribbles"
@@ -99,7 +110,8 @@
 
         <TextView
             android:id="@+id/screen_status_quests_moon"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:minLines="1"
             android:singleLine="false"
             android:text="@string/screen_status_quests_moon"
@@ -107,7 +119,8 @@
 
         <TextView
             android:id="@+id/screen_status_quests_default"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:minLines="1"
             android:singleLine="false"
             android:text="@string/screen_status_quests_default" />
@@ -121,21 +134,27 @@
         android:id="@+id/screen_status_buttons"
         style="@style/ScreenRow"
         android:layout_below="@id/spacer"
-        android:gravity="start" >
+        android:gravity="start">
 
         <Button
             android:id="@+id/screen_status_back_button"
-            style="?attr/buttonStyleRounded" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            style="?attr/buttonStyleRounded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/screen_status_back_button" />
 
         <Button
             android:id="@+id/screen_status_ship_button"
-            style="?attr/buttonStyleRounded" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            style="?attr/buttonStyleRounded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/screen_status_ship_button" />
 
         <Button
             android:id="@+id/screen_status_cargo_button"
-            style="?attr/buttonStyleRounded" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            style="?attr/buttonStyleRounded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/screen_status_cargo_button" />
     </LinearLayout>
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="ActivityTheme.Base.Material.Light" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="infoIconEncounter">@drawable/info_white</item>
         <item name="infoIconDialog">@drawable/info_material_green2</item>
@@ -24,12 +25,16 @@
     </style>
 
     <style name="DialogTheme.Base.Material.Light" parent="ActivityTheme.Material.Light">
-        <item name="android:actionModeBackground">@drawable/abc_cab_background_top_mtrl_light_green2</item>
+        <item name="android:actionModeBackground">
+            @drawable/abc_cab_background_top_mtrl_light_green2
+        </item>
         <item name="android:windowTranslucentStatus">false</item>
     </style>
 
     <style name="DialogTheme.Base.Material.Dark" parent="ActivityTheme.Material.Dark">
-        <item name="android:actionModeBackground">@drawable/abc_cab_background_top_mtrl_dark_green2</item>
+        <item name="android:actionModeBackground">
+            @drawable/abc_cab_background_top_mtrl_dark_green2
+        </item>
         <item name="android:windowTranslucentStatus">false</item>
     </style>
 </resources>
