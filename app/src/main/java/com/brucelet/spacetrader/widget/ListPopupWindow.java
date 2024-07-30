@@ -221,8 +221,8 @@ public class ListPopupWindow {
      * Create a new, empty popup window capable of displaying items from a ListAdapter.
      * Backgrounds should be set using {@link #setBackgroundDrawable(Drawable)}.
      *
-     * @param context      Context used for contained views.
-     * @param attrs        Attributes from inflating parent views used to style the popup.
+     * @param context Context used for contained views.
+     * @param attrs Attributes from inflating parent views used to style the popup.
      * @param defStyleAttr Default style attribute to use for popup content.
      */
     public ListPopupWindow(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -233,10 +233,10 @@ public class ListPopupWindow {
      * Create a new, empty popup window capable of displaying items from a ListAdapter.
      * Backgrounds should be set using {@link #setBackgroundDrawable(Drawable)}.
      *
-     * @param context      Context used for contained views.
-     * @param attrs        Attributes from inflating parent views used to style the popup.
+     * @param context Context used for contained views.
+     * @param attrs Attributes from inflating parent views used to style the popup.
      * @param defStyleAttr Style attribute to read for default styling of popup content.
-     * @param defStyleRes  Style resource ID to use for default styling of popup content.
+     * @param defStyleRes Style resource ID to use for default styling of popup content.
      */
     public ListPopupWindow(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         mContext = context;
@@ -288,6 +288,7 @@ public class ListPopupWindow {
      * {@link #POSITION_PROMPT_ABOVE}.
      *
      * @param position A position constant declaring where the prompt should be displayed.
+     *
      * @see #POSITION_PROMPT_ABOVE
      * @see #POSITION_PROMPT_BELOW
      */
@@ -297,6 +298,7 @@ public class ListPopupWindow {
 
     /**
      * @return Where the optional prompt view should appear.
+     *
      * @see #POSITION_PROMPT_ABOVE
      * @see #POSITION_PROMPT_BELOW
      */
@@ -340,12 +342,13 @@ public class ListPopupWindow {
 
     /**
      * Sets whether the drop-down should remain visible under certain conditions.
-     * <p>
+     *
      * The drop-down will occupy the entire screen below {@link #getAnchorView} regardless
      * of the size or content of the list.  {@link #getBackground()} will fill any space
      * that is not used by the list.
      *
      * @param dropDownAlwaysVisible Whether to keep the drop-down visible.
+     *
      * @hide Only used by AutoCompleteTextView under special conditions.
      */
     public void setDropDownAlwaysVisible(boolean dropDownAlwaysVisible) {
@@ -354,6 +357,7 @@ public class ListPopupWindow {
 
     /**
      * @return Whether the drop-down is visible under special conditions.
+     *
      * @hide Only used by AutoCompleteTextView under special conditions.
      */
     public boolean isDropDownAlwaysVisible() {
@@ -364,8 +368,9 @@ public class ListPopupWindow {
      * Sets the operating mode for the soft input area.
      *
      * @param mode The desired mode, see
-     *             {@link android.view.WindowManager.LayoutParams#softInputMode}
-     *             for the full list
+     *        {@link android.view.WindowManager.LayoutParams#softInputMode}
+     *        for the full list
+     *
      * @see android.view.WindowManager.LayoutParams#softInputMode
      * @see #getSoftInputMode()
      */
@@ -546,6 +551,7 @@ public class ListPopupWindow {
      * See {@link WindowManager.LayoutParams#type} for possible values.
      *
      * @param layoutType Layout type for this window.
+     *
      * @see WindowManager.LayoutParams#type
      */
     public void setWindowLayoutType(int layoutType) {
@@ -556,6 +562,7 @@ public class ListPopupWindow {
      * Sets a listener to receive events when a list item is clicked.
      *
      * @param clickListener Listener to register
+     *
      * @see ListView#setOnItemClickListener(android.widget.AdapterView.OnItemClickListener)
      */
     public void setOnItemClickListener(AdapterView.OnItemClickListener clickListener) {
@@ -566,6 +573,7 @@ public class ListPopupWindow {
      * Sets a listener to receive events when a list item is selected.
      *
      * @param selectedListener Listener to register.
+     *
      * @see ListView#setOnItemSelectedListener(android.widget.AdapterView.OnItemSelectedListener)
      */
     public void setOnItemSelectedListener(AdapterView.OnItemSelectedListener selectedListener) {
@@ -629,7 +637,7 @@ public class ListPopupWindow {
                     mPopup.setHeight(0);
                 } else {
                     mPopup.setWidth(mDropDownWidth == ViewGroup.LayoutParams.MATCH_PARENT ?
-                            ViewGroup.LayoutParams.MATCH_PARENT : 0);
+                                    ViewGroup.LayoutParams.MATCH_PARENT : 0);
                     mPopup.setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
                 }
             } else if (mDropDownHeight == ViewGroup.LayoutParams.WRAP_CONTENT) {
@@ -641,8 +649,8 @@ public class ListPopupWindow {
             mPopup.setOutsideTouchable(!mForceIgnoreOutsideTouch && !mDropDownAlwaysVisible);
 
             mPopup.update(getAnchorView(), mDropDownHorizontalOffset,
-                    mDropDownVerticalOffset, (widthSpec < 0) ? -1 : widthSpec,
-                    (heightSpec < 0) ? -1 : heightSpec);
+                            mDropDownVerticalOffset, (widthSpec < 0)? -1 : widthSpec,
+                            (heightSpec < 0)? -1 : heightSpec);
         } else {
             final int widthSpec;
             if (mDropDownWidth == ViewGroup.LayoutParams.MATCH_PARENT) {
@@ -796,7 +804,7 @@ public class ListPopupWindow {
      *
      * @param position Adapter position for performing the click
      * @return true if the click action could be performed, false if not.
-     * (e.g. if the popup was not showing, this method would return false.)
+     *         (e.g. if the popup was not showing, this method would return false.)
      */
     public boolean performItemClick(int position) {
         if (isShowing()) {
@@ -824,6 +832,7 @@ public class ListPopupWindow {
     /**
      * @return The position of the currently selected item or {@link ListView#INVALID_POSITION}
      * if {@link #isShowing()} == {@code false}.
+     *
      * @see ListView#getSelectedItemPosition()
      */
     public int getSelectedItemPosition() {
@@ -836,6 +845,7 @@ public class ListPopupWindow {
     /**
      * @return The ID of the currently selected item or {@link ListView#INVALID_ROW_ID}
      * if {@link #isShowing()} == {@code false}.
+     *
      * @see ListView#getSelectedItemId()
      */
     public long getSelectedItemId() {
@@ -848,6 +858,7 @@ public class ListPopupWindow {
     /**
      * @return The View for the currently selected item or null if
      * {@link #isShowing()} == {@code false}.
+     *
      * @see ListView#getSelectedView()
      */
     public View getSelectedView() {
@@ -880,8 +891,9 @@ public class ListPopupWindow {
      * views using non-modal ListPopupWindow can have it handle key selection of items.
      *
      * @param keyCode keyCode param passed to the host view's onKeyDown
-     * @param event   event param passed to the host view's onKeyDown
+     * @param event event param passed to the host view's onKeyDown
      * @return true if the event was handled, false if it was ignored.
+     *
      * @see #setModal(boolean)
      */
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -974,8 +986,9 @@ public class ListPopupWindow {
      * views using non-modal ListPopupWindow can have it handle key selection of items.
      *
      * @param keyCode keyCode param passed to the host view's onKeyUp
-     * @param event   event param passed to the host view's onKeyUp
+     * @param event event param passed to the host view's onKeyUp
      * @return true if the event was handled, false if it was ignored.
+     *
      * @see #setModal(boolean)
      */
     public boolean onKeyUp(int keyCode, KeyEvent event) {
@@ -997,8 +1010,9 @@ public class ListPopupWindow {
      * when the back key is pressed.
      *
      * @param keyCode keyCode param passed to the host view's onKeyPreIme
-     * @param event   event param passed to the host view's onKeyPreIme
+     * @param event event param passed to the host view's onKeyPreIme
      * @return true if the event was handled, false if it was ignored.
+     *
      * @see #setModal(boolean)
      */
     public boolean onKeyPreIme(int keyCode, KeyEvent event) {
@@ -1094,7 +1108,7 @@ public class ListPopupWindow {
             mDropDownList.setFocusableInTouchMode(true);
             mDropDownList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 public void onItemSelected(AdapterView<?> parent, View view,
-                                           int position, long id) {
+                        int position, long id) {
 
                     if (position != -1) {
                         DropDownListView dropDownList = mDropDownList;
@@ -1237,37 +1251,23 @@ public class ListPopupWindow {
      * @hide
      */
     public static abstract class ForwardingListener implements View.OnTouchListener {
-        /**
-         * Scaled touch slop, used for detecting movement outside bounds.
-         */
+        /** Scaled touch slop, used for detecting movement outside bounds. */
         private final float mScaledTouchSlop;
 
-        /**
-         * Timeout before disallowing intercept on the source's parent.
-         */
+        /** Timeout before disallowing intercept on the source's parent. */
         private final int mTapTimeout;
-        /**
-         * Timeout before accepting a long-press to start forwarding.
-         */
+        /** Timeout before accepting a long-press to start forwarding. */
         private final int mLongPressTimeout;
 
-        /**
-         * Source view from which events are forwarded.
-         */
+        /** Source view from which events are forwarded. */
         private final View mSrc;
 
-        /**
-         * Runnable used to prevent conflicts with scrolling parents.
-         */
+        /** Runnable used to prevent conflicts with scrolling parents. */
         private Runnable mDisallowIntercept;
-        /**
-         * Runnable used to trigger forwarding on long-press.
-         */
+        /** Runnable used to trigger forwarding on long-press. */
         private Runnable mTriggerLongPress;
 
-        /**
-         * Whether this listener is currently forwarding touch events.
-         */
+        /** Whether this listener is currently forwarding touch events. */
         private boolean mForwarding;
         /**
          * Whether forwarding was initiated by a long-press. If so, we won't
@@ -1275,9 +1275,7 @@ public class ListPopupWindow {
          */
         private boolean mWasLongPress;
 
-        /**
-         * The id of the first pointer down in the current event stream.
-         */
+        /** The id of the first pointer down in the current event stream. */
         private int mActivePointerId;
 
         /**
@@ -1539,33 +1537,33 @@ public class ListPopupWindow {
     private static class DropDownListView extends ListViewCompat {
 
         /*
-         * WARNING: This is a workaround for a touch mode issue.
-         *
-         * Touch mode is propagated lazily to windows. This causes problems in
-         * the following scenario:
-         * - Type something in the AutoCompleteTextView and get some results
-         * - Move down with the d-pad to select an item in the list
-         * - Move up with the d-pad until the selection disappears
-         * - Type more text in the AutoCompleteTextView *using the soft keyboard*
-         *   and get new results; you are now in touch mode
-         * - The selection comes back on the first item in the list, even though
-         *   the list is supposed to be in touch mode
-         *
-         * Using the soft keyboard triggers the touch mode change but that change
-         * is propagated to our window only after the first list layout, therefore
-         * after the list attempts to resurrect the selection.
-         *
-         * The trick to work around this issue is to pretend the list is in touch
-         * mode when we know that the selection should not appear, that is when
-         * we know the user moved the selection away from the list.
-         *
-         * This boolean is set to true whenever we explicitly hide the list's
-         * selection and reset to false whenever we know the user moved the
-         * selection back to the list.
-         *
-         * When this boolean is true, isInTouchMode() returns true, otherwise it
-         * returns super.isInTouchMode().
-         */
+        * WARNING: This is a workaround for a touch mode issue.
+        *
+        * Touch mode is propagated lazily to windows. This causes problems in
+        * the following scenario:
+        * - Type something in the AutoCompleteTextView and get some results
+        * - Move down with the d-pad to select an item in the list
+        * - Move up with the d-pad until the selection disappears
+        * - Type more text in the AutoCompleteTextView *using the soft keyboard*
+        *   and get new results; you are now in touch mode
+        * - The selection comes back on the first item in the list, even though
+        *   the list is supposed to be in touch mode
+        *
+        * Using the soft keyboard triggers the touch mode change but that change
+        * is propagated to our window only after the first list layout, therefore
+        * after the list attempts to resurrect the selection.
+        *
+        * The trick to work around this issue is to pretend the list is in touch
+        * mode when we know that the selection should not appear, that is when
+        * we know the user moved the selection away from the list.
+        *
+        * This boolean is set to true whenever we explicitly hide the list's
+        * selection and reset to false whenever we know the user moved the
+        * selection back to the list.
+        *
+        * When this boolean is true, isInTouchMode() returns true, otherwise it
+        * returns super.isInTouchMode().
+        */
         private boolean mListSelectionHidden;
 
         /**
@@ -1573,19 +1571,13 @@ public class ListPopupWindow {
          */
         private boolean mHijackFocus;
 
-        /**
-         * Whether to force drawing of the pressed state selector.
-         */
+        /** Whether to force drawing of the pressed state selector. */
         private boolean mDrawsInPressedState;
 
-        /**
-         * Current drag-to-open click animation, if any.
-         */
+        /** Current drag-to-open click animation, if any. */
         private ViewPropertyAnimatorCompat mClickAnimation;
 
-        /**
-         * Helper for drag-to-open auto scrolling.
-         */
+        /** Helper for drag-to-open auto scrolling. */
         private ListViewAutoScrollHelper mScrollHelper;
 
         /**
@@ -1827,7 +1819,7 @@ public class ListPopupWindow {
 
     private class PopupScrollListener implements ListView.OnScrollListener {
         public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
-                             int totalItemCount) {
+                int totalItemCount) {
 
         }
 
