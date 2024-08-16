@@ -29,6 +29,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+
 import com.brucelet.spacetrader.enumtypes.Gadget;
 import com.brucelet.spacetrader.enumtypes.Purchasable;
 import com.brucelet.spacetrader.enumtypes.ScreenType;
@@ -36,7 +38,7 @@ import com.brucelet.spacetrader.enumtypes.Shield;
 import com.brucelet.spacetrader.enumtypes.Weapon;
 
 /**
- * A simple {@link android.support.v4.app.Fragment} subclass.
+ * A simple {@link Fragment} subclass.
  */
 public class StatusShipScreen extends BaseScreen {
     public static final Map<Purchasable, Integer> EQUIPMENT_IDS;

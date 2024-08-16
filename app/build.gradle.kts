@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.brucelet.spacetrader"
-        minSdk = 9
+        minSdk = 14
         targetSdk = 23
     }
 
@@ -32,7 +32,7 @@ android {
 }
 
 dependencies {
-    implementation("com.android.support:appcompat-v7:24.2.1")
+    implementation("androidx.appcompat:appcompat:1.0.0")
 
 //    debugCompile("com.squareup.leakcanary:leakcanary-android:1.3.1")
 //    releaseCompile("com.squareup.leakcanary:leakcanary-android-no-op:1.3.1")

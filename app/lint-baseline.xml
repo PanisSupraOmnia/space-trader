@@ -101,7 +101,7 @@
 
     <issue
         id="UnusedAttribute"
-        message="Attribute `parentActivityName` is only used in API level 16 and higher (current min is 9)"
+        message="Attribute `parentActivityName` is only used in API level 16 and higher (current min is 14)"
         errorLine1="            android:parentActivityName=&quot;.MainActivity&quot;>"
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -111,123 +111,13 @@
     </issue>
 
     <issue
-        id="UnusedAttribute"
-        message="Attribute `state_activated` is only used in API level 11 and higher (current min is 9)"
-        errorLine1="    &lt;item android:state_activated=&quot;true&quot; android:drawable=&quot;@drawable/dark_acwidgets_list_activated_holo&quot; />"
-        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/drawable/dark_acwidgets_activated_background_holo_dark.xml"
-            line="17"
-            column="11"/>
-    </issue>
-
-    <issue
-        id="UnusedAttribute"
-        message="Attribute `state_activated` is only used in API level 11 and higher (current min is 9)"
-        errorLine1="    &lt;item android:state_enabled=&quot;true&quot; android:state_activated=&quot;true&quot; android:drawable=&quot;@drawable/dark_acwidgets_textfield_focused_holo_dark&quot; />"
-        errorLine2="                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/drawable/dark_acwidgets_edit_text_holo_dark.xml"
-            line="20"
-            column="40"/>
-    </issue>
-
-    <issue
-        id="UnusedAttribute"
-        message="Attribute `state_activated` is only used in API level 11 and higher (current min is 9)"
-        errorLine1="    &lt;item android:state_activated=&quot;true&quot; android:drawable=&quot;@drawable/light_acwidgets_list_activated_holo&quot; />"
-        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/drawable/light_acwidgets_activated_background_holo_light.xml"
-            line="17"
-            column="11"/>
-    </issue>
-
-    <issue
-        id="UnusedAttribute"
-        message="Attribute `state_activated` is only used in API level 11 and higher (current min is 9)"
-        errorLine1="    &lt;item android:state_enabled=&quot;true&quot; android:state_activated=&quot;true&quot; android:drawable=&quot;@drawable/light_acwidgets_textfield_focused_holo_light&quot; />"
-        errorLine2="                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/drawable/light_acwidgets_edit_text_holo_light.xml"
-            line="20"
-            column="40"/>
-    </issue>
-
-    <issue
-        id="UnusedAttribute"
-        message="Attribute `state_activated` is only used in API level 11 and higher (current min is 9)"
-        errorLine1="    &lt;item android:state_activated=&quot;true&quot; android:drawable=&quot;@drawable/palm_acwidgets_list_activated_holo&quot; />"
-        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/drawable/palm_acwidgets_activated_background_holo_light.xml"
-            line="17"
-            column="11"/>
-    </issue>
-
-    <issue
-        id="UnusedAttribute"
-        message="Attribute `state_activated` is only used in API level 11 and higher (current min is 9)"
-        errorLine1="    &lt;item android:state_enabled=&quot;true&quot; android:state_activated=&quot;true&quot; android:drawable=&quot;@drawable/palm_acwidgets_textfield_focused_holo_light&quot; />"
-        errorLine2="                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/drawable/palm_acwidgets_edit_text_holo_light.xml"
-            line="20"
-            column="40"/>
-    </issue>
-
-    <issue
-        id="UnusedAttribute"
-        message="Attribute `exitFadeDuration` is only used in API level 11 and higher (current min is 9)"
-        errorLine1="&lt;selector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; android:exitFadeDuration=&quot;@android:integer/config_mediumAnimTime&quot;>"
-        errorLine2="                                                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/drawable/selectable_background_dark_ab.xml"
-            line="19"
-            column="70"/>
-    </issue>
-
-    <issue
-        id="UnusedAttribute"
-        message="Attribute `exitFadeDuration` is only used in API level 11 and higher (current min is 9)"
-        errorLine1="&lt;selector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; android:exitFadeDuration=&quot;@android:integer/config_mediumAnimTime&quot;>"
-        errorLine2="                                                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/drawable/selectable_background_light_ab.xml"
-            line="19"
-            column="70"/>
-    </issue>
-
-    <issue
-        id="UnusedAttribute"
-        message="Attribute `exitFadeDuration` is only used in API level 11 and higher (current min is 9)"
-        errorLine1="&lt;selector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; android:exitFadeDuration=&quot;@android:integer/config_mediumAnimTime&quot;>"
-        errorLine2="                                                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/drawable/selectable_background_palm.xml"
-            line="19"
-            column="70"/>
-    </issue>
-
-    <issue
-        id="UnusedAttribute"
-        message="Attribute `exitFadeDuration` is only used in API level 11 and higher (current min is 9)"
-        errorLine1="&lt;selector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; android:exitFadeDuration=&quot;@android:integer/config_mediumAnimTime&quot;>"
-        errorLine2="                                                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/drawable/selectable_background_palm_ab.xml"
-            line="19"
-            column="70"/>
-    </issue>
-
-    <issue
         id="LongLogTag"
         message="The logging tag can be at most 23 characters, was 31 (PricesPagerAdapter.setNewSystem)"
         errorLine1="            Log.d(&quot;PricesPagerAdapter.setNewSystem&quot;, &quot;Setting system &quot; + system);"
         errorLine2="                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/com/brucelet/spacetrader/WarpPricesScreen.java"
-            line="184"
+            line="186"
             column="19"/>
     </issue>
 
@@ -249,7 +139,7 @@
         errorLine2="                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/com/brucelet/spacetrader/WarpTargetScreen.java"
-            line="122"
+            line="124"
             column="19"/>
     </issue>
 
@@ -266,7 +156,7 @@
 
     <issue
         id="AppCompatCustomView"
-        message="This custom view should extend `android.support.v7.widget.AppCompatImageView` instead"
+        message="This custom view should extend `androidx.appcompat.widget.AppCompatImageView` instead"
         errorLine1="public class FixedRatioImageView extends ImageView {"
         errorLine2="                                         ~~~~~~~~~">
         <location
@@ -277,7 +167,7 @@
 
     <issue
         id="AppCompatCustomView"
-        message="This custom view should extend `android.support.v7.widget.AppCompatButton` instead"
+        message="This custom view should extend `androidx.appcompat.widget.AppCompatButton` instead"
         errorLine1="public class ShortcutButton extends Button implements View.OnLongClickListener {"
         errorLine2="                                    ~~~~~~">
         <location
@@ -288,9 +178,9 @@
 
     <issue
         id="GradleDependency"
-        message="A newer version of com.android.support:appcompat-v7 than 24.2.1 is available: 28.0.0"
-        errorLine1="    implementation(&quot;com.android.support:appcompat-v7:24.2.1&quot;)"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        message="A newer version of androidx.appcompat:appcompat than 1.0.0 is available: 1.7.0"
+        errorLine1="    implementation(&quot;androidx.appcompat:appcompat:1.0.0&quot;)"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="build.gradle.kts"
             line="35"
@@ -309,19 +199,52 @@
     </issue>
 
     <issue
-        id="PrivateResource"
-        message="The resource `@anim/abc_fade_in` is marked as private in com.android.support:appcompat-v7:24.2.1"
-        errorLine1="        view.startAnimation(AnimationUtils.loadAnimation(context, android.support.v7.appcompat.R.anim.abc_fade_in));"
-        errorLine2="                                                                                                      ~~~~~~~~~~~">
+        id="RestrictedApi"
+        message="MenuBuilder can only be called from within the same library group (referenced groupId=`androidx.appcompat` from groupId=`Space Trader`)"
+        errorLine1="            Menu commandMenu = new MenuBuilder(context);"
+        errorLine2="                               ~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/com/brucelet/spacetrader/MainActivity.java"
-            line="884"
-            column="103"/>
+            line="831"
+            column="32"/>
+    </issue>
+
+    <issue
+        id="RestrictedApi"
+        message="MenuBuilder can only be called from within the same library group (referenced groupId=`androidx.appcompat` from groupId=`Space Trader`)"
+        errorLine1="        Menu gameMenu = new MenuBuilder(context);"
+        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/brucelet/spacetrader/MainActivity.java"
+            line="852"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="RestrictedApi"
+        message="MenuBuilder can only be called from within the same library group (referenced groupId=`androidx.appcompat` from groupId=`Space Trader`)"
+        errorLine1="        Menu helpMenu = new MenuBuilder(context);"
+        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/brucelet/spacetrader/MainActivity.java"
+            line="867"
+            column="25"/>
     </issue>
 
     <issue
         id="PrivateResource"
-        message="The resource `@dimen/abc_action_bar_default_height_material` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@anim/abc_fade_in` is marked as private in androidx.appcompat:appcompat:1.0.0"
+        errorLine1="        view.startAnimation(AnimationUtils.loadAnimation(context, androidx.appcompat.R.anim.abc_fade_in));"
+        errorLine2="                                                                                            ~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/brucelet/spacetrader/MainActivity.java"
+            line="884"
+            column="93"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
+        message="The resource `@dimen/abc_action_bar_default_height_material` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="    android:minHeight=&quot;@dimen/abc_action_bar_default_height_material&quot;"
         errorLine2="                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -332,7 +255,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@color/ripple_material_dark` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@color/ripple_material_dark` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="    android:color=&quot;@color/ripple_material_dark&quot;>"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -343,18 +266,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@color/ripple_material_light` is marked as private in com.android.support:appcompat-v7:24.2.1"
-        errorLine1="    android:color=&quot;@color/ripple_material_light&quot;>"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/drawable-v21/btn_rounded_material_light.xml"
-            line="3"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="PrivateResource"
-        message="The resource `@color/ripple_material_dark` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@color/ripple_material_dark` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="    android:color=&quot;@color/ripple_material_dark&quot;>"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -365,29 +277,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@color/ripple_material_light` is marked as private in com.android.support:appcompat-v7:24.2.1"
-        errorLine1="    android:color=&quot;@color/ripple_material_light&quot;>"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/drawable-v21/btn_square_material_light.xml"
-            line="3"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="PrivateResource"
-        message="The resource `@color/ripple_material_light` is marked as private in com.android.support:appcompat-v7:24.2.1"
-        errorLine1="        &lt;ripple android:color=&quot;@color/ripple_material_light&quot;>"
-        errorLine2="                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/drawable-v21/info_black_ripple_light.xml"
-            line="6"
-            column="32"/>
-    </issue>
-
-    <issue
-        id="PrivateResource"
-        message="The resource `@color/ripple_material_dark` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@color/ripple_material_dark` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        &lt;ripple android:color=&quot;@color/ripple_material_dark&quot;>"
         errorLine2="                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -398,18 +288,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@color/ripple_material_light` is marked as private in com.android.support:appcompat-v7:24.2.1"
-        errorLine1="        &lt;ripple android:color=&quot;@color/ripple_material_light&quot;>"
-        errorLine2="                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/drawable-v21/info_material_green2_ripple_light.xml"
-            line="6"
-            column="32"/>
-    </issue>
-
-    <issue
-        id="PrivateResource"
-        message="The resource `@color/ripple_material_dark` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@color/ripple_material_dark` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        &lt;ripple android:color=&quot;@color/ripple_material_dark&quot;>"
         errorLine2="                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -420,18 +299,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@color/ripple_material_light` is marked as private in com.android.support:appcompat-v7:24.2.1"
-        errorLine1="    android:color=&quot;@color/ripple_material_light&quot; />"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/drawable-v21/item_background_borderless_material_light.xml"
-            line="3"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="PrivateResource"
-        message="The resource `@attr/dropdownListPreferredItemHeight` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@attr/dropdownListPreferredItemHeight` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="    android:layout_height=&quot;?dropdownListPreferredItemHeight&quot;"
         errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -442,7 +310,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@attr/dropdownListPreferredItemHeight` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@attr/dropdownListPreferredItemHeight` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        android:layout_height=&quot;?attr/dropdownListPreferredItemHeight&quot;"
         errorLine2="                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -453,7 +321,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@attr/dropdownListPreferredItemHeight` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@attr/dropdownListPreferredItemHeight` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        android:layout_height=&quot;?attr/dropdownListPreferredItemHeight&quot;"
         errorLine2="                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -464,7 +332,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@attr/dropdownListPreferredItemHeight` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@attr/dropdownListPreferredItemHeight` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        android:layout_height=&quot;?attr/dropdownListPreferredItemHeight&quot;"
         errorLine2="                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -475,7 +343,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@attr/dropdownListPreferredItemHeight` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@attr/dropdownListPreferredItemHeight` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        android:layout_height=&quot;?attr/dropdownListPreferredItemHeight&quot;"
         errorLine2="                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -486,7 +354,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@attr/dropdownListPreferredItemHeight` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@attr/dropdownListPreferredItemHeight` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        android:layout_height=&quot;?attr/dropdownListPreferredItemHeight&quot;"
         errorLine2="                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -497,7 +365,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@attr/dropdownListPreferredItemHeight` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@attr/dropdownListPreferredItemHeight` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        android:layout_height=&quot;?attr/dropdownListPreferredItemHeight&quot;"
         errorLine2="                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -508,7 +376,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@dimen/abc_action_bar_default_height_material` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@dimen/abc_action_bar_default_height_material` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        &lt;item name=&quot;android:actionBarSize&quot;>@dimen/abc_action_bar_default_height_material&lt;/item>"
         errorLine2="                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -519,7 +387,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@dimen/abc_action_bar_default_height_material` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@dimen/abc_action_bar_default_height_material` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        &lt;item name=&quot;android:actionBarSize&quot;>@dimen/abc_action_bar_default_height_material&lt;/item>"
         errorLine2="                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -530,7 +398,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@dimen/abc_action_bar_default_height_material` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@dimen/abc_action_bar_default_height_material` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        &lt;item name=&quot;android:actionBarSize&quot;>@dimen/abc_action_bar_default_height_material&lt;/item>"
         errorLine2="                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -541,7 +409,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@drawable/abc_list_selector_holo_light` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@drawable/abc_list_selector_holo_light` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        &lt;item name=&quot;listChoiceBackgroundIndicator&quot;>@drawable/abc_list_selector_holo_light&lt;/item>"
         errorLine2="                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -552,7 +420,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@drawable/abc_list_selector_holo_light` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@drawable/abc_list_selector_holo_light` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        &lt;item name=&quot;listChoiceBackgroundIndicator&quot;>@drawable/abc_list_selector_holo_light&lt;/item>"
         errorLine2="                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -563,7 +431,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@drawable/abc_list_selector_holo_light` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@drawable/abc_list_selector_holo_light` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        &lt;item name=&quot;android:dropDownSelector&quot;>@drawable/abc_list_selector_holo_light&lt;/item>"
         errorLine2="                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -574,7 +442,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@drawable/abc_list_selector_holo_light` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@drawable/abc_list_selector_holo_light` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        &lt;item name=&quot;listChoiceBackgroundIndicator&quot;>@drawable/abc_list_selector_holo_light&lt;/item>"
         errorLine2="                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -585,7 +453,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@drawable/abc_list_selector_holo_light` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@drawable/abc_list_selector_holo_light` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        &lt;item name=&quot;android:dropDownSelector&quot;>@drawable/abc_list_selector_holo_light&lt;/item>"
         errorLine2="                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -596,7 +464,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@drawable/abc_item_background_holo_dark` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@drawable/abc_item_background_holo_dark` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        &lt;item name=&quot;actionBarTitleBackground&quot;>@drawable/abc_item_background_holo_dark&lt;/item>"
         errorLine2="                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -607,7 +475,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@drawable/abc_item_background_holo_dark` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@drawable/abc_item_background_holo_dark` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        &lt;item name=&quot;actionBarTitleBackground&quot;>@drawable/abc_item_background_holo_dark&lt;/item>"
         errorLine2="                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -618,7 +486,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@drawable/abc_list_selector_holo_light` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@drawable/abc_list_selector_holo_light` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        &lt;item name=&quot;android:dropDownSelector&quot;>@drawable/abc_list_selector_holo_light&lt;/item>"
         errorLine2="                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -629,7 +497,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@drawable/abc_item_background_holo_dark` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@drawable/abc_item_background_holo_dark` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        &lt;item name=&quot;actionBarItemBackground&quot;>@drawable/abc_item_background_holo_dark&lt;/item>"
         errorLine2="                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -640,7 +508,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@drawable/abc_item_background_holo_dark` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@drawable/abc_item_background_holo_dark` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        &lt;item name=&quot;actionBarTitleBackground&quot;>@drawable/abc_item_background_holo_dark&lt;/item>"
         errorLine2="                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -651,7 +519,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@drawable/abc_item_background_holo_dark` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@drawable/abc_item_background_holo_dark` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        &lt;item name=&quot;actionBarItemBackground&quot;>@drawable/abc_item_background_holo_dark&lt;/item>"
         errorLine2="                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -662,7 +530,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@drawable/abc_item_background_holo_dark` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@drawable/abc_item_background_holo_dark` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        &lt;item name=&quot;actionBarItemBackground&quot;>@drawable/abc_item_background_holo_dark&lt;/item>"
         errorLine2="                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -673,7 +541,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@drawable/abc_item_background_holo_light` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@drawable/abc_item_background_holo_light` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        &lt;item name=&quot;selectableItemBackground&quot;>@drawable/abc_item_background_holo_light&lt;/item>"
         errorLine2="                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -684,7 +552,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@drawable/abc_item_background_holo_light` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@drawable/abc_item_background_holo_light` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        &lt;item name=&quot;selectableItemBackground&quot;>@drawable/abc_item_background_holo_light&lt;/item>"
         errorLine2="                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -695,7 +563,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@drawable/abc_item_background_holo_light` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@drawable/abc_item_background_holo_light` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        &lt;item name=&quot;selectableItemBackground&quot;>@drawable/abc_item_background_holo_light&lt;/item>"
         errorLine2="                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -706,7 +574,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@dimen/abc_action_bar_default_height_material` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@dimen/abc_action_bar_default_height_material` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        &lt;item name=&quot;android:actionBarSize&quot;>@dimen/abc_action_bar_default_height_material&lt;/item>"
         errorLine2="                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -717,7 +585,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@dimen/abc_action_bar_default_height_material` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@dimen/abc_action_bar_default_height_material` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        &lt;item name=&quot;android:actionBarSize&quot;>@dimen/abc_action_bar_default_height_material&lt;/item>"
         errorLine2="                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -728,7 +596,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@color/primary_text_default_material_dark` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@color/primary_text_default_material_dark` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        &lt;item name=&quot;android:textColorPrimary&quot;>@color/primary_text_default_material_dark&lt;/item>"
         errorLine2="                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -739,7 +607,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@dimen/abc_action_button_min_width_material` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@dimen/abc_action_button_min_width_material` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        &lt;item name=&quot;android:minWidth&quot;>@dimen/abc_action_button_min_width_material&lt;/item>"
         errorLine2="                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -750,7 +618,7 @@
 
     <issue
         id="PrivateResource"
-        message="The resource `@drawable/abc_item_background_holo_light` is marked as private in com.android.support:appcompat-v7:24.2.1"
+        message="The resource `@drawable/abc_item_background_holo_light` is marked as private in androidx.appcompat:appcompat:1.0.0"
         errorLine1="        &lt;item name=&quot;android:background&quot;>@drawable/abc_item_background_holo_light&lt;/item>"
         errorLine2="                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -1109,6 +977,133 @@
             file="src/main/java/com/brucelet/spacetrader/BackupAgent.java"
             line="34"
             column="1"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 14"
+        errorLine1="        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/brucelet/spacetrader/BaseDialog.java"
+            line="57"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 14"
+        errorLine1="        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB &amp;&amp; getActivity().getTheme().resolveAttribute(android.R.attr.dialogTheme, tv, true)) {"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/brucelet/spacetrader/BaseDialog.java"
+            line="258"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 11"
+        errorLine1="    @TargetApi(Build.VERSION_CODES.HONEYCOMB)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/brucelet/spacetrader/datatypes/GameState.java"
+            line="307"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 14"
+        errorLine1="        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB) {"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/brucelet/spacetrader/datatypes/GameState.java"
+            line="391"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 14"
+        errorLine1="            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/brucelet/spacetrader/datatypes/GameState.java"
+            line="2995"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 11"
+        errorLine1="    @TargetApi(Build.VERSION_CODES.HONEYCOMB)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/brucelet/spacetrader/datatypes/GameState.java"
+            line="3048"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 14"
+        errorLine1="                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {"
+        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/brucelet/spacetrader/datatypes/GameState.java"
+            line="3077"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 11"
+        errorLine1="    @TargetApi(Build.VERSION_CODES.HONEYCOMB)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/brucelet/spacetrader/datatypes/GameState.java"
+            line="3738"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 14"
+        errorLine1="        if (VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB) {"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/brucelet/spacetrader/datatypes/GameState.java"
+            line="3762"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="This folder configuration (`v11`) is unnecessary; `minSdkVersion` is 14. Merge all the resources in this folder into `anim`.">
+        <location
+            file="src/main/res/anim-v11"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="This folder configuration (`v11`) is unnecessary; `minSdkVersion` is 14. Merge all the resources in this folder into `drawable`.">
+        <location
+            file="src/main/res/drawable-v11"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="This folder configuration (`v11`) is unnecessary; `minSdkVersion` is 14. Merge all the resources in this folder into `values`.">
+        <location
+            file="src/main/res/values-v11"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="This folder configuration (`v14`) is unnecessary; `minSdkVersion` is 14. Merge all the resources in this folder into `values`.">
+        <location
+            file="src/main/res/values-v14"/>
     </issue>
 
     <issue

@@ -25,7 +25,9 @@ import java.util.EnumMap;
 import java.util.Map;
 
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
+
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +38,7 @@ import com.brucelet.spacetrader.enumtypes.ScreenType;
 import com.brucelet.spacetrader.enumtypes.TradeItem;
 
 /**
- * A simple {@link android.support.v4.app.Fragment} subclass.
+ * A simple {@link Fragment} subclass.
  */
 public class WarpPricesScreen extends WarpSubScreen {
 
