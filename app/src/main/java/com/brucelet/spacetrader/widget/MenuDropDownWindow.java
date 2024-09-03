@@ -2,7 +2,7 @@ package com.brucelet.spacetrader.widget;
 
 import android.content.Context;
 import android.graphics.Typeface;
-//import android.support.v7.widget.ListPopupWindow;
+import androidx.appcompat.widget.ListPopupWindow;
 //import android.widget.ListPopupWindow;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -26,7 +26,7 @@ public class MenuDropDownWindow extends ListPopupWindow implements View.OnKeyLis
     private Menu mMenu;
 
     public MenuDropDownWindow(Context context, View anchor, Menu menu) {
-        super(context, null, android.support.v7.appcompat.R.attr.listPopupWindowStyle);
+        super(context, null, androidx.appcompat.R.attr.listPopupWindowStyle);
 
         mMenu = menu;
 

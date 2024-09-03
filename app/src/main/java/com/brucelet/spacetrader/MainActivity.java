@@ -32,18 +32,18 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.res.ResourcesCompat;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v4.view.MotionEventCompat;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.view.menu.MenuBuilder;
-import android.support.v7.view.ActionMode;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.core.view.MenuItemCompat;
+import androidx.core.view.MotionEventCompat;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuBuilder;
+import androidx.appcompat.view.ActionMode;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.GestureDetector;
@@ -684,7 +684,7 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
             intent.putExtra("theme", getThemeType());
             startActivity(intent);
             return true;
-        } else if (id == android.support.v7.appcompat.R.id.home || id == android.R.id.home) {
+        } else if (id == androidx.appcompat.R.id.home || id == android.R.id.home) {
             startMenuActionMode();
             return true;
         }
@@ -881,7 +881,7 @@ public class MainActivity extends AppCompatActivity implements MenuDropDownWindo
 
 
         mode.setCustomView(view);
-        view.startAnimation(AnimationUtils.loadAnimation(context, android.support.v7.appcompat.R.anim.abc_fade_in));
+        view.startAnimation(AnimationUtils.loadAnimation(context, androidx.appcompat.R.anim.abc_fade_in));
 
 //		// This doesn't work because the initial dropdown.show() is not lined up correctly
 //		MenuItem dropdowns = menu.add("");

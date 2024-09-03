@@ -24,8 +24,8 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.graphics.Typeface;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewCompat;
+import androidx.core.view.GravityCompat;
+import androidx.core.view.ViewCompat;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -55,10 +55,10 @@ public class ShortcutButton extends Button implements View.OnLongClickListener {
         super(context, attrs, defStyleAttr);
 
         TypedValue tv = new TypedValue();
-        context.getTheme().resolveAttribute(android.support.v7.appcompat.R.attr.actionButtonStyle, tv, true);
+        context.getTheme().resolveAttribute(androidx.appcompat.R.attr.actionButtonStyle, tv, true);
         int actionButtonStyle = tv.resourceId;
         TypedArray ta = context.getTheme().obtainStyledAttributes(actionButtonStyle,
-                new int[]{android.support.v7.appcompat.R.attr.actionMenuTextAppearance, R.attr.actionButtonMarginTop, R.attr.actionButtonMarginBottom});
+                new int[]{androidx.appcompat.R.attr.actionMenuTextAppearance, R.attr.actionButtonMarginTop, R.attr.actionButtonMarginBottom});
         setTextAppearance(context, ta.getResourceId(0, 0));
         int marginTop = ta.getDimensionPixelOffset(1, 0);
         int marginBottom = ta.getDimensionPixelOffset(2, 0);

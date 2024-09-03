@@ -3,7 +3,7 @@
 <!-- Generated with http://android-holo-colors.com -->
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="Palm_ACWidgets" parent="@style/_Palm_ACWidgets" />
+    <style name="Palm_ACWidgets" parent="@style/_Palm_ACWidgets" ></style>
 
     <style name="_Palm_ACWidgets" parent="Theme.AppCompat.Light">
 
