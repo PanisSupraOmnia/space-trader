@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId = "com.brucelet.spacetrader"
         minSdk = 14
-        targetSdk = 23
+        targetSdk = 28
     }
 
     buildTypes {
