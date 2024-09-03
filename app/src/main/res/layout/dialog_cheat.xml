@@ -28,7 +28,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:inputType="number"
-            android:maxLength="8" />
+            android:maxLength="8"
+            android:importantForAutofill="no" />
     </LinearLayout>
 
     <LinearLayout
@@ -51,7 +52,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:inputType="number"
-            android:maxLength="8" />
+            android:maxLength="8"
+            android:importantForAutofill="no" />
     </LinearLayout>
 
     <LinearLayout
@@ -74,7 +76,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:inputType="number"
-            android:maxLength="4" />
+            android:maxLength="4"
+            android:importantForAutofill="no" />
     </LinearLayout>
 
     <LinearLayout
@@ -97,7 +100,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:inputType="number"
-            android:maxLength="4" />
+            android:maxLength="4"
+            android:importantForAutofill="no" />
     </LinearLayout>
 
     <LinearLayout

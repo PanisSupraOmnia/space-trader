@@ -119,7 +119,8 @@
                 android:ems="2"
                 android:inputType="number"
                 android:maxLength="2"
-                style="?android:editTextStyle" />
+                style="?android:editTextStyle"
+                android:importantForAutofill="no" />
         </LinearLayout>
 
         <CheckBox
