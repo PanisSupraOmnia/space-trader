@@ -11,6 +11,7 @@
         <item name="actionBarItemBackground">@drawable/abc_item_background_holo_dark</item>
         <item name="selectableItemBackground">@drawable/abc_item_background_holo_light</item>
         <item name="statusBarPadding">0dp</item>
+        <item name="android:dialogTheme">@style/DialogTheme.Material.Light</item>
     </style>
 
     <style name="ActivityTheme.Material.Light" parent="ActivityTheme.Base.Material.Light">
@@ -86,6 +87,7 @@
         <item name="infoIconDialog">@drawable/info_material_green2</item>
 
         <item name="statusBarPadding">0dp</item>
+        <item name="android:dialogTheme">@style/DialogTheme.Material.Dark</item>
     </style>
 
     <style name="ActivityTheme.Material.Dark" parent="ActivityTheme.Base.Material.Dark">
@@ -155,6 +157,56 @@
         <item name="actionModeBackground">@drawable/abc_cab_background_top_mtrl_dark_green2</item>
     </style>
 
+    <style name="DialogTheme.Base.Material.Light" parent="ActivityTheme.Material.Light">
+        <item name="android:actionModeBackground">
+            @drawable/abc_cab_background_top_mtrl_light_green2
+        </item>
+    </style>
+
+    <style name="DialogTheme.Material.Light" parent="DialogTheme.Base.Material.Light">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
+
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowActionModeOverlay">true</item>
+
+        <!-- A collection of action mode related attributes in android namespace which need to be set for text selection to be themed correctly -->
+        <item name="android:actionBarSize">@dimen/abc_action_bar_default_height_material</item>
+        <item name="android:actionModeCloseDrawable">?actionModeCloseDrawable</item>
+        <item name="android:actionModeCloseButtonStyle">?actionModeCloseButtonStyle</item>
+        <item name="android:actionButtonStyle">@style/ActionButtonStyle.Material.Dialog</item>
+    </style>
+
+    <style name="DialogTheme.Base.Material.Dark" parent="ActivityTheme.Material.Dark">
+        <item name="android:actionModeBackground">
+            @drawable/abc_cab_background_top_mtrl_dark_green2
+        </item>
+    </style>
+
+    <style name="DialogTheme.Material.Dark" parent="DialogTheme.Base.Material.Dark">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
+
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowActionModeOverlay">true</item>
+
+        <!-- A collection of action mode related attributes in android namespace which need to be set for text selection to be themed correctly -->
+        <item name="android:actionBarSize">@dimen/abc_action_bar_default_height_material</item>
+        <item name="android:actionModeCloseDrawable">?actionModeCloseDrawable</item>
+        <item name="android:actionModeCloseButtonStyle">?actionModeCloseButtonStyle</item>
+        <item name="android:actionButtonStyle">@style/ActionButtonStyle.Material.Dialog</item>
+    </style>
+
     <style name="ActionBarStyle.Material.Light" parent="@style/Widget.AppCompat.Light.ActionBar">
         <item name="contentInsetStart">0dp</item>
         <item name="contentInsetEnd">0dp</item>
@@ -204,11 +256,11 @@
         <item name="android:background">@drawable/abc_item_background_holo_light</item>
     </style>
 
-    <style name="ActionModeCloseButtonStyle.Material.Light" parent="ActionModeCloseButtonStyle.Base.Material.Light"></style>
+    <style name="ActionModeCloseButtonStyle.Material.Light" parent="ActionModeCloseButtonStyle.Base.Material.Light" />
 
-    <style name="ActionModeCloseButtonStyle.Base.Material.Dark"></style>
+    <style name="ActionModeCloseButtonStyle.Base.Material.Dark" />
 
-    <style name="ActionModeCloseButtonStyle.Material.Dark" parent="ActionModeCloseButtonStyle.Base.Material.Dark"></style>
+    <style name="ActionModeCloseButtonStyle.Material.Dark" parent="ActionModeCloseButtonStyle.Base.Material.Dark" />
 
     <style name="Button.Dialog.Material.Light" parent="@style/Button.Square.Light">
         <item name="android:background">?selectableItemBackground</item>
@@ -222,11 +274,11 @@
         <item name="android:minHeight">@dimen/alert_dialog_button_bar_height</item>
     </style>
 
-    <style name="EditText.Material" parent="@style/Widget.AppCompat.EditText"></style>
+    <style name="EditText.Material" parent="@style/Widget.AppCompat.EditText" />
 
-    <style name="AutoCompleteTextView.Material.Light" parent="@style/Widget.AppCompat.Light.AutoCompleteTextView"></style>
+    <style name="AutoCompleteTextView.Material.Light" parent="@style/Widget.AppCompat.Light.AutoCompleteTextView" />
 
-    <style name="AutoCompleteTextView.Material.Dark" parent="@style/Widget.AppCompat.AutoCompleteTextView"></style>
+    <style name="AutoCompleteTextView.Material.Dark" parent="@style/Widget.AppCompat.AutoCompleteTextView" />
 
     <style name="TextAppearance.DialogWindowTitle.Material" parent="@android:style/TextAppearance.DialogWindowTitle">
         <item name="android:textColor">?android:textColorPrimary</item>

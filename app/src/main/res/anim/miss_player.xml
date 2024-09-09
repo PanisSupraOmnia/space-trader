@@ -42,4 +42,25 @@
         android:toYDelta="1%"
         android:interpolator="@android:anim/decelerate_interpolator" />
 
+    <scale
+        android:duration="200"
+        android:fromXScale="100%"
+        android:toXScale="95%"
+        android:fromYScale="100%"
+        android:toYScale="95%"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator" />
+
+    <scale
+        android:startOffset="350"
+        android:duration="200"
+        android:fromXScale="100%"
+        android:toXScale="105%"
+        android:fromYScale="100%"
+        android:toYScale="105%"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator" />
+
 </set>

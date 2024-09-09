@@ -21,6 +21,9 @@ android {
                 "proguard-project.txt"
             )
         }
+        getByName("debug") {
+            applicationIdSuffix = ".debug"
+        }
     }
     buildFeatures {
         buildConfig = true
@@ -32,7 +35,7 @@ android {
 }
 
 dependencies {
-    implementation("androidx.appcompat:appcompat:1.0.0")
+    implementation("androidx.appcompat:appcompat:1.0.2")
 
 //    debugCompile("com.squareup.leakcanary:leakcanary-android:1.3.1")
 //    releaseCompile("com.squareup.leakcanary:leakcanary-android-no-op:1.3.1")
