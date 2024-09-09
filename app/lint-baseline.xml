@@ -1647,17 +1647,6 @@
 
     <issue
         id="UnusedResources"
-        message="The resource `R.style.DialogButtonStyle_Palm` appears to be unused"
-        errorLine1="    &lt;style name=&quot;DialogButtonStyle.Palm&quot; parent=&quot;@android:style/Widget.Holo.Light.Button.Borderless.Small&quot;>"
-        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/values-v14/styles.xml"
-            line="149"
-            column="12"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
         message="The resource `R.style.ActionBar_Transparent_Dark_ab` appears to be unused"
         errorLine1="    &lt;style name=&quot;ActionBar.Transparent.Dark_ab&quot; parent=&quot;@style/Widget.AppCompat.ActionBar&quot;>&lt;/style>"
         errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
@@ -1953,17 +1942,6 @@
         <location
             file="src/main/res/values/themes_dark_acwidgets.xml"
             line="6"
-            column="12"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        message="The resource `R.style._Dark_ACWidgets` appears to be unused"
-        errorLine1="    &lt;style name=&quot;_Dark_ACWidgets&quot; parent=&quot;Theme.AppCompat&quot;>"
-        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/values-v11/themes_dark_acwidgets.xml"
-            line="8"
             column="12"/>
     </issue>
 

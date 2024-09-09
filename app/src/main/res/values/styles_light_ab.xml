@@ -18,25 +18,79 @@
 
 <resources>
 
-    <style name="Theme.Light_ab" parent="@style/Theme.AppCompat.Light"></style>
+    <style name="Theme.Light_ab" parent="@style/Theme.AppCompat.Light">
+        <item name="android:actionBarItemBackground">@drawable/selectable_background_light_ab</item>
+        <item name="android:popupMenuStyle">@style/PopupMenu.Light_ab</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.Light_ab</item>
+        <item name="android:actionBarTabStyle">@style/ActionBarTabStyle.Light_ab</item>
+        <item name="android:actionDropDownStyle">@style/DropDownNav.Light_ab</item>
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.Light_ab</item>
+        <item name="android:actionModeBackground">@drawable/cab_background_top_light_ab</item>
+        <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_light_ab
+        </item>
+        <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Light_ab
+        </item>
 
-    <style name="ActionBar.Solid.Light_ab" parent="@style/Widget.AppCompat.Light.ActionBar.Solid"></style>
+        <item name="android:editTextBackground">@drawable/light_acwidgets_edit_text_holo_light
+        </item>
+        <item name="android:textColorHighlight">#9933b5e5</item>
+        <item name="android:textSelectHandleLeft">
+            @drawable/light_acwidgets_text_select_handle_left
+        </item>
+        <item name="android:textSelectHandleRight">
+            @drawable/light_acwidgets_text_select_handle_right
+        </item>
+        <item name="android:textSelectHandle">@drawable/light_acwidgets_text_select_handle_middle
+        </item>
+        <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewLight_ACWidgets
+        </item>
+        <item name="android:listChoiceIndicatorMultiple">
+            @drawable/light_acwidgets_btn_check_holo_light
+        </item>
+        <item name="android:listChoiceIndicatorSingle">
+            @drawable/light_acwidgets_btn_radio_holo_light
+        </item>
+        <item name="android:buttonStyle">@style/ButtonLight_ACWidgets</item>
+        <item name="android:imageButtonStyle">@style/ImageButtonLight_ACWidgets</item>
+        <item name="android:dropDownSpinnerStyle">@style/SpinnerLight_ACWidgets</item>
+        <item name="android:progressBarStyleHorizontal">@style/ProgressBarLight_ACWidgets</item>
+        <item name="android:listChoiceBackgroundIndicator">
+            @drawable/light_acwidgets_list_selector_holo_light
+        </item>
+        <item name="android:activatedBackgroundIndicator">
+            @drawable/light_acwidgets_activated_background_holo_light
+        </item>
 
-    <style name="ActionBar.Transparent.Light_ab" parent="@style/Widget.AppCompat.Light.ActionBar"></style>
+    </style>
 
-    <style name="PopupMenu.Light_ab" parent="@style/Widget.AppCompat.Light.PopupMenu"></style>
+    <style name="ActionBar.Solid.Light_ab" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="android:background">@drawable/ab_solid_light_ab</item>
+        <item name="android:backgroundStacked">@drawable/ab_stacked_solid_light_ab</item>
+        <item name="android:backgroundSplit">@drawable/ab_bottom_solid_light_ab</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.Light_ab</item>
+    </style>
 
-    <style name="DropDownListView.Light_ab" parent="@style/Widget.AppCompat.Light.ListView.DropDown"></style>
+    <style name="ActionBar.Transparent.Light_ab" parent="@style/Widget.AppCompat.Light.ActionBar">
+        <item name="android:background">@drawable/ab_transparent_light_ab</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.Light_ab</item>
+    </style>
 
-    <style name="ActionBarTabStyle.Light_ab" parent="@style/Widget.AppCompat.Light.ActionBar.TabView"></style>
+    <style name="PopupMenu.Light_ab" parent="@style/Widget.AppCompat.Light.PopupMenu" />
 
-    <style name="DropDownNav.Light_ab" parent="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar"></style>
+    <style name="DropDownListView.Light_ab" parent="@style/Widget.AppCompat.Light.ListView.DropDown" />
 
-    <style name="ProgressBar.Light_ab" parent="@style/Widget.AppCompat.ProgressBar.Horizontal"></style>
+    <style name="ActionBarTabStyle.Light_ab" parent="@style/Widget.AppCompat.Light.ActionBar.TabView" />
 
-    <style name="ActionButton.CloseMode.Light_ab" parent="@style/Widget.AppCompat.Light.ActionButton.CloseMode"></style>
+    <style name="DropDownNav.Light_ab" parent="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar" />
+
+    <style name="ProgressBar.Light_ab" parent="@style/Widget.AppCompat.ProgressBar.Horizontal" />
+
+    <style name="ActionButton.CloseMode.Light_ab" parent="@style/Widget.AppCompat.Light.ActionButton.CloseMode" />
 
     <!-- this style is only referenced in a Light.DarkActionBar based theme -->
-    <style name="Theme.Light_ab.Widget" parent="@style/Theme.AppCompat"></style>
+    <style name="Theme.Light_ab.Widget" parent="@style/Theme.AppCompat">
+        <item name="android:popupMenuStyle">@style/PopupMenu.Light_ab</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.Light_ab</item>
+    </style>
 
 </resources>
