@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.brucelet.spacetrader"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.brucelet.spacetrader"
@@ -36,4 +36,10 @@ dependencies {
 
 //    debugCompile("com.squareup.leakcanary:leakcanary-android:1.3.1")
 //    releaseCompile("com.squareup.leakcanary:leakcanary-android-no-op:1.3.1")
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
 }
