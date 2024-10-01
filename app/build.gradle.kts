@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.brucelet.spacetrader"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.brucelet.spacetrader"
