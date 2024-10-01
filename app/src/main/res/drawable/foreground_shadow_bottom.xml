@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <bitmap xmlns:android="http://schemas.android.com/apk/res/android"
-    android:src="@drawable/title_bar_shadow_bottom"
+    android:src="@drawable/ab_solid_shadow_holo_bottom"
     android:gravity="bottom|fill_horizontal" />
